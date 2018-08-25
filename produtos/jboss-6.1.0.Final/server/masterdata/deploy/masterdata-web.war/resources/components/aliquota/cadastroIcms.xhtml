@@ -1,0 +1,172 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal">
+
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.ufOrigem}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:selectOneMenu id="ufOrigemICMS" value="#{mbAliquota.aliquotaIcms.ufOrigem}" styleClass="ComboField Largura105px PositionRelativeFloatLeft TabWalk"
+			disabled="#{!cc.attrs.ruleRender}" tabindex="11">
+			<f:selectItems value="#{mbAliquota.listaUf}" />
+		</h:selectOneMenu>
+		<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft40px">
+			<h:outputText value="#{msg.ufDestino}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:selectOneMenu id="ufDestinoICMS" value="#{mbAliquota.aliquotaIcms.ufDestino}" styleClass="ComboField Largura105px PositionRelativeFloatLeft TabWalk"
+			disabled="#{!cc.attrs.ruleRender}" tabindex="12">
+			<f:selectItems value="#{mbAliquota.listaUf}" />
+		</h:selectOneMenu>
+	</div>
+	
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.vigenciaInicial}" styleClass="TituloDeCampo"/>
+		</div>
+		<div class="PositionRelativeFloatLeft">
+			<rich:calendar id="vigenciaICMS" value="#{mbAliquota.aliquotaIcms.vigenciaInicial}" datePattern="dd/MM/yyyy" tabindex="13" 
+				styleClass="PositionRelativeFloatLeft" buttonClass="BotaoImagemSemMarginTop"
+				showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll" inputClass="Largura73px"
+				disabled="#{!cc.attrs.ruleRender}"/>
+		</div>
+		<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+	</div>
+	
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.aliquotaDeIcms}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="aliquotaICMS" value="#{mbAliquota.aliquotaIcms.aliquota}" maxlength="6" tabindex="10"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2"  groupingUsed="true" />
+		</h:inputText>
+		<div class="Largura35px MarginLeft5px PositionRelativeFloatLeft">
+			<h:outputText value="*"/>
+		</div>
+		<div class="PositionRelativeFloatLeft Largura170px MarginTop2px">
+			<h:outputText value="#{msg.percentualBaseCalculo}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="percentualBCICMS" value="#{mbAliquota.aliquotaIcms.percentualBc}" maxlength="6" tabindex="11"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2"  groupingUsed="true" />
+		</h:inputText>
+		<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+	</div>
+	
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.aliquotaDiferencialDeAliquota}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="aliquotaDiferencialICMS" value="#{mbAliquota.aliquotaIcms.aliquotaDiferencial}" maxlength="6" tabindex="12"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2"  groupingUsed="true" />
+		</h:inputText>
+		<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft40px">
+			<h:outputText value="#{msg.aliquotaDeIcmsFrete}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="aliquotaICMSFrete" value="#{mbAliquota.aliquotaIcms.aliquotaIcmsFrete}" maxlength="6" tabindex="13"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2"  groupingUsed="true" />
+		</h:inputText>
+	</div>
+	
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.percentualReducaoDaBc}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="percentualDaReducaoDaBCICMS" value="#{mbAliquota.aliquotaIcms.percentualDaReducaoDaBc}" maxlength="6"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}" tabindex="14"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2"  groupingUsed="true" />
+		</h:inputText>
+		<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft40px">
+			<h:outputText value="#{msg.valorPauta}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="valorPautaICMS" value="#{mbAliquota.aliquotaIcms.valorPauta}" maxlength="11"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="4" minIntegerDigits="1" minFractionDigits="4"  groupingUsed="true" />
+		</h:inputText>
+	</div>
+	
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.percentualBaseCalculoST}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="percentualBCSTICMS" value="#{mbAliquota.aliquotaIcms.percentualBcST}" maxlength="6" tabindex="15"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2"  groupingUsed="true" />
+		</h:inputText>
+		<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft40px">
+			<h:outputText value="#{msg.percentualReducaoBcSt}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="percentualDaReducaoBcStICMS" value="#{mbAliquota.aliquotaIcms.percentualDaReducaoBcSt}" maxlength="6"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}" tabindex="16"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2"  groupingUsed="true" />
+		</h:inputText>
+	</div>
+	
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.aliquotaSt}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="aliquotaStICMS" value="#{mbAliquota.aliquotaIcms.aliquotaSt}" maxlength="6" tabindex="17"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2"  groupingUsed="true" />
+		</h:inputText>
+		<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft40px">
+			<h:outputText value="#{msg.valorPautaSt}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="valorPautaStICMS" value="#{mbAliquota.aliquotaIcms.valorPautaSt}" maxlength="11" tabindex="18"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="4" minIntegerDigits="1" minFractionDigits="4" groupingUsed="true" />
+		</h:inputText>
+	</div>
+	
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.percentualMvaIcmsSt}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="percentualDaMvaIcmsStICMS" value="#{mbAliquota.aliquotaIcms.percentualDaMvaIcmsSt}" maxlength="6" tabindex="19"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2"  groupingUsed="true" />
+		</h:inputText>
+	</div>
+	
+	<rich:jQuery id="jQueryIcmsAliquota" selector="#aliquotaICMS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	<rich:jQuery id="jQueryIcmsAliquotaFrete" selector="#aliquotaICMSFrete" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	<rich:jQuery id="jQueryIcmsAliquotaDiferencial" selector="#aliquotaDiferencialICMS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	<rich:jQuery id="jQueryIcmsAliquotaSt" selector="#aliquotaStICMS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	<rich:jQuery id="jQueryIcmsPercentualBc" selector="#percentualBCICMS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	<rich:jQuery id="jQueryIcmsPercentualReducaoBc" selector="#percentualDaReducaoDaBCICMS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	<rich:jQuery id="jQueryIcmsPercentualBcSt" selector="#percentualBCSTICMS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	<rich:jQuery id="jQueryIcmsPercentualReducaoBcSt" selector="#percentualDaReducaoBcStICMS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	<rich:jQuery id="jQueryIcmsPercentualMvaIcmsSt" selector="#percentualDaMvaIcmsStICMS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	<rich:jQuery id="jQueryIcmsValorPalta" selector="#valorPautaICMS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', precision: 4})" />
+	<rich:jQuery id="jQueryIcmsValorPaltaSt" selector="#valorPautaStICMS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', precision: 4})" />
+</ui:composition>
+

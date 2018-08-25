@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<faces-config metadata-complete="false" version="2.0"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+	<navigation-rule>
+		<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/home.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>gerais</from-outcome>
+			<to-view-id>/pages/parametrizacao/cadastroParametroGeral.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>perfil</from-outcome>
+			<to-view-id>/pages/parametrizacao/perfilUsuario.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>sefazWebService</from-outcome>
+			<to-view-id>/pages/parametrizacao/painelListaWSSefazOrigem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>pacoteLiberacao</from-outcome>
+			<to-view-id>/pages/parametrizacao/painelListaPacoteLiberacao.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listaEmpresa</from-outcome>
+			<to-view-id>/pages/dadosMestres/painelListaParametroEmpresa.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>consultarSituacao</from-outcome>
+			<to-view-id>/pages/painel/consultarSituacao.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cteTerceiros</from-outcome>
+			<to-view-id>/pages/painel/painelListaCteTerceiros.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>statusServico</from-outcome>
+			<to-view-id>/pages/painel/statusServico.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>manual</from-outcome>
+			<to-view-id>/pages/parametrizacao/painelListaManual.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- Manual -->
+	<navigation-rule>
+		<from-view-id>/pages/parametrizacao/painelListaManual.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>novo</from-outcome>
+			<to-view-id>/pages/parametrizacao/cadastroManual.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/parametrizacao/cadastroManual.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/parametrizacao/painelListaManual.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- Pacote Liberação -->
+	<navigation-rule>
+		<from-view-id>/pages/parametrizacao/painelListaPacoteLiberacao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>novoPacoteLiberacao</from-outcome>
+			<to-view-id>/pages/parametrizacao/cadastroPacoteLiberacao.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/parametrizacao/cadastroPacoteLiberacao.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/parametrizacao/painelListaPacoteLiberacao.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>pacoteLiberacao</from-outcome>
+			<to-view-id>/pages/parametrizacao/painelListaPacoteLiberacao.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- WS Sefaz Origem -->
+	<navigation-rule>
+		<from-view-id>/pages/parametrizacao/painelListaWSSefazOrigem.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>novoWSSefaz</from-outcome>
+			<to-view-id>/pages/parametrizacao/cadastroWSSefazOrigem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{mbWebServiceSefazOrigem.apagar}</from-action>
+			<from-outcome>atualizaTela</from-outcome>
+			<to-view-id>/pages/parametrizacao/painelListaWSSefazOrigem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/parametrizacao/cadastroWSSefazOrigem.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sefazWebService</from-outcome>
+			<to-view-id>/pages/parametrizacao/painelListaWSSefazOrigem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/parametrizacao/painelListaWSSefazOrigem.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- Parâmetro Empresa -->
+	<navigation-rule>
+		<from-view-id>/pages/dadosMestres/painelListaParametroEmpresa.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>editar</from-outcome>
+			<to-view-id>/pages/dadosMestres/cadastroParametroEmpresa.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/dadosMestres/cadastroParametroEmpresa.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/dadosMestres/painelListaParametroEmpresa.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<!-- Painel CTe -->
+	<navigation-rule>
+		<from-view-id>/pages/painel/painelListaCteTerceiros.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>visualizar</from-outcome>
+			<to-view-id>/pages/painel/detalhesCTeTerceiros.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/pages/painel/detalhesCTeTerceiros.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/painel/painelListaCteTerceiros.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

@@ -1,0 +1,247 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:tributavel="http://java.sun.com/jsf/composite/components/aliquota"
+	xmlns:imposto="http://java.sun.com/jsf/composite/components/imposto"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroFornecedor}"/>
+	</ui:define>
+
+	<ui:define name="contentModal">
+		<ui:include src="/resources/components/aliquota/modalListaTipoServico.xhtml"/>
+		<ui:include src="/resources/components/modal/modalFiltroAliquotas.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalInformativoVoltar mensagemInformativo="#{mbFornecedor.mensagemModal}" nomePainel="modalInformativo" tituloModal="#{msg.mensagem}" 
+			render="#{mbFornecedor.renderizarModal}"/>
+		
+		<util:modalJustificativaStatus idModal="modalFornecedorStatus" actionRenderizarModais="#{mbFornecedor.processaRenderizacaoModais}" 
+			justificativaInformativa="#{mbFornecedor.justificativa}" salvar="#{mbFornecedor.salvaComStatus}" 
+			justificativaEditavel="#{mbFornecedor.fornecedor.dadosBasicos.justificativa}" renderizaModalStatusInformativo="#{mbFornecedor.renderizaModalStatusInformativo}"
+			tipoStatus="#{mbFornecedor.fornecedor.dadosBasicos.status.nomeTipo}" idModalInformativo="modalInformativo"  renderizarModal="#{mbFornecedor.renderizarModal}" />
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbFornecedor.verificaStatus}" title="#{msg.titleSalvar}" 
+				render="modalInformativo, painelMensagemErro, modalFornecedorStatus" execute="cadastroFornecedor, cadastroEnderecoForncedor"
+				oncomplete="#{mbFornecedor.renderizaModalStatus} ? #{rich:component('modalFornecedorStatus')}.show() : ''; #{mbFornecedor.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''" 
+				rendered="#{mbFornecedor.verificaPermissao('Administrador, Gerente, Atendente') and !mbFornecedor.statusInicio}" >
+				<f:param name="acao" value="edicaoJustificativa"/>
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+			<a4j:commandLink status="modalStatus" action="voltar" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+		
+		<h:panelGroup id="cadastroFornecedor"> 
+		
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px"> 
+					<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+				</div>			
+				<h:selectOneMenu value="#{mbFornecedor.fornecedor.dadosBasicos.status}" 
+					disabled="#{empty mbFornecedor.fornecedor.id or !mbFornecedor.verificaPermissao('Administrador, Gerente')}" 
+					styleClass="ComboField PositionRelativeFloatLeft Largura70px" id="status" tabindex="0">
+					<f:selectItems value="#{mbFornecedor.listaStatusEnum}" var="status" itemLabel="#{status.nomeTipo}"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				
+				<a4j:commandButton image="/resources/images/gif/information.gif" title="#{msg.titleMotivo}" oncomplete="#{rich:component('modalFornecedorStatus')}.show()" 
+					rendered="#{not empty mbFornecedor.justificativa}" render="modalInformativoStatus, modalFornecedorStatus"
+					styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft Tabwalk" actionListener="#{mbFornecedor.processaRenderizacaoModais}" />
+			</h:panelGroup>
+	
+			<h:panelGroup styleClass="Linha980x25" layout="block">
+				<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.tipoPessoa}"  styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="tipoPessoa" value="#{mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa}" disabled="#{mbFornecedor.statusInicio}" 
+					styleClass="ComboField PositionRelativeFloatLeft Largura70px" tabindex="1">
+					<f:selectItems value="#{mbFornecedor.listaTipoDePessoaEnum}"  var="tipoDePessoa" itemLabel="#{tipoDePessoa.nomeTipo}"/>
+					<a4j:ajax event="valueChange" render="panelCnpjCpf, panelNomes, panelInsEstadualSuframa, painelMensagemErro, jQueryCNPJ, jQueryCPF" 
+						execute="@this" listener="#{mbFornecedor.limparDadosNaoPertinenteAoTipoDePessoa}" status="modalStatus"/>
+				</h:selectOneMenu>			
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				<div class="PositionRelativeFloatLeft MarginLeft10px MarginTop2px Padding0px">	
+					<h:selectBooleanCheckbox id="exterior" value="#{mbFornecedor.exterior}" disabled="#{mbFornecedor.statusInicio}" 
+						styleClass="PositionRelativeFloatLeft MarginTop0px Padding0px" tabindex="2">
+						<a4j:ajax event="valueChange" render="panelCnpjCpf, panelInsEstadualSuframa, dadosPaisUfMunicipio, painelMensagemErro, cepTel,
+							jQueryCNPJ, jQueryCPF" execute="@this" listener="#{mbFornecedor.limparDadosNaoPertinentesAExterior}" status="modalStatus"/>
+					</h:selectBooleanCheckbox>
+				</div>
+				<h:outputText value="#{msg.exterior}" styleClass="TituloDeCampo PositionRelativeFloatLeft MarginTop1px MarginLeft5px"/>
+			</h:panelGroup>
+	
+			<h:panelGroup layout="block" id="panelCnpjCpf">
+				<h:panelGroup layout="block" styleClass="Linha980x25" 
+					rendered="#{(mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa eq 'JURIDICA' || mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa == null) and !mbFornecedor.exterior}">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.cnpj}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="cnpj" value="#{mbFornecedor.fornecedor.dadosBasicos.cnpj}"  styleClass="Campo Largura118px PositionRelativeFloatLeft" 
+						requiredMessage="#{msg.msgErroValidacaoCNPJ}" readonly="#{mbFornecedor.statusInicio}" converter="cnpjConverter"
+						required="#{mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa eq 'JURIDICA' and !mbFornecedor.exterior}" tabindex="3"> 
+						<a4j:ajax event="change" render="painelMensagemErro" listener="#{mbFornecedor.verificaCNPJ}" status="modalStatus"/>
+					</h:inputText>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				</h:panelGroup>
+				<h:panelGroup styleClass="Linha980x25" layout="block" 
+					rendered="#{(mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa eq 'FISICA') and !mbFornecedor.exterior}">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.cpf}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="cpf" value="#{mbFornecedor.fornecedor.dadosBasicos.cpf}" readonly="#{mbFornecedor.statusInicio}" 
+						styleClass="Campo Largura120px PositionRelativeFloatLeft" converter="cpfConverter"  requiredMessage="#{msg.msgErroValidacaoCPF}"
+						required="#{mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa eq 'FISICA' and !mbFornecedor.exterior}" tabindex="3">
+						<a4j:ajax event="valueChange" render="painelMensagemErro" listener="#{mbFornecedor.verificaCPF}" status="modalStatus"/>
+					</h:inputText>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				</h:panelGroup>
+			</h:panelGroup>
+	
+			<h:panelGroup layout="block" id="panelNomes">
+				<h:panelGroup rendered="#{mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa eq 'JURIDICA' || mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa == null}">
+					<div class="Linha980x25">
+						<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+							<h:outputText value="#{msg.razaoSocial}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText id="razaoSocial" value="#{mbFornecedor.fornecedor.dadosBasicos.razaoSocial}" readonly="#{mbFornecedor.statusInicio}" 
+							styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" requiredMessage="#{msg.msgErroValidacaoRazaoSocial}"
+							required="#{mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa eq 'JURIDICA'}" tabindex="4"/>
+						<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+					</div>
+					<div class="Linha980x25">
+						<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+							<h:outputText value="#{msg.nomeFantasia}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText id="nomeFantasia" value="#{mbFornecedor.fornecedor.dadosBasicos.nomeFantasia}" readonly="#{mbFornecedor.statusInicio}" 
+							styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60"/>
+					</div>
+				</h:panelGroup>
+				<h:panelGroup styleClass="Linha980x25" rendered="#{mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa eq 'FISICA'}">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.nome}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="nome" value="#{mbFornecedor.fornecedor.dadosBasicos.nome}" readonly="#{mbFornecedor.statusInicio}"
+						styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" tabindex="4"
+						required="#{mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa eq 'FISICA'}" requiredMessage="#{msg.msgErroValidacaoNome}">
+						<a4j:ajax event="valueChange" execute="@this"/>
+					</h:inputText>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				</h:panelGroup>
+			</h:panelGroup>
+	
+			<h:panelGroup styleClass="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.email}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="email" value="#{mbFornecedor.fornecedor.dadosBasicos.email}" readonly="#{mbFornecedor.statusInicio}"  
+					styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" tabindex="5"/>
+			</h:panelGroup>
+		
+			<h:panelGroup layout="block" id="panelInsEstadualSuframa">
+				<h:panelGroup styleClass="Linha980x25" rendered="#{not mbFornecedor.exterior}" >
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="inscricaoEstadual" value="#{mbFornecedor.fornecedor.dadosBasicos.inscricaoEstadual}" tabindex="6"
+						maxlength="14" disabled="#{mbFornecedor.statusInicio || mbFornecedor.dadosBasicos.isentoIcms}"
+						styleClass="Campo Largura105px PositionRelativeFloatLeft" onkeypress="Mascara(this, Integer);"
+						onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);" onmousedown="Mascara(this, Integer);"
+						onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+					<h:panelGroup layout="block" rendered="#{mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa eq 'JURIDICA'}">	
+						<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft" />
+					</h:panelGroup>
+					<h:panelGroup id="panelIsento" layout="block" rendered="#{!mbFornecedor.exterior}" styleClass="Padding0px PositionRelativeFloatLeft MarginLeft10px">
+						<div class="PositionRelativeFloatLeft MarginTop1px Padding0px">
+							<h:selectBooleanCheckbox id="isentoIcms" value="#{mbFornecedor.fornecedor.dadosBasicos.isentoIcms}" disabled="#{mbFornecedor.statusInicio}"
+								readonly="#{mbFornecedor.statusInicio}" styleClass="MarginTop0px Padding0px PositionRelativeFloatLeft" tabindex="7">
+								<a4j:ajax  event="valueChange" execute="@this" render="panelInsEstadualSuframa" listener="#{mbFornecedor.renderizaIeIsento}" 
+									status="modalStatus"/>
+							</h:selectBooleanCheckbox>
+						</div>
+						<h:outputText value="#{msg.isentoICMS}" styleClass="TituloDeCampo Largura110px MarginTop2px MarginLeft5px"/>
+					</h:panelGroup>
+				</h:panelGroup>
+				<h:panelGroup styleClass="Linha980x25" 
+					rendered="#{(mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa eq 'JURIDICA' || mbFornecedor.fornecedor.dadosBasicos.tipoDePessoa == null) and !mbFornecedor.exterior}">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.inscricaoSuframa}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="inscricaoSuframa" value="#{mbFornecedor.fornecedor.inscricaoSuframa}" readonly="#{mbFornecedor.statusInicio}" 
+						styleClass="Campo Largura70px PositionRelativeFloatLeft" maxlength="9" onkeypress="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" execute="@this"/>
+					</h:inputText>
+				</h:panelGroup>
+			</h:panelGroup>
+		
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura980px">
+			<h:outputText value="#{mbFornecedor.mensagemDocumento}" styleClass="MensagemDeErro" />
+			<h:outputText value="#{mbFornecedor.mensagemDeErro}" styleClass="MensagemDeErro" escape="false" />
+			<h:outputText value="#{mbFornecedor.mensagemErroScript}" styleClass="MensagemDeErro" />
+			<h:outputText value="#{mbFornecedor.mensagemCep}" styleClass="MensagemDeErro" />
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages" />
+		</h:panelGroup>	
+		
+		<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+			<rich:tab  id="abaEndereco" header="#{msg.abaEndereco}">
+				<ui:include src="/pages/dadosMestre/fornecedor/dadosEndereco.xhtml"/>
+			</rich:tab>
+			<rich:tab id="abaAliquotas" header="#{msg.abaAliquota}" immediate="true">
+				<h:panelGroup layout="block" id="painelAliquota">
+					<h:panelGroup rendered="#{!mbAliquota.cadastroAliquota}">
+						<tributavel:listaAliquota ruleRender="#{!mbFornecedor.statusInicio and
+							mbFornecedor.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{mbAliquota.cadastroAliquota}">
+						<tributavel:cadastroAliquota ruleRender="#{!mbFornecedor.statusInicio and
+							mbFornecedor.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+				</h:panelGroup>
+			</rich:tab>
+			<rich:tab id="abaImpostos" header="#{msg.abaImpostos}" immediate="true">
+				<h:panelGroup id="painelImpostos" layout="block">
+					<h:panelGroup rendered="#{!mbImposto.cadatroImposto}" layout="block">
+						<imposto:listaImposto ruleRender="#{!mbFornecedor.statusInicio and
+							mbFornecedor.verificaPermissao('Administrador, Gerente, Atendente')}" 
+							securityRender="#{mbFornecedor.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{mbImposto.cadatroImposto}" layout="block">
+						<imposto:cadastroImposto ruleRender="#{!mbFornecedor.statusInicio and
+							mbFornecedor.verificaPermissao('Administrador, Gerente, Atendente')}" 
+							securityRender="#{mbFornecedor.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+				</h:panelGroup>
+			</rich:tab>
+		</rich:tabPanel>
+	
+		<div class="PositionRelativeFloatLeft Largura100pc MarginTop5px MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft5px MarginLeft18px"/>
+			<br/>
+		</div>
+		
+		<script type="text/javascript">
+			//<![CDATA[
+				if(#{!mbFornecedor.verificaPermissao('Administrador, Gerente, Atendente')}) {
+					j(document).ready(function(){
+						disableInputText();
+					});
+				}
+			//]]>
+		</script>
+	
+		<rich:jQuery id="jQueryCNPJ" selector="#cnpj" timing="immediate"  query="maskMoney({maskMoney: false, mask : '99.999.999/9999-99'})" />
+		<rich:jQuery id="jQueryCPF" selector="#cpf" timing="immediate"  query="maskMoney({maskMoney: false, mask : '999.999.999-99'})" />
+		
+	</ui:define>
+</ui:composition>

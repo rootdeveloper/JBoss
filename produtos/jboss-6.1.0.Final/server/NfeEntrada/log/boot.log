@@ -1,0 +1,1474 @@
+11:14:01,446 INFO  [AbstractJBossASServerBase] Server Configuration:
+
+	JBOSS_HOME URL: file:/C:/jboss-6.1.0.Final/
+	Bootstrap: $JBOSS_HOME\server/NfeEntrada/conf/bootstrap.xml
+	Common Base: $JBOSS_HOME\common/
+	Common Library: $JBOSS_HOME\common/lib/
+	Server Name: NfeEntrada
+	Server Base: $JBOSS_HOME\server/
+	Server Library: $JBOSS_HOME\server/NfeEntrada/lib/
+	Server Config: $JBOSS_HOME\server/NfeEntrada/conf/
+	Server Home: $JBOSS_HOME\server/NfeEntrada/
+	Server Data: $JBOSS_HOME\server/NfeEntrada/data/
+	Server Log: $JBOSS_HOME\server/NfeEntrada/log/
+	Server Temp: $JBOSS_HOME\server/NfeEntrada/tmp/
+
+11:14:01,452 INFO  [AbstractServer] Starting: JBossAS [6.1.0.Final "Neo"]
+11:14:03,985 INFO  [ServerInfo] Java version: 1.6.0_21,Sun Microsystems Inc.
+11:14:03,986 INFO  [ServerInfo] Java Runtime: Java(TM) SE Runtime Environment (build 1.6.0_21-b07)
+11:14:03,986 INFO  [ServerInfo] Java VM: Java HotSpot(TM) Client VM 17.0-b17,Sun Microsystems Inc.
+11:14:03,986 INFO  [ServerInfo] OS-System: Windows 7 6.1,x86
+11:14:03,987 INFO  [ServerInfo] VM arguments: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:55910 -Dprogram.name=JBossTools: JBoss 6.0 Runtime -Xms256m -Xmx768m -XX:MaxPermSize=256m -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djava.endorsed.dirs=C:\jboss-6.1.0.Final\lib\endorsed -Djava.library.path=C:\jboss-6.1.0.Final\bin\native; -Dlogging.configuration=file:C:/jboss-6.1.0.Final/bin/logging.properties -Dhttp.proxyHost=192.168.3.161 -Dhttp.proxyPort=3128 -Dhttp.proxyUser=daniel.santos -Dhttp.proxyPassword=100segredoQ -Dhttp.nonProxyHosts=localhost|127.0.0.1|192.168.3.111 -Dfile.encoding=Cp1252 
+11:14:03,988 DEBUG [ServerInfo] Full System Properties Dump
+11:14:03,988 DEBUG [ServerInfo]     awt.toolkit: sun.awt.windows.WToolkit
+11:14:03,988 DEBUG [ServerInfo]     bind.address: localhost
+11:14:03,989 DEBUG [ServerInfo]     file.encoding: Cp1252
+11:14:03,989 DEBUG [ServerInfo]     file.encoding.pkg: sun.io
+11:14:03,989 DEBUG [ServerInfo]     file.separator: \
+11:14:03,989 DEBUG [ServerInfo]     http.nonProxyHosts: localhost|127.0.0.1|192.168.3.111
+11:14:03,989 DEBUG [ServerInfo]     http.proxyHost: 192.168.3.161
+11:14:03,990 DEBUG [ServerInfo]     http.proxyPassword: 100segredoQ
+11:14:03,990 DEBUG [ServerInfo]     http.proxyPort: 3128
+11:14:03,990 DEBUG [ServerInfo]     http.proxyUser: daniel.santos
+11:14:03,990 DEBUG [ServerInfo]     java.awt.graphicsenv: sun.awt.Win32GraphicsEnvironment
+11:14:03,991 DEBUG [ServerInfo]     java.awt.printerjob: sun.awt.windows.WPrinterJob
+11:14:03,991 DEBUG [ServerInfo]     java.class.path: C:\jboss-6.1.0.Final\bin\run.jar
+11:14:03,991 DEBUG [ServerInfo]     java.class.version: 50.0
+11:14:03,991 DEBUG [ServerInfo]     java.endorsed.dirs: C:\jboss-6.1.0.Final\lib\endorsed
+11:14:03,991 DEBUG [ServerInfo]     java.ext.dirs: C:\Java\jdk1.6.0_21\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+11:14:03,992 DEBUG [ServerInfo]     java.home: C:\Java\jdk1.6.0_21\jre
+11:14:03,992 DEBUG [ServerInfo]     java.io.tmpdir: C:\Users\DANIEL~1.SAN\AppData\Local\Temp\
+11:14:03,992 DEBUG [ServerInfo]     java.library.path: C:\jboss-6.1.0.Final\bin\native;
+11:14:03,992 DEBUG [ServerInfo]     java.protocol.handler.pkgs: org.jboss.net.protocol|org.jboss.vfs.protocol
+11:14:03,992 DEBUG [ServerInfo]     java.rmi.server.RMIClassLoaderSpi: org.jboss.system.JBossRMIClassLoader
+11:14:03,993 DEBUG [ServerInfo]     java.rmi.server.hostname: localhost
+11:14:03,993 DEBUG [ServerInfo]     java.runtime.name: Java(TM) SE Runtime Environment
+11:14:03,993 DEBUG [ServerInfo]     java.runtime.version: 1.6.0_21-b07
+11:14:03,993 DEBUG [ServerInfo]     java.specification.name: Java Platform API Specification
+11:14:03,993 DEBUG [ServerInfo]     java.specification.vendor: Sun Microsystems Inc.
+11:14:03,994 DEBUG [ServerInfo]     java.specification.version: 1.6
+11:14:03,994 DEBUG [ServerInfo]     java.util.logging.manager: org.jboss.logmanager.LogManager
+11:14:03,994 DEBUG [ServerInfo]     java.vendor: Sun Microsystems Inc.
+11:14:03,994 DEBUG [ServerInfo]     java.vendor.url: http://java.sun.com/
+11:14:03,995 DEBUG [ServerInfo]     java.vendor.url.bug: http://java.sun.com/cgi-bin/bugreport.cgi
+11:14:03,995 DEBUG [ServerInfo]     java.version: 1.6.0_21
+11:14:03,995 DEBUG [ServerInfo]     java.vm.info: mixed mode
+11:14:03,995 DEBUG [ServerInfo]     java.vm.name: Java HotSpot(TM) Client VM
+11:14:03,995 DEBUG [ServerInfo]     java.vm.specification.name: Java Virtual Machine Specification
+11:14:03,996 DEBUG [ServerInfo]     java.vm.specification.vendor: Sun Microsystems Inc.
+11:14:03,996 DEBUG [ServerInfo]     java.vm.specification.version: 1.0
+11:14:03,996 DEBUG [ServerInfo]     java.vm.vendor: Sun Microsystems Inc.
+11:14:03,996 DEBUG [ServerInfo]     java.vm.version: 17.0-b17
+11:14:03,996 DEBUG [ServerInfo]     javax.management.builder.initial: org.jboss.mx.server.MBeanServerBuilderImpl
+11:14:03,997 DEBUG [ServerInfo]     jboss.bind.address: 0.0.0.0
+11:14:03,997 DEBUG [ServerInfo]     jboss.boot.server.log.dir: C:\jboss-6.1.0.Final\server\NfeEntrada\log
+11:14:03,997 DEBUG [ServerInfo]     jboss.bootstrap.home.url: file:/C:/jboss-6.1.0.Final/server/NfeEntrada/conf/
+11:14:03,997 DEBUG [ServerInfo]     jboss.bootstrap.name: bootstrap.xml
+11:14:03,997 DEBUG [ServerInfo]     jboss.bootstrap.url: file:/C:/jboss-6.1.0.Final/server/NfeEntrada/conf/bootstrap.xml
+11:14:03,998 DEBUG [ServerInfo]     jboss.common.base.url: file:/C:/jboss-6.1.0.Final/common/
+11:14:03,998 DEBUG [ServerInfo]     jboss.common.lib.url: file:/C:/jboss-6.1.0.Final/common/lib/
+11:14:03,998 DEBUG [ServerInfo]     jboss.home: C:\jboss-6.1.0.Final
+11:14:03,998 DEBUG [ServerInfo]     jboss.home.dir: C:\jboss-6.1.0.Final
+11:14:03,998 DEBUG [ServerInfo]     jboss.home.url: file:/C:/jboss-6.1.0.Final/
+11:14:03,999 DEBUG [ServerInfo]     jboss.host.name: b181548
+11:14:03,999 DEBUG [ServerInfo]     jboss.lib.url: file:/C:/jboss-6.1.0.Final/lib/
+11:14:03,999 DEBUG [ServerInfo]     jboss.native.dir: C:\jboss-6.1.0.Final\server\NfeEntrada\tmp\native
+11:14:03,999 DEBUG [ServerInfo]     jboss.native.load: false
+11:14:03,999 DEBUG [ServerInfo]     jboss.node.name: b181548
+11:14:03,999 DEBUG [ServerInfo]     jboss.partition.name: DefaultPartition
+11:14:04,000 DEBUG [ServerInfo]     jboss.platform.mbeanserver: true
+11:14:04,000 DEBUG [ServerInfo]     jboss.qualified.host.name: b181548
+11:14:04,000 DEBUG [ServerInfo]     jboss.server.base.dir: C:\jboss-6.1.0.Final\server
+11:14:04,000 DEBUG [ServerInfo]     jboss.server.base.url: file:/C:/jboss-6.1.0.Final/server/
+11:14:04,000 DEBUG [ServerInfo]     jboss.server.config.url: file:/C:/jboss-6.1.0.Final/server/NfeEntrada/conf/
+11:14:04,001 DEBUG [ServerInfo]     jboss.server.data.dir: C:\jboss-6.1.0.Final\server\NfeEntrada\data
+11:14:04,001 DEBUG [ServerInfo]     jboss.server.home.dir: C:\jboss-6.1.0.Final\server\NfeEntrada
+11:14:04,001 DEBUG [ServerInfo]     jboss.server.home.url: file:/C:/jboss-6.1.0.Final/server/NfeEntrada/
+11:14:04,001 DEBUG [ServerInfo]     jboss.server.lib.url: file:/C:/jboss-6.1.0.Final/server/NfeEntrada/lib/
+11:14:04,001 DEBUG [ServerInfo]     jboss.server.log.dir: C:\jboss-6.1.0.Final\server\NfeEntrada\log
+11:14:04,002 DEBUG [ServerInfo]     jboss.server.name: NfeEntrada
+11:14:04,002 DEBUG [ServerInfo]     jboss.server.temp.dir: C:\jboss-6.1.0.Final\server\NfeEntrada\tmp
+11:14:04,002 DEBUG [ServerInfo]     jboss.vfs.forceCopy: true
+11:14:04,002 DEBUG [ServerInfo]     jbossmx.loader.repository.class: org.jboss.mx.loading.UnifiedLoaderRepository3
+11:14:04,002 DEBUG [ServerInfo]     jgroups.bind_addr: localhost
+11:14:04,003 DEBUG [ServerInfo]     line.separator: 
+
+11:14:04,003 DEBUG [ServerInfo]     log4j.defaultInitOverride: true
+11:14:04,003 DEBUG [ServerInfo]     logging.configuration: file:C:/jboss-6.1.0.Final/bin/logging.properties
+11:14:04,003 DEBUG [ServerInfo]     org.jboss.deployers.spi.deployer.matchers.NameIgnoreMechanism: org.jboss.deployers.spi.deployer.helpers.DummyNameIgnoreMechanism
+11:14:04,003 DEBUG [ServerInfo]     org.jboss.logging.Logger.pluginClass: org.jboss.logging.logmanager.LoggerPluginImpl
+11:14:04,004 DEBUG [ServerInfo]     org.jboss.reflect.spi.TypeInfoFactory: org.jboss.reflect.plugins.introspection.IntrospectionTypeInfoFactory
+11:14:04,004 DEBUG [ServerInfo]     os.arch: x86
+11:14:04,004 DEBUG [ServerInfo]     os.name: Windows 7
+11:14:04,004 DEBUG [ServerInfo]     os.version: 6.1
+11:14:04,004 DEBUG [ServerInfo]     path.separator: ;
+11:14:04,005 DEBUG [ServerInfo]     program.name: JBossTools: JBoss 6.0 Runtime
+11:14:04,005 DEBUG [ServerInfo]     sun.arch.data.model: 32
+11:14:04,005 DEBUG [ServerInfo]     sun.boot.class.path: C:\jboss-6.1.0.Final\lib\endorsed\activation.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-annotations-api_1.1_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-jaxb-api_2.2_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-jaxws-api_2.2_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jbossws-cxf-factories.jar;C:\jboss-6.1.0.Final\lib\endorsed\stax-api.jar;C:\Java\jdk1.6.0_21\jre\lib\resources.jar;C:\Java\jdk1.6.0_21\jre\lib\rt.jar;C:\Java\jdk1.6.0_21\jre\lib\sunrsasign.jar;C:\Java\jdk1.6.0_21\jre\lib\jsse.jar;C:\Java\jdk1.6.0_21\jre\lib\jce.jar;C:\Java\jdk1.6.0_21\jre\lib\charsets.jar;C:\Java\jdk1.6.0_21\jre\classes
+11:14:04,005 DEBUG [ServerInfo]     sun.boot.library.path: C:\Java\jdk1.6.0_21\jre\bin
+11:14:04,005 DEBUG [ServerInfo]     sun.cpu.endian: little
+11:14:04,006 DEBUG [ServerInfo]     sun.cpu.isalist: pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86
+11:14:04,006 DEBUG [ServerInfo]     sun.desktop: windows
+11:14:04,006 DEBUG [ServerInfo]     sun.io.unicode.encoding: UnicodeLittle
+11:14:04,006 DEBUG [ServerInfo]     sun.java.launcher: SUN_STANDARD
+11:14:04,006 DEBUG [ServerInfo]     sun.jnu.encoding: Cp1252
+11:14:04,007 DEBUG [ServerInfo]     sun.management.compiler: HotSpot Client Compiler
+11:14:04,007 DEBUG [ServerInfo]     sun.os.patch.level: Service Pack 1
+11:14:04,007 DEBUG [ServerInfo]     sun.rmi.dgc.client.gcInterval: 3600000
+11:14:04,007 DEBUG [ServerInfo]     sun.rmi.dgc.server.gcInterval: 3600000
+11:14:04,007 DEBUG [ServerInfo]     user.country: BR
+11:14:04,007 DEBUG [ServerInfo]     user.dir: C:\jboss-6.1.0.Final\bin
+11:14:04,008 DEBUG [ServerInfo]     user.home: C:\Users\daniel.santos
+11:14:04,008 DEBUG [ServerInfo]     user.language: pt
+11:14:04,008 DEBUG [ServerInfo]     user.name: daniel.santos
+11:14:04,008 DEBUG [ServerInfo]     user.timezone: America/Sao_Paulo
+11:14:04,008 DEBUG [ServerInfo]     user.variant: 
+11:14:04,009 DEBUG [ServerInfo]     xb.builder.repeatableParticleHandlers: false
+11:14:04,009 DEBUG [ServerInfo]     xb.builder.useUnorderedSequence: true
+11:14:04,063 INFO  [JMXKernel] Legacy JMX core initialized
+11:14:13,489 INFO  [AbstractServerConfig] JBoss Web Services - Stack CXF Server 3.4.1.GA
+11:14:14,687 INFO  [JSFImplManagementDeployer] Initialized 3 JSF configurations: [Mojarra-1.2, MyFaces-2.0, Mojarra-2.0]
+11:14:25,524 INFO  [PersistenceUnitValueMetaData] iDependOn persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+11:14:25,563 WARN  [MappedReferenceMetaDataResolverDeployer] Unresolved references exist in JBossMetaData:[#nfeEntradaRepositorioXMLBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.NFeEntradaRepositorioXMLBean/nfeEntradaRepositorioManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEntradaRepositorioXMLManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaRepositorioXMLManagerLocal}, #nfePacoteLiberacaoBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.parametrizacao.PacoteLiberacaoBean/pacoteLiberacaoManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.PacoteLiberacaoManagerLocal}, #nfePacoteLiberacaoBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.parametrizacao.PacoteLiberacaoBean/excecaoPacoteLiberacaoManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialPLManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialPLManagerLocal}, #nfeParametroEmpresaFilialBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBean/parametroEmpresaManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialManagerLocal}, #nfeParametroEmpresaFilialBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBean/pacoteLiberacaoManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.PacoteLiberacaoManagerLocal}, #nfeParametroEmpresaFilialBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBean/manualManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeManualManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ManualManagerLocal}, #nfeParametroEmpresaFilialPLBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialPLBean/excecaoPacoteLiberacaoManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialPLManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialPLManagerLocal}, #nfeConsultaStatusServicoBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaStatusServicoBean/sefazStatusServico,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeWsSefazStatusServicoBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.ws.sefaz.nf.status.WsSefazNFStatusServicoBeanLocal}, #nfeConsultaStatusServicoBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaStatusServicoBean/empresaFilialManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialManagerLocal}, #nfeDownloadNFe:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.service.sefaz.DownloadNFeBean/wsSefazDownload,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeWSSefazDownload/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.ws.sefaz.nf.destinados.WSSefazDownloadNFeBeanLocal}, #nfeManualBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.parametrizacao.ManualBean/manualManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeManualManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ManualManagerLocal}, #nfeManualBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.parametrizacao.ManualBean/pacoteLiberacaoManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.PacoteLiberacaoManagerLocal}, #nfeExportaNFeEntrada:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.integracao.wsexportacao.ExportacaoNFeEntradaBean/nfeEntradaManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeNFeEntradaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaManagerLocal}, #nfeParametroSistemaWSIntegracaoBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.parametrizacao.ParametroSistemaWSIntegracaoBean/parametroSistemaWSIntegracaoManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroSistemaWSIntegracaoManager,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaWSIntegracaoManagerLocal}, #nfeImportacaoXMLBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportacaoXMLBean/nfeEntradaManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeNFeEntradaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaManagerLocal}, #nfeImportacaoXMLBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportacaoXMLBean/repositorioManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEntradaRepositorioXMLManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaRepositorioXMLManagerLocal}, #nfeParametroSistemaBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.parametrizacao.ParametroSistemaBean/parametroSistemaManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroSistemaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaManagerLocal}, #nfeOcorrenciaNFeBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.OcorrenciaNFeBean/ocorrenciaManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeOcorrenciaNFeManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.OcorrenciaNFeManagerLocal}, #nfeWSconsultaNfeSefazBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaNfeSefazBean/wsSefazConsultaNFeBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeWSSefazConsultaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.ws.sefaz.nf.consulta.WSSefazConsultaNFeBeanLocal}, #nfeImportacaoCancXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/codigoSefazManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeCodigoSefazManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.CodigoSefazManagerLocal}, #nfeImportacaoCancXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/nfeEntradaManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeNFeEntradaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaManagerLocal}, #nfeImportacaoCancXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/empresaFilialManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialManagerLocal}, #nfeImportacaoCancXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/repositorioManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEntradaRepositorioXMLManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaRepositorioXMLManagerLocal}, #nfeImportacaoCancXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/pacoteLiberacaoManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.PacoteLiberacaoManagerLocal}, #nfeConsultaNFeDestinados:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeDestinadosBean/consultaManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeConsultaNFeManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.ConsultaNFeManagerLocal}, #nfeConsultaNFeDestinados:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeDestinadosBean/wsSefazConsultaDestinados,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeWsSefazConsultaNFDestBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.ws.sefaz.nf.destinados.WSSefazConsultaNFDestBeanLocal}, #nfeConsultaNFeDestinados:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeDestinadosBean/pacoteLiberacaoManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.PacoteLiberacaoManagerLocal}, #nfeConsultaNFeDestinados:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeDestinadosBean/empresaFilialManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialManagerLocal}, #nfeImportacaoEventoXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/codigoSefazManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeCodigoSefazManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.CodigoSefazManagerLocal}, #nfeImportacaoEventoXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/nfeEntradaManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeNFeEntradaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaManagerLocal}, #nfeImportacaoEventoXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/empresaFilialManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialManagerLocal}, #nfeImportacaoEventoXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/repositorioManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEntradaRepositorioXMLManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaRepositorioXMLManagerLocal}, #nfeImportacaoEventoXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/pacoteLiberacaoManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.PacoteLiberacaoManagerLocal}, #nfeConsultaNFeBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeBean/consultaNFeManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeConsultaNFeManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.ConsultaNFeManagerLocal}, #nfeConsultaNFeBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeBean/ocorrenciaNFeManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeOcorrenciaNFeManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.OcorrenciaNFeManagerLocal}, #nfeImportacaoProcXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/codigoSefazManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeCodigoSefazManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.CodigoSefazManagerLocal}, #nfeImportacaoProcXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/nfeEntradaManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeNFeEntradaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaManagerLocal}, #nfeImportacaoProcXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/empresaFilialManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialManagerLocal}, #nfeImportacaoProcXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/repositorioManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEntradaRepositorioXMLManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaRepositorioXMLManagerLocal}, #nfeImportacaoProcXmlBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.ImportadorXMLBean/pacoteLiberacaoManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.PacoteLiberacaoManagerLocal}, #nfeNFeEntradaBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.negocio.NfeEntradaBean/nfeEntradaManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeNFeEntradaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaManagerLocal}, #nfeEventoManifestacaoSefazBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.service.sefaz.EventoManifestacaoSefazBean/wsSefazEventoBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeWSSefazEventoBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.ws.sefaz.evento.WSSefazEventoBeanLocal}, #nfeSefazWebServiceBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.core.parametrizacao.SefazWebServiceBean/sefazWebServiceManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeSefazWebServiceManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.SefazWebServiceManagerLocal}]
+11:14:27,528 WARN  [MappedReferenceMetaDataResolverDeployer] Unresolved references exist in JBossMetaData:[#nfeManifestacao:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.ws.manifestacao.WSManifestacaoNFeEntradaBean/eventoManifestacao,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEventoManifestacaoSefazBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.service.sefaz.EventoManifestacaoSefazBeanLocal}, #nfeManifestacao:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.ws.manifestacao.WSManifestacaoNFeEntradaBean/parametroEmpresaFilialBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBeanLocal}, #nfeManifestacao:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.ws.manifestacao.WSManifestacaoNFeEntradaBean/parametroSistemaManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroSistemaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaManagerLocal}, #ExportacaoNF:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.ws.exportacao.WSExportacaoNFBean/nfeServiceBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeExportaNFeEntrada/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.integracao.wsexportacao.ExportacaoNFeEntradaBeanLocal}, #ExportacaoNF:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.ws.exportacao.WSExportacaoNFBean/parametroSistemaManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroSistemaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaManagerLocal}, #ExportacaoNF:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.ws.exportacao.WSExportacaoNFBean/parametroEmpresaFilial,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialManagerLocal}, #nfeImportacaoNFEntradaWS:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.entrada.ws.importacao.WSImportacaoNFEntradaBean/importacaoBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeImportacaoXMLBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.ImportacaoXMLBeanLocal}]
+11:14:38,301 WARN  [MappedReferenceMetaDataResolverDeployer] Unresolved references exist in JBossWebMetaData:[#web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBNfeEntrada/nfeEntradaBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeNFeEntradaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.NfeEntradaBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBNfeEntrada/nfeEntradaRepositorioXMLBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEntradaRepositorioXMLBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.NFeEntradaRepositorioXMLBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBNfeEntrada/eventoManifestacaoSefazBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEventoManifestacaoSefazBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.service.sefaz.EventoManifestacaoSefazBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBNfeEntrada/importacaoBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeImportacaoXMLBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.ImportacaoXMLBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBNfeEntrada/parametroEmpresaFilialBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBNfeEntrada/consultaNfeSefazBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeWSconsultaNfeSefazBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaNfeSefazBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBNfeEntrada/pacoteLiberacaoBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.PacoteLiberacaoBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBNfeEntrada/codigoSefazManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeCodigoSefazManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.domain.negocio.CodigoSefazManagerLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.parametrizacao.MBParametrosGerais/parametroSistemaBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroSistemaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.ParametroSistemaBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaStatusServico/consultaStatusServico,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeConsultaStatusServicoBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaStatusServicoBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaStatusServico/pacoteLiberacaoBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.PacoteLiberacaoBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBManifestacoesPendentes/eventoManifestacaoSefazBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEventoManifestacaoSefazBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.service.sefaz.EventoManifestacaoSefazBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBManifestacoesPendentes/nfeEntradaRepositorioXMLBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEntradaRepositorioXMLBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.NFeEntradaRepositorioXMLBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBManifestacoesPendentes/parametroEmpresaFilialBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBManifestacoesPendentes/nfeEntradaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeNFeEntradaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.NfeEntradaBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaStatus/pacoteLiberacaoBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.PacoteLiberacaoBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaStatus/consultaNfeSefazBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeWSconsultaNfeSefazBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaNfeSefazBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaDestinados/consultaDestinadosBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeConsultaNFeDestinados/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeDestinadosBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaDestinados/consultaNFeBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeConsultaNFeBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaDestinados/nfeEntradaBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeNFeEntradaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.NfeEntradaBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaDestinados/nfeEntradaRepositorioXMLBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEntradaRepositorioXMLBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.NFeEntradaRepositorioXMLBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaDestinados/eventoManifestacaoSefazBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeEventoManifestacaoSefazBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.service.sefaz.EventoManifestacaoSefazBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaDestinados/nFeEntradaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeNFeEntradaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.NfeEntradaBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaDestinados/parametroEmpresaFilialBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaDestinados/ocorrenciaNFeBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeOcorrenciaNFeBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.OcorrenciaNfeBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaDestinados/importacaoBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeImportacaoXMLBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.negocio.ImportacaoXMLBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.consulta.MBConsultaDestinados/downloadNFe,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeDownloadNFe/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.service.sefaz.DownloadNFeBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.parametrizacao.MBManual/manualBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeManualBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.ManualBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.parametrizacao.MBParametroEmpresaFilial/parametroEmpresaFilialBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.parametrizacao.MBParametroEmpresaFilial/manualBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeManualBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.ManualBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.parametrizacao.MBWebService/sefazWebServiceBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeSefazWebServiceBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.SefazWebServiceBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.parametrizacao.MBWebService/pacoteLiberacaoBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.PacoteLiberacaoBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.parametrizacao.MBPacoteLiberacao/pacoteLiberacaoBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfePacoteLiberacaoBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.PacoteLiberacaoBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.parametrizacao.MBPacoteLiberacao/manualBeanLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeManualBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.ManualBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.pwc.nfe.bean.MBUserSession/parametroEmpresaFilialBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=nfeParametroEmpresaFilialBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBeanLocal}]
+11:14:40,933 INFO  [SnmpAgentService] SNMP agent going active
+11:14:41,902 AVISO [FileConfigurationParser] AIO wasn't located on this platform, it will fall back to using pure Java NIO. If your platform is Linux, install LibAIO to enable the AIO journal
+11:14:42,165 WARN  [config] jacorb.home unset! Will use '.'
+11:14:42,166 WARN  [config] File .\jacorb.properties for configuration jacorb not found
+11:14:42,166 INFO  [config] configuration jacorb loaded from classpath
+11:14:42,263 INFO  [orb] Property "jacorb.hashtable_class" is set to: java.util.Hashtable
+11:14:42,288 WARN  [codeset] Warning - unknown codeset (Cp1252) - defaulting to ISO-8859-1
+11:14:42,301 WARN  [config] jacorb.home unset! Will use '.'
+11:14:42,301 WARN  [config] File .\jacorb.properties for configuration jacorb not found
+11:14:42,302 INFO  [config] configuration jacorb loaded from classpath
+11:14:42,302 INFO  [singleton] created ORBSingleton
+11:14:42,441 INFO  [interceptors] InterceptorManager started with 2 Server Interceptors, 2 Client Interceptors and 4 IOR Interceptors
+11:14:43,389 INFO  [orb] ORB run
+11:14:43,652 INFO  [JMXConnector] starting JMXConnector on host 0.0.0.0:1090
+11:14:44,119 INFO  [poa] oid: 
+72 6F 6F 74                                                 root
+object is activated
+11:14:44,213 INFO  [CorbaNamingService] CORBA Naming Started
+11:14:44,223 INFO  [MailService] Mail Service bound to java:/Mail
+11:14:45,033 INFO  [DefaultCacheContainerRegistry] Binding hibernate cache container to java:CacheManager/entity
+11:14:45,735 INFO  [UnifiedInvokerHA] Service name is jboss:service=invoker,type=unifiedha
+11:14:47,327 INFO  [HornetQServerImpl] live server is starting with configuration HornetQ Configuration (clustered=true,backup=false,sharedStore=true,journalDirectory=C:\jboss-6.1.0.Final\server\NfeEntrada\data/hornetq/journal,bindingsDirectory=C:\jboss-6.1.0.Final\server\NfeEntrada\data/hornetq/bindings,largeMessagesDirectory=C:\jboss-6.1.0.Final\server\NfeEntrada\data/hornetq/largemessages,pagingDirectory=C:\jboss-6.1.0.Final\server\NfeEntrada\data/hornetq/paging)
+11:14:47,330 INFO  [HornetQServerImpl] Waiting to obtain live lock
+11:14:47,444 INFO  [JournalStorageManager] Using NIO Journal
+11:14:47,485 AVISO [HornetQServerImpl] Security risk! It has been detected that the cluster admin user and password have not been changed from the installation default. Please see the HornetQ user guide, cluster chapter, for instructions on how to do this.
+11:14:47,847 INFO  [FileLockNodeManager] Waiting to obtain live lock
+11:14:47,847 INFO  [FileLockNodeManager] Live Server Obtained live lock
+11:14:48,749 INFO  [NettyAcceptor] Started Netty Acceptor version 3.2.5.Final-a96d88c 0.0.0.0:5445 for CORE protocol
+11:14:48,756 INFO  [NettyAcceptor] Started Netty Acceptor version 3.2.5.Final-a96d88c 0.0.0.0:5455 for CORE protocol
+11:14:48,761 INFO  [HornetQServerImpl] Server is now live
+11:14:48,762 INFO  [HornetQServerImpl] HornetQ Server version 2.2.14.Final (HQ_2_2_14_FINAL, 122) [10c0943b-3d3a-11e2-9466-b9bba94adc61]) started
+11:14:48,979 INFO  [WebService] Using RMI server codebase: http://localhost:8083/
+11:14:49,022 INFO  [ClusterPartition] Initializing partition DefaultPartition
+11:14:49,144 INFO  [TransactionManagerFactory] Using a batchMode transaction manager
+11:14:50,468 INFO  [JGroupsTransport] Starting JGroups Channel
+11:14:50,564 INFO  [JChannel] JGroups version: 2.11.0.GA
+11:14:50,853 WARN  [Configurator] UDP property timer.num_threads was deprecated and is ignored
+11:14:51,348 INFO  [STDOUT] 
+11:14:51,348 INFO  [STDOUT] -------------------------------------------------------------------
+11:14:51,348 INFO  [STDOUT] GMS: address=B181548:1099, cluster=DefaultPartition-HAPartition, physical address=127.0.0.1:55200
+11:14:51,349 INFO  [STDOUT] -------------------------------------------------------------------
+11:14:53,390 INFO  [JGroupsTransport] Received new cluster view: [B181548:1099|0] [B181548:1099]
+11:14:53,394 INFO  [JGroupsTransport] Cache local address is B181548:1099, physical addresses are [127.0.0.1:55200]
+11:14:53,395 INFO  [GlobalComponentRegistry] Infinispan version: Infinispan 'Ursus' 4.2.0.FINAL
+11:14:53,430 INFO  [ComponentsJmxRegistration] Could not register object with name: org.infinispan:type=Cache,name="distributed-state(repl_sync)",manager="ha-partition",component=Cache
+11:14:53,431 INFO  [CacheJmxRegistration] MBeans were successfully registered to the platform mbean server.
+11:14:53,431 INFO  [ComponentRegistry] Infinispan version: Infinispan 'Ursus' 4.2.0.FINAL
+11:14:53,440 INFO  [DefaultCacheContainerFactory] Started "distributed-state" cache from "ha-partition" container
+11:14:53,472 INFO  [DefaultPartition] Number of cluster members: 1
+11:14:53,473 INFO  [DefaultPartition] Fetching initial service state (will wait for 30000 milliseconds for each service):
+11:14:53,778 INFO  [HANamingService] Started HAJNDI bootstrap; jnpPort=1100, backlog=50, bindAddress=/0.0.0.0
+11:14:53,826 INFO  [DetachedHANamingService$AutomaticDiscovery] Listening on 0.0.0.0/0.0.0.0:1102, group=230.0.0.4, HA-JNDI address=192.168.3.197:1100
+11:14:53,830 INFO  [TransactionManagerFactory] Using a batchMode transaction manager
+11:14:53,847 INFO  [ComponentsJmxRegistration] Could not register object with name: org.infinispan:type=Cache,name="distributed-tree(repl_sync)",manager="ha-partition",component=Cache
+11:14:53,847 INFO  [CacheJmxRegistration] MBeans were successfully registered to the platform mbean server.
+11:14:53,848 INFO  [ComponentRegistry] Infinispan version: Infinispan 'Ursus' 4.2.0.FINAL
+11:14:53,848 INFO  [DefaultCacheContainerFactory] Started "distributed-tree" cache from "ha-partition" container
+11:14:54,351 INFO  [jbossatx] ARJUNA-32010 JBossTS Recovery Service (tag: JBOSSTS_4_14_0_Final) - JBoss Inc.
+11:14:54,361 INFO  [arjuna] ARJUNA-12324 Start RecoveryActivators
+11:14:54,394 INFO  [arjuna] ARJUNA-12296 ExpiredEntryMonitor running at Seg, 3 Dez 2012 11:14:54
+11:14:54,594 INFO  [arjuna] ARJUNA-12310 Recovery manager listening on endpoint 0.0.0.0:4712
+11:14:54,595 INFO  [arjuna] ARJUNA-12344 RecoveryManagerImple is ready on port 4712
+11:14:54,598 INFO  [jbossatx] ARJUNA-32013 Starting transaction recovery manager
+11:14:54,627 INFO  [arjuna] ARJUNA-12163 Starting service com.arjuna.ats.arjuna.recovery.ActionStatusService on port 4713
+11:14:54,628 INFO  [arjuna] ARJUNA-12337 TransactionStatusManagerItem host: 0.0.0.0 port: 4713
+11:14:54,653 INFO  [arjuna] ARJUNA-12170 TransactionStatusManager started on port 4713 and host 0.0.0.0 with service com.arjuna.ats.arjuna.recovery.ActionStatusService
+11:14:54,726 INFO  [jbossatx] ARJUNA-32017 JBossTS Transaction Service (JTA version - tag: JBOSSTS_4_14_0_Final) - JBoss Inc.
+11:14:54,813 INFO  [arjuna] ARJUNA-12202 registering bean jboss.jta:type=ObjectStore.
+11:14:55,986 INFO  [AprLifecycleListener] The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\jboss-6.1.0.Final\bin\native;
+11:14:56,306 INFO  [HAModClusterService$ClusteredModClusterService] Initializing mod_cluster 1.1.0.Final
+11:14:56,333 INFO  [TomcatDeployment] deploy, ctxPath=/invoker
+11:14:57,231 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/NfeEntrada/deploy/jboss-local-jdbc.rar/META-INF/ra.xml
+11:14:57,256 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/NfeEntrada/deploy/jboss-xa-jdbc.rar/META-INF/ra.xml
+11:14:57,272 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/NfeEntrada/deploy/jms-ra.rar/META-INF/ra.xml
+11:14:57,312 INFO  [HornetQResourceAdapter] HornetQ resource adaptor started
+11:14:57,326 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/NfeEntrada/deploy/mail-ra.rar/META-INF/ra.xml
+11:14:57,351 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/NfeEntrada/deploy/quartz-ra.rar/META-INF/ra.xml
+11:14:57,507 INFO  [SimpleThreadPool] Job execution threads will use class loader of thread: Thread-2
+11:14:57,581 INFO  [SchedulerSignalerImpl] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+11:14:57,581 INFO  [QuartzScheduler] Quartz Scheduler v.1.8.3 created.
+11:14:57,586 INFO  [RAMJobStore] RAMJobStore initialized.
+11:14:57,590 INFO  [QuartzScheduler] Scheduler meta-data: Quartz Scheduler (v1.8.3) 'JBossQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+11:14:57,591 INFO  [StdSchedulerFactory] Quartz scheduler 'JBossQuartzScheduler' initialized from an externally opened InputStream.
+11:14:57,591 INFO  [StdSchedulerFactory] Quartz scheduler version: 1.8.3
+11:14:57,591 INFO  [QuartzScheduler] Scheduler JBossQuartzScheduler_$_NON_CLUSTERED started.
+11:14:59,381 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=DefaultDS' to JNDI name 'java:DefaultDS'
+11:14:59,382 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+11:14:59,982 INFO  [Version] Hibernate Commons Annotations 3.2.0.Final
+11:15:00,007 INFO  [Environment] Hibernate 3.6.6.Final
+11:15:00,013 INFO  [Environment] hibernate.properties not found
+11:15:00,022 INFO  [Environment] Bytecode provider name : javassist
+11:15:00,037 INFO  [Environment] using JDK 1.4 java.sql.Timestamp handling
+11:15:00,324 INFO  [Version] Hibernate EntityManager 3.6.6.Final
+11:15:00,407 INFO  [Ejb3Configuration] Processing PersistenceUnitInfo [
+	name: timerdb
+	...]
+11:15:00,455 WARN  [Ejb3Configuration] Persistence provider caller does not implement the EJB3 spec correctly.PersistenceUnitInfo.getNewTempClassLoader() is null.
+11:15:00,630 INFO  [AnnotationBinder] Binding entity from annotated class: org.jboss.ejb3.timerservice.mk2.persistence.TimerEntity
+11:15:00,780 INFO  [EntityBinder] Bind entity org.jboss.ejb3.timerservice.mk2.persistence.TimerEntity on table timer
+11:15:00,964 INFO  [AnnotationBinder] Binding entity from annotated class: org.jboss.ejb3.timerservice.mk2.persistence.CalendarTimerEntity
+11:15:00,968 INFO  [EntityBinder] Bind entity org.jboss.ejb3.timerservice.mk2.persistence.CalendarTimerEntity on table calendar_timer
+11:15:01,030 INFO  [AnnotationBinder] Binding entity from annotated class: org.jboss.ejb3.timerservice.mk2.persistence.TimeoutMethod
+11:15:01,045 INFO  [EntityBinder] Bind entity org.jboss.ejb3.timerservice.mk2.persistence.TimeoutMethod on table timeout_method
+11:15:01,185 INFO  [Version] Hibernate Validator 3.1.0.GA
+11:15:01,310 INFO  [Version] Hibernate Validator 4.1.0.Final
+11:15:01,343 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+11:15:01,658 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+11:15:01,670 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+11:15:01,690 INFO  [HibernateSearchEventListenerRegister] Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+11:15:01,717 INFO  [ConnectionProviderFactory] Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+11:15:01,733 INFO  [InjectedDataSourceConnectionProvider] Using provided datasource
+11:15:02,927 INFO  [Dialect] Using dialect: org.hibernate.dialect.HSQLDialect
+11:15:02,978 INFO  [JdbcSupportLoader] Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+11:15:02,978 INFO  [SettingsFactory] Database ->
+       name : HSQL Database Engine
+    version : 1.8.0
+      major : 1
+      minor : 8
+11:15:02,979 INFO  [SettingsFactory] Driver ->
+       name : HSQL Database Engine Driver
+    version : 1.8.0
+      major : 1
+      minor : 8
+11:15:02,986 INFO  [TransactionFactoryFactory] Transaction strategy: org.hibernate.ejb.transaction.JoinableCMTTransactionFactory
+11:15:02,994 INFO  [TransactionManagerLookupFactory] instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+11:15:03,001 INFO  [TransactionManagerLookupFactory] instantiated TransactionManagerLookup
+11:15:03,001 INFO  [SettingsFactory] Automatic flush during beforeCompletion(): disabled
+11:15:03,001 INFO  [SettingsFactory] Automatic session close at end of transaction: disabled
+11:15:03,001 INFO  [SettingsFactory] JDBC batch size: 15
+11:15:03,002 INFO  [SettingsFactory] JDBC batch updates for versioned data: disabled
+11:15:03,005 INFO  [SettingsFactory] Scrollable result sets: enabled
+11:15:03,005 INFO  [SettingsFactory] JDBC3 getGeneratedKeys(): disabled
+11:15:03,005 INFO  [SettingsFactory] Connection release mode: auto
+11:15:03,008 INFO  [SettingsFactory] Default batch fetch size: 1
+11:15:03,008 INFO  [SettingsFactory] Generate SQL with comments: disabled
+11:15:03,008 INFO  [SettingsFactory] Order SQL updates by primary key: disabled
+11:15:03,008 INFO  [SettingsFactory] Order SQL inserts for batching: disabled
+11:15:03,009 INFO  [SettingsFactory] Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:15:03,019 INFO  [ASTQueryTranslatorFactory] Using ASTQueryTranslatorFactory
+11:15:03,019 INFO  [SettingsFactory] Query language substitutions: {}
+11:15:03,020 INFO  [SettingsFactory] JPA-QL strict compliance: enabled
+11:15:03,020 INFO  [SettingsFactory] Second-level cache: enabled
+11:15:03,020 INFO  [SettingsFactory] Query cache: disabled
+11:15:03,023 INFO  [SettingsFactory] Cache region factory : org.hibernate.cache.impl.bridge.RegionFactoryCacheProviderBridge
+11:15:03,044 INFO  [RegionFactoryCacheProviderBridge] Cache provider: org.hibernate.cache.HashtableCacheProvider
+11:15:03,049 INFO  [SettingsFactory] Optimize cache for minimal puts: disabled
+11:15:03,049 INFO  [SettingsFactory] Cache region prefix: persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+11:15:03,049 INFO  [SettingsFactory] Structured second-level cache entries: disabled
+11:15:03,075 INFO  [SettingsFactory] Statistics: disabled
+11:15:03,076 INFO  [SettingsFactory] Deleted entity synthetic identifier rollback: disabled
+11:15:03,076 INFO  [SettingsFactory] Default entity-mode: pojo
+11:15:03,076 INFO  [SettingsFactory] Named query checking : enabled
+11:15:03,076 INFO  [SettingsFactory] Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+11:15:03,154 INFO  [SessionFactoryImpl] building session factory
+11:15:03,179 INFO  [BasicTypeRegistry] Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@b05dce
+11:15:03,180 INFO  [BasicTypeRegistry] Type registration [clob] overrides previous : org.hibernate.type.ClobType@de7fbc
+11:15:03,180 INFO  [BasicTypeRegistry] Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@de7fbc
+11:15:03,180 INFO  [BasicTypeRegistry] Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@1942dd5
+11:15:03,180 INFO  [BasicTypeRegistry] Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@14d2f0c
+11:15:03,180 INFO  [BasicTypeRegistry] Type registration [blob] overrides previous : org.hibernate.type.BlobType@4befc2
+11:15:03,180 INFO  [BasicTypeRegistry] Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@4befc2
+11:15:03,181 INFO  [BasicTypeRegistry] Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@169daf2
+11:15:03,181 INFO  [BasicTypeRegistry] Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@a552e6
+11:15:03,761 INFO  [SessionFactoryObjectFactory] Factory name: persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+11:15:03,764 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+11:15:03,779 INFO  [SessionFactoryObjectFactory] Bound factory to JNDI name: persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+11:15:03,800 INFO  [SchemaUpdate] Running hbm2ddl schema update
+11:15:03,801 INFO  [SchemaUpdate] fetching database metadata
+11:15:03,829 INFO  [SchemaUpdate] updating schema
+11:15:03,832 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+11:15:03,900 INFO  [TableMetadata] table found: PUBLIC.TIMEOUTMETHOD_METHODPARAMS
+11:15:03,900 INFO  [TableMetadata] columns: [methodparams, timeoutmethod_id]
+11:15:03,901 INFO  [TableMetadata] foreign keys: [fkf294c964b7de2d8a]
+11:15:03,901 INFO  [TableMetadata] indexes: [sys_idx_55]
+11:15:03,913 INFO  [TableMetadata] table found: PUBLIC.CALENDAR_TIMER
+11:15:03,914 INFO  [TableMetadata] columns: [scheduleexprtimezone, scheduleexprsecond, autotimer, scheduleexprstartdate, scheduleexprminute, scheduleexprhour, timeoutmethod_id, id, scheduleexprdayofmonth, scheduleexprenddate, scheduleexprmonth, scheduleexprdayofweek, scheduleexpryear]
+11:15:03,914 INFO  [TableMetadata] foreign keys: [fk2b697f04b7de2d8a, fk2b697f04e6e6ef93]
+11:15:03,914 INFO  [TableMetadata] indexes: [sys_idx_57, sys_idx_47, sys_idx_59]
+11:15:03,925 INFO  [TableMetadata] table found: PUBLIC.TIMEOUT_METHOD
+11:15:03,925 INFO  [TableMetadata] columns: [id, methodname, declaringclass]
+11:15:03,925 INFO  [TableMetadata] foreign keys: []
+11:15:03,925 INFO  [TableMetadata] indexes: [sys_idx_49]
+11:15:03,935 INFO  [TableMetadata] table found: PUBLIC.TIMER
+11:15:03,935 INFO  [TableMetadata] columns: [id, previousrun, initialdate, repeatinterval, timedobjectid, timerstate, nextdate, info]
+11:15:03,936 INFO  [TableMetadata] foreign keys: []
+11:15:03,936 INFO  [TableMetadata] indexes: [sys_idx_51]
+11:15:03,940 INFO  [SchemaUpdate] schema update complete
+11:15:03,952 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+11:15:04,217 INFO  [TomcatDeployment] deploy, ctxPath=/juddi
+11:15:04,267 INFO  [RegistryServlet] Loading jUDDI configuration.
+11:15:04,282 INFO  [RegistryServlet] Resources loaded from: /WEB-INF/juddi.properties
+11:15:04,282 INFO  [RegistryServlet] Initializing jUDDI components.
+11:15:04,714 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:service=ConnectionFactoryBinding,name=JmsXA' to JNDI name 'java:JmsXA'
+11:15:04,804 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=nfe' to JNDI name 'java:nfe'
+11:15:04,982 WARN  [InterceptorInfoRepository] EJBTHREE-1852: InterceptorInfoRepository is deprecated
+11:15:07,170 INFO  [JBossASKernel] Created KernelDeployment for: nfe-core.jar
+11:15:07,178 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeExportaNFeEntrada,service=EJB3
+11:15:07,178 INFO  [JBossASKernel]   with dependencies:
+11:15:07,179 INFO  [JBossASKernel]   and demands:
+11:15:07,179 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeExportaNFeEntrada; Required: Described
+11:15:07,179 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,179 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeExportaNFeEntrada; Required: Create
+11:15:07,179 INFO  [JBossASKernel]   and supplies:
+11:15:07,179 INFO  [JBossASKernel] 	jndi:nfeExportaNFeEntrada
+11:15:07,180 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.integracao.wsexportacao.ExportacaoNFeEntradaBeanLocal
+11:15:07,180 INFO  [JBossASKernel] 	jndi:nfeExportaNFeEntrada/local-br.com.pwc.nfe.entrada.core.integracao.wsexportacao.ExportacaoNFeEntradaBeanLocal
+11:15:07,180 INFO  [JBossASKernel] 	jndi:nfeExportaNFeEntrada/local
+11:15:07,188 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeExportaNFeEntrada,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,190 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeSefazWebServiceBean,service=EJB3
+11:15:07,190 INFO  [JBossASKernel]   with dependencies:
+11:15:07,190 INFO  [JBossASKernel]   and demands:
+11:15:07,190 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeSefazWebServiceBean; Required: Described
+11:15:07,190 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,190 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeSefazWebServiceBean; Required: Create
+11:15:07,191 INFO  [JBossASKernel]   and supplies:
+11:15:07,191 INFO  [JBossASKernel] 	jndi:nfeSefazWebServiceBean/local
+11:15:07,191 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.parametrizacao.SefazWebServiceBeanLocal
+11:15:07,191 INFO  [JBossASKernel] 	jndi:nfeSefazWebServiceBean
+11:15:07,191 INFO  [JBossASKernel] 	jndi:nfeSefazWebServiceBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.SefazWebServiceBeanLocal
+11:15:07,192 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeSefazWebServiceBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,193 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeParametroEmpresaFilialBean,service=EJB3
+11:15:07,193 INFO  [JBossASKernel]   with dependencies:
+11:15:07,193 INFO  [JBossASKernel]   and demands:
+11:15:07,193 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,194 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeParametroEmpresaFilialBean; Required: Described
+11:15:07,194 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeParametroEmpresaFilialBean; Required: Create
+11:15:07,194 INFO  [JBossASKernel]   and supplies:
+11:15:07,194 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBeanLocal
+11:15:07,194 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialBean/local
+11:15:07,194 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialBean
+11:15:07,194 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBeanLocal
+11:15:07,195 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeParametroEmpresaFilialBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,196 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfePacoteLiberacaoBean,service=EJB3
+11:15:07,196 INFO  [JBossASKernel]   with dependencies:
+11:15:07,196 INFO  [JBossASKernel]   and demands:
+11:15:07,197 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfePacoteLiberacaoBean; Required: Create
+11:15:07,197 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,197 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfePacoteLiberacaoBean; Required: Described
+11:15:07,197 INFO  [JBossASKernel]   and supplies:
+11:15:07,197 INFO  [JBossASKernel] 	jndi:nfePacoteLiberacaoBean/local
+11:15:07,197 INFO  [JBossASKernel] 	jndi:nfePacoteLiberacaoBean
+11:15:07,197 INFO  [JBossASKernel] 	jndi:nfePacoteLiberacaoBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.PacoteLiberacaoBeanLocal
+11:15:07,198 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.parametrizacao.PacoteLiberacaoBeanLocal
+11:15:07,198 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfePacoteLiberacaoBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,199 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeManualBean,service=EJB3
+11:15:07,200 INFO  [JBossASKernel]   with dependencies:
+11:15:07,200 INFO  [JBossASKernel]   and demands:
+11:15:07,200 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,200 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeManualBean; Required: Described
+11:15:07,200 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeManualBean; Required: Create
+11:15:07,200 INFO  [JBossASKernel]   and supplies:
+11:15:07,200 INFO  [JBossASKernel] 	jndi:nfeManualBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.ManualBeanLocal
+11:15:07,201 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.parametrizacao.ManualBeanLocal
+11:15:07,201 INFO  [JBossASKernel] 	jndi:nfeManualBean/local
+11:15:07,201 INFO  [JBossASKernel] 	jndi:nfeManualBean
+11:15:07,201 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeManualBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,202 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeParametroSistemaBean,service=EJB3
+11:15:07,203 INFO  [JBossASKernel]   with dependencies:
+11:15:07,203 INFO  [JBossASKernel]   and demands:
+11:15:07,203 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,203 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeParametroSistemaBean; Required: Described
+11:15:07,203 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeParametroSistemaBean; Required: Create
+11:15:07,203 INFO  [JBossASKernel]   and supplies:
+11:15:07,204 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaBean
+11:15:07,204 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.parametrizacao.ParametroSistemaBeanLocal
+11:15:07,204 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaBean/local
+11:15:07,204 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.ParametroSistemaBeanLocal
+11:15:07,205 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeParametroSistemaBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,206 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeParametroEmpresaFilialPLBean,service=EJB3
+11:15:07,206 INFO  [JBossASKernel]   with dependencies:
+11:15:07,206 INFO  [JBossASKernel]   and demands:
+11:15:07,206 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,206 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeParametroEmpresaFilialPLBean; Required: Described
+11:15:07,206 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeParametroEmpresaFilialPLBean; Required: Create
+11:15:07,206 INFO  [JBossASKernel]   and supplies:
+11:15:07,207 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialPLBean/local
+11:15:07,207 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialPLBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialPLBeanLocal
+11:15:07,207 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialPLBeanLocal
+11:15:07,207 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialPLBean
+11:15:07,208 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeParametroEmpresaFilialPLBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,209 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeParametroSistemaWSIntegracaoBean,service=EJB3
+11:15:07,209 INFO  [JBossASKernel]   with dependencies:
+11:15:07,209 INFO  [JBossASKernel]   and demands:
+11:15:07,209 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,209 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeParametroSistemaWSIntegracaoBean; Required: Create
+11:15:07,209 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeParametroSistemaWSIntegracaoBean; Required: Described
+11:15:07,209 INFO  [JBossASKernel]   and supplies:
+11:15:07,210 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaWSIntegracaoBean
+11:15:07,210 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaWSIntegracaoBean/local
+11:15:07,210 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaWSIntegracaoBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.ParametroSistemaWSIntegracaoBeanLocal
+11:15:07,210 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.parametrizacao.ParametroSistemaWSIntegracaoBeanLocal
+11:15:07,211 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeParametroSistemaWSIntegracaoBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,212 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeWSconsultaNfeSefazBean,service=EJB3
+11:15:07,212 INFO  [JBossASKernel]   with dependencies:
+11:15:07,212 INFO  [JBossASKernel]   and demands:
+11:15:07,212 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,212 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeWSconsultaNfeSefazBean; Required: Described
+11:15:07,212 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeWSconsultaNfeSefazBean; Required: Create
+11:15:07,212 INFO  [JBossASKernel]   and supplies:
+11:15:07,213 INFO  [JBossASKernel] 	jndi:nfeWSconsultaNfeSefazBean/local
+11:15:07,213 INFO  [JBossASKernel] 	jndi:nfeWSconsultaNfeSefazBean/local-br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaNfeSefazBeanLocal
+11:15:07,213 INFO  [JBossASKernel] 	jndi:nfeWSconsultaNfeSefazBean
+11:15:07,213 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaNfeSefazBeanLocal
+11:15:07,213 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeWSconsultaNfeSefazBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,215 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeDownloadNFe,service=EJB3
+11:15:07,215 INFO  [JBossASKernel]   with dependencies:
+11:15:07,215 INFO  [JBossASKernel]   and demands:
+11:15:07,215 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeDownloadNFe; Required: Described
+11:15:07,215 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,215 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeDownloadNFe; Required: Create
+11:15:07,215 INFO  [JBossASKernel]   and supplies:
+11:15:07,216 INFO  [JBossASKernel] 	jndi:nfeDownloadNFe/local
+11:15:07,216 INFO  [JBossASKernel] 	jndi:nfeDownloadNFe
+11:15:07,216 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.service.sefaz.DownloadNFeBeanLocal
+11:15:07,216 INFO  [JBossASKernel] 	jndi:nfeDownloadNFe/local-br.com.pwc.nfe.entrada.core.service.sefaz.DownloadNFeBeanLocal
+11:15:07,216 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeDownloadNFe,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,217 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeEventoManifestacaoSefazBean,service=EJB3
+11:15:07,218 INFO  [JBossASKernel]   with dependencies:
+11:15:07,218 INFO  [JBossASKernel]   and demands:
+11:15:07,218 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,218 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeEventoManifestacaoSefazBean; Required: Described
+11:15:07,218 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeEventoManifestacaoSefazBean; Required: Create
+11:15:07,218 INFO  [JBossASKernel]   and supplies:
+11:15:07,218 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.service.sefaz.EventoManifestacaoSefazBeanLocal
+11:15:07,218 INFO  [JBossASKernel] 	jndi:nfeEventoManifestacaoSefazBean/local-br.com.pwc.nfe.entrada.core.service.sefaz.EventoManifestacaoSefazBeanLocal
+11:15:07,219 INFO  [JBossASKernel] 	jndi:nfeEventoManifestacaoSefazBean
+11:15:07,219 INFO  [JBossASKernel] 	jndi:nfeEventoManifestacaoSefazBean/local
+11:15:07,219 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeEventoManifestacaoSefazBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,220 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeConsultaStatusServicoBean,service=EJB3
+11:15:07,220 INFO  [JBossASKernel]   with dependencies:
+11:15:07,220 INFO  [JBossASKernel]   and demands:
+11:15:07,221 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeConsultaStatusServicoBean; Required: Create
+11:15:07,221 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,221 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeConsultaStatusServicoBean; Required: Described
+11:15:07,221 INFO  [JBossASKernel]   and supplies:
+11:15:07,221 INFO  [JBossASKernel] 	jndi:nfeConsultaStatusServicoBean/local
+11:15:07,221 INFO  [JBossASKernel] 	jndi:nfeConsultaStatusServicoBean/local-br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaStatusServicoBeanLocal
+11:15:07,221 INFO  [JBossASKernel] 	jndi:nfeConsultaStatusServicoBean
+11:15:07,222 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaStatusServicoBeanLocal
+11:15:07,222 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeConsultaStatusServicoBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,223 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoProcXmlBean,service=EJB3
+11:15:07,223 INFO  [JBossASKernel]   with dependencies:
+11:15:07,223 INFO  [JBossASKernel]   and demands:
+11:15:07,223 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeImportacaoProcXmlBean; Required: Create
+11:15:07,224 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,224 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeImportacaoProcXmlBean; Required: Described
+11:15:07,224 INFO  [JBossASKernel]   and supplies:
+11:15:07,224 INFO  [JBossASKernel] 	jndi:nfeImportacaoProcXmlBean
+11:15:07,224 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoProcXmlBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,226 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoXMLBean,service=EJB3
+11:15:07,226 INFO  [JBossASKernel]   with dependencies:
+11:15:07,226 INFO  [JBossASKernel]   and demands:
+11:15:07,226 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,226 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeImportacaoXMLBean; Required: Create
+11:15:07,226 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeImportacaoXMLBean; Required: Described
+11:15:07,226 INFO  [JBossASKernel]   and supplies:
+11:15:07,227 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.negocio.ImportacaoXMLBeanLocal
+11:15:07,227 INFO  [JBossASKernel] 	jndi:nfeImportacaoXMLBean
+11:15:07,227 INFO  [JBossASKernel] 	jndi:nfeImportacaoXMLBean/local-br.com.pwc.nfe.entrada.core.negocio.ImportacaoXMLBeanLocal
+11:15:07,227 INFO  [JBossASKernel] 	jndi:nfeImportacaoXMLBean/local
+11:15:07,227 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoXMLBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,229 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoEventoXmlBean,service=EJB3
+11:15:07,229 INFO  [JBossASKernel]   with dependencies:
+11:15:07,229 INFO  [JBossASKernel]   and demands:
+11:15:07,229 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeImportacaoEventoXmlBean; Required: Described
+11:15:07,229 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,229 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeImportacaoEventoXmlBean; Required: Create
+11:15:07,229 INFO  [JBossASKernel]   and supplies:
+11:15:07,229 INFO  [JBossASKernel] 	jndi:nfeImportacaoEventoXmlBean
+11:15:07,230 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoEventoXmlBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,231 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeConsultaNFeDestinados,service=EJB3
+11:15:07,231 INFO  [JBossASKernel]   with dependencies:
+11:15:07,231 INFO  [JBossASKernel]   and demands:
+11:15:07,232 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeConsultaNFeDestinados; Required: Create
+11:15:07,232 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,232 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeConsultaNFeDestinados; Required: Described
+11:15:07,232 INFO  [JBossASKernel]   and supplies:
+11:15:07,232 INFO  [JBossASKernel] 	jndi:nfeConsultaNFeDestinados
+11:15:07,232 INFO  [JBossASKernel] 	jndi:nfeConsultaNFeDestinados/local
+11:15:07,232 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeDestinadosBeanLocal
+11:15:07,232 INFO  [JBossASKernel] 	jndi:nfeConsultaNFeDestinados/local-br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeDestinadosBeanLocal
+11:15:07,233 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeConsultaNFeDestinados,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,234 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeConsultaNFeBean,service=EJB3
+11:15:07,234 INFO  [JBossASKernel]   with dependencies:
+11:15:07,234 INFO  [JBossASKernel]   and demands:
+11:15:07,234 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeConsultaNFeBean; Required: Described
+11:15:07,234 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,235 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeConsultaNFeBean; Required: Create
+11:15:07,235 INFO  [JBossASKernel]   and supplies:
+11:15:07,235 INFO  [JBossASKernel] 	jndi:nfeConsultaNFeBean/local
+11:15:07,235 INFO  [JBossASKernel] 	jndi:nfeConsultaNFeBean/local-br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeBeanLocal
+11:15:07,235 INFO  [JBossASKernel] 	jndi:nfeConsultaNFeBean
+11:15:07,235 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeBeanLocal
+11:15:07,236 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeConsultaNFeBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,237 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeEntradaRepositorioXMLBean,service=EJB3
+11:15:07,237 INFO  [JBossASKernel]   with dependencies:
+11:15:07,237 INFO  [JBossASKernel]   and demands:
+11:15:07,237 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,237 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeEntradaRepositorioXMLBean; Required: Described
+11:15:07,237 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeEntradaRepositorioXMLBean; Required: Create
+11:15:07,237 INFO  [JBossASKernel]   and supplies:
+11:15:07,237 INFO  [JBossASKernel] 	jndi:nfeEntradaRepositorioXMLBean
+11:15:07,238 INFO  [JBossASKernel] 	jndi:nfeEntradaRepositorioXMLBean/local-br.com.pwc.nfe.entrada.core.negocio.NFeEntradaRepositorioXMLBeanLocal
+11:15:07,238 INFO  [JBossASKernel] 	jndi:nfeEntradaRepositorioXMLBean/local
+11:15:07,238 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.negocio.NFeEntradaRepositorioXMLBeanLocal
+11:15:07,238 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeEntradaRepositorioXMLBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,239 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeNFeEntradaBean,service=EJB3
+11:15:07,239 INFO  [JBossASKernel]   with dependencies:
+11:15:07,240 INFO  [JBossASKernel]   and demands:
+11:15:07,240 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeNFeEntradaBean; Required: Create
+11:15:07,240 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,240 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeNFeEntradaBean; Required: Described
+11:15:07,240 INFO  [JBossASKernel]   and supplies:
+11:15:07,240 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.negocio.NfeEntradaBeanLocal
+11:15:07,240 INFO  [JBossASKernel] 	jndi:nfeNFeEntradaBean/local-br.com.pwc.nfe.entrada.core.negocio.NfeEntradaBeanLocal
+11:15:07,240 INFO  [JBossASKernel] 	jndi:nfeNFeEntradaBean/local
+11:15:07,240 INFO  [JBossASKernel] 	jndi:nfeNFeEntradaBean
+11:15:07,241 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeNFeEntradaBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,242 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeOcorrenciaNFeBean,service=EJB3
+11:15:07,242 INFO  [JBossASKernel]   with dependencies:
+11:15:07,242 INFO  [JBossASKernel]   and demands:
+11:15:07,242 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,242 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeOcorrenciaNFeBean; Required: Create
+11:15:07,242 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeOcorrenciaNFeBean; Required: Described
+11:15:07,243 INFO  [JBossASKernel]   and supplies:
+11:15:07,243 INFO  [JBossASKernel] 	jndi:nfeOcorrenciaNFeBean/local
+11:15:07,243 INFO  [JBossASKernel] 	jndi:nfeOcorrenciaNFeBean/local-br.com.pwc.nfe.entrada.core.negocio.OcorrenciaNfeBeanLocal
+11:15:07,243 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.core.negocio.OcorrenciaNfeBeanLocal
+11:15:07,243 INFO  [JBossASKernel] 	jndi:nfeOcorrenciaNFeBean
+11:15:07,244 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeOcorrenciaNFeBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,245 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoCancXmlBean,service=EJB3
+11:15:07,245 INFO  [JBossASKernel]   with dependencies:
+11:15:07,245 INFO  [JBossASKernel]   and demands:
+11:15:07,245 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:07,245 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-core.jar,unit=nfe-core.jar,bean=nfeImportacaoCancXmlBean; Required: Described
+11:15:07,245 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-core,module=nfe-core,name=nfeImportacaoCancXmlBean; Required: Create
+11:15:07,245 INFO  [JBossASKernel]   and supplies:
+11:15:07,245 INFO  [JBossASKernel] 	jndi:nfeImportacaoCancXmlBean
+11:15:07,246 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoCancXmlBean,service=EJB3) to KernelDeployment of: nfe-core.jar
+11:15:07,297 INFO  [SingletonContainerDeployer] Installing container for EJB nfeCoreBundleBean
+11:15:07,297 INFO  [SingletonContainerDeployer] with dependencies: 
+11:15:07,297 INFO  [SingletonContainerDeployer] with demands: 
+11:15:07,297 INFO  [SingletonContainerDeployer] with supplies: 
+11:15:07,302 INFO  [SingletonBeanJNDIBinderDeployer] Binding the following entries in JNDI for singleton bean: nfeCoreBundleBean
+
+
+11:15:07,705 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeEntradaRepositorioXMLBean,service=EJB3
+11:15:07,718 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.negocio.NFeEntradaRepositorioXMLBean ejbName: nfeEntradaRepositorioXMLBean
+11:15:07,877 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeEntradaRepositorioXMLBean/local - EJB3.x Default Local Business Interface
+	nfeEntradaRepositorioXMLBean/local-br.com.pwc.nfe.entrada.core.negocio.NFeEntradaRepositorioXMLBeanLocal - EJB3.x Local Business Interface
+
+11:15:07,882 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,702 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeExportaNFeEntrada,service=EJB3
+11:15:08,702 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.integracao.wsexportacao.ExportacaoNFeEntradaBean ejbName: nfeExportaNFeEntrada
+11:15:08,708 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeExportaNFeEntrada/local - EJB3.x Default Local Business Interface
+	nfeExportaNFeEntrada/local-br.com.pwc.nfe.entrada.core.integracao.wsexportacao.ExportacaoNFeEntradaBeanLocal - EJB3.x Local Business Interface
+
+11:15:08,709 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,710 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoCancXmlBean,service=EJB3
+11:15:08,711 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.negocio.ImportacaoCancXMLBean ejbName: nfeImportacaoCancXmlBean
+11:15:08,711 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+
+11:15:08,711 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,712 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeConsultaStatusServicoBean,service=EJB3
+11:15:08,712 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaStatusServicoBean ejbName: nfeConsultaStatusServicoBean
+11:15:08,754 INFO  [AbstractNoInterfaceViewBinder] Binding the following entry in Global JNDI for bean:nfeImportacaoCancXmlBean
+
+	nfeImportacaoCancXmlBean/no-interface -> EJB3.1 no-interface view
+
+11:15:08,757 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeConsultaStatusServicoBean/local - EJB3.x Default Local Business Interface
+	nfeConsultaStatusServicoBean/local-br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaStatusServicoBeanLocal - EJB3.x Local Business Interface
+
+11:15:08,758 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,759 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeConsultaNFeDestinados,service=EJB3
+11:15:08,759 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeDestinadosBean ejbName: nfeConsultaNFeDestinados
+11:15:08,762 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeConsultaNFeDestinados/local - EJB3.x Default Local Business Interface
+	nfeConsultaNFeDestinados/local-br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeDestinadosBeanLocal - EJB3.x Local Business Interface
+
+11:15:08,764 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,772 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeNFeEntradaBean,service=EJB3
+11:15:08,772 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.negocio.NfeEntradaBean ejbName: nfeNFeEntradaBean
+11:15:08,777 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeNFeEntradaBean/local - EJB3.x Default Local Business Interface
+	nfeNFeEntradaBean/local-br.com.pwc.nfe.entrada.core.negocio.NfeEntradaBeanLocal - EJB3.x Local Business Interface
+
+11:15:08,778 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,800 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeParametroEmpresaFilialBean,service=EJB3
+11:15:08,800 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBean ejbName: nfeParametroEmpresaFilialBean
+11:15:08,806 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeParametroEmpresaFilialBean/local - EJB3.x Default Local Business Interface
+	nfeParametroEmpresaFilialBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialBeanLocal - EJB3.x Local Business Interface
+
+11:15:08,808 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,819 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeWSconsultaNfeSefazBean,service=EJB3
+11:15:08,820 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaNfeSefazBean ejbName: nfeWSconsultaNfeSefazBean
+11:15:08,823 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeWSconsultaNfeSefazBean/local - EJB3.x Default Local Business Interface
+	nfeWSconsultaNfeSefazBean/local-br.com.pwc.nfe.entrada.core.service.sefaz.ConsultaNfeSefazBeanLocal - EJB3.x Local Business Interface
+
+11:15:08,824 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,879 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeDownloadNFe,service=EJB3
+11:15:08,879 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.service.sefaz.DownloadNFeBean ejbName: nfeDownloadNFe
+11:15:08,882 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeDownloadNFe/local - EJB3.x Default Local Business Interface
+	nfeDownloadNFe/local-br.com.pwc.nfe.entrada.core.service.sefaz.DownloadNFeBeanLocal - EJB3.x Local Business Interface
+
+11:15:08,884 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,902 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoEventoXmlBean,service=EJB3
+11:15:08,902 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.negocio.ImportacaoEventoXMLBean ejbName: nfeImportacaoEventoXmlBean
+11:15:08,902 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+
+11:15:08,902 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,911 INFO  [AbstractNoInterfaceViewBinder] Binding the following entry in Global JNDI for bean:nfeImportacaoEventoXmlBean
+
+	nfeImportacaoEventoXmlBean/no-interface -> EJB3.1 no-interface view
+
+11:15:08,922 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeEventoManifestacaoSefazBean,service=EJB3
+11:15:08,922 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.service.sefaz.EventoManifestacaoSefazBean ejbName: nfeEventoManifestacaoSefazBean
+11:15:08,925 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeEventoManifestacaoSefazBean/local - EJB3.x Default Local Business Interface
+	nfeEventoManifestacaoSefazBean/local-br.com.pwc.nfe.entrada.core.service.sefaz.EventoManifestacaoSefazBeanLocal - EJB3.x Local Business Interface
+
+11:15:08,927 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,935 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeParametroSistemaWSIntegracaoBean,service=EJB3
+11:15:08,935 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.parametrizacao.ParametroSistemaWSIntegracaoBean ejbName: nfeParametroSistemaWSIntegracaoBean
+11:15:08,938 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeParametroSistemaWSIntegracaoBean/local - EJB3.x Default Local Business Interface
+	nfeParametroSistemaWSIntegracaoBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.ParametroSistemaWSIntegracaoBeanLocal - EJB3.x Local Business Interface
+
+11:15:08,939 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,953 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeConsultaNFeBean,service=EJB3
+11:15:08,953 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeBean ejbName: nfeConsultaNFeBean
+11:15:08,957 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeConsultaNFeBean/local - EJB3.x Default Local Business Interface
+	nfeConsultaNFeBean/local-br.com.pwc.nfe.entrada.core.negocio.ConsultaNFeBeanLocal - EJB3.x Local Business Interface
+
+11:15:08,958 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:08,997 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeCoreBundleBean,service=EJB3
+11:15:08,997 WARN  [SessionSpecContainer] EJBTHREE-2126: container jboss.j2ee:jar=nfe-core.jar,name=nfeCoreBundleBean,service=EJB3 does not verify the businessObjectFactory
+11:15:08,998 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.NFeCoreBundleBean ejbName: nfeCoreBundleBean
+11:15:08,998 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:09,003 INFO  [AbstractNoInterfaceViewBinder] Binding the following entry in Global JNDI for bean:nfeCoreBundleBean
+
+	nfeCoreBundleBean/no-interface -> EJB3.1 no-interface view
+
+11:15:09,020 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoProcXmlBean,service=EJB3
+11:15:09,020 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.negocio.ImportacaoProcXMLBean ejbName: nfeImportacaoProcXmlBean
+11:15:09,020 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+
+11:15:09,020 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:09,028 INFO  [AbstractNoInterfaceViewBinder] Binding the following entry in Global JNDI for bean:nfeImportacaoProcXmlBean
+
+	nfeImportacaoProcXmlBean/no-interface -> EJB3.1 no-interface view
+
+11:15:09,041 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeSefazWebServiceBean,service=EJB3
+11:15:09,041 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.parametrizacao.SefazWebServiceBean ejbName: nfeSefazWebServiceBean
+11:15:09,045 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeSefazWebServiceBean/local - EJB3.x Default Local Business Interface
+	nfeSefazWebServiceBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.SefazWebServiceBeanLocal - EJB3.x Local Business Interface
+
+11:15:09,046 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:09,060 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeParametroEmpresaFilialPLBean,service=EJB3
+11:15:09,061 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialPLBean ejbName: nfeParametroEmpresaFilialPLBean
+11:15:09,064 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeParametroEmpresaFilialPLBean/local - EJB3.x Default Local Business Interface
+	nfeParametroEmpresaFilialPLBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.ParametroEmpresaFilialPLBeanLocal - EJB3.x Local Business Interface
+
+11:15:09,065 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:09,073 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfePacoteLiberacaoBean,service=EJB3
+11:15:09,073 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.parametrizacao.PacoteLiberacaoBean ejbName: nfePacoteLiberacaoBean
+11:15:09,077 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfePacoteLiberacaoBean/local - EJB3.x Default Local Business Interface
+	nfePacoteLiberacaoBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.PacoteLiberacaoBeanLocal - EJB3.x Local Business Interface
+
+11:15:09,078 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:09,089 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeOcorrenciaNFeBean,service=EJB3
+11:15:09,089 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.negocio.OcorrenciaNFeBean ejbName: nfeOcorrenciaNFeBean
+11:15:09,092 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeOcorrenciaNFeBean/local - EJB3.x Default Local Business Interface
+	nfeOcorrenciaNFeBean/local-br.com.pwc.nfe.entrada.core.negocio.OcorrenciaNfeBeanLocal - EJB3.x Local Business Interface
+
+11:15:09,093 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:09,099 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeImportacaoXMLBean,service=EJB3
+11:15:09,099 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.negocio.ImportacaoXMLBean ejbName: nfeImportacaoXMLBean
+11:15:09,102 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeImportacaoXMLBean/local - EJB3.x Default Local Business Interface
+	nfeImportacaoXMLBean/local-br.com.pwc.nfe.entrada.core.negocio.ImportacaoXMLBeanLocal - EJB3.x Local Business Interface
+
+11:15:09,104 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:09,113 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeManualBean,service=EJB3
+11:15:09,114 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.parametrizacao.ManualBean ejbName: nfeManualBean
+11:15:09,117 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeManualBean/local - EJB3.x Default Local Business Interface
+	nfeManualBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.ManualBeanLocal - EJB3.x Local Business Interface
+
+11:15:09,119 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:09,131 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-core.jar,name=nfeParametroSistemaBean,service=EJB3
+11:15:09,131 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.core.parametrizacao.ParametroSistemaBean ejbName: nfeParametroSistemaBean
+11:15:09,134 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeParametroSistemaBean/local - EJB3.x Default Local Business Interface
+	nfeParametroSistemaBean/local-br.com.pwc.nfe.entrada.core.parametrizacao.ParametroSistemaBeanLocal - EJB3.x Local Business Interface
+
+11:15:09,135 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:09,191 WARN  [InterceptorInfoRepository] EJBTHREE-1852: InterceptorInfoRepository is deprecated
+11:15:09,737 INFO  [JBossASKernel] Created KernelDeployment for: nfe-domain.jar
+11:15:09,737 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeSefazWebServiceManager,service=EJB3
+11:15:09,737 INFO  [JBossASKernel]   with dependencies:
+11:15:09,738 INFO  [JBossASKernel]   and demands:
+11:15:09,738 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeSefazWebServiceManager; Required: Create
+11:15:09,738 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,738 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfeSefazWebServiceManager; Required: Described
+11:15:09,738 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,738 INFO  [JBossASKernel]   and supplies:
+11:15:09,738 INFO  [JBossASKernel] 	jndi:nfeSefazWebServiceManager/local
+11:15:09,738 INFO  [JBossASKernel] 	jndi:nfeSefazWebServiceManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.SefazWebServiceManagerLocal
+11:15:09,739 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.parametrizacao.SefazWebServiceManagerLocal
+11:15:09,739 INFO  [JBossASKernel] 	jndi:nfeSefazWebServiceManager
+11:15:09,739 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeSefazWebServiceManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,740 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroSistemaWSIntegracaoManager,service=EJB3
+11:15:09,741 INFO  [JBossASKernel]   with dependencies:
+11:15:09,741 INFO  [JBossASKernel]   and demands:
+11:15:09,741 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,741 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfeParametroSistemaWSIntegracaoManager; Required: Described
+11:15:09,741 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeParametroSistemaWSIntegracaoManager; Required: Create
+11:15:09,741 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,741 INFO  [JBossASKernel]   and supplies:
+11:15:09,741 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaWSIntegracaoManager/local
+11:15:09,741 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaWSIntegracaoManager
+11:15:09,742 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaWSIntegracaoManagerLocal
+11:15:09,742 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaWSIntegracaoManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaWSIntegracaoManagerLocal
+11:15:09,742 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroSistemaWSIntegracaoManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,743 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroEmpresaFilialPLManager,service=EJB3
+11:15:09,743 INFO  [JBossASKernel]   with dependencies:
+11:15:09,744 INFO  [JBossASKernel]   and demands:
+11:15:09,744 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeParametroEmpresaFilialPLManager; Required: Create
+11:15:09,744 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,744 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfeParametroEmpresaFilialPLManager; Required: Described
+11:15:09,744 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,744 INFO  [JBossASKernel]   and supplies:
+11:15:09,744 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialPLManager
+11:15:09,744 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialPLManager/local
+11:15:09,744 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialPLManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialPLManagerLocal
+11:15:09,745 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialPLManagerLocal
+11:15:09,745 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroEmpresaFilialPLManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,746 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroEmpresaFilialManager,service=EJB3
+11:15:09,746 INFO  [JBossASKernel]   with dependencies:
+11:15:09,746 INFO  [JBossASKernel]   and demands:
+11:15:09,747 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfeParametroEmpresaFilialManager; Required: Described
+11:15:09,747 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,747 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeParametroEmpresaFilialManager; Required: Create
+11:15:09,747 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,747 INFO  [JBossASKernel]   and supplies:
+11:15:09,747 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialManager
+11:15:09,747 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialManagerLocal
+11:15:09,747 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialManagerLocal
+11:15:09,747 INFO  [JBossASKernel] 	jndi:nfeParametroEmpresaFilialManager/local
+11:15:09,748 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroEmpresaFilialManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,749 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeManualManager,service=EJB3
+11:15:09,749 INFO  [JBossASKernel]   with dependencies:
+11:15:09,749 INFO  [JBossASKernel]   and demands:
+11:15:09,749 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,750 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeManualManager; Required: Create
+11:15:09,750 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfeManualManager; Required: Described
+11:15:09,750 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,750 INFO  [JBossASKernel]   and supplies:
+11:15:09,750 INFO  [JBossASKernel] 	jndi:nfeManualManager
+11:15:09,750 INFO  [JBossASKernel] 	jndi:nfeManualManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.ManualManagerLocal
+11:15:09,750 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.parametrizacao.ManualManagerLocal
+11:15:09,750 INFO  [JBossASKernel] 	jndi:nfeManualManager/local
+11:15:09,751 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeManualManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,752 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfePacoteLiberacaoManager,service=EJB3
+11:15:09,752 INFO  [JBossASKernel]   with dependencies:
+11:15:09,752 INFO  [JBossASKernel]   and demands:
+11:15:09,752 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,752 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfePacoteLiberacaoManager; Required: Described
+11:15:09,752 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfePacoteLiberacaoManager; Required: Create
+11:15:09,753 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,753 INFO  [JBossASKernel]   and supplies:
+11:15:09,753 INFO  [JBossASKernel] 	jndi:nfePacoteLiberacaoManager/local-br.com.pwc.nfe.entrada.domain.PacoteLiberacaoManagerLocal
+11:15:09,753 INFO  [JBossASKernel] 	jndi:nfePacoteLiberacaoManager/local
+11:15:09,753 INFO  [JBossASKernel] 	jndi:nfePacoteLiberacaoManager
+11:15:09,753 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.PacoteLiberacaoManagerLocal
+11:15:09,754 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfePacoteLiberacaoManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,755 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroSistemaManager,service=EJB3
+11:15:09,755 INFO  [JBossASKernel]   with dependencies:
+11:15:09,755 INFO  [JBossASKernel]   and demands:
+11:15:09,755 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,755 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfeParametroSistemaManager; Required: Described
+11:15:09,755 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeParametroSistemaManager; Required: Create
+11:15:09,756 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,756 INFO  [JBossASKernel]   and supplies:
+11:15:09,756 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaManager/local
+11:15:09,756 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaManagerLocal
+11:15:09,756 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaManagerLocal
+11:15:09,756 INFO  [JBossASKernel] 	jndi:nfeParametroSistemaManager
+11:15:09,757 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroSistemaManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,758 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeOcorrenciaNFeManager,service=EJB3
+11:15:09,758 INFO  [JBossASKernel]   with dependencies:
+11:15:09,758 INFO  [JBossASKernel]   and demands:
+11:15:09,758 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,758 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfeOcorrenciaNFeManager; Required: Described
+11:15:09,758 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,758 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeOcorrenciaNFeManager; Required: Create
+11:15:09,758 INFO  [JBossASKernel]   and supplies:
+11:15:09,759 INFO  [JBossASKernel] 	jndi:nfeOcorrenciaNFeManager/local
+11:15:09,759 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.negocio.OcorrenciaNFeManagerLocal
+11:15:09,759 INFO  [JBossASKernel] 	jndi:nfeOcorrenciaNFeManager/local-br.com.pwc.nfe.entrada.domain.negocio.OcorrenciaNFeManagerLocal
+11:15:09,759 INFO  [JBossASKernel] 	jndi:nfeOcorrenciaNFeManager
+11:15:09,759 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeOcorrenciaNFeManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,761 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeConsultaNFeManager,service=EJB3
+11:15:09,761 INFO  [JBossASKernel]   with dependencies:
+11:15:09,761 INFO  [JBossASKernel]   and demands:
+11:15:09,761 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,761 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfeConsultaNFeManager; Required: Described
+11:15:09,761 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeConsultaNFeManager; Required: Create
+11:15:09,761 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,761 INFO  [JBossASKernel]   and supplies:
+11:15:09,761 INFO  [JBossASKernel] 	jndi:nfeConsultaNFeManager/local-br.com.pwc.nfe.entrada.domain.negocio.ConsultaNFeManagerLocal
+11:15:09,762 INFO  [JBossASKernel] 	jndi:nfeConsultaNFeManager/local
+11:15:09,762 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.negocio.ConsultaNFeManagerLocal
+11:15:09,762 INFO  [JBossASKernel] 	jndi:nfeConsultaNFeManager
+11:15:09,762 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeConsultaNFeManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,763 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeCodigoSefazManager,service=EJB3
+11:15:09,763 INFO  [JBossASKernel]   with dependencies:
+11:15:09,763 INFO  [JBossASKernel]   and demands:
+11:15:09,764 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,764 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfeCodigoSefazManager; Required: Described
+11:15:09,764 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeCodigoSefazManager; Required: Create
+11:15:09,764 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,764 INFO  [JBossASKernel]   and supplies:
+11:15:09,764 INFO  [JBossASKernel] 	jndi:nfeCodigoSefazManager/local-br.com.pwc.nfe.entrada.domain.negocio.CodigoSefazManagerLocal
+11:15:09,764 INFO  [JBossASKernel] 	jndi:nfeCodigoSefazManager/local
+11:15:09,764 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.negocio.CodigoSefazManagerLocal
+11:15:09,764 INFO  [JBossASKernel] 	jndi:nfeCodigoSefazManager
+11:15:09,765 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeCodigoSefazManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,766 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeEntradaRepositorioXMLManager,service=EJB3
+11:15:09,766 INFO  [JBossASKernel]   with dependencies:
+11:15:09,766 INFO  [JBossASKernel]   and demands:
+11:15:09,766 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfeEntradaRepositorioXMLManager; Required: Described
+11:15:09,766 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,766 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeEntradaRepositorioXMLManager; Required: Create
+11:15:09,767 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,767 INFO  [JBossASKernel]   and supplies:
+11:15:09,767 INFO  [JBossASKernel] 	jndi:nfeEntradaRepositorioXMLManager/local-br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaRepositorioXMLManagerLocal
+11:15:09,767 INFO  [JBossASKernel] 	jndi:nfeEntradaRepositorioXMLManager
+11:15:09,767 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaRepositorioXMLManagerLocal
+11:15:09,767 INFO  [JBossASKernel] 	jndi:nfeEntradaRepositorioXMLManager/local
+11:15:09,768 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeEntradaRepositorioXMLManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,769 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeNFeEntradaManager,service=EJB3
+11:15:09,769 INFO  [JBossASKernel]   with dependencies:
+11:15:09,769 INFO  [JBossASKernel]   and demands:
+11:15:09,769 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,769 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeNFeEntradaManager; Required: Create
+11:15:09,769 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-domain.jar,unit=nfe-domain.jar,bean=nfeNFeEntradaManager; Required: Described
+11:15:09,769 INFO  [JBossASKernel] 	persistence.unit:unitName=nfe-domain.jar#persistence-nfe; Required: Described
+11:15:09,769 INFO  [JBossASKernel]   and supplies:
+11:15:09,770 INFO  [JBossASKernel] 	jndi:nfeNFeEntradaManager/local
+11:15:09,770 INFO  [JBossASKernel] 	jndi:nfeNFeEntradaManager/local-br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaManagerLocal
+11:15:09,770 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaManagerLocal
+11:15:09,770 INFO  [JBossASKernel] 	jndi:nfeNFeEntradaManager
+11:15:09,770 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeNFeEntradaManager,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,771 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-domain.jar,name=nfeTransactionBean,service=EJB3
+11:15:09,771 INFO  [JBossASKernel]   with dependencies:
+11:15:09,771 INFO  [JBossASKernel]   and demands:
+11:15:09,771 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:09,772 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-domain,module=nfe-domain,name=nfeTransactionBean; Required: Create
+11:15:09,772 INFO  [JBossASKernel]   and supplies:
+11:15:09,772 INFO  [JBossASKernel] 	jndi:nfeTransactionBean/local-br.com.pwc.nfe.entrada.domain.util.Caller
+11:15:09,772 INFO  [JBossASKernel] 	jndi:nfeTransactionBean
+11:15:09,772 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.domain.util.Caller
+11:15:09,772 INFO  [JBossASKernel] 	jndi:nfeTransactionBean/local
+11:15:09,773 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-domain.jar,name=nfeTransactionBean,service=EJB3) to KernelDeployment of: nfe-domain.jar
+11:15:09,876 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=nfe-domain.jar#persistence-nfe
+11:15:09,877 INFO  [Ejb3Configuration] Processing PersistenceUnitInfo [
+	name: persistence-nfe
+	...]
+11:15:09,878 WARN  [Ejb3Configuration] Persistence provider caller does not implement the EJB3 spec correctly.PersistenceUnitInfo.getNewTempClassLoader() is null.
+11:15:09,884 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.sistema.ParametroSistemaWSIntegracao
+11:15:09,887 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.sistema.ParametroSistemaWSIntegracao on table NFE_PARAMETRO_SISTEMA_WS
+11:15:09,898 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.sistema.ParametroEmpresaFilialPL
+11:15:09,898 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.sistema.ParametroEmpresaFilialPL on table NFE_PARAMETRO_EMPRESA_PL
+11:15:09,913 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.sistema.PacoteLiberacao
+11:15:09,914 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.sistema.PacoteLiberacao on table NFE_PACOTE_LIBERACAO
+11:15:09,935 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.sistema.Manual
+11:15:09,935 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.sistema.Manual on table NFE_SEFAZ_MANUAL
+11:15:09,940 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.negocio.NFeEntrada
+11:15:09,940 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.negocio.NFeEntrada on table NFE_NF_ENTRADA
+11:15:09,947 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.sistema.ParametroEmpresaFilial
+11:15:09,948 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.sistema.ParametroEmpresaFilial on table NFE_PARAMETRO_EMPRESA_FILIAL
+11:15:09,956 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.sistema.OcorrenciaNFe
+11:15:09,957 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.sistema.OcorrenciaNFe on table NFE_OCORRENCIA_NFE
+11:15:09,960 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.negocio.CodigoSefaz
+11:15:09,960 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.negocio.CodigoSefaz on table NFE_CODIGO_SEFAZ
+11:15:09,962 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.negocio.NFeEntradaRepositorioXML
+11:15:09,962 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.negocio.NFeEntradaRepositorioXML on table NFE_NF_REPOSITORIO_XML
+11:15:09,966 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.sistema.ParametroSistema
+11:15:09,966 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.sistema.ParametroSistema on table NFE_PARAMETRO_SISTEMA
+11:15:09,970 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.sistema.ConsultaNFe
+11:15:09,970 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.sistema.ConsultaNFe on table NFE_CONSULTA_NFE
+11:15:09,976 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.nfe.entrada.entity.sistema.SefazWebService
+11:15:09,977 INFO  [EntityBinder] Bind entity br.com.pwc.nfe.entrada.entity.sistema.SefazWebService on table NFE_SEFAZ_WS
+11:15:09,991 INFO  [CollectionBinder] Mapping collection: br.com.pwc.nfe.entrada.entity.sistema.PacoteLiberacao.parametroEmpresaFilialPL -> NFE_PARAMETRO_EMPRESA_PL
+11:15:09,992 INFO  [CollectionBinder] Mapping collection: br.com.pwc.nfe.entrada.entity.sistema.PacoteLiberacao.sefazWebService -> NFE_SEFAZ_WS
+11:15:09,992 INFO  [CollectionBinder] Mapping collection: br.com.pwc.nfe.entrada.entity.sistema.Manual.pacoteLiberacao -> NFE_PACOTE_LIBERACAO
+11:15:09,992 INFO  [CollectionBinder] Mapping collection: br.com.pwc.nfe.entrada.entity.negocio.NFeEntrada.repositorioDeXML -> NFE_NF_REPOSITORIO_XML
+11:15:09,992 INFO  [CollectionBinder] Mapping collection: br.com.pwc.nfe.entrada.entity.sistema.ParametroEmpresaFilial.notasEntradas -> NFE_NF_ENTRADA
+11:15:09,992 INFO  [CollectionBinder] Mapping collection: br.com.pwc.nfe.entrada.entity.sistema.ParametroEmpresaFilial.parametroEmpresaFilialPL -> NFE_PARAMETRO_EMPRESA_PL
+11:15:09,993 INFO  [CollectionBinder] Mapping collection: br.com.pwc.nfe.entrada.entity.sistema.ParametroSistema.listaWebServiceNFe -> NFE_PARAMETRO_SISTEMA_WS
+11:15:09,993 INFO  [CollectionBinder] Mapping collection: br.com.pwc.nfe.entrada.entity.sistema.ConsultaNFe.ocorrencias -> NFE_OCORRENCIA_NFE
+11:15:10,041 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+11:15:10,175 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+11:15:10,254 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+11:15:10,264 INFO  [HibernateSearchEventListenerRegister] Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+11:15:10,295 INFO  [ConnectionProviderFactory] Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+11:15:10,295 INFO  [InjectedDataSourceConnectionProvider] Using provided datasource
+11:15:12,203 INFO  [Dialect] Using dialect: org.hibernate.dialect.Oracle10gDialect
+11:15:12,212 INFO  [SettingsFactory] Database ->
+       name : Oracle
+    version : Oracle Database 10g Enterprise Edition Release 10.2.0.3.0 - Production
+With the Partitioning, OLAP and Data Mining options
+      major : 10
+      minor : 2
+11:15:12,212 INFO  [SettingsFactory] Driver ->
+       name : Oracle JDBC driver
+    version : 11.1.0.6.0-Production+
+      major : 11
+      minor : 1
+11:15:12,212 INFO  [TransactionFactoryFactory] Transaction strategy: org.hibernate.ejb.transaction.JoinableCMTTransactionFactory
+11:15:12,212 INFO  [TransactionManagerLookupFactory] instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+11:15:12,212 INFO  [TransactionManagerLookupFactory] instantiated TransactionManagerLookup
+11:15:12,212 INFO  [SettingsFactory] Automatic flush during beforeCompletion(): disabled
+11:15:12,212 INFO  [SettingsFactory] Automatic session close at end of transaction: disabled
+11:15:12,213 INFO  [SettingsFactory] JDBC batch size: 15
+11:15:12,213 INFO  [SettingsFactory] JDBC batch updates for versioned data: disabled
+11:15:12,213 INFO  [SettingsFactory] Scrollable result sets: enabled
+11:15:12,213 INFO  [SettingsFactory] JDBC3 getGeneratedKeys(): disabled
+11:15:12,213 INFO  [SettingsFactory] Connection release mode: auto
+11:15:12,213 INFO  [SettingsFactory] Default batch fetch size: 1
+11:15:12,213 INFO  [SettingsFactory] Generate SQL with comments: disabled
+11:15:12,213 INFO  [SettingsFactory] Order SQL updates by primary key: disabled
+11:15:12,213 INFO  [SettingsFactory] Order SQL inserts for batching: disabled
+11:15:12,214 INFO  [SettingsFactory] Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+11:15:12,214 INFO  [ASTQueryTranslatorFactory] Using ASTQueryTranslatorFactory
+11:15:12,214 INFO  [SettingsFactory] Query language substitutions: {}
+11:15:12,214 INFO  [SettingsFactory] JPA-QL strict compliance: enabled
+11:15:12,214 INFO  [SettingsFactory] Second-level cache: enabled
+11:15:12,214 INFO  [SettingsFactory] Query cache: disabled
+11:15:12,214 INFO  [SettingsFactory] Cache region factory : org.hibernate.cache.impl.bridge.RegionFactoryCacheProviderBridge
+11:15:12,214 INFO  [RegionFactoryCacheProviderBridge] Cache provider: org.hibernate.cache.HashtableCacheProvider
+11:15:12,215 INFO  [SettingsFactory] Optimize cache for minimal puts: disabled
+11:15:12,215 INFO  [SettingsFactory] Cache region prefix: persistence.unit:unitName=nfe-domain.jar#persistence-nfe
+11:15:12,215 INFO  [SettingsFactory] Structured second-level cache entries: disabled
+11:15:12,215 INFO  [SettingsFactory] Echoing all SQL to stdout
+11:15:12,215 INFO  [SettingsFactory] Statistics: disabled
+11:15:12,215 INFO  [SettingsFactory] Deleted entity synthetic identifier rollback: disabled
+11:15:12,215 INFO  [SettingsFactory] Default entity-mode: pojo
+11:15:12,215 INFO  [SettingsFactory] Named query checking : enabled
+11:15:12,215 INFO  [SettingsFactory] Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+11:15:12,277 INFO  [SessionFactoryImpl] building session factory
+11:15:12,278 INFO  [BasicTypeRegistry] Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@b05dce
+11:15:12,278 INFO  [BasicTypeRegistry] Type registration [clob] overrides previous : org.hibernate.type.ClobType@de7fbc
+11:15:12,278 INFO  [BasicTypeRegistry] Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@de7fbc
+11:15:12,278 INFO  [BasicTypeRegistry] Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@1942dd5
+11:15:12,278 INFO  [BasicTypeRegistry] Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@14d2f0c
+11:15:12,278 INFO  [BasicTypeRegistry] Type registration [blob] overrides previous : org.hibernate.type.BlobType@4befc2
+11:15:12,279 INFO  [BasicTypeRegistry] Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@4befc2
+11:15:12,279 INFO  [BasicTypeRegistry] Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@169daf2
+11:15:12,279 INFO  [BasicTypeRegistry] Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@a552e6
+11:15:12,419 INFO  [SessionFactoryObjectFactory] Factory name: persistence.unit:unitName=nfe-domain.jar#persistence-nfe
+11:15:12,419 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+11:15:12,435 INFO  [SessionFactoryObjectFactory] Bound factory to JNDI name: persistence.unit:unitName=nfe-domain.jar#persistence-nfe
+11:15:12,435 INFO  [SchemaUpdate] Running hbm2ddl schema update
+11:15:12,436 INFO  [SchemaUpdate] fetching database metadata
+11:15:12,909 INFO  [SchemaUpdate] updating schema
+11:15:12,969 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+11:15:13,329 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_CODIGO_SEFAZ
+11:15:13,329 INFO  [TableMetadata] columns: [codigo, data_modificacao, id, data_criacao, nome, descricao]
+11:15:13,329 INFO  [TableMetadata] foreign keys: []
+11:15:13,329 INFO  [TableMetadata] indexes: [sys_c00128893, sys_c00128892]
+11:15:13,395 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_CONSULTA_NFE
+11:15:13,395 INFO  [TableMetadata] columns: [data_autorizacao, data_modificacao, id, cnpj_emitente, codigo_situacao_nfe, data_criacao, nsu, chave_acesso, codigo_situacao_manifestacao, cnpj_destinatario, data_consulta_continuidade]
+11:15:13,395 INFO  [TableMetadata] foreign keys: []
+11:15:13,395 INFO  [TableMetadata] indexes: [sys_c00140320, sys_c00140319]
+11:15:13,466 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_NF_ENTRADA
+11:15:13,466 INFO  [TableMetadata] columns: [data_modificacao, tipo_operacao, numero_documento_fiscal, uf_emissao, id_parametro_empresa, id, cnpj_emitente, evento_conclusivo, id_status_xml, data_cancelamento_nf, data_criacao, serie_nf, id_status_sefaz, valor_total, chave_acesso, tipo_forma_emissao, data_autorizacao_nf]
+11:15:13,466 INFO  [TableMetadata] foreign keys: [fkaebb88a2e903113c, fkaebb88a2da9c0bbe, fkaebb88a2d5ee7208]
+11:15:13,466 INFO  [TableMetadata] indexes: [sys_c00128927, sys_c00128928]
+11:15:13,527 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_NF_REPOSITORIO_XML
+11:15:13,527 INFO  [TableMetadata] columns: [data_modificacao, id, data_importacao, id_nfe_entrada, data_autorizacao_sefaz_nf, nr_protocolo, data_criacao, versao_schema, xml, tipo_xml]
+11:15:13,528 INFO  [TableMetadata] foreign keys: [fk80246c789104a605]
+11:15:13,528 INFO  [TableMetadata] indexes: [sys_c00128938]
+11:15:13,589 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_OCORRENCIA_NFE
+11:15:13,589 INFO  [TableMetadata] columns: [data_modificacao, id, num_seq_evento, data_criacao, nsu, tipo_evento, x_correcao, data_recebimento, consulta_nfe_id]
+11:15:13,589 INFO  [TableMetadata] foreign keys: [fk7d9979f78c34de4d]
+11:15:13,589 INFO  [TableMetadata] indexes: [sys_c00128946, sys_c00128947]
+11:15:13,653 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_PACOTE_LIBERACAO
+11:15:13,653 INFO  [TableMetadata] columns: [data_modificacao, id, data_liberacao_pacote, data_criacao, id_manual, grupo_schema_sefaz, data_inclusao_sistema, versao]
+11:15:13,653 INFO  [TableMetadata] foreign keys: [fkd07963634487d432]
+11:15:13,653 INFO  [TableMetadata] indexes: [sys_c00128956, sys_c00128957]
+11:15:13,736 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_PARAMETRO_EMPRESA_FILIAL
+11:15:13,736 INFO  [TableMetadata] columns: [data_modificacao, cod_empresa, qtde_visualizacao_nf, uf, tempo_min_consulta_destinados, prazo_limite_manifestacao, ambiente, razao_social, descricao, senha_cert_jks, id, cnpj_empresa, ciencia_automatica, email_adm, data_criacao, ie, cam_cert_jks, alias_cert_jks, cod_filial, exibir_manifestacao_expirar]
+11:15:13,736 INFO  [TableMetadata] foreign keys: []
+11:15:13,736 INFO  [TableMetadata] indexes: [sys_c00140569, sys_c00128979, sys_c00128978]
+11:15:13,794 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_PARAMETRO_EMPRESA_PL
+11:15:13,794 INFO  [TableMetadata] columns: [data_modificacao, data_criacao, id_pacote_liberacao, id_parametro_empresa_filial, grupo_schema]
+11:15:13,794 INFO  [TableMetadata] foreign keys: [fk94e84bea36ea8468, fk94e84bea63672207]
+11:15:13,794 INFO  [TableMetadata] indexes: [sys_c00144726]
+11:15:13,848 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_PARAMETRO_SISTEMA
+11:15:13,848 INFO  [TableMetadata] columns: [data_modificacao, id, data_criacao]
+11:15:13,848 INFO  [TableMetadata] foreign keys: []
+11:15:13,848 INFO  [TableMetadata] indexes: [sys_c00128983]
+11:15:13,908 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_PARAMETRO_SISTEMA_WS
+11:15:13,908 INFO  [TableMetadata] columns: [id_param_sistema, data_modificacao, id, servico, data_criacao, versao_xsd, xsd_path]
+11:15:13,908 INFO  [TableMetadata] foreign keys: [fk40f630913f192977]
+11:15:13,908 INFO  [TableMetadata] indexes: [sys_c00128992, sys_c00128991]
+11:15:13,962 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_PROPRIEDADES_SCHEMA
+11:15:13,962 INFO  [TableMetadata] columns: [prop_schemas, pacoteliberacao_id, chave]
+11:15:13,962 INFO  [TableMetadata] foreign keys: [fk69e2874457975e58]
+11:15:13,962 INFO  [TableMetadata] indexes: [sys_c00128996]
+11:15:14,737 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_PROPRIEDADES_SISTEMA
+11:15:14,737 INFO  [TableMetadata] columns: [valor, chave, parametrosistema_id]
+11:15:14,737 INFO  [TableMetadata] foreign keys: [fkdd4d2cbfad79477c]
+11:15:14,737 INFO  [TableMetadata] indexes: [sys_c00128999]
+11:15:14,802 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_SEFAZ_MANUAL
+11:15:14,803 INFO  [TableMetadata] columns: [data_modificacao, id, data_criacao, data_inclusao, versao, descricao, data_liberacao_manual]
+11:15:14,803 INFO  [TableMetadata] foreign keys: []
+11:15:14,803 INFO  [TableMetadata] indexes: [sys_c00129007, sys_c00129008]
+11:15:14,871 INFO  [TableMetadata] table found: SUITE_NFE_DEV.NFE_SEFAZ_WS
+11:15:14,871 INFO  [TableMetadata] columns: [tp_servico_webservice, data_modificacao, id, uf, data_criacao, id_pacote_liberacao, modelo_envolope, ambiente, protocolo_soap, endpoint]
+11:15:14,871 INFO  [TableMetadata] foreign keys: [fk571b036063672207]
+11:15:14,871 INFO  [TableMetadata] indexes: [sys_c00129020, sys_c00129019]
+11:15:14,872 INFO  [SchemaUpdate] schema update complete
+11:15:14,873 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+11:15:14,894 ERROR [MetadataContext] Unable to locate static metamodel field : br.com.pwc.nfe.entrada.entity.negocio.NFeEntrada_#valorTotal
+11:15:14,898 ERROR [MetadataContext] Unable to locate static metamodel field : br.com.pwc.nfe.entrada.entity.sistema.ParametroEmpresaFilial_#tempoMinimoConsultaDestinados
+11:15:14,899 ERROR [MetadataContext] Unable to locate static metamodel field : br.com.pwc.nfe.entrada.entity.sistema.ParametroEmpresaFilial_#exibirManifestacaoExpirar
+11:15:14,911 ERROR [MetadataContext] Unable to locate static metamodel field : br.com.pwc.nfe.entrada.entity.sistema.SefazWebService_#idPacoteLiberacao
+11:15:15,002 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeTransactionBean,service=EJB3
+11:15:15,002 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.util.TransactionBean ejbName: nfeTransactionBean
+11:15:15,025 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroSistemaManager,service=EJB3
+11:15:15,039 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaManager ejbName: nfeParametroSistemaManager
+11:15:15,042 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeParametroSistemaManager/local - EJB3.x Default Local Business Interface
+	nfeParametroSistemaManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,044 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,045 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeConsultaNFeManager,service=EJB3
+11:15:15,046 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.negocio.ConsultaNFeManager ejbName: nfeConsultaNFeManager
+11:15:15,051 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeConsultaNFeManager/local - EJB3.x Default Local Business Interface
+	nfeConsultaNFeManager/local-br.com.pwc.nfe.entrada.domain.negocio.ConsultaNFeManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,052 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,053 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeSefazWebServiceManager,service=EJB3
+11:15:15,055 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.parametrizacao.SefazWebServiceManager ejbName: nfeSefazWebServiceManager
+11:15:15,061 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeSefazWebServiceManager/local - EJB3.x Default Local Business Interface
+	nfeSefazWebServiceManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.SefazWebServiceManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,062 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,063 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeManualManager,service=EJB3
+11:15:15,065 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.parametrizacao.ManualManager ejbName: nfeManualManager
+11:15:15,069 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeManualManager/local - EJB3.x Default Local Business Interface
+	nfeManualManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.ManualManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,070 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,071 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeOcorrenciaNFeManager,service=EJB3
+11:15:15,073 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.negocio.OcorrenciaNFeManager ejbName: nfeOcorrenciaNFeManager
+11:15:15,077 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeOcorrenciaNFeManager/local - EJB3.x Default Local Business Interface
+	nfeOcorrenciaNFeManager/local-br.com.pwc.nfe.entrada.domain.negocio.OcorrenciaNFeManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,078 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,079 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeCodigoSefazManager,service=EJB3
+11:15:15,081 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.negocio.CodigoSefazManager ejbName: nfeCodigoSefazManager
+11:15:15,085 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeCodigoSefazManager/local - EJB3.x Default Local Business Interface
+	nfeCodigoSefazManager/local-br.com.pwc.nfe.entrada.domain.negocio.CodigoSefazManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,086 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,088 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeTransactionBean/local - EJB3.x Default Local Business Interface
+	nfeTransactionBean/local-br.com.pwc.nfe.entrada.domain.util.Caller - EJB3.x Local Business Interface
+
+11:15:15,089 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,100 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeEntradaRepositorioXMLManager,service=EJB3
+11:15:15,102 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaRepositorioManager ejbName: nfeEntradaRepositorioXMLManager
+11:15:15,105 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeEntradaRepositorioXMLManager/local - EJB3.x Default Local Business Interface
+	nfeEntradaRepositorioXMLManager/local-br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaRepositorioXMLManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,106 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,107 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroEmpresaFilialManager,service=EJB3
+11:15:15,109 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialManager ejbName: nfeParametroEmpresaFilialManager
+11:15:15,114 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeParametroEmpresaFilialManager/local - EJB3.x Default Local Business Interface
+	nfeParametroEmpresaFilialManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,116 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,131 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroSistemaWSIntegracaoManager,service=EJB3
+11:15:15,132 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaWSIntegracaoManager ejbName: nfeParametroSistemaWSIntegracaoManager
+11:15:15,135 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeParametroSistemaWSIntegracaoManager/local - EJB3.x Default Local Business Interface
+	nfeParametroSistemaWSIntegracaoManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroSistemaWSIntegracaoManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,136 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,148 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeParametroEmpresaFilialPLManager,service=EJB3
+11:15:15,150 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialPLManager ejbName: nfeParametroEmpresaFilialPLManager
+11:15:15,153 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeParametroEmpresaFilialPLManager/local - EJB3.x Default Local Business Interface
+	nfeParametroEmpresaFilialPLManager/local-br.com.pwc.nfe.entrada.domain.parametrizacao.ParametroEmpresaFilialPLManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,155 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,175 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfePacoteLiberacaoManager,service=EJB3
+11:15:15,177 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.parametrizacao.PacoteLiberacaoManager ejbName: nfePacoteLiberacaoManager
+11:15:15,182 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfePacoteLiberacaoManager/local - EJB3.x Default Local Business Interface
+	nfePacoteLiberacaoManager/local-br.com.pwc.nfe.entrada.domain.PacoteLiberacaoManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,184 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,196 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-domain.jar,name=nfeNFeEntradaManager,service=EJB3
+11:15:15,198 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaManager ejbName: nfeNFeEntradaManager
+11:15:15,203 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeNFeEntradaManager/local - EJB3.x Default Local Business Interface
+	nfeNFeEntradaManager/local-br.com.pwc.nfe.entrada.domain.negocio.NFeEntradaManagerLocal - EJB3.x Local Business Interface
+
+11:15:15,204 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:15,236 WARN  [InterceptorInfoRepository] EJBTHREE-1852: InterceptorInfoRepository is deprecated
+11:15:15,483 INFO  [DefaultEndpointRegistry] register: jboss.ws:context=nfe-ws,endpoint=nfeManifestacao
+11:15:15,492 INFO  [DefaultEndpointRegistry] register: jboss.ws:context=nfe-ws,endpoint=ExportacaoNF
+11:15:15,493 INFO  [DefaultEndpointRegistry] register: jboss.ws:context=nfe-ws,endpoint=nfeImportacaoNFEntradaWS
+11:15:15,516 WARN  [DescriptorDeploymentAspect] Spring not available, skipping check for user provided jbossws-cxf.xml / cxf.xml configuration files.
+11:15:15,531 INFO  [MetadataBuilder] Add Service
+ id=nfeManifestacao
+ address=http://jbossws.undefined.host:8080/nfe-ws/WSManifestacaoNFEntradaService/WSManifestacaoNFEntrada
+ implementor=br.com.pwc.nfe.entrada.ws.manifestacao.WSManifestacaoNFeEntradaBean
+ invoker=org.jboss.wsf.stack.cxf.InvokerEJB3
+ serviceName={http://www.pwc.com.br/WSManifestacaoNFEntradaService}WSManifestacaoNFEntradaService
+ portName={http://www.pwc.com.br/WSManifestacaoNFEntradaService}WSManifestacaoNFEntradaPort
+ wsdlLocation=null
+ mtomEnabled=false
+11:15:15,532 INFO  [MetadataBuilder] Add Service
+ id=ExportacaoNF
+ address=http://jbossws.undefined.host:8080/nfe-ws/WSExportacaoNFEntradaService/WSExportacaoNFEntrada
+ implementor=br.com.pwc.nfe.entrada.ws.exportacao.WSExportacaoNFBean
+ invoker=org.jboss.wsf.stack.cxf.InvokerEJB3
+ serviceName={http://www.pwc.com.br/nfe-entrada}WSExportacaoNFEntradaService
+ portName={http://www.pwc.com.br/nfe-entrada}WSExportacaoNFEntradaPort
+ wsdlLocation=null
+ mtomEnabled=false
+11:15:15,532 INFO  [MetadataBuilder] Add Service
+ id=nfeImportacaoNFEntradaWS
+ address=http://jbossws.undefined.host:8080/nfe-ws/WSImportacaoNFEntradaService/WSImportacaoNFEntrada
+ implementor=br.com.pwc.nfe.entrada.ws.importacao.WSImportacaoNFEntradaBean
+ invoker=org.jboss.wsf.stack.cxf.InvokerEJB3
+ serviceName={http://www.pwc.com.br/nfe-entrada}WSImportacaoNFEntradaService
+ portName={http://www.pwc.com.br/nfe-entrada}WSImportacaoNFEntradaPort
+ wsdlLocation=null
+ mtomEnabled=false
+11:15:16,092 INFO  [ReflectionServiceFactoryBean] Creating Service {http://www.pwc.com.br/WSManifestacaoNFEntradaService}WSManifestacaoNFEntradaService from class br.com.pwc.nfe.entrada.ws.manifestacao.WSManifestacaoNFeEntradaBean
+11:15:18,137 INFO  [ServerImpl] Setting the server's publish address to be http://jbossws.undefined.host:8080/nfe-ws/WSManifestacaoNFEntradaService/WSManifestacaoNFEntrada
+11:15:18,670 INFO  [WSDLFilePublisher] WSDL published to: file:/C:/jboss-6.1.0.Final/server/NfeEntrada/data/wsdl/nfe-ws.jar/WSManifestacaoNFEntradaService.wsdl
+11:15:18,684 INFO  [ReflectionServiceFactoryBean] Creating Service {http://www.pwc.com.br/nfe-entrada}WSExportacaoNFEntradaService from class br.com.pwc.nfe.entrada.ws.exportacao.WSExportacaoNFBean
+11:15:19,012 INFO  [ServerImpl] Setting the server's publish address to be http://jbossws.undefined.host:8080/nfe-ws/WSExportacaoNFEntradaService/WSExportacaoNFEntrada
+11:15:19,027 INFO  [WSDLFilePublisher] WSDL published to: file:/C:/jboss-6.1.0.Final/server/NfeEntrada/data/wsdl/nfe-ws.jar/WSExportacaoNFEntradaService.wsdl
+11:15:19,031 INFO  [ReflectionServiceFactoryBean] Creating Service {http://www.pwc.com.br/nfe-entrada}WSImportacaoNFEntradaService from class br.com.pwc.nfe.entrada.ws.importacao.WSImportacaoNFEntradaBean
+11:15:19,035 INFO  [ServerImpl] Setting the server's publish address to be http://jbossws.undefined.host:8080/nfe-ws/WSImportacaoNFEntradaService/WSImportacaoNFEntrada
+11:15:19,050 INFO  [WSDLFilePublisher] WSDL published to: file:/C:/jboss-6.1.0.Final/server/NfeEntrada/data/wsdl/nfe-ws.jar/WSImportacaoNFEntradaService.wsdl
+11:15:19,071 INFO  [JBossASKernel] Created KernelDeployment for: nfe-ws.jar
+11:15:19,072 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-ws.jar,name=nfeManifestacao,service=EJB3
+11:15:19,072 INFO  [JBossASKernel]   with dependencies:
+11:15:19,072 INFO  [JBossASKernel]   and demands:
+11:15:19,072 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:19,072 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-ws.jar,unit=nfe-ws.jar,bean=nfeManifestacao; Required: Described
+11:15:19,072 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-ws,module=nfe-ws; Required: Create
+11:15:19,072 INFO  [JBossASKernel]   and supplies:
+11:15:19,072 INFO  [JBossASKernel] 	jndi:nfeManifestacao/remote-br.com.pwc.nfe.entrada.ws.manifestacao.WSManifestacaoNFeEntradaBeanLocal
+11:15:19,072 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.ws.manifestacao.WSManifestacaoNFeEntradaBeanLocal
+11:15:19,072 INFO  [JBossASKernel] 	jndi:nfeManifestacao
+11:15:19,072 INFO  [JBossASKernel] 	jndi:nfeManifestacao/remote
+11:15:19,073 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-ws.jar,name=nfeManifestacao,service=EJB3) to KernelDeployment of: nfe-ws.jar
+11:15:19,074 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-ws.jar,name=ExportacaoNF,service=EJB3
+11:15:19,074 INFO  [JBossASKernel]   with dependencies:
+11:15:19,074 INFO  [JBossASKernel]   and demands:
+11:15:19,074 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:19,074 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-ws,module=nfe-ws; Required: Create
+11:15:19,074 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-ws.jar,unit=nfe-ws.jar,bean=ExportacaoNF; Required: Described
+11:15:19,074 INFO  [JBossASKernel]   and supplies:
+11:15:19,074 INFO  [JBossASKernel] 	jndi:ExportacaoNF
+11:15:19,074 INFO  [JBossASKernel] 	jndi:ExportacaoNF/local-br.com.pwc.nfe.entrada.ws.exportacao.WSExportacaoNFIntegracaoBeanLocal
+11:15:19,075 INFO  [JBossASKernel] 	jndi:ExportacaoNF/local
+11:15:19,075 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.ws.exportacao.WSExportacaoNFIntegracaoBeanLocal
+11:15:19,075 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-ws.jar,name=ExportacaoNF,service=EJB3) to KernelDeployment of: nfe-ws.jar
+11:15:19,076 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-ws.jar,name=nfeImportacaoNFEntradaWS,service=EJB3
+11:15:19,076 INFO  [JBossASKernel]   with dependencies:
+11:15:19,076 INFO  [JBossASKernel]   and demands:
+11:15:19,076 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-ws.jar,unit=nfe-ws.jar,bean=nfeImportacaoNFEntradaWS; Required: Described
+11:15:19,076 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:19,076 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-ws,module=nfe-ws; Required: Create
+11:15:19,076 INFO  [JBossASKernel]   and supplies:
+11:15:19,077 INFO  [JBossASKernel] 	jndi:nfeImportacaoNFEntradaWS/remote-br.com.pwc.nfe.entrada.ws.importacao.WSImportacaoNFEntradaBeanRemote
+11:15:19,077 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.ws.importacao.WSImportacaoNFEntradaBeanRemote
+11:15:19,077 INFO  [JBossASKernel] 	jndi:nfeImportacaoNFEntradaWS/remote
+11:15:19,077 INFO  [JBossASKernel] 	jndi:nfeImportacaoNFEntradaWS
+11:15:19,077 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-ws.jar,name=nfeImportacaoNFEntradaWS,service=EJB3) to KernelDeployment of: nfe-ws.jar
+11:15:19,087 INFO  [SingletonContainerDeployer] Installing container for EJB nfeWSBundleBean
+11:15:19,087 INFO  [SingletonContainerDeployer] with dependencies: 
+11:15:19,087 INFO  [SingletonContainerDeployer] with demands: 
+11:15:19,087 INFO  [SingletonContainerDeployer] with supplies: 
+11:15:19,098 INFO  [SingletonContainerDeployer] Installing container for EJB nfeStartUpBean
+11:15:19,099 INFO  [SingletonContainerDeployer] with dependencies: 
+11:15:19,099 INFO  [SingletonContainerDeployer] with demands: 
+11:15:19,099 INFO  [SingletonContainerDeployer] jboss-injector:topLevelUnit=nfe-ws.jar,unit=nfe-ws.jar,bean=nfeStartUpBean
+11:15:19,099 INFO  [SingletonContainerDeployer] with supplies: 
+11:15:19,099 INFO  [SingletonContainerDeployer] Class:br.com.pwc.nfe.entrada.ws.StartUpBeanLocal
+11:15:19,101 INFO  [SingletonBeanJNDIBinderDeployer] Binding the following entries in JNDI for singleton bean: nfeWSBundleBean
+
+
+11:15:19,122 INFO  [SingletonBeanJNDIBinderDeployer] Binding the following entries in JNDI for singleton bean: nfeStartUpBean
+
+nfeStartUpBean/local		->EJB3.x Default Local Business Interface
+nfeStartUpBean/local-br.com.pwc.nfe.entrada.ws.StartUpBeanLocal		->EJB3.x Local Business Interface
+
+11:15:19,211 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-ws.jar,name=nfeStartUpBean,service=EJB3
+11:15:19,211 WARN  [SessionSpecContainer] EJBTHREE-2126: container jboss.j2ee:jar=nfe-ws.jar,name=nfeStartUpBean,service=EJB3 does not verify the businessObjectFactory
+11:15:19,211 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.ws.StartUpBean ejbName: nfeStartUpBean
+11:15:19,211 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:19,247 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-ws.jar,name=nfeImportacaoNFEntradaWS,service=EJB3
+11:15:19,247 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.ws.importacao.WSImportacaoNFEntradaBean ejbName: nfeImportacaoNFEntradaWS
+11:15:19,277 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeImportacaoNFEntradaWS/remote - EJB3.x Default Remote Business Interface
+	nfeImportacaoNFEntradaWS/remote-br.com.pwc.nfe.entrada.ws.importacao.WSImportacaoNFEntradaBeanRemote - EJB3.x Remote Business Interface
+
+11:15:19,278 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:19,279 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-ws.jar,name=nfeManifestacao,service=EJB3
+11:15:19,280 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.ws.manifestacao.WSManifestacaoNFeEntradaBean ejbName: nfeManifestacao
+11:15:19,287 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeManifestacao/remote - EJB3.x Default Remote Business Interface
+	nfeManifestacao/remote-br.com.pwc.nfe.entrada.ws.manifestacao.WSManifestacaoNFeEntradaBeanLocal - EJB3.x Remote Business Interface
+
+11:15:19,288 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:19,289 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-ws.jar,name=ExportacaoNF,service=EJB3
+11:15:19,289 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.ws.exportacao.WSExportacaoNFBean ejbName: ExportacaoNF
+11:15:19,293 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	ExportacaoNF/local - EJB3.x Default Local Business Interface
+	ExportacaoNF/local-br.com.pwc.nfe.entrada.ws.exportacao.WSExportacaoNFIntegracaoBeanLocal - EJB3.x Local Business Interface
+
+11:15:19,294 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:19,304 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-ws.jar,name=nfeWSBundleBean,service=EJB3
+11:15:19,304 WARN  [SessionSpecContainer] EJBTHREE-2126: container jboss.j2ee:jar=nfe-ws.jar,name=nfeWSBundleBean,service=EJB3 does not verify the businessObjectFactory
+11:15:19,304 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.ws.NFeWSBundleBean ejbName: nfeWSBundleBean
+11:15:19,304 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:19,308 INFO  [AbstractNoInterfaceViewBinder] Binding the following entry in Global JNDI for bean:nfeWSBundleBean
+
+	nfeWSBundleBean/no-interface -> EJB3.1 no-interface view
+
+11:15:19,465 INFO  [NFeWSBundleBean] inicializando o bundle do WS
+11:15:19,577 INFO  [StartUpBean] Configurando o proxy...
+11:15:19,584 INFO  [TomcatDeployment] deploy, ctxPath=/nfe-ws
+11:15:19,659 WARN  [InterceptorInfoRepository] EJBTHREE-1852: InterceptorInfoRepository is deprecated
+11:15:19,725 INFO  [JBossASKernel] Created KernelDeployment for: nfe-wssefaz.jar
+11:15:19,725 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWsSefazStatusServicoBean,service=EJB3
+11:15:19,726 INFO  [JBossASKernel]   with dependencies:
+11:15:19,726 INFO  [JBossASKernel]   and demands:
+11:15:19,726 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-wssefaz.jar,unit=nfe-wssefaz.jar,bean=nfeWsSefazStatusServicoBean; Required: Described
+11:15:19,726 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-wssefaz,module=nfe-wssefaz,name=nfeWsSefazStatusServicoBean; Required: Create
+11:15:19,726 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:19,726 INFO  [JBossASKernel]   and supplies:
+11:15:19,726 INFO  [JBossASKernel] 	jndi:nfeWsSefazStatusServicoBean/local
+11:15:19,726 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.ws.sefaz.nf.status.WsSefazNFStatusServicoBeanLocal
+11:15:19,726 INFO  [JBossASKernel] 	jndi:nfeWsSefazStatusServicoBean
+11:15:19,726 INFO  [JBossASKernel] 	jndi:nfeWsSefazStatusServicoBean/local-br.com.pwc.nfe.entrada.ws.sefaz.nf.status.WsSefazNFStatusServicoBeanLocal
+11:15:19,727 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWsSefazStatusServicoBean,service=EJB3) to KernelDeployment of: nfe-wssefaz.jar
+11:15:19,728 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWsSefazConsultaNFDestBean,service=EJB3
+11:15:19,728 INFO  [JBossASKernel]   with dependencies:
+11:15:19,728 INFO  [JBossASKernel]   and demands:
+11:15:19,728 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-wssefaz,module=nfe-wssefaz,name=nfeWsSefazConsultaNFDestBean; Required: Create
+11:15:19,728 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:19,728 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-wssefaz.jar,unit=nfe-wssefaz.jar,bean=nfeWsSefazConsultaNFDestBean; Required: Described
+11:15:19,728 INFO  [JBossASKernel]   and supplies:
+11:15:19,728 INFO  [JBossASKernel] 	jndi:nfeWsSefazConsultaNFDestBean/local-br.com.pwc.nfe.entrada.ws.sefaz.nf.destinados.WSSefazConsultaNFDestBeanLocal
+11:15:19,729 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.ws.sefaz.nf.destinados.WSSefazConsultaNFDestBeanLocal
+11:15:19,729 INFO  [JBossASKernel] 	jndi:nfeWsSefazConsultaNFDestBean
+11:15:19,729 INFO  [JBossASKernel] 	jndi:nfeWsSefazConsultaNFDestBean/local
+11:15:19,729 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWsSefazConsultaNFDestBean,service=EJB3) to KernelDeployment of: nfe-wssefaz.jar
+11:15:19,730 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWSSefazDownload,service=EJB3
+11:15:19,730 INFO  [JBossASKernel]   with dependencies:
+11:15:19,730 INFO  [JBossASKernel]   and demands:
+11:15:19,731 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-wssefaz.jar,unit=nfe-wssefaz.jar,bean=nfeWSSefazDownload; Required: Described
+11:15:19,731 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:19,731 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-wssefaz,module=nfe-wssefaz,name=nfeWSSefazDownload; Required: Create
+11:15:19,731 INFO  [JBossASKernel]   and supplies:
+11:15:19,731 INFO  [JBossASKernel] 	jndi:nfeWSSefazDownload
+11:15:19,731 INFO  [JBossASKernel] 	jndi:nfeWSSefazDownload/local-br.com.pwc.nfe.entrada.ws.sefaz.nf.destinados.WSSefazDownloadNFeBeanLocal
+11:15:19,731 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.ws.sefaz.nf.destinados.WSSefazDownloadNFeBeanLocal
+11:15:19,731 INFO  [JBossASKernel] 	jndi:nfeWSSefazDownload/local
+11:15:19,732 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWSSefazDownload,service=EJB3) to KernelDeployment of: nfe-wssefaz.jar
+11:15:19,733 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWSSefazConsultaBean,service=EJB3
+11:15:19,733 INFO  [JBossASKernel]   with dependencies:
+11:15:19,733 INFO  [JBossASKernel]   and demands:
+11:15:19,733 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-wssefaz.jar,unit=nfe-wssefaz.jar,bean=nfeWSSefazConsultaBean; Required: Described
+11:15:19,733 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:19,733 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-wssefaz,module=nfe-wssefaz,name=nfeWSSefazConsultaBean; Required: Create
+11:15:19,733 INFO  [JBossASKernel]   and supplies:
+11:15:19,733 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.ws.sefaz.nf.consulta.WSSefazConsultaNFeBeanLocal
+11:15:19,733 INFO  [JBossASKernel] 	jndi:nfeWSSefazConsultaBean/local
+11:15:19,733 INFO  [JBossASKernel] 	jndi:nfeWSSefazConsultaBean
+11:15:19,733 INFO  [JBossASKernel] 	jndi:nfeWSSefazConsultaBean/local-br.com.pwc.nfe.entrada.ws.sefaz.nf.consulta.WSSefazConsultaNFeBeanLocal
+11:15:19,734 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWSSefazConsultaBean,service=EJB3) to KernelDeployment of: nfe-wssefaz.jar
+11:15:19,735 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWSSefazEventoBean,service=EJB3
+11:15:19,735 INFO  [JBossASKernel]   with dependencies:
+11:15:19,735 INFO  [JBossASKernel]   and demands:
+11:15:19,735 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=nfe-wssefaz.jar,unit=nfe-wssefaz.jar,bean=nfeWSSefazEventoBean; Required: Described
+11:15:19,735 INFO  [JBossASKernel] 	jboss-switchboard:appName=nfe-wssefaz,module=nfe-wssefaz,name=nfeWSSefazEventoBean; Required: Create
+11:15:19,735 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+11:15:19,735 INFO  [JBossASKernel]   and supplies:
+11:15:19,736 INFO  [JBossASKernel] 	jndi:nfeWSSefazEventoBean
+11:15:19,736 INFO  [JBossASKernel] 	jndi:nfeWSSefazEventoBean/local-br.com.pwc.nfe.entrada.ws.sefaz.evento.WSSefazEventoBeanLocal
+11:15:19,736 INFO  [JBossASKernel] 	Class:br.com.pwc.nfe.entrada.ws.sefaz.evento.WSSefazEventoBeanLocal
+11:15:19,736 INFO  [JBossASKernel] 	jndi:nfeWSSefazEventoBean/local
+11:15:19,736 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWSSefazEventoBean,service=EJB3) to KernelDeployment of: nfe-wssefaz.jar
+11:15:19,746 INFO  [SingletonContainerDeployer] Installing container for EJB nfeWSSefazBundleBean
+11:15:19,746 INFO  [SingletonContainerDeployer] with dependencies: 
+11:15:19,746 INFO  [SingletonContainerDeployer] with demands: 
+11:15:19,746 INFO  [SingletonContainerDeployer] with supplies: 
+11:15:19,747 INFO  [SingletonBeanJNDIBinderDeployer] Binding the following entries in JNDI for singleton bean: nfeWSSefazBundleBean
+
+
+11:15:19,845 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWSSefazBundleBean,service=EJB3
+11:15:19,846 WARN  [SessionSpecContainer] EJBTHREE-2126: container jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWSSefazBundleBean,service=EJB3 does not verify the businessObjectFactory
+11:15:19,846 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.ws.sefaz.NFeWSSefazBundleBean ejbName: nfeWSSefazBundleBean
+11:15:19,846 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:19,853 INFO  [AbstractNoInterfaceViewBinder] Binding the following entry in Global JNDI for bean:nfeWSSefazBundleBean
+
+	nfeWSSefazBundleBean/no-interface -> EJB3.1 no-interface view
+
+11:15:19,872 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWSSefazEventoBean,service=EJB3
+11:15:19,872 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.ws.sefaz.evento.WSSefazEventoBean ejbName: nfeWSSefazEventoBean
+11:15:19,875 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeWSSefazEventoBean/local - EJB3.x Default Local Business Interface
+	nfeWSSefazEventoBean/local-br.com.pwc.nfe.entrada.ws.sefaz.evento.WSSefazEventoBeanLocal - EJB3.x Local Business Interface
+
+11:15:19,877 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:19,878 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWsSefazConsultaNFDestBean,service=EJB3
+11:15:19,878 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.ws.sefaz.nf.destinados.WSSefazConsultaNFDestBean ejbName: nfeWsSefazConsultaNFDestBean
+11:15:19,882 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeWsSefazConsultaNFDestBean/local - EJB3.x Default Local Business Interface
+	nfeWsSefazConsultaNFDestBean/local-br.com.pwc.nfe.entrada.ws.sefaz.nf.destinados.WSSefazConsultaNFDestBeanLocal - EJB3.x Local Business Interface
+
+11:15:19,884 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:19,885 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWSSefazConsultaBean,service=EJB3
+11:15:19,885 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.ws.sefaz.nf.consulta.WSSefazConsultaNFeBean ejbName: nfeWSSefazConsultaBean
+11:15:19,889 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeWSSefazConsultaBean/local - EJB3.x Default Local Business Interface
+	nfeWSSefazConsultaBean/local-br.com.pwc.nfe.entrada.ws.sefaz.nf.consulta.WSSefazConsultaNFeBeanLocal - EJB3.x Local Business Interface
+
+11:15:19,890 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:19,891 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWSSefazDownload,service=EJB3
+11:15:19,891 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.ws.sefaz.nf.destinados.WSSefazDownloadNFeBean ejbName: nfeWSSefazDownload
+11:15:19,896 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeWSSefazDownload/local - EJB3.x Default Local Business Interface
+	nfeWSSefazDownload/local-br.com.pwc.nfe.entrada.ws.sefaz.nf.destinados.WSSefazDownloadNFeBeanLocal - EJB3.x Local Business Interface
+
+11:15:19,897 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:19,904 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=nfe-wssefaz.jar,name=nfeWsSefazStatusServicoBean,service=EJB3
+11:15:19,904 INFO  [EJBContainer] STARTED EJB: br.com.pwc.nfe.entrada.ws.sefaz.nf.status.WsSefazNFStatusServicoBean ejbName: nfeWsSefazStatusServicoBean
+11:15:19,907 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	nfeWsSefazStatusServicoBean/local - EJB3.x Default Local Business Interface
+	nfeWsSefazStatusServicoBean/local-br.com.pwc.nfe.entrada.ws.sefaz.nf.status.WsSefazNFStatusServicoBeanLocal - EJB3.x Local Business Interface
+
+11:15:19,908 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+11:15:20,089 INFO  [xnio] XNIO Version 2.1.0.CR2
+11:15:20,110 INFO  [nio] XNIO NIO Implementation Version 2.1.0.CR2
+11:15:20,373 INFO  [remoting] JBoss Remoting version 3.1.0.Beta2
+11:15:20,519 INFO  [TomcatDeployment] deploy, ctxPath=/
+11:15:20,580 INFO  [TomcatDeployment] deploy, ctxPath=/nfe-entrada
+11:15:20,659 INFO  [config] Inicializando Mojarra 2.0.3 ( b05) para o contexto '/nfe-entrada'
+11:15:27,949 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+11:15:27,992 INFO  [Cache] Selected fallback cache factory
+11:15:27,993 INFO  [Cache] Creating LRUMap cache instance using parameters: {javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL=true, org.ajax4jsf.DEFAULT_EXPIRE=86400, org.richfaces.resourceOptimization.enabled=true, javax.faces.CONFIG_FILES=/WEB-INF/faces-navigation.xml, com.sun.faces.duplicateJARPattern=^tmp\d+(\S*\.jar), com.sun.faces.externalizeJavaScript=true, org.richfaces.skin=DEFAULT, com.sun.faces.injectionProvider=org.jboss.web.jsf.integration.injection.JBossDelegatingInjectionProvider, com.sun.faces.validateXml=true, javax.faces.PROJECT_STAGE=Production, com.sun.faces.verifyObjects=false, org.richfaces.enableControlSkinning=false, javax.faces.FACELETS_SKIP_COMMENTS=true, javax.faces.STATE_SAVING_METHOD=server, javax.faces.DEFAULT_SUFFIX=.xhtml, resteasy.unwrapped.exceptions=javax.ejb.EJBException}
+11:15:27,999 INFO  [Cache] Creating LRUMap cache instance of 512 items capacity
+11:15:28,002 INFO  [Application] RichFaces Core Implementation by JBoss by Red Hat, version v.4.2.2.Final
+11:15:28,069 AVISO [Application] JMS API was found on the classpath; if you want to enable RichFaces Push JMS integration, set context-param 'org.richfaces.push.jms.enabled' in web.xml
+11:15:28,142 INFO  [HornetQServerImpl] trying to deploy queue jms.queue.DLQ
+11:15:28,289 INFO  [HornetQServerImpl] trying to deploy queue jms.queue.ExpiryQueue
+11:15:28,424 INFO  [service] Removing bootstrap log handlers

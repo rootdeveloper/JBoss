@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaParametrosEmpresa}"/>
+	</ui:define>
+	
+	<ui:define name="content">
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<h:commandButton value="Voltar" action="home" image="#{resource['images/png:voltar.png']}" styleClass="BotaoImagem" title="#{msg.titleVoltar}"/>
+			</rich:toolbarGroup>
+			<rich:toolbarGroup location="right">
+				<h:outputText value="#{msg.filtrarPor_}" styleClass="MarginRight5px"/>
+				<h:selectOneMenu id="selecFiltro" value="#{mbParametroEmpresa.tipoFiltro}" styleClass="ComboField MarginRight5px MarginTop3px">
+					<f:selectItems value="#{mbParametroEmpresa.filtros}"/>
+					<f:ajax event="valueChange" execute="@this" render="componenteBusca"/>
+				</h:selectOneMenu>
+				<h:panelGroup id="componenteBusca" layout="block">
+					<h:selectOneMenu id="selectedFiltro" rendered="#{mbParametroEmpresa.tipoFiltro == 3}" value="#{mbParametroEmpresa.ufFiltro}" converter="ufConverter" styleClass="ComboField MarginRight5px MarginTop3px">
+						<f:selectItems value="#{mbParametroEmpresa.listaEstados}" var="estado" itemLabel="#{estado.nomeEstado}"/>
+						<f:ajax event="valueChange" execute="@this"/>
+					</h:selectOneMenu>
+					<h:inputText value="#{mbParametroEmpresa.valorBusca}" id="valBusca" styleClass="Campo Largura150px MarginTop3px" rendered="#{mbParametroEmpresa.tipoFiltro != 0 &amp;&amp; mbParametroEmpresa.tipoFiltro != 3}" maxlength="20" onkeypress="return efetuarSubmitNoBotaoAoPressionarEnter(document.getElementById('busque'), event);"/>
+				</h:panelGroup>
+				<a4j:commandButton id="busque" action="#{mbParametroEmpresa.buscar}" image="/resources/images/png/selecionar.png"
+					render="controle,valorBusca" styleClass="BotaoImagem MarginRight5px" title="#{msg.titleFiltrar}"
+					oncomplete="renderLista()" status="modalStatus"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		<rich:dataTable id="data" var="item" value="#{mbParametroEmpresa.listaEmpresas}" rows="10" iterationStatusVar="it"
+			onrowdblclick="selectRow('#{it.index}')" styleClass="Largura100pc" onrowmouseover="className='SelecionaLinha'"
+			onrowmouseout="className=''" noDataLabel="#{msg.listaParametroEmpresaVazia}">
+			<rich:column headerClass="Largura80px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigo}"/>
+				</f:facet>
+				<h:outputText value="#{item.id}" />
+			</rich:column>
+			<rich:column headerClass="Largura60px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText value="#{msg.status}" />
+				</f:facet>
+				<h:outputText value="#{item.status.nomeTipo}" />
+			</rich:column>
+			<rich:column headerClass="Largura390px" styleClass="AlignLeft Truncate">
+				<f:facet name="header">
+					<h:outputText value="#{msg.razaoSocial}" title="#{msg.razaoSocial}"/>
+				</f:facet>
+				<h:outputText value="#{item.razaoSocial}" />
+			</rich:column>
+			<rich:column headerClass="Largura300px" styleClass="AlignLeft Truncate">
+				<f:facet name="header">
+					<h:outputText value="#{msg.nomeFantasia}"/>
+				</f:facet>
+				<h:outputText value="#{item.nomeFantasia}" title="#{item.nomeFantasia}"/>
+			</rich:column>
+			<rich:column headerClass="Largura60px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText value="#{msg.uf}"/>
+				</f:facet>
+				<h:outputText value="#{item.uf}" />
+			</rich:column>
+			<rich:column headerClass="Largura100px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cnpj}"/>
+				</f:facet>
+				<h:outputText value="#{item.cnpjEmpresa}" converter="cnpjConverter" />
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="data" idPanelScroller="controle" maxPages="16" panelStyleClass="Scroller100pc"
+			renderedTotalRegistros="#{not empty mbParametroEmpresa.listaEmpresas}" totalRegistros="#{mbParametroEmpresa.quantidadeRegistros}" 
+			pageNumber="#{mbParametroEmpresa.scrollerPageNumber}"/>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro">
+			<h:outputText value="#{mbParametroEmpresa.mensagemErro}" styleClass="MensagemDeErro" escape="false"/>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="selectRow" render="painelMensagemErro" action="#{mbParametroEmpresa.editar}" status="modalStatus">
+			<a4j:param name="currentRow" assignTo="#{mbParametroEmpresa.indexLinhaSelecionada}"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="renderLista" render="data" status="modalStatus"/>
+		
+	</ui:define>
+</ui:composition>

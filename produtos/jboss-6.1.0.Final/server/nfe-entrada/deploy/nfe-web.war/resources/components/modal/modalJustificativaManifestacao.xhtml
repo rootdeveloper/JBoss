@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="idModal" shortDescription="Identificador do modal"/>
+		<composite:attribute name="idModalSimNao" shortDescription="Identificador do modal sim nao"/>
+		<composite:attribute name="justificativaManifestacao" shortDescription="atributo justificativa da manifestacao"/>
+		<composite:attribute name="render" shortDescription="Ids a serem renderizados ao clicar em ok"/>
+		<composite:attribute name="tituloModal" shortDescription="Título do modal"/>
+		<composite:attribute name="validarJustificativa" method-signature="java.lang.Void validaJustifivativa(javax.faces.event.ActionEvent)"
+			shortDescription="metodo que efatua a validação da justificativa"/>
+		<composite:attribute name="justificativaValida" shortDescription="Booleano informando se justificativa é válida ou não"/>
+	</composite:interface>  
+
+    <composite:implementation> 
+
+		<rich:popupPanel modal="true" id="#{cc.attrs.idModal}" autosized="true" resizeable="false" moveable="false" domElementAttachment="form"
+			styleClass="Largura550px FundoBranco">
+
+			<f:facet name="header">
+				<h:outputText value="#{cc.attrs.tituloModal}" />
+			</f:facet>
+
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" onclick="#{rich:component(cc.attrs.idModal)}.hide();" 
+					styleClass="BotaoFechar" immediate="true" execute="@this">
+				 	<f:param name="acao" value="edicaoJustificativa"/>
+				 </a4j:commandButton>
+			</f:facet>
+
+			<h:panelGroup id="modalInformativoStatus" layout="block" styleClass="Largura100pc PositionRelative">
+
+				<div class="PositionRelative MarginLeftAuto MarginRightAuto Largura495px AlignCenter">
+
+					<h:outputText value="#{msg.justificativa}" styleClass="TituloDeCampo"/>
+
+					<h:panelGroup id="teste">
+					<h:inputTextarea id="manifestacaoJustificativa" required="false" requiredMessage="#{msg.modalJustificativaObrigatoria}"
+						value="#{cc.attrs.justificativaManifestacao}" styleClass="Campo TextArea490x85 MarginTop5px" 
+						onkeydown="limitText(this,255);" onkeyup="limitText(this,255);" onkeypress="limitText(this,255);" 
+						onmousedown="limitText(this,255);" onmouseup="limitText(this,255);" onmouseout="limitText(this,255);" 
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"/>
+					</h:panelGroup>
+				</div>
+
+				<h:panelGroup id="erroModalManifestacao"> 
+					<h:panelGroup layout="block" styleClass="PositionRelative MarginLeftAuto MarginRightAuto Largura280px AlignCenter MarginTop5px">
+						<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+					</h:panelGroup>
+				</h:panelGroup>
+
+				<div align="center">
+					<!--comentado pois nao estava conseguindo efetuar o fluxo de renderizacao de modais, com isso criei metodo
+					para validar e comentei a anotacao @Size no atributo justificativa
+					<a4j:commandButton id="botaoSim" value="#{msg.ok}" execute="teste @this"
+						styleClass="BotaoTexto MarginTop5px Largura50px" status="modalStatus"
+						render="erroModalManifestacao #{cc.attrs.idModalSimNao}">
+						<rich:componentControl event="onclick" target="#{cc.attrs.idModalSimNao}"
+							operation="#{not empty cc.attrs.justificativaManifestacao} ? show : ''"/>
+						<rich:componentControl event="onclick" target="#{cc.attrs.idModal}"
+							operation="#{not empty cc.attrs.justificativaManifestacao} ? hide : ''"/>
+					</a4j:commandButton>-->
+
+					<a4j:commandButton id="botaoSim" value="#{msg.ok}" execute="manifestacaoJustificativa @this" onclick="validaJustificativa()"
+						oncomplete="#{cc.attrs.justificativaValida} ? #{rich:component(cc.attrs.idModalSimNao)}.show() : ''"
+						styleClass="BotaoTexto MarginTop5px Largura50px">
+					</a4j:commandButton>
+
+					<a4j:commandButton value="#{msg.cancelar}" onclick="#{rich:component(cc.attrs.idModal)}.hide()"
+					 	styleClass="BotaoTexto Largura60px MarginTop5px MarginLeft5px" execute="@this">
+				 	</a4j:commandButton>
+				</div>
+
+			</h:panelGroup>
+		</rich:popupPanel>
+
+		<a4j:jsFunction name="cliqueSim" status="modalStatus" oncomplete="#{rich:component(cc.attrs.idModalSimNao)}.show()">
+		</a4j:jsFunction>
+		<a4j:jsFunction name="validaJustificativa" execute="modalInformativoStatus" actionListener="#{cc.attrs.validarJustificativa}"
+			oncomplete="#{cc.attrs.justificativaValida} ? #{rich:component(cc.attrs.idModal)}.hide() : ''"
+			status="modalStatus" render="erroModalManifestacao #{cc.attrs.idModalSimNao} #{cc.attrs.render}">
+		</a4j:jsFunction>
+    </composite:implementation>    
+</html>

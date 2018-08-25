@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px"
+		rendered="#{mbNfeEntrada.produtoOuServico != null}">
+		<rich:tab id="abaCofinsAliquota" header="#{msg.aba_CofinsAliquota}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.cofins.cofinsAliq != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/cofins/cofinsAliquota.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaCofinsQtde" header="#{msg.aba_CofinsQtde}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.cofins.cofinsQtde != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/cofins/cofinsQtde.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaCofinsNt" header="#{msg.aba_CofinsNt}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.cofins.cofinsAliq != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/cofins/cofinsNt.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaCofinsOutros" header="#{msg.aba_CofinsOutros}" immediate="true" execute="@this"
+			>
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/cofins/cofinsOutros.xhtml" /> 
+		</rich:tab>
+	</rich:tabPanel>
+	
+</ui:composition>

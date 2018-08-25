@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroDeManual}"/>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<util:modalInformativoVoltar mensagemInformativo="#{mbManual.mensagemModal}" nomePainel="modalInformativo"
+			tituloModal="#{msg.mensagem}" render="#{mbManual.renderizarModal}"/>
+
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup>
+				<a4j:commandLink status="modalStatus" actionListener="#{mbManual.salvar}" title="#{msg.titleSalvar}"
+					oncomplete="#{mbManual.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"
+					execute="versao descricao dataLiberacao" render="modalInformativo painelMensagemErro">
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem"
+						width="26px" height="18px"/>
+				</a4j:commandLink>
+				<a4j:commandLink status="modalStatus" action="voltar" title="#{msg.titleVoltar}" immediate="true">
+					<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem"
+						width="26px" height="18px"/>
+				</a4j:commandLink>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+
+		<div class="Linha980x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura150px MarginLeft10px">
+				<h:outputText value="#{msg.dataLiberacao}"
+					styleClass="PositionRelativeFloatLeft TituloDeCampo MarginTop3px"/>
+			</div>
+			<div class="PositionRelativeFloatLeft">
+				<rich:calendar id="dataLiberacao" value="#{mbManual.manual.dataLiberacao}" datePattern="dd/MM/yyyy"
+					buttonClass="BotaoImagemSemMarginTop" tabindex="1"
+					showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll"
+					inputClass="Largura73px TabWalk"/>
+			</div>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura150px MarginLeft10px">
+				<h:outputText value="#{msg.versao}" styleClass="PositionRelativeFloatLeft TituloDeCampo MarginTop3px"/>
+			</div>
+			<h:inputText id="versao" value="#{mbManual.manual.versao}" maxlength="10" tabindex="2"
+				styleClass="Campo Largura130px PositionRelativeFloatLeft"
+				onkeypress="Mascara(this, LetraNumeroSemEspaco);" onkeyup="Mascara(this, LetraNumeroSemEspaco);"
+				onkeydown="Mascara(this, LetraNumeroSemEspaco);" onmousedown="Mascara(this, LetraNumeroSemEspaco);"
+				onmouseup="Mascara(this, LetraNumeroSemEspaco);" onmouseout="Mascara(this, LetraNumeroSemEspaco);"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura150px MarginLeft10px">
+				<h:outputText value="#{msg.descricao}"
+					styleClass="PositionRelativeFloatLeft TituloDeCampo MarginTop3px"/>
+			</div>
+			<h:inputText id="descricao" value="#{mbManual.manual.descricao}" maxlength="150" tabindex="3"
+				styleClass="Campo Largura670px PositionRelativeFloatLeft"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+
+		<div class="PositionRelativeFloatLeft Largura100pc MarginTop5px MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft10px"/>
+		</div>
+
+		<h:panelGroup layout="block" id="painelMensagemErro"
+			styleClass="PositionRelativeFloatLeft Largura980px MarginLeft10px MarginBottom5px">
+			<h:outputText value="#{mbManual.mensagemDeErro}" styleClass="MensagemDeErro"/>
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+	</ui:define>
+
+</ui:composition>

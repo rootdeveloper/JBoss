@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+   
+    <composite:interface>
+       <composite:attribute name="mensagem" />
+       <composite:attribute name="render"/>
+       <composite:attribute name="nomePainel" />
+       <composite:attribute name="actionSim" method-signature="java.lang.Void apagar(javax.faces.event.ActionEvent)" />
+       <composite:attribute name="tituloModal"/>
+       <composite:attribute name="tituloFuncao" default="excluir"/>
+       <composite:attribute name="idCheckbox"/>
+       <composite:attribute name="oncomplete"/>
+    </composite:interface>
+    
+    <composite:implementation>
+    	<rich:popupPanel id="#{cc.attrs.nomePainel}" autosized="true" resizeable="false" moveable="false" styleClass="Largura300px FundoBranco">
+    		
+    		<f:facet name="header">
+				<h:outputText value="#{cc.attrs.tituloModal}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<h:commandButton id="fechar" image="#{resource['images/png:close.png']}" styleClass="BotaoFechar" 
+					onclick="#{rich:component(cc.attrs.nomePainel)}.hide(); return false;">
+					<f:ajax execute="@this"/>
+				</h:commandButton>
+			</f:facet>
+    		
+    		<h:panelGroup id="mensagemConfirmacao" layout="block" styleClass="Largura260px MarginLeftAuto MarginRightAuto PositionRelative AlignCenter">
+    			<h:outputText value="#{cc.attrs.mensagem}" styleClass="TituloDeCampo"/>
+    		</h:panelGroup>
+    		
+			<div align="center" class="MarginTop10px">
+				<a4j:commandButton id="botaoSim" oncomplete="#{cc.attrs.oncomplete}" value="#{msg.botaoSim}" onclick="#{cc.attrs.tituloFuncao}()" 
+					execute="@this" styleClass="BotaoTexto Largura50px"/>
+				<a4j:commandButton value="#{msg.botaoNao}" onclick="#{rich:component(cc.attrs.nomePainel)}.hide(); return false;" 
+					styleClass="BotaoTexto Largura50px" execute="@this"/>
+			</div>
+			
+		</rich:popupPanel>
+		<a4j:jsFunction name="#{cc.attrs.tituloFuncao}" actionListener="#{cc.attrs.actionSim}" render="#{cc.attrs.render}" 
+			oncomplete="#{rich:component(cc.attrs.nomePainel)}.hide();" status="modalStatus" />
+    </composite:implementation>    
+</html>

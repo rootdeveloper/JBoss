@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table">
+	
+	<rich:dataTable id="listaDuplicatas" var="var" value="#{mbNfeEntrada.nfeEntrada.infNFe.cobr.dup}" rows="5" 
+		styleClass="Largura100pc" noDataLabel="#{msg.lbl_listaDuplicatasVazia}" 
+		onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''">
+			
+		<rich:column styleClass="AlignLeft" headerClass="Largura670px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_numero}"/>
+			</f:facet>
+			<h:outputText value="#{var.nDup}" />
+		</rich:column>
+		
+		<rich:column styleClass="AlignCenter" headerClass="Largura100px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_vencimento}"/>
+			</f:facet>
+			<h:outputText value="#{var.dVenc}" converter="dataConverter"/>
+		</rich:column>
+		
+		<rich:column styleClass="AlignRight" headerClass="Largura200px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_valor}"/>
+			</f:facet>
+			<h:outputText value="#{var.vDup}" />
+		</rich:column>
+		
+	</rich:dataTable>
+	
+	<table:scroller for="listaDuplicatas" idPanelScroller="controle" maxPages="10" 
+		panelStyleClass="Scroller100pc LarguraMinima974px" pageNumber="#{mbNfeEntrada.scrollerPageNumber}"
+		renderedTotalRegistros="#{not empty mbNfeEntrada.nfeEntrada.infNFe.cobr.dup}" 
+		totalRegistros="#{mbNfeEntrada.quantidadeRegistrosListaDuplicatas}" />
+		
+</ui:composition>

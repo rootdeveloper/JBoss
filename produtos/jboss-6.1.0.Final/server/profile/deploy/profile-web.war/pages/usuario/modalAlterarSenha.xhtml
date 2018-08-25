@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:senha="http://java.sun.com/jsf/composite/components/senha"
+	xmlns:rich="http://richfaces.org/rich">
+	
+    <h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+		<rich:popupPanel id="modalAlterarSenha" autosized="true" resizeable="false" moveable="false"
+			styleClass="OverflowHidden Largura640px FundoBranco" modal="true" domElementAttachment="form"
+			onshow="disableInputsFormPrincipal(); disableSelectsFormPrincipal(); reSize(); mudaFocus('senhaAlterar:senhaAntiga');"
+			onhide="enableInputsFormPrincipal(); enableSelectsFormPrincipal();">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.alterarSenha}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton id="fechar" image="/resources/images/png/close.png" styleClass="BotaoFechar"
+					onclick="#{rich:component('modalAlterarSenha')}.hide()" execute="@this" render="@this"/>
+			</f:facet>
+			
+			<rich:toolbar styleClass="BarraDeBotoes100pc">
+				<a4j:commandLink status="modalStatus" actionListener="#{mbAlterarSenha.salvar}" title="#{msg.titleSalvar}" 
+					oncomplete="#{mbAlterarSenha.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"
+					execute="alteracaoSenha" render="modalInformativo painelMensagemErroSenha">
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px" height="18px"/>
+				</a4j:commandLink>
+			</rich:toolbar>
+			
+			<senha:alterarSenha id="senhaAlterar" oncomplete="#{rich:component('modalAlterarSenha')}.hide();" />
+			
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

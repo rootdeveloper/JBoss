@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+	
+		<rich:popupPanel modal="true" id="modalGrupoEmpresa" autosized="true" resizeable="false" onbeforeshow="renderBodyOfListaGrupoEmpresa();"
+			onhide="enableInputsFormPrincipal();" styleClass="OverflowHidden Largura700px FundoBranco"
+			onshow="mudaFocus('listaGrupoEmpresa:filtroCodigo'); disableInputsFormPrincipal();" moveable="false" 
+			domElementAttachment="form">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.grupoEmpresa}"/>
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" oncomplete="#{rich:component('modalGrupoEmpresa')}.hide();" 
+					styleClass="BotaoFechar TabWalk" execute="@this"/>
+			</f:facet>
+			
+			<rich:dataTable id="listaGrupoEmpresa" var="item" value="#{mbEmpresa.listaGrupoEmpresa}" rows="5" styleClass="Largura100pc" 
+				onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" onrowdblclick="selecionaGrupoEmpresa(#{rowKey})" 
+				noDataLabel="#{msg.listaGrupoEmpresaVazia}" rowKeyVar="rowKey">
+				
+				<rich:column styleClass="AlignCenter" headerClass="Largura100px"
+					sortBy="#{item.codigo}" sortOrder="#{mbEmpresa.grupoEmpresaColumnOrder.mapColumnOrder['Codigo'].sortOrder}"
+					filterExpression="#{fn:containsIgnoreCase(item.codigo, mbEmpresa.grupoEmpresaColumnFilter.mapColumnFilter['Codigo'].filterBy)}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.codigo}"/>
+						<table:orderArrow action="#{mbEmpresa.grupoEmpresaColumnOrder.mapColumnOrder['Codigo'].sortBy}" 
+							order="#{mbEmpresa.grupoEmpresaColumnOrder.mapColumnOrder['Codigo'].sortOrder}" render="listaGrupoEmpresa"/>
+	                    <br/>
+	                    <h:inputText id="filtroCodigo" tabindex="1" value="#{mbEmpresa.grupoEmpresaColumnFilter.mapColumnFilter['Codigo'].filterBy}" 
+	                    	onkeypress="executeFilter(this,event)" styleClass="Campo Largura80px" maxlength="4">
+	                        <a4j:ajax event="valueChange" render="controleListaGrupoEmpresa" oncomplete="renderBodyOfListaGrupoEmpresa();" execute="@this" 
+	                        	status="modalStatus" />
+	                    </h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.codigo}"/>
+				</rich:column>
+				
+				<rich:column styleClass="AlignLeft" headerClass="Largura450px"
+					sortBy="#{item.descricao}" sortOrder="#{mbEmpresa.grupoEmpresaColumnOrder.mapColumnOrder['Descricao'].sortOrder}"
+					filterExpression="#{fn:containsIgnoreCase(item.descricao, mbEmpresa.grupoEmpresaColumnFilter.mapColumnFilter['Descricao'].filterBy)}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.descricao}"/>
+						<table:orderArrow action="#{mbEmpresa.grupoEmpresaColumnOrder.mapColumnOrder['Descricao'].sortBy}" 
+							order="#{mbEmpresa.grupoEmpresaColumnOrder.mapColumnOrder['Descricao'].sortOrder}" render="listaGrupoEmpresa"/>
+	                    <br/>
+	                    <h:inputText id="filtroNome" tabindex="2" value="#{mbEmpresa.grupoEmpresaColumnFilter.mapColumnFilter['Descricao'].filterBy}" 
+	                    	onkeypress="executeFilter(this,event)" styleClass="Campo Largura400px" maxlength="60">
+	                        <a4j:ajax event="valueChange" render="controleListaGrupoEmpresa" oncomplete="renderBodyOfListaGrupoEmpresa();" execute="@this" 
+	                        	status="modalStatus" />
+	                    </h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.descricao}"/>
+				</rich:column>
+				
+			</rich:dataTable>
+			
+			<table:scroller for="listaGrupoEmpresa" idPanelScroller="controleListaGrupoEmpresa" maxPages="6" panelStyleClass="Scroller100pc" 
+				totalRegistros="#{mbEmpresa.quantidadeRegistrosGrupoEmpresa}" renderedTotalRegistros="#{not empty mbEmpresa.listaGrupoEmpresa}"
+				pageNumber="#{mbEmpresa.scrollerPageNumberGrupoEmpresa}"/>
+				
+			<a4j:jsFunction name="selecionaGrupoEmpresa" status="modalStatus" render="painelGrupoEmpresa codGrupoEmpresa jQueryCodGE jQueryDescGE"
+				action="#{mbEmpresa.selecionarGrupoEmpresa}" oncomplete="#{rich:component('modalGrupoEmpresa')}.hide(); return false;">
+				<a4j:param name="linhaNaturezaJuridica" assignTo="#{mbEmpresa.linhaSelecionada}"/>
+			</a4j:jsFunction>
+			
+			<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller --> 
+			<a4j:jsFunction name="renderBodyOfListaGrupoEmpresa" status="modalStatus" render="listaGrupoEmpresa@body"/>
+			
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

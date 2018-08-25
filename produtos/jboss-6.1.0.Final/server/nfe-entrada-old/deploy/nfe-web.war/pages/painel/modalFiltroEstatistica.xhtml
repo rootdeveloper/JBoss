@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<h:form prependId="false">
+		<rich:popupPanel modal="true" id="filtroEstatistica" autosized="true" resizeable="false" moveable="false"
+			domElementAttachment="form" styleClass="Largura300px FundoBranco"
+			onhide="enableInputsFormPrincipal();"
+			onshow="disableInputsFormPrincipal();">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.filtroEstatistica}"/>
+			</f:facet>
+
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" styleClass="BotaoFechar TabWalk"
+					execute="@this" onclick="#{rich:component('filtroEstatistica')}.hide(); return false;"
+					immediate="true"/>
+			</f:facet>
+			
+			<div class="Altura30px">
+				<div class="FloatLeft Largura150px">
+					<h:outputText value="#{msg.dataEmissaoDe_}" styleClass="TituloDeCampo" />
+				</div>
+				<div class="FloatLeft">
+					<rich:calendar id="dataInicial" value="#{mbEstatistica.dataInicial}"
+						datePattern="dd/MM/yyyy" tabindex="1" buttonClass="BotaoImagemSemMarginTop"
+						showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll"
+						inputClass="Largura78px TabWalk"/>
+				</div>
+			</div>
+			<div class="Altura30px">
+				<div class="FloatLeft Largura150px">
+					<h:outputText value="#{msg.a_}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="FloatLeft">
+					<rich:calendar id="dataFinal" value="#{mbEstatistica.dataFinal}"
+						datePattern="dd/MM/yyyy" tabindex="1" buttonClass="BotaoImagemSemMarginTop"
+						showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll"
+						inputClass="Largura78px TabWalk"/>
+				</div>
+			</div>
+			<div class="TextAlignCenter">
+				<a4j:commandButton actionListener="#{mbEstatistica.gerarEstatistica}" value="#{msg.botaoFiltrar}" 
+					execute="dataFinal dataInicial" render="estatistica" oncomplete="#{rich:component('filtroEstatistica')}.hide();"
+					styleClass="BotaoTexto" status="modalStatus" />
+			</div>
+		</rich:popupPanel>
+	</h:form>
+	
+</ui:composition>

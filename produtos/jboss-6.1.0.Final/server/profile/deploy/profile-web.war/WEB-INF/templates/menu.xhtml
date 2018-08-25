@@ -1,0 +1,50 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:composition>
+		<rich:toolbar id="menu">
+		
+			<!-- Cadastro -->
+			<rich:dropDownMenu popupWidth="50" showEvent="click" id="menuCadastro">
+				<f:facet name="label">
+					<h:panelGroup>
+						<h:outputText value="#{msg.menuCadastro}" />
+						<h:graphicImage value="#{resource['images/png:setaMenu.png']}" />
+					</h:panelGroup>
+				</f:facet>
+				<rich:menuItem immediate="true" action="listaEmpresa" label="#{msg.menuEmpresa}" execute="@this" rendered="#{mbPermissao.visibleEmpresa}"/>
+				<rich:menuItem immediate="true" action="listaSistema" label="#{msg.menuSistema}" execute="@this" rendered="#{mbPermissao.visibleSistema}"/>
+				<rich:menuItem immediate="true" action="listaPerfil" label="#{msg.menuPerfil}" execute="@this" rendered="#{mbPermissao.visiblePerfil}"/>
+				<rich:menuItem immediate="true" action="listaUsuario" label="#{msg.menuUsuario}" execute="@this" />
+			</rich:dropDownMenu>
+		
+			<!--Alterar Senha -->
+			<rich:dropDownMenu popupWidth="50" showEvent="click" id="menuAlterarSenha">
+				<f:facet name="label">
+					<h:panelGroup>
+						<h:outputText value="#{msg.menuAlterarSenha}" />
+						<h:graphicImage value="#{resource['images/png:setaMenu.png']}" />
+					</h:panelGroup>
+				</f:facet>
+				<rich:menuItem immediate="true" action="alterarSenha" label="#{msg.menuAlterarSenha}" execute="@this" />
+			</rich:dropDownMenu>
+			
+			<!-- ParametroGeral -->
+			<rich:dropDownMenu popupWidth="50" showEvent="click" id="menuParametroGeral" rendered="#{mbPermissao.visibleParametroSistema}">
+				<f:facet name="label">
+					<h:panelGroup>
+						<h:outputText value="#{msg.menuParametroGeral}" />
+						<h:graphicImage value="#{resource['images/png:setaMenu.png']}" />
+					</h:panelGroup>
+				</f:facet>
+				<rich:menuItem immediate="true" action="cadastroParametroSistema" label="#{msg.menuParametroSistema}" execute="@this" />
+			</rich:dropDownMenu>
+			
+		</rich:toolbar>
+	</ui:composition>
+</html>

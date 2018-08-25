@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+	<ui:composition>
+		<h:panelGroup layout="block">
+			<div class="Linha380x38">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.valorPrestacaoDeServico}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.vPrest.vtPrest}" styleClass="Campo Largura180px" readonly="true" converter="valorMonetarioSefazConverter"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.valorAReceber}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.vPrest.vRec}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter"/>
+				</div>
+			</div>
+		</h:panelGroup>
+	</ui:composition>
+</html>

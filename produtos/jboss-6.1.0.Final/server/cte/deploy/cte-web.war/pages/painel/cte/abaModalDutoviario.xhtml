@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	  
+	<ui:composition>
+		<div class="Linha960x38">
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.valorDaTarifa}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.duto.vTar}" styleClass="Campo Largura130px" readonly="true" converter="valorMonetarioSefazConverter" />
+			</div>
+			<!-- Campos renderizam somente se a versão do procCte é 1.04, pois são obrigatórios nesta versão -->
+			<h:panelGroup layout="block" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.duto.dIni != null}">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.dataInicialPrestacaoServico}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.duto.dIni}" styleClass="Campo Largura200px" readonly="true" converter="dataSefazConverter" />
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.dataFinalPrestacaoServico}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.duto.dFim}" styleClass="Campo Largura200px" readonly="true" converter="dataSefazConverter" />
+				</div>
+			</h:panelGroup>
+		</div>	
+	</ui:composition>
+</html>
+                

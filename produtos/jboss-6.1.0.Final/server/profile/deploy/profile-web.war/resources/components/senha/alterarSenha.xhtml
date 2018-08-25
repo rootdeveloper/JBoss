@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	<composite:interface>
+		<composite:attribute name="oncomplete" />
+	</composite:interface>
+     
+	<composite:implementation>
+		<util:modalInformativo mensagemInformativo="#{mbAlterarSenha.mensagemModal}" nomePainel="modalInformativo" 
+			tituloModal="#{msg.mensagem}" oncomplete="#{cc.attrs.oncomplete}" />
+			
+		<h:panelGroup id="alteracaoSenha">
+			
+			<h:panelGroup styleClass="Linha610x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.usuario}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="usuario" value="#{mbAlterarSenha.alterarSenha.usuarioSelecionado}"
+					styleClass="ComboField PositionRelativeFloatLeft Largura200px TabWalk" tabindex="1" converter="entityConverter">
+					<f:selectItems value="#{mbAlterarSenha.listaUsuariosDisponiveis}" />
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</h:panelGroup>
+			
+			<h:panelGroup styleClass="Linha610x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.senhaAntiga}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputSecret id="senhaAntiga" value="#{mbAlterarSenha.alterarSenha.senhaAntiga}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					maxlength="60" tabindex="2"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</h:panelGroup>
+			<h:panelGroup styleClass="Linha610x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.senhaNova}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputSecret id="senhaNova" value="#{mbAlterarSenha.alterarSenha.senhaNova}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					maxlength="60" tabindex="3"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</h:panelGroup>
+			<h:panelGroup styleClass="Linha610x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.confirmaSenhaNova}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputSecret id="confirmaSenhaNova" value="#{mbAlterarSenha.alterarSenha.confirmacaoSenhaNova}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					maxlength="60" tabindex="4"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" id="painelMensagemErroSenha" styleClass="Largura610px PositionRelativeFloatLeft MarginLeft10px">
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+			
+		<div class="PositionRelativeFloatLeft Largura100pc MarginTop5px MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft10px"/>
+		</div>
+	</composite:implementation>
+	
+</html>

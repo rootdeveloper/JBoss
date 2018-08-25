@@ -1,0 +1,69 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:composition>
+		<rich:toolbar id="menu">
+			<!-- Painel -->
+			<rich:dropDownMenu popupWidth="50" showEvent="click" id="menuPainel">
+				<f:facet name="label">
+					<h:panelGroup>
+						<h:outputText value="#{msg.menuPainel}" />
+						<h:graphicImage value="#{resource['images/png:setaMenu.png']}" />
+					</h:panelGroup>
+				</f:facet>
+				<rich:menuItem immediate="true" action="listaNfeEntrada" label="#{msg.menuNfeEntrada}" execute="@this" />
+				<rich:menuItem immediate="true" action="listaManifPendentes" label="#{msg.menulistaManifPendentes}" execute="@this" />
+				<rich:menuItem immediate="true" action="estatistica" label="#{msg.menuEstatistica}" execute="@this" />
+				
+			</rich:dropDownMenu>
+		
+			<!-- Consulta -->
+			<rich:dropDownMenu popupWidth="50" showEvent="click" id="menuConsulta">
+				<f:facet name="label">
+					<h:panelGroup>
+						<h:outputText value="#{msg.menuConsulta}" />
+						<h:graphicImage value="#{resource['images/png:setaMenu.png']}" />
+					</h:panelGroup>
+				</f:facet>
+				<rich:menuItem immediate="true" action="consultaStatus" label="#{msg.menuConsultaNFe}" execute="@this" />
+				<rich:menuItem immediate="true" action="consultaDestinados" label="#{msg.menuConsultaDestinados}" execute="@this"
+					rendered="#{mbUserSession.isUserInRole('Admin') or mbUserSession.isUserInRole('Gerente') or mbUserSession.isUserInRole('Atendente')}"/>
+			</rich:dropDownMenu>
+			
+			<!-- Empresas -->
+			<rich:dropDownMenu popupWidth="50" showEvent="click" id="menuEmpresas" rendered="#{mbUserSession.isUserInRole('Admin') or mbUserSession.isUserInRole('Gerente')}">
+           		<f:facet name="label">
+                    <h:panelGroup>
+                        <h:outputText value="#{msg.menuEmpresas}" />
+                        <h:graphicImage value="#{resource['images/png:setaMenu.png']}" />
+                    </h:panelGroup>
+                </f:facet>
+                <rich:menuItem action="listaEmpresa" label="#{msg.menuEmpresas}" immediate="true" />
+            </rich:dropDownMenu>
+            
+            <!-- Parametrização -->
+            <rich:dropDownMenu popupWidth="50" showEvent="click" id="menuParametrizacao" rendered="#{mbUserSession.isUserInRole('Admin') or mbUserSession.isUserInRole('Gerente')}">
+                <f:facet name="label">
+                    <h:panelGroup>
+                        <h:outputText value="#{msg.menuParametrizacao}" />
+                        <h:graphicImage value="#{resource['images/png:setaMenu.png']}" />
+                    </h:panelGroup>
+                </f:facet>
+                <rich:menuItem action="parametrosGerais" label="#{msg.menuWebServiceIntegracao}" immediate="true" />
+                <rich:menuItem action="listaManual" label="#{msg.menuManual}" immediate="true" execute="@this"/>
+                <rich:menuItem action="listaPacoteLiberacao" label="#{msg.menuPacoteLiberacao}" immediate="true"
+                	render="erroEdicao"/>
+                <rich:menuItem action="listaWebServices" label="#{msg.menuWebServices}" immediate="true" execute="@this"/>
+                <!--<rich:menuGroup label="#{msg.menuWebServices}" id="menuWebService">
+                    <rich:menuItem action="sefazWebService" label="#{msg.menuSefazOrigem}" immediate="true" />
+                </rich:menuGroup>-->
+            </rich:dropDownMenu>
+			
+		</rich:toolbar>
+	</ui:composition>
+</html>

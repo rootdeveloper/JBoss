@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+	  xmlns:rich="http://richfaces.org/rich"
+	  template="/WEB-INF/templates/template.xhtml"
+	  xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	  xmlns:table="http://java.sun.com/jsf/composite/components/table">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroParametrosGerais}"/>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<util:modalInformativo mensagemInformativo="#{mbParametrosGerais.mensagemModal}" tituloModal="#{msg.mensagem}"
+			nomePainel="modalInformativo" render="tabelaWSIntegracao"/>
+
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbParametrosGerais.salvar}"
+				oncomplete="#{mbParametrosGerais.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"
+				title="#{msg.titleSalvar}" execute="abaParametrosGerais" render="modalInformativo, painelMensagemErro">
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem"
+					width="26px" height="18px"/>
+			</a4j:commandLink>
+			<a4j:commandLink status="modalStatus" action="home" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem"
+					width="26px" height="18px"/>
+			</a4j:commandLink>
+		</rich:toolbar>
+
+		<h:panelGroup id="dadosWsIntegracao" layout="block" styleClass="Altura65px">
+			<div class="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura175px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.servico}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="tipoWSIntegracao" tabindex="1"
+					value="#{mbParametrosGerais.webServiceIntegracao.tipoServicoIntegracao}"
+					styleClass="ComboField PositionRelativeFloatLeft Largura285px"
+					onkeydown="blockBackSpace(event)" onkeyup="unblockBackSpace()">
+					<f:selectItems value="#{mbParametrosGerais.listTipoWSIntegracaoAsSelectItem}"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+
+				<div class="PositionRelativeFloatLeft Largura90px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.versaoXSD}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="versaoXSD" value="#{mbParametrosGerais.webServiceIntegracao.versaoXSD}"
+					maxlength="6" styleClass="Campo Largura75px PositionRelativeFloatLeft" tabindex="2"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura175px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.caminhoDoXSD}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="caminhoXSD" value="#{mbParametrosGerais.webServiceIntegracao.caminhoXSD}"
+					maxlength="250" styleClass="Campo Largura472px PositionRelativeFloatLeft" tabindex="3"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+
+				<div class="PositionRelativeFloatLeft Largura150px MarginLeft15px Padding0px">
+					<a4j:commandButton id="botaoAdicionar" title="#{msg.adicionar}"
+						actionListener="#{mbParametrosGerais.incluiWSIntegracao}"
+						value="#{mbParametrosGerais.linhaSelecionadaWSIntegracao eq -1 ? msg.adicionar : msg.alterar}"
+						status="modalStatus" execute="tipoWSIntegracao versaoXSD caminhoXSD"
+						render="dadosWsIntegracao tabelaWSIntegracao controleSchema painelMensagemErro"
+						styleClass="BotaoTexto Largura70px PositionRelativeFloatLeft MarginTop0px TabWalk" 
+						oncomplete="reSize(); blockDuploCliqueCheckbox();"/>
+				</div>
+			</div>
+		</h:panelGroup>
+
+		<div class="Largura850px MarginLeftAuto MarginRightAuto">
+			<rich:dataTable id="tabelaWSIntegracao" value="#{mbParametrosGerais.listaWSIntegracao}"
+				var="itemWSInt" rows="4" styleClass="Largura100pc"
+				noDataLabel="#{msg.listaWSIntegracaoVazia}" onrowmouseover="className='SelecionaLinha'"
+				onrowmouseout="className=''" onrowdblclick="editarWSIntegracao(#{rowKey})" rowKeyVar="rowKey">
+
+				<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+					<f:facet name="header">
+						<h:selectBooleanCheckbox id="checkboxWSIntegracao" styleClass="Margin0px"
+							valueChangeListener="#{mbParametrosGerais.selecionarTodos}" tabindex="4">
+							<a4j:ajax event="click" render="tabelaWSIntegracao, painelBotaoRemover"
+								status="modalStatus" oncomplete="reSize(); blockDuploCliqueCheckbox();"/>
+						</h:selectBooleanCheckbox>
+					</f:facet>
+					<h:selectBooleanCheckbox id="sel" value="#{itemWSInt.selected}" styleClass="TabWalk"
+						onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();"
+						valueChangeListener="#{mbParametrosGerais.processaListaRemocao}">
+						<f:param name="linhaWSIntegracao" value="#{rowKey}"/>
+						<a4j:ajax event="valueChange" execute="@this" render="painelBotaoRemover"/>
+					</h:selectBooleanCheckbox>
+				</rich:column>
+
+				<rich:column styleClass="AlignCenter" headerClass="Largura220px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.servico}"/>
+					</f:facet>
+					<h:outputText value="#{itemWSInt.tipoServicoIntegracao.nome}"/>
+				</rich:column>
+
+				<rich:column styleClass="AlignCenter" headerClass="Largura90px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.versaoXSD}"/>
+					</f:facet>
+					<h:outputText value="#{itemWSInt.versaoXSD}"/>
+				</rich:column>
+
+				<rich:column styleClass="AlignLeft Truncate" headerClass="Largura390px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.caminhoDoXSD}"/>
+					</f:facet>
+					<h:outputText value="#{itemWSInt.caminhoXSD}" title="#{itemWSInt.caminhoXSD}"/>
+				</rich:column>
+			</rich:dataTable>
+
+			<table:scroller idPanelScroller="controleSchema" for="tabelaWSIntegracao" maxPages="10"
+				panelStyleClass="Largura850px Scroller100pc MarginLeftAuto MarginRightAuto"
+				pageNumber="#{mbParametrosGerais.scrollerPageNumber}"
+				renderedTotalRegistros="#{not empty mbParametrosGerais.listaWSIntegracao}"
+				totalRegistros="#{mbParametrosGerais.quantidadeRegistrosSchemas}"/>
+
+			<h:panelGroup layout="block" id="painelBotaoRemover" styleClass="Largura100pc MarginTop10px">
+				<a4j:commandButton id="remover" actionListener="#{mbParametrosGerais.excluirRegistro}"
+					execute="@this" title="#{msg.titleRemover}" styleClass="BotaoTexto Largura70px TabWalk"
+					rendered="#{mbParametrosGerais.exibirBotaoRemocao}" status="modalStatus"
+					render="dadosWsIntegracao, controleSchema, painelBotaoRemover" value="#{msg.remover}"
+					oncomplete="reSize(); blockDuploCliqueCheckbox(); renderListBody();"/>
+			</h:panelGroup>
+		</div>
+
+		<h:panelGroup layout="block" id="painelMensagemErro"
+			styleClass="Largura850px PositionRelativeFloatLeft MarginLeft18px">
+			<h:outputText value="#{mbParametrosGerais.mensagemErro}" styleClass="MensagemDeErro"/>
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+
+		<div class="PositionRelativeFloatLeft Largura100pc MarginTop5px MarginBottom5px" >
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft18px"/>
+		</div>
+
+		<a4j:jsFunction name="editarWSIntegracao" status="modalStatus" render="dadosWsIntegracao">
+			<a4j:param name="linhaSelecionada" assignTo="#{mbParametrosGerais.linhaSelecionadaWSIntegracao}"/>
+			<a4j:actionListener listener="#{mbParametrosGerais.editarWSIntegracao}"/>
+		</a4j:jsFunction>
+		<a4j:jsFunction name="renderListBody" status="modalStatus" render="tabelaWSIntegracao@body"
+			oncomplete="reSize();"/>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,47 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<div class="Linha970x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_valorDoServico}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.transp.retTransp.vServ}" 
+				styleClass="Campo Largura120px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_bcDaRetencaoDoIcms}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.transp.retTransp.vbcRet}" 
+				styleClass="Campo Largura160px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_aliquotaDaRetencao}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.transp.retTransp.pIcmsRet}" 
+				styleClass="Campo Largura150px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_valorDoIcmsRetido}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.transp.retTransp.vIcmsRet}" 
+				styleClass="Campo Largura150px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_cfop}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.transp.retTransp.cfop}" 
+				styleClass="Campo Largura40px" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_codMunDoGeradorDoIcms}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.transp.retTransp.cMunFG}" 
+				styleClass="Campo Largura160px" readonly="true"/>
+		</div>
+	</div>
+	
+</ui:composition>

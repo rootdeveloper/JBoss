@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<rich:toolbar styleClass="BarraDeBotoes100pc">
+	
+		<rich:toolbarGroup>
+			<a4j:commandLink status="modalStatus" title="#{msg.titleSalvar}" actionListener="#{mbNcm.salvarAliquota}"
+				execute="vigenciaInicialIpi ipiAliquota ipiPercentualBc vigenciaInicialImportacao aliquotaImportacao" render="painelAliquota" 
+				rendered="#{not mbNcm.statusInativo and mbNcm.verificaPermissao('Administrador, Gerente, Atendente') and !mbNcm.statusInicio}" >
+				<f:param name="acaoAliquota" value="Lista"/>
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="apagar" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink>
+	
+			<a4j:commandLink status="modalStatus" title="#{msg.titleVoltar}s" immediate="true" render="abaAliquotas" 
+				actionListener="#{mbNcm.controlaPainelAliquota}">
+				<f:param name="acaoAliquota" value="Lista"/>
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink>
+		</rich:toolbarGroup>
+		
+	</rich:toolbar>
+
+	<div class="Linha980x25 MarginTop5px">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+			<h:outputText value="#{msg.tipoAliquota}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:selectOneMenu id="tipoAliquota" value="#{mbNcm.tipoAliquota}" tabindex="5"
+			styleClass="ComboField Largura105px PositionRelativeFloatLeft" disabled="#{mbNcm.statusInativo}">
+			<f:selectItems var="aliquota" value="#{mbNcm.listaTipoAliquota}" itemLabel="#{aliquota.nomeTipo}"/>
+			<a4j:ajax event="change" listener="#{mbNcm.atualizaAliquota}" render="panelCadastroAliquota, painelMensagemErroAliquota" status="modalStatus"/>
+		</h:selectOneMenu>
+	</div>
+
+	<h:panelGroup id="panelCadastroAliquota" styleClass="PositionRelativeFloatLeft MarginTop20px">
+
+		<h:panelGroup id="panelIpi" rendered="#{mbNcm.tipoAliquota eq 'IPI'}" styleClass="MarginLeft10px" layout="block">
+
+			<div class="Linha900x25">
+				<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+					<h:outputText value="#{msg.vigenciaInicialTela}" styleClass="TituloDeCampo"/>
+				</div>
+				<rich:calendar id="vigenciaInicialIpi" value="#{mbNcm.aliquotaIpi.vigenciaInicial}" tabindex="6" datePattern="dd/MM/yyyy" 
+					inputClass="Largura73px TabWalk" buttonClass="BotaoImagemSemMarginTop" 
+					showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll" 
+					disabled="#{mbNcm.statusInativo or !mbNcm.verificaPermissao('Administrador, Gerente, Atendente')}"/>
+				<h:outputText value="*" styleClass="MarginLeft5px"/>
+			</div>
+
+			<div class="Linha900x25">
+				<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+					<h:outputText value="#{msg.aliquotaTela}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="ipiAliquota" value="#{mbNcm.aliquotaIpi.aliquota}" maxlength="6"  tabindex="7"
+					styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" disabled="#{mbNcm.statusInativo}"
+					onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+					onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+					<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+				</h:inputText>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+
+			<div class="Linha900x25">
+				<div class="PositionRelativeFloatLeft Largura223px MarginTop2px" >
+					<h:outputText value="#{msg.percentualbaseCalculoTela}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="ipiPercentualBc" value="#{mbNcm.aliquotaIpi.percentualBc}" maxlength="6" disabled="#{mbNcm.statusInativo}"
+					styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" tabindex="8"
+					onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+					onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+					<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+				</h:inputText>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+
+		</h:panelGroup>
+
+		<h:panelGroup id="panelImportacao" rendered="#{mbNcm.tipoAliquota eq 'IMPORTACAO'}" styleClass="MarginLeft10px"
+			layout="block">
+
+			<div class="Linha900x25">
+				<div class="PositionRelativeFloatLeft Largura223px MarginTop2px" >
+					<h:outputText value="#{msg.vigenciaInicialTela}" styleClass="TituloDeCampo"/>
+				</div>
+				<rich:calendar id="vigenciaInicialImportacao" value="#{mbNcm.aliquotaImportacao.vigenciaInicial}" datePattern="dd/MM/yyyy" 
+					inputClass="Largura78px TabWalk" buttonClass="BotaoImagemSemMarginTop"
+					showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll" tabindex="6" 
+					disabled="#{mbNcm.statusInativo or !mbNcm.verificaPermissao('Administrador, Gerente, Atendente')}"/>
+				<h:outputText value="*" styleClass="MarginLeft5px"/>
+			</div>
+			<div class="Linha900x25">
+				<div class="PositionRelativeFloatLeft Largura223px MarginTop2px" >
+					<h:outputText value="#{msg.aliquotaTela}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="aliquotaImportacao" value="#{mbNcm.aliquotaImportacao.aliquota}" maxlength="6" disabled="#{mbNcm.statusInativo}"
+					styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" tabindex="7"
+					onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+					onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+					<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+				</h:inputText>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+
+		</h:panelGroup>
+
+		<rich:jQuery id="jQueryaliquotaImportacao" selector="#aliquotaImportacao" timing="immediate"
+			query="maskMoney({decimal: ',', thousands: '.', percent: true})"/>
+		<rich:jQuery id="jQueryipiAliquota" selector="#ipiAliquota" timing="immediate"
+			query="maskMoney({decimal: ',', thousands: '.', percent: true})"/>
+		<rich:jQuery id="jQueryipiPercentualBc" selector="#ipiPercentualBc" timing="immediate"
+			query="maskMoney({decimal: ',', thousands: '.', percent: true})"/>
+	</h:panelGroup>
+
+	<h:panelGroup layout="block" id="painelMensagemErroAliquota" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura980px MarginBottom5px">
+		<h:outputText value="#{mbNcm.mensagemErroAliquota}" styleClass="MensagemDeErro" escape="false"/>
+		<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+	</h:panelGroup>
+	
+	<script type="text/javascript">
+		//<![CDATA[
+			if(#{!mbNcm.verificaPermissao('Administrador, Gerente, Atendente')}) {
+				j(document).ready(function(){
+					disableInputText();
+				});
+			}
+		//]]>
+	</script>
+
+</html>

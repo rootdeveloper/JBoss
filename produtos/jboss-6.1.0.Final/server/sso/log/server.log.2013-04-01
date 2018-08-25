@@ -1,0 +1,907 @@
+2011-10-26 16:17:39,707 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2011-10-26 16:17:39,707 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2011-10-26 16:17:39,707 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 15s:139ms
+2011-11-28 09:47:37,085 ERROR [ProfileServiceBootstrap] (Thread-2) Failed to load profile:: org.jboss.deployers.client.spi.IncompleteDeploymentException: Summary of incomplete deployments (SEE PREVIOUS ERRORS FOR DETAILS):
+
+DEPLOYMENTS MISSING DEPENDENCIES:
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata" is missing the following dependencies:
+    Dependency "jboss.jca:name=masterdata,service=DataSourceBinding" (should be in state "Create", but is actually in state "** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **")
+
+DEPLOYMENTS IN ERROR:
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "jboss.jca:name=masterdata,service=DataSourceBinding" is in error due to the following reason(s): ** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar" is in error due to the following reason(s): java.lang.ClassNotFoundException: org.apache.commons.httpclient.HttpException from BaseClassLoader@192ce93{vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar}
+
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:1228) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.main.MainDeployerImpl.checkComplete(MainDeployerImpl.java:905) [:2.2.2.GA]
+	at org.jboss.system.server.profileservice.deployers.MainDeployerPlugin.checkComplete(MainDeployerPlugin.java:87) [:6.1.0.Final]
+	at org.jboss.profileservice.deployment.ProfileDeployerPluginRegistry.checkAllComplete(ProfileDeployerPluginRegistry.java:107) [:0.2.2]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:135) [:6.1.0.Final]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:56) [:6.1.0.Final]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer.startBootstraps(AbstractServer.java:827) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer$StartServerTask.run(AbstractServer.java:417) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at java.lang.Thread.run(Thread.java:662) [:1.6.0_22]
+
+2011-11-28 09:47:37,113 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 09:47:37,116 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 09:47:37,116 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 24s:670ms
+2011-11-28 09:49:50,327 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-17) Server exit called, exiting the JVM now!
+2011-11-28 09:49:50,341 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2011-11-28 09:49:50,341 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-18) Stopping: JBossAS [6.1.0.Final "Neo"]
+2011-11-28 09:49:50,343 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-18) Pausing Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 09:49:50,344 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-18) Stopping Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 09:49:50,348 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-18) Pausing Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 09:49:50,348 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-18) Stopping Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 09:53:06,405 ERROR [ProfileServiceBootstrap] (Thread-2) Failed to load profile:: org.jboss.deployers.client.spi.IncompleteDeploymentException: Summary of incomplete deployments (SEE PREVIOUS ERRORS FOR DETAILS):
+
+DEPLOYMENTS MISSING DEPENDENCIES:
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata" is missing the following dependencies:
+    Dependency "jboss.jca:name=masterdata,service=DataSourceBinding" (should be in state "Create", but is actually in state "** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **")
+
+DEPLOYMENTS IN ERROR:
+  Deployment "vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-web.war" is in error due to the following reason(s): org.jboss.deployers.spi.DeploymentException: URL file:/C:/jboss-6.1.0.Final/server/default/deploy/masterdata-web.war/ deployment failed
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "jboss.jca:name=masterdata,service=DataSourceBinding" is in error due to the following reason(s): ** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar" is in error due to the following reason(s): java.lang.ClassNotFoundException: org.apache.commons.httpclient.HttpException from BaseClassLoader@1e2e2f4{vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar}
+
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:1228) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.main.MainDeployerImpl.checkComplete(MainDeployerImpl.java:905) [:2.2.2.GA]
+	at org.jboss.system.server.profileservice.deployers.MainDeployerPlugin.checkComplete(MainDeployerPlugin.java:87) [:6.1.0.Final]
+	at org.jboss.profileservice.deployment.ProfileDeployerPluginRegistry.checkAllComplete(ProfileDeployerPluginRegistry.java:107) [:0.2.2]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:135) [:6.1.0.Final]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:56) [:6.1.0.Final]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer.startBootstraps(AbstractServer.java:827) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer$StartServerTask.run(AbstractServer.java:417) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at java.lang.Thread.run(Thread.java:662) [:1.6.0_22]
+
+2011-11-28 09:53:06,420 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 09:53:06,425 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 09:53:06,425 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 30s:150ms
+2011-11-28 10:13:16,653 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-18) Server exit called, exiting the JVM now!
+2011-11-28 10:13:16,697 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2011-11-28 10:13:16,712 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-19) Stopping: JBossAS [6.1.0.Final "Neo"]
+2011-11-28 10:13:16,727 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-19) Pausing Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 10:13:16,728 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-19) Stopping Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 10:13:16,737 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-19) Pausing Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 10:13:16,738 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-19) Stopping Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 10:17:47,002 ERROR [ProfileServiceBootstrap] (Thread-2) Failed to load profile:: org.jboss.deployers.client.spi.IncompleteDeploymentException: Summary of incomplete deployments (SEE PREVIOUS ERRORS FOR DETAILS):
+
+DEPLOYMENTS MISSING DEPENDENCIES:
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata" is missing the following dependencies:
+    Dependency "jboss.jca:name=masterdata,service=DataSourceBinding" (should be in state "Create", but is actually in state "** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **")
+
+DEPLOYMENTS IN ERROR:
+  Deployment "vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-web.war" is in error due to the following reason(s): org.jboss.deployers.spi.DeploymentException: URL file:/C:/jboss-6.1.0.Final/server/default/deploy/masterdata-web.war/ deployment failed
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "jboss.jca:name=masterdata,service=DataSourceBinding" is in error due to the following reason(s): ** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar" is in error due to the following reason(s): java.lang.ClassNotFoundException: org.apache.commons.httpclient.HttpException from BaseClassLoader@29b46a{vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar}
+
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:1228) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.main.MainDeployerImpl.checkComplete(MainDeployerImpl.java:905) [:2.2.2.GA]
+	at org.jboss.system.server.profileservice.deployers.MainDeployerPlugin.checkComplete(MainDeployerPlugin.java:87) [:6.1.0.Final]
+	at org.jboss.profileservice.deployment.ProfileDeployerPluginRegistry.checkAllComplete(ProfileDeployerPluginRegistry.java:107) [:0.2.2]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:135) [:6.1.0.Final]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:56) [:6.1.0.Final]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer.startBootstraps(AbstractServer.java:827) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer$StartServerTask.run(AbstractServer.java:417) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at java.lang.Thread.run(Thread.java:662) [:1.6.0_22]
+
+2011-11-28 10:17:47,018 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 10:17:47,025 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 10:17:47,025 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 30s:138ms
+2011-11-28 10:20:30,688 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-19) Server exit called, exiting the JVM now!
+2011-11-28 10:20:30,693 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2011-11-28 10:20:30,694 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-20) Stopping: JBossAS [6.1.0.Final "Neo"]
+2011-11-28 10:20:30,696 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-20) Pausing Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 10:20:30,696 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-20) Stopping Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 10:20:30,705 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-20) Pausing Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 10:20:30,707 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-20) Stopping Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2013-04-01 13:15:56,253 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 13:15:56,263 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 13:15:56,264 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 43s:715ms
+2013-04-01 13:16:14,254 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (RMI TCP Connection(2)-127.0.0.1) deploy, ctxPath=/sso
+2013-04-01 13:16:14,360 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (RMI TCP Connection(2)-127.0.0.1) Inicializando Mojarra 2.0.3 ( b05) para o contexto '/sso'
+2013-04-01 13:16:20,079 INFO  [org.hibernate.validator.util.Version] (RMI TCP Connection(2)-127.0.0.1) Hibernate Validator 4.1.0.Final
+2013-04-01 13:16:20,109 INFO  [org.hibernate.validator.engine.resolver.DefaultTraversableResolver] (RMI TCP Connection(2)-127.0.0.1) Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+2013-04-01 13:16:20,291 INFO  [org.richfaces.log.Cache] (RMI TCP Connection(2)-127.0.0.1) Selected fallback cache factory
+2013-04-01 13:16:20,293 INFO  [org.richfaces.log.Cache] (RMI TCP Connection(2)-127.0.0.1) Creating LRUMap cache instance using parameters: {javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL=true, org.ajax4jsf.DEFAULT_EXPIRE=86400, org.richfaces.resourceOptimization.enabled=true, javax.faces.CONFIG_FILES=/WEB-INF/faces-navigation.xml, com.sun.faces.duplicateJARPattern=^tmp\d+(\S*\.jar), com.sun.faces.externalizeJavaScript=true, org.richfaces.skin=DEFAULT, com.sun.faces.injectionProvider=org.jboss.web.jsf.integration.injection.JBossDelegatingInjectionProvider, javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE=true, com.sun.faces.validateXml=true, javax.faces.PROJECT_STAGE=Production, com.sun.faces.verifyObjects=false, org.richfaces.enableControlSkinning=false, javax.faces.FACELETS_SKIP_COMMENTS=true, javax.faces.STATE_SAVING_METHOD=server, javax.faces.DEFAULT_SUFFIX=.xhtml, resteasy.unwrapped.exceptions=javax.ejb.EJBException}
+2013-04-01 13:16:20,299 INFO  [org.richfaces.log.Cache] (RMI TCP Connection(2)-127.0.0.1) Creating LRUMap cache instance of 512 items capacity
+2013-04-01 13:16:20,302 INFO  [org.richfaces.log.Application] (RMI TCP Connection(2)-127.0.0.1) RichFaces Core Implementation by JBoss by Red Hat, version v.4.2.2.Final
+2013-04-01 13:16:21,055 AVISO [org.richfaces.log.Application] (RMI TCP Connection(2)-127.0.0.1) JMS API was found on the classpath; if you want to enable RichFaces Push JMS integration, set context-param 'org.richfaces.push.jms.enabled' in web.xml
+2013-04-01 13:18:07,041 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-22) Server exit called, exiting the JVM now!
+2013-04-01 13:18:07,045 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2013-04-01 13:18:07,047 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-23) Stopping: JBossAS [6.1.0.Final "Neo"]
+2013-04-01 13:18:07,049 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-23) Pausing Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 13:18:07,051 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-23) Stopping Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 13:18:07,054 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-23) Pausing Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 13:18:07,054 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-23) Stopping Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 13:18:48,096 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 13:18:48,105 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 13:18:48,105 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 33s:768ms
+2013-04-01 13:21:17,113 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (http-localhost%2F127.0.0.1-8080-1) deploy, ctxPath=/admin-console
+2013-04-01 13:21:17,158 INFO  [org.apache.catalina.core.StandardContext] (http-localhost%2F127.0.0.1-8080-1) The listener "com.sun.faces.config.ConfigureListener" is already configured for this context. The duplicate definition has been ignored.
+2013-04-01 13:21:17,321 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (http-localhost%2F127.0.0.1-8080-1) Inicializando Mojarra 2.0.3 ( b05) para o contexto '/admin-console'
+2013-04-01 13:21:22,035 INFO  [javax.servlet.ServletContextListener] (http-localhost%2F127.0.0.1-8080-1) Welcome to Seam 2.1.0.SP1
+2013-04-01 13:21:25,557 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/async, package: org.jboss.seam.async, prefix: org.jboss.seam.async
+2013-04-01 13:21:25,589 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/framework, package: org.jboss.seam.framework, prefix: org.jboss.seam.core.framework
+2013-04-01 13:21:25,589 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/theme, package: org.jboss.seam.theme, prefix: org.jboss.seam.theme
+2013-04-01 13:21:25,589 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/security, package: org.jboss.seam.security.management, prefix: org.jboss.seam.security
+2013-04-01 13:21:25,590 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/bpm, package: org.jboss.seam.bpm, prefix: org.jboss.seam.bpm
+2013-04-01 13:21:25,590 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/mail, package: org.jboss.seam.mail, prefix: org.jboss.seam.mail
+2013-04-01 13:21:25,590 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/security, package: org.jboss.seam.security, prefix: org.jboss.seam.security
+2013-04-01 13:21:25,590 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/web, package: org.jboss.seam.web, prefix: org.jboss.seam.web
+2013-04-01 13:21:25,591 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/captcha, package: org.jboss.seam.captcha, prefix: org.jboss.seam.captcha
+2013-04-01 13:21:25,591 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/navigation, package: org.jboss.seam.navigation, prefix: org.jboss.seam.navigation
+2013-04-01 13:21:25,591 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/core, package: org.jboss.seam.core, prefix: org.jboss.seam.core
+2013-04-01 13:21:25,591 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/international, package: org.jboss.seam.international, prefix: org.jboss.seam.international
+2013-04-01 13:21:25,592 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/cache, package: org.jboss.seam.cache, prefix: org.jboss.seam.cache
+2013-04-01 13:21:25,592 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/jms, package: org.jboss.seam.jms, prefix: org.jboss.seam.jms
+2013-04-01 13:21:25,592 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/ui, package: org.jboss.seam.ui, prefix: org.jboss.seam.ui
+2013-04-01 13:21:25,592 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/transaction, package: org.jboss.seam.transaction, prefix: org.jboss.seam.transaction
+2013-04-01 13:21:25,592 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/security, package: org.jboss.seam.security.permission, prefix: org.jboss.seam.security
+2013-04-01 13:21:25,593 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/drools, package: org.jboss.seam.drools, prefix: org.jboss.seam.drools
+2013-04-01 13:21:25,593 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/persistence, package: org.jboss.seam.persistence, prefix: org.jboss.seam.persistence
+2013-04-01 13:21:25,593 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/document, package: org.jboss.seam.document, prefix: org.jboss.seam.document
+2013-04-01 13:21:25,598 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) reading /WEB-INF/components.xml
+2013-04-01 13:21:25,655 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) reading properties from: /seam.properties
+2013-04-01 13:21:25,656 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) reading properties from: /jndi.properties
+2013-04-01 13:21:25,659 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) initializing Seam
+2013-04-01 13:21:25,739 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.web.userPrincipal
+2013-04-01 13:21:25,744 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.web.parameters
+2013-04-01 13:21:25,744 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.core.locale
+2013-04-01 13:21:25,747 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.persistence.persistenceProvider
+2013-04-01 13:21:25,749 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.core.expressions
+2013-04-01 13:21:25,750 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.core.locale
+2013-04-01 13:21:25,751 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.core.resourceLoader
+2013-04-01 13:21:25,752 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.core.manager
+2013-04-01 13:21:25,761 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.transaction.synchronizations
+2013-04-01 13:21:25,762 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.web.isUserInRole
+2013-04-01 13:21:25,789 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.init, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.core.Init
+2013-04-01 13:21:25,917 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Installing components...
+2013-04-01 13:21:25,969 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: DefaultPageControlSettingsUIBean, scope: APPLICATION, type: JAVA_BEAN, class: org.rhq.core.gui.model.DefaultPageControlSettingsUIBean
+2013-04-01 13:21:25,996 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: addNewOpenMap, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.AddNewOpenMapMemberPropertyToResourceConfigurationUIBean
+2013-04-01 13:21:26,029 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: bootstrapAction, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.BootstrapAction
+2013-04-01 13:21:26,057 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: commonActionUtil, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.CommonActionUtil
+2013-04-01 13:21:26,061 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: configHelperFactory, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.ConfigHelperFactory
+2013-04-01 13:21:26,064 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: contentDisplayAction, scope: SESSION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SingleResourceContentAction
+2013-04-01 13:21:26,073 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: contentHistoryManager, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.bean.history.content.ContentHistoryManagerBean
+2013-04-01 13:21:26,083 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: createContentBackedResourceAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.content.CreateContentBackedResourceAction
+2013-04-01 13:21:26,092 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: datascrollerUI, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.DatascrollerUIBean
+2013-04-01 13:21:26,095 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: debugAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.DebugAction
+2013-04-01 13:21:26,096 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: discoveryAction, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.DiscoveryAction
+2013-04-01 13:21:26,099 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: exceptionAction, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.ExceptionAction
+2013-04-01 13:21:26,106 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: historyManager, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.bean.history.operation.OperationHistoryManagerBean
+2013-04-01 13:21:26,110 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: idChunkFactory, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.IdChunkFactory
+2013-04-01 13:21:26,115 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: inventoryEventListener, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.EmbeddedInventoryEventListener
+2013-04-01 13:21:26,117 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: metricAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.MetricAction
+2013-04-01 13:21:26,169 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: navigationAction, scope: SESSION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.NavigationAction
+2013-04-01 13:21:26,174 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: navigationContent, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.NavigationContent
+2013-04-01 13:21:26,177 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: operationAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SingleResourceOperationAction
+2013-04-01 13:21:26,181 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.async.asynchronousExceptionHandler, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.async.AsynchronousExceptionHandler
+2013-04-01 13:21:26,186 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.async.dispatcher, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.async.ThreadPoolDispatcher
+2013-04-01 13:21:26,197 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.captcha.captcha, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.captcha.Captcha
+2013-04-01 13:21:26,199 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.captcha.captchaImage, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.captcha.CaptchaImage
+2013-04-01 13:21:26,199 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.ConversationIdGenerator, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationIdGenerator
+2013-04-01 13:21:26,201 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.contexts, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.Contexts
+2013-04-01 13:21:26,203 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.conversation, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.core.Conversation
+2013-04-01 13:21:26,205 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.conversationEntries, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationEntries
+2013-04-01 13:21:26,206 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.conversationListFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationList
+2013-04-01 13:21:26,207 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.conversationPropagation, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationPropagation
+2013-04-01 13:21:26,208 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.conversationStackFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationStack
+2013-04-01 13:21:26,209 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.events, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.core.Events
+2013-04-01 13:21:26,210 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.expressions, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesExpressions
+2013-04-01 13:21:26,211 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.interpolator, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.Interpolator
+2013-04-01 13:21:26,213 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.locale, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.international.Locale
+2013-04-01 13:21:26,217 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.manager, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesManager
+2013-04-01 13:21:26,219 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.resourceBundle, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.ResourceBundle
+2013-04-01 13:21:26,220 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.resourceLoader, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.ResourceLoader
+2013-04-01 13:21:26,248 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.validators, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.core.Validators
+2013-04-01 13:21:26,249 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.document.documentStore, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.document.DocumentStore
+2013-04-01 13:21:26,259 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.exception.exceptions, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.exception.Exceptions
+2013-04-01 13:21:26,782 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.dataModels, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.DataModels
+2013-04-01 13:21:26,819 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.facesContext, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesContext
+2013-04-01 13:21:26,820 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.facesPage, scope: PAGE, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesPage
+2013-04-01 13:21:26,821 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.httpError, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.HttpError
+2013-04-01 13:21:26,821 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.redirect, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.faces.Redirect
+2013-04-01 13:21:26,825 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.renderer, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.FaceletsRenderer
+2013-04-01 13:21:26,826 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.switcher, scope: PAGE, type: JAVA_BEAN, class: org.jboss.seam.faces.Switcher
+2013-04-01 13:21:26,828 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.uiComponent, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.UiComponent
+2013-04-01 13:21:26,828 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.validation, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.faces.Validation
+2013-04-01 13:21:26,829 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.framework.currentDate, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.framework.CurrentDate
+2013-04-01 13:21:26,831 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.framework.currentDatetime, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.framework.CurrentDatetime
+2013-04-01 13:21:26,832 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.framework.currentTime, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.framework.CurrentTime
+2013-04-01 13:21:26,846 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.graphicImage.image, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.ui.graphicImage.Image
+2013-04-01 13:21:26,848 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.international.localeSelector, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.international.LocaleSelector
+2013-04-01 13:21:26,852 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.international.messagesFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.international.Messages
+2013-04-01 13:21:26,857 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.international.statusMessages, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesMessages
+2013-04-01 13:21:26,866 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.international.timeZone, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.international.TimeZone
+2013-04-01 13:21:26,867 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.international.timeZoneSelector, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.international.TimeZoneSelector
+2013-04-01 13:21:26,869 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.mail.mailSession, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.mail.MailSession
+2013-04-01 13:21:26,878 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.navigation.pages, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.navigation.Pages
+2013-04-01 13:21:26,892 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.navigation.safeActions, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.navigation.SafeActions
+2013-04-01 13:21:26,893 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.persistence.persistenceContexts, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.persistence.PersistenceContexts
+2013-04-01 13:21:26,939 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.persistence.persistenceProvider, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.persistence.HibernatePersistenceProvider
+2013-04-01 13:21:26,953 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.configurationFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.security.Configuration
+2013-04-01 13:21:26,955 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.credentials, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.Credentials
+2013-04-01 13:21:26,956 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.entityPermissionChecker, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.EntityPermissionChecker
+2013-04-01 13:21:26,958 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.facesSecurityEvents, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.FacesSecurityEvents
+2013-04-01 13:21:26,959 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.identifierPolicy, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.IdentifierPolicy
+2013-04-01 13:21:26,963 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.identity, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.Identity
+2013-04-01 13:21:26,973 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.identityManager, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.security.management.IdentityManager
+2013-04-01 13:21:26,978 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.management.roleAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.RoleAction
+2013-04-01 13:21:26,980 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.management.roleSearch, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.RoleSearch
+2013-04-01 13:21:26,996 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.management.userAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.UserAction
+2013-04-01 13:21:26,998 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.management.userSearch, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.UserSearch
+2013-04-01 13:21:27,000 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.passwordHash, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.security.management.PasswordHash
+2013-04-01 13:21:27,004 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.permission.permissionSearch, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.action.PermissionSearch
+2013-04-01 13:21:27,008 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.permissionManager, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.PermissionManager
+2013-04-01 13:21:27,012 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.permissionMapper, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.PermissionMapper
+2013-04-01 13:21:27,013 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.persistentPermissionResolver, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.PersistentPermissionResolver
+2013-04-01 13:21:27,022 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.rememberMe, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.RememberMe
+2013-04-01 13:21:27,024 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.theme.themeFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.theme.Theme
+2013-04-01 13:21:27,026 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.theme.themeSelector, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.theme.ThemeSelector
+2013-04-01 13:21:27,027 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.transaction.synchronizations, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.transaction.SeSynchronizations
+2013-04-01 13:21:27,029 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.transaction.transaction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.transaction.Transaction
+2013-04-01 13:21:27,032 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.EntityConverter, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.ui.EntityConverter
+2013-04-01 13:21:27,034 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.entityIdentifierStore, scope: PAGE, type: JAVA_BEAN, class: org.jboss.seam.ui.EntityIdentifierStore
+2013-04-01 13:21:27,044 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.entityLoader, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.ui.JpaEntityLoader
+2013-04-01 13:21:27,049 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.facelet.faceletCompiler, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.FaceletCompiler
+2013-04-01 13:21:27,050 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.facelet.facesContextFactory, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.RendererFacesContextFactory
+2013-04-01 13:21:27,053 WARN  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component class should be serializable: org.jboss.seam.ui.facelet.mockHttpSession
+2013-04-01 13:21:27,053 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.facelet.mockHttpSession, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.HttpSessionManager
+2013-04-01 13:21:27,054 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.facelet.mockServletContext, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.ServletContextManager
+2013-04-01 13:21:27,055 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.graphicImage.graphicImageResource, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.graphicImage.GraphicImageResource
+2013-04-01 13:21:27,056 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.graphicImage.graphicImageStore, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.ui.graphicImage.GraphicImageStore
+2013-04-01 13:21:27,066 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.resource.webResource, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.resource.WebResource
+2013-04-01 13:21:27,068 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.ajax4jsfFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.Ajax4jsfFilter
+2013-04-01 13:21:27,071 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.ajax4jsfFilterInstantiator, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.ui.filter.Ajax4jsfFilterInstantiator
+2013-04-01 13:21:27,075 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.exceptionFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.ExceptionFilter
+2013-04-01 13:21:27,076 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.identityFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.IdentityFilter
+2013-04-01 13:21:27,077 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.isUserInRole, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.IsUserInRole
+2013-04-01 13:21:27,078 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.loggingFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.LoggingFilter
+2013-04-01 13:21:27,079 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.multipartFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.MultipartFilter
+2013-04-01 13:21:27,080 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.parameters, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.Parameters
+2013-04-01 13:21:27,089 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.redirectFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.RedirectFilter
+2013-04-01 13:21:27,089 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.servletContexts, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.web.ServletContexts
+2013-04-01 13:21:27,090 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.session, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.web.Session
+2013-04-01 13:21:27,091 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.userPrincipal, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.UserPrincipal
+2013-04-01 13:21:27,092 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: resourceAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.ResourceAction
+2013-04-01 13:21:27,094 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: resourceCRUDAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SingleResourceAction
+2013-04-01 13:21:27,101 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: resourceConfigurationUIBean, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.ResourceConfigurationUIBean
+2013-04-01 13:21:27,103 WARN  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component class should be serializable: sessionInfoAction
+2013-04-01 13:21:27,103 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: sessionInfoAction, scope: SESSION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SessionInfoAction
+2013-04-01 13:21:27,113 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: summaryAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SummaryAction
+2013-04-01 13:21:27,115 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: tableManager, scope: PAGE, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.TableManager
+2013-04-01 13:21:27,118 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: templateDropDownPopulator, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.TemplateDropDownPopulator
+2013-04-01 13:21:27,121 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: updateBackingContentAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.content.UpdateBackingContentAction
+2013-04-01 13:21:27,137 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.security.persistentPermissionResolver
+2013-04-01 13:21:27,141 WARN  [org.jboss.seam.security.permission.PersistentPermissionResolver] (http-localhost%2F127.0.0.1-8080-1) no permission store available - please install a PermissionStore with the name 'org.jboss.seam.security.jpaPermissionStore' if persistent permissions are required.
+2013-04-01 13:21:27,141 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.security.permissionMapper
+2013-04-01 13:21:27,141 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.navigation.pages
+2013-04-01 13:21:27,207 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.security.entityPermissionChecker
+2013-04-01 13:21:27,208 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: bootstrapAction
+2013-04-01 13:21:27,281 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.security.facesSecurityEvents
+2013-04-01 13:21:27,282 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) done initializing Seam
+2013-04-01 13:21:27,285 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.loggingFilter
+2013-04-01 13:21:27,285 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.ajax4jsfFilter
+2013-04-01 13:21:27,391 INFO  [org.ajax4jsf.cache.CacheManager] (http-localhost%2F127.0.0.1-8080-1) Selected [org.ajax4jsf.cache.LRUMapCacheFactory] cache factory
+2013-04-01 13:21:27,394 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-1) Creating LRUMap cache instance using parameters: {facelets.DEVELOPMENT=true, facelets.LIBRARIES=/WEB-INF/on.component.taglib.xml, org.jboss.on.embedded.LazyStartupListener=org.jboss.seam.servlet.SeamListener, com.sun.faces.duplicateJARPattern=^tmp\d+(\S*\.jar), javax.faces.CONFIG_FILES=/WEB-INF/navigation.xml, org.richfaces.SKIN=jboss-console, com.sun.faces.injectionProvider=org.jboss.web.jsf.integration.injection.JBossDelegatingInjectionProvider, resteasy.unwrapped.exceptions=javax.ejb.EJBException, javax.faces.STATE_SAVING_METHOD=server, javax.faces.DEFAULT_SUFFIX=.xhtml}
+2013-04-01 13:21:27,395 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-1) Creating LRUMap cache instance of default capacity
+2013-04-01 13:21:27,445 INFO  [org.ajax4jsf.cache.CacheManager] (http-localhost%2F127.0.0.1-8080-1) Selected [org.ajax4jsf.cache.LRUMapCacheFactory] cache factory
+2013-04-01 13:21:27,446 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-1) Creating LRUMap cache instance using parameters: {facelets.DEVELOPMENT=true, facelets.LIBRARIES=/WEB-INF/on.component.taglib.xml, org.jboss.on.embedded.LazyStartupListener=org.jboss.seam.servlet.SeamListener, com.sun.faces.duplicateJARPattern=^tmp\d+(\S*\.jar), javax.faces.CONFIG_FILES=/WEB-INF/navigation.xml, org.richfaces.SKIN=jboss-console, com.sun.faces.injectionProvider=org.jboss.web.jsf.integration.injection.JBossDelegatingInjectionProvider, resteasy.unwrapped.exceptions=javax.ejb.EJBException, javax.faces.STATE_SAVING_METHOD=server, javax.faces.DEFAULT_SUFFIX=.xhtml}
+2013-04-01 13:21:27,446 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-1) Creating LRUMap cache instance of default capacity
+2013-04-01 13:21:27,446 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.redirectFilter
+2013-04-01 13:21:27,446 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.exceptionFilter
+2013-04-01 13:21:27,446 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.multipartFilter
+2013-04-01 13:21:27,447 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.identityFilter
+2013-04-01 13:21:27,525 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.security.identity
+2013-04-01 13:21:27,541 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.web.session
+2013-04-01 13:21:27,542 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: sessionInfoAction
+2013-04-01 13:21:43,338 INFO  [org.jboss.on.embedded.ui.BootstrapAction] (http-localhost%2F127.0.0.1-8080-1) Initializing Administration Console v1.4.0.SP2...
+2013-04-01 13:21:43,392 INFO  [org.rhq.core.pc.PluginContainer] (http-localhost%2F127.0.0.1-8080-1) Initializing Plugin Container v3.0.0...
+2013-04-01 13:21:45,054 INFO  [org.rhq.core.clientapi.agent.metadata.PluginDependencyGraph] (http-localhost%2F127.0.0.1-8080-1) Optional plugin [JBossAS] was requested by plugins [[Hibernate]] but it does not exist in the dependency graph yet and will be ignored
+2013-04-01 13:21:45,054 INFO  [org.rhq.core.clientapi.agent.metadata.PluginDependencyGraph] (http-localhost%2F127.0.0.1-8080-1) Optional plugin [JBossAS] was requested by plugins [[Infinispan]] but it does not exist in the dependency graph yet and will be ignored
+2013-04-01 13:21:46,937 INFO  [org.rhq.core.clientapi.agent.metadata.PluginMetadataParser] (http-localhost%2F127.0.0.1-8080-1) There is no resource type named [JBossAS Server] from a plugin named [JBossAS]. This is probably because that plugin is missing. Resource Type [Infinispan Cache Manager] will not have that missing type as a possible parent.
+2013-04-01 13:21:47,175 INFO  [org.rhq.core.clientapi.agent.metadata.PluginMetadataParser] (http-localhost%2F127.0.0.1-8080-1) There is no resource type named [JBossAS Server] from a plugin named [JBossAS]. This is probably because that plugin is missing. Resource Type [Hibernate Statistics] will not have that missing type as a possible parent.
+2013-04-01 13:21:47,176 INFO  [org.rhq.core.pc.inventory.InventoryManager] (http-localhost%2F127.0.0.1-8080-1) Initializing Inventory Manager...
+2013-04-01 13:21:47,252 INFO  [org.rhq.core.pc.inventory.InventoryManager] (http-localhost%2F127.0.0.1-8080-1) Detected new Platform [Resource[id=-2, type=Windows, key=B181548.dataprimer.com, name=B181548.dataprimer.com, parent=<null>, version=Windows 7 6.1]] - adding to local inventory...
+2013-04-01 13:21:47,303 INFO  [org.rhq.core.pc.inventory.InventoryManager] (http-localhost%2F127.0.0.1-8080-1) Inventory Manager initialized.
+2013-04-01 13:21:47,320 INFO  [org.rhq.core.pc.inventory.ResourceFactoryManager] (http-localhost%2F127.0.0.1-8080-1) Initializing
+2013-04-01 13:21:47,321 INFO  [org.rhq.core.pc.content.ContentManager] (http-localhost%2F127.0.0.1-8080-1) Initializing Content Manager...
+2013-04-01 13:21:47,321 INFO  [org.rhq.core.pc.content.ContentManager] (http-localhost%2F127.0.0.1-8080-1) Content Manager initialized...
+2013-04-01 13:21:47,326 INFO  [org.rhq.core.pc.PluginContainer] (http-localhost%2F127.0.0.1-8080-1) Plugin Container initialized.
+2013-04-01 13:21:47,331 INFO  [org.jboss.on.embedded.manager.pc.PluginContainerResourceManager] (http-localhost%2F127.0.0.1-8080-1) Discovering Resources...
+2013-04-01 13:21:47,332 INFO  [org.rhq.core.pc.inventory.AutoDiscoveryExecutor] (InventoryManager.discovery-1) Executing server discovery scan...
+2013-04-01 13:21:52,268 INFO  [org.rhq.core.pc.inventory.InventoryManager] (InventoryManager.discovery-1) Detected new Server [Resource[id=-3, type=JBossAS Server, key=C:\jboss-6.1.0.Final\server\sso, name=JBoss AS 6 (sso), parent=<null>, version=6.1.0.Final]] - adding to local inventory...
+2013-04-01 13:21:52,519 INFO  [org.rhq.core.pc.inventory.AutoDiscoveryExecutor] (InventoryManager.discovery-1) Found 0 servers.
+2013-04-01 13:21:52,520 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Running runtime discovery scan rooted at [platform]
+2013-04-01 13:21:52,563 INFO  [org.rhq.core.pc.inventory.InventoryManager] (InventoryManager.discovery-1) Detected new Server [Resource[id=-4, type=JBoss AS JVM, key=JVM, name=JVM, parent=<null>, version=1.6.0_21]] - adding to local inventory...
+2013-04-01 13:21:52,567 INFO  [org.rhq.plugins.jmx.JMXServerComponent] (ResourceContainer.invoker.daemon-1) Starting connection to JMX Server JVM
+2013-04-01 13:21:53,282 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Scanned [0] servers and found [0] total descendant Resources.
+2013-04-01 13:21:53,367 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Running runtime discovery scan rooted at [platform]
+2013-04-01 13:21:53,463 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Scanned [0] servers and found [0] total descendant Resources.
+2013-04-01 13:22:00,151 INFO  [org.hibernate.validator.Version] (http-localhost%2F127.0.0.1-8080-2) Hibernate Validator 3.1.0.GA
+2013-04-01 13:22:00,182 INFO  [org.hibernate.annotations.common.Version] (http-localhost%2F127.0.0.1-8080-2) Hibernate Commons Annotations 3.2.0.Final
+2013-04-01 13:22:58,281 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-26) Server exit called, exiting the JVM now!
+2013-04-01 13:22:58,284 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2013-04-01 13:22:58,285 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-27) Stopping: JBossAS [6.1.0.Final "Neo"]
+2013-04-01 13:22:58,288 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-27) Pausing Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 13:22:58,289 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-27) Stopping Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 13:22:58,293 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-27) Pausing Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 13:22:58,293 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-27) Stopping Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 13:25:54,073 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 13:25:54,079 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 13:25:54,080 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:209ms
+2013-04-01 13:31:06,699 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (http-localhost%2F127.0.0.1-8080-1) deploy, ctxPath=/admin-console
+2013-04-01 13:31:06,731 INFO  [org.apache.catalina.core.StandardContext] (http-localhost%2F127.0.0.1-8080-1) The listener "com.sun.faces.config.ConfigureListener" is already configured for this context. The duplicate definition has been ignored.
+2013-04-01 13:31:06,883 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (http-localhost%2F127.0.0.1-8080-1) Inicializando Mojarra 2.0.3 ( b05) para o contexto '/admin-console'
+2013-04-01 13:31:11,412 INFO  [javax.servlet.ServletContextListener] (http-localhost%2F127.0.0.1-8080-1) Welcome to Seam 2.1.0.SP1
+2013-04-01 13:31:14,640 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/async, package: org.jboss.seam.async, prefix: org.jboss.seam.async
+2013-04-01 13:31:14,641 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/framework, package: org.jboss.seam.framework, prefix: org.jboss.seam.core.framework
+2013-04-01 13:31:14,641 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/theme, package: org.jboss.seam.theme, prefix: org.jboss.seam.theme
+2013-04-01 13:31:14,641 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/security, package: org.jboss.seam.security.management, prefix: org.jboss.seam.security
+2013-04-01 13:31:14,641 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/bpm, package: org.jboss.seam.bpm, prefix: org.jboss.seam.bpm
+2013-04-01 13:31:14,642 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/mail, package: org.jboss.seam.mail, prefix: org.jboss.seam.mail
+2013-04-01 13:31:14,642 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/security, package: org.jboss.seam.security, prefix: org.jboss.seam.security
+2013-04-01 13:31:14,642 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/web, package: org.jboss.seam.web, prefix: org.jboss.seam.web
+2013-04-01 13:31:14,642 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/captcha, package: org.jboss.seam.captcha, prefix: org.jboss.seam.captcha
+2013-04-01 13:31:14,643 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/navigation, package: org.jboss.seam.navigation, prefix: org.jboss.seam.navigation
+2013-04-01 13:31:14,643 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/core, package: org.jboss.seam.core, prefix: org.jboss.seam.core
+2013-04-01 13:31:14,643 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/international, package: org.jboss.seam.international, prefix: org.jboss.seam.international
+2013-04-01 13:31:14,643 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/cache, package: org.jboss.seam.cache, prefix: org.jboss.seam.cache
+2013-04-01 13:31:14,643 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/jms, package: org.jboss.seam.jms, prefix: org.jboss.seam.jms
+2013-04-01 13:31:14,644 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/ui, package: org.jboss.seam.ui, prefix: org.jboss.seam.ui
+2013-04-01 13:31:14,644 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/transaction, package: org.jboss.seam.transaction, prefix: org.jboss.seam.transaction
+2013-04-01 13:31:14,644 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/security, package: org.jboss.seam.security.permission, prefix: org.jboss.seam.security
+2013-04-01 13:31:14,644 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/drools, package: org.jboss.seam.drools, prefix: org.jboss.seam.drools
+2013-04-01 13:31:14,644 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/persistence, package: org.jboss.seam.persistence, prefix: org.jboss.seam.persistence
+2013-04-01 13:31:14,645 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Namespace: http://jboss.com/products/seam/document, package: org.jboss.seam.document, prefix: org.jboss.seam.document
+2013-04-01 13:31:14,647 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) reading /WEB-INF/components.xml
+2013-04-01 13:31:14,691 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) reading properties from: /seam.properties
+2013-04-01 13:31:14,692 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) reading properties from: /jndi.properties
+2013-04-01 13:31:14,695 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) initializing Seam
+2013-04-01 13:31:14,748 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.web.isUserInRole
+2013-04-01 13:31:14,752 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.persistence.persistenceProvider
+2013-04-01 13:31:14,756 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.core.resourceLoader
+2013-04-01 13:31:14,758 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.core.locale
+2013-04-01 13:31:14,767 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.core.locale
+2013-04-01 13:31:14,767 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.transaction.synchronizations
+2013-04-01 13:31:14,768 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.core.expressions
+2013-04-01 13:31:14,768 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.web.userPrincipal
+2013-04-01 13:31:14,770 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.web.parameters
+2013-04-01 13:31:14,774 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) two components with same name, higher precedence wins: org.jboss.seam.core.manager
+2013-04-01 13:31:14,797 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.init, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.core.Init
+2013-04-01 13:31:14,869 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) Installing components...
+2013-04-01 13:31:14,890 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: DefaultPageControlSettingsUIBean, scope: APPLICATION, type: JAVA_BEAN, class: org.rhq.core.gui.model.DefaultPageControlSettingsUIBean
+2013-04-01 13:31:14,913 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: addNewOpenMap, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.AddNewOpenMapMemberPropertyToResourceConfigurationUIBean
+2013-04-01 13:31:14,927 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: bootstrapAction, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.BootstrapAction
+2013-04-01 13:31:14,942 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: commonActionUtil, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.CommonActionUtil
+2013-04-01 13:31:14,946 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: configHelperFactory, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.ConfigHelperFactory
+2013-04-01 13:31:14,948 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: contentDisplayAction, scope: SESSION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SingleResourceContentAction
+2013-04-01 13:31:14,956 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: contentHistoryManager, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.bean.history.content.ContentHistoryManagerBean
+2013-04-01 13:31:14,963 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: createContentBackedResourceAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.content.CreateContentBackedResourceAction
+2013-04-01 13:31:14,970 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: datascrollerUI, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.DatascrollerUIBean
+2013-04-01 13:31:14,973 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: debugAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.DebugAction
+2013-04-01 13:31:14,975 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: discoveryAction, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.DiscoveryAction
+2013-04-01 13:31:14,977 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: exceptionAction, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.ExceptionAction
+2013-04-01 13:31:14,982 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: historyManager, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.bean.history.operation.OperationHistoryManagerBean
+2013-04-01 13:31:14,985 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: idChunkFactory, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.IdChunkFactory
+2013-04-01 13:31:14,989 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: inventoryEventListener, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.EmbeddedInventoryEventListener
+2013-04-01 13:31:14,991 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: metricAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.MetricAction
+2013-04-01 13:31:15,002 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: navigationAction, scope: SESSION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.NavigationAction
+2013-04-01 13:31:15,006 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: navigationContent, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.NavigationContent
+2013-04-01 13:31:15,009 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: operationAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SingleResourceOperationAction
+2013-04-01 13:31:15,013 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.async.asynchronousExceptionHandler, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.async.AsynchronousExceptionHandler
+2013-04-01 13:31:15,018 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.async.dispatcher, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.async.ThreadPoolDispatcher
+2013-04-01 13:31:15,029 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.captcha.captcha, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.captcha.Captcha
+2013-04-01 13:31:15,030 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.captcha.captchaImage, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.captcha.CaptchaImage
+2013-04-01 13:31:15,030 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.ConversationIdGenerator, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationIdGenerator
+2013-04-01 13:31:15,032 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.contexts, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.Contexts
+2013-04-01 13:31:15,034 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.conversation, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.core.Conversation
+2013-04-01 13:31:15,036 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.conversationEntries, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationEntries
+2013-04-01 13:31:15,037 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.conversationListFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationList
+2013-04-01 13:31:15,039 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.conversationPropagation, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationPropagation
+2013-04-01 13:31:15,040 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.conversationStackFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationStack
+2013-04-01 13:31:15,041 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.events, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.core.Events
+2013-04-01 13:31:15,042 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.expressions, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesExpressions
+2013-04-01 13:31:15,043 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.interpolator, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.Interpolator
+2013-04-01 13:31:15,045 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.locale, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.international.Locale
+2013-04-01 13:31:15,049 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.manager, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesManager
+2013-04-01 13:31:15,051 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.resourceBundle, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.ResourceBundle
+2013-04-01 13:31:15,052 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.resourceLoader, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.ResourceLoader
+2013-04-01 13:31:15,055 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.core.validators, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.core.Validators
+2013-04-01 13:31:15,056 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.document.documentStore, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.document.DocumentStore
+2013-04-01 13:31:15,063 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.exception.exceptions, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.exception.Exceptions
+2013-04-01 13:31:15,070 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.dataModels, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.DataModels
+2013-04-01 13:31:15,071 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.facesContext, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesContext
+2013-04-01 13:31:15,071 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.facesPage, scope: PAGE, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesPage
+2013-04-01 13:31:15,072 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.httpError, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.HttpError
+2013-04-01 13:31:15,073 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.redirect, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.faces.Redirect
+2013-04-01 13:31:15,074 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.renderer, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.FaceletsRenderer
+2013-04-01 13:31:15,075 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.switcher, scope: PAGE, type: JAVA_BEAN, class: org.jboss.seam.faces.Switcher
+2013-04-01 13:31:15,076 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.uiComponent, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.UiComponent
+2013-04-01 13:31:15,077 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.faces.validation, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.faces.Validation
+2013-04-01 13:31:15,078 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.framework.currentDate, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.framework.CurrentDate
+2013-04-01 13:31:15,079 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.framework.currentDatetime, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.framework.CurrentDatetime
+2013-04-01 13:31:15,081 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.framework.currentTime, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.framework.CurrentTime
+2013-04-01 13:31:15,085 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.graphicImage.image, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.ui.graphicImage.Image
+2013-04-01 13:31:15,088 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.international.localeSelector, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.international.LocaleSelector
+2013-04-01 13:31:15,089 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.international.messagesFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.international.Messages
+2013-04-01 13:31:15,095 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.international.statusMessages, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesMessages
+2013-04-01 13:31:15,097 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.international.timeZone, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.international.TimeZone
+2013-04-01 13:31:15,098 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.international.timeZoneSelector, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.international.TimeZoneSelector
+2013-04-01 13:31:15,100 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.mail.mailSession, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.mail.MailSession
+2013-04-01 13:31:15,109 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.navigation.pages, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.navigation.Pages
+2013-04-01 13:31:15,116 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.navigation.safeActions, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.navigation.SafeActions
+2013-04-01 13:31:15,116 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.persistence.persistenceContexts, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.persistence.PersistenceContexts
+2013-04-01 13:31:15,126 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.persistence.persistenceProvider, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.persistence.HibernatePersistenceProvider
+2013-04-01 13:31:15,131 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.configurationFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.security.Configuration
+2013-04-01 13:31:15,132 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.credentials, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.Credentials
+2013-04-01 13:31:15,134 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.entityPermissionChecker, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.EntityPermissionChecker
+2013-04-01 13:31:15,138 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.facesSecurityEvents, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.FacesSecurityEvents
+2013-04-01 13:31:15,140 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.identifierPolicy, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.IdentifierPolicy
+2013-04-01 13:31:15,143 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.identity, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.Identity
+2013-04-01 13:31:15,148 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.identityManager, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.security.management.IdentityManager
+2013-04-01 13:31:15,150 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.management.roleAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.RoleAction
+2013-04-01 13:31:15,152 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.management.roleSearch, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.RoleSearch
+2013-04-01 13:31:15,162 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.management.userAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.UserAction
+2013-04-01 13:31:15,164 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.management.userSearch, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.UserSearch
+2013-04-01 13:31:15,166 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.passwordHash, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.security.management.PasswordHash
+2013-04-01 13:31:15,167 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.permission.permissionSearch, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.action.PermissionSearch
+2013-04-01 13:31:15,171 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.permissionManager, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.PermissionManager
+2013-04-01 13:31:15,174 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.permissionMapper, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.PermissionMapper
+2013-04-01 13:31:15,175 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.persistentPermissionResolver, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.PersistentPermissionResolver
+2013-04-01 13:31:15,177 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.security.rememberMe, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.RememberMe
+2013-04-01 13:31:15,180 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.theme.themeFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.theme.Theme
+2013-04-01 13:31:15,182 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.theme.themeSelector, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.theme.ThemeSelector
+2013-04-01 13:31:15,182 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.transaction.synchronizations, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.transaction.SeSynchronizations
+2013-04-01 13:31:15,184 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.transaction.transaction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.transaction.Transaction
+2013-04-01 13:31:15,187 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.EntityConverter, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.ui.EntityConverter
+2013-04-01 13:31:15,189 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.entityIdentifierStore, scope: PAGE, type: JAVA_BEAN, class: org.jboss.seam.ui.EntityIdentifierStore
+2013-04-01 13:31:15,193 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.entityLoader, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.ui.JpaEntityLoader
+2013-04-01 13:31:15,198 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.facelet.faceletCompiler, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.FaceletCompiler
+2013-04-01 13:31:15,199 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.facelet.facesContextFactory, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.RendererFacesContextFactory
+2013-04-01 13:31:15,200 WARN  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component class should be serializable: org.jboss.seam.ui.facelet.mockHttpSession
+2013-04-01 13:31:15,200 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.facelet.mockHttpSession, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.HttpSessionManager
+2013-04-01 13:31:15,200 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.facelet.mockServletContext, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.ServletContextManager
+2013-04-01 13:31:15,201 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.graphicImage.graphicImageResource, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.graphicImage.GraphicImageResource
+2013-04-01 13:31:15,203 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.graphicImage.graphicImageStore, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.ui.graphicImage.GraphicImageStore
+2013-04-01 13:31:15,204 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.ui.resource.webResource, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.resource.WebResource
+2013-04-01 13:31:15,206 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.ajax4jsfFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.Ajax4jsfFilter
+2013-04-01 13:31:15,207 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.ajax4jsfFilterInstantiator, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.ui.filter.Ajax4jsfFilterInstantiator
+2013-04-01 13:31:15,210 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.exceptionFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.ExceptionFilter
+2013-04-01 13:31:15,212 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.identityFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.IdentityFilter
+2013-04-01 13:31:15,212 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.isUserInRole, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.IsUserInRole
+2013-04-01 13:31:15,213 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.loggingFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.LoggingFilter
+2013-04-01 13:31:15,214 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.multipartFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.MultipartFilter
+2013-04-01 13:31:15,215 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.parameters, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.Parameters
+2013-04-01 13:31:15,216 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.redirectFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.RedirectFilter
+2013-04-01 13:31:15,217 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.servletContexts, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.web.ServletContexts
+2013-04-01 13:31:15,217 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.session, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.web.Session
+2013-04-01 13:31:15,218 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: org.jboss.seam.web.userPrincipal, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.UserPrincipal
+2013-04-01 13:31:15,219 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: resourceAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.ResourceAction
+2013-04-01 13:31:15,221 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: resourceCRUDAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SingleResourceAction
+2013-04-01 13:31:15,230 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: resourceConfigurationUIBean, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.ResourceConfigurationUIBean
+2013-04-01 13:31:15,232 WARN  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component class should be serializable: sessionInfoAction
+2013-04-01 13:31:15,232 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: sessionInfoAction, scope: SESSION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SessionInfoAction
+2013-04-01 13:31:15,235 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: summaryAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SummaryAction
+2013-04-01 13:31:15,237 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: tableManager, scope: PAGE, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.TableManager
+2013-04-01 13:31:15,240 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: templateDropDownPopulator, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.TemplateDropDownPopulator
+2013-04-01 13:31:15,243 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-1) Component: updateBackingContentAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.content.UpdateBackingContentAction
+2013-04-01 13:31:15,249 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.security.persistentPermissionResolver
+2013-04-01 13:31:15,252 WARN  [org.jboss.seam.security.permission.PersistentPermissionResolver] (http-localhost%2F127.0.0.1-8080-1) no permission store available - please install a PermissionStore with the name 'org.jboss.seam.security.jpaPermissionStore' if persistent permissions are required.
+2013-04-01 13:31:15,252 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.security.permissionMapper
+2013-04-01 13:31:15,252 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.navigation.pages
+2013-04-01 13:31:15,267 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.security.entityPermissionChecker
+2013-04-01 13:31:15,267 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: bootstrapAction
+2013-04-01 13:31:15,292 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.security.facesSecurityEvents
+2013-04-01 13:31:15,292 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-1) done initializing Seam
+2013-04-01 13:31:15,296 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.loggingFilter
+2013-04-01 13:31:15,297 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.ajax4jsfFilter
+2013-04-01 13:31:15,322 INFO  [org.ajax4jsf.cache.CacheManager] (http-localhost%2F127.0.0.1-8080-1) Selected [org.ajax4jsf.cache.LRUMapCacheFactory] cache factory
+2013-04-01 13:31:15,325 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-1) Creating LRUMap cache instance using parameters: {facelets.DEVELOPMENT=true, facelets.LIBRARIES=/WEB-INF/on.component.taglib.xml, org.jboss.on.embedded.LazyStartupListener=org.jboss.seam.servlet.SeamListener, com.sun.faces.duplicateJARPattern=^tmp\d+(\S*\.jar), javax.faces.CONFIG_FILES=/WEB-INF/navigation.xml, org.richfaces.SKIN=jboss-console, com.sun.faces.injectionProvider=org.jboss.web.jsf.integration.injection.JBossDelegatingInjectionProvider, resteasy.unwrapped.exceptions=javax.ejb.EJBException, javax.faces.STATE_SAVING_METHOD=server, javax.faces.DEFAULT_SUFFIX=.xhtml}
+2013-04-01 13:31:15,325 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-1) Creating LRUMap cache instance of default capacity
+2013-04-01 13:31:15,349 INFO  [org.ajax4jsf.cache.CacheManager] (http-localhost%2F127.0.0.1-8080-1) Selected [org.ajax4jsf.cache.LRUMapCacheFactory] cache factory
+2013-04-01 13:31:15,349 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-1) Creating LRUMap cache instance using parameters: {facelets.DEVELOPMENT=true, facelets.LIBRARIES=/WEB-INF/on.component.taglib.xml, org.jboss.on.embedded.LazyStartupListener=org.jboss.seam.servlet.SeamListener, com.sun.faces.duplicateJARPattern=^tmp\d+(\S*\.jar), javax.faces.CONFIG_FILES=/WEB-INF/navigation.xml, org.richfaces.SKIN=jboss-console, com.sun.faces.injectionProvider=org.jboss.web.jsf.integration.injection.JBossDelegatingInjectionProvider, resteasy.unwrapped.exceptions=javax.ejb.EJBException, javax.faces.STATE_SAVING_METHOD=server, javax.faces.DEFAULT_SUFFIX=.xhtml}
+2013-04-01 13:31:15,349 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-1) Creating LRUMap cache instance of default capacity
+2013-04-01 13:31:15,349 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.redirectFilter
+2013-04-01 13:31:15,350 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.exceptionFilter
+2013-04-01 13:31:15,350 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.multipartFilter
+2013-04-01 13:31:15,350 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-1) Initializing filter: org.jboss.seam.web.identityFilter
+2013-04-01 13:31:15,369 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.security.identity
+2013-04-01 13:31:15,373 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: org.jboss.seam.web.session
+2013-04-01 13:31:15,373 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-1) starting up: sessionInfoAction
+2013-04-01 13:31:26,229 INFO  [org.jboss.on.embedded.ui.BootstrapAction] (http-localhost%2F127.0.0.1-8080-1) Initializing Administration Console v1.4.0.SP2...
+2013-04-01 13:31:26,244 INFO  [org.rhq.core.pc.PluginContainer] (http-localhost%2F127.0.0.1-8080-1) Initializing Plugin Container v3.0.0...
+2013-04-01 13:31:27,263 INFO  [org.rhq.core.clientapi.agent.metadata.PluginDependencyGraph] (http-localhost%2F127.0.0.1-8080-1) Optional plugin [JBossAS] was requested by plugins [[Hibernate]] but it does not exist in the dependency graph yet and will be ignored
+2013-04-01 13:31:27,263 INFO  [org.rhq.core.clientapi.agent.metadata.PluginDependencyGraph] (http-localhost%2F127.0.0.1-8080-1) Optional plugin [JBossAS] was requested by plugins [[Infinispan]] but it does not exist in the dependency graph yet and will be ignored
+2013-04-01 13:31:28,228 INFO  [org.rhq.core.clientapi.agent.metadata.PluginMetadataParser] (http-localhost%2F127.0.0.1-8080-1) There is no resource type named [JBossAS Server] from a plugin named [JBossAS]. This is probably because that plugin is missing. Resource Type [Infinispan Cache Manager] will not have that missing type as a possible parent.
+2013-04-01 13:31:28,367 INFO  [org.rhq.core.clientapi.agent.metadata.PluginMetadataParser] (http-localhost%2F127.0.0.1-8080-1) There is no resource type named [JBossAS Server] from a plugin named [JBossAS]. This is probably because that plugin is missing. Resource Type [Hibernate Statistics] will not have that missing type as a possible parent.
+2013-04-01 13:31:28,368 INFO  [org.rhq.core.pc.inventory.InventoryManager] (http-localhost%2F127.0.0.1-8080-1) Initializing Inventory Manager...
+2013-04-01 13:31:28,418 INFO  [org.rhq.core.pc.inventory.InventoryManager] (http-localhost%2F127.0.0.1-8080-1) Detected new Platform [Resource[id=-2, type=Windows, key=B181548.dataprimer.com, name=B181548.dataprimer.com, parent=<null>, version=Windows 7 6.1]] - adding to local inventory...
+2013-04-01 13:31:28,451 INFO  [org.rhq.core.pc.inventory.InventoryManager] (http-localhost%2F127.0.0.1-8080-1) Inventory Manager initialized.
+2013-04-01 13:31:28,465 INFO  [org.rhq.core.pc.inventory.ResourceFactoryManager] (http-localhost%2F127.0.0.1-8080-1) Initializing
+2013-04-01 13:31:28,466 INFO  [org.rhq.core.pc.content.ContentManager] (http-localhost%2F127.0.0.1-8080-1) Initializing Content Manager...
+2013-04-01 13:31:28,466 INFO  [org.rhq.core.pc.content.ContentManager] (http-localhost%2F127.0.0.1-8080-1) Content Manager initialized...
+2013-04-01 13:31:28,469 INFO  [org.rhq.core.pc.PluginContainer] (http-localhost%2F127.0.0.1-8080-1) Plugin Container initialized.
+2013-04-01 13:31:28,474 INFO  [org.jboss.on.embedded.manager.pc.PluginContainerResourceManager] (http-localhost%2F127.0.0.1-8080-1) Discovering Resources...
+2013-04-01 13:31:28,475 INFO  [org.rhq.core.pc.inventory.AutoDiscoveryExecutor] (InventoryManager.discovery-1) Executing server discovery scan...
+2013-04-01 13:31:32,435 INFO  [org.rhq.core.pc.inventory.InventoryManager] (InventoryManager.discovery-1) Detected new Server [Resource[id=-3, type=JBossAS Server, key=C:\jboss-6.1.0.Final\server\sso, name=JBoss AS 6 (sso), parent=<null>, version=6.1.0.Final]] - adding to local inventory...
+2013-04-01 13:31:32,583 INFO  [org.rhq.core.pc.inventory.AutoDiscoveryExecutor] (InventoryManager.discovery-1) Found 0 servers.
+2013-04-01 13:31:32,584 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Running runtime discovery scan rooted at [platform]
+2013-04-01 13:31:32,616 INFO  [org.rhq.core.pc.inventory.InventoryManager] (InventoryManager.discovery-1) Detected new Server [Resource[id=-4, type=JBoss AS JVM, key=JVM, name=JVM, parent=<null>, version=1.6.0_21]] - adding to local inventory...
+2013-04-01 13:31:32,620 INFO  [org.rhq.plugins.jmx.JMXServerComponent] (ResourceContainer.invoker.daemon-1) Starting connection to JMX Server JVM
+2013-04-01 13:31:33,848 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Scanned [0] servers and found [0] total descendant Resources.
+2013-04-01 13:31:34,014 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Running runtime discovery scan rooted at [platform]
+2013-04-01 13:31:34,106 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Scanned [0] servers and found [0] total descendant Resources.
+2013-04-01 13:31:59,548 INFO  [org.hibernate.validator.Version] (http-localhost%2F127.0.0.1-8080-1) Hibernate Validator 3.1.0.GA
+2013-04-01 13:31:59,562 INFO  [org.hibernate.annotations.common.Version] (http-localhost%2F127.0.0.1-8080-1) Hibernate Commons Annotations 3.2.0.Final
+2013-04-01 13:33:02,983 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (HDScanner) undeploy, ctxPath=/sso
+2013-04-01 13:33:12,290 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (HDScanner) deploy, ctxPath=/sso
+2013-04-01 13:33:15,950 INFO  [org.hibernate.validator.engine.resolver.DefaultTraversableResolver] (HDScanner) Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+2013-04-01 13:33:15,976 INFO  [org.richfaces.log.Cache] (HDScanner) Selected fallback cache factory
+2013-04-01 13:33:15,977 INFO  [org.richfaces.log.Cache] (HDScanner) Creating LRUMap cache instance using parameters: {javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL=true, org.ajax4jsf.DEFAULT_EXPIRE=86400, org.richfaces.resourceOptimization.enabled=true, javax.faces.CONFIG_FILES=/WEB-INF/faces-navigation.xml, com.sun.faces.duplicateJARPattern=^tmp\d+(\S*\.jar), com.sun.faces.externalizeJavaScript=true, org.richfaces.skin=DEFAULT, com.sun.faces.injectionProvider=org.jboss.web.jsf.integration.injection.JBossDelegatingInjectionProvider, javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE=true, com.sun.faces.validateXml=true, javax.faces.PROJECT_STAGE=Production, com.sun.faces.verifyObjects=false, org.richfaces.enableControlSkinning=false, javax.faces.FACELETS_SKIP_COMMENTS=true, javax.faces.STATE_SAVING_METHOD=server, javax.faces.DEFAULT_SUFFIX=.xhtml, resteasy.unwrapped.exceptions=javax.ejb.EJBException}
+2013-04-01 13:33:15,980 INFO  [org.richfaces.log.Cache] (HDScanner) Creating LRUMap cache instance of 512 items capacity
+2013-04-01 13:33:15,982 INFO  [org.richfaces.log.Application] (HDScanner) RichFaces Core Implementation by JBoss by Red Hat, version v.4.2.2.Final
+2013-04-01 13:33:15,986 AVISO [org.richfaces.log.Application] (HDScanner) JMS API was found on the classpath; if you want to enable RichFaces Push JMS integration, set context-param 'org.richfaces.push.jms.enabled' in web.xml
+2013-04-01 13:35:36,156 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 13:35:36,162 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 13:35:36,163 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:234ms
+2013-04-01 14:11:08,227 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-27) Server exit called, exiting the JVM now!
+2013-04-01 14:11:08,230 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2013-04-01 14:11:08,231 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-28) Stopping: JBossAS [6.1.0.Final "Neo"]
+2013-04-01 14:11:08,233 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-28) Pausing Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 14:11:08,234 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-28) Stopping Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 14:11:08,237 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-28) Pausing Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 14:11:08,238 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-28) Stopping Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 14:11:58,430 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 14:11:58,437 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 14:11:58,437 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:433ms
+2013-04-01 14:17:33,286 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (HDScanner) undeploy, ctxPath=/sso
+2013-04-01 14:18:16,090 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 14:18:16,115 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 14:18:16,115 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:463ms
+2013-04-01 14:25:20,574 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-19) Server exit called, exiting the JVM now!
+2013-04-01 14:25:20,577 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2013-04-01 14:25:20,580 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-20) Stopping: JBossAS [6.1.0.Final "Neo"]
+2013-04-01 14:25:20,582 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-20) Pausing Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 14:25:20,583 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-20) Stopping Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 14:25:20,588 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-20) Pausing Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 14:25:20,590 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-20) Stopping Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 14:28:44,404 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 14:28:44,411 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 14:28:44,411 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:315ms
+2013-04-01 14:52:58,801 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-36) Server exit called, exiting the JVM now!
+2013-04-01 14:52:58,804 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2013-04-01 14:52:58,806 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-37) Stopping: JBossAS [6.1.0.Final "Neo"]
+2013-04-01 14:52:58,808 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-37) Pausing Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 14:52:58,809 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-37) Stopping Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 14:52:58,813 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-37) Pausing Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 14:52:58,814 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-37) Stopping Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 14:58:11,549 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 14:58:11,555 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 14:58:11,556 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:401ms
+2013-04-01 15:01:35,422 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (HDScanner) undeploy, ctxPath=/sso
+2013-04-01 15:08:31,500 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 15:08:31,540 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 15:08:31,541 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:21ms
+2013-04-01 15:13:02,894 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (http-localhost%2F127.0.0.1-8080-2) deploy, ctxPath=/admin-console
+2013-04-01 15:13:02,926 INFO  [org.apache.catalina.core.StandardContext] (http-localhost%2F127.0.0.1-8080-2) The listener "com.sun.faces.config.ConfigureListener" is already configured for this context. The duplicate definition has been ignored.
+2013-04-01 15:13:03,065 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (http-localhost%2F127.0.0.1-8080-2) Inicializando Mojarra 2.0.3 ( b05) para o contexto '/admin-console'
+2013-04-01 15:13:07,519 INFO  [javax.servlet.ServletContextListener] (http-localhost%2F127.0.0.1-8080-2) Welcome to Seam 2.1.0.SP1
+2013-04-01 15:13:10,714 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/async, package: org.jboss.seam.async, prefix: org.jboss.seam.async
+2013-04-01 15:13:10,715 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/framework, package: org.jboss.seam.framework, prefix: org.jboss.seam.core.framework
+2013-04-01 15:13:10,715 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/theme, package: org.jboss.seam.theme, prefix: org.jboss.seam.theme
+2013-04-01 15:13:10,715 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/security, package: org.jboss.seam.security.management, prefix: org.jboss.seam.security
+2013-04-01 15:13:10,716 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/bpm, package: org.jboss.seam.bpm, prefix: org.jboss.seam.bpm
+2013-04-01 15:13:10,716 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/mail, package: org.jboss.seam.mail, prefix: org.jboss.seam.mail
+2013-04-01 15:13:10,716 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/security, package: org.jboss.seam.security, prefix: org.jboss.seam.security
+2013-04-01 15:13:10,716 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/web, package: org.jboss.seam.web, prefix: org.jboss.seam.web
+2013-04-01 15:13:10,716 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/captcha, package: org.jboss.seam.captcha, prefix: org.jboss.seam.captcha
+2013-04-01 15:13:10,717 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/navigation, package: org.jboss.seam.navigation, prefix: org.jboss.seam.navigation
+2013-04-01 15:13:10,717 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/core, package: org.jboss.seam.core, prefix: org.jboss.seam.core
+2013-04-01 15:13:10,717 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/international, package: org.jboss.seam.international, prefix: org.jboss.seam.international
+2013-04-01 15:13:10,717 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/cache, package: org.jboss.seam.cache, prefix: org.jboss.seam.cache
+2013-04-01 15:13:10,717 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/jms, package: org.jboss.seam.jms, prefix: org.jboss.seam.jms
+2013-04-01 15:13:10,718 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/ui, package: org.jboss.seam.ui, prefix: org.jboss.seam.ui
+2013-04-01 15:13:10,718 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/transaction, package: org.jboss.seam.transaction, prefix: org.jboss.seam.transaction
+2013-04-01 15:13:10,718 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/security, package: org.jboss.seam.security.permission, prefix: org.jboss.seam.security
+2013-04-01 15:13:10,718 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/drools, package: org.jboss.seam.drools, prefix: org.jboss.seam.drools
+2013-04-01 15:13:10,718 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/persistence, package: org.jboss.seam.persistence, prefix: org.jboss.seam.persistence
+2013-04-01 15:13:10,719 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Namespace: http://jboss.com/products/seam/document, package: org.jboss.seam.document, prefix: org.jboss.seam.document
+2013-04-01 15:13:10,721 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) reading /WEB-INF/components.xml
+2013-04-01 15:13:10,766 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) reading properties from: /seam.properties
+2013-04-01 15:13:10,767 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) reading properties from: /jndi.properties
+2013-04-01 15:13:10,769 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) initializing Seam
+2013-04-01 15:13:10,833 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) two components with same name, higher precedence wins: org.jboss.seam.transaction.synchronizations
+2013-04-01 15:13:10,834 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) two components with same name, higher precedence wins: org.jboss.seam.core.manager
+2013-04-01 15:13:10,838 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) two components with same name, higher precedence wins: org.jboss.seam.core.expressions
+2013-04-01 15:13:10,840 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) two components with same name, higher precedence wins: org.jboss.seam.core.locale
+2013-04-01 15:13:10,842 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) two components with same name, higher precedence wins: org.jboss.seam.core.locale
+2013-04-01 15:13:10,843 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) two components with same name, higher precedence wins: org.jboss.seam.web.userPrincipal
+2013-04-01 15:13:10,845 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) two components with same name, higher precedence wins: org.jboss.seam.web.isUserInRole
+2013-04-01 15:13:10,846 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) two components with same name, higher precedence wins: org.jboss.seam.core.resourceLoader
+2013-04-01 15:13:10,846 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) two components with same name, higher precedence wins: org.jboss.seam.web.parameters
+2013-04-01 15:13:10,847 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) two components with same name, higher precedence wins: org.jboss.seam.persistence.persistenceProvider
+2013-04-01 15:13:10,871 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.init, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.core.Init
+2013-04-01 15:13:10,950 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) Installing components...
+2013-04-01 15:13:10,970 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: DefaultPageControlSettingsUIBean, scope: APPLICATION, type: JAVA_BEAN, class: org.rhq.core.gui.model.DefaultPageControlSettingsUIBean
+2013-04-01 15:13:10,994 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: addNewOpenMap, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.AddNewOpenMapMemberPropertyToResourceConfigurationUIBean
+2013-04-01 15:13:11,008 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: bootstrapAction, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.BootstrapAction
+2013-04-01 15:13:11,022 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: commonActionUtil, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.CommonActionUtil
+2013-04-01 15:13:11,026 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: configHelperFactory, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.ConfigHelperFactory
+2013-04-01 15:13:11,029 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: contentDisplayAction, scope: SESSION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SingleResourceContentAction
+2013-04-01 15:13:11,036 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: contentHistoryManager, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.bean.history.content.ContentHistoryManagerBean
+2013-04-01 15:13:11,044 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: createContentBackedResourceAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.content.CreateContentBackedResourceAction
+2013-04-01 15:13:11,053 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: datascrollerUI, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.DatascrollerUIBean
+2013-04-01 15:13:11,055 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: debugAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.DebugAction
+2013-04-01 15:13:11,057 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: discoveryAction, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.DiscoveryAction
+2013-04-01 15:13:11,059 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: exceptionAction, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.ExceptionAction
+2013-04-01 15:13:11,064 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: historyManager, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.bean.history.operation.OperationHistoryManagerBean
+2013-04-01 15:13:11,067 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: idChunkFactory, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.IdChunkFactory
+2013-04-01 15:13:11,071 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: inventoryEventListener, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.on.embedded.EmbeddedInventoryEventListener
+2013-04-01 15:13:11,074 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: metricAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.MetricAction
+2013-04-01 15:13:11,084 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: navigationAction, scope: SESSION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.NavigationAction
+2013-04-01 15:13:11,088 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: navigationContent, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.NavigationContent
+2013-04-01 15:13:11,091 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: operationAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SingleResourceOperationAction
+2013-04-01 15:13:11,095 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.async.asynchronousExceptionHandler, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.async.AsynchronousExceptionHandler
+2013-04-01 15:13:11,101 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.async.dispatcher, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.async.ThreadPoolDispatcher
+2013-04-01 15:13:11,111 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.captcha.captcha, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.captcha.Captcha
+2013-04-01 15:13:11,113 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.captcha.captchaImage, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.captcha.CaptchaImage
+2013-04-01 15:13:11,113 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.ConversationIdGenerator, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationIdGenerator
+2013-04-01 15:13:11,115 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.contexts, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.Contexts
+2013-04-01 15:13:11,117 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.conversation, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.core.Conversation
+2013-04-01 15:13:11,119 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.conversationEntries, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationEntries
+2013-04-01 15:13:11,120 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.conversationListFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationList
+2013-04-01 15:13:11,122 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.conversationPropagation, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationPropagation
+2013-04-01 15:13:11,122 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.conversationStackFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.ConversationStack
+2013-04-01 15:13:11,123 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.events, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.core.Events
+2013-04-01 15:13:11,124 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.expressions, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesExpressions
+2013-04-01 15:13:11,125 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.interpolator, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.Interpolator
+2013-04-01 15:13:11,127 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.locale, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.international.Locale
+2013-04-01 15:13:11,131 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.manager, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesManager
+2013-04-01 15:13:11,133 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.resourceBundle, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.core.ResourceBundle
+2013-04-01 15:13:11,134 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.resourceLoader, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.ResourceLoader
+2013-04-01 15:13:11,137 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.core.validators, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.core.Validators
+2013-04-01 15:13:11,138 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.document.documentStore, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.document.DocumentStore
+2013-04-01 15:13:11,146 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.exception.exceptions, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.exception.Exceptions
+2013-04-01 15:13:11,153 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.faces.dataModels, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.DataModels
+2013-04-01 15:13:11,153 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.faces.facesContext, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesContext
+2013-04-01 15:13:11,154 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.faces.facesPage, scope: PAGE, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesPage
+2013-04-01 15:13:11,155 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.faces.httpError, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.HttpError
+2013-04-01 15:13:11,156 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.faces.redirect, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.faces.Redirect
+2013-04-01 15:13:11,157 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.faces.renderer, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.FaceletsRenderer
+2013-04-01 15:13:11,158 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.faces.switcher, scope: PAGE, type: JAVA_BEAN, class: org.jboss.seam.faces.Switcher
+2013-04-01 15:13:11,159 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.faces.uiComponent, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.UiComponent
+2013-04-01 15:13:11,160 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.faces.validation, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.faces.Validation
+2013-04-01 15:13:11,160 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.framework.currentDate, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.framework.CurrentDate
+2013-04-01 15:13:11,162 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.framework.currentDatetime, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.framework.CurrentDatetime
+2013-04-01 15:13:11,163 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.framework.currentTime, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.framework.CurrentTime
+2013-04-01 15:13:11,168 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.graphicImage.image, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.ui.graphicImage.Image
+2013-04-01 15:13:11,171 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.international.localeSelector, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.international.LocaleSelector
+2013-04-01 15:13:11,172 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.international.messagesFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.international.Messages
+2013-04-01 15:13:11,177 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.international.statusMessages, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.faces.FacesMessages
+2013-04-01 15:13:11,180 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.international.timeZone, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.international.TimeZone
+2013-04-01 15:13:11,180 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.international.timeZoneSelector, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.international.TimeZoneSelector
+2013-04-01 15:13:11,183 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.mail.mailSession, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.mail.MailSession
+2013-04-01 15:13:11,191 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.navigation.pages, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.navigation.Pages
+2013-04-01 15:13:11,198 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.navigation.safeActions, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.navigation.SafeActions
+2013-04-01 15:13:11,199 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.persistence.persistenceContexts, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.persistence.PersistenceContexts
+2013-04-01 15:13:11,209 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.persistence.persistenceProvider, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.persistence.HibernatePersistenceProvider
+2013-04-01 15:13:11,213 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.configurationFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.security.Configuration
+2013-04-01 15:13:11,214 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.credentials, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.Credentials
+2013-04-01 15:13:11,216 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.entityPermissionChecker, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.EntityPermissionChecker
+2013-04-01 15:13:11,217 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.facesSecurityEvents, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.FacesSecurityEvents
+2013-04-01 15:13:11,218 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.identifierPolicy, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.IdentifierPolicy
+2013-04-01 15:13:11,222 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.identity, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.Identity
+2013-04-01 15:13:11,226 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.identityManager, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.security.management.IdentityManager
+2013-04-01 15:13:11,228 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.management.roleAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.RoleAction
+2013-04-01 15:13:11,230 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.management.roleSearch, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.RoleSearch
+2013-04-01 15:13:11,240 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.management.userAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.UserAction
+2013-04-01 15:13:11,242 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.management.userSearch, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.management.action.UserSearch
+2013-04-01 15:13:11,243 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.passwordHash, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.security.management.PasswordHash
+2013-04-01 15:13:11,245 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.permission.permissionSearch, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.action.PermissionSearch
+2013-04-01 15:13:11,248 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.permissionManager, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.PermissionManager
+2013-04-01 15:13:11,251 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.permissionMapper, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.PermissionMapper
+2013-04-01 15:13:11,252 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.persistentPermissionResolver, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.security.permission.PersistentPermissionResolver
+2013-04-01 15:13:11,255 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.security.rememberMe, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.security.RememberMe
+2013-04-01 15:13:11,257 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.theme.themeFactory, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.theme.Theme
+2013-04-01 15:13:11,259 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.theme.themeSelector, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.theme.ThemeSelector
+2013-04-01 15:13:11,260 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.transaction.synchronizations, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.transaction.SeSynchronizations
+2013-04-01 15:13:11,261 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.transaction.transaction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.transaction.Transaction
+2013-04-01 15:13:11,264 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.ui.EntityConverter, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.seam.ui.EntityConverter
+2013-04-01 15:13:11,266 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.ui.entityIdentifierStore, scope: PAGE, type: JAVA_BEAN, class: org.jboss.seam.ui.EntityIdentifierStore
+2013-04-01 15:13:11,269 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.ui.entityLoader, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.ui.JpaEntityLoader
+2013-04-01 15:13:11,274 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.ui.facelet.faceletCompiler, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.FaceletCompiler
+2013-04-01 15:13:11,275 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.ui.facelet.facesContextFactory, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.RendererFacesContextFactory
+2013-04-01 15:13:11,276 WARN  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component class should be serializable: org.jboss.seam.ui.facelet.mockHttpSession
+2013-04-01 15:13:11,276 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.ui.facelet.mockHttpSession, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.HttpSessionManager
+2013-04-01 15:13:11,277 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.ui.facelet.mockServletContext, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.facelet.ServletContextManager
+2013-04-01 15:13:11,278 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.ui.graphicImage.graphicImageResource, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.graphicImage.GraphicImageResource
+2013-04-01 15:13:11,279 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.ui.graphicImage.graphicImageStore, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.ui.graphicImage.GraphicImageStore
+2013-04-01 15:13:11,281 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.ui.resource.webResource, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.ui.resource.WebResource
+2013-04-01 15:13:11,282 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.ajax4jsfFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.Ajax4jsfFilter
+2013-04-01 15:13:11,283 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.ajax4jsfFilterInstantiator, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.ui.filter.Ajax4jsfFilterInstantiator
+2013-04-01 15:13:11,286 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.exceptionFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.ExceptionFilter
+2013-04-01 15:13:11,288 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.identityFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.IdentityFilter
+2013-04-01 15:13:11,289 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.isUserInRole, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.IsUserInRole
+2013-04-01 15:13:11,290 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.loggingFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.LoggingFilter
+2013-04-01 15:13:11,291 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.multipartFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.MultipartFilter
+2013-04-01 15:13:11,292 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.parameters, scope: STATELESS, type: JAVA_BEAN, class: org.jboss.seam.faces.Parameters
+2013-04-01 15:13:11,293 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.redirectFilter, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.web.RedirectFilter
+2013-04-01 15:13:11,293 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.servletContexts, scope: EVENT, type: JAVA_BEAN, class: org.jboss.seam.web.ServletContexts
+2013-04-01 15:13:11,294 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.session, scope: SESSION, type: JAVA_BEAN, class: org.jboss.seam.web.Session
+2013-04-01 15:13:11,295 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: org.jboss.seam.web.userPrincipal, scope: APPLICATION, type: JAVA_BEAN, class: org.jboss.seam.faces.UserPrincipal
+2013-04-01 15:13:11,295 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: resourceAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.ResourceAction
+2013-04-01 15:13:11,298 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: resourceCRUDAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SingleResourceAction
+2013-04-01 15:13:11,307 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: resourceConfigurationUIBean, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.ResourceConfigurationUIBean
+2013-04-01 15:13:11,309 WARN  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component class should be serializable: sessionInfoAction
+2013-04-01 15:13:11,309 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: sessionInfoAction, scope: SESSION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SessionInfoAction
+2013-04-01 15:13:11,312 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: summaryAction, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.SummaryAction
+2013-04-01 15:13:11,314 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: tableManager, scope: PAGE, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.TableManager
+2013-04-01 15:13:11,316 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: templateDropDownPopulator, scope: EVENT, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.configuration.resource.TemplateDropDownPopulator
+2013-04-01 15:13:11,320 INFO  [org.jboss.seam.Component] (http-localhost%2F127.0.0.1-8080-2) Component: updateBackingContentAction, scope: CONVERSATION, type: JAVA_BEAN, class: org.jboss.on.embedded.ui.content.UpdateBackingContentAction
+2013-04-01 15:13:11,326 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-2) starting up: org.jboss.seam.security.persistentPermissionResolver
+2013-04-01 15:13:11,329 WARN  [org.jboss.seam.security.permission.PersistentPermissionResolver] (http-localhost%2F127.0.0.1-8080-2) no permission store available - please install a PermissionStore with the name 'org.jboss.seam.security.jpaPermissionStore' if persistent permissions are required.
+2013-04-01 15:13:11,329 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-2) starting up: org.jboss.seam.security.permissionMapper
+2013-04-01 15:13:11,329 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-2) starting up: org.jboss.seam.navigation.pages
+2013-04-01 15:13:11,345 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-2) starting up: org.jboss.seam.security.entityPermissionChecker
+2013-04-01 15:13:11,346 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-2) starting up: bootstrapAction
+2013-04-01 15:13:11,369 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-2) starting up: org.jboss.seam.security.facesSecurityEvents
+2013-04-01 15:13:11,369 INFO  [org.jboss.seam.init.Initialization] (http-localhost%2F127.0.0.1-8080-2) done initializing Seam
+2013-04-01 15:13:11,373 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-2) Initializing filter: org.jboss.seam.web.loggingFilter
+2013-04-01 15:13:11,373 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-2) Initializing filter: org.jboss.seam.web.ajax4jsfFilter
+2013-04-01 15:13:11,398 INFO  [org.ajax4jsf.cache.CacheManager] (http-localhost%2F127.0.0.1-8080-2) Selected [org.ajax4jsf.cache.LRUMapCacheFactory] cache factory
+2013-04-01 15:13:11,401 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-2) Creating LRUMap cache instance using parameters: {facelets.DEVELOPMENT=true, facelets.LIBRARIES=/WEB-INF/on.component.taglib.xml, org.jboss.on.embedded.LazyStartupListener=org.jboss.seam.servlet.SeamListener, com.sun.faces.duplicateJARPattern=^tmp\d+(\S*\.jar), javax.faces.CONFIG_FILES=/WEB-INF/navigation.xml, org.richfaces.SKIN=jboss-console, com.sun.faces.injectionProvider=org.jboss.web.jsf.integration.injection.JBossDelegatingInjectionProvider, resteasy.unwrapped.exceptions=javax.ejb.EJBException, javax.faces.STATE_SAVING_METHOD=server, javax.faces.DEFAULT_SUFFIX=.xhtml}
+2013-04-01 15:13:11,401 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-2) Creating LRUMap cache instance of default capacity
+2013-04-01 15:13:11,424 INFO  [org.ajax4jsf.cache.CacheManager] (http-localhost%2F127.0.0.1-8080-2) Selected [org.ajax4jsf.cache.LRUMapCacheFactory] cache factory
+2013-04-01 15:13:11,424 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-2) Creating LRUMap cache instance using parameters: {facelets.DEVELOPMENT=true, facelets.LIBRARIES=/WEB-INF/on.component.taglib.xml, org.jboss.on.embedded.LazyStartupListener=org.jboss.seam.servlet.SeamListener, com.sun.faces.duplicateJARPattern=^tmp\d+(\S*\.jar), javax.faces.CONFIG_FILES=/WEB-INF/navigation.xml, org.richfaces.SKIN=jboss-console, com.sun.faces.injectionProvider=org.jboss.web.jsf.integration.injection.JBossDelegatingInjectionProvider, resteasy.unwrapped.exceptions=javax.ejb.EJBException, javax.faces.STATE_SAVING_METHOD=server, javax.faces.DEFAULT_SUFFIX=.xhtml}
+2013-04-01 15:13:11,424 INFO  [org.ajax4jsf.cache.LRUMapCacheFactory] (http-localhost%2F127.0.0.1-8080-2) Creating LRUMap cache instance of default capacity
+2013-04-01 15:13:11,424 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-2) Initializing filter: org.jboss.seam.web.redirectFilter
+2013-04-01 15:13:11,424 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-2) Initializing filter: org.jboss.seam.web.exceptionFilter
+2013-04-01 15:13:11,425 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-2) Initializing filter: org.jboss.seam.web.multipartFilter
+2013-04-01 15:13:11,425 INFO  [org.jboss.seam.servlet.SeamFilter] (http-localhost%2F127.0.0.1-8080-2) Initializing filter: org.jboss.seam.web.identityFilter
+2013-04-01 15:13:11,445 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-2) starting up: org.jboss.seam.security.identity
+2013-04-01 15:13:11,449 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-2) starting up: org.jboss.seam.web.session
+2013-04-01 15:13:11,449 INFO  [org.jboss.seam.contexts.Contexts] (http-localhost%2F127.0.0.1-8080-2) starting up: sessionInfoAction
+2013-04-01 15:13:21,195 INFO  [org.jboss.on.embedded.ui.BootstrapAction] (http-localhost%2F127.0.0.1-8080-2) Initializing Administration Console v1.4.0.SP2...
+2013-04-01 15:13:21,211 INFO  [org.rhq.core.pc.PluginContainer] (http-localhost%2F127.0.0.1-8080-2) Initializing Plugin Container v3.0.0...
+2013-04-01 15:13:22,216 INFO  [org.rhq.core.clientapi.agent.metadata.PluginDependencyGraph] (http-localhost%2F127.0.0.1-8080-2) Optional plugin [JBossAS] was requested by plugins [[Hibernate]] but it does not exist in the dependency graph yet and will be ignored
+2013-04-01 15:13:22,217 INFO  [org.rhq.core.clientapi.agent.metadata.PluginDependencyGraph] (http-localhost%2F127.0.0.1-8080-2) Optional plugin [JBossAS] was requested by plugins [[Infinispan]] but it does not exist in the dependency graph yet and will be ignored
+2013-04-01 15:13:23,179 INFO  [org.rhq.core.clientapi.agent.metadata.PluginMetadataParser] (http-localhost%2F127.0.0.1-8080-2) There is no resource type named [JBossAS Server] from a plugin named [JBossAS]. This is probably because that plugin is missing. Resource Type [Infinispan Cache Manager] will not have that missing type as a possible parent.
+2013-04-01 15:13:23,302 INFO  [org.rhq.core.clientapi.agent.metadata.PluginMetadataParser] (http-localhost%2F127.0.0.1-8080-2) There is no resource type named [JBossAS Server] from a plugin named [JBossAS]. This is probably because that plugin is missing. Resource Type [Hibernate Statistics] will not have that missing type as a possible parent.
+2013-04-01 15:13:23,304 INFO  [org.rhq.core.pc.inventory.InventoryManager] (http-localhost%2F127.0.0.1-8080-2) Initializing Inventory Manager...
+2013-04-01 15:13:23,378 INFO  [org.rhq.core.pc.inventory.InventoryManager] (http-localhost%2F127.0.0.1-8080-2) Detected new Platform [Resource[id=-2, type=Windows, key=B181548.dataprimer.com, name=B181548.dataprimer.com, parent=<null>, version=Windows 7 6.1]] - adding to local inventory...
+2013-04-01 15:13:23,406 INFO  [org.rhq.core.pc.inventory.InventoryManager] (http-localhost%2F127.0.0.1-8080-2) Inventory Manager initialized.
+2013-04-01 15:13:23,418 INFO  [org.rhq.core.pc.inventory.ResourceFactoryManager] (http-localhost%2F127.0.0.1-8080-2) Initializing
+2013-04-01 15:13:23,418 INFO  [org.rhq.core.pc.content.ContentManager] (http-localhost%2F127.0.0.1-8080-2) Initializing Content Manager...
+2013-04-01 15:13:23,419 INFO  [org.rhq.core.pc.content.ContentManager] (http-localhost%2F127.0.0.1-8080-2) Content Manager initialized...
+2013-04-01 15:13:23,421 INFO  [org.rhq.core.pc.PluginContainer] (http-localhost%2F127.0.0.1-8080-2) Plugin Container initialized.
+2013-04-01 15:13:23,425 INFO  [org.jboss.on.embedded.manager.pc.PluginContainerResourceManager] (http-localhost%2F127.0.0.1-8080-2) Discovering Resources...
+2013-04-01 15:13:23,426 INFO  [org.rhq.core.pc.inventory.AutoDiscoveryExecutor] (InventoryManager.discovery-1) Executing server discovery scan...
+2013-04-01 15:13:27,499 INFO  [org.rhq.core.pc.inventory.InventoryManager] (InventoryManager.discovery-1) Detected new Server [Resource[id=-3, type=JBossAS Server, key=C:\jboss-6.1.0.Final\server\sso, name=JBoss AS 6 (sso), parent=<null>, version=6.1.0.Final]] - adding to local inventory...
+2013-04-01 15:13:27,706 INFO  [org.rhq.core.pc.inventory.AutoDiscoveryExecutor] (InventoryManager.discovery-1) Found 0 servers.
+2013-04-01 15:13:27,706 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Running runtime discovery scan rooted at [platform]
+2013-04-01 15:13:27,738 INFO  [org.rhq.core.pc.inventory.InventoryManager] (InventoryManager.discovery-1) Detected new Server [Resource[id=-4, type=JBoss AS JVM, key=JVM, name=JVM, parent=<null>, version=1.6.0_21]] - adding to local inventory...
+2013-04-01 15:13:27,741 INFO  [org.rhq.plugins.jmx.JMXServerComponent] (ResourceContainer.invoker.daemon-1) Starting connection to JMX Server JVM
+2013-04-01 15:13:29,002 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Scanned [0] servers and found [0] total descendant Resources.
+2013-04-01 15:13:29,068 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Running runtime discovery scan rooted at [platform]
+2013-04-01 15:13:29,166 INFO  [org.rhq.core.pc.inventory.RuntimeDiscoveryExecutor] (InventoryManager.discovery-1) Scanned [0] servers and found [0] total descendant Resources.
+2013-04-01 15:13:34,643 INFO  [org.hibernate.validator.Version] (http-localhost%2F127.0.0.1-8080-2) Hibernate Validator 3.1.0.GA
+2013-04-01 15:13:34,656 INFO  [org.hibernate.annotations.common.Version] (http-localhost%2F127.0.0.1-8080-2) Hibernate Commons Annotations 3.2.0.Final
+2013-04-01 15:19:50,362 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-23) Server exit called, exiting the JVM now!
+2013-04-01 15:19:50,364 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2013-04-01 15:19:50,365 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-24) Stopping: JBossAS [6.1.0.Final "Neo"]
+2013-04-01 15:19:50,367 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-24) Pausing Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 15:19:50,368 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-24) Stopping Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 15:19:50,372 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-24) Pausing Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 15:19:50,373 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-24) Stopping Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 15:20:47,814 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 15:20:47,823 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 15:20:47,824 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 51s:549ms
+2013-04-01 15:26:55,979 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (HDScanner) undeploy, ctxPath=/sso
+2013-04-01 15:27:41,526 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-01 15:27:41,569 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-01 15:27:41,569 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:137ms

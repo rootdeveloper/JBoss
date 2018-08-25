@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	  
+	<ui:composition>
+	
+		<h:panelGroup id="panelDemaisDocumentos" layout="block">
+			<a4j:repeat value="#{mbCteTerceiros.procCte.CTe.infCte.rem.infOutros}" var="infOutros" id="repeatInfOutros" rows="1">
+				<fieldset class="Fieldset550x100BaseQuadrada" >
+					<legend class="TituloDeCampo">#{msg.demaisDocumentos}</legend>
+					<div class="Linha540x38 MarginLeft5px MarginTop5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.tipoDoDocumento}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{infOutros.tpDoc}" styleClass="Campo Largura150px" readonly="true" converter="tipoDocumentoCodigoConverter"/>
+						</div>
+					</div>
+					<div class="Linha540x38 MarginLeft5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.numeroDoDocumento}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{infOutros.tpDoc == 99 ? infOutros.nDoc : ''}" readonly="true" styleClass="Campo Largura200px"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.dataDeEmissao}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{infOutros.tpDoc == 99 ? infOutros.dEmi : ''}" readonly="true" styleClass="Campo Largura110px" converter="dataSefazConverter" />
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.valorDoDocumento}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{infOutros.tpDoc == 99 ? infOutros.tpDoc : ''}" readonly="true" styleClass="Campo Largura150px" converter="valorMonetarioSefazConverter" />
+						</div>
+					</div>
+				</fieldset>
+			</a4j:repeat>
+		</h:panelGroup>
+	
+		<h:panelGroup styleClass="Scroller Largura550px MarginLeft2px" layout="block" >
+			<rich:dataScroller id="scrollInfOutros" for="repeatInfOutros" fastControls="hide" render="panelDemaisDocumentos scrollInfOutros" maxPages="10">
+				<f:facet name="first">
+	             	<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll"/>
+	            </f:facet>
+	            <f:facet name="last">
+	             	<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll"/>
+	            </f:facet>
+	            <f:facet name="previous">
+	            	<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll"/>
+	            </f:facet>
+	            <f:facet name="next">
+	 	            <h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+	            </f:facet>
+			</rich:dataScroller>
+		</h:panelGroup>
+		
+	</ui:composition>
+</html>

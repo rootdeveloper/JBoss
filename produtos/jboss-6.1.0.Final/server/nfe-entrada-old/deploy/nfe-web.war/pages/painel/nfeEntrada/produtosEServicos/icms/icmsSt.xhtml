@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	
+	<div class="Linha660x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_origemDaMercadoria}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmsst.orig}" 
+				styleClass="Campo Largura250px" readonly="true" converter="origemDaMercadoriaConverter"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_valorDoBcIcmsStRetidoNaUfRemetente}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmsst.vbcstRet}" 
+				styleClass="Campo Largura320px AlignRight" readonly="true"/>
+		</div>
+	</div>
+	<div class="Linha660x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_tributacaoDoIcms}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmsst.cst}" 
+				styleClass="Campo Largura580px" readonly="true" converter="tributacaoDoIcmsConverter"/>
+		</div>
+	</div>
+	<div class="Linha660x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_valorDoIcmsStRetidoNaUfRemetente}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmsst.vicmsstRet}" 
+				styleClass="Campo Largura280px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_valorDoBcIcmsStDaUfDestino}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmsst.vbcstDest}" 
+				styleClass="Campo Largura290px AlignRight" readonly="true"/>
+		</div>
+	</div>
+	<div class="Linha660x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_valorDoIcmsStDaUfDestino}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmsst.vicmsstDest}" 
+				styleClass="Campo Largura280px AlignRight" readonly="true"/>
+		</div>
+	</div>
+	
+</ui:composition>

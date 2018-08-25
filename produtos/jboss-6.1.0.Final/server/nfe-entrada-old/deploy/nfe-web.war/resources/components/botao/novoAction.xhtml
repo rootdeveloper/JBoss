@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="action" targets="botaoNovoAction" shortDescription="Action do botão"/>
+		<composite:attribute name="buttonStyle" shortDescription="Estilo adicional para o botão"/>
+		<composite:attribute name="render" shortDescription="Id do painel de erro a ser renderizado"/>
+	</composite:interface>
+
+	<composite:implementation>
+
+		<!-- É colocado um valor exato para o id pois preciso dele no composite:atribbute targets -->
+		<a4j:commandLink id="botaoNovoAction" status="modalStatus" title="#{msg.titleNovo}" execute="@this" render="#{cc.attrs.render}">
+			<h:graphicImage value="#{resource['images/png:novo.png']}" alt="#{msg.titleNovo}" styleClass="BotaoImagem" width="26px" height="18px"/>
+		</a4j:commandLink>
+
+	</composite:implementation>    
+</html>

@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table">
+	
+	<rich:dataTable id="listaDeMedicamentos" var="var" value="#{mbNfeEntrada.listaDeMedicamentos}" rows="5"
+		styleClass="Largura100pc" noDataLabel="#{msg.lbl_listaMedicamentosVazia}" 
+		onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''">
+	
+		<rich:column styleClass="AlignLeft Truncate" headerClass="Largura100px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_numeroDoLote}"/>
+			</f:facet>
+			<h:outputText value="#{var.nLote}" title="#{var.nLote}"/>
+		</rich:column>
+		
+		<rich:column styleClass="AlignCenter" headerClass="Largura100px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_dataFabricacao}"/>
+			</f:facet>
+			<h:outputText value="#{var.dFab}" converter="dataConverter"/>
+		</rich:column>
+		
+		<rich:column styleClass="AlignCenter" headerClass="Largura100px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_dataValidade}"/>
+			</f:facet>
+			<h:outputText value="#{var.dVal}" converter="dataConverter"/>
+		</rich:column>
+		
+		<rich:column styleClass="AlignCenter" headerClass="Largura100px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_qtdNoLote}"/>
+			</f:facet>
+			<h:outputText value="#{var.qLote}"/>
+		</rich:column>
+		
+		<rich:column styleClass="AlignRight" headerClass="Largura100px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_precoMaximo}"/>
+			</f:facet>
+			<h:outputText value="#{var.vPmc}" />
+		</rich:column>
+	
+	</rich:dataTable>
+	<table:scroller for="listaDeMedicamentos" idPanelScroller="controle" maxPages="10" panelStyleClass="Scroller100pc" 
+		pageNumber="#{mbNfeEntrada.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbNfeEntrada.nfeEntrada.infNFe.det}" 
+		totalRegistros="#{mbNfeEntrada.quantidadeRegistroListaMedicamento}" />
+		
+</ui:composition>

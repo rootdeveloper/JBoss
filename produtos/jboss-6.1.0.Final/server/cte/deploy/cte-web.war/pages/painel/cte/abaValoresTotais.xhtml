@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	<ui:composition>
+		<rich:tabPanel switchType="client">
+			<rich:tab header="#{msg.valores}" styleClass="Altura50px">
+				<ui:include src="/pages/painel/cte/valoresTotais/abaValores.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.componentesDoValorPrestacaoServico_}" styleClass="Altura130px">
+				<ui:include src="/pages/painel/cte/valoresTotais/abaComponentesDoValor.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.impostos}" styleClass="Altura50px">
+				<ui:include src="/pages/painel/cte/valoresTotais/abaImpostos.xhtml"/>
+			</rich:tab>
+		</rich:tabPanel>
+	</ui:composition>
+</html>
+                

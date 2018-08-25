@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.perfil}"/>
+	</ui:define>
+	<ui:define name="content">
+	   <util:modalInformativo mensagemInformativo="#{mbPerfilUsuario.mensagem}" nomePainel="modalInformativo" tituloModal="#{msg.mensagem}"/>
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<a4j:commandLink actionListener="#{mbPerfilUsuario.salvar}" oncomplete="#{rich:component('modalInformativo')}.show()" render="modalInformativo" title="#{msg.titleSalvar}" status="modalStatus">
+					<f:param name="acao" value="Salvar"/>
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="apagar" styleClass="BotaoImagem" />
+				</a4j:commandLink>
+				<h:commandButton action="home" image="#{resource['images/png:voltar.png']}" immediate="true" styleClass="BotaoImagem" title="#{msg.titleVoltar}">
+					<f:param name="acao" value="Voltar"/>
+				</h:commandButton>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		<h:panelGroup layout="block" styleClass="Altura90px">
+		
+			<div class="Linha990x25 MarginLeft10px MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px">
+					<h:outputText value="#{msg.nomeDoUsuario}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura160px">
+					<h:inputText value="#{mbPerfilUsuario.usuarioVO.nome}" readonly="true" styleClass="Campo Largura200px"/>
+				</div>
+			</div>
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px">
+					<h:outputText value="#{msg.login}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura160px">
+					<h:inputText value="#{mbPerfilUsuario.usuarioVO.login}" readonly="true" styleClass="Campo Largura200px"/>
+				</div>
+			</div>
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px">
+					<h:outputText value="#{msg.email}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura160px">
+					<h:inputText value="#{mbPerfilUsuario.usuarioVO.email}" readonly="true" styleClass="Campo Largura200px"/>
+				</div>
+			</div>
+		</h:panelGroup>
+			<rich:tabPanel id="tabFiltro" switchType="client" >
+				<rich:tab header="#{msg.personalizacaoPainelCteTerceiros}">
+					<div class="Linha960x215" >
+						<div class="PositionRelativeFloatLeft Altura210px">
+							<h:outputText value="#{msg.colunasDisponiveis}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:selectManyListbox value="#{mbPerfilUsuario.listaDeSelecionadosDaListaDeDisponiveis}" converter="entityConverter" styleClass="MultipleComboField Largura200px Altura180px" id="disponiveis">
+								<f:selectItems value="#{mbPerfilUsuario.listaDeDisponiveis}" />
+							</h:selectManyListbox>
+						</div>
+						<div class="PositionRelativeFloatLeft MarginTop75px MarginLeft5px MarginRight5px Largura20px">
+							<a4j:commandButton value="&lt;" actionListener="#{mbPerfilUsuario.moverParametrosParaListaDeDisponiveis}" render="disponiveis,exibidos" styleClass="BotaoTexto Largura20px" status="modalStatus"/>
+							<br />
+							<a4j:commandButton value="&gt;" actionListener="#{mbPerfilUsuario.moverParametrosParaListaDeExibidos}" render="disponiveis,exibidos" styleClass="BotaoTexto Largura20px MarginTop5px"/>
+						</div>
+						<div class="PositionRelativeFloatLeft Altura210px">
+							<h:outputText value="#{msg.colunasSelecionadas}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:selectManyListbox value="#{mbPerfilUsuario.listaDeSelecionadosDaListaDosExibidos}" converter="entityConverter" styleClass="MultipleComboField Largura200px Altura180px" id="exibidos">
+								<f:selectItems value="#{mbPerfilUsuario.listaDosExibidos}" />
+							</h:selectManyListbox>
+						</div>
+					</div>
+				</rich:tab>
+				<rich:tab header="#{msg.parametroDeVisualizacao}">
+					<div class="Linha770x38 MarginLeft10px MarginTop10px">
+						<h:outputText value="#{msg.quantidadeCTEVisualizados}" styleClass="TituloDeCampo"/>
+						<h:selectOneMenu value="#{mbPerfilUsuario.quantidadeLinhasSelecionadas}" id="qtdCTE" styleClass="ComboField MarginLeft20px">
+							<f:selectItems value="#{mbPerfilUsuario.quantidadeCteVisualizados}" />
+						</h:selectOneMenu>
+					</div>
+				</rich:tab>
+			</rich:tabPanel>
+	</ui:define>
+</ui:composition>

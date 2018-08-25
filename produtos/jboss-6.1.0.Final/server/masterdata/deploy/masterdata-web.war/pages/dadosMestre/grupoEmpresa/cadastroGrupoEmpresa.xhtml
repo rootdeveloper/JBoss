@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroGrupoEmpresa}"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalInformativoVoltar mensagemInformativo="#{mbGrupoEmpresa.mensagemModal}" nomePainel="modalInformativo" tituloModal="#{msg.mensagem}" 
+			render="#{mbGrupoEmpresa.renderizarModal}"/>
+			
+		<util:modalJustificativaStatus idModal="modalGrupoEmpresaStatus" actionRenderizarModais="#{mbGrupoEmpresa.processaRenderizacaoModais}" 
+			justificativaInformativa="#{mbGrupoEmpresa.justificativa}" renderizarModal="#{mbGrupoEmpresa.renderizarModal}" 
+			justificativaEditavel="#{mbGrupoEmpresa.grupoEmpresa.justificativa}" renderizaModalStatusInformativo="#{mbGrupoEmpresa.renderizaModalStatusInformativo}" 
+			tipoStatus="#{mbGrupoEmpresa.grupoEmpresa.status.nomeTipo}" idModalInformativo="modalInformativo" salvar="#{mbGrupoEmpresa.salvaComStatus}" />
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+		
+			<a4j:commandLink status="modalStatus" actionListener="#{mbGrupoEmpresa.verificaStatus}" execute="status codigo descricao" title="#{msg.titleSalvar}"
+				oncomplete="#{mbGrupoEmpresa.renderizaModalStatus} ? #{rich:component('modalGrupoEmpresaStatus')}.show() : ''; #{mbGrupoEmpresa.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''" 
+				render="modalInformativo, modalGrupoEmpresaStatus, painelMensagemErro">
+				<f:param name="acao" value="edicaoJustificativa"/>
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+			
+			<a4j:commandLink status="modalStatus" action="voltar" immediate="true" title="#{msg.titleVoltar}">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" styleClass="BotaoImagem" alt="voltar" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+		
+		<div class="Linha980x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura75px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+			</div>	
+			<h:selectOneMenu id="status" value="#{mbGrupoEmpresa.grupoEmpresa.status}" disabled="#{empty mbGrupoEmpresa.grupoEmpresa.id}" 
+				styleClass="ComboField PositionRelativeFloatLeft Largura70px" tabindex="0">
+				<f:selectItems value="#{mbGrupoEmpresa.listaStatusEnum}" var="status" itemLabel="#{status.nomeTipo}"/>
+			</h:selectOneMenu>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			<a4j:commandButton image="/resources/images/gif/information.gif" immediate="true" title="#{msg.titleMotivo}" 
+				oncomplete="#{rich:component('modalGrupoEmpresaStatus')}.show()" render="modalInformativoStatus, modalNcmStatus" 
+				styleClass="PositionRelativeFloatLeft BotaoImagemSemMarginTop MarginLeft5px TabWalk" rendered="#{not empty mbGrupoEmpresa.justificativa}"
+				actionListener="#{mbGrupoEmpresa.processaRenderizacaoModais}" />
+		</div>
+		
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura75px MarginLeft10px">
+				<h:outputText value="#{msg.codigo}s" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="codigo" value="#{mbGrupoEmpresa.grupoEmpresa.codigo}" maxlength="4" readonly="#{mbGrupoEmpresa.grupoEmpresa.status eq 'INATIVO'}" 
+				styleClass="Campo Largura65px PositionRelativeFloatLeft" tabindex="1"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+			
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura75px MarginLeft10px">
+				<h:outputText value="#{msg.descricao}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="descricao" value="#{mbGrupoEmpresa.grupoEmpresa.descricao}" maxlength="60" readonly="#{mbGrupoEmpresa.grupoEmpresa.status eq 'INATIVO'}"
+				styleClass="Campo Largura670px PositionRelativeFloatLeft" tabindex="2"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="PositionRelativeFloatLeft Largura980px MarginLeft10px MarginBottom5px">
+			<h:outputText value="#{mbGrupoEmpresa.mensagemError}" styleClass="MensagemDeErro"/>
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages "/>
+		</h:panelGroup>
+		
+		<div class="PositionRelativeFloatLeft Largura100pc MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft10px"/>
+		</div>
+	
+		<!-- <script type="text/javascript">
+			disableInputText();
+		</script> -->
+		
+		
+	</ui:define>
+</ui:composition>

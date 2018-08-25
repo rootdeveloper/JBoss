@@ -1,0 +1,23 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<div class="Linha980x38 ">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_ufEmbarque}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.exporta.ufEmbarq}" styleClass="Campo Largura120px" 
+				readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_localDeEmbarque}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.exporta.xLocEmbarq}" styleClass="Campo Largura670px" 
+				readonly="true"/>
+		</div>
+	</div>
+	
+</ui:composition>

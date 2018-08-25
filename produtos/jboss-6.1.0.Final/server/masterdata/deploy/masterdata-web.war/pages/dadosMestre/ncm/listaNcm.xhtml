@@ -1,0 +1,199 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaNCM}"/>
+	</ui:define>
+	
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" render="header-content barraDeScroll" execute="@this" listener="#{mbNcm.trocaValorComboFilial}"
+			oncomplete="renderAllListaNcm(); renderPainelErroNcm();" status="modalStatus"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalSimNao mensagem="#{mbNcm.msgExcluirSelecionadosTela}" nomePainel="confirmPane" tituloModal="#{msg.msgConfirmacaoExclusaoTela}" 
+			actionSim="#{mbNcm.excluirSelecionados}" render="barraDeScroll, modalInformativo" tituloFuncao="selecionado" idCheckbox="checkboxNCM"
+			oncomplete="#{rich:component('modalInformativo')}.show(); renderAllListaNcm(); renderPainelErroNcm();"/>
+		
+		<util:modalInformativo mensagemInformativo="#{mbNcm.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo"/>
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:novoAction action="#{mbNcm.novo}" render="#{mbNcm.processaRenderPanelErro}"
+					rendered="#{mbNcm.verificaPermissao('Administrador, Gerente, Atendente')}" />
+				<botao:excluir actionListener="#{mbNcm.verificarExclusaoNCM}" idModalSimNao="confirmPane" idModalInformativo="modalInformativo" 
+					renderizarModal="#{mbNcm.renderizarModal}" filialCadastrada="#{mbNcm.idFilial != null}" idPanelErro="erroEdicao"
+					rendered="#{mbNcm.verificaPermissao('Administrador, Gerente, Atendente')}" />
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+			
+			<rich:toolbarGroup location="right">
+				<botao:atualizar actionListener="#{mbNcm.refreshList}" oncomplete="renderAllListaNcm()" filialCadastrada="#{mbNcm.idFilial != null}"
+					render="barraDeScroll" buttonStyle="MarginRight5px" idPanelErro="erroEdicao"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaNcm" var="ncm" value="#{mbNcm.listaNcm}" rows="10" styleClass="Largura100pc" onrowmouseover="className='SelecionaLinha'" 
+			onrowmouseout="className=''" onrowdblclick="editarNCM(#{rowKey})" noDataLabel="#{msg.listaNcmVazia}" rowKeyVar="rowKey">
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura40px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxNCM" valueChangeListener="#{mbNcm.selecionarTodos}" styleClass="Margin0px" 
+						onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();" tabindex="1">
+						<a4j:ajax event="click" render="listaNcm" status="modalStatus" oncomplete="reSize();"/>
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{ncm.selected}" onkeydown="blockBackSpace(event);"
+					onkeyup="unblockBackSpace();">
+					<a4j:ajax event="valueChange" execute="@this" />
+				</h:selectBooleanCheckbox>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura80px" sortBy="#{ncm.status.nomeTipo}"
+				sortOrder="#{mbNcm.columnOrder.mapColumnOrder['Status'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(ncm.status) , fn:toLowerCase(mbNcm.columnFilter.mapColumnFilter['Status'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.status}"/>
+					<table:orderArrow action="#{mbNcm.columnOrder.mapColumnOrder['Status'].sortBy}"
+						order="#{mbNcm.columnOrder.mapColumnOrder['Status'].sortOrder}" render="listaNcm"/>
+					<br/>
+					<h:inputText id="status" value="#{mbNcm.columnFilter.mapColumnFilter['Status'].filterBy}" tabindex="2" styleClass="Campo Largura60px"  maxlength="7"
+						onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" onkeyup="Mascara(this, LetraSemEspaco);" 
+						onkeydown="Mascara(this, LetraSemEspaco);" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaNcm(); executeFilter(this,event);" execute="@this" 
+							status="modalStatus" listener="#{mbNcm.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{ncm.status.nomeTipo}"/>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura90px" sortBy="#{ncm.codigo}"
+				sortOrder="#{mbNcm.columnOrder.mapColumnOrder['Codigo'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(ncm.codigo, mbNcm.columnFilter.mapColumnFilter['Codigo'].filterBy)}" >
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigo}"/>
+					<table:orderArrow action="#{mbNcm.columnOrder.mapColumnOrder['Codigo'].sortBy}"
+						order="#{mbNcm.columnOrder.mapColumnOrder['Codigo'].sortOrder}" render="listaNcm"/>
+					<br/>
+					<h:inputText value="#{mbNcm.columnFilter.mapColumnFilter['Codigo'].filterBy}" maxlength="8" styleClass="Campo Largura70px" tabindex="3"
+						onkeypress="Mascara(this, Integer);executeFilter(this,event)" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);" 
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaNcm(); executeFilter(this,event);"
+							execute="@this" status="modalStatus" listener="#{mbNcm.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{ncm.codigo}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura90px" sortBy="#{ncm.genero}"
+				sortOrder="#{mbNcm.columnOrder.mapColumnOrder['Genero'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(ncm.genero, mbNcm.columnFilter.mapColumnFilter['Genero'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.genero}"/>
+					<table:orderArrow action="#{mbNcm.columnOrder.mapColumnOrder['Genero'].sortBy}"
+						order="#{mbNcm.columnOrder.mapColumnOrder['Genero'].sortOrder}" render="listaNcm"/>
+					<br/>
+					<h:inputText value="#{mbNcm.columnFilter.mapColumnFilter['Genero'].filterBy}" maxlength="2" tabindex="4" styleClass="Campo Largura70px"
+						onkeypress="Mascara(this, Integer);executeFilter(this,event)" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);" 
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaNcm(); executeFilter(this,event);"
+							execute="@this" status="modalStatus" listener="#{mbNcm.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{ncm.genero}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura450px" sortBy="#{ncm.descricao}"
+				sortOrder="#{mbNcm.columnOrder.mapColumnOrder['Descricao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(ncm.descricao, mbNcm.columnFilter.mapColumnFilter['Descricao'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricao}"/>
+					<table:orderArrow action="#{mbNcm.columnOrder.mapColumnOrder['Descricao'].sortBy}"
+						order="#{mbNcm.columnOrder.mapColumnOrder['Descricao'].sortOrder}" render="listaNcm"/>
+					<br/>
+					<h:inputText value="#{mbNcm.columnFilter.mapColumnFilter['Descricao'].filterBy}" tabindex="5" styleClass="Campo Largura430px" 
+						onkeypress="executeFilter(this,event)" maxlength="350">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaNcm();" execute="@this"
+						status="modalStatus" listener="#{mbNcm.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{ncm.descricao}" title="#{ncm.descricao}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura110px" sortBy="#{ncm.aliquotaIPIVigente}"
+				sortOrder="#{mbNcm.columnOrder.mapColumnOrder['AliquotaIPI'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(ncm.aliquotaIPIVigente, mbNcm.columnFilter.mapColumnFilter['AliquotaIPI'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.aliquotaIpi}"/>
+					<table:orderArrow action="#{mbNcm.columnOrder.mapColumnOrder['AliquotaIPI'].sortBy}"
+						order="#{mbNcm.columnOrder.mapColumnOrder['AliquotaIPI'].sortOrder}" render="listaNcm"/>
+					<br/>
+					<h:inputText value="#{mbNcm.columnFilter.mapColumnFilter['AliquotaIPI'].filterBy}" maxlength="6"
+						styleClass="Campo Largura100px" onkeypress="executeFilter(this,event)" tabindex="6" id="campoFiltroAliquotaIPI">
+						<f:convertNumber minFractionDigits="2" minIntegerDigits="1" maxIntegerDigits="3" maxFractionDigits="2"/>
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaNcm();" execute="@this"
+							status="modalStatus" listener="#{mbNcm.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{ncm.aliquotaIPIVigente}">
+					<f:convertNumber minFractionDigits="2" locale="pt_BR" />
+				</h:outputText>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura110px"
+				sortBy="#{ncm.aliquotaIIVigente}" sortOrder="#{mbNcm.columnOrder.mapColumnOrder['AliquotaII'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(ncm.aliquotaIIVigente, mbNcm.columnFilter.mapColumnFilter['AliquotaII'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.aliquotaII}"/>
+					<table:orderArrow action="#{mbNcm.columnOrder.mapColumnOrder['AliquotaII'].sortBy}"
+						order="#{mbNcm.columnOrder.mapColumnOrder['AliquotaII'].sortOrder}" render="listaNcm"/>
+					<br/>
+					<h:inputText value="#{mbNcm.columnFilter.mapColumnFilter['AliquotaII'].filterBy}" maxlength="6"
+						styleClass="Campo Largura100px" onkeypress="executeFilter(this,event)" tabindex="7" id="campoFiltroAliquotaII">
+						<f:convertNumber minFractionDigits="2" minIntegerDigits="1" maxIntegerDigits="3" maxFractionDigits="2"/>
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaNcm();" execute="@this"
+							status="modalStatus" listener="#{mbNcm.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{ncm.aliquotaIIVigente}">
+					<f:convertNumber minFractionDigits="2" locale="pt_BR" />
+				</h:outputText>
+			</rich:column>
+
+		</rich:dataTable>
+		
+		<table:scroller for="listaNcm" idPanelScroller="barraDeScroll" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbNcm.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbNcm.listaNcm}" totalRegistros="#{mbNcm.quantidadeRegistros}" />
+		
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbNcm.mensagemError}">
+				<h:outputText value="#{mbNcm.mensagemError}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="editarNCM" render="erroEdicao" status="modalStatus" action="#{mbNcm.editar}">
+			<a4j:param name="linhaDoNCM" assignTo="#{mbNcm.linhaSelecionada}"/>
+		</a4j:jsFunction>
+		
+		<rich:jQuery id="jQueryaliquotaIPI" selector="#campoFiltroAliquotaIPI" timing="immediate"
+			query="maskMoney({decimal: ',', thousands: '.', percent: true, defaultZero:false})"/>
+			
+		<rich:jQuery id="jQueryaliquotaII" selector="#campoFiltroAliquotaII" timing="immediate"
+			query="maskMoney({decimal: ',', thousands: '.', percent: true, defaultZero:false})"/>
+			
+		<a4j:jsFunction name="renderPainelErroNcm" render="erroEdicao"/>
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderBodyOfListaNcm" status="modalStatus" render="listaNcm@body" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderAllListaNcm" status="modalStatus" render="listaNcm jQueryaliquotaIPI jQueryaliquotaII" oncomplete="reSize();"/>
+	</ui:define>
+</ui:composition>

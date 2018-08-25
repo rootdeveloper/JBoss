@@ -1,0 +1,96 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroUnidadeMedida}"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalInformativoVoltar mensagemInformativo="#{mbUnidadeMedida.mensagemModal}" nomePainel="modalInformativo" tituloModal="#{msg.mensagem}" 
+			render="#{mbUnidadeMedida.renderizarModal}"/>
+		
+		<util:modalJustificativaStatus idModal="modalUnidadeMedidaStatus" actionRenderizarModais="#{mbUnidadeMedida.processaRenderizacaoModais}" 
+			justificativaInformativa="#{mbUnidadeMedida.justificativa}" renderizarModal="#{mbUnidadeMedida.renderizarModal}" 
+			justificativaEditavel="#{mbUnidadeMedida.unidadeMedidaSelecionada.justificativa}" 
+			renderizaModalStatusInformativo="#{mbUnidadeMedida.renderizaModalStatusInformativo}" 
+			tipoStatus="#{mbUnidadeMedida.unidadeMedidaSelecionada.status.nomeTipo}" idModalInformativo="modalInformativo" 
+			salvar="#{mbUnidadeMedida.salvaComStatus}" />
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbUnidadeMedida.verificaStatus}" 
+				render="modalInformativo, painelMensagemErro, modalUnidadeMedidaStatus" title="#{msg.titleSalvar}"
+				oncomplete="#{mbUnidadeMedida.renderizaModalStatus} ? #{rich:component('modalUnidadeMedidaStatus')}.show() : ''; #{mbUnidadeMedida.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"  
+				rendered="#{mbUnidadeMedida.verificaPermissao('Administrador, Gerente, Atendente')}" >
+				<f:param name="acao" value="edicaoJustificativa"/>
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="apagar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+			<a4j:commandLink status="modalStatus" action="voltar" execute="@this" immediate="true" title="#{msg.titleVoltar}" >
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+	
+		<div class="Linha980x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+			</div>	
+			<h:selectOneMenu id="status" value="#{mbUnidadeMedida.unidadeMedidaSelecionada.status}" disabled="#{empty mbUnidadeMedida.unidadeMedidaSelecionada.id or !mbUnidadeMedida.verificaPermissao('Administrador, Gerente')}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura70px" tabindex="0">
+				<f:selectItems value="#{mbUnidadeMedida.listaStatusEnum}" var="status" itemLabel="#{status.nomeTipo}"/>
+			</h:selectOneMenu>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			<a4j:commandButton image="/resources/images/gif/information.gif" execute="@this" immediate="true" title="#{msg.titleMotivo}" 
+				oncomplete="#{rich:component('modalUnidadeMedidaStatus')}.show()" styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft Tabwalk" 
+				render="modalInformativoStatus, modalUnidadeMedidaStatus" rendered="#{not empty mbUnidadeMedida.justificativa}" />
+		</div>
+		
+		<div class="Linha980x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.sigla}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="siglaUM" value="#{mbUnidadeMedida.unidadeMedidaSelecionada.sigla}"
+				readonly="#{mbUnidadeMedida.unidadeMedidaSelecionada.status eq 'INATIVO'}" styleClass="Campo Largura80px PositionRelativeFloatLeft"
+				maxlength="6" onkeyup="upper(this)" tabindex="2">  
+			</h:inputText>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px"> 
+				<h:outputText value="#{msg.descricao}" styleClass="TituloDeCampo"/>  
+			</div>
+			<h:inputText id="descricaoUM" value="#{mbUnidadeMedida.unidadeMedidaSelecionada.descricao}" styleClass="Campo Largura230px PositionRelativeFloatLeft" 
+				readonly="#{mbUnidadeMedida.unidadeMedidaSelecionada.status eq 'INATIVO'}" maxlength="20" tabindex="3">
+				<!-- <a4j:ajax event="blur"/>   -->
+			</h:inputText>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura980px MarginBottom5px">
+			<h:outputText value="#{mbUnidadeMedida.mensagemDocumento}" styleClass="MensagemDeErro"/>
+			<h:outputText value="#{mbUnidadeMedida.mensagemDeErro}" styleClass="MensagemDeErro"/>
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+		
+		<div class="PositionRelativeFloatLeft Largura100pc MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft10px"/>
+		</div>
+		
+		<script type="text/javascript">
+			//<![CDATA[
+				if(#{!mbUnidadeMedida.verificaPermissao('Administrador, Gerente, Atendente')}) {
+					j(document).ready(function(){
+						disableInputText();
+					});
+				}
+			//]]>
+		</script>
+		
+	</ui:define>
+</ui:composition>

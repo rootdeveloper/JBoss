@@ -1,0 +1,163 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<h:form prependId="false" id="formFiltro" onkeypress="return bloqueioEnter(event);">
+		<rich:popupPanel modal="true" id="filtroDestinados" autosized="true" resizeable="false" moveable="false"
+			domElementAttachment="form" styleClass="Largura700px FundoBranco"
+			onhide="enableInputsFormPrincipal();"
+			onshow="disableInputsFormPrincipal(); iniciaFocusModal('abaDataRecebimentoSefaz', null);">
+
+			<f:facet name="header">
+				<h:outputText value="#{msg.filtrarNfeDestinados}"/>
+			</f:facet>
+
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" styleClass="BotaoFechar TabWalk"
+					execute="@none" onclick="fecharFiltro();" />
+			</f:facet>
+
+			<rich:tabPanel id="abasFiltro" switchType="client">
+					
+				<!-- Data Recebimento Sefaz -->
+				<rich:tab header="#{msg.dataRecebimentoSefaz}" id="abaDataRecebimentoSefaz" headerClass="abaDataRecebimentoSefaz"
+					onenter="focus('dataInicial')">
+					<div class="FloatLeft Largura130px MarginTop3px">
+						<h:outputText value="#{msg.dataInicial}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="FloatLeft Largura120px">
+						<rich:calendar id="dataInicial" value="#{mbConsultaDestinados.filtro.dataInicial}"
+							datePattern="dd/MM/yyyy" tabindex="1" buttonClass="BotaoImagemSemMarginTop"
+							showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll"
+							inputClass="Largura78px TabWalk"/>
+					</div>
+
+					<div class="FloatLeft Largura130px MarginLeft51px MarginTop3px">
+						<h:outputText value="#{msg.dataFinal}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="FloatLeft Largura120px">
+						<rich:calendar id="dataFinal" value="#{mbConsultaDestinados.filtro.dataFinal}"
+							datePattern="dd/MM/yyyy" tabindex="2" buttonClass="BotaoImagemSemMarginTop"
+							showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll"
+							inputClass="Largura78px TabWalk"/>
+					</div>
+				</rich:tab>
+				
+				<!-- CNPJ Emitente -->
+				<rich:tab header="#{msg.cnpjEmitente}" id="abaCnpjEmitente" headerClass="abaCnpjEmitente"
+					onenter="focus('inputCnpjEmitente')">
+					<h:panelGroup id="panelCNPJ" styleClass="Linha670x25" layout="block">
+						<div class="PositionRelativeFloatLeft Largura130px MarginTop3px">
+							<h:outputText value="#{msg.cnpjEmitente}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText id="inputCnpjEmitente" value="#{mbConsultaDestinados.filtroCNPJ}" tabindex="1"
+							maxlength="14" styleClass="PositionRelativeFloatLeft Campo Largura450px MarginTop1px"
+							onkeypress="Mascara(this, Integer);"
+							onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+							onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);"
+							onmouseout="Mascara(this, Integer);"/>
+
+						<a4j:commandButton value="#{msg.adicionar}"
+							actionListener="#{mbConsultaDestinados.adicionarFiltro('CNPJ')}" tabIndex="2"
+							render="panelCNPJ tabelaFiltroCNPJ painelErroFiltro" status="modalStatus"
+							styleClass="BotaoTexto PositionRelativeFloatRight TabWalk Largura70px" execute="inputCnpjEmitente"/>
+					</h:panelGroup>
+
+					<div class="PositionRelativeFloatLeft Largura665px AlturaMax155px OverflowVerticalAuto">
+						<rich:dataTable id="tabelaFiltroCNPJ" var="item" value="#{mbConsultaDestinados.listaFiltroCNPJ}"
+							styleClass="Largura100pc MarginBottom5px" onrowmouseover="className='SelecionaLinha'"
+							onrowmouseout="className=''" rowKeyVar="rowkey">
+
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox id="checkboxFiltroCNPJ"
+										styleClass="Margin0px checkboxFiltroSerie" tabindex="3"
+										valueChangeListener="#{mbConsultaDestinados.selecionarTodos}">
+										<a4j:ajax event="click" render="tabelaFiltroCNPJ"
+											status="ModalStatus"/>
+										<f:param name="pegaListaFiltro" value="CNPJ"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{item.selecionado}" styleClass="TabWalk">
+									<a4j:ajax event="valueChange" render="tabelaFiltroCNPJ@body" execute="@this"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+
+							<rich:column styleClass="AlignCenter">
+								<f:facet name="header">
+									<h:outputText value="#{msg.cnpjEmitente}"/>
+								</f:facet>
+								<h:outputText value="#{item.valor}" converter="cnpjConverter"/>
+							</rich:column>
+						</rich:dataTable>
+					</div>
+				</rich:tab>
+				
+				<!-- Chave de Acesso -->
+				<rich:tab header="#{msg.chaveDeAcesso}" id="abaChaveDeAcesso" headerClass="abaChaveDeAcesso"
+					onenter="focus('inputChaveDeAcesso')">
+					<h:panelGroup id="panelChave" styleClass="Linha670x25" layout="block">
+						<div class="PositionRelativeFloatLeft Largura130px MarginTop3px">
+							<h:outputText value="#{msg.chaveDeAcesso}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText id="inputChaveDeAcesso" value="#{mbConsultaDestinados.filtroChave}" tabindex="1"
+							maxlength="44" styleClass="PositionRelativeFloatLeft Campo Largura450px MarginTop1px"
+							onkeypress="Mascara(this, Integer);"
+							onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+							onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);"
+							onmouseout="Mascara(this, Integer);"/>
+
+						<a4j:commandButton value="#{msg.adicionar}"
+							actionListener="#{mbConsultaDestinados.adicionarFiltro('CHAVE')}" tabIndex="2"
+							render="panelChave tabelaFiltroChave painelErroFiltro" status="modalStatus"
+							styleClass="BotaoTexto PositionRelativeFloatRight TabWalk Largura70px" execute="inputChaveDeAcesso"/>
+					</h:panelGroup>
+
+					<div class="PositionRelativeFloatLeft Largura665px AlturaMax155px OverflowVerticalAuto">
+						<rich:dataTable id="tabelaFiltroChave" var="item" value="#{mbConsultaDestinados.listaFiltroChave}"
+							styleClass="Largura100pc MarginBottom5px" onrowmouseover="className='SelecionaLinha'"
+							onrowmouseout="className=''" rowKeyVar="rowkey">
+
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox id="checkboxFiltroChave"
+										styleClass="Margin0px checkboxFiltroSerie" tabindex="3"
+										valueChangeListener="#{mbConsultaDestinados.selecionarTodos}">
+										<a4j:ajax event="click" render="tabelaFiltroChave"
+											status="ModalStatus"/>
+										<f:param name="pegaListaFiltro" value="CHAVE"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{item.selecionado}" styleClass="TabWalk">
+									<a4j:ajax event="valueChange" render="tabelaFiltroChave@body" execute="@this"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+
+							<rich:column styleClass="AlignCenter">
+								<f:facet name="header">
+									<h:outputText value="#{msg.chaveDeAcesso}"/>
+								</f:facet>
+								<h:outputText value="#{item.valor}"/>
+							</rich:column>
+						</rich:dataTable>
+					</div>
+				</rich:tab>
+			</rich:tabPanel>
+			<h:panelGroup layout="block" id="painelErroFiltro" styleClass="MensagemDeErro MarginLeft5px">
+				<h:outputText value="#{mbConsultaDestinados.mensagemFiltroModal}" />
+			</h:panelGroup>
+			<div class="PositionRelativeFloatLeft MarginLeft8px Linha670x25 MarginTop10px">
+				<a4j:commandButton value="#{msg.botaoFiltrar}" styleClass="BotaoTexto Largura50px TabWalk"
+					execute="abaDataRecebimentoSefaz" actionListener="#{mbConsultaDestinados.filtrarTela}"
+					render="abasFiltro barraDeScroll tabelaConsulta painelErro" status="modalStatus"
+					oncomplete="#{rich:component('filtroDestinados')}.hide()"/>
+				<a4j:commandButton value="#{msg.botaoVoltar}" styleClass="BotaoTexto Largura50px TabWalk" 
+					onclick="fecharFiltro();" execute="@none" />
+			</div>
+			<a4j:jsFunction name="fecharFiltro" oncomplete="#{rich:component('filtroDestinados')}.hide(); return false;" execute="@none" />
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

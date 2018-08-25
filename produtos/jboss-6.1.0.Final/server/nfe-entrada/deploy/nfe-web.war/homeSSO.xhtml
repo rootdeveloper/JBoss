@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j">
+	<h:head>
+		<title>#{msg.tituloHome}</title>
+		<h:outputStylesheet name="sso.css" library="css"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	</h:head>
+	<h:body styleClass="Body">
+		<form>
+			<div class="AlignCenter Largura990px Altura600px">
+				<div class="Top MarginTop5px">
+					<h:graphicImage value="#{resource['images/SSO:pwc.png']}" alt="pwc" width="985px" height="138px" />
+				</div>
+				
+				<div>
+					<div class="Largura100pc Altura100px">
+						<div class="FloatLeft MarginLeft50px MarginTop20px">
+							<h:graphicImage value="#{resource['images/SSO:nfe.png']}" alt="nfe" width="248px" height="78px" />
+						</div>
+						
+						<div class="FloatRight MarginRight50px MarginTop20px">
+							<h:graphicImage value="#{resource['images/SSO:cte.png']}" alt="cte" width="251px" height="79px" />
+						</div>
+					</div>
+					<div class="Largura100pc Altura300px">
+						<div class="AlignCenter Largura400px Fonte18px TextAlignCenter MarginTop40px">
+							Login efetuado com sucesso!
+						</div>
+						<div class="AlignCenter Largura800px Fonte18px TextAlignCenter MarginTop40px">
+							daniel.santos, bem vindo a suite de produtos PwC.
+						</div>
+					</div>
+					<div class="Largura100pc Altura100px">
+						<div class="FloatLeft MarginLeft50px MarginTop20px">
+							<h:graphicImage value="#{resource['images/SSO:masterdata.png']}" alt="nfe" width="248px" height="78px" />
+						</div>
+						
+						<div class="FloatRight MarginRight50px MarginTop20px">
+							<h:graphicImage value="#{resource['images/SSO:profile.png']}" alt="cte" width="251px" height="76px" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</h:body>
+</html>

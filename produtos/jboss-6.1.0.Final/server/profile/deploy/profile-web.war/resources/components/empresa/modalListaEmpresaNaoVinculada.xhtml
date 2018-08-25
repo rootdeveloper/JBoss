@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:empresa="http://java.sun.com/jsf/composite/components/empresa"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	<composite:interface>
+		<composite:attribute name="nome" />
+		<composite:attribute name="idPainelErro" />
+	</composite:interface>   
+
+	<composite:implementation>
+		<h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+			<rich:popupPanel id="#{cc.attrs.nome}" modal="true" autosized="true" resizeable="false" moveable="false" styleClass="Largura900px FundoBranco OverflowHidden"
+				domElementAttachment="form" onshow="disableInputsFormPrincipal(); reSize(); mudaFocus('modalLista:listaEmpresaNaoVinculada:checkboxEmpresaNaoVinculada');"
+				onhide="enableInputsFormPrincipal();" onbeforeshow="renderListaEmpresaNaoVinculada();">
+	    		<f:facet name="header">
+					<h:outputText value="#{msg.vincularEmpresas}" />
+				</f:facet>
+				<f:facet name="controls">
+					<h:commandButton id="fechar" image="#{resource['images/png:close.png']}" styleClass="BotaoFechar">
+						<f:ajax execute="@this" onevent="fechar()"/>
+					</h:commandButton>
+				</f:facet>
+				<rich:dataTable id="listaEmpresaNaoVinculada" var="item" rows="10" styleClass="Largura100pc" value="#{mbRelacionaEmpresa.listaEmpresaFilialNaoVinculada}" 
+					onrowmouseover="className='SelecionaLinha'" rowKeyVar="rowkey" onrowmouseout="className=''"
+					noDataLabel="#{msg.listaEmpresaNaoVinculadaVazia}">
+				
+					<rich:column styleClass="AlignCenter" headerClass="Largura50px"> 
+						<f:facet name="header">
+							<h:selectBooleanCheckbox id="checkboxEmpresaNaoVinculada" styleClass="Margin0px checkboxEmpresaNaoVinculada"
+								valueChangeListener="#{mbRelacionaEmpresa.selecionarTodasEmpresasNaoVinculadas}" tabindex="1">
+								<a4j:ajax event="click" render="listaEmpresaNaoVinculada" status="modalStatus" oncomplete="reSize()"/>
+							</h:selectBooleanCheckbox>
+						</f:facet>
+						<h:selectBooleanCheckbox value="#{item.selecionado}" styleClass="Margin0px">
+							<a4j:ajax event="valueChange" execute="@this" />
+						</h:selectBooleanCheckbox>
+					</rich:column>
+				
+					<rich:column styleClass="AlignLeft Truncate" headerClass="Largura250px"
+						sortBy="#{item.razaoSocial}" sortOrder="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['razaoSocial'].sortOrder}"
+						filterExpression="#{fn:containsIgnoreCase(item.razaoSocial, mbRelacionaEmpresa.columnFilterNaoVinculado.mapColumnFilter['razaoSocial'].filterBy)}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.razaoSocial}"/>
+							<table:orderArrow action="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['razaoSocial'].sortBy}" 
+								order="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['razaoSocial'].sortOrder}" render="listaEmpresaNaoVinculada"/>
+							<br/>
+							<h:inputText id="razaoSocial" value="#{mbRelacionaEmpresa.columnFilterNaoVinculado.mapColumnFilter['razaoSocial'].filterBy}" tabindex="2" 
+								styleClass="Campo Largura220px" onkeypress="executeFilter(this,event);" maxlength="60">
+								<a4j:ajax event="valueChange" oncomplete="renderListaEmpresaNaoVinculada()" execute="@this" status="modalStatus"
+									render="controleNaoVinculados"/>
+							</h:inputText>							
+						</f:facet>
+						<h:outputText value="#{item.razaoSocial}asidhflkjdslkahfslkzsdv" title="#{item.razaoSocial}" />
+					</rich:column>
+					
+					<rich:column styleClass="AlignLeft Truncate" headerClass="Largura250px"
+						sortBy="#{item.descricao}" sortOrder="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['descricao'].sortOrder}"
+						filterExpression="#{fn:containsIgnoreCase(item.descricao, mbRelacionaEmpresa.columnFilterNaoVinculado.mapColumnFilter['descricao'].filterBy)}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.descricao}"/>
+							<table:orderArrow action="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['descricao'].sortBy}" 
+								order="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['descricao'].sortOrder}" render="listaEmpresaNaoVinculada"/>
+							<br/>
+							<h:inputText id="descricao" value="#{mbRelacionaEmpresa.columnFilterNaoVinculado.mapColumnFilter['descricao'].filterBy}" tabindex="3" 
+								styleClass="Campo Largura220px" onkeypress="executeFilter(this,event);" maxlength="60">
+								<a4j:ajax event="valueChange" oncomplete="renderListaEmpresaNaoVinculada()" execute="@this" status="modalStatus"
+									render="controleNaoVinculados"/>
+							</h:inputText>
+						</f:facet>
+						<h:outputText value="#{item.descricao}" title="#{item.descricao}" />
+					</rich:column>
+					
+					<rich:column styleClass="AlignCenter" headerClass="Largura120px"
+						sortBy="#{item.codigoFilial}" sortOrder="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['codigoFilial'].sortOrder}"
+						filterExpression="#{fn:containsIgnoreCase(item.codigoFilial, mbRelacionaEmpresa.columnFilterNaoVinculado.mapColumnFilter['codigoFilial'].filterBy)}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.codigoFilial}"/>
+							<table:orderArrow action="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['codigoFilial'].sortBy}" 
+								order="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['codigoFilial'].sortOrder}" render="listaEmpresaNaoVinculada"/>
+							<br/>
+							<h:inputText id="codigoFilial" value="#{mbRelacionaEmpresa.columnFilterNaoVinculado.mapColumnFilter['codigoFilial'].filterBy}" 
+								tabindex="4" styleClass="Campo Largura100px" onkeypress="executeFilter(this,event);" maxlength="4">
+								<a4j:ajax event="valueChange" oncomplete="renderListaEmpresaNaoVinculada()" execute="@this" status="modalStatus"
+									render="controleNaoVinculados"/>
+							</h:inputText>							
+						</f:facet>
+						<h:outputText value="#{item.codigoFilial}" />
+					</rich:column>
+				
+					<rich:column styleClass="AlignCenter" headerClass="Largura140px"
+						sortBy="#{item.cnpj}" sortOrder="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['cnpj'].sortOrder}"
+						filterExpression="#{fn:containsIgnoreCase(item.cnpj, mbRelacionaEmpresa.columnFilterNaoVinculado.mapColumnFilter['cnpj'].filterBy)}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.cnpj}"/>
+							<table:orderArrow action="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['cnpj'].sortBy}" 
+								order="#{mbRelacionaEmpresa.columnOrderNaoVinculado.mapColumnOrder['cnpj'].sortOrder}" render="listaEmpresaNaoVinculada"/>
+							<br/>
+							<h:inputText id="cnpj" value="#{mbRelacionaEmpresa.columnFilterNaoVinculado.mapColumnFilter['cnpj'].filterBy}" tabindex="5" 
+								styleClass="Campo Largura100px" maxlength="14" onkeypress="Mascara(this, Integer); executeFilter(this,event);" 
+								onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);" onfocus="origValue = this.value;" 
+								onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="Mascara(this, Integer);" 
+								onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+								<a4j:ajax event="valueChange" oncomplete="renderListaEmpresaNaoVinculada();" execute="@this" status="modalStatus" 
+									render="controleNaoVinculados"/>
+							</h:inputText>							
+						</f:facet>
+						<h:outputText value="#{item.cnpj}" converter="cnpjConverter" />
+					</rich:column>
+				</rich:dataTable>
+				
+				<table:scroller for="listaEmpresaNaoVinculada" idPanelScroller="controleNaoVinculados" maxPages="16" panelStyleClass="Scroller100pc MarginBottom5px" 
+					pageNumber="#{mbRelacionaEmpresa.scrollerPageNumberEmpresaNaoVinculada}" renderedTotalRegistros="#{not empty mbRelacionaEmpresa.listaEmpresaFilialNaoVinculada}" 
+					totalRegistros="#{mbRelacionaEmpresa.quantidadeRegistrosEmpresaNaoVinculada}" />
+					
+				<div class="PositionRelativeFloatLeft MarginLeft8px Linha670x25 MarginTop10px">
+					<a4j:commandButton value="#{msg.titleVincular}" status="modalStatus" styleClass="BotaoTexto Largura60px" 
+						actionListener="#{mbRelacionaEmpresa.verificaVinculacao}" execute="@this" render="modalInformativoEmpresa controleVinculados #{cc.attrs.idPainelErro}"
+						oncomplete="#{not mbRelacionaEmpresa.renderizaModal} ? #{rich:component('modalInformativoEmpresa')}.show() :
+						#{rich:component(cc.attrs.nome)}.hide(); renderTodaListaEmpresaVinculada(); #{rich:component('modalInformativoEmpresa')}.show();"/>
+					<a4j:commandButton value="#{msg.titleVoltar}" onclick="fechar();" styleClass="BotaoTexto Largura50px" execute="@this" />
+				</div>
+					
+				<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+				<a4j:jsFunction name="renderListaEmpresaNaoVinculada" render="listaEmpresaNaoVinculada@body" oncomplete="reSize();"/>
+				<a4j:jsFunction name="fechar" actionListener="#{mbRelacionaEmpresa.limpaEmpresaNaoVinculada}" oncomplete="#{rich:component(cc.attrs.nome)}.hide();" />
+			</rich:popupPanel>
+		</h:form>
+	</composite:implementation>
+</html>

@@ -1,0 +1,204 @@
+.Body {
+	background-color: none;
+	padding: 0px;
+	margin: 0px;
+	font-family: Georgia;
+	font-style: italic;
+	font-weight: bold;
+}
+.AlignCenter {
+	margin-left: auto;
+	margin-right: auto;
+}
+.Largura990px {
+	width: 990px;	
+}
+.Altura600px {
+	height: 600px; 	
+}
+.Top {
+	width: 100%;
+	height: 140px; 
+}
+.FloatLeft {
+	float: left;
+}
+.FloatRight {
+	float: right;
+}
+.MarginRight50px {
+	margin-right: 50px;	
+}
+.MarginLeft50px {
+	margin-left: 50px;	
+}
+.MarginTop5px {
+	margin-top: 5px;	
+}
+.MarginTop20px {
+	margin-top: 20px;	
+}
+.MarginTop40px {
+	margin-top: 40px;	
+}
+.Largura100pc {
+	width: 100%;	
+}
+.Largura200px {
+	width: 200px;	
+}
+.Altura100px {
+	height: 100px;
+}
+.Altura250px {
+	height: 250px;
+}
+.Fonte36px {
+	font-size: 36px;	
+}
+.Fonte18px {
+	font-size: 18px;	
+}
+.TextAlignCenter {
+	text-align: center;	
+}
+.EspacoDosCampos{
+	width: 200px;
+	height: 35px;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;	
+	text-align: right;
+}
+.GrupoTituloCampo{
+	position: relative;
+	float: left;
+	margin-right: 5px;
+}
+.TituloDeCampo{
+	font-size: 11px;
+	font-weight: bold;
+	color: #00000;
+	font-family: Georgia;
+	font-style: italic;
+	font-weight: bold;
+}
+.Campo{
+	background-color: #FFFFFF;
+	height: 15px;
+    font-size: 10px;
+    font-weight: normal;
+    border: 1px solid #000000;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	font-family: Georgia !important;
+	font-style: italic !important;
+	font-weight: bold !important;
+	
+}
+.CaixaDeTexto{
+	width: 145px;
+	height: 30px;
+	position: relative;
+	float: right;
+	text-align: right;
+	font-family: Georgia !important;
+	font-style: italic !important;
+	font-weight: bold !important;
+}
+.CaixaDeTitulo{
+	width: 50px;
+	height: 30px;
+	position: relative;
+	float: left;
+	text-align: right;
+	font-family: Georgia !important;
+	font-style: italic !important;
+	font-weight: bold !important;
+}
+.Validacao{
+	height:30px;
+	width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+	font-weight: bold;
+	font-size:small;
+	text-align: center;
+}
+.BotaoTexto{
+	background: #D4D4D4;
+    border: 1px solid #D4D4D4;
+    -moz-border-radius: 5px 5px 5px 5px !important;
+	-webkit-border-radius: 5px 5px 5px 5px !important;
+	border-radius: 5px 5px 5px 5px !important;
+    font-weight: bold;	
+    font-size: 11px !important; 
+    color: #00000;
+    padding: 1px !important;
+    cursor: pointer;
+    font-family: Georgia !important;
+	font-style: italic !important;
+	font-weight: bold !important;
+}
+.BotaoTexto:HOVER{
+    background: #BEBEBE;
+   	font-family: Georgia;
+    border: 1px solid #D4D4D4;
+    -moz-border-radius: 5px 5px 5px 5px !important;
+	-webkit-border-radius: 5px 5px 5px 5px !important;
+    font-weight: bold;	
+    font-size: 11px !important; 
+    color: #00000;
+    padding: 1px !important;  
+    cursor: pointer; 
+    font-family: Georgia !important;
+	font-style: italic !important;
+	font-weight: bold !important;
+}
+.Largura100pc{
+	width: 100%;
+}
+.Largura50px{
+	width: 50px;	
+}
+.Largura140px{
+	width: 140px;	
+}
+.Largura400px{
+	width: 400px;	
+}
+.Largura800px{
+	width: 800px;	
+}
+.Altura20px{
+	height: 20px;	
+}
+.Altura120px{
+	height: 120px;	
+}
+.Altura150px{
+	height: 150px;	
+}
+.Altura200px{
+	height: 200px;	
+}
+.MarginTop30px{
+	margin-top: 30px;	
+}
+
+a:LINK {
+	font-size: 11px;
+	font-weight: bold;
+	color: #2E6E9E;
+	margin-left: 30px;
+}
+a:VISITED {
+	font-size: 11px;
+	font-weight: bold;
+	color: #2E6E9E;
+	margin-left: 30px;
+}
+.BordaVermelha{
+	border:1px solid red;
+}

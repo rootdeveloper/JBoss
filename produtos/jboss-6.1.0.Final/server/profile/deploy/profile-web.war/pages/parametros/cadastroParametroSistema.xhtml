@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputLabel value="#{msg.paginaCadastroParametroSistema}" />
+	</ui:define>
+	
+	<ui:define name="content">
+		
+		<util:modalInformativo mensagemInformativo="#{mbParametroSistema.mensagemModal}" nomePainel="modalInformativo" 
+			tituloModal="#{msg.mensagem}" />
+			
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbParametroSistema.salvar}" title="#{msg.titleSalvar}" 
+				oncomplete="#{mbParametroSistema.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"
+				execute="cadastroParametros" render="modalInformativo painelMensagemErro">
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px"  height="18px"/>
+			</a4j:commandLink>
+			<a4j:commandLink status="modalStatus" action="home" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+		
+		<h:panelGroup id="cadastroParametros">
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura100px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.endpoint}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="endpoint" value="#{mbParametroSistema.parametroSistema.properties['TARGET_END_POINT_PROVEDOR_EMPRESA']}" 
+					styleClass="Campo Largura600px PositionRelativeFloatLeft" tabindex="1" maxlength="255" />
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="Largura980px PositionRelativeFloatLeft MarginLeft10px">
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+			
+		<div class="PositionRelativeFloatLeft Largura100pc MarginTop5px MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft10px"/>
+		</div>
+		
+	</ui:define>
+	
+</ui:composition>

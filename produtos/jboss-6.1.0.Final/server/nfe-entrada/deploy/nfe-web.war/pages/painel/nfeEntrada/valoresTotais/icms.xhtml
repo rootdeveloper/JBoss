@@ -1,0 +1,90 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<div class="Linha970x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_bcicms}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vbc}" 
+				styleClass="Campo Largura110px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_icms}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vicms}" 
+				styleClass="Campo Largura110px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_bcIcmsSt}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vbcst}" 
+				styleClass="Campo Largura110px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_icmsSt}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vst}" 
+				styleClass="Campo Largura120px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_produtosEServicos}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vProd}" 
+				styleClass="Campo Largura110px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo MarginLeft1px">
+			<h:outputText value="#{msg.lbl_frete}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vFrete}" 
+				styleClass="Campo Largura110px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_desconto}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vDesc}" 
+				styleClass="Campo Largura110px TextAlignRight" readonly="true"/>
+		</div>
+	</div>
+	<div class="Linha970x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_ii}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vii}" 
+				styleClass="Campo Largura110px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_ipi}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vipi}" 
+				styleClass="Campo Largura110px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_pis}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vpis}" 
+				styleClass="Campo Largura110px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_cofins}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vcofins}" 
+				styleClass="Campo Largura120px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_vnfe}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vnf}" 
+				styleClass="Campo Largura110px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_outrasDespesas}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vOutro}" 
+				styleClass="Campo Largura110px TextAlignRight" readonly="true"/>
+		</div>
+	</div>
+</ui:composition>

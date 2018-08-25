@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+       
+	<div class="Linha660x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_codigoSituacaoTributariaDaCofins}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.cofins.cofinsOutr.cst}" 
+				styleClass="Campo Largura655px" readonly="true" converter="codigoSituacaoTributariaCofinsConverter"/>
+		</div>
+	</div> 
+	<div class="Linha660x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_valorDaBcDaCofins}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.cofins.cofinsOutr.vbc}" 
+				styleClass="Campo Largura250px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_aliquotaDaCofinsEmPercentual}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.cofins.cofinsOutr.pcofins}" 
+				styleClass="Campo Largura250px AlignRight" readonly="true"/>
+		</div>
+	</div>
+	<div class="Linha660x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_qtdeVendida}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.cofins.cofinsOutr.qbcProd}" 
+				styleClass="Campo Largura140px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_aliquotaDaCofinsEmReais}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.cofins.cofinsOutr.vAliqProd}" 
+				styleClass="Campo Largura200px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_valor}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.cofins.cofinsOutr.vcofins}" 
+				styleClass="Campo Largura150px AlignRight" readonly="true"/>
+		</div>
+	</div>			
+
+			
+</ui:composition>

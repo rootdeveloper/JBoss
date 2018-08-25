@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<h:form prependId="false" id="formFiltroAliquotaNCM" styleClass="formFiltroAliquotaNCM">
+	
+		<rich:popupPanel onshow="iniciaFocusModal('tabAliquotasNCM', null); disableInputsFormPrincipal();"
+			modal="true" id="filtroNCMAliquota" autosized="true" resizeable="false" moveable="false" execute="@this" immediate="true"
+			domElementAttachment="form" styleClass="Largura700px FundoBranco" onhide="enableInputsFormPrincipal()">
+				
+			<f:facet name="header">
+				<h:outputText value="#{msg.filtroAliquota}"/>
+			</f:facet>
+				
+			<f:facet name="controls">
+				<a4j:commandButton id="fechar" image="/resources/images/png/close.png" styleClass="BotaoFechar TabWalk" execute="@this"
+					onclick="#{rich:component('filtroNCMAliquota')}.hide();" actionListener="#{mbNcm.limpaModalFiltro}" immediate="true"/> 
+			</f:facet>	
+			
+			<rich:tabPanel id="AbasFiltroNCM" switchType="client">
+				<!-- Aba Alíquota -->	
+				<rich:tab header="#{msg.aliquota}" id="tabAliquotasNCM" headerClass="tabAliquotasNCM" 
+					onenter="focus('tabelaDeAliquotasNCM\\:checkboxAliquotasNCM')" >   
+					
+					<div class="PositionRelativeFloatLeft Largura665px AlturaMax155px OverflowVerticalAuto">
+						<rich:dataTable value="#{mbNcm.listaAliquotaCustomSelectItem}" var="item" styleClass="Largura100pc" id="tabelaDeAliquotasNCM">
+							
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox styleClass="Margin0px checkboxAliquotasNCM" id="checkboxAliquotasNCM" 
+										value="#{mbNcm.checkboxHeaderAliquota}" valueChangeListener="#{mbNcm.selecionarTodosCheckboxFiltro}"
+									 	onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();">
+										<a4j:ajax event="click" render="tabAliquotasNCM"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{item.selecionado}" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();">
+									<a4j:ajax event="valueChange" execute="@this"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+								
+							<rich:column styleClass="AlignCenter">
+								<f:facet name="header">
+									<h:outputText value="#{msg.tipoAliquota}"/>
+								</f:facet>
+								<h:outputText value="#{item.descricao}"/>
+							</rich:column>
+						</rich:dataTable>
+					</div>	
+				</rich:tab>
+				
+				<!-- Aba Data de Vigência -->	
+				<rich:tab header="#{msg.dataVigencia}" id="abaDataVigencia" onenter="focus('dataInicialInputDate')">
+					<h:outputText value="#{msg.dataInicial}" styleClass="TituloDeCampo"/>
+					<rich:calendar id="dataInicial" value="#{mbNcm.dataInicialFiltro}" datePattern="dd/MM/yyyy" showApplyButton="false" showWeeksBar="false" 
+						showFooter="false" boundaryDatesMode="scroll" inputClass="Largura78px MarginLeft20px TabWalk" buttonClass="BotaoImagemSemMarginTop"
+						tabindex="1"/>
+						
+					<h:outputText value="#{msg.dataFinal}" styleClass="TituloDeCampo MarginLeft50px"/>
+					<rich:calendar id="dataFinal" value="#{mbNcm.dataFinalFiltro}" datePattern="dd/MM/yyyy" showApplyButton="false" showWeeksBar="false" 
+						showFooter="false" boundaryDatesMode="scroll" inputClass="Largura78px MarginLeft20px TabWalk" buttonClass="BotaoImagemSemMarginTop"
+						tabindex="2"/>
+				</rich:tab>
+			</rich:tabPanel>
+
+			<div class="PositionRelativeFloatLeft MarginLeft8px Linha670x25 MarginTop10px">
+				<a4j:commandButton value="#{msg.botaoFiltrar}" status="modalStatus" styleClass="BotaoTexto Largura50px TabWalk"
+					actionListener="#{mbNcm.filtrar}" render="controle listaAliquotaVO" execute="@this"
+					oncomplete="#{rich:component('filtroNCMAliquota')}.hide(); clickCheckbox('checkboxAliquota')"/>
+				<a4j:commandButton value="#{msg.botaoVoltar}" onclick="#{rich:component('filtroNCMAliquota')}.hide(); return false;"
+					immediate="true" execute="@this" styleClass="BotaoTexto Largura50px TabWalk" actionListener="#{mbNcm.limpaModalFiltro}"/>
+			</div>
+	
+		</rich:popupPanel>
+	</h:form>
+		   
+</ui:composition>

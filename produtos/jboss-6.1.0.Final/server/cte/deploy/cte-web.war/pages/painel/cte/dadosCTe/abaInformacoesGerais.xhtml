@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:composition>
+		<!-- Dados do CT-e -->
+		<fieldset class="Fieldset290x60">
+			<legend class="TituloDeCampo">#{msg.dadosDoCTe}</legend>
+			<div class="Linha270x38 MarginTop5px MarginLeft5px">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.numero}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.nct}" styleClass="Campo Largura70px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.serie}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.serie}" styleClass="Campo Largura40px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.dataDeEmissao}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.dhEmi}" styleClass="Campo Largura130px" readonly="true" converter="dataSefazConverter" />
+				</div>
+			</div>
+		</fieldset>
+		<!-- Valores -->
+		<fieldset class="Fieldset530x60 MarginLeft2px">
+			<legend class="TituloDeCampo">#{msg.valores}</legend>
+			<div class="Linha510x38 MarginTop5px MarginLeft5px">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.valorTotalServico}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.vPrest.vtPrest}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.baseDeCalculoICMS}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST00 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST00.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST20 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST20.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST45 != null}" value="" styleClass="Campo Largura160px" readonly="true" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST80 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST80.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST81 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST81.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST90 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST90.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms00 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms00.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms20 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms20.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms45 != null}" value="" styleClass="Campo Largura160px" readonly="true" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms60 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms60.vbcstRet}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms90 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms90.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icmsOutraUF != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icmsOutraUF.vbcOutraUF}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icmssn != null}" value="" styleClass="Campo Largura160px" readonly="true" />
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.valorDoICMS}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST00 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST00.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST20 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST20.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST45 != null}" value="" styleClass="Campo Largura160px" readonly="true" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST80 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST80.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST81 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST81.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST90 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icms.CST90.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms00 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms00.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms20 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms20.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms45 != null}" value="" styleClass="Campo Largura160px" readonly="true" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms60 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms60.vicmsstRet}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms90 != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icms90.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icmsOutraUF != null}" value="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icmsOutraUF.vicmsOutraUF}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+					<h:inputText rendered="#{mbCteTerceiros.procCte.CTe.infCte.imp.icmsV104.icmssn != null}" value="" styleClass="Campo Largura160px" readonly="true" />
+				</div>
+			</div>
+		</fieldset>
+		<!-- Caracteristicas -->
+		<fieldset class="Fieldset826x135 MarginTop5px" >
+			<legend class="TituloDeCampo">#{msg.caracteristicas}</legend>
+			<div class="Linha810x38 MarginTop5px MarginLeft5px">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.modal}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.modal}" styleClass="Campo Largura80px" readonly="true" converter="modalConverter"/>
+				</div>	
+				
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.tipoServico}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.tpServ}" styleClass="Campo Largura170px" readonly="true" converter="tipoServicoCodigoConverter"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.finalidade}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.tpCTe}" styleClass="Campo Largura170px" readonly="true" converter="finalidadeConverter"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.formaDeEmissao}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.tpEmis}" styleClass="Campo Largura150px" readonly="true" converter="formaEnvioCodigoConverter"/>
+				</div>
+			</div>	
+			<div class="Linha810x38 MarginLeft5px">	
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.cfop}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.cfop}" styleClass="Campo Largura35px" readonly="true"/>
+				</div>
+			
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.naturezaOperacao}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.natOp}" styleClass="Campo Largura545px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.digestValue}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.protCTe.infProt.digVal}" styleClass="Campo Largura200px" readonly="true" />
+				</div>
+			</div>
+			<div class="Linha810x38 MarginLeft5px">	
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.inicioDaPrestacao}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.ufIni} - #{mbCteTerceiros.procCte.CTe.infCte.ide.xMunIni}" styleClass="Campo Largura370px" readonly="true" />
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.fimDaPrestacao}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.ufFim} - #{mbCteTerceiros.procCte.CTe.infCte.ide.xMunFim}" styleClass="Campo Largura370px" readonly="true" />
+				</div>
+			</div>
+		</fieldset>
+		<!-- Caracteristicas -->
+		<fieldset class="Fieldset380x60 MarginTop5px" >
+			<legend class="TituloDeCampo">#{msg.situacaoAtual_} #{mbCteTerceiros.nomeStatus}</legend>
+			<div class="Linha350x38 MarginTop5px MarginLeft5px">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.protocolo}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.protCTe.infProt.nProt}" styleClass="Campo Largura120px" readonly="true" />
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.data}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.protCTe.infProt.dhRecbto}" styleClass="Campo Largura130px" readonly="true" converter="dataSefazConverter"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.status}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.nomeStatus}" styleClass="Campo Largura70px" readonly="true" />
+				</div>
+			</div>
+		</fieldset>
+	</ui:composition>
+</html>

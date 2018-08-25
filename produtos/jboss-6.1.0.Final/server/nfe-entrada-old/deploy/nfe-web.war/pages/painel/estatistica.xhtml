@@ -1,0 +1,169 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.estatistica}"/>
+	</ui:define>
+	
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" listener="#{mbEstatistica.alterarFilial}" render="header-content" execute="@this" status="modalStatus"/>
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<ui:include src="modalFiltroEstatistica.xhtml" />
+	</ui:define>
+	
+	<ui:define name="content">
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:filtro idModalFiltro="filtroEstatistica" idPanelErro="painelErro" filialCadastrada="#{true}" />
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		<h:panelGroup id="estatistica">
+			<h:panelGroup rendered="#{mbEstatistica.vo ne null}">
+				<h:outputScript name="jquery.flot.js" library="js/flot" target="head" />
+				<h:outputScript name="jquery.flot.pie.js" library="js/flot" target="head" />
+				<h:outputScript name="excanvas.min.js" library="js/flot" target="head" />
+				<script type="text/javascript">
+				j(function () {
+					var data = [
+				    		#{mbEstatistica.vo.estatisticaStatusSefazAsJSon}
+				    	];
+
+					 j.plot(j('#statusSefaz'), data, 
+						{
+							series: {
+								pie: { 
+									show: true,
+									label: {
+										show: true,
+										radius: 2/4,
+										formatter: function(label, series) {
+											return '<div class="Label">'+Math.round(series.percent)+'%</div>';
+										},
+										background: { opacity: 0.5 }
+									}
+								}
+							}
+						});
+					 var data2 = [
+				    		#{mbEstatistica.vo.estatisticaStatusArquivoAsJSon}
+				    	];
+					 j.plot(j('#statusArquivo'), data2, 
+						{
+							series: {
+								pie: { 
+									show: true,
+									label: {
+										show: true,
+										radius: 2/4,
+										formatter: function(label, series) {
+											return '<div class="Label">'+Math.round(series.percent)+'%</div>';
+										},
+										background: { opacity: 0.5 }
+									}
+								}
+							}
+						});
+				});
+				</script>
+				<div class="Altura30px">
+					<div class="Largura450px FloatLeft TextAlignCenter">
+						<h:outputText styleClass="GraphTitulo" value="#{msg.statusSefaz}" />
+					</div>
+					<div class="Largura450px FloatLeft TextAlignCenter">
+						<h:outputText styleClass="GraphTitulo" value="#{msg.statusArquivo}" />
+					</div>
+				</div>
+				<div class="Altura310px">
+					<div id="statusSefaz" class="GraphE MarginLeft5px">
+					</div>
+					<div id="statusArquivo" class="GraphD">
+					</div>
+				</div>
+				<div class="Altura110px">
+					<div class="GraphDadosE MarginLeft5px">
+						<div class="GraphLinha TextAlignCenter">
+							<h:outputText value="#{msg.valoresTotais}" styleClass="GraphTituloValores" />
+						</div>
+						<div class="GraphLinha MarginLeft5px">
+							<div class="GraphLinhaLabel">
+								<h:outputText styleClass="TituloDeCampo" value="#{msg.aprovada}" />
+							</div>
+							<h:outputText styleClass="TituloDeCampo" value="#{mbEstatistica.vo.quantidadeStatusSefazAprovada}" />
+						</div>
+						<div class="GraphLinha MarginLeft5px">
+							<div class="GraphLinhaLabel">
+								<h:outputText styleClass="TituloDeCampo" value="#{msg.cancelada}" />
+							</div>	
+							<h:outputText styleClass="TituloDeCampo" value="#{mbEstatistica.vo.quantidadeStatusSefazCancelada}" />
+						</div>
+						<div class="GraphLinha MarginLeft5px">
+							<div class="GraphLinhaLabel">
+								<h:outputText styleClass="TituloDeCampo" value="#{msg.inexistente}" />
+							</div>	
+							<h:outputText styleClass="TituloDeCampo" value="#{mbEstatistica.vo.quantidadeStatusSefazInexistente}" />
+						</div>
+						<div class="GraphLinha MarginLeft5px">
+							<div class="GraphLinhaLabel">
+								<h:outputText styleClass="TituloDeCampo" value="#{msg.falhaCom_}" />
+							</div>	
+							<h:outputText styleClass="TituloDeCampo" value="#{mbEstatistica.vo.quantidadeStatusSefazFalhaComunicacao}" />
+						</div>
+					</div>
+					<div class="GraphDadosE">
+						<div class="GraphLinha TextAlignCenter">
+							<h:outputText value="#{msg.manifestacao}" styleClass="GraphTituloValores" />
+						</div>
+						<div class="GraphLinha MarginLeft5px">
+							<div class="GraphLinhaLabel">
+								<h:outputText styleClass="TituloDeCampo" value="#{msg.naoManifestada}" />
+							</div>	
+							<h:outputText styleClass="TituloDeCampo" value="#{mbEstatistica.vo.quantidadeNaoManifestada}" />
+						</div>
+						<div class="GraphLinha MarginLeft5px">
+							<div class="GraphLinhaLabel">
+								<h:outputText styleClass="TituloDeCampo" value="#{msg.conclusiva}" />
+							</div>	
+							<h:outputText styleClass="TituloDeCampo" value="#{mbEstatistica.vo.quantidadeManifestadaConclusivamente}" />
+						</div>
+						<div class="GraphLinha MarginLeft5px">
+							<div class="GraphLinhaLabel">
+								<h:outputText styleClass="TituloDeCampo" value="#{msg.naoConclusiva}" />
+							</div>
+							<h:outputText styleClass="TituloDeCampo" value="#{mbEstatistica.vo.quantidadeManifestadaNaoConclusivamente}" />
+						</div>
+					</div>
+					<div class="GraphDadosD">
+						<div class="GraphLinha TextAlignCenter">
+							<h:outputText value="#{msg.valoresTotais}" styleClass="GraphTituloValores" />
+						</div>
+						<div class="GraphLinha MarginLeft5px">
+							<div class="GraphLinhaLabel">
+								<h:outputText styleClass="TituloDeCampo" value="#{msg.aprovada}" />
+							</div>	
+							<h:outputText styleClass="TituloDeCampo" value="#{mbEstatistica.vo.quantidadeStatusArquivoAprovada}" />
+						</div>
+						<div class="GraphLinha MarginLeft5px">
+							<div class="GraphLinhaLabel">
+								<h:outputText styleClass="TituloDeCampo" value="#{msg.cancelada}" />
+							</div>	
+							<h:outputText styleClass="TituloDeCampo" value="#{mbEstatistica.vo.quantidadeStatusArquivoCancelada}" />
+						</div>
+					</div>
+				</div>
+			</h:panelGroup>
+			<h:panelGroup id="painelErro" styleClass="MarginLeft5px">
+				<h:outputText value="#{mbEstatistica.mensagemErro}" styleClass="MensagemDeErro" />
+			</h:panelGroup>
+		</h:panelGroup>
+	</ui:define>
+	
+</ui:composition>

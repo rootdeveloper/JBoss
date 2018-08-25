@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:tributavel="http://java.sun.com/jsf/composite/components/aliquota"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroEmpresa}"/>
+	</ui:define>
+
+	<ui:define name="contentModal">
+		<ui:include src="/pages/dadosMestre/empresa/modalListaSegmentoEmpresarial.xhtml"/>
+		<ui:include src="/pages/dadosMestre/empresa/modalListaNaturezaJuridica.xhtml"/>
+		<ui:include src="/pages/dadosMestre/empresa/modalListaGrupoEmpresa.xhtml"/>
+		<ui:include src="/pages/dadosMestre/empresa/modalFiltroFilial.xhtml"/>
+	</ui:define>
+
+	<ui:define name="content">
+	
+		<util:modalJustificativaStatus idModal="modalFilialStatus" actionRenderizarModais="#{mbEmpresa.isJustificativaInformativo}" 
+			justificativaInformativa="#{mbEmpresa.justificativa}" tipoStatus="#{mbEmpresa.filial.status.nomeTipo}" render="listaFilialAtiva"
+			idModalInformativo="modalInformativoFilial" justificativaEditavel="#{mbEmpresa.filial.justificativa}" salvar="#{mbEmpresa.salvaComStatus}"
+			renderizaModalStatusInformativo="#{mbEmpresa.renderizaModalStatusInformativo}" renderizarModal="#{mbEmpresa.renderizarModalInformativo}" />
+
+		<util:modalInformativoVoltar mensagemInformativo="#{mbEmpresa.mensagemModal}" nomePainel="modalInformativo" tituloModal="#{msg.mensagem}" />
+
+		<util:modalInformativo mensagemInformativo="#{mbEmpresa.mensagemModalInformativo}" nomePainel="modalInformativoFilial" render="abaFilial listaFiliais"
+			tituloModal="#{msg.mensagem}" oncomplete="#{rich:component('modalFilialStatus')}.hide()"/>
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbEmpresa.salvar}" title="#{msg.titleSalvar}" execute="cadastroEmpresa"
+				oncomplete="#{mbEmpresa.renderizarModalInformativo} ? #{rich:component('modalInformativo')}.show() : ''" 
+				render="modalInformativo, painelMensagemErro, listaFilialAtiva">
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem"
+					width="26px" height="18px" rendered="#{mbEmpresa.empresa.id == null}"/>
+			</a4j:commandLink>
+			<a4j:commandLink status="modalStatus" action="voltar" title="#{msg.titleVoltar}" immediate="true" execute="@this">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+		
+		<h:panelGroup id="cadastroEmpresa">
+		
+			<div class="Linha980x25 MarginTop10px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.codEmpresa}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="codEmpresa" value="#{mbEmpresa.empresa.codigoEmpresa}"
+					styleClass="Campo Largura70px PositionRelativeFloatLeft" maxlength="4" readonly="#{mbEmpresa.empresa.id != null}" tabindex="1">
+					<a4j:ajax listener="#{mbEmpresa.verificaCodigoEmpresa}" event="valueChange" render="painelMensagemErro" status="modalStatus"/> 
+				</h:inputText>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+			
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.cnpjRaiz}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="cnpjRaiz" value="#{mbEmpresa.empresa.cnpjRaiz}" styleClass="Campo Largura70px PositionRelativeFloatLeft" 
+					converter="raizCnpjConverter" readonly="#{mbEmpresa.empresa.id != null}" tabindex="2">
+					<a4j:ajax listener="#{mbEmpresa.verificaCnpjRaiz}" event="valueChange" render="painelMensagemErro painelMensagemErroFilial" status="modalStatus"/> 
+				</h:inputText>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+			
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.razaoSocial}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="empRazaoSocial" value="#{mbEmpresa.empresa.razaoSocial}"
+					styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" readonly="#{mbEmpresa.empresa.id != null}" tabindex="3">
+				</h:inputText>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+		
+		</h:panelGroup>
+
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="MarginLeft10px Largura980px PositionRelativeFloatLeft">
+			<h:outputText value="#{mbEmpresa.mensagensErroEmpresa}" styleClass="MensagemDeErro" escape="false"/>
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+		
+		<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+			<rich:tab id="abaFilial" header="#{msg.abaFilial}" styleClass="PositionRelativeFloatLeft Largura100pc" immediate="true" execute="@this">
+				<h:panelGroup id="panelFilial">
+					<h:panelGroup rendered="#{!mbEmpresa.cadastroFilial}">
+						<ui:include src="/pages/dadosMestre/empresa/listaFilial.xhtml"/>
+					</h:panelGroup>
+					<h:panelGroup rendered="#{mbEmpresa.cadastroFilial}">
+						<ui:include src="/pages/dadosMestre/empresa/cadastroFilial.xhtml"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</rich:tab>
+		</rich:tabPanel>
+		
+		<div class="PositionRelativeFloatLeft Largura100pc MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft26px"/>
+		</div>
+		
+		<a4j:jsFunction name="renderIE" render="panelIE" />
+		<rich:jQuery id="jQueryCNPJRaiz" selector="#cnpjRaiz" timing="immediate"  query="maskMoney({maskMoney: false, mask : '99.999.999'})" />
+		
+	</ui:define>
+</ui:composition>

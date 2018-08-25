@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:tributavel="http://java.sun.com/jsf/composite/components/aliquota"
+	xmlns:imposto="http://java.sun.com/jsf/composite/components/imposto"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.parametroFilial}"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalInformativoVoltar mensagemInformativo="#{mbParametroFilial.mensagemModal}" nomePainel="modalInformativo" 
+			tituloModal="#{msg.mensagem}" />
+	
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbParametroFilial.salvar}" title="#{msg.titleSalvar}" 
+				oncomplete="#{mbParametroFilial.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"
+				execute="registrosPorConsulta" render="modalInformativo painelMensagemErro painelConjuntoEmpresa"
+				rendered="#{mbParametroFilial.verificaPermissao('Administrador')}">
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px"  height="18px"/>
+			</a4j:commandLink>
+			<a4j:commandLink status="modalStatus" action="home" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+		
+			
+		<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+			<rich:tab id="abaGeral" header="#{msg.abaGeral}" immediate="true" execute="@this">
+				<div class="Linha980x25">
+					<h:outputText value="#{msg.quantidadeItensCarregados}" styleClass="TituloDeCampo" />
+				</div>
+				<h:panelGroup layout="block" id="registrosPorConsulta" styleClass="Linha980x25">
+					<div class="Largura250px PositionRelativeFloatLeft">
+						<h:selectOneMenu value="#{mbParametroFilial.quantidadeRegistrosTabela}" styleClass="ComboField Largura200px" tabindex="1">
+							<f:selectItems value="#{mbParametroFilial.quantidadeRegistros}" var="item" itemLabel="#{item.descricao}" />
+							<a4j:ajax execute="@this" render="registrosPorConsulta" listener="#{mbParametroFilial.changeComboQuantidadeRegistrosTabela}" status="modalStatus"/>
+						</h:selectOneMenu>
+					</div>
+					<h:panelGroup layout="block" rendered="#{mbParametroFilial.quantidadeRegistrosTabela eq 'ALTERAR_QUANTIDADE'}" styleClass="PositionRelativeFloatLeft">
+						<h:inputText value="#{mbParametroFilial.parametroFilial.quantidadeRegistrosTabela}" styleClass="Campo Largura100px" tabindex="2"
+						maxlength="3" onkeypress="Mascara(this, Integer);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			
+			</rich:tab>
+		</rich:tabPanel>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="Largura980px PositionRelativeFloatLeft MarginLeft10px">
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+			<h:outputText value="#{mbParametroFilial.mensagemErroFilial}" styleClass="MensagemDeErro"/>
+		</h:panelGroup>
+		
+		<script type="text/javascript">
+			if(!#{mbParametroFilial.verificaPermissao('Administrador')}) {
+				j(document).ready(function(){
+					disableInputText();
+				});
+			}
+		</script>
+		
+		
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="metadata"/>
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroWebService}" />
+	</ui:define>
+	<ui:define name="content">
+		<util:modalInformativoVoltar mensagemInformativo="#{mbWebServiceSefazOrigem.mensagem}" nomePainel="modalInformativo" render="painelPrincipal" tituloModal="#{msg.mensagem}" />
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left"> 
+				<a4j:commandLink actionListener="#{mbWebServiceSefazOrigem.salvar}" title="#{msg.titleSalvar}" oncomplete="#{mbWebServiceSefazOrigem.renderizarModalInformativo} ? #{rich:component('modalInformativo')}.show() : ''" render="modalInformativo, painelPrincipal, painelMensagemErro" status="modalStatus">
+					<f:param name="acao" value="Salvar"/>
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" />
+				</a4j:commandLink>
+				<h:commandButton action="#{mbWebServiceSefazOrigem.voltar}" image="#{resource['images/png:voltar.png']}" styleClass="BotaoImagem" title="#{msg.titleVoltar}">
+					<f:param name="acao" value="Voltar"/>
+				</h:commandButton>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		<h:panelGroup layout="block" styleClass="MarginTop10px">
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura140px">
+					<h:outputText value="#{msg.servico}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:selectOneMenu value="#{mbWebServiceSefazOrigem.sefazWebService.tipoWebService}" styleClass="ComboField Largura150px" id="servico" converter="genericEnumConverter">
+						<f:selectItems value="#{mbWebServiceSefazOrigem.listaServicos}" var="servico" itemLabel="#{servico.nome}" />
+					</h:selectOneMenu>
+				</div>
+			</div>
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura140px">
+					<h:outputText value="#{msg.estado}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:selectOneMenu value="#{mbWebServiceSefazOrigem.sefazWebService.uf}" styleClass="ComboField Largura150px" id="uf" converter="ufConverter">
+						<f:selectItems value="#{mbWebServiceSefazOrigem.listaEstados}" var="estado" itemLabel="#{estado.nomeEstado}"/>
+					</h:selectOneMenu>
+				</div>
+			</div>
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura140px">
+					<h:outputText value="#{msg.ambiente}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:selectOneMenu value="#{mbWebServiceSefazOrigem.sefazWebService.ambiente}" styleClass="ComboField Largura150px" id="Ambiente" converter="genericEnumConverter">
+						<f:selectItems value="#{mbWebServiceSefazOrigem.listaAmbientes}" />
+					</h:selectOneMenu>
+				</div>
+			</div>
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura140px">
+					<h:outputText value="#{msg.versaoDoPacote}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:selectOneMenu value="#{mbWebServiceSefazOrigem.sefazWebService.pacoteLiberacao}" styleClass="ComboField Largura150px" id="versaoSchema" converter="entityConverter">
+						<f:selectItems value="#{mbWebServiceSefazOrigem.listaPacoteLiberacao}" />
+					</h:selectOneMenu>
+				</div>
+			</div>
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura140px">
+					<h:outputText value="#{msg.soap}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:selectOneMenu value="#{mbWebServiceSefazOrigem.sefazWebService.tipoProtocoloSoap}" styleClass="ComboField Largura150px" id="protocoloSoap" converter="genericEnumConverter">
+						<f:selectItems value="#{mbWebServiceSefazOrigem.listaProtocoloSoap}" />
+					</h:selectOneMenu>
+				</div>
+			</div>
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura140px">
+					<h:outputText value="#{msg.endpoint}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:inputText value="#{mbWebServiceSefazOrigem.sefazWebService.caminhoEndpoint}" id="endpoint" styleClass="Campo Largura450px" maxlength="90"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:outputText value="*" styleClass="MarginLeft5px"/>
+				</div>
+			</div>
+			<div class="Linha990x110 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura140px">
+					<h:outputText value="#{msg.modeloEnvioSoap_}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:inputTextarea id="modeloEnvioSoap" value="#{mbWebServiceSefazOrigem.sefazWebService.modeloEnvelopeSoap}" styleClass="TextArea450x100" onkeydown="limitText(this,512);" onkeyup="limitText(this,512);"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:outputText value="*" styleClass="MarginLeft5px"/>
+				</div>
+			</div>
+			<h:panelGroup layout="block" id="painelMensagemErro" styleClass="Largura980px PositionRelativeFloatLeft MarginLeft10px MarginBottom5px">
+				<div>
+					<h:outputText value="* #{msg.camposObrigatorios}" />
+				</div>
+				<div class="MarginTop5px">
+					<h:outputText value="#{mbWebServiceSefazOrigem.mensagemErroPrincipal}" styleClass="MensagemDeErro" />
+				</div>
+			</h:panelGroup> 
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

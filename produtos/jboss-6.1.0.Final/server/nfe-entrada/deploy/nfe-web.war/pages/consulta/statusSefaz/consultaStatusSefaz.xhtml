@@ -1,0 +1,154 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.consultaNFe}"/>
+	</ui:define>
+	
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" listener="#{mbConsultaStatus.trocaValorComboFilial}"
+			render="header-content controle" execute="@this" 
+			oncomplete="renderPage();" status="modalStatus"/>
+	</ui:define>
+	
+	<ui:define name="content">
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" action="home" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem"
+				 width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+ 		
+ 		<h:panelGroup id="campoConsulta" styleClass="FloatLeft">
+			<h:panelGroup id="chaveAcesso" layout="block" styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.chaveDeAcesso}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="chave" value="#{mbConsultaStatus.consultaVO.chaveDeAcesso}" tabindex="1"
+					styleClass="Campo Largura320px PositionRelativeFloatLeft"
+					maxlength="44" onkeypress="Mascara(this, Integer);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+					onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+				
+				<!-- <h:inputText id="chave" value="#{mbConsultaStatus.consultaVO.chaveDeAcesso}" tabindex="1"
+					styleClass="Campo Largura320px PositionRelativeFloatLeft" />
+				<rich:jQuery selector="#chave" query="regex({caracteres: ['numero', '_'], length: 44})" timing="immediate" />
+				-->
+				<a4j:commandButton status="modalStatus" actionListener="#{mbConsultaStatus.consultaStatus}" title="#{msg.consultar}"
+					value="#{msg.consultar}"  execute="pacoteLiberacao tipoAmbiente chave"
+					styleClass="BotaoTexto PositionRelativeFloatLeft MarginLeft10px Largura80px" render="statusNota painelMensagemErro"/>
+				<a4j:commandButton status="modalStatus" actionListener="#{mbConsultaStatus.limpar}" title="#{msg.titleLimpar}"
+					value="#{msg.importadorLimpar}" styleClass="BotaoTexto PositionRelativeFloatLeft MarginLeft10px Largura80px" 
+					render="statusNota painelMensagemErro campoConsulta"/>
+			</h:panelGroup>
+			<!--
+			<h:panelGroup id="pacoteLiberacao" layout="block" styleClass="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.menuPacoteLiberacao}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="pacote" value="#{mbConsultaStatus.consultaVO.pacoteLiberacao}"
+					styleClass="ComboField PositionRelativeFloatLeft Largura305px" 
+					tabindex="0" converter="entityConverter" onkeydown="blockBackSpace(event)" 
+					onkeyup="unblockBackSpace()">
+					<f:selectItems value="#{mbConsultaStatus.listaPacoteLiberacao}" />
+				</h:selectOneMenu>
+			</h:panelGroup>
+			-->
+			
+			<h:panelGroup id="tipoAmbiente" layout="block" styleClass="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura142px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.tipoAmbiente}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneRadio id="ambiente" value="#{mbConsultaStatus.consultaVO.tipoAmbiente}" styleClass="PositionRelativeFloatLeft" >
+					<f:selectItems value="#{mbConsultaStatus.listaTipoAmbiente}" var="ambiente" itemLabel="#{ambiente.nomeAmbiente}"/>
+				</h:selectOneRadio>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<h:panelGroup id="statusNota" styleClass="FloatLeft">
+			<h:panelGroup layout="block" styleClass="Linha980x305 MarginTop15px MarginBottom10px" rendered="#{mbConsultaStatus.consultaNfe ne null}">
+				<fieldset class="Fieldset700x280 MarginBottom5px MarginLeft10px" >
+					<legend class="TituloDeCampo">#{msg.titleResultadoConsultaSefaz}</legend>
+					
+					<h:panelGroup layout="block" styleClass="Linha710x25 MarginTop5px">
+						<div class="PositionRelativeFloatLeft Largura140px MarginLeft10px">
+							<h:outputText value="#{msg.versaoAplicativo}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText  value="#{mbConsultaStatus.consultaNfe.verAplic}" styleClass="Campo Largura110px PositionRelativeFloatLeft"
+							 readonly="true"/>
+					</h:panelGroup>
+					
+					<h:panelGroup layout="block" styleClass="Linha710x25 MarginTop2px">
+						<div class="PositionRelativeFloatLeft Largura140px MarginLeft10px">
+							<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText value="#{mbConsultaStatus.consultaNfe.cuf}" styleClass="Campo Largura110px PositionRelativeFloatLeft"
+							 readonly="true"/>				
+					</h:panelGroup>	
+							
+					<h:panelGroup layout="block" styleClass="Linha710x25 MarginTop2px">
+						<div class="PositionRelativeFloatLeft Largura140px MarginLeft10px">
+							<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+						</div>
+							<h:inputText value="#{mbConsultaStatus.consultaNfe.cStat}" styleClass="Campo Largura110px PositionRelativeFloatLeft"
+							 readonly="true"/>
+					</h:panelGroup>
+					
+					<h:panelGroup layout="block" styleClass="Linha710x25 MarginTop2px">
+						<div class="PositionRelativeFloatLeft Largura140px MarginLeft10px">
+							<h:outputText value="#{msg.ambiente}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText value="#{mbConsultaStatus.consultaNfe.tpAmb}" styleClass="Campo Largura110px PositionRelativeFloatLeft"
+							 readonly="true"/>				
+					</h:panelGroup>	
+						
+					<h:panelGroup layout="block" styleClass="Linha710x25 MarginTop2px">
+						<div class="PositionRelativeFloatLeft Largura140px MarginLeft10px">
+							<h:outputText value="#{msg.chaveDeAcesso}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText value="#{mbConsultaStatus.consultaNfe.chNFe}" styleClass="Campo Largura320px PositionRelativeFloatLeft"
+							readonly="true"/>				
+					</h:panelGroup>	
+							
+					<h:panelGroup layout="block" styleClass="Linha710x25 MarginTop2px">
+						<div class="PositionRelativeFloatLeft Largura140px MarginLeft10px">
+							<h:outputText value="#{msg.nProtocolo}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText  value="#{(empty mbConsultaStatus.consultaNfe.protNFe) ? mbConsulta.consultaNfe.retCancNFe.nProt : mbConsultaStatus.consultaNfe.protNFe.nProt}" 
+							styleClass="Campo Largura120px PositionRelativeFloatLeft"
+							readonly="true"/>				
+					</h:panelGroup>	
+						
+					<h:panelGroup layout="block" styleClass="Linha710x25 MarginTop2px">
+						<div class="PositionRelativeFloatLeft Largura140px MarginLeft10px">
+							<h:outputText value="#{msg.dataRecebimento}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText value="#{(empty mbConsultaStatus.consultaNfe.protNFe) ? mbConsulta.consultaNfe.retCancNFe.dhRecbto : mbConsultaStatus.consultaNfe.protNFe.dhRecbto}" 
+							styleClass="Campo Largura130px PositionRelativeFloatLeft"
+							 readonly="true"/>				
+					</h:panelGroup>		
+					
+					<h:panelGroup layout="block" styleClass="Linha710x60 MarginTop2px MarginBottom5px">
+						<div class="PositionRelativeFloatLeft Largura140px MarginLeft10px">
+							<h:outputText value="#{msg.motivo}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputTextarea value="#{mbConsultaStatus.consultaNfe.xMotivo}" styleClass="TextArea320x50 Campo PositionRelativeFloatLeft" 
+							readonly="true"/>
+					</h:panelGroup>								
+				</fieldset>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="MarginLeft10px Largura980px MarginBottom5px FloatLeft">
+			<h:outputText value="#{mbConsultaStatus.mensagemErro}" styleClass="MensagemDeErro"/>
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+		<a4j:jsFunction name="renderPage" status="modalStatus" render="statusNota campoConsulta painelMensagemErro"/>
+	</ui:define>
+</ui:composition>

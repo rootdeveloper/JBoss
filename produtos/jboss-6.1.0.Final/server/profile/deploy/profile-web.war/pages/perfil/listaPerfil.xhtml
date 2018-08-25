@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputLabel value="#{msg.paginaListaPerfil}" />
+	</ui:define>
+	
+	<ui:define name="content">
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:novoAction action="#{mbPerfil.novo}" />
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaPerfil" var="item" value="#{mbPerfil.listaPerfis}" rows="10" styleClass="Largura100pc" 
+			noDataLabel="#{msg.listaPerfilVazia}" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			onrowdblclick="editarPerfil(#{rowKey})" rowKeyVar="rowKey">
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura400px"
+				sortBy="#{item.nome}" sortOrder="#{mbPerfil.columnOrder.mapColumnOrder['nome'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.nome, mbPerfil.columnFilter.mapColumnFilter['nome'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.nome}"/>
+					<table:orderArrow action="#{mbPerfil.columnOrder.mapColumnOrder['nome'].sortBy}" 
+						order="#{mbPerfil.columnOrder.mapColumnOrder['nome'].sortOrder}" render="listaPerfil"/>
+					<br/>
+					<h:inputText id="nome" value="#{mbPerfil.columnFilter.mapColumnFilter['nome'].filterBy}" tabindex="1" 
+						styleClass="Campo Largura300px" onkeypress="executeFilter(this,event);" maxlength="60">
+						<a4j:ajax event="valueChange" oncomplete="renderizaCorpoLista()" execute="@this" status="modalStatus"
+							render="controle"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.nome}" title="#{item.nome}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura500px" 
+				sortBy="#{item.sistema.codigo}" sortOrder="#{mbPerfil.columnOrder.mapColumnOrder['sistema'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.sistema.codigo, mbPerfil.columnFilter.mapColumnFilter['sistema'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.sistema}"/>
+					<table:orderArrow action="#{mbPerfil.columnOrder.mapColumnOrder['sistema'].sortBy}"
+						order="#{mbPerfil.columnOrder.mapColumnOrder['sistema'].sortOrder}" render="listaPerfil"/>
+					<br/>
+					<h:inputText id="sistema" value="#{mbPerfil.columnFilter.mapColumnFilter['sistema'].filterBy}" tabindex="2" 
+						styleClass="Campo Largura300px" onkeypress="executeFilter(this,event);" maxlength="60">
+						<a4j:ajax event="valueChange" oncomplete="renderizaCorpoLista()" execute="@this" status="modalStatus"
+							render="controle"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.sistema.codigo}" title="#{item.sistema.codigo}" />
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="listaPerfil" idPanelScroller="controle" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbPerfil.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbPerfil.listaPerfis}" 
+			totalRegistros="#{mbPerfil.quantidadeRegistros}" />
+		
+		<h:panelGroup id="erroEdicao">
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="editarPerfil" render="erroEdicao" status="modalStatus" action="#{mbPerfil.editar}">
+			<a4j:param name="indexPerfil" assignTo="#{mbPerfil.indexPerfilSelecionado}"/>
+		</a4j:jsFunction>
+		
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderizaCorpoLista" render="listaPerfil@body" oncomplete="reSize();"/>
+	</ui:define>
+	
+</ui:composition>

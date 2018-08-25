@@ -1,0 +1,213 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaClientes}"/>
+	</ui:define>
+
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" listener="#{mbCliente.trocaValorComboFilial}" render="header-content controle" execute="@this" 
+			oncomplete="renderAllListaClientes(); renderPainelErroClientes();" status="modalStatus"/>
+	</ui:define>
+
+	<ui:define name="contentModal">
+		<util:modalFiltroParceiros id="modalFiltro" mb="#{mbCliente}" render="listaClientes, controle, erroEdicao"/>	
+	</ui:define>
+
+	<ui:define name="content">
+		
+		<util:modalImportador nomePainel="importadorCliente" tituloModal="#{msg.importadorDeXls}" tiposArquivosAceitos="xls, xlsx"
+			actionVoltarModalImportador="#{mbCliente.voltarModalImportador}" actionUploadListener="#{mbCliente.uploadListener}"
+			actionLimparDadosDoUpload="#{mbCliente.limparDadosDoUpload}" mensagemLogImportacao="#{mbCliente.msgLogImportacao}"
+			render="listaClientes, controle, erroEdicao" actionDownload="#{mbCliente.download}" erroImportacao="#{mbCliente.erroImportacao}"/>
+		
+		<util:modalSimNao mensagem="#{mbCliente.msgExcluirSelecionadosTela}" nomePainel="confirmPane" tituloModal="#{msg.msgConfirmacaoExclusaoTela}" 
+			actionSim="#{mbCliente.excluirSelecionados}" render="controle, modalInformativo" tituloFuncao="selecionado" idCheckbox="checkboxCliente"
+			oncomplete="#{rich:component('modalInformativo')}.show(); renderAllListaClientes(); renderPainelErroClientes();"/>
+		
+		<util:modalInformativo mensagemInformativo="#{mbCliente.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo"/>
+		
+		<util:modalExportar renderedBotao="#{mbCliente.itensSelecionados}" actionListener="#{mbCliente.exportaClienteParaXLS}" 
+			mensagem="#{mbCliente.msgExportacao}" nomePainel="modalExportacao" tituloModal="#{msg.exportacao}"/>
+			
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left" >
+				<botao:filtro idModalFiltro="filtroParceiros" filialCadastrada="#{mbCliente.possuiFilialCadastrada}" idPanelErro="erroEdicao"/>
+				<botao:novoAction action="#{mbCliente.novo}" render="#{mbCliente.processaRenderPanelErro}"
+					rendered="#{mbCliente.verificaPermissao('Administrador, Gerente, Atendente')}" />
+				<botao:excluir actionListener="#{mbCliente.verificarExclusaoCliente}" idModalSimNao="confirmPane" idPanelErro="erroEdicao" 
+					renderizarModal="#{mbCliente.renderizarModal}" idModalInformativo="modalInformativo" filialCadastrada="#{mbCliente.idFilial != null}"
+					rendered="#{mbCliente.verificaPermissao('Administrador, Gerente')}" />
+				<botao:importar idModalImportador="importadorCliente" idPanelErro="erroEdicao"  filialCadastrada="#{mbCliente.possuiFilialCadastrada}"
+					rendered="#{mbCliente.verificaPermissao('Administrador, Gerente')}" />
+				<botao:exportar actionListener="#{mbCliente.clienteSelecionados}" idModal="modalExportacao" idPanelErro="erroEdicao"
+					filialCadastrada="#{mbCliente.possuiFilialCadastrada}" 
+					rendered="#{mbCliente.verificaPermissao('Administrador, Gerente')}" />
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+			
+			<rich:toolbarGroup location="right">
+				<botao:atualizar actionListener="#{mbCliente.refreshList}" render="controle" oncomplete="renderAllListaClientes()" buttonStyle="MarginRight5px" 
+					idPanelErro="erroEdicao"  filialCadastrada="#{mbCliente.idFilial != null}"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		
+		<rich:dataTable id="listaClientes" var="item" value="#{mbCliente.listaClientes}" rows="10" styleClass="Largura100pc" 
+			noDataLabel="#{msg.listaClienteVazia}" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			onrowdblclick="editarCliente(#{rowKey})" rowKeyVar="rowKey">
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxCliente" styleClass="Margin0px" valueChangeListener="#{mbCliente.selecionarTodos}"
+						onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();" tabindex="1">
+						<a4j:ajax event="click" render="listaClientes" status="modalStatus" oncomplete="reSize();"/>
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{item.selected}" styleClass="Margin0px" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();">
+					<a4j:ajax event="valueChange" execute="@this"/>
+				</h:selectBooleanCheckbox>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura80px" 
+				sortBy="#{item.dadosBasicos.status}" sortOrder="#{mbCliente.columnOrder.mapColumnOrder['Status'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(item.dadosBasicos.status) , fn:toLowerCase(mbCliente.columnFilter.mapColumnFilter['Status'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.status}"/>
+					<table:orderArrow action="#{mbCliente.columnOrder.mapColumnOrder['Status'].sortBy}" 
+						order="#{mbCliente.columnOrder.mapColumnOrder['Status'].sortOrder}" render="listaClientes"/>
+					<br/>
+					<h:inputText id="status" value="#{mbCliente.columnFilter.mapColumnFilter['Status'].filterBy}" tabindex="2" styleClass="Campo Largura60px" 
+						onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" onkeyup="Mascara(this, LetraSemEspaco);" maxlength="7"
+						onkeydown="Mascara(this, LetraSemEspaco);" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" oncomplete="renderBodyOfListaClientes(); executeFilter(this,event)" execute="@this" status="modalStatus" 
+							render="controle, erroEdicao" listener="#{mbCliente.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dadosBasicos.status}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura230px" 
+				sortBy="#{item.dadosBasicos.razaoSocial}" sortOrder="#{mbCliente.columnOrder.mapColumnOrder['RazaoSocial'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.dadosBasicos.razaoSocial, mbCliente.columnFilter.mapColumnFilter['RazaoSocial'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.razaoSocial}"/>
+					<table:orderArrow action="#{mbCliente.columnOrder.mapColumnOrder['RazaoSocial'].sortBy}"
+						order="#{mbCliente.columnOrder.mapColumnOrder['RazaoSocial'].sortOrder}" render="listaClientes"/>
+					<br/>
+					<h:inputText tabindex="3" value="#{mbCliente.columnFilter.mapColumnFilter['RazaoSocial'].filterBy}" onkeypress="executeFilter(this,event)" 
+						styleClass="Campo Largura220px" maxlength="60">
+						<a4j:ajax event="valueChange" render="controle, erroEdicao" oncomplete="renderBodyOfListaClientes();" 
+						execute="@this" status="modalStatus" listener="#{mbCliente.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dadosBasicos.razaoSocial}" title="#{item.dadosBasicos.razaoSocial}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura230px"
+				sortBy="#{item.dadosBasicos.nome}" sortOrder="#{mbCliente.columnOrder.mapColumnOrder['Nome'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.dadosBasicos.nome, mbCliente.columnFilter.mapColumnFilter['Nome'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.nome}"/>
+					<table:orderArrow action="#{mbCliente.columnOrder.mapColumnOrder['Nome'].sortBy}" 
+						order="#{mbCliente.columnOrder.mapColumnOrder['Nome'].sortOrder}" render="listaClientes"/>
+                    <br/>
+                    <h:inputText id="filtroNome" tabindex="4" value="#{mbCliente.columnFilter.mapColumnFilter['Nome'].filterBy}" 
+                    	onkeypress="executeFilter(this,event)" styleClass="Campo Largura220px" maxlength="60">
+                        <a4j:ajax event="valueChange"  render="controle, erroEdicao" oncomplete="renderBodyOfListaClientes();" 
+                        execute="@this" status="modalStatus" listener="#{mbCliente.limpaMensagemErro}"/>
+                    </h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dadosBasicos.nome}" title="#{item.dadosBasicos.nome}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura125px" 
+				sortBy="#{item.dadosBasicos.cnpj}" sortOrder="#{mbCliente.columnOrder.mapColumnOrder['Cnpj'].sortOrder}"
+				filterExpression="#{mbCliente.contemStringNoLongCnpj(item.dadosBasicos.cnpj, mbCliente.columnFilter.mapColumnFilter['Cnpj'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cnpj}"/>
+					<table:orderArrow action="#{mbCliente.columnOrder.mapColumnOrder['Cnpj'].sortBy}" 
+						order="#{mbCliente.columnOrder.mapColumnOrder['Cnpj'].sortOrder}" render="listaClientes"/>
+					<br/>
+					<h:inputText value="#{mbCliente.columnFilter.mapColumnFilter['Cnpj'].filterBy}" tabindex="5" styleClass="Campo Largura110px" maxlength="14" 
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="controle, erroEdicao" oncomplete="renderBodyOfListaClientes(); executeFilter(this,event);" 
+						execute="@this" status="modalStatus" listener="#{mbCliente.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dadosBasicos.cnpj}" converter="cnpjConverter"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura105px"  
+				sortBy="#{item.dadosBasicos.cpf}" sortOrder="#{mbCliente.columnOrder.mapColumnOrder['Cpf'].sortOrder}"
+				filterExpression="#{mbCliente.contemStringNoLongCpf(item.dadosBasicos.cpf, mbCliente.columnFilter.mapColumnFilter['Cpf'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cpf}"/>
+					<table:orderArrow action="#{mbCliente.columnOrder.mapColumnOrder['Cpf'].sortBy}"
+						order="#{mbCliente.columnOrder.mapColumnOrder['Cpf'].sortOrder}" render="listaClientes"/>
+					<br/>
+					<h:inputText value="#{mbCliente.columnFilter.mapColumnFilter['Cpf'].filterBy}" tabindex="6" styleClass="Campo Largura90px" maxlength="11" 
+						onkeypress="Mascara(this, Integer);executeFilter(this,event)" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="controle, erroEdicao" oncomplete="renderBodyOfListaClientes(); executeFilter(this,event);"
+						 execute="@this" status="modalStatus" listener="#{mbCliente.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dadosBasicos.cpf}" converter="cpfConverter"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura60px" 
+				sortBy="#{item.endereco.uf.sigla}" sortOrder="#{mbCliente.columnOrder.mapColumnOrder['Uf'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.endereco.uf.sigla , mbCliente.columnFilter.mapColumnFilter['Uf'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.uf}" /> 
+					<table:orderArrow action="#{mbCliente.columnOrder.mapColumnOrder['Uf'].sortBy}" 
+						order="#{mbCliente.columnOrder.mapColumnOrder['Uf'].sortOrder}" render="listaClientes"/>
+					<br/>
+					<h:inputText value="#{mbCliente.columnFilter.mapColumnFilter['Uf'].filterBy}" styleClass="Campo Largura40px" maxlength="2"
+						onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event)" onkeyup="Mascara(this, LetraSemEspaco);" tabindex="7"
+						onkeydown="Mascara(this, LetraSemEspaco);" onfocus="origValue = this.value;" 
+						onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" render="controle, erroEdicao" oncomplete="renderBodyOfListaClientes(); executeFilter(this,event);" 
+						execute="@this" status="modalStatus" listener="#{mbCliente.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.endereco.uf.sigla}"/>
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="listaClientes" idPanelScroller="controle" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbCliente.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbCliente.listaClientes}" 
+			totalRegistros="#{mbCliente.quantidadeRegistros}" />
+		
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbCliente.mensagemDeErro}" >
+				<h:outputText value="#{mbCliente.mensagemDeErro}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="editarCliente" render="erroEdicao" status="modalStatus" action="#{mbCliente.editar}">
+			<a4j:param name="linhaDoCliente" assignTo="#{mbCliente.linhaSelecionada}"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="renderPainelErroClientes" render="erroEdicao"/>
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderBodyOfListaClientes" status="modalStatus" render="listaClientes@body" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderAllListaClientes" status="modalStatus" render="listaClientes" oncomplete="reSize();"/>
+		
+	</ui:define>
+</ui:composition>

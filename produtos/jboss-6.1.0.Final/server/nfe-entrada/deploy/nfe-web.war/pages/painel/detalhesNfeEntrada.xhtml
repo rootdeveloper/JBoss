@@ -1,0 +1,164 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.detalhesNfeEntrada}"/>
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<ui:include src="/pages/painel/nfeEntrada/transporte/modalListaDeLacresDosVolumes.xhtml"/>
+		<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/modalDetalhesProdutosEServicos.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="content">
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" action="voltar" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" 
+					width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+		
+		<div class="Linha990x38">
+			<div class="GrupoTituloCampo MarginLeft10px">
+				<h:outputText value="#{msg.lbl_numero}" styleClass="TituloDeCampo" />
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.ide.nnf}" styleClass="Campo Largura65px" 
+					readonly="true"/>
+			</div>
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.lbl_serie}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.ide.serie}" styleClass="Campo Largura35px" 
+					readonly="true"/>
+			</div>
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.lbl_dataEmissao}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.ide.dEmi}" styleClass="Campo Largura90px" 
+					readonly="true" converter="dataConverter"/>
+			</div>
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.lbl_dataSaida}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.ide.dataHoraSaida}" styleClass="Campo Largura110px" 
+					readonly="true" converter="dataHoraSaidaConverter"/>
+			</div>
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.lbl_dataRecebimento}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.dhRecbto}" styleClass="Campo Largura120px" 
+					readonly="true">
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+				</h:inputText>
+			</div>
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.lbl_dataRegistroEvento}" styleClass="TituloDeCampo" rendered="#{not empty mbNfeEntrada.nfeEntrada.cancelamento.dhRegEvento}"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.cancelamento.dhRegEvento}" styleClass="Campo Largura120px" 
+					rendered="#{not empty mbNfeEntrada.nfeEntrada.cancelamento.dhRegEvento}" readonly="true">
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+				</h:inputText>
+			</div>
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.lbl_valorTotal}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.total.icmsTot.vnf}" 
+				styleClass="Campo Largura115px"	readonly="true"/>
+			</div>
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.lbl_emissao}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.ide.tpEmis}" styleClass="Campo Largura113px" 
+					readonly="true" alt="msg.formaDeEmissao" converter="tipoEmissaoConverter"/>
+			</div>
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.lbl_operacao}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.ide.tpNF}" styleClass="Campo Largura60px" 
+					readonly="true"/>
+			</div>
+		</div>
+		
+		<div class="Linha990x38 ">
+			<div class="GrupoTituloCampo MarginLeft10px">
+				<h:outputText value="#{msg.lbl_modelo}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.ide.modelo}" styleClass="Campo Largura45px" 
+					readonly="true" alt="#{msg.modeloDoDocumentoFiscal}"/>
+			</div>
+			<div class="GrupoTituloCampo ">
+				<h:outputText value="#{msg.lbl_numeroProtocolo}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.nProt}" styleClass="Campo Largura115px" readonly="true"/>
+			</div>
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.lbl_chaveDeAcesso}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.id}" styleClass="Campo Largura382px" 
+					readonly="true" converter="chaveAcessoConverter"/>
+			</div>
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.lbl_status}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.codigoStatusXML}" styleClass="Campo Largura80px" 
+					readonly="true" converter="statusConverter"/>
+			</div>
+		</div>
+		
+		<div class="Linha990x38 ">
+			<div class="GrupoTituloCampo MarginLeft10px">
+				<h:outputText value="#{msg.lbl_naturezaOperacao}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.ide.natOp}" styleClass="Campo Largura670px" 
+					readonly="true"/>
+			</div>
+		</div>
+		
+		<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+			<rich:tab id="abaEmitente" header="#{msg.aba_Emitente}" immediate="true" execute="@this">
+				<ui:include src="/pages/painel/nfeEntrada/emitente.xhtml" /> 
+			</rich:tab>
+			<rich:tab id="abaDestinatario" header="#{msg.aba_Destinatario}" immediate="true" execute="@this">
+				<ui:include src="/pages/painel/nfeEntrada/destinatario.xhtml" /> 
+			</rich:tab>
+			<rich:tab id="abaRetirada" header="#{msg.aba_Retirada}" immediate="true" execute="@this" 
+				rendered="#{mbNfeEntrada.nfeEntrada.infNFe.retirada != null}">
+				<ui:include src="/pages/painel/nfeEntrada/retirada.xhtml" /> 
+			</rich:tab>
+			<rich:tab id="abaEntrega" header="#{msg.aba_Entrega}" immediate="true" execute="@this" rendered="#{mbNfeEntrada.nfeEntrada.infNFe.entrega != null}">
+				<ui:include src="/pages/painel/nfeEntrada/entrega.xhtml" /> 
+			</rich:tab>
+			<rich:tab id="abaProdutosEServicos" header="#{msg.aba_ProdutosEServicos}" immediate="true" execute="@this"
+				onenter="reSize();">
+				<ui:include src="/pages/painel/nfeEntrada/produtosEServicos.xhtml" /> 
+			</rich:tab>
+			<rich:tab id="abaValoresTotais" header="#{msg.aba_ValoresTotais}" immediate="true" execute="@this">
+				<ui:include src="/pages/painel/nfeEntrada/valoresTotais.xhtml" /> 
+			</rich:tab>
+			<rich:tab id="abaTransporte" header="#{msg.aba_Transporte}" immediate="true" execute="@this" 
+				onenter="reSize();">
+				<ui:include src="/pages/painel/nfeEntrada/transporte.xhtml" /> 
+			</rich:tab>
+			<rich:tab id="abaCobranca" header="#{msg.aba_Cobranca}" immediate="true" execute="@this">
+				<ui:include src="/pages/painel/nfeEntrada/cobranca.xhtml" /> 
+			</rich:tab>
+			<rich:tab id="abaInfAdicionais" header="#{msg.aba_InfAdicionais}" immediate="true" execute="@this">
+				<ui:include src="/pages/painel/nfeEntrada/infAdicionais.xhtml" /> 
+			</rich:tab>
+			<rich:tab id="abaComercioExterior" header="#{msg.aba_ComercioExterior}" immediate="true" execute="@this">
+				<ui:include src="/pages/painel/nfeEntrada/comercioExterior.xhtml" /> 
+			</rich:tab>
+			<rich:tab id="abaCompras" header="#{msg.aba_Compras}" immediate="true" execute="@this">
+				<ui:include src="/pages/painel/nfeEntrada/compras.xhtml" /> 
+			</rich:tab>
+				
+		</rich:tabPanel>
+		
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<h:form id="form-repositorio" prependId="false">
+		<rich:popupPanel id="panel-repositorio" autosized="true" resizeable="false" moveable="false" domElementAttachment="form" styleClass="Largura330px FundoBranco">
+			<f:facet name="header">
+				<h:panelGroup>
+					<h:outputLabel value="#{msg.tituloRepositorio}"/>
+				</h:panelGroup>
+			</f:facet>
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" onclick="#{rich:component('panel-repositorio')}.hide();" styleClass="BotaoFechar" immediate="true" render="#{cc.attrs.render}" status="modalStatus"/>
+			</f:facet>
+			<rich:dataTable value="#{mbRepositorioCte.listaDeArquivos}" var="arquivo" rows="2" rowKeyVar="row" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" id="tableRepositorioCte" styleClass="Largura100pc">
+				<rich:column headerClass="Largura80px" styleClass="AlignCenter">
+					<f:facet name="header">
+						<h:outputText value="#{msg.status}"/>
+					</f:facet>
+					<h:graphicImage value="#{resource['images/gif:status-aprovada.gif']}" rendered="#{arquivo.tpArquivo.codigo == 100}" styleClass="MarginLeft-10px MarginRight5px"/>
+					<h:graphicImage value="#{resource['images/gif:status-cancelada.gif']}" rendered="#{arquivo.tpArquivo.codigo == 101}" styleClass="MarginLeft-10px MarginRight5px"/>
+					<h:outputText value="#{arquivo.tpArquivo.nomeStatus}"/>
+				</rich:column>
+				<rich:column headerClass="Largura120px" styleClass="AlignCenter">
+					<f:facet name="header">
+						<h:outputText value="#{msg.tipo}"/>
+					</f:facet>
+					<h:commandButton image="/resources/images/png/xml.png" actionListener="#{mbRepositorioCte.exportarXML}">
+						<f:param name="idRepositorio" value="#{arquivo.id}"/>
+	  	  			</h:commandButton>
+				</rich:column>
+				<rich:column headerClass="Largura110px" styleClass="AlignCenter">
+					<f:facet name="header">
+						<h:outputText value="Data"/>
+					</f:facet>
+					<h:outputText value="#{arquivo.dataArquivo}">
+						<f:convertDateTime type="both" timeZone="#{MBUtil.timeZone}" pattern="dd/MM/yyyy HH:mm"/>
+					</h:outputText>
+				</rich:column>
+			</rich:dataTable>
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

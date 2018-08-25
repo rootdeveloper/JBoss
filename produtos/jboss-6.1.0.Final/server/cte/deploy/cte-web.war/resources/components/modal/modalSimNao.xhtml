@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+    <composite:interface>
+       <composite:attribute name="mensagem" required="true"/>
+       <composite:attribute name="render"/>
+       <composite:attribute name="nomePainel" required="true" />
+       <composite:attribute name="actionSim" method-signature="java.lang.Void apagar(javax.faces.event.ActionEvent)" />
+       <composite:attribute name="tituloModal"/>
+       <composite:attribute name="oncomplete"/>
+    </composite:interface>
+    <composite:implementation>
+    	<rich:popupPanel id="#{cc.attrs.nomePainel}" autosized="true" resizeable="false" moveable="false" styleClass="FundoBranco">
+    		<f:facet name="header">
+				<h:outputText value="#{cc.attrs.tituloModal}" />
+			</f:facet>
+			<f:facet name="controls">
+				<h:commandButton id="fechar" image="#{resource['images/png:close.png']}" styleClass="BotaoFechar" onclick="#{rich:component(cc.attrs.nomePainel)}.hide(); return false;"/>
+			</f:facet>
+    		<h:outputText id="mensagemConfirmacao" value="#{cc.attrs.mensagem}" styleClass="TituloDeCampo"/>
+    		<br/>
+    		<h:panelGroup layout="block" styleClass="MarginTop10px">
+				<div align="center">
+					<a4j:commandButton id="botaoSim" value="#{msg.sim}" onclick="clickSim()" immediate="true"
+						styleClass="BotaoTexto Largura50px" status="modalStatus" oncomplete="#{cc.attrs.oncomplete}"/>
+					<a4j:commandButton value="#{msg.nao}" onclick="#{rich:component(cc.attrs.nomePainel)}.hide(); return false;" styleClass="BotaoTexto Largura50px" status="modalStatus"/>
+				</div>
+			</h:panelGroup>
+		</rich:popupPanel>
+		<a4j:jsFunction name="clickSim" actionListener="#{cc.attrs.actionSim}" render="#{cc.attrs.render}" oncomplete="#{rich:component(cc.attrs.nomePainel)}.hide();" status="modalStatus">
+			<f:param name="acao" value="excluirLista"/>
+		</a4j:jsFunction>
+    </composite:implementation>    
+</html>

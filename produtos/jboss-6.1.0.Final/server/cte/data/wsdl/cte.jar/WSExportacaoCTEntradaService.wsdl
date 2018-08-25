@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="WSExportacaoCTEntradaService" targetNamespace="http://www.dataprimer.com.br/cte" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.dataprimer.com.br/cte" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://www.dataprimer.com.br/cte" version="1.0" xmlns:tns="http://www.dataprimer.com.br/cte" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="exportacaoCT" type="tns:exportacaoCT" />
+<xs:element name="exportacaoCTResponse" type="tns:exportacaoCTResponse" />
+<xs:complexType name="exportacaoCT">
+<xs:sequence>
+<xs:element minOccurs="0" name="xml" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="exportacaoCTResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="xmlRetornoExportacaoCT" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="exportacaoCTResponse">
+    <wsdl:part element="tns:exportacaoCTResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="exportacaoCT">
+    <wsdl:part element="tns:exportacaoCT" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSExportacaoCTEntrada">
+    <wsdl:operation name="exportacaoCT">
+      <wsdl:input message="tns:exportacaoCT" name="exportacaoCT">
+    </wsdl:input>
+      <wsdl:output message="tns:exportacaoCTResponse" name="exportacaoCTResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSExportacaoCTEntradaServiceSoapBinding" type="tns:WSExportacaoCTEntrada">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="exportacaoCT">
+      <soap:operation soapAction="exportaCT" style="document" />
+      <wsdl:input name="exportacaoCT">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="exportacaoCTResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSExportacaoCTEntradaService">
+    <wsdl:port binding="tns:WSExportacaoCTEntradaServiceSoapBinding" name="WSExportacaoCTEntradaPort">
+      <soap:address location="http://B181548:8080/cte-ws/WSExportacaoCTEntradaService/WSExportacaoCTEntrada" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

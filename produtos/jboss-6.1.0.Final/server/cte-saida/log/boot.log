@@ -1,0 +1,543 @@
+16:16:10,936 INFO  [AbstractJBossASServerBase] Server Configuration:
+
+	JBOSS_HOME URL: file:/C:/jboss-6.1.0.Final/
+	Bootstrap: $JBOSS_HOME\server/cte-saida/conf/bootstrap.xml
+	Common Base: $JBOSS_HOME\common/
+	Common Library: $JBOSS_HOME\common/lib/
+	Server Name: cte-saida
+	Server Base: $JBOSS_HOME\server/
+	Server Library: $JBOSS_HOME\server/cte-saida/lib/
+	Server Config: $JBOSS_HOME\server/cte-saida/conf/
+	Server Home: $JBOSS_HOME\server/cte-saida/
+	Server Data: $JBOSS_HOME\server/cte-saida/data/
+	Server Log: $JBOSS_HOME\server/cte-saida/log/
+	Server Temp: $JBOSS_HOME\server/cte-saida/tmp/
+
+16:16:10,943 INFO  [AbstractServer] Starting: JBossAS [6.1.0.Final "Neo"]
+16:16:13,414 INFO  [ServerInfo] Java version: 1.6.0_21,Sun Microsystems Inc.
+16:16:13,414 INFO  [ServerInfo] Java Runtime: Java(TM) SE Runtime Environment (build 1.6.0_21-b07)
+16:16:13,415 INFO  [ServerInfo] Java VM: Java HotSpot(TM) Client VM 17.0-b17,Sun Microsystems Inc.
+16:16:13,415 INFO  [ServerInfo] OS-System: Windows 7 6.1,x86
+16:16:13,415 INFO  [ServerInfo] VM arguments: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:33591 -Dprogram.name=JBossTools: JBoss 6.0 Runtime -Xms256m -Xmx768m -XX:MaxPermSize=256m -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djava.endorsed.dirs=C:\jboss-6.1.0.Final\lib\endorsed -Djava.library.path=C:/jboss-6.1.0.Final/bin/native -Dlogging.configuration=file:C:/jboss-6.1.0.Final/bin/logging.properties -Dfile.encoding=Cp1252 
+16:16:13,416 DEBUG [ServerInfo] Full System Properties Dump
+16:16:13,416 DEBUG [ServerInfo]     awt.toolkit: sun.awt.windows.WToolkit
+16:16:13,417 DEBUG [ServerInfo]     bind.address: localhost
+16:16:13,417 DEBUG [ServerInfo]     file.encoding: Cp1252
+16:16:13,417 DEBUG [ServerInfo]     file.encoding.pkg: sun.io
+16:16:13,417 DEBUG [ServerInfo]     file.separator: \
+16:16:13,418 DEBUG [ServerInfo]     java.awt.graphicsenv: sun.awt.Win32GraphicsEnvironment
+16:16:13,418 DEBUG [ServerInfo]     java.awt.printerjob: sun.awt.windows.WPrinterJob
+16:16:13,418 DEBUG [ServerInfo]     java.class.path: C:\jboss-6.1.0.Final\bin\run.jar
+16:16:13,418 DEBUG [ServerInfo]     java.class.version: 50.0
+16:16:13,418 DEBUG [ServerInfo]     java.endorsed.dirs: C:\jboss-6.1.0.Final\lib\endorsed
+16:16:13,419 DEBUG [ServerInfo]     java.ext.dirs: C:\Java\jdk1.6.0_21\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+16:16:13,419 DEBUG [ServerInfo]     java.home: C:\Java\jdk1.6.0_21\jre
+16:16:13,419 DEBUG [ServerInfo]     java.io.tmpdir: C:\Users\DANIEL~1.SAN\AppData\Local\Temp\
+16:16:13,419 DEBUG [ServerInfo]     java.library.path: C:/jboss-6.1.0.Final/bin/native
+16:16:13,419 DEBUG [ServerInfo]     java.protocol.handler.pkgs: org.jboss.net.protocol|org.jboss.vfs.protocol
+16:16:13,420 DEBUG [ServerInfo]     java.rmi.server.RMIClassLoaderSpi: org.jboss.system.JBossRMIClassLoader
+16:16:13,420 DEBUG [ServerInfo]     java.rmi.server.hostname: localhost
+16:16:13,420 DEBUG [ServerInfo]     java.runtime.name: Java(TM) SE Runtime Environment
+16:16:13,420 DEBUG [ServerInfo]     java.runtime.version: 1.6.0_21-b07
+16:16:13,420 DEBUG [ServerInfo]     java.specification.name: Java Platform API Specification
+16:16:13,421 DEBUG [ServerInfo]     java.specification.vendor: Sun Microsystems Inc.
+16:16:13,421 DEBUG [ServerInfo]     java.specification.version: 1.6
+16:16:13,421 DEBUG [ServerInfo]     java.util.logging.manager: org.jboss.logmanager.LogManager
+16:16:13,421 DEBUG [ServerInfo]     java.vendor: Sun Microsystems Inc.
+16:16:13,421 DEBUG [ServerInfo]     java.vendor.url: http://java.sun.com/
+16:16:13,421 DEBUG [ServerInfo]     java.vendor.url.bug: http://java.sun.com/cgi-bin/bugreport.cgi
+16:16:13,422 DEBUG [ServerInfo]     java.version: 1.6.0_21
+16:16:13,422 DEBUG [ServerInfo]     java.vm.info: mixed mode
+16:16:13,422 DEBUG [ServerInfo]     java.vm.name: Java HotSpot(TM) Client VM
+16:16:13,422 DEBUG [ServerInfo]     java.vm.specification.name: Java Virtual Machine Specification
+16:16:13,422 DEBUG [ServerInfo]     java.vm.specification.vendor: Sun Microsystems Inc.
+16:16:13,423 DEBUG [ServerInfo]     java.vm.specification.version: 1.0
+16:16:13,423 DEBUG [ServerInfo]     java.vm.vendor: Sun Microsystems Inc.
+16:16:13,423 DEBUG [ServerInfo]     java.vm.version: 17.0-b17
+16:16:13,423 DEBUG [ServerInfo]     javax.management.builder.initial: org.jboss.mx.server.MBeanServerBuilderImpl
+16:16:13,423 DEBUG [ServerInfo]     jboss.bind.address: 0.0.0.0
+16:16:13,423 DEBUG [ServerInfo]     jboss.boot.server.log.dir: C:\jboss-6.1.0.Final\server\cte-saida\log
+16:16:13,424 DEBUG [ServerInfo]     jboss.bootstrap.home.url: file:/C:/jboss-6.1.0.Final/server/cte-saida/conf/
+16:16:13,424 DEBUG [ServerInfo]     jboss.bootstrap.name: bootstrap.xml
+16:16:13,424 DEBUG [ServerInfo]     jboss.bootstrap.url: file:/C:/jboss-6.1.0.Final/server/cte-saida/conf/bootstrap.xml
+16:16:13,424 DEBUG [ServerInfo]     jboss.common.base.url: file:/C:/jboss-6.1.0.Final/common/
+16:16:13,424 DEBUG [ServerInfo]     jboss.common.lib.url: file:/C:/jboss-6.1.0.Final/common/lib/
+16:16:13,425 DEBUG [ServerInfo]     jboss.home: C:\jboss-6.1.0.Final
+16:16:13,425 DEBUG [ServerInfo]     jboss.home.dir: C:\jboss-6.1.0.Final
+16:16:13,425 DEBUG [ServerInfo]     jboss.home.url: file:/C:/jboss-6.1.0.Final/
+16:16:13,425 DEBUG [ServerInfo]     jboss.host.name: b181548
+16:16:13,425 DEBUG [ServerInfo]     jboss.lib.url: file:/C:/jboss-6.1.0.Final/lib/
+16:16:13,426 DEBUG [ServerInfo]     jboss.native.dir: C:\jboss-6.1.0.Final\server\cte-saida\tmp\native
+16:16:13,426 DEBUG [ServerInfo]     jboss.native.load: false
+16:16:13,426 DEBUG [ServerInfo]     jboss.node.name: b181548
+16:16:13,426 DEBUG [ServerInfo]     jboss.partition.name: DefaultPartition
+16:16:13,426 DEBUG [ServerInfo]     jboss.platform.mbeanserver: true
+16:16:13,426 DEBUG [ServerInfo]     jboss.qualified.host.name: b181548
+16:16:13,427 DEBUG [ServerInfo]     jboss.server.base.dir: C:\jboss-6.1.0.Final\server
+16:16:13,427 DEBUG [ServerInfo]     jboss.server.base.url: file:/C:/jboss-6.1.0.Final/server/
+16:16:13,427 DEBUG [ServerInfo]     jboss.server.config.url: file:/C:/jboss-6.1.0.Final/server/cte-saida/conf/
+16:16:13,427 DEBUG [ServerInfo]     jboss.server.data.dir: C:\jboss-6.1.0.Final\server\cte-saida\data
+16:16:13,427 DEBUG [ServerInfo]     jboss.server.home.dir: C:\jboss-6.1.0.Final\server\cte-saida
+16:16:13,428 DEBUG [ServerInfo]     jboss.server.home.url: file:/C:/jboss-6.1.0.Final/server/cte-saida/
+16:16:13,428 DEBUG [ServerInfo]     jboss.server.lib.url: file:/C:/jboss-6.1.0.Final/server/cte-saida/lib/
+16:16:13,428 DEBUG [ServerInfo]     jboss.server.log.dir: C:\jboss-6.1.0.Final\server\cte-saida\log
+16:16:13,428 DEBUG [ServerInfo]     jboss.server.name: cte-saida
+16:16:13,428 DEBUG [ServerInfo]     jboss.server.temp.dir: C:\jboss-6.1.0.Final\server\cte-saida\tmp
+16:16:13,428 DEBUG [ServerInfo]     jboss.vfs.forceCopy: true
+16:16:13,429 DEBUG [ServerInfo]     jbossmx.loader.repository.class: org.jboss.mx.loading.UnifiedLoaderRepository3
+16:16:13,429 DEBUG [ServerInfo]     jgroups.bind_addr: localhost
+16:16:13,429 DEBUG [ServerInfo]     line.separator: 
+
+16:16:13,429 DEBUG [ServerInfo]     log4j.defaultInitOverride: true
+16:16:13,429 DEBUG [ServerInfo]     logging.configuration: file:C:/jboss-6.1.0.Final/bin/logging.properties
+16:16:13,430 DEBUG [ServerInfo]     org.jboss.deployers.spi.deployer.matchers.NameIgnoreMechanism: org.jboss.deployers.spi.deployer.helpers.DummyNameIgnoreMechanism
+16:16:13,430 DEBUG [ServerInfo]     org.jboss.logging.Logger.pluginClass: org.jboss.logging.logmanager.LoggerPluginImpl
+16:16:13,430 DEBUG [ServerInfo]     org.jboss.reflect.spi.TypeInfoFactory: org.jboss.reflect.plugins.introspection.IntrospectionTypeInfoFactory
+16:16:13,430 DEBUG [ServerInfo]     os.arch: x86
+16:16:13,430 DEBUG [ServerInfo]     os.name: Windows 7
+16:16:13,430 DEBUG [ServerInfo]     os.version: 6.1
+16:16:13,431 DEBUG [ServerInfo]     path.separator: ;
+16:16:13,431 DEBUG [ServerInfo]     program.name: JBossTools: JBoss 6.0 Runtime
+16:16:13,431 DEBUG [ServerInfo]     sun.arch.data.model: 32
+16:16:13,431 DEBUG [ServerInfo]     sun.boot.class.path: C:\jboss-6.1.0.Final\lib\endorsed\activation.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-annotations-api_1.1_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-jaxb-api_2.2_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-jaxws-api_2.2_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jbossws-cxf-factories.jar;C:\jboss-6.1.0.Final\lib\endorsed\stax-api.jar;C:\Java\jdk1.6.0_21\jre\lib\resources.jar;C:\Java\jdk1.6.0_21\jre\lib\rt.jar;C:\Java\jdk1.6.0_21\jre\lib\sunrsasign.jar;C:\Java\jdk1.6.0_21\jre\lib\jsse.jar;C:\Java\jdk1.6.0_21\jre\lib\jce.jar;C:\Java\jdk1.6.0_21\jre\lib\charsets.jar;C:\Java\jdk1.6.0_21\jre\classes
+16:16:13,431 DEBUG [ServerInfo]     sun.boot.library.path: C:\Java\jdk1.6.0_21\jre\bin
+16:16:13,432 DEBUG [ServerInfo]     sun.cpu.endian: little
+16:16:13,432 DEBUG [ServerInfo]     sun.cpu.isalist: pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86
+16:16:13,432 DEBUG [ServerInfo]     sun.desktop: windows
+16:16:13,432 DEBUG [ServerInfo]     sun.io.unicode.encoding: UnicodeLittle
+16:16:13,432 DEBUG [ServerInfo]     sun.java.launcher: SUN_STANDARD
+16:16:13,433 DEBUG [ServerInfo]     sun.jnu.encoding: Cp1252
+16:16:13,433 DEBUG [ServerInfo]     sun.management.compiler: HotSpot Client Compiler
+16:16:13,433 DEBUG [ServerInfo]     sun.os.patch.level: Service Pack 1
+16:16:13,433 DEBUG [ServerInfo]     sun.rmi.dgc.client.gcInterval: 3600000
+16:16:13,433 DEBUG [ServerInfo]     sun.rmi.dgc.server.gcInterval: 3600000
+16:16:13,433 DEBUG [ServerInfo]     user.country: BR
+16:16:13,434 DEBUG [ServerInfo]     user.dir: C:\jboss-6.1.0.Final\bin
+16:16:13,434 DEBUG [ServerInfo]     user.home: C:\Users\daniel.santos
+16:16:13,434 DEBUG [ServerInfo]     user.language: pt
+16:16:13,434 DEBUG [ServerInfo]     user.name: daniel.santos
+16:16:13,434 DEBUG [ServerInfo]     user.timezone: America/Sao_Paulo
+16:16:13,435 DEBUG [ServerInfo]     user.variant: 
+16:16:13,435 DEBUG [ServerInfo]     xb.builder.repeatableParticleHandlers: false
+16:16:13,435 DEBUG [ServerInfo]     xb.builder.useUnorderedSequence: true
+16:16:13,486 INFO  [JMXKernel] Legacy JMX core initialized
+16:16:23,148 INFO  [AbstractServerConfig] JBoss Web Services - Stack CXF Server 3.4.1.GA
+16:16:24,493 INFO  [JSFImplManagementDeployer] Initialized 3 JSF configurations: [Mojarra-1.2, MyFaces-2.0, Mojarra-2.0]
+16:16:32,712 INFO  [PersistenceUnitValueMetaData] iDependOn persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+16:16:32,745 WARN  [MappedReferenceMetaDataResolverDeployer] Unresolved references exist in JBossMetaData:[#cteSaidaBean:AnnotatedEJBReferenceMetaData{name=br.com.pwc.cte.saida.core.negocio.CTeSaidaBean/cteSaidaManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=cteSaidaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.cte.saida.domain.negocio.CTeSaidaManagerLocal}]
+16:16:33,528 WARN  [MappedReferenceMetaDataResolverDeployer] Unresolved references exist in JBossMetaData:[#cteWSEnvioCTeSaida:AnnotatedEJBReferenceMetaData{name=br.com.pwc.cte.saida.ws.envio.WSEnvioCTeSaidaBean/cteSaidaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=cteSaidaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.cte.saida.core.negocio.CTeSaidaBeanLocal}, #cteWSConsultaCTeSaida:AnnotatedEJBReferenceMetaData{name=br.com.pwc.cte.saida.ws.consulta.WSConsultaCteSaidaBean/cteSaidaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=cteSaidaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.pwc.cte.saida.core.negocio.CTeSaidaBeanLocal}]
+16:16:35,788 AVISO [FileConfigurationParser] AIO wasn't located on this platform, it will fall back to using pure Java NIO. If your platform is Linux, install LibAIO to enable the AIO journal
+16:16:36,135 INFO  [JMXConnector] starting JMXConnector on host 0.0.0.0:1090
+16:16:36,712 INFO  [MailService] Mail Service bound to java:/Mail
+16:16:38,130 INFO  [HornetQServerImpl] live server is starting with configuration HornetQ Configuration (clustered=false,backup=false,sharedStore=true,journalDirectory=C:\jboss-6.1.0.Final\server\cte-saida\data/hornetq/journal,bindingsDirectory=C:\jboss-6.1.0.Final\server\cte-saida\data/hornetq/bindings,largeMessagesDirectory=C:\jboss-6.1.0.Final\server\cte-saida\data/hornetq/largemessages,pagingDirectory=C:\jboss-6.1.0.Final\server\cte-saida\data/hornetq/paging)
+16:16:38,133 INFO  [HornetQServerImpl] Waiting to obtain live lock
+16:16:38,242 INFO  [JournalStorageManager] Using NIO Journal
+16:16:38,282 AVISO [HornetQServerImpl] Security risk! It has been detected that the cluster admin user and password have not been changed from the installation default. Please see the HornetQ user guide, cluster chapter, for instructions on how to do this.
+16:16:38,580 INFO  [FileLockNodeManager] Waiting to obtain live lock
+16:16:38,580 INFO  [FileLockNodeManager] Live Server Obtained live lock
+16:16:39,833 INFO  [NettyAcceptor] Started Netty Acceptor version 3.2.5.Final-a96d88c 0.0.0.0:5445 for CORE protocol
+16:16:39,842 INFO  [NettyAcceptor] Started Netty Acceptor version 3.2.5.Final-a96d88c 0.0.0.0:5455 for CORE protocol
+16:16:39,845 INFO  [HornetQServerImpl] Server is now live
+16:16:39,846 INFO  [HornetQServerImpl] HornetQ Server version 2.2.14.Final (HQ_2_2_14_FINAL, 122) [463dd141-fffd-11e0-82b0-f04da2df0108]) started
+16:16:39,936 INFO  [WebService] Using RMI server codebase: http://localhost:8083/
+16:16:40,257 INFO  [jbossatx] ARJUNA-32010 JBossTS Recovery Service (tag: JBOSSTS_4_14_0_Final) - JBoss Inc.
+16:16:40,269 INFO  [arjuna] ARJUNA-12324 Start RecoveryActivators
+16:16:40,307 INFO  [arjuna] ARJUNA-12296 ExpiredEntryMonitor running at Ter, 19 Mar 2013 16:16:40
+16:16:40,449 INFO  [arjuna] ARJUNA-12310 Recovery manager listening on endpoint 0.0.0.0:4712
+16:16:40,450 INFO  [arjuna] ARJUNA-12344 RecoveryManagerImple is ready on port 4712
+16:16:40,451 INFO  [jbossatx] ARJUNA-32013 Starting transaction recovery manager
+16:16:40,468 INFO  [arjuna] ARJUNA-12163 Starting service com.arjuna.ats.arjuna.recovery.ActionStatusService on port 4713
+16:16:40,479 INFO  [arjuna] ARJUNA-12337 TransactionStatusManagerItem host: 0.0.0.0 port: 4713
+16:16:40,525 INFO  [arjuna] ARJUNA-12170 TransactionStatusManager started on port 4713 and host 0.0.0.0 with service com.arjuna.ats.arjuna.recovery.ActionStatusService
+16:16:40,591 INFO  [jbossatx] ARJUNA-32017 JBossTS Transaction Service (JTA version - tag: JBOSSTS_4_14_0_Final) - JBoss Inc.
+16:16:40,640 INFO  [arjuna] ARJUNA-12202 registering bean jboss.jta:type=ObjectStore.
+16:16:41,179 INFO  [AprLifecycleListener] The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:/jboss-6.1.0.Final/bin/native
+16:16:41,468 INFO  [TomcatDeployment] deploy, ctxPath=/invoker
+16:16:42,097 INFO  [ModClusterService] Initializing mod_cluster 1.1.0.Final
+16:16:42,185 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/cte-saida/deploy/jboss-local-jdbc.rar/META-INF/ra.xml
+16:16:42,202 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/cte-saida/deploy/jboss-xa-jdbc.rar/META-INF/ra.xml
+16:16:42,213 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/cte-saida/deploy/jms-ra.rar/META-INF/ra.xml
+16:16:42,245 INFO  [HornetQResourceAdapter] HornetQ resource adaptor started
+16:16:42,255 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/cte-saida/deploy/mail-ra.rar/META-INF/ra.xml
+16:16:42,273 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/cte-saida/deploy/quartz-ra.rar/META-INF/ra.xml
+16:16:42,970 INFO  [SimpleThreadPool] Job execution threads will use class loader of thread: Thread-2
+16:16:43,026 INFO  [SchedulerSignalerImpl] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+16:16:43,026 INFO  [QuartzScheduler] Quartz Scheduler v.1.8.3 created.
+16:16:43,029 INFO  [RAMJobStore] RAMJobStore initialized.
+16:16:43,033 INFO  [QuartzScheduler] Scheduler meta-data: Quartz Scheduler (v1.8.3) 'JBossQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+16:16:43,033 INFO  [StdSchedulerFactory] Quartz scheduler 'JBossQuartzScheduler' initialized from an externally opened InputStream.
+16:16:43,033 INFO  [StdSchedulerFactory] Quartz scheduler version: 1.8.3
+16:16:43,033 INFO  [QuartzScheduler] Scheduler JBossQuartzScheduler_$_NON_CLUSTERED started.
+16:16:43,218 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=cteSaida' to JNDI name 'java:cteSaida'
+16:16:44,009 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=DefaultDS' to JNDI name 'java:DefaultDS'
+16:16:44,260 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+16:16:45,091 INFO  [Version] Hibernate Commons Annotations 3.2.0.Final
+16:16:45,110 INFO  [Environment] Hibernate 3.6.6.Final
+16:16:45,115 INFO  [Environment] hibernate.properties not found
+16:16:45,123 INFO  [Environment] Bytecode provider name : javassist
+16:16:45,135 INFO  [Environment] using JDK 1.4 java.sql.Timestamp handling
+16:16:45,354 INFO  [Version] Hibernate EntityManager 3.6.6.Final
+16:16:45,411 INFO  [Ejb3Configuration] Processing PersistenceUnitInfo [
+	name: timerdb
+	...]
+16:16:45,445 WARN  [Ejb3Configuration] Persistence provider caller does not implement the EJB3 spec correctly.PersistenceUnitInfo.getNewTempClassLoader() is null.
+16:16:45,570 INFO  [AnnotationBinder] Binding entity from annotated class: org.jboss.ejb3.timerservice.mk2.persistence.TimerEntity
+16:16:45,676 INFO  [EntityBinder] Bind entity org.jboss.ejb3.timerservice.mk2.persistence.TimerEntity on table timer
+16:16:45,804 INFO  [AnnotationBinder] Binding entity from annotated class: org.jboss.ejb3.timerservice.mk2.persistence.CalendarTimerEntity
+16:16:45,807 INFO  [EntityBinder] Bind entity org.jboss.ejb3.timerservice.mk2.persistence.CalendarTimerEntity on table calendar_timer
+16:16:45,845 INFO  [AnnotationBinder] Binding entity from annotated class: org.jboss.ejb3.timerservice.mk2.persistence.TimeoutMethod
+16:16:45,855 INFO  [EntityBinder] Bind entity org.jboss.ejb3.timerservice.mk2.persistence.TimeoutMethod on table timeout_method
+16:16:45,942 INFO  [Version] Hibernate Validator 3.1.0.GA
+16:16:46,017 INFO  [Version] Hibernate Validator 4.1.0.Final
+16:16:46,034 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+16:16:46,233 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+16:16:46,241 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+16:16:46,253 INFO  [HibernateSearchEventListenerRegister] Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+16:16:46,268 INFO  [ConnectionProviderFactory] Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+16:16:46,278 INFO  [InjectedDataSourceConnectionProvider] Using provided datasource
+16:16:46,340 INFO  [Dialect] Using dialect: org.hibernate.dialect.HSQLDialect
+16:16:46,370 INFO  [JdbcSupportLoader] Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+16:16:46,371 INFO  [SettingsFactory] Database ->
+       name : HSQL Database Engine
+    version : 1.8.0
+      major : 1
+      minor : 8
+16:16:46,371 INFO  [SettingsFactory] Driver ->
+       name : HSQL Database Engine Driver
+    version : 1.8.0
+      major : 1
+      minor : 8
+16:16:46,373 INFO  [TransactionFactoryFactory] Transaction strategy: org.hibernate.ejb.transaction.JoinableCMTTransactionFactory
+16:16:46,377 INFO  [TransactionManagerLookupFactory] instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+16:16:46,382 INFO  [TransactionManagerLookupFactory] instantiated TransactionManagerLookup
+16:16:46,382 INFO  [SettingsFactory] Automatic flush during beforeCompletion(): disabled
+16:16:46,382 INFO  [SettingsFactory] Automatic session close at end of transaction: disabled
+16:16:46,382 INFO  [SettingsFactory] JDBC batch size: 15
+16:16:46,382 INFO  [SettingsFactory] JDBC batch updates for versioned data: disabled
+16:16:46,384 INFO  [SettingsFactory] Scrollable result sets: enabled
+16:16:46,384 INFO  [SettingsFactory] JDBC3 getGeneratedKeys(): disabled
+16:16:46,384 INFO  [SettingsFactory] Connection release mode: auto
+16:16:46,386 INFO  [SettingsFactory] Default batch fetch size: 1
+16:16:46,386 INFO  [SettingsFactory] Generate SQL with comments: disabled
+16:16:46,386 INFO  [SettingsFactory] Order SQL updates by primary key: disabled
+16:16:46,387 INFO  [SettingsFactory] Order SQL inserts for batching: disabled
+16:16:46,387 INFO  [SettingsFactory] Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+16:16:46,392 INFO  [ASTQueryTranslatorFactory] Using ASTQueryTranslatorFactory
+16:16:46,393 INFO  [SettingsFactory] Query language substitutions: {}
+16:16:46,393 INFO  [SettingsFactory] JPA-QL strict compliance: enabled
+16:16:46,393 INFO  [SettingsFactory] Second-level cache: enabled
+16:16:46,393 INFO  [SettingsFactory] Query cache: disabled
+16:16:46,426 INFO  [SettingsFactory] Cache region factory : org.hibernate.cache.impl.bridge.RegionFactoryCacheProviderBridge
+16:16:46,441 INFO  [RegionFactoryCacheProviderBridge] Cache provider: org.hibernate.cache.HashtableCacheProvider
+16:16:46,445 INFO  [SettingsFactory] Optimize cache for minimal puts: disabled
+16:16:46,445 INFO  [SettingsFactory] Cache region prefix: persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+16:16:46,445 INFO  [SettingsFactory] Structured second-level cache entries: disabled
+16:16:46,460 INFO  [SettingsFactory] Statistics: disabled
+16:16:46,460 INFO  [SettingsFactory] Deleted entity synthetic identifier rollback: disabled
+16:16:46,460 INFO  [SettingsFactory] Default entity-mode: pojo
+16:16:46,460 INFO  [SettingsFactory] Named query checking : enabled
+16:16:46,460 INFO  [SettingsFactory] Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+16:16:46,506 INFO  [SessionFactoryImpl] building session factory
+16:16:46,520 INFO  [BasicTypeRegistry] Type registration [clob] overrides previous : org.hibernate.type.ClobType@d12acc
+16:16:46,520 INFO  [BasicTypeRegistry] Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@d12acc
+16:16:46,520 INFO  [BasicTypeRegistry] Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@50de7a
+16:16:46,521 INFO  [BasicTypeRegistry] Type registration [blob] overrides previous : org.hibernate.type.BlobType@13e3878
+16:16:46,521 INFO  [BasicTypeRegistry] Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@13e3878
+16:16:46,521 INFO  [BasicTypeRegistry] Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@1ed71cb
+16:16:46,521 INFO  [BasicTypeRegistry] Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@1ca03f0
+16:16:46,521 INFO  [BasicTypeRegistry] Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@1c88488
+16:16:46,521 INFO  [BasicTypeRegistry] Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@17505d7
+16:16:47,244 INFO  [SessionFactoryObjectFactory] Factory name: persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+16:16:47,246 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+16:16:47,255 INFO  [SessionFactoryObjectFactory] Bound factory to JNDI name: persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+16:16:47,268 INFO  [SchemaUpdate] Running hbm2ddl schema update
+16:16:47,268 INFO  [SchemaUpdate] fetching database metadata
+16:16:47,269 INFO  [SchemaUpdate] updating schema
+16:16:47,272 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+16:16:47,300 INFO  [TableMetadata] table found: PUBLIC.TIMEOUTMETHOD_METHODPARAMS
+16:16:47,300 INFO  [TableMetadata] columns: [methodparams, timeoutmethod_id]
+16:16:47,300 INFO  [TableMetadata] foreign keys: [fkf294c964b7de2d8a]
+16:16:47,300 INFO  [TableMetadata] indexes: [sys_idx_55]
+16:16:47,308 INFO  [TableMetadata] table found: PUBLIC.CALENDAR_TIMER
+16:16:47,308 INFO  [TableMetadata] columns: [scheduleexprtimezone, scheduleexprsecond, autotimer, scheduleexprstartdate, scheduleexprminute, scheduleexprhour, timeoutmethod_id, id, scheduleexprdayofmonth, scheduleexprenddate, scheduleexprmonth, scheduleexprdayofweek, scheduleexpryear]
+16:16:47,308 INFO  [TableMetadata] foreign keys: [fk2b697f04b7de2d8a, fk2b697f04e6e6ef93]
+16:16:47,308 INFO  [TableMetadata] indexes: [sys_idx_57, sys_idx_48, sys_idx_59]
+16:16:47,315 INFO  [TableMetadata] table found: PUBLIC.TIMEOUT_METHOD
+16:16:47,316 INFO  [TableMetadata] columns: [id, methodname, declaringclass]
+16:16:47,316 INFO  [TableMetadata] foreign keys: []
+16:16:47,316 INFO  [TableMetadata] indexes: [sys_idx_50]
+16:16:47,322 INFO  [TableMetadata] table found: PUBLIC.TIMER
+16:16:47,323 INFO  [TableMetadata] columns: [id, previousrun, initialdate, repeatinterval, timedobjectid, timerstate, nextdate, info]
+16:16:47,323 INFO  [TableMetadata] foreign keys: []
+16:16:47,323 INFO  [TableMetadata] indexes: [sys_idx_52]
+16:16:47,325 INFO  [SchemaUpdate] schema update complete
+16:16:47,333 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+16:16:47,583 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:service=ConnectionFactoryBinding,name=JmsXA' to JNDI name 'java:JmsXA'
+16:16:47,659 WARN  [InterceptorInfoRepository] EJBTHREE-1852: InterceptorInfoRepository is deprecated
+16:16:48,121 INFO  [JBossASKernel] Created KernelDeployment for: cte-saida-core.jar
+16:16:48,125 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=cte-saida-core.jar,name=cteSaidaBean,service=EJB3
+16:16:48,125 INFO  [JBossASKernel]   with dependencies:
+16:16:48,125 INFO  [JBossASKernel]   and demands:
+16:16:48,125 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+16:16:48,126 INFO  [JBossASKernel] 	jboss-switchboard:appName=cte-saida-core,module=cte-saida-core,name=cteSaidaBean; Required: Create
+16:16:48,126 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=cte-saida-core.jar,unit=cte-saida-core.jar,bean=cteSaidaBean; Required: Described
+16:16:48,126 INFO  [JBossASKernel]   and supplies:
+16:16:48,126 INFO  [JBossASKernel] 	jndi:cteSaidaBean/local
+16:16:48,126 INFO  [JBossASKernel] 	jndi:cteSaidaBean
+16:16:48,126 INFO  [JBossASKernel] 	jndi:cteSaidaBean/local-br.com.pwc.cte.saida.core.negocio.CTeSaidaBeanLocal
+16:16:48,126 INFO  [JBossASKernel] 	Class:br.com.pwc.cte.saida.core.negocio.CTeSaidaBeanLocal
+16:16:48,131 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=cte-saida-core.jar,name=cteSaidaBean,service=EJB3) to KernelDeployment of: cte-saida-core.jar
+16:16:48,161 INFO  [SingletonContainerDeployer] Installing container for EJB cteSaidaCoreBundleBean
+16:16:48,161 INFO  [SingletonContainerDeployer] with dependencies: 
+16:16:48,161 INFO  [SingletonContainerDeployer] with demands: 
+16:16:48,161 INFO  [SingletonContainerDeployer] with supplies: 
+16:16:48,164 INFO  [SingletonBeanJNDIBinderDeployer] Binding the following entries in JNDI for singleton bean: cteSaidaCoreBundleBean
+
+
+16:16:48,256 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=cte-saida-core.jar,name=cteSaidaCoreBundleBean,service=EJB3
+16:16:48,256 WARN  [SessionSpecContainer] EJBTHREE-2126: container jboss.j2ee:jar=cte-saida-core.jar,name=cteSaidaCoreBundleBean,service=EJB3 does not verify the businessObjectFactory
+16:16:48,257 INFO  [EJBContainer] STARTED EJB: br.com.pwc.cte.saida.core.CTeSaidaCoreBundleBean ejbName: cteSaidaCoreBundleBean
+16:16:48,261 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+16:16:49,222 INFO  [AbstractNoInterfaceViewBinder] Binding the following entry in Global JNDI for bean:cteSaidaCoreBundleBean
+
+	cteSaidaCoreBundleBean/no-interface -> EJB3.1 no-interface view
+
+16:16:49,235 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=cte-saida-core.jar,name=cteSaidaBean,service=EJB3
+16:16:49,246 INFO  [EJBContainer] STARTED EJB: br.com.pwc.cte.saida.core.negocio.CTeSaidaBean ejbName: cteSaidaBean
+16:16:49,376 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	cteSaidaBean/local - EJB3.x Default Local Business Interface
+	cteSaidaBean/local-br.com.pwc.cte.saida.core.negocio.CTeSaidaBeanLocal - EJB3.x Local Business Interface
+
+16:16:49,376 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+16:16:49,405 WARN  [InterceptorInfoRepository] EJBTHREE-1852: InterceptorInfoRepository is deprecated
+16:16:49,499 INFO  [JBossASKernel] Created KernelDeployment for: cte-saida-domain.jar
+16:16:49,499 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=cte-saida-domain.jar,name=cteSaidaManager,service=EJB3
+16:16:49,500 INFO  [JBossASKernel]   with dependencies:
+16:16:49,500 INFO  [JBossASKernel]   and demands:
+16:16:49,500 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+16:16:49,500 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=cte-saida-domain.jar,unit=cte-saida-domain.jar,bean=cteSaidaManager; Required: Described
+16:16:49,500 INFO  [JBossASKernel] 	jboss-switchboard:appName=cte-saida-domain,module=cte-saida-domain,name=cteSaidaManager; Required: Create
+16:16:49,500 INFO  [JBossASKernel] 	persistence.unit:unitName=cte-saida-domain.jar#persistence-cte-saida; Required: Described
+16:16:49,500 INFO  [JBossASKernel]   and supplies:
+16:16:49,501 INFO  [JBossASKernel] 	jndi:cteSaidaManager/local-br.com.pwc.cte.saida.domain.negocio.CTeSaidaManagerLocal
+16:16:49,501 INFO  [JBossASKernel] 	jndi:cteSaidaManager
+16:16:49,501 INFO  [JBossASKernel] 	jndi:cteSaidaManager/local
+16:16:49,501 INFO  [JBossASKernel] 	Class:br.com.pwc.cte.saida.domain.negocio.CTeSaidaManagerLocal
+16:16:49,502 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=cte-saida-domain.jar,name=cteSaidaManager,service=EJB3) to KernelDeployment of: cte-saida-domain.jar
+16:16:49,503 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=cte-saida-domain.jar,name=cteSaidaTransactionBean,service=EJB3
+16:16:49,503 INFO  [JBossASKernel]   with dependencies:
+16:16:49,503 INFO  [JBossASKernel]   and demands:
+16:16:49,503 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+16:16:49,503 INFO  [JBossASKernel] 	jboss-switchboard:appName=cte-saida-domain,module=cte-saida-domain,name=cteSaidaTransactionBean; Required: Create
+16:16:49,503 INFO  [JBossASKernel]   and supplies:
+16:16:49,503 INFO  [JBossASKernel] 	Class:br.com.pwc.cte.saida.domain.util.Caller
+16:16:49,504 INFO  [JBossASKernel] 	jndi:cteSaidaTransactionBean/local-br.com.pwc.cte.saida.domain.util.Caller
+16:16:49,504 INFO  [JBossASKernel] 	jndi:cteSaidaTransactionBean
+16:16:49,504 INFO  [JBossASKernel] 	jndi:cteSaidaTransactionBean/local
+16:16:49,504 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=cte-saida-domain.jar,name=cteSaidaTransactionBean,service=EJB3) to KernelDeployment of: cte-saida-domain.jar
+16:16:49,527 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=cte-saida-domain.jar#persistence-cte-saida
+16:16:49,528 INFO  [Ejb3Configuration] Processing PersistenceUnitInfo [
+	name: persistence-cte-saida
+	...]
+16:16:49,529 WARN  [Ejb3Configuration] Persistence provider caller does not implement the EJB3 spec correctly.PersistenceUnitInfo.getNewTempClassLoader() is null.
+16:16:49,530 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.pwc.cte.saida.entity.negocio.CTeSaida
+16:16:49,533 INFO  [EntityBinder] Bind entity br.com.pwc.cte.saida.entity.negocio.CTeSaida on table CTE_SAIDA
+16:16:49,558 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+16:16:49,582 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+16:16:49,587 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+16:16:49,597 INFO  [HibernateSearchEventListenerRegister] Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+16:16:49,598 INFO  [ConnectionProviderFactory] Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+16:16:49,598 INFO  [InjectedDataSourceConnectionProvider] Using provided datasource
+16:16:51,169 INFO  [Dialect] Using dialect: org.hibernate.dialect.Oracle10gDialect
+16:16:51,180 INFO  [SettingsFactory] Database ->
+       name : Oracle
+    version : Oracle Database 10g Enterprise Edition Release 10.2.0.3.0 - Production
+With the Partitioning, OLAP and Data Mining options
+      major : 10
+      minor : 2
+16:16:51,180 INFO  [SettingsFactory] Driver ->
+       name : Oracle JDBC driver
+    version : 11.1.0.6.0-Production+
+      major : 11
+      minor : 1
+16:16:51,181 INFO  [TransactionFactoryFactory] Transaction strategy: org.hibernate.ejb.transaction.JoinableCMTTransactionFactory
+16:16:51,181 INFO  [TransactionManagerLookupFactory] instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+16:16:51,181 INFO  [TransactionManagerLookupFactory] instantiated TransactionManagerLookup
+16:16:51,181 INFO  [SettingsFactory] Automatic flush during beforeCompletion(): disabled
+16:16:51,181 INFO  [SettingsFactory] Automatic session close at end of transaction: disabled
+16:16:51,181 INFO  [SettingsFactory] JDBC batch size: 15
+16:16:51,181 INFO  [SettingsFactory] JDBC batch updates for versioned data: disabled
+16:16:51,182 INFO  [SettingsFactory] Scrollable result sets: enabled
+16:16:51,182 INFO  [SettingsFactory] JDBC3 getGeneratedKeys(): disabled
+16:16:51,182 INFO  [SettingsFactory] Connection release mode: auto
+16:16:51,182 INFO  [SettingsFactory] Default batch fetch size: 1
+16:16:51,182 INFO  [SettingsFactory] Generate SQL with comments: disabled
+16:16:51,182 INFO  [SettingsFactory] Order SQL updates by primary key: disabled
+16:16:51,182 INFO  [SettingsFactory] Order SQL inserts for batching: disabled
+16:16:51,182 INFO  [SettingsFactory] Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+16:16:51,183 INFO  [ASTQueryTranslatorFactory] Using ASTQueryTranslatorFactory
+16:16:51,183 INFO  [SettingsFactory] Query language substitutions: {}
+16:16:51,183 INFO  [SettingsFactory] JPA-QL strict compliance: enabled
+16:16:51,183 INFO  [SettingsFactory] Second-level cache: enabled
+16:16:51,183 INFO  [SettingsFactory] Query cache: disabled
+16:16:51,183 INFO  [SettingsFactory] Cache region factory : org.hibernate.cache.impl.bridge.RegionFactoryCacheProviderBridge
+16:16:51,183 INFO  [RegionFactoryCacheProviderBridge] Cache provider: org.hibernate.cache.HashtableCacheProvider
+16:16:51,184 INFO  [SettingsFactory] Optimize cache for minimal puts: disabled
+16:16:51,184 INFO  [SettingsFactory] Cache region prefix: persistence.unit:unitName=cte-saida-domain.jar#persistence-cte-saida
+16:16:51,184 INFO  [SettingsFactory] Structured second-level cache entries: disabled
+16:16:51,184 INFO  [SettingsFactory] Echoing all SQL to stdout
+16:16:51,184 INFO  [SettingsFactory] Statistics: disabled
+16:16:51,184 INFO  [SettingsFactory] Deleted entity synthetic identifier rollback: disabled
+16:16:51,184 INFO  [SettingsFactory] Default entity-mode: pojo
+16:16:51,185 INFO  [SettingsFactory] Named query checking : enabled
+16:16:51,185 INFO  [SettingsFactory] Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+16:16:51,198 INFO  [SessionFactoryImpl] building session factory
+16:16:51,198 INFO  [BasicTypeRegistry] Type registration [clob] overrides previous : org.hibernate.type.ClobType@d12acc
+16:16:51,198 INFO  [BasicTypeRegistry] Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@d12acc
+16:16:51,199 INFO  [BasicTypeRegistry] Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@50de7a
+16:16:51,199 INFO  [BasicTypeRegistry] Type registration [blob] overrides previous : org.hibernate.type.BlobType@13e3878
+16:16:51,199 INFO  [BasicTypeRegistry] Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@13e3878
+16:16:51,199 INFO  [BasicTypeRegistry] Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@1ed71cb
+16:16:51,199 INFO  [BasicTypeRegistry] Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@1ca03f0
+16:16:51,199 INFO  [BasicTypeRegistry] Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@1c88488
+16:16:51,200 INFO  [BasicTypeRegistry] Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@17505d7
+16:16:51,207 INFO  [SessionFactoryObjectFactory] Factory name: persistence.unit:unitName=cte-saida-domain.jar#persistence-cte-saida
+16:16:51,208 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+16:16:51,222 INFO  [SessionFactoryObjectFactory] Bound factory to JNDI name: persistence.unit:unitName=cte-saida-domain.jar#persistence-cte-saida
+16:16:51,222 INFO  [SchemaUpdate] Running hbm2ddl schema update
+16:16:51,223 INFO  [SchemaUpdate] fetching database metadata
+16:16:52,500 INFO  [SchemaUpdate] updating schema
+16:16:52,502 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+16:16:53,292 INFO  [TableMetadata] table found: JAVA_TESTE.CTE_SAIDA
+16:16:53,292 INFO  [TableMetadata] columns: [data_modificacao, id, data_criacao, xml, chave_acesso]
+16:16:53,292 INFO  [TableMetadata] foreign keys: []
+16:16:53,292 INFO  [TableMetadata] indexes: [sys_c00706499, sys_c00706500]
+16:16:53,293 INFO  [SchemaUpdate] schema update complete
+16:16:53,293 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+16:16:53,308 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=cte-saida-domain.jar,name=cteSaidaTransactionBean,service=EJB3
+16:16:53,309 INFO  [EJBContainer] STARTED EJB: br.com.pwc.cte.saida.domain.util.TransactionBean ejbName: cteSaidaTransactionBean
+16:16:53,311 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	cteSaidaTransactionBean/local - EJB3.x Default Local Business Interface
+	cteSaidaTransactionBean/local-br.com.pwc.cte.saida.domain.util.Caller - EJB3.x Local Business Interface
+
+16:16:53,312 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+16:16:53,321 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=cte-saida-domain.jar,name=cteSaidaManager,service=EJB3
+16:16:53,334 INFO  [EJBContainer] STARTED EJB: br.com.pwc.cte.saida.domain.negocio.CTeSaidaManager ejbName: cteSaidaManager
+16:16:53,337 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	cteSaidaManager/local - EJB3.x Default Local Business Interface
+	cteSaidaManager/local-br.com.pwc.cte.saida.domain.negocio.CTeSaidaManagerLocal - EJB3.x Local Business Interface
+
+16:16:53,337 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+16:16:53,370 WARN  [InterceptorInfoRepository] EJBTHREE-1852: InterceptorInfoRepository is deprecated
+16:16:53,611 INFO  [DefaultEndpointRegistry] register: jboss.ws:context=cte-saida-ws,endpoint=cteWSEnvioCTeSaida
+16:16:53,619 INFO  [DefaultEndpointRegistry] register: jboss.ws:context=cte-saida-ws,endpoint=cteWSConsultaCTeSaida
+16:16:53,649 WARN  [DescriptorDeploymentAspect] Spring not available, skipping check for user provided jbossws-cxf.xml / cxf.xml configuration files.
+16:16:53,662 INFO  [MetadataBuilder] Add Service
+ id=cteWSEnvioCTeSaida
+ address=http://jbossws.undefined.host:8080/cte-saida-ws/WSEnvioCTeSaidaService/WSEnvioCTeSaida
+ implementor=br.com.pwc.cte.saida.ws.envio.WSEnvioCTeSaidaBean
+ invoker=org.jboss.wsf.stack.cxf.InvokerEJB3
+ serviceName={http://www.pwc.com.br/WSEnvioCTeSaidaService}WSEnvioCTeSaidaService
+ portName={http://www.pwc.com.br/WSEnvioCTeSaidaService}WSEnvioCTeSaidaPort
+ wsdlLocation=null
+ mtomEnabled=false
+16:16:53,662 INFO  [MetadataBuilder] Add Service
+ id=cteWSConsultaCTeSaida
+ address=http://jbossws.undefined.host:8080/cte-saida-ws/WSConsultaCTeSaidaService/WSConsultaCTeSaida
+ implementor=br.com.pwc.cte.saida.ws.consulta.WSConsultaCteSaidaBean
+ invoker=org.jboss.wsf.stack.cxf.InvokerEJB3
+ serviceName={http://www.pwc.com.br/WSConsultaCTeSaidaService}WSConsultaCTeSaidaService
+ portName={http://www.pwc.com.br/WSConsultaCTeSaidaService}WSConsultaCTeSaidaPort
+ wsdlLocation=null
+ mtomEnabled=false
+16:16:54,685 INFO  [ReflectionServiceFactoryBean] Creating Service {http://www.pwc.com.br/WSEnvioCTeSaidaService}WSEnvioCTeSaidaService from class br.com.pwc.cte.saida.ws.envio.WSEnvioCTeSaidaBean
+16:16:55,404 INFO  [DefaultEndpointRegistry] remove: jboss.ws:context=cte-saida-ws,endpoint=cteWSEnvioCTeSaida
+16:16:55,405 INFO  [DefaultEndpointRegistry] remove: jboss.ws:context=cte-saida-ws,endpoint=cteWSConsultaCTeSaida
+16:16:55,415 ERROR [AbstractKernelController] Error installing to Real: name=vfs:///C:/jboss-6.1.0.Final/server/cte-saida/deploy/cte-saida-ws.jar state=PreReal mode=Manual requiredState=Real: org.jboss.deployers.spi.DeploymentException: Error during deploy: vfs:///C:/jboss-6.1.0.Final/server/cte-saida/deploy/cte-saida-ws.jar
+	at org.jboss.deployers.spi.DeploymentException.rethrowAsDeploymentException(DeploymentException.java:49) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployerWrapper.deploy(DeployerWrapper.java:185) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.doDeploy(DeployersImpl.java:1832) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.doInstallParentFirst(DeployersImpl.java:1550) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.install(DeployersImpl.java:1491) [:2.2.2.GA]
+	at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:379) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:2044) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:1083) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.executeOrIncrementStateDirectly(AbstractController.java:1322) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1246) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1139) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:939) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:654) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.change(DeployersImpl.java:1983) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.process(DeployersImpl.java:1076) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.main.MainDeployerImpl.process(MainDeployerImpl.java:679) [:2.2.2.GA]
+	at org.jboss.system.server.profileservice.deployers.MainDeployerPlugin.process(MainDeployerPlugin.java:106) [:6.1.0.Final]
+	at org.jboss.profileservice.dependency.ProfileControllerContext$DelegateDeployer.process(ProfileControllerContext.java:143) [:0.2.2]
+	at org.jboss.profileservice.dependency.ProfileDeployAction.deploy(ProfileDeployAction.java:151) [:0.2.2]
+	at org.jboss.profileservice.dependency.ProfileDeployAction.installActionInternal(ProfileDeployAction.java:94) [:0.2.2]
+	at org.jboss.kernel.plugins.dependency.InstallsAwareAction.installAction(InstallsAwareAction.java:54) [jboss-kernel.jar:2.2.0.SP2]
+	at org.jboss.kernel.plugins.dependency.InstallsAwareAction.installAction(InstallsAwareAction.java:42) [jboss-kernel.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.action.SimpleControllerContextAction.simpleInstallAction(SimpleControllerContextAction.java:62) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.action.AccessControllerContextAction.install(AccessControllerContextAction.java:71) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractControllerContextActions.install(AbstractControllerContextActions.java:51) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:379) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:2044) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:1083) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.executeOrIncrementStateDirectly(AbstractController.java:1322) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1246) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1139) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:939) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:654) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.profileservice.dependency.ProfileActivationWrapper$BasicProfileActivation.start(ProfileActivationWrapper.java:190) [:0.2.2]
+	at org.jboss.profileservice.dependency.ProfileActivationWrapper.start(ProfileActivationWrapper.java:87) [:0.2.2]
+	at org.jboss.profileservice.dependency.ProfileActivationService.activateProfile(ProfileActivationService.java:215) [:0.2.2]
+	at org.jboss.profileservice.dependency.ProfileActivationService.activate(ProfileActivationService.java:159) [:0.2.2]
+	at org.jboss.profileservice.bootstrap.AbstractProfileServiceBootstrap.activate(AbstractProfileServiceBootstrap.java:112) [:0.2.2]
+	at org.jboss.profileservice.resolver.BasicResolverFactory$ProfileResolverFacade.deploy(BasicResolverFactory.java:87) [:0.2.2]
+	at org.jboss.profileservice.bootstrap.AbstractProfileServiceBootstrap.start(AbstractProfileServiceBootstrap.java:91) [:0.2.2]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:132) [:6.1.0.Final]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:56) [:6.1.0.Final]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer.startBootstraps(AbstractServer.java:827) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer$StartServerTask.run(AbstractServer.java:417) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at java.lang.Thread.run(Thread.java:619) [:1.6.0_21]
+Caused by: javax.xml.ws.WebServiceException: org.apache.cxf.service.factory.ServiceConstructionException: Service class br.com.pwc.cte.saida.ws.envio.WSEnvioCTeSaidaBean method setCTeSaidaBean part {http://www.pwc.com.br/WSEnvioCTeSaidaService}setCTeSaidaBean cannot be mapped to schema. Check for use of a JAX-WS-specific type without the JAX-WS service factory bean.
+	at org.apache.cxf.jaxws.EndpointImpl.doPublish(EndpointImpl.java:335) [:2.3.1-patch-01]
+	at org.jboss.wsf.stack.cxf.deployment.EndpointImpl.doPublish(EndpointImpl.java:62) [:3.4.1.GA]
+	at org.apache.cxf.jaxws.EndpointImpl.publish(EndpointImpl.java:238) [:2.3.1-patch-01]
+	at org.apache.cxf.jaxws.EndpointImpl.publish(EndpointImpl.java:481) [:2.3.1-patch-01]
+	at org.jboss.wsf.stack.cxf.configuration.NonSpringBusHolder.configure(NonSpringBusHolder.java:112) [:3.4.1.GA]
+	at org.jboss.wsf.stack.cxf.deployment.aspect.BusDeploymentAspect.start(BusDeploymentAspect.java:110) [:3.4.1.GA]
+	at org.jboss.webservices.integration.deployers.WSDeploymentAspectDeployer.internalDeploy(WSDeploymentAspectDeployer.java:123) [:6.1.0.Final]
+	at org.jboss.deployers.spi.deployer.helpers.AbstractRealDeployer.deploy(AbstractRealDeployer.java:55) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployerWrapper.deploy(DeployerWrapper.java:179) [:2.2.2.GA]
+	... 43 more
+Caused by: org.apache.cxf.service.factory.ServiceConstructionException: Service class br.com.pwc.cte.saida.ws.envio.WSEnvioCTeSaidaBean method setCTeSaidaBean part {http://www.pwc.com.br/WSEnvioCTeSaidaService}setCTeSaidaBean cannot be mapped to schema. Check for use of a JAX-WS-specific type without the JAX-WS service factory bean.
+	at org.apache.cxf.service.factory.ReflectionServiceFactoryBean.createBareMessage(ReflectionServiceFactoryBean.java:1180) [:2.3.1-patch-01]
+	at org.apache.cxf.service.factory.ReflectionServiceFactoryBean.buildServiceFromClass(ReflectionServiceFactoryBean.java:453) [:2.3.1-patch-01]
+	at org.apache.cxf.jaxws.support.JaxWsServiceFactoryBean.buildServiceFromClass(JaxWsServiceFactoryBean.java:680) [:2.3.1-patch-01]
+	at org.apache.cxf.service.factory.ReflectionServiceFactoryBean.initializeServiceModel(ReflectionServiceFactoryBean.java:505) [:2.3.1-patch-01]
+	at org.apache.cxf.service.factory.ReflectionServiceFactoryBean.create(ReflectionServiceFactoryBean.java:242) [:2.3.1-patch-01]
+	at org.apache.cxf.jaxws.support.JaxWsServiceFactoryBean.create(JaxWsServiceFactoryBean.java:202) [:2.3.1-patch-01]
+	at org.apache.cxf.frontend.AbstractWSDLBasedEndpointFactory.createEndpoint(AbstractWSDLBasedEndpointFactory.java:101) [:2.3.1-patch-01]
+	at org.apache.cxf.frontend.ServerFactoryBean.create(ServerFactoryBean.java:148) [:2.3.1-patch-01]
+	at org.apache.cxf.jaxws.JaxWsServerFactoryBean.create(JaxWsServerFactoryBean.java:183) [:2.3.1-patch-01]
+	at org.apache.cxf.jaxws.EndpointImpl.getServer(EndpointImpl.java:407) [:2.3.1-patch-01]
+	at org.apache.cxf.jaxws.EndpointImpl.doPublish(EndpointImpl.java:314) [:2.3.1-patch-01]
+	... 51 more
+
+16:16:55,595 INFO  [xnio] XNIO Version 2.1.0.CR2
+16:16:55,622 INFO  [nio] XNIO NIO Implementation Version 2.1.0.CR2
+16:16:55,878 INFO  [remoting] JBoss Remoting version 3.1.0.Beta2
+16:16:56,057 INFO  [TomcatDeployment] deploy, ctxPath=/
+16:16:56,105 INFO  [HornetQServerImpl] trying to deploy queue jms.queue.ExpiryQueue
+16:16:56,283 INFO  [HornetQServerImpl] trying to deploy queue jms.queue.DLQ
+16:16:56,318 INFO  [service] Removing bootstrap log handlers

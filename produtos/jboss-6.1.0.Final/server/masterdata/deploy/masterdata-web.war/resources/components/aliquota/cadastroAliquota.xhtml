@@ -1,0 +1,88 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+    <composite:interface>
+       <composite:attribute name="ruleRender"/>
+    </composite:interface>
+
+	<rich:toolbar styleClass="BarraDeBotoes100pc">
+		<a4j:commandLink status="modalStatus" title="#{msg.titleSalvar}"
+			actionListener="#{mbAliquota.salvar}"
+			execute="ufOrigemICMS ufDestinoICMS vigenciaICMS aliquotaICMS percentualBCICMS aliquotaDiferencialICMS aliquotaICMSFrete 
+				percentualDaReducaoDaBCICMS valorPautaICMS percentualBCSTICMS percentualDaReducaoBcStICMS aliquotaStICMS valorPautaStICMS 
+				percentualDaMvaIcmsStICMS vigenciaInicialIpi ipiAliquota ipiPercentualBc vigenciaPis aliquotaPis vigenciaInicialCofins aliquotaCofins 
+				vigenciaInicialImportacao aliquotaImportacao vigenciaInicialIss aliquotaIss descricaoIss servicoIss ufIss munAliquotaIss"
+			render="painelAliquota" rendered="#{cc.attrs.ruleRender}">
+			<f:param name="acaoAliquota" value="Lista" />
+			<h:graphicImage value="#{resource['images/png:salvar.png']}"
+				alt="apagar" styleClass="BotaoImagem" width="26px" height="18px" />
+		</a4j:commandLink>
+
+		<a4j:commandLink status="modalStatus" title="#{msg.titleVoltar}" immediate="true" render="abaAliquotas"
+			actionListener="#{mbAliquota.controlaPainelAliquota}" oncomplete="renderAllListaAliquotaVO()">
+			<f:param name="acaoAliquota" value="Lista"/>
+			<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+		</a4j:commandLink>
+	</rich:toolbar>
+		
+		<div class="Linha980x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.tipoAliquota}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu id="tipoAliquota" value="#{mbAliquota.tipoAliquota}" styleClass="ComboField Largura105px PositionRelativeFloatLeft" 
+				disabled="#{!cc.attrs.ruleRender}" tabindex="10">
+				<f:selectItems var="aliquota" value="#{mbAliquota.listaTipoAliquota}" itemDisabled="#{mbAliquota.isAliquotaDesabilitada(aliquota)}" 
+					itemLabel="#{aliquota.nomeTipo}"/>
+				<a4j:ajax event="change" listener="#{mbAliquota.limpaMensagemErro}" render="panelCadastroAliquota,painelMensagemErroAliquota" status="modalStatus"/>
+			</h:selectOneMenu>
+		</div>
+		
+		<h:panelGroup id="panelCadastroAliquota" styleClass="PositionRelativeFloatLeft MarginTop20px" layout="block">
+			
+			<h:panelGroup id="panelIcms" rendered="#{mbAliquota.tipoAliquota eq 'ICMS'}" styleClass="MarginLeft10px" layout="block">
+				<ui:include src="/resources/components/aliquota/cadastroIcms.xhtml" />
+			</h:panelGroup>
+			
+			<h:panelGroup id="panelIpi" rendered="#{mbAliquota.tipoAliquota eq 'IPI'}" styleClass="MarginLeft10px" layout="block">
+				<ui:include src="/resources/components/aliquota/cadastroIpi.xhtml" />
+			</h:panelGroup>
+			
+			<h:panelGroup id="panelPis" rendered="#{mbAliquota.tipoAliquota eq 'PIS'}" styleClass="MarginLeft10px" layout="block">
+				<ui:include src="/resources/components/aliquota/cadastroPis.xhtml" />	
+			</h:panelGroup>
+			
+			<h:panelGroup id="panelCofins" rendered="#{mbAliquota.tipoAliquota eq 'COFINS'}" styleClass="MarginLeft10px" layout="block">
+				<ui:include src="/resources/components/aliquota/cadastroCofins.xhtml" />
+			</h:panelGroup>
+			
+			<h:panelGroup id="panelImportacao" rendered="#{mbAliquota.tipoAliquota eq 'IMPORTACAO'}" styleClass="MarginLeft10px" layout="block">
+				<ui:include src="/resources/components/aliquota/cadastroImportacao.xhtml" />
+			</h:panelGroup>
+			
+			<h:panelGroup id="panelIss" rendered="#{mbAliquota.tipoAliquota eq 'ISS'}" styleClass="MarginLeft10px" layout="block">
+				<ui:include src="/resources/components/aliquota/cadastroIss.xhtml"/>
+			</h:panelGroup>
+		
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" id="painelMensagemErroAliquota" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura980px MarginBottom5px">
+			<h:outputText value="#{mbAliquota.mensagemErro}" styleClass="MensagemDeErro" escape="false"/>
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages" />
+		</h:panelGroup>
+		
+		<script type="text/javascript">
+			//<![CDATA[
+				if(#{!mbAliquota.verificaPermissao('Administrador, Gerente, Atendente')}) {
+					j(document).ready(function(){
+						disableInputText();
+					});
+				}
+			//]]>
+		</script>
+		
+</html>

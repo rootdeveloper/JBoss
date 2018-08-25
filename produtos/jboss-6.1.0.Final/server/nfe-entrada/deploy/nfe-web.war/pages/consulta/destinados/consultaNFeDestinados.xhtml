@@ -1,0 +1,175 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.consultaNFeDestinados}"/>
+	</ui:define>
+	
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" listener="#{mbConsultaDestinados.trocaValorComboFilial}"
+			render="header-content barraDeScroll" execute="@this" 
+			oncomplete="renderPage(); reSize();" status="modalStatus"/>
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<ui:include src="/pages/consulta/destinados/modalEventos.xhtml"/>
+		<ui:include src="/pages/consulta/destinados/modalDownloadNFe.xhtml"/>
+		<ui:include src="/pages/consulta/destinados/modalFiltroDestinados.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalJustificativaEvento mensagem="#{mbConsultaDestinados.xCorrecao}"
+			nomePainel="justificativaEvento" tituloModal="#{msg.xJustificativa}"/>
+			
+		<util:modalSimNao mensagem="#{msg.confirmaCienciaoOperacao}" nomePainel="modalConfirmPane" tituloFuncao="selecionado"
+			tituloModal="#{msg.msgConfirmacaoManifestacaoTela}" actionSim="#{mbConsultaDestinados.enviarManifestacaoSefaz}"
+			render="modalInformativo" oncomplete="#{rich:component('modalInformativo')}.show();"/>
+		<util:modalInformativo mensagemInformativo="#{mbConsultaDestinados.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo"/>
+	
+	
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:filtro idModalFiltro="filtroDestinados" executeOnShow="nrMaxResult" />
+				<a4j:commandLink status="modalStatus" title="#{msg.titleConsultar}" immediate="true">
+					<a4j:ajax listener="#{mbConsultaDestinados.consulta}" event="click" oncomplete="renderPage();" render="barraDeScroll"/>
+					<h:graphicImage value="#{resource['images/png:detalhes.png']}" alt="detalhes" styleClass="BotaoImagem"
+					 width="26px" height="18px" />
+				</a4j:commandLink>
+				<botao:voltarAction action="home" />
+			</rich:toolbarGroup>
+			<rich:toolbarGroup location="right" styleClass="MarginRight5px">
+				<h:panelGroup layout="block">
+					<h:outputText value="#{msg.maxResultado}"/>
+					<h:inputText id="nrMaxResult" value="#{mbConsultaDestinados.maxResultTela}" onkeyup="Mascara(this, Integer);" onblur="Mascara(this, Integer);" 
+						onkeypress="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						styleClass="Campo Largura45px MarginTop3px MarginLeft5px MarginRight5px" maxlength="4"/>
+				</h:panelGroup>
+				  <botao:atualizar actionListener="#{mbConsultaDestinados.refreshList}" render="barraDeScroll"
+					oncomplete="renderListBody()" buttonStyle="MarginRight5px" idPanelErro="painelMensagemErro"
+					filialCadastrada="#{not empty mbConsultaDestinados.idFilial}" execute="nrMaxResult"/> 
+			</rich:toolbarGroup>
+		</rich:toolbar>
+ 		
+ 		<rich:dataTable id="tabelaConsulta" value="#{mbConsultaDestinados.listaConsultaNFe}" var="item" onrowdblclick="buscaEventos(#{item.id})"
+ 			rows="10" styleClass="Largura100pc" rowKeyVar="rowKey" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" noDataLabel="#{msg.listaNfeEntradaVazia}" >
+ 		
+			<rich:column styleClass="AlignCenter" headerClass="Largura110px"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(item.importado ? msg.importado : msg.naoImportado), fn:toLowerCase(mbConsultaDestinados.columnFilter.mapColumnFilter['sitImportacao'].filterBy))}" 
+				sortBy="#{item.importado}" sortOrder="#{mbConsultaDestinados.columnOrder.mapColumnOrder['sitImportacao'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.sitImportacao}"/>
+					<table:orderArrow action="#{mbConsultaDestinados.columnOrder.mapColumnOrder['sitImportacao'].sortBy}" 
+						order="#{mbConsultaDestinados.columnOrder.mapColumnOrder['sitImportacao'].sortOrder}" 
+						render="tabelaConsulta"/>
+					<br/>
+					<h:inputText value="#{mbConsultaDestinados.columnFilter.mapColumnFilter['sitImportacao'].filterBy}" 
+						styleClass="Campo Largura100px" maxlength="13" tabindex="1"
+						onkeypress="Mascara(this, Letra); executeFilter(this,event);"
+						onkeyup="Mascara(this, Letra);" onkeydown="Mascara(this, Letra);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Letra);" onmouseup="Mascara(this, Letra);" onmouseout="Mascara(this, Letra);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.importado ? msg.importado : msg.naoImportado}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura150px"
+				sortBy="#{item.cnpjEmitente}" sortOrder="#{mbConsultaDestinados.columnOrder.mapColumnOrder['cnpjEmit'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.cnpjEmitente, mbConsultaDestinados.columnFilter.mapColumnFilter['cnpjEmit'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cnpjEmitente}"/>
+					<table:orderArrow action="#{mbConsultaDestinados.columnOrder.mapColumnOrder['cnpjEmit'].sortBy}" 
+						order="#{mbConsultaDestinados.columnOrder.mapColumnOrder['cnpjEmit'].sortOrder}" 
+						render="tabelaConsulta"/>
+					<br/>
+					<h:inputText value="#{mbConsultaDestinados.columnFilter.mapColumnFilter['cnpjEmit'].filterBy}" 
+						styleClass="Campo Largura120px" maxlength="14" tabindex="3"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);"
+						onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.cnpjEmitente}" converter="cnpjConverter"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura350px"
+				sortBy="#{item.chaveAcesso}" sortOrder="#{mbConsultaDestinados.columnOrder.mapColumnOrder['chave'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.chaveAcesso, mbConsultaDestinados.columnFilter.mapColumnFilter['chave'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.chaveDeAcesso}" />
+					<table:orderArrow action="#{mbConsultaDestinados.columnOrder.mapColumnOrder['chave'].sortBy}" 
+						order="#{mbConsultaDestinados.columnOrder.mapColumnOrder['chave'].sortOrder}" 
+						render="tabelaConsulta"/>
+					<br/>
+					<h:inputText value="#{mbConsultaDestinados.columnFilter.mapColumnFilter['chave'].filterBy}" 
+						styleClass="Campo Largura320px" maxlength="44" tabindex="4"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);"
+						onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.chaveAcesso}" title="#{item.chaveAcesso}"/>
+			</rich:column>
+ 		
+			<rich:column styleClass="AlignCenter" headerClass="Largura120px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.efetuarCienciaOperacao}"/>
+				</f:facet>
+				<a4j:commandButton title="#{msg.titleManifestacao}" image="/resources/images/png/arrow_blue.png"
+					render="painelMensagemErro" execute="@this"	onclick="setaID(#{rowKey}); #{rich:component('modalConfirmPane')}.show()" />
+				<!-- Criar botões de manifestação -->
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura60px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.download}"/>
+				</f:facet>
+				<a4j:commandButton title="#{msg.titleDownload}" image="/resources/images/png/arrow_black.png" onclick="downloadNFe(#{rowKey});"/>
+			</rich:column>
+ 		
+ 		</rich:dataTable>
+ 		
+ 		<table:scroller for="tabelaConsulta" idPanelScroller="barraDeScroll" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbConsultaDestinados.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbConsultaDestinados.listaConsultaNFe}" 
+			totalRegistros="#{mbConsultaDestinados.quantidadeRegistros}" />
+ 		
+ 		<h:panelGroup id="painelMensagemErro">
+ 			<h:outputText value="#{mbConsultaDestinados.mensagemErro}" styleClass="MensagemDeErro MarginLeft10px" />
+ 		</h:panelGroup>
+ 		
+ 		<a4j:jsFunction name="setaID">
+ 			<a4j:param name="idConsultaSelecionada" assignTo="#{mbConsultaDestinados.indexConsultaSelecionada}"/>
+ 		</a4j:jsFunction>
+ 		
+ 		<a4j:jsFunction name="buscaEventos" render="painelEventos"
+ 			oncomplete="#{rich:component('painelEventos')}.show()" status="modalStatus">
+ 			<a4j:param name="idConsultaSelecionada" assignTo="#{mbConsultaDestinados.indexConsultaSelecionada}"/>
+ 			<a4j:actionListener listener="#{mbConsultaDestinados.buscaEventos}"/>
+ 		</a4j:jsFunction>
+ 		
+ 		<a4j:jsFunction name="downloadNFe" status="modalStatus" render="corpoDownload" oncomplete=" #{rich:component('painelDownload')}.show()">
+ 			<a4j:param name="idConsultaSelecionada" assignTo="#{mbConsultaDestinados.indexConsultaSelecionada}"/>
+ 			<a4j:actionListener listener="#{mbConsultaDestinados.downloadNFe}"/>
+ 		</a4j:jsFunction>
+ 		
+ 		<a4j:jsFunction name="renderPage" status="modalStatus" render="tabelaConsulta painelMensagemErro" oncomplete="reSize();"/>
+ 		<a4j:jsFunction name="renderListBody" status="modalStatus" render="tabelaConsulta@body" oncomplete="reSize();"/>
+ 		<a4j:jsFunction name="renderList" status="modalStatus" render="tabelaConsulta" oncomplete="reSize();"/>
+ 		
+	</ui:define>
+</ui:composition>

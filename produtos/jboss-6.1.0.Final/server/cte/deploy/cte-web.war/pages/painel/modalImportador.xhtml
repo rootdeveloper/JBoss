@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<h:form prependId="false">
+		<rich:popupPanel modal="true" id="importador" autosized="true" resizeable="false" moveable="false" domElementAttachment="form" 
+			onbeforeshow="trocarStyleBotaoAdicionar(); return true;" styleClass="OverflowHidden Largura600px FundoBranco" >
+			<f:facet name="header">
+				<h:outputText value="#{msg.importadorDeXml}" />
+			</f:facet>
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" oncomplete="#{rich:component('importador')}.hide();" styleClass="BotaoFechar" actionListener="#{mbCteTerceiros.voltarModalImportador}" render="statusUpload" status="modalStatus"/>
+			</f:facet>
+			<h:panelGroup layout="block" id="uploader">
+				<rich:fileUpload acceptedTypes="xml" fileUploadListener="#{mbCteTerceiros.uploadListener}" clearLabel="#{msg.fuLimpar}" doneLabel=" " serverErrorLabel="#{msg.fuErro}"
+					addLabel="#{msg.fuSelecionar}" deleteLabel="#{msg.fuCancelar}" clearAllLabel="#{msg.fuLimparLista}" uploadLabel="#{msg.fuEnviar}" onclick="return verificaQuantidade(); ">
+					<a4j:ajax event="uploadcomplete" execute="@form" render="uploader" oncomplete="recarregarTabela();" status="modalStatus"/>
+				</rich:fileUpload>
+				<h:panelGroup layout="block" id="statusUpload">
+					<h:panelGroup layout="block" rendered="#{mbCteTerceiros.msgLogImportacao != null}" styleClass="MarginLeft7px MarginBottom10px">
+						<div class="QuebraTexto">
+							<h:outputText value="#{mbCteTerceiros.msgLogImportacao}" styleClass="MensagemDeErro QuebraTexto" id="mensagem"/>
+						</div>	
+					</h:panelGroup>
+					<a4j:commandButton value="#{msg.botaoSim}" styleClass="BotaoTexto Largura50px" actionListener="#{mbCteTerceiros.upload}" rendered="#{mbCteTerceiros.uploadedFile != null}" render="uploader" oncomplete="recarregarTabela();" status="modalStatus"/>
+					<a4j:commandButton value="#{msg.botaoNao}" styleClass="BotaoTexto Largura50px" actionListener="#{mbCteTerceiros.limparDadosDoUpload}" rendered="#{mbCteTerceiros.uploadedFile != null}" render="statusUpload" status="modalStatus"/>
+					<a4j:commandButton value="#{msg.botaoVoltar}" styleClass="BotaoTexto Largura50px" actionListener="#{mbCteTerceiros.voltarModalImportador}" render="statusUpload" oncomplete="#{rich:component('importador')}.hide();" status="modalStatus"/>
+				</h:panelGroup>
+			</h:panelGroup>
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

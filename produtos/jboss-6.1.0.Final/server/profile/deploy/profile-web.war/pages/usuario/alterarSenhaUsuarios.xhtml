@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:senha="http://java.sun.com/jsf/composite/components/senha"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputLabel value="#{msg.paginaAlterarSenha}" />
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbAlterarSenha.salvar}" title="#{msg.titleSalvar}" 
+				oncomplete="#{mbAlterarSenha.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"
+				execute="alteracaoSenha" render="modalInformativo painelMensagemErroSenha">
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px"  height="18px"/>
+			</a4j:commandLink>
+			<a4j:commandLink status="modalStatus" action="home" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+	
+		<div class="Largura980px">
+			<senha:alterarSenha />
+		</div>
+		
+	</ui:define>
+	
+</ui:composition>

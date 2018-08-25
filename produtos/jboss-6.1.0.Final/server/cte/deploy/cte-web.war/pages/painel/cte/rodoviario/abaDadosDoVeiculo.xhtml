@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	  
+	<ui:composition>
+	
+		<h:panelGroup layout="block" id="infDadosVeiculoId">
+			<h:panelGroup id="firstPanel">
+				<a4j:repeat value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.rodo.veic}" var="veic" rows="1" id="dadosVeiculosID">
+					<fieldset class="Fielset960x210BaseQuadrada">
+						<legend class="TituloDeCampo">#{msg.dadosDoVeiculo}</legend>
+						<div class="Linha900x38 MarginLeft5px MarginTop5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.codigoInterno}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{veic.cInt}" styleClass="Campo Largura100px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.renavam}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{veic.renavam}" styleClass="Campo Largura80px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.placaDoVeiculo}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{veic.placa}" styleClass="Campo Largura120px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{veic.uf}" styleClass="Campo Largura30px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.tara}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{veic.tara}" styleClass="Campo Largura50px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.capacidadeKG}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{veic.capKG}" styleClass="Campo Largura100px" readonly="true" />
+							</div>
+							
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.capacidadeM3}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{veic.capM3}" styleClass="Campo Largura100px" readonly="true" />
+							</div>
+						</div>
+						<div class="Linha900x38 MarginLeft5px MarginTop5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.tipoDePropriedade}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{veic.tpProp}" styleClass="Campo Largura140px" readonly="true" converter="tipoPropriedadeVeiculoCodigoConverter"/>
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.tipoDeVeiculo}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{veic.tpVeic}" styleClass="Campo Largura100px" readonly="true" converter="tipoVeiculoCodigoConverter"/>
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.tipoDeRodado}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{veic.tpRod}" styleClass="Campo Largura110px" readonly="true" converter="tipoRodadoCodigoConverter"/>
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.tipoDeCarroceria}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{veic.tpCar}" styleClass="Campo Largura120px" readonly="true" converter="tipoCarroceriaCodigoConverter"/>
+							</div>	
+						</div>
+						<fieldset class="Fieldset945x100 MarginTop5px MarginLeft5px">
+							<legend class="TituloDeCampo">#{msg.dadosDoProprietario}</legend>
+							<div class="Linha930x38 MarginLeft5px MarginTop5px">
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.cnpj}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{veic.prop.cnpj}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter">
+									</h:inputText>
+								</div>
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.cpf}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{veic.prop.cpf}" styleClass="Campo Largura100px" readonly="true" converter="cpfConverter">
+									</h:inputText>
+								</div>
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.ie}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{veic.prop.ie}" styleClass="Campo Largura100px" readonly="true" />
+								</div>
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.rntrc}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{veic.prop.rntrc}" styleClass="Campo Largura100px" readonly="true" />
+								</div>
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{veic.prop.xNome}" styleClass="Campo Largura460px" readonly="true" />
+								</div>
+							</div>
+							<div class="Linha930x38 MarginLeft5px MarginTop5px">
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{veic.prop.uf}" styleClass="Campo Largura30px" readonly="true" />
+								</div>
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.tac}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{veic.prop.tpProp}" styleClass="Campo Largura130px" readonly="true" converter="tipoProprietarioCodigoConverter"/>
+								</div>
+							</div>
+						</fieldset>
+					</fieldset>
+				</a4j:repeat>
+			</h:panelGroup>
+			
+			<h:panelGroup styleClass="Scroller MarginLeft2px Largura960px" layout="block">
+				<rich:dataScroller id="scrollDadosVeiculo1" for="dadosVeiculosID" fastControls="hide" render="firstPanel scrollDadosVeiculo1" maxPages="16">
+					<f:facet name="first">
+	               		<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll"/>
+	            	</f:facet>
+		            <f:facet name="last">
+	    	            <h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll"/>
+	        	    </f:facet>
+		            <f:facet name="previous">
+	    	            <h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll"/>
+	        	    </f:facet>
+					<f:facet name="next">
+	   	            	<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+	            	</f:facet>
+				</rich:dataScroller>
+			</h:panelGroup>
+			
+			<fieldset class="Fieldset310x150 MarginTop5px">
+				<legend class="TituloDeCampo">#{msg.lacres}</legend>
+				<h:panelGroup id="secondPanel">
+					<rich:dataTable value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.rodo.lacRodo}" var="lacRodo" id="rodoLacre" rows="3" styleClass="Largura300px MarginLeft5px MarginTop5px">
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.numeroDoLacre}" />
+							</f:facet>
+							<h:outputText value="#{lacRodo.nLacre}" />
+						</rich:column>
+					</rich:dataTable>
+				</h:panelGroup>
+				<h:panelGroup styleClass="Scroller Largura298px MarginLeft5px" layout="block">
+					<rich:dataScroller id="scrollDadosVeiculo2" for="rodoLacre" fastControls="hide" render="secondPanel" maxPages="4"> 
+						<f:facet name="first">
+		               		<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll"/>
+		            	</f:facet>
+			            <f:facet name="last">
+		    	            <h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll"/>
+		        	    </f:facet>
+			            <f:facet name="previous">
+		    	            <h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll"/>
+		        	    </f:facet>
+						<f:facet name="next">
+		   	            	<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+		            	</f:facet>
+					</rich:dataScroller>
+				</h:panelGroup>
+			</fieldset>
+			
+			<fieldset class="Fieldset620x150 MarginLeft10px MarginTop5px">
+				<legend class="TituloDeCampo">#{msg.informacoesDoMotorista}</legend>
+				<h:panelGroup id="thirdPanel">
+					<rich:dataTable value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.rodo.moto}" var="moto" id="dadosMotorista" styleClass="Largura600px MarginLeft10px MarginTop5px" rows="3">
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.cpf}" />
+							</f:facet>
+							<h:outputText value="#{moto.cpf}" converter="cpfConverter"/>
+						</rich:column>
+						<rich:column styleClass="linhaTabelaDefault">
+							<f:facet name="header">
+								<h:outputText value="#{msg.nome}" />
+							</f:facet>
+							<h:outputText value="#{moto.xNome}" />
+						</rich:column>
+					</rich:dataTable>
+				</h:panelGroup>
+				<h:panelGroup styleClass="Scroller Largura598px MarginLeft10px" layout="block">
+					<rich:dataScroller id="scrollDadosVeiculo3" for="dadosMotorista" fastControls="hide" render="thirdPanel" maxPages="9">
+						<f:facet name="first">
+		               		<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll"/>
+		            	</f:facet>
+			            <f:facet name="last">
+		    	            <h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll"/>
+		        	    </f:facet>
+			            <f:facet name="previous">
+		    	            <h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll"/>
+		        	    </f:facet>
+						<f:facet name="next">
+		   	            	<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+		            	</f:facet>
+					</rich:dataScroller>
+				</h:panelGroup>
+			</fieldset>
+		</h:panelGroup>
+	</ui:composition>
+	
+</html>

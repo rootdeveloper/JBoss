@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal">
+	
+	<h:panelGroup id="camposCadastroCofins" layout="block" rendered="#{mbImposto.situacaoTributaria != null}">
+
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.sequencialDeCalculoTela}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="sequenciaCalculoCofins" value="#{mbImposto.impostoVO.abstractImposto.sequenciaCalculo}" maxlength="1" disabled="#{!cc.attrs.ruleRender}"
+				onkeypress="Mascara(this, Integer)" onkeydown="Mascara(this, Integer)" onkeyup="Mascara(this, Integer)"
+				onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"
+				styleClass="Campo PositionRelativeFloatLeft Largura10px"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+
+		<h:panelGroup styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('COFINS')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.esquemaBC}" styleClass="TituloDeCampo" />
+			</div>
+			<h:selectOneMenu value="#{mbImposto.impostoVO.abstractImposto.parametroCalculoCofinsAliquota.esquemaCalculoCofins}"  disabled="#{!cc.attrs.ruleRender}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura300px">
+				<f:selectItems value="#{mbImposto.getEnum('EsquemaBaseCalculoCofinsEnum')}" var="esquema" itemLabel="#{esquema.esquemaBaseCalculoCofins}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+		
+		<h:panelGroup styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('COFINS')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.aliquota}" styleClass="TituloDeCampo" />
+			</div>
+			<h:selectOneMenu value="#{mbImposto.impostoVO.abstractImposto.parametroCalculoCofinsAliquota.formaCalculoAliquotaImposto}" 
+				disabled="#{!cc.attrs.ruleRender}" styleClass="ComboField PositionRelativeFloatLeft Largura140px">
+				<f:selectItems value="#{mbImposto.getEnum('FormaCalculoAliquotaImpostoEnum')}" var="aliquota" itemLabel="#{aliquota.formaCalculoAliquotaImposto}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+	</h:panelGroup>	
+</ui:composition>

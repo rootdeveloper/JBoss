@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.perfilUsuario}"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	   <util:modalInformativo mensagemInformativo="#{mbPerfilUsuario.mensagem}" nomePainel="modalInformativo" tituloModal="#{msg.mensagem}"/>
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<a4j:commandLink status="modalStatus" actionListener="#{mbPerfilUsuario.salvar}" title="#{msg.titleSalvar}"
+					oncomplete="#{mbPerfilUsuario.renderizaModal} ? #{rich:component('modalInformativo')}.show() : ''"
+					execute="picklist" render="modalInformativo mensagemErro">
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem"
+						width="26px" height="18px"/>
+				</a4j:commandLink>
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		<h:panelGroup layout="block" styleClass="Altura90px">
+		
+			<div class="Linha990x25 MarginLeft10px MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px">
+					<h:outputText value="#{msg.nomeDoUsuario}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura160px">
+					<h:inputText value="#{mbPerfilUsuario.vo.nome}" readonly="true" styleClass="Campo Largura680px"/>
+				</div>
+			</div>
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px">
+					<h:outputText value="#{msg.login}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura160px">
+					<h:inputText value="#{mbPerfilUsuario.vo.login}" readonly="true" styleClass="Campo Largura680px"/>
+				</div>
+			</div>
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px">
+					<h:outputText value="#{msg.email}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura160px">
+					<h:inputText value="#{mbPerfilUsuario.vo.email}" readonly="true" styleClass="Campo Largura680px"/>
+				</div>
+			</div>
+		</h:panelGroup>
+		<h:panelGroup id="mensagemErro" layout="block">
+			<h:outputText value="#{mbPerfilUsuario.mensagemErro}" styleClass="MensagemDeErro MarginLeft5px" />
+		</h:panelGroup>
+		<rich:tabPanel id="tabFiltro" switchType="client">
+			<rich:tab header="#{msg.painelNFeEntrada}">
+				<h:panelGroup styleClass="Linha980x115 MarginTop5px MarginLeft10px" id="picklist" layout="block">
+					<h:selectManyListbox value="#{mbPerfilUsuario.picklist.listaEsquerdaSelecionados}" id="left" converter="entityConverter"
+						styleClass="Largura300px Altura110px PositionRelativeFloatLeft SelectMultiple" tabindex="1">
+						<f:selectItems value="#{mbPerfilUsuario.picklist.listaEsquerda}"/>
+					</h:selectManyListbox>
+					<h:panelGroup styleClass="PositionRelativeFloatLeft Largura35px AlignCenter MarginLeft5px">
+						<a4j:commandLink styleClass="PositionRelativeFloatLeft" actionListener="#{mbPerfilUsuario.picklist.adicionarTodos}" render="picklist" execute="left"
+							title="#{msg.titleAdicionarTodos}">
+							<h:graphicImage value="#{resource['images/png:setasDireita.png']}" alt="add all" styleClass="BotaoImagem" width="21px" height="15px"/>
+						</a4j:commandLink>
+						<a4j:commandLink styleClass="PositionRelativeFloatLeft" actionListener="#{mbPerfilUsuario.picklist.adicionar}" render="picklist" execute="left"
+							title="#{msg.titleAdicionar}">
+							<h:graphicImage value="#{resource['images/png:setaDireita.png']}" alt="add" styleClass="BotaoImagem" width="21px" height="15px"/>
+						</a4j:commandLink>
+						<a4j:commandLink styleClass="PositionRelativeFloatLeft MarginTop15px" actionListener="#{mbPerfilUsuario.picklist.remover}" render="picklist" execute="right"
+							title="#{msg.titleRemover}">
+							<h:graphicImage value="#{resource['images/png:setaEsquerda.png']}" alt="remove" styleClass="BotaoImagem" width="21px" height="15px"/>
+						</a4j:commandLink>
+						<a4j:commandLink styleClass="PositionRelativeFloatLeft" actionListener="#{mbPerfilUsuario.picklist.removerTodos}" render="picklist" execute="right"
+							title="#{msg.titleRemoverTodos}">
+							<h:graphicImage value="#{resource['images/png:setasEsquerda.png']}" alt="remove all" styleClass="BotaoImagem" width="21px" height="15px"/>
+						</a4j:commandLink>
+					</h:panelGroup>
+					<h:selectManyListbox value="#{mbPerfilUsuario.picklist.listaDireitaSelecionados}" id="right" converter="entityConverter"
+						styleClass="Largura300px Altura110px PositionRelativeFloatLeft SelectMultiple" tabindex="2">
+						<f:selectItems value="#{mbPerfilUsuario.picklist.listaDireita}"/>
+					</h:selectManyListbox>
+				</h:panelGroup>
+			</rich:tab>
+		</rich:tabPanel>
+	</ui:define>
+</ui:composition>

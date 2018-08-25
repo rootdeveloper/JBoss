@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<h:form prependId="false">
+		<rich:popupPanel id="painelDownload" styleClass="Largura400px FundoBranco" autosized="true" resizeable="false" moveable="false"
+			onhide="enableInputsFormPrincipal();" onshow="disableInputsFormPrincipal();">
+			<f:facet name="header">
+				<h:outputText value="#{msg.download}"/>
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" styleClass="BotaoFechar TabWalk"
+						execute="@this" onclick="#{rich:component('painelDownload')}.hide(); return false;"
+						immediate="true"/>
+			</f:facet>
+			<h:panelGroup id="corpoDownload">
+				<h:panelGroup rendered="#{mbConsultaDestinados.downloadDisponivel}">
+					<h:outputText value="#{msg.salvarImportar}" styleClass="TituloDeCampo"/>
+					<br/>
+					<h:outputText value="#{mbConsultaDestinados.nomeArquivo}" styleClass="TituloDeCampo MarginTop10px MarginBotton10px"/>
+					<br/>
+					
+					<div class="AlignCenter MarginTop10px MarginBotton10px">
+						<a4j:commandLink  value="#{msg.importar}" styleClass="BotaoTexto">
+							<a4j:ajax event="click" listener="#{mbConsultaDestinados.importaNFe}" 
+								oncomplete="#{rich:component('modalInformativo')}.show()" render="modalInformativo" status="modalStatus" execute="@this"/>
+						</a4j:commandLink>
+						<h:commandLink actionListener="#{mbConsultaDestinados.efetuarDownload}"	styleClass="BotaoTexto" value="#{msg.titleSalvar}"/>
+					</div>
+				</h:panelGroup>
+				<h:panelGroup >
+					<h:outputText value="#{mbConsultaDestinados.mensagemModal}" rendered="#{!mbConsultaDestinados.downloadDisponivel}" styleClass="MensagemDeErro"/>
+				</h:panelGroup>
+			</h:panelGroup>
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

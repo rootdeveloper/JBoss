@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="metadata"/>
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaPacoteLiberacao}"/>
+	</ui:define>
+	<ui:define name="content">
+	
+		<util:modalSimNao mensagem="#{msg.apagarPacoteLiberacao}" nomePainel="confirmPane" tituloModal="#{msg.exclusao}"
+			actionSim="#{mbPacoteLiberacao.apagar}" render="controle painelMensagemErro" oncomplete="renderLista()" />
+			
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<h:commandButton action="#{mbPacoteLiberacao.novo}"	image="#{resource['images/png:novo.png']}" styleClass="BotaoImagem" title="#{msg.titleNovo}"/>
+				<a4j:commandLink actionListener="#{mbPacoteLiberacao.verificarExclusaoPacotes}"
+					oncomplete="#{mbPacoteLiberacao.renderizarModalExclusao} ? #{rich:component('confirmPane')}.show() : ''"
+					title="#{msg.titleExcluir}" status="modalStatus">
+					<h:graphicImage value="#{resource['images/png:delete.png']}" alt="apagar" styleClass="BotaoImagem"/>
+				</a4j:commandLink>
+				<h:commandButton action="home" image="#{resource['images/png:voltar.png']}" styleClass="BotaoImagem" title="#{msg.titleVoltar}"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		<rich:dataTable id="dataSchema" var="item" value="#{mbPacoteLiberacao.listaDePacoteLiberacao}" rows="10"
+			styleClass="Largura100pc" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			onrowdblclick="alterar('#{it.index}');" iterationStatusVar="it" noDataLabel="#{msg.listaPacoteLiberacaoVazia}">
+			<rich:column headerClass="Largura50px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText/>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{item.selected}" styleClass="Margin0px"/>
+			</rich:column>
+			<rich:column headerClass="Largura50px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigo}"/>
+				</f:facet>
+				<h:outputText value="#{item.id}"/>
+			</rich:column>
+			<rich:column headerClass="Largura130px" styleClass="AlignCenter Truncate">
+				<f:facet name="header">
+					<h:outputText value="#{msg.versaoDoPacote}"/>
+				</f:facet>
+				<h:outputText value="#{item.versao}" title="#{item.versao}"/>
+			</rich:column>
+			<rich:column  headerClass="Largura130px" styleClass="AlignCenter Truncate">
+				<f:facet name="header">
+					<h:outputText value="#{msg.versaoDoManual}"/>
+				</f:facet>
+				<h:outputText value="#{item.manual.versao}" title="#{item.manual.versao}"/>
+			</rich:column>
+			<rich:column headerClass="Largura60px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataDeLiberacao}"/>
+				</f:facet>
+				<h:outputText value="#{item.dataLiberacao}">
+					<f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</rich:column>
+			<rich:column headerClass="Largura60px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataDeInclusao}"/>
+				</f:facet>
+				<h:outputText value="#{item.dataCriacao}">
+					<f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</rich:column>
+			<rich:column headerClass="Largura60px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataDeAlteracao}"/>
+				</f:facet>
+				<h:outputText value="#{item.dataModificacao}">
+					<f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="dataSchema" idPanelScroller="controle" maxPages="16" panelStyleClass="Scroller100pc"
+			renderedTotalRegistros="#{not empty mbPacoteLiberacao.listaDePacoteLiberacao}"
+			totalRegistros="#{mbPacoteLiberacao.quantidadeRegistros}" pageNumber="#{mbPacoteLiberacao.scrollerPageNumber}"/>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro">
+			<h:outputText value="#{mbPacoteLiberacao.mensagemErroPrincipal}" styleClass="MensagemDeErro" escape="false"/>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="alterar" action="#{mbPacoteLiberacao.editarPacote}" status="modalStatus">
+			<a4j:param name="linhaDoPacote" assignTo="#{mbPacoteLiberacao.linhaDoPacote}"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="renderLista" render="dataSchema" status="modalStatus"/>
+		
+	</ui:define>
+</ui:composition>

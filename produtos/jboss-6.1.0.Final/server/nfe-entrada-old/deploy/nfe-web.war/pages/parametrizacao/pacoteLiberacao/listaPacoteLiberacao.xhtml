@@ -1,0 +1,219 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaPacoteDeLiberacao}"/>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<util:modalInformativo mensagemInformativo="#{mbPacoteLiberacao.mensagemModal}" tituloModal="#{msg.mensagem}"
+			nomePainel="modalInformativo"/>
+
+		<util:modalSimNao mensagem="#{mbPacoteLiberacao.msgExcluirSelecionadosTela}" nomePainel="confirmExclusao"
+			tituloModal="#{msg.msgConfirmacaoExclusaoTela}" actionSim="#{mbPacoteLiberacao.excluiSelecionados}"
+			render="controle modalInformativo" tituloFuncao="selecionado" idCheckbox="checkboxPctLiberacao"
+			oncomplete="#{rich:component('modalInformativo')}.show(); renderAllListaPacoteLiberacao();"/>
+
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:novoAction action="#{mbPacoteLiberacao.novo}" render="erroEdicao"/>
+				<botao:excluir actionListener="#{mbPacoteLiberacao.verificaPacotesParaExclusao}"
+					idModalSimNao="confirmExclusao" renderizarModal="#{mbPacoteLiberacao.renderizarModal}"
+					idModalInformativo="modalInformativo" idPanelErro="erroEdicao"/>
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+
+			<rich:toolbarGroup location="right">
+				<botao:limparFiltro actionListener="#{mbPacoteLiberacao.limparFiltro}" render="controle"
+					oncomplete="renderAllListaPacoteLiberacao()" buttonStyle="MarginRight5px"
+					idPanelErro="erroEdicao"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+
+		<rich:dataTable id="tabelaPacoteLiberacao" var="item" value="#{mbPacoteLiberacao.listaPacoteLiberacao}"
+			rows="10" styleClass="Largura100pc" noDataLabel="#{msg.listaPacoteLiberacaoVazia}"
+			onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			onrowdblclick="selecionaPacote(#{rowKey})" rowKeyVar="rowKey">
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxPctLiberacao" styleClass="Margin0px"
+						valueChangeListener="#{mbPacoteLiberacao.selecionarTodos}" onkeydown="blockBackSpace(event);"
+						onkeyup="unblockBackSpace();" tabindex="1">
+						<a4j:ajax event="click" render="tabelaPacoteLiberacao" status="modalStatus"
+							oncomplete="reSize(); blockDuploCliqueCheckbox();"/>
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{item.selected}" onkeydown="blockBackSpace(event);"
+					onkeyup="unblockBackSpace();" styleClass="TabWalk">
+					<a4j:ajax event="valueChange" execute="@this"/>
+				</h:selectBooleanCheckbox>
+			</rich:column>
+
+			<rich:column id="colunaCodigoPct" styleClass="AlignCenter" headerClass="Largura90px" sortBy="#{item.id}"
+				sortOrder="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['id'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.id, mbPacoteLiberacao.columnFilter.mapColumnFilter['id'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigoPct}"/>
+					<table:orderArrow action="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['id'].sortBy}"
+						order="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['id'].sortOrder}"
+						render="tabelaPacoteLiberacao" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br />
+					<h:inputText tabindex="2" value="#{mbPacoteLiberacao.columnFilter.mapColumnFilter['id'].filterBy}"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);"
+						onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);"
+						onmouseout="Mascara(this, Integer);" styleClass="Campo Largura80px" maxlength="10">
+						<a4j:ajax event="valueChange" render="controle"
+							oncomplete="renderBodyOfListaPacoteLiberacao();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+			<h:outputText value="#{item.id}"/>
+			</rich:column>
+
+			<rich:column id="colunaVersaoSchema" styleClass="AlignCenter Truncate" headerClass="Largura165px"
+				sortBy="#{item.versao}"
+				sortOrder="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['versao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.versao, mbPacoteLiberacao.columnFilter.mapColumnFilter['versao'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.versaoPacote}"/>
+					<table:orderArrow action="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['versao'].sortBy}"
+						order="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['versao'].sortOrder}"
+						render="tabelaPacoteLiberacao" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br />
+					<h:inputText tabindex="3" styleClass="Campo Largura155px" onkeypress="executeFilter(this,event)"
+						maxlength="6" value="#{mbPacoteLiberacao.columnFilter.mapColumnFilter['versao'].filterBy}">
+						<a4j:ajax event="valueChange" render="controle"
+							oncomplete="renderBodyOfListaPacoteLiberacao();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.versao}" title="#{item.versao}" />
+			</rich:column>
+
+			<rich:column id="colunaVersaoManual" styleClass="AlignCenter" headerClass="Largura135px"
+				sortBy="#{item.manual.versao}"
+				sortOrder="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['versaoManual'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.manual.versao, mbPacoteLiberacao.columnFilter.mapColumnFilter['versaoManual'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.versaoManual}"/>
+					<table:orderArrow action="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['versaoManual'].sortBy}"
+						order="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['versaoManual'].sortOrder}"
+						render="tabelaPacoteLiberacao" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br />
+					<h:inputText value="#{mbPacoteLiberacao.columnFilter.mapColumnFilter['versaoManual'].filterBy}"
+						tabindex="4" styleClass="Campo Largura125px" onkeypress="executeFilter(this,event)"
+						maxlength="10">
+						<a4j:ajax event="valueChange" render="controle"
+							oncomplete="renderBodyOfListaPacoteLiberacao();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+			<h:outputText value="#{item.manual.versao}"/>
+			</rich:column>
+
+			<rich:column id="colunaDataLiberacao" styleClass="AlignCenter" headerClass="Largura135px"
+				sortBy="#{item.dataLiberacao}" 
+				sortOrder="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['dataLiberacao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.dataLiberacao, mbPacoteLiberacao.columnFilter.mapColumnFilter['dataLiberacao'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataLiberacao}"/>
+						<table:orderArrow render="tabelaPacoteLiberacao" oncomplete="blockDuploCliqueCheckbox();"
+							action="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['dataLiberacao'].sortBy}"
+							order="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['dataLiberacao'].sortOrder}"/>
+					<br />
+					<h:inputText value="#{mbPacoteLiberacao.columnFilter.mapColumnFilter['dataLiberacao'].filterBy}"
+						styleClass="Campo Largura125px" onkeypress="Mascara(this, Data); executeFilter(this,event);"
+						maxlength="10" tabindex="5" onkeyup="Mascara(this, Data);" onkeydown="Mascara(this, Data);"
+						converter="dateFilterConverter" onfocus="origValue = this.value;"
+						onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="Mascara(this, Data);"
+						onmouseup="Mascara(this, Data);" onmouseout="Mascara(this, Data);">
+						<a4j:ajax event="valueChange" render="controle"
+							oncomplete="renderBodyOfListaPacoteLiberacao();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dataLiberacao}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</rich:column>
+
+			<rich:column id="colunaDataInclusao" styleClass="AlignCenter" headerClass="Largura135px"
+				sortBy="#{item.dataInclusaoNoSistema}" 
+				sortOrder="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['dataInclusao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.dataInclusaoNoSistema, mbPacoteLiberacao.columnFilter.mapColumnFilter['dataInclusao'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataInclusao}"/>
+					<table:orderArrow action="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['dataInclusao'].sortBy}"
+						order="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['dataInclusao'].sortOrder}"
+						render="tabelaPacoteLiberacao" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br />
+					<h:inputText value="#{mbPacoteLiberacao.columnFilter.mapColumnFilter['dataInclusao'].filterBy}"
+						styleClass="Campo Largura125px" onkeypress="Mascara(this, Data); executeFilter(this,event);"
+						maxlength="10" tabindex="6" onkeyup="Mascara(this, Data);" onkeydown="Mascara(this, Data);"
+						converter="dateFilterConverter" onfocus="origValue = this.value;"
+						onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="Mascara(this, Data);"
+						onmouseup="Mascara(this, Data);" onmouseout="Mascara(this, Data);">
+						<a4j:ajax event="valueChange" render="controle" execute="@this" status="modalStatus"
+							oncomplete="renderBodyOfListaPacoteLiberacao();"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dataInclusaoNoSistema}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</rich:column>
+
+			<rich:column id="colunaGrupoSchema" styleClass="AlignCenter" headerClass="Largura270px"
+				sortBy="#{item.grupoSchema}" 
+				sortOrder="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['grupoSchema'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.grupoSchema, mbPacoteLiberacao.columnFilter.mapColumnFilter['grupoSchema'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.grupoSchema}"/>
+						<table:orderArrow render="tabelaPacoteLiberacao" oncomplete="blockDuploCliqueCheckbox();"
+							action="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['grupoSchema'].sortBy}"
+							order="#{mbPacoteLiberacao.columnOrder.mapColumnOrder['grupoSchema'].sortOrder}"/>
+					<br />
+					<h:inputText value="#{mbPacoteLiberacao.columnFilter.mapColumnFilter['grupoSchema'].filterBy}"
+						onkeypress="Mascara(this, Letra); executeFilter(this,event);"
+						onkeyup="Mascara(this, Letra);" onkeydown="Mascara(this, Letra);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Letra);" onmouseup="Mascara(this, Letra);"
+						onmouseout="Mascara(this, Letra);" maxlength="10" styleClass="Campo Largura260px" tabindex="7">
+						<a4j:ajax event="valueChange" render="controle" execute="@this" status="modalStatus"
+							oncomplete="renderBodyOfListaPacoteLiberacao();"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.grupoSchema}"/>
+			</rich:column>
+
+		</rich:dataTable>
+
+		<table:scroller for="tabelaPacoteLiberacao" idPanelScroller="controle" maxPages="10"
+			panelStyleClass="ScrollerPainel MarginBottom5px" pageNumber="#{mbPacoteLiberacao.scrollerPageNumber}"
+			renderedTotalRegistros="#{not empty mbPacoteLiberacao.listaPacoteLiberacao}"
+			totalRegistros="#{mbPacoteLiberacao.quantidadeRegistrosPacoteLiberacao}"/>
+
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px"
+				rendered="#{not empty mbPacoteLiberacao.mensagemErro}">
+				<h:outputText value="#{mbPacoteLiberacao.mensagemErro}" styleClass="MensagemDeErro MarginLeft10px"
+					escape="false"/>
+			</h:panelGroup>
+		</h:panelGroup>
+
+		<a4j:jsFunction name="selecionaPacote" render="erroEdicao" action="#{mbPacoteLiberacao.editar}">
+			<a4j:param name="paramSelecionado" assignTo="#{mbPacoteLiberacao.linhaSelecionada}"/>
+		</a4j:jsFunction>
+		<a4j:jsFunction name="renderBodyOfListaPacoteLiberacao" render="tabelaPacoteLiberacao@body" oncomplete="blockDuploCliqueCheckbox();"/>
+		<a4j:jsFunction name="renderAllListaPacoteLiberacao" render="tabelaPacoteLiberacao" oncomplete="blockDuploCliqueCheckbox();"/>
+
+	</ui:define>
+</ui:composition>

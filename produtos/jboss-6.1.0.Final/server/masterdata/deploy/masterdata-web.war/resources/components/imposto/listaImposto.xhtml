@@ -1,0 +1,91 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+   	<composite:interface>
+       <composite:attribute name="ruleRender" required="false"/>
+    </composite:interface>
+
+	<composite:implementation>
+	
+	   	<util:modalSimNao mensagem="#{mbImposto.msgExcluirSelecionadosTela}" nomePainel="confirmPaneImposto"
+	   		tituloModal="#{msg.msgConfirmacaoExclusaoTela}" actionSim="#{mbImposto.excluirSelecionados}" 
+	   		render="barraBotoes controleImposto informativoModalImposto" tituloFuncao="selecionadoImposto" 
+	   		oncomplete="#{rich:component('informativoModalImposto')}.show(); renderAllListaImpostoVO();"/>
+	
+		<util:modalInformativo mensagemInformativo="#{mbImposto.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="informativoModalImposto"/>
+	
+		<rich:toolbar id="barraBotoes" styleClass="BarraDeBotoesPainel" rendered="#{cc.attrs.ruleRender}">
+	
+			<a4j:commandLink status="modalStatus" immediate="true" title="#{msg.titleNovo}"	actionListener="#{mbImposto.novo}"
+				render="painelImpostos"  rendered="#{fn:length(mbImposto.listaImpostoVO) != 4 and cc.attrs.ruleRender}" execute="@this">
+				<h:graphicImage value="#{resource['images/png:novo.png']}" alt="novo" width="26px" height="18px" styleClass="BotaoImagem" />
+			</a4j:commandLink>	
+			<a4j:commandLink status="modalStatus" actionListener="#{mbImposto.verificarExclusaoImposto}" title="#{msg.titleRemover}" 
+				render="confirmPaneImposto, informativoModalImposto" 
+				oncomplete="#{mbImposto.renderizarModal} ? #{rich:component('confirmPaneImposto')}.show() : #{rich:component('informativoModalImposto')}.show()"  
+				execute="@this">
+				<h:graphicImage value="#{resource['images/png:delete.png']}" alt="apagar" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink> 
+	
+		</rich:toolbar>
+	
+		<rich:dataTable id="listaImpostoVO" var="item" rows="4" styleClass="Largura100pc" value="#{mbImposto.listaImpostoVO}" 
+			onrowmouseover="className='SelecionaLinha'" onrowdblclick="editarImposto(#{rowkey})" rowKeyVar="rowkey" onrowmouseout="className=''"
+			noDataLabel="#{msg.listaImpostoVOVazia}">
+	
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px" rendered="#{cc.attrs.ruleRender}"> 
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxCalculoImposto" valueChangeListener="#{mbImposto.selecionarTodos}" 
+						styleClass="Margin0px checkboxCalculoImposto" 
+						disabled="#{empty mbImposto.listaImpostoVO}">
+						<a4j:ajax event="click" render="listaImpostoVO" status="modalStatus" immediate="true" />
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{item.selected}" styleClass="Margin0px">
+					<a4j:ajax event="valueChange" execute="@this" />
+				</h:selectBooleanCheckbox>
+			</rich:column>
+		
+			<rich:column styleClass="AlignCenter" headerClass="Largura120px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.grupo}" />
+				</f:facet>
+				<h:outputText value="#{item.grupoImposto}" />
+			</rich:column>
+		
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura650px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.tipo}" />
+				</f:facet>
+				<h:outputText value="#{item.abstractImposto.situacaoTributaria.codigoSituacaoTributaria} - #{item.abstractImposto.situacaoTributaria.descricao}"
+					title="#{item.abstractImposto.situacaoTributaria.codigoSituacaoTributaria} - #{item.abstractImposto.situacaoTributaria.descricao}"/>
+			</rich:column>
+		
+			<rich:column styleClass="AlignCenter" headerClass="Largura120px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.sequencia}" />
+				</f:facet>
+				<h:outputText value="#{item.abstractImposto.sequenciaCalculo}" />
+			</rich:column>
+	
+		</rich:dataTable>
+		
+		<table:scroller for="listaImpostoVO" idPanelScroller="controleImposto" maxPages="16" panelStyleClass="Scroller100pc" 
+			pageNumber="#{mbImposto.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbImposto.listaImpostoVO}" 
+			totalRegistros="#{mbImposto.quantidadeRegistros}" />
+	
+		<a4j:jsFunction name="editarImposto" status="modalStatus" render="painelImpostos" action="#{mbImposto.editar}" execute="@this">
+			<a4j:param name="linhaDaImposto" assignTo="#{mbImposto.linhaSelecionada}" />
+		</a4j:jsFunction>
+		
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderAllListaImpostoVO" render="listaImpostoVO"/>
+	</composite:implementation>
+</html>

@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+	
+		<rich:popupPanel modal="true" id="modalListaSegmentoEmpresarial" autosized="true" resizeable="false"
+			moveable="false" domElementAttachment="form" styleClass="OverflowHidden Largura700px FundoBranco"
+			onbeforeshow="renderBodyOfListaSegmentoEmpresarial();"
+			onshow="disableInputsFormPrincipal();  mudaFocus('listaSegmentoEmpresarial:filtroCodigo');" 
+			onhide="enableInputsFormPrincipal();">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.segmentoEmpresarial}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" oncomplete="#{rich:component('modalListaSegmentoEmpresarial')}.hide();" 
+					action="#{mbEmpresa.processCleanSegmentoEmpresarial}" styleClass="BotaoFechar TabWalk" execute="@this"/>
+			</f:facet>
+			
+			<rich:dataTable id="listaSegmentoEmpresarial" var="item" value="#{mbEmpresa.listaSegmentoEmpresarial}"
+				rows="5" styleClass="Largura100pc" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+				onrowdblclick="selecionarSegmentoEmpresarial(#{rowKey})" noDataLabel="#{msg.listaSegmentoEmpresarialVazia}"
+				rowKeyVar="rowKey">
+				
+				<rich:column styleClass="AlignCenter" headerClass="Largura100px"
+					sortBy="#{item.id}" sortOrder="#{mbEmpresa.segmentoEmpresarialColumnOrder.mapColumnOrder['Codigo'].sortOrder}"
+					filterExpression="#{fn:containsIgnoreCase(item.id, mbEmpresa.segmentoEmpresarialColumnFilter.mapColumnFilter['Codigo'].filterBy)}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.codigo}"/>
+						<table:orderArrow action="#{mbEmpresa.segmentoEmpresarialColumnOrder.mapColumnOrder['Codigo'].sortBy}" 
+							order="#{mbEmpresa.segmentoEmpresarialColumnOrder.mapColumnOrder['Codigo'].sortOrder}" render="listaSegmentoEmpresarial"/>
+	                    <br/>
+	                    <h:inputText id="filtroCodigo" tabindex="1" value="#{mbEmpresa.segmentoEmpresarialColumnFilter.mapColumnFilter['Codigo'].filterBy}" 
+	                    	onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+							onfocus="origValue = this.value;" styleClass="Campo Largura80px" onblur="if(this.value != origValue) valueChangeIE(this);" 
+							onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);" maxlength="10">
+	                        <a4j:ajax event="valueChange" render="controleSegmentoEmpresarial" oncomplete="renderBodyOfListaSegmentoEmpresarial();" execute="@this" 
+	                        	status="modalStatus" />
+	                    </h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.id}"/>
+				</rich:column>
+				
+				<rich:column styleClass="AlignLeft" headerClass="Largura500px"
+					sortBy="#{item.descricaoSegmento}" sortOrder="#{mbEmpresa.segmentoEmpresarialColumnOrder.mapColumnOrder['Descricao'].sortOrder}"
+					filterExpression="#{fn:containsIgnoreCase(item.descricaoSegmento, mbEmpresa.segmentoEmpresarialColumnFilter.mapColumnFilter['Descricao'].filterBy)}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.descricao}"/>
+						<table:orderArrow action="#{mbEmpresa.segmentoEmpresarialColumnOrder.mapColumnOrder['Descricao'].sortBy}" 
+							order="#{mbEmpresa.segmentoEmpresarialColumnOrder.mapColumnOrder['Descricao'].sortOrder}" render="listaSegmentoEmpresarial"/>
+	                    <br/>
+	                    <h:inputText id="filtroNome" tabindex="2" value="#{mbEmpresa.segmentoEmpresarialColumnFilter.mapColumnFilter['Descricao'].filterBy}" 
+	                    	onkeypress="executeFilter(this,event)" styleClass="Campo Largura400px" maxlength="60">
+	                        <a4j:ajax event="valueChange" render="controleSegmentoEmpresarial" oncomplete="renderBodyOfListaSegmentoEmpresarial();" execute="@this"
+	                        	status="modalStatus" />
+	                    </h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.descricaoSegmento}"/>
+				</rich:column>
+				
+			</rich:dataTable>
+		
+			<table:scroller for="listaSegmentoEmpresarial" idPanelScroller="controleSegmentoEmpresarial" maxPages="4"
+				panelStyleClass="Scroller100pc" totalRegistros="#{mbEmpresa.quantidadeRegistrosSegmentoEmpresarial}"
+				renderedTotalRegistros="#{not empty mbEmpresa.listaSegmentoEmpresarial}"
+				pageNumber="#{mbEmpresa.scrollerPageNumberSegmentoEmpresarial}"/>
+						
+			<a4j:jsFunction name="selecionarSegmentoEmpresarial" status="modalStatus" render="jQuerySeg painelSegmentoEmpresarial"
+				action="#{mbEmpresa.selecionarSegmentoEmpresarial}" oncomplete="#{rich:component('modalListaSegmentoEmpresarial')}.hide(); return false;">
+				<a4j:param name="linhaSegmentoEmpresarial" assignTo="#{mbEmpresa.linhaSelecionada}"/>
+			</a4j:jsFunction>
+			
+			<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller --> 
+			<a4j:jsFunction name="renderBodyOfListaSegmentoEmpresarial" status="modalStatus" render="listaSegmentoEmpresarial@body"/>
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

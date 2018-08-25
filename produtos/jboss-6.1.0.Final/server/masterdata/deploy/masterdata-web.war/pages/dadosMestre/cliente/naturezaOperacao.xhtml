@@ -1,0 +1,41 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal">
+
+	<ui:param name="emptyValue" value=" "/>   
+
+	<h:panelGroup id="panelNaturezaOperacao">
+
+		<div class="Linha940x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura195px MarginLeft10px">
+				<h:outputText value="#{msg.naturezaOperacao}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="descricaoNaturezaOperacaoText" styleClass="Campo Largura650px PositionRelativeFloatLeft"
+				value="#{not empty mbCliente.cliente.naturezaOperacao ? mbCliente.cliente.naturezaOperacao.descricao : emptyValue}" 
+				disabled="#{mbCliente.statusInicio}" />
+				
+			<a4j:commandLink id="descricaoNaturezaOperacao" title="#{msg.pesquisarNaturezaOperacao}" execute="@this"
+				oncomplete="#{rich:component('modalListaNaturezaOperacao')}.show()" status="modalStatus" render="modalListaNaturezaOperacao" immediate="true" 
+				disabled="#{mbCliente.statusInicio}" actionListener="#{mbCliente.populaListaNaturezaOperacao}"
+				rendered="#{mbCliente.verificaPermissao('Administrador, Gerente, Atendente') and !mbCliente.statusInicio}" >
+				<h:graphicImage value="#{resource['images/png:detalhes.png']}" alt="search" 
+					styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk"/>
+			</a4j:commandLink>
+			<a4j:commandLink id="deletaNaturezaOperacao" title="#{msg.removerNaturezaOperacao}" status="modalStatus" 
+				render="panelNaturezaOperacao, jQueryNaturezaOperacao" execute="@this"
+				rendered="#{mbCliente.verificaPermissao('Administrador, Gerente, Atendente') and not empty mbCliente.cliente.naturezaOperacao}" 
+				actionListener="#{mbCliente.removeNaturezaOperacao}" disabled="#{mbCliente.statusInicio}">
+				<h:graphicImage value="#{resource['images/png:removerFiltro.png']}" alt="search" 
+					styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk"/>
+			</a4j:commandLink>
+		</div>
+
+	</h:panelGroup>
+
+	<rich:jQuery id="jQueryNaturezaOperacao" selector="#descricaoNaturezaOperacaoText" timing="immediate" query="attr('readonly', 'readonly');"/>
+	
+</ui:composition>

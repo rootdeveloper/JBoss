@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true" >
+
+<!-- 
+	%t - printa o nome da thread que gerou o evento de log
+	%d - printa da data 
+	%c - printa da categoria do evento
+	%M - printa o metodo que gerou o log
+	%p - printa a prioridade do evento (INFO, WARN)
+	%L - printa a linha do evento que gerou o log
+	%m - printa a mensagem
+	%n - printa o line separator da plataforma
+	
+ -->
+ 
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%p] [%d{dd-MM-yyyy HH:mm:ss}] [%t] [%c{1}:%L] -> metodo %M - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="arquivo" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="${jboss.server.home.dir}/log/masterdata-web.log" />
+		<param name="Threshold" value="INFO" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10MB" /> 
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%p] [%d{dd-MM-yyyy HH:mm:ss}] [%t] [%c{1}:%L] -> metodo %M - %m%n" />
+		</layout>
+	</appender>
+	
+    <appender name="arquivoDiario" class="org.apache.log4j.DailyRollingFileAppender">
+	    <param name="file" value="${jboss.server.home.dir}/log/masterdata-web-diario.log" />
+	    <param name="datePattern" value="'.'yyyy-MM-dd" />
+	    <param name="Append" value="true" />
+	    <layout class="org.apache.log4j.PatternLayout">
+	    	<param name="ConversionPattern" value="[%p] [%d{dd-MM-yyyy HH:mm:ss}] [%t] [%c{1}:%L] -> metodo %M - %m%n" />
+	    </layout>
+	</appender>
+    
+    
+   <logger name="br.com.dataprimer.masterdata">
+    	<level value="DEBUG" />
+        <appender-ref ref="arquivo"/>
+        <appender-ref ref="arquivoDiario" />
+    </logger>
+    
+    <logger name="javax.faces" >
+		<level value="trace" />
+		<appender-ref ref="console" />
+		<appender-ref ref="arquivo"/>
+		<appender-ref ref="arquivoDiario" />
+	</logger>
+	
+
+    
+	<logger name="org.hibernate" >
+		<level value="DEBUG" />
+		<appender-ref ref="console" />
+		<appender-ref ref="arquivo"/>
+		<appender-ref ref="arquivoDiario" />
+	</logger>
+	
+	<logger name="org.hibernate.type">
+		<level value="TRACE" />
+		<appender-ref ref="console" />
+		<appender-ref ref="arquivo"/>
+		<appender-ref ref="arquivoDiario" />
+	</logger>
+	
+
+	<root>
+		<priority value="DEBUG" />
+		<appender-ref ref="console" />
+		<appender-ref ref="arquivo" />
+		<appender-ref ref="arquivoDiario" />
+	</root>   
+
+
+
+	<!-- <logger name="br.com.dataprimer.masterdata" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="org.hibernate" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="console" />
+	</logger>
+
+	<logger name="org.hibernate.SQL">
+		<level value="DEBUG" />
+		<appender-ref ref="console" />
+	</logger>
+
+	<logger name="org" additivity="false">
+		<level value="WARN" />
+		<appender-ref ref="console" />
+	</logger>
+> -->
+</log4j:configuration>
+
+

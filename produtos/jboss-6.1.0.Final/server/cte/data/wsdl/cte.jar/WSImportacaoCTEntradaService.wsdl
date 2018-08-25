@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="WSImportacaoCTEntradaService" targetNamespace="http://www.dataprimer.com.br/cte" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.dataprimer.com.br/cte" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.dataprimer.com.br/cte" xmlns:tns="http://www.dataprimer.com.br/cte" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="importacaoCT" nillable="true" type="xsd:string" />
+<xsd:element name="xmlRetornoImportacaoCT" nillable="true" type="xsd:string" />
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="importacaoCTResponse">
+    <wsdl:part element="tns:xmlRetornoImportacaoCT" name="xmlRetornoImportacaoCT">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="importacaoCT">
+    <wsdl:part element="tns:importacaoCT" name="importacaoCT">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSImportacaoCTEntrada">
+    <wsdl:operation name="importacaoCT">
+      <wsdl:input message="tns:importacaoCT" name="importacaoCT">
+    </wsdl:input>
+      <wsdl:output message="tns:importacaoCTResponse" name="importacaoCTResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSImportacaoCTEntradaServiceSoapBinding" type="tns:WSImportacaoCTEntrada">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="importacaoCT">
+      <soap:operation soapAction="importaCT" style="document" />
+      <wsdl:input name="importacaoCT">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="importacaoCTResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSImportacaoCTEntradaService">
+    <wsdl:port binding="tns:WSImportacaoCTEntradaServiceSoapBinding" name="WSImportacaoCTEntradaPort">
+      <soap:address location="http://B181548:8080/cte-ws/WSImportacaoCTEntradaService/WSImportacaoCTEntrada" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

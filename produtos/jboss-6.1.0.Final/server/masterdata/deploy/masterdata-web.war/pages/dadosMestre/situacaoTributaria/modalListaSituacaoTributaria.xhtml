@@ -1,0 +1,265 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<h:form prependId="false" id="formSituacaoTributaria" onkeypress="return bloqueioEnter(event);" styleClass="formSituacaoTributaria">
+	
+		<rich:popupPanel modal="true" id="modalSituacaoTributaria" autosized="true" resizeable="false" moveable="false" domElementAttachment="form" 
+			styleClass="Largura700px FundoBranco" onhide="enableInputsFormPrincipal();" onbeforeshow="renderBodyOfAllModalLista();"
+			onshow="iniciaFocusModal('abaCofins', null); disableInputsFormPrincipal(); mudaFocus('listaCofins:checkboxSituacaoTributaria');">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.menuSituacaoTributaria}"/>
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton id="fechar" image="/resources/images/png/close.png" styleClass="BotaoFechar TabWalk" execute="@this"
+					oncomplete="#{rich:component('modalSituacaoTributaria')}.hide();" action="#{mbSituacaoTributaria.resetAllScrollerModal}"
+					render="barraDeScrollCofins, barraDeScrollIcms, barraDeScrollIpi, barraDeScrollPis"/>
+			</f:facet>	
+		
+			<rich:tabPanel id="AbasModal" switchType="client">
+				
+				<rich:tab header="#{msg.menuCOFINS}" id="abaCofins" headerClass="abaCofins" onenter="reSize();">
+					<div class="PositionRelativeFloatLeft Largura665px">
+						<rich:dataTable id="listaCofins" value="#{mbSituacaoTributaria.listaCofins}" var="cofins" styleClass="Largura100pc" 
+							noDataLabel="#{msg.listaSituacaoTributariaVazia}" rows="6">
+							
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox styleClass="Margin0px checkboxStatus" id="checkboxSituacaoTributaria"
+										valueChangeListener="#{mbSituacaoTributaria.selecionarTodosCofins}" tabindex="1">
+										<a4j:ajax event="click" render="listaCofins" oncomplete="reSize();"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{cofins.selected}" >
+									<a4j:ajax event="valueChange" execute="@this"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px"
+								filterExpression="#{fn:containsIgnoreCase(cofins.codigoSituacaoTributaria, mbSituacaoTributaria.columnFilterModal.mapColumnFilter['CodigoCofins'].filterBy)}">
+								<f:facet name="header">
+									<h:outputText value="#{msg.cst}"/>
+									<br />
+									<h:inputText id="cst" value="#{mbSituacaoTributaria.columnFilterModal.mapColumnFilter['CodigoCofins'].filterBy}" 
+										onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);"
+										onfocus="origValue = this.value;" styleClass="Campo Largura50px" maxlength="2" tabindex="2" 
+										onblur="if(this.value != origValue) valueChangeIE(this);">
+										<a4j:ajax event="valueChange" render="barraDeScrollCofins" oncomplete="renderBodyOfModalListaCofins();"
+											execute="@this" status="modalStatus"/>
+									</h:inputText>
+								</f:facet>
+								<h:outputText value="#{cofins.codigoSituacaoTributaria}"/>
+							</rich:column>
+							
+							<rich:column styleClass="AlignLeft Largura500px Truncate" 
+								filterExpression="#{fn:containsIgnoreCase(cofins.descricao, mbSituacaoTributaria.columnFilterModal.mapColumnFilter['DescricaoCofins'].filterBy)}">
+								<f:facet name="header">
+									<h:outputText value="#{msg.descricao}"/>
+									<br />
+									<h:inputText id="descricao" value="#{mbSituacaoTributaria.columnFilterModal.mapColumnFilter['DescricaoCofins'].filterBy}" 
+										styleClass="Campo Largura480px" maxlength="200" onkeypress="executeFilter(this,event);"	tabindex="3">
+										<a4j:ajax event="valueChange" render="barraDeScrollCofins" oncomplete="renderBodyOfModalListaCofins();"
+											execute="@this" status="modalStatus"/>
+									</h:inputText>
+								</f:facet>
+								<h:outputText value="#{cofins.descricao}" title="#{cofins.descricao}"/>
+							</rich:column>
+						</rich:dataTable>
+						
+						<table:scroller for="listaCofins" idPanelScroller="barraDeScrollCofins" maxPages="4" panelStyleClass="Scroller100pc"
+							renderedTotalRegistros="#{not empty mbSituacaoTributaria.listaCofins}" totalRegistros="#{mbSituacaoTributaria.quantidadeRegistrosListaCofins}"
+							pageNumber="#{mbSituacaoTributaria.scrollerPageNumberCofins}"/>
+					</div>
+				</rich:tab>
+				
+				<rich:tab header="#{msg.menuICMS}" id="abaIcms" headerClass="abaIcms" onenter="reSize(); mudaFocus('listaIcms:checkboxSituacaoTributaria');">
+					<div class="PositionRelativeFloatLeft Largura665px">
+						<rich:dataTable id="listaIcms" value="#{mbSituacaoTributaria.listaIcms}" var="icms" styleClass="Largura100pc" 
+							noDataLabel="#{msg.listaSituacaoTributariaVazia}" rows="6">
+							
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox styleClass="Margin0px checkboxStatus" id="checkboxSituacaoTributaria"
+										valueChangeListener="#{mbSituacaoTributaria.selecionarTodosIcms}" tabindex="1">
+										<a4j:ajax event="click" render="listaIcms" oncomplete="reSize();"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{icms.selected}">
+									<a4j:ajax event="valueChange" execute="@this"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px"
+								filterExpression="#{fn:containsIgnoreCase(icms.codigoSituacaoTributaria, mbSituacaoTributaria.columnFilterModal.mapColumnFilter['CodigoICMS'].filterBy)}">
+								<f:facet name="header">
+									<h:outputText value="#{msg.cst}"/>
+									<br />
+									<h:inputText id="cst" value="#{mbSituacaoTributaria.columnFilterModal.mapColumnFilter['CodigoICMS'].filterBy}" 
+										styleClass="Campo Largura50px" onkeypress="Mascara(this, Integer); executeFilter(this,event);" tabindex="2" 
+										onfocus="origValue = this.value;" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+										maxlength="3" onblur="if(this.value != origValue) valueChangeIE(this);">
+										<a4j:ajax event="valueChange" render="barraDeScrollIcms" oncomplete="renderBodyOfModalListaIcms();"
+											execute="@this" status="modalStatus"/>
+									</h:inputText>
+								</f:facet>
+								<h:outputText value="#{icms.codigoSituacaoTributaria}"/>
+							</rich:column>
+							
+							<rich:column styleClass="AlignLeft Largura500px Truncate" 
+								filterExpression="#{fn:containsIgnoreCase(icms.descricao, mbSituacaoTributaria.columnFilterModal.mapColumnFilter['DescricaoIcms'].filterBy)}">
+								<f:facet name="header">
+									<h:outputText value="#{msg.descricao}"/>
+									<br />
+									<h:inputText id="descricao" value="#{mbSituacaoTributaria.columnFilterModal.mapColumnFilter['DescricaoIcms'].filterBy}" 
+										styleClass="Campo Largura480px" maxlength="200" onkeypress="executeFilter(this,event);" tabindex="3" >
+										<a4j:ajax event="valueChange" render="barraDeScrollIcms" oncomplete="renderBodyOfModalListaIcms();"
+											execute="@this" status="modalStatus"/>
+									</h:inputText>
+								</f:facet>
+								<h:outputText value="#{icms.descricao}" title="#{icms.descricao}"/>
+							</rich:column>
+						</rich:dataTable>
+						
+						<table:scroller for="listaIcms" idPanelScroller="barraDeScrollIcms" maxPages="4" panelStyleClass="Scroller100pc"
+							renderedTotalRegistros="#{not empty mbSituacaoTributaria.listaIcms}" totalRegistros="#{mbSituacaoTributaria.quantidadeRegistrosListaIcms}"
+							pageNumber="#{mbSituacaoTributaria.scrollerPageNumberIcms}"/>
+					</div>						
+				</rich:tab>
+				
+				<rich:tab header="#{msg.menuIPI}" id="abaIpi" headerClass="abaIpi" onenter="reSize(); mudaFocus('listaIpi:checkboxSituacaoTributaria');">
+					<div class="PositionRelativeFloatLeft Largura665px">
+						<rich:dataTable id="listaIpi" value="#{mbSituacaoTributaria.listaIpi}" var="ipi" styleClass="Largura100pc" 
+							noDataLabel="#{msg.listaSituacaoTributariaVazia}" rows="6">
+							
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox styleClass="Margin0px checkboxStatus" id="checkboxSituacaoTributaria"
+										valueChangeListener="#{mbSituacaoTributaria.selecionarTodosIpi}" tabindex="1">
+										<a4j:ajax event="click" render="listaIpi" oncomplete="reSize();"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{ipi.selected}">
+									<a4j:ajax event="valueChange" execute="@this"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px"
+								filterExpression="#{fn:containsIgnoreCase(ipi.codigoSituacaoTributaria, mbSituacaoTributaria.columnFilterModal.mapColumnFilter['CodigoIPI'].filterBy)}">
+								<f:facet name="header">
+									<h:outputText value="#{msg.cst}"/>
+									<br />
+									<h:inputText id="cst" value="#{mbSituacaoTributaria.columnFilterModal.mapColumnFilter['CodigoIPI'].filterBy}"
+										onfocus="origValue = this.value;" styleClass="Campo Largura50px" maxlength="2" tabindex="2" 
+										onblur="if(this.value != origValue) valueChangeIE(this);"
+										onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);">
+										<a4j:ajax event="valueChange" render="barraDeScrollIpi" oncomplete="renderBodyOfModalListaIpi();"
+											execute="@this" status="modalStatus"/>
+									</h:inputText>
+								</f:facet>
+								<h:outputText value="#{ipi.codigoSituacaoTributaria}"/>
+							</rich:column>
+							
+							<rich:column styleClass="AlignLeft Largura500px Truncate" 
+								filterExpression="#{fn:containsIgnoreCase(ipi.descricao, mbSituacaoTributaria.columnFilterModal.mapColumnFilter['DescricaoIpi'].filterBy)}">
+								<f:facet name="header">
+									<h:outputText value="#{msg.descricao}"/>
+									<br />
+									<h:inputText id="descricao" value="#{mbSituacaoTributaria.columnFilterModal.mapColumnFilter['DescricaoIpi'].filterBy}" 
+										styleClass="Campo Largura480px" maxlength="200" onkeypress="executeFilter(this,event);" tabindex="3">
+										<a4j:ajax event="valueChange" render="barraDeScrollIpi" oncomplete="renderBodyOfModalListaIpi();"
+											execute="@this" status="modalStatus"/>
+									</h:inputText>
+								</f:facet>
+								<h:outputText value="#{ipi.descricao}" title="#{ipi.descricao}"/>
+							</rich:column>
+						</rich:dataTable>
+						
+						<table:scroller for="listaIpi" idPanelScroller="barraDeScrollIpi" maxPages="4" panelStyleClass="Scroller100pc"
+							renderedTotalRegistros="#{not empty mbSituacaoTributaria.listaIpi}" totalRegistros="#{mbSituacaoTributaria.quantidadeRegistrosListaIpi}"
+							pageNumber="#{mbSituacaoTributaria.scrollerPageNumberIpi}"/>					
+					</div>
+				</rich:tab>		
+				
+				<rich:tab header="#{msg.menuPIS}" id="abaPis" headerClass="abaPis" onenter="reSize(); mudaFocus('listaPis:checkboxSituacaoTributaria');">
+					<div class="PositionRelativeFloatLeft Largura665px">
+						<rich:dataTable id="listaPis" value="#{mbSituacaoTributaria.listaPis}" var="pis" styleClass="Largura100pc" 
+							noDataLabel="#{msg.listaSituacaoTributariaVazia}" rows="6">
+							
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox styleClass="Margin0px checkboxStatus" id="checkboxSituacaoTributaria"
+										valueChangeListener="#{mbSituacaoTributaria.selecionarTodosPis}" tabindex="1">
+										<a4j:ajax event="click" render="listaPis" oncomplete="reSize();"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{pis.selected}">
+									<a4j:ajax event="valueChange" execute="@this"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px"
+								filterExpression="#{fn:containsIgnoreCase(pis.codigoSituacaoTributaria, mbSituacaoTributaria.columnFilterModal.mapColumnFilter['CodigoPIS'].filterBy)}">
+								<f:facet name="header">
+									<h:outputText value="#{msg.cst}"/>
+									<br />
+									<h:inputText id="codigo" value="#{mbSituacaoTributaria.columnFilterModal.mapColumnFilter['CodigoPIS'].filterBy}"
+										onfocus="origValue = this.value;" styleClass="Campo Largura50px" maxlength="2" tabindex="2"
+										onblur="if(this.value != origValue) valueChangeIE(this);"
+										onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);">
+										<a4j:ajax event="valueChange" render="barraDeScrollPis" oncomplete="renderBodyOfModalListaPis();"
+											execute="@this" status="modalStatus"/>
+									</h:inputText>
+								</f:facet>
+								<h:outputText value="#{pis.codigoSituacaoTributaria}"/>
+							</rich:column>
+							
+							<rich:column styleClass="AlignLeft Largura500px Truncate" 
+								filterExpression="#{fn:containsIgnoreCase(pis.descricao, mbSituacaoTributaria.columnFilterModal.mapColumnFilter['DescricaoPis'].filterBy)}">
+								<f:facet name="header">
+									<h:outputText value="#{msg.descricao}"/>
+									<br />
+									<h:inputText id="descricao" value="#{mbSituacaoTributaria.columnFilterModal.mapColumnFilter['DescricaoPis'].filterBy}" 
+										styleClass="Campo Largura480px" maxlength="200" onkeypress="executeFilter(this,event);"	tabindex="3">
+										<a4j:ajax event="valueChange" render="barraDeScrollPis" oncomplete="renderBodyOfModalListaPis();"
+											execute="@this" status="modalStatus"/>
+									</h:inputText>
+								</f:facet>
+								<h:outputText value="#{pis.descricao}" title="#{pis.descricao}"/>
+							</rich:column>
+						</rich:dataTable>
+						
+						<table:scroller for="listaPis" idPanelScroller="barraDeScrollPis" maxPages="4" panelStyleClass="Scroller100pc"
+							renderedTotalRegistros="#{not empty mbSituacaoTributaria.listaPis}" totalRegistros="#{mbSituacaoTributaria.quantidadeRegistrosListaPis}"
+							pageNumber="#{mbSituacaoTributaria.scrollerPageNumberPis}"/>
+					</div>
+				</rich:tab>		
+							
+			</rich:tabPanel>
+			
+			<a4j:jsFunction name="renderBodyOfModalListaCofins" render="listaCofins@body" oncomplete="reSize();"/>
+			<a4j:jsFunction name="renderBodyOfModalListaIcms" render="listaIcms@body" oncomplete="reSize();"/>
+			<a4j:jsFunction name="renderBodyOfModalListaIpi" render="listaIpi@body" oncomplete="reSize();"/>
+			<a4j:jsFunction name="renderBodyOfModalListaPis" render="listaPis@body" oncomplete="reSize();"/>
+			<a4j:jsFunction name="renderBodyOfAllModalLista" render="listaCofins@body, listaIcms@body, listaIpi@body, listaPis@body"
+				oncomplete="reSize();"/>
+			
+			<!-- Botões -->
+			<div class="PositionRelativeFloatLeft MarginLeft8px Linha670x25 MarginTop10px">
+				<a4j:commandButton value="#{msg.titleImportar}" status="modalStatus" styleClass="BotaoTexto Largura60px" 
+					actionListener="#{mbSituacaoTributaria.vinculaSituacaoTributariaComFilial}" execute="@this"
+					render="barraDeScroll, erroEdicao, barraDeScrollCofins, barraDeScrollIcms, barraDeScrollIpi, barraDeScrollPis"
+					oncomplete="#{rich:component('modalSituacaoTributaria')}.hide(); renderAllListaSituacaoTributaria();"/>
+				<a4j:commandButton value="#{msg.botaoVoltar}" oncomplete="#{rich:component('modalSituacaoTributaria')}.hide();"
+					styleClass="BotaoTexto Largura50px" execute="@this" action="#{mbSituacaoTributaria.resetAllScrollerModal}"
+					render="barraDeScrollCofins, barraDeScrollIcms, barraDeScrollIpi, barraDeScrollPis"/>
+			</div>
+			
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

@@ -1,0 +1,71 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+       
+	<h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+	
+		<rich:popupPanel modal="true" id="modalDetalhesProdutosEServicos" autosized="true" resizeable="false"
+			moveable="false" domElementAttachment="form" styleClass="OverflowHidden Largura720px FundoBranco"
+			onshow="reSize();">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.detalhesProdutosEServicos}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" 
+					oncomplete="#{rich:component('modalDetalhesProdutosEServicos')}.hide();" styleClass="BotaoFechar"/>
+			</f:facet>
+			
+			<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+				<rich:tab id="abaGeral" header="#{msg.aba_Geral}" immediate="true" execute="@this">
+					<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/geral.xhtml" /> 
+				</rich:tab>
+				<rich:tab id="abaMedicamentos" header="#{msg.aba_Medicamentos}" immediate="true" execute="@this"
+					rendered="#{mbNfeEntrada.produtoOuServico.prod.med != null}" onenter="reSize();">
+					<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/medicamentos.xhtml"/> 
+				</rich:tab>
+				<rich:tab id="abaInfAdicDoProduto" header="#{msg.aba_InfAdicDoProduto}" immediate="true" execute="@this">
+					<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/infAdicDoProduto.xhtml" /> 
+				</rich:tab>
+				<rich:tab id="abaIcmsDoProduto" header="#{msg.aba_Icms}" immediate="true" execute="@this"
+					rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms != null}">
+					<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms.xhtml" /> 
+				</rich:tab>
+				<rich:tab id="abaIpi" header="#{msg.aba_Ipi}" immediate="true" execute="@this"
+					rendered="#{mbNfeEntrada.produtoOuServico.imposto.ipi != null}">
+					<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/ipi.xhtml" /> 
+				</rich:tab>
+				<rich:tab id="abaIi" header="#{msg.aba_Ii}" immediate="true" execute="@this"
+					rendered="#{mbNfeEntrada.produtoOuServico.imposto.ii != null}">
+					<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/ii.xhtml" /> 
+				</rich:tab>
+				<rich:tab id="abaIssQn" header="#{msg.aba_Issqn}" immediate="true" execute="@this"
+					rendered="#{mbNfeEntrada.produtoOuServico.imposto.issqn != null}">
+					<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/issqn.xhtml" /> 
+				</rich:tab>
+				<rich:tab id="abaPis" header="#{msg.aba_Pis}" immediate="true" execute="@this"
+					rendered="#{mbNfeEntrada.produtoOuServico.imposto.pis != null}">
+					<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/pis.xhtml" /> 
+				</rich:tab>
+				<rich:tab id="abaPisSt" header="#{msg.aba_PisSt}" immediate="true" execute="@this"
+					rendered="#{mbNfeEntrada.produtoOuServico.imposto.pisst != null}">
+					<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/pisSt.xhtml" /> 
+				</rich:tab>
+				<rich:tab id="abaCofins" header="#{msg.aba_Cofins}" immediate="true" execute="@this"
+					rendered="#{mbNfeEntrada.produtoOuServico.imposto.cofins != null}">
+					<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/cofins.xhtml" /> 
+				</rich:tab>
+				<rich:tab id="abaCofinsSt" header="#{msg.aba_CofinsSt}" immediate="true" execute="@this"
+					rendered="#{mbNfeEntrada.produtoOuServico.imposto.cofinsst != null}">
+					<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/cofinsSt.xhtml" /> 
+				</rich:tab>
+			</rich:tabPanel>
+			
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

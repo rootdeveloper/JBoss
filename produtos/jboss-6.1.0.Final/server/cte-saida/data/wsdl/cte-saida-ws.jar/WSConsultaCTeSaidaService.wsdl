@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="WSConsultaCTeSaidaService" targetNamespace="http://www.pwc.com.br/WSConsultaCTeSaidaService" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.pwc.com.br/WSConsultaCTeSaidaService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://www.pwc.com.br/cte" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="dadosMsg">
+<xs:complexType mixed="true">
+<xs:sequence>
+<xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="recepcaoCabec">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" />
+<xs:element name="aplicativo" type="xs:string" />
+</xs:sequence>
+<xs:attribute name="versao" type="xs:string" />
+</xs:complexType>
+</xs:element>
+<xs:element name="retRecepcao">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="codigo" type="xs:short" />
+<xs:element name="desc" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.pwc.com.br/WSConsultaCTeSaidaService" xmlns:tns="http://www.pwc.com.br/WSConsultaCTeSaidaService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="recepcaoCabec" nillable="true" />
+<xsd:element name="dadosMsg" nillable="true">
+<xsd:complexType mixed="true">
+<xsd:sequence>
+<xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax" />
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="xmlRetornoConsultaCTeSaida" nillable="true" type="xsd:string" />
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="init">
+  </wsdl:message>
+  <wsdl:message name="initResponse">
+  </wsdl:message>
+  <wsdl:message name="consultaCTeSaida">
+    <wsdl:part element="tns:recepcaoCabec" name="recepcaoCabec">
+    </wsdl:part>
+    <wsdl:part element="tns:dadosMsg" name="dadosMsg">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="consultaCTeSaidaResponse">
+    <wsdl:part element="tns:xmlRetornoConsultaCTeSaida" name="xmlRetornoConsultaCTeSaida">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSConsultaCTeSaida">
+    <wsdl:operation name="consultaCTeSaida">
+      <wsdl:input message="tns:consultaCTeSaida" name="consultaCTeSaida">
+    </wsdl:input>
+      <wsdl:output message="tns:consultaCTeSaidaResponse" name="consultaCTeSaidaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="init">
+      <wsdl:input message="tns:init" name="init">
+    </wsdl:input>
+      <wsdl:output message="tns:initResponse" name="initResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSConsultaCTeSaidaServiceSoapBinding" type="tns:WSConsultaCTeSaida">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="consultaCTeSaida">
+      <soap:operation soapAction="consultarCTeSaida" style="document" />
+      <wsdl:input name="consultaCTeSaida">
+        <soap:header message="tns:consultaCTeSaida" part="recepcaoCabec" use="literal">
+        </soap:header>
+        <soap:body parts="dadosMsg" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="consultaCTeSaidaResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="init">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="init">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="initResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSConsultaCTeSaidaService">
+    <wsdl:port binding="tns:WSConsultaCTeSaidaServiceSoapBinding" name="WSConsultaCTeSaidaPort">
+      <soap:address location="http://jbossws.undefined.host:8080/cte-saida-ws/WSConsultaCTeSaidaService/WSConsultaCTeSaida" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

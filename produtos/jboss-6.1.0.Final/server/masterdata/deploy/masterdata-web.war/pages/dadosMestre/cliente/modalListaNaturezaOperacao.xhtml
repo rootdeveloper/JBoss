@@ -1,0 +1,122 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+       
+	<h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+	
+		<rich:popupPanel modal="true" id="modalListaNaturezaOperacao" autosized="true" resizeable="false"
+			moveable="false" domElementAttachment="form" styleClass="OverflowHidden Largura700px FundoBranco"
+			onshow="disableInputsFormPrincipal(); reSize(); mudaFocus('tabelaNaturezaOperacao:descricao');"
+			onhide="enableInputsFormPrincipal();">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.naturezaOperacao}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" oncomplete="#{rich:component('modalListaNaturezaOperacao')}.hide();" 
+					action="#{mbCliente.processCleanModalNaturezaOperacao}" styleClass="BotaoFechar TabWalk"/>
+			</f:facet>
+			
+			<rich:dataTable id="tabelaNaturezaOperacao" var="item" value="#{mbCliente.listaNaturezaOperacao}"
+				rows="5" styleClass="Scroller100pc" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+				onrowdblclick="selecionarNaturezaOperacao(#{rowKey})" noDataLabel="#{msg.listaNaturezaOperacaoVazia}"
+				rowKeyVar="rowKey">
+				
+				<rich:column styleClass="AlignLeft Truncate" headerClass="Largura200px"
+					filterExpression="#{fn:containsIgnoreCase(item.descricao, mbCliente.modalNaturezaOperacaoFilter.mapColumnFilter['Descricao'].filterBy)}" 
+					sortBy="#{item.descricao}" sortOrder="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['Descricao'].sortOrder}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.descricao}"/>
+						<table:orderArrow action="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['Descricao'].sortBy}"
+							order="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['Descricao'].sortOrder}" render="tabelaNaturezaOperacao"/>
+						<br/>
+						<h:inputText id="descricao" value="#{mbCliente.modalNaturezaOperacaoFilter.mapColumnFilter['Descricao'].filterBy}"
+							styleClass="Campo Largura180px" maxlength="60" onkeypress="executeFilter(this,event)" tabindex="1">
+							<a4j:ajax event="valueChange" render="controleNaturezaOperacao" oncomplete="renderBodyOfTabelaNaturezaOperacao();" execute="@this" 
+								status="modalStatus"/>
+						</h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.descricao}" title="#{item.descricao}"/>
+				</rich:column>
+				
+				<rich:column styleClass="AlignCenter" headerClass="Largura160px"
+					filterExpression="#{fn:containsIgnoreCase(item.cfopMesmoEstado, mbCliente.modalNaturezaOperacaoFilter.mapColumnFilter['CFOPMesmoEstado'].filterBy)}" 
+					sortBy="#{item.cfopMesmoEstado}" sortOrder="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['CFOPMesmoEstado'].sortOrder}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.cfopMesmoEstado}"/>
+						<table:orderArrow action="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['CFOPMesmoEstado'].sortBy}"
+							order="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['CFOPMesmoEstado'].sortOrder}"
+							render="tabelaNaturezaOperacao"/>
+	                    <br/>
+	                    <h:inputText id="mesmoEstado" value="#{mbCliente.modalNaturezaOperacaoFilter.mapColumnFilter['CFOPMesmoEstado'].filterBy}"  
+	                    	onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+							onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);" tabindex="2" maxlength="4" 
+							onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);" styleClass="Campo Largura140px">
+	                        <a4j:ajax event="valueChange" render="controleNaturezaOperacao" oncomplete="renderBodyOfTabelaNaturezaOperacao();" execute="@this" 
+	                        	status="modalStatus"/>
+	                    </h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.cfopMesmoEstado}"/>
+				</rich:column>
+
+				<rich:column styleClass="AlignCenter" headerClass="Largura180px"
+					filterExpression="#{fn:containsIgnoreCase(item.cfopEstadoDiferente, mbCliente.modalNaturezaOperacaoFilter.mapColumnFilter['CFOPEstadoDiferente'].filterBy)}" 
+					sortBy="#{item.cfopEstadoDiferente}" sortOrder="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['CFOPEstadoDiferente'].sortOrder}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.cfopEstadoDiferente}"/>
+						<table:orderArrow action="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['CFOPEstadoDiferente'].sortBy}"
+							order="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['CFOPEstadoDiferente'].sortOrder}"
+							render="tabelaNaturezaOperacao"/>
+	                    <br/>
+	                    <h:inputText id="estadoDiferente" value="#{mbCliente.modalNaturezaOperacaoFilter.mapColumnFilter['CFOPEstadoDiferente'].filterBy}" 
+	                    	styleClass="Campo Largura160px" maxlength="4" tabindex="3"
+                    		onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+   							onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"   
+   							onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+	                        <a4j:ajax event="valueChange" render="controleNaturezaOperacao" oncomplete="renderBodyOfTabelaNaturezaOperacao();" execute="@this" status="modalStatus"/>
+	                    </h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.cfopEstadoDiferente}"/>
+				</rich:column>
+
+				<rich:column styleClass="AlignCenter" headerClass="Largura120px"
+					filterExpression="#{fn:containsIgnoreCase(item.cfopExterior, mbCliente.modalNaturezaOperacaoFilter.mapColumnFilter['CFOPExterior'].filterBy)}" 
+					sortBy="#{item.cfopExterior}" sortOrder="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['CFOPExterior'].sortOrder}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.cfopExterior}"/>
+						<table:orderArrow action="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['CFOPExterior'].sortBy}"
+							order="#{mbCliente.modalNaturezaOperacaoOrder.mapColumnOrder['CFOPExterior'].sortOrder}"
+							render="tabelaNaturezaOperacao"/>
+	                    <br/>
+	                    <h:inputText id="exterior" value="#{mbCliente.modalNaturezaOperacaoFilter.mapColumnFilter['CFOPExterior'].filterBy}" styleClass="Campo Largura100px"
+	                    	onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+   							onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);" 
+   							onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);" maxlength="4" tabindex="4">
+	                        <a4j:ajax event="valueChange" render="controleNaturezaOperacao" oncomplete="renderBodyOfTabelaNaturezaOperacao();" execute="@this" status="modalStatus"/>
+	                    </h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.cfopExterior}"/>
+				</rich:column>
+
+			</rich:dataTable>
+		
+			<table:scroller for="tabelaNaturezaOperacao" idPanelScroller="controleNaturezaOperacao" maxPages="4" pageNumber="#{mbCliente.scrollerPageNumber}"
+				panelStyleClass="Scroller100pc" totalRegistros="#{mbCliente.quantidadeRegistrosNaturezaOperacao}"
+				renderedTotalRegistros="#{not empty mbCliente.listaNaturezaOperacao}"/>
+						
+			<a4j:jsFunction name="selecionarNaturezaOperacao" status="modalStatus"
+				action="#{mbCliente.selecionarNaturezaOperacao}" oncomplete="#{rich:component('modalListaNaturezaOperacao')}.hide(); return false;" 
+				render="panelNaturezaOperacao, jQueryNaturezaOperacao">
+				<a4j:param name="linhaNaturezaOperacao" assignTo="#{mbCliente.linhaSelecionada}"/>
+			</a4j:jsFunction>
+			
+			<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+			<a4j:jsFunction name="renderBodyOfTabelaNaturezaOperacao" status="modalStatus" render="tabelaNaturezaOperacao@body" oncomplete="reSize();"/>
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

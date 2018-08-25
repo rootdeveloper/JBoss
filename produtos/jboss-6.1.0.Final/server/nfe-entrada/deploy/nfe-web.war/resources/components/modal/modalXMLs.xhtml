@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<h:form prependId="false" id="formRepositorioXML">
+    	<rich:popupPanel id="repositorioXML" autosized="true" resizeable="false" moveable="false" styleClass="Largura800px FundoBranco"
+    		onshow="disableInputsFormPrincipal();" onbeforeshow="renderListXml();" onhide="enableInputsFormPrincipal();" 
+    		domElementAttachment="form">
+
+    		<f:facet name="header">
+				<h:outputText value="#{msg.repositorio}" />
+			</f:facet>
+
+			<f:facet name="controls">
+				<a4j:commandButton id="fecharRepositorioXML"  styleClass="BotaoFechar"
+				image="/resources/images/png/close.png" action="#{mbNfeEntrada.resetScrollerPageNumber}"
+					oncomplete="#{rich:component('repositorioXML')}.hide(); return false;" execute="@this" immediate="true" render="barraDeScrollModalXMLs">
+				</a4j:commandButton>
+			</f:facet>
+			
+			<rich:dataTable value="#{mbNfeEntrada.listaRepositorios}" var="item" id="tableModalXML" rows="10" styleClass="Largura100pc" 
+				onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" rowKeyVar="rowKey" noDataLabel="#{msg.listaRepositorioVazia}">
+				
+				<rich:column styleClass="AlignCenter" headerClass="Largura160px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.col_Ocorrencia}" />
+					</f:facet>
+					<h:outputText value="#{item.tipoXMLImportado}" />
+				</rich:column>
+			
+				<rich:column styleClass="AlignCenter" headerClass="Largura100px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.col_NrSeqImport}" />
+					</f:facet>
+					<h:outputText value="#{rowKey+1}" />
+				</rich:column>
+			
+				<rich:column styleClass="AlignCenter" headerClass="Largura75px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.col_Data}" />
+					</f:facet>
+					<h:outputText value="#{item.dataAutorizacaoSefaz}">
+						<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</h:outputText>
+				</rich:column>
+			
+				<rich:column styleClass="AlignCenter" headerClass="Largura110px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.col_Protocolo}" />
+					</f:facet>
+					<h:outputText value="#{item.protocolo}" />
+				</rich:column>
+
+				<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.col_CodEvento}" />
+					</f:facet>
+					<h:outputText value="#{mbNfeEntrada.carregaCodigoEvento(rowKey)}"/>
+				</rich:column>
+
+				<rich:column styleClass="AlignCenter" headerClass="Largura95px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.col_NrSeqEvento}" />
+					</f:facet>
+					<h:outputText value="#{item.numeroSequencialEvento}"/>
+				</rich:column>
+
+				<rich:column styleClass="AlignCenter" headerClass="Largura45px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.col_Just}" />
+					</f:facet>
+					<a4j:commandButton image="/resources/images/png/detalhes.png" actionListener="#{mbNfeEntrada.carregaJustificativa}"
+					rendered="#{item.tipoXMLImportado eq 'CCE' || item.tipoXMLImportado eq 'ENVIO_MANIFESTACAO_OPERACAO_NAO_REALIZADA'
+								|| item.tipoXMLImportado eq 'EVENTO_CANCELAMENTO' ||item.tipoXMLImportado eq 'CANCELAMENTO'}"
+					render="modalInfEvento" execute="@this"	oncomplete="#{rich:component('modalInfEvento')}.show()" status="modalStatus">
+						<f:param name="repositorio" value="#{rowKey}"/>
+					</a4j:commandButton>
+				</rich:column>
+			
+				<rich:column styleClass="AlignCenter" headerClass="Largura45px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.col_XMLEvento}" />
+					</f:facet>
+					<h:commandButton image="#{resource['images/png:exportar.png']}" actionListener="#{mbNfeEntrada.downloadXML}">
+						<f:param name="repositorio" value="#{rowKey}"/>
+					</h:commandButton>
+				</rich:column>
+			</rich:dataTable>
+
+			<table:scroller for="tableModalXML" idPanelScroller="barraDeScrollModalXMLs" maxPages="16" panelStyleClass="Scroller100pc MarginBottom5px" 
+				pageNumber="#{mbNfeEntrada.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbNfeEntrada.listaRepositorios}" 
+				totalRegistros="#{mbNfeEntrada.quantidadeRegistrosXmls}"/>
+				
+			<div class="TextAlignCenter">
+				<a4j:commandButton status="modalStatus" oncomplete="#{rich:component('modalLogProcessos')}.show(); reSize();" execute="@this"
+					value="#{msg.logProcessos}" styleClass="BotaoTexto PositionRelative Largura120px" render="modalLogProcessos barraDeScrollModalProcessos"
+					actionListener="#{mbNfeEntrada.buscaProcessos}"/>
+					
+				<a4j:commandButton status="modalStatus" oncomplete="#{rich:component('envioEmail')}.show();" execute="@this"
+					value="#{msg.email}" styleClass="BotaoTexto PositionRelative Largura80px MarginLeft20px" render="envioEmail">
+					<a4j:actionListener listener="#{mbNfeEntrada.limpaDestinatario}"/>
+				</a4j:commandButton>	
+			</div>	
+		<a4j:jsFunction name="renderListXml" status="modalStatus" render="tableModalXML@body" oncomplete="reSize();"/>
+	</rich:popupPanel>
+  </h:form>    
+</ui:composition>

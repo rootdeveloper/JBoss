@@ -1,0 +1,70 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:composition>
+		<rich:toolbar id="menu">
+		
+			<!-- Menu Empresa -->
+			<rich:dropDownMenu popupWidth="50" showEvent="click" id="menuEmpresa">
+				<f:facet name="label">
+					<h:panelGroup>
+						<h:outputText value="#{msg.menuEmpresa}" />
+						<h:graphicImage value="#{resource['images/png:setaMenu.png']}" width="15px" height="10px"/>
+					</h:panelGroup>
+				</f:facet>
+				<rich:menuItem immediate="true" action="listaGrupoEmpresa" label="#{msg.menuGrupoEmpresa}" execute="@this"/>
+				<rich:menuItem immediate="true" action="listaSegmentoEmpresarial" label="#{msg.menuSegmentoEmpresarial}" execute="@this" />
+				<rich:menuItem immediate="true" action="listaEmpresa" label="#{msg.menuEmpresa}" execute="@this" />
+				<rich:menuItem immediate="true" action="cadastroParametroFilial" label="#{msg.menuParametros}" execute="@this" 
+					rendered="#{request.isUserInRole('Administrador') || request.isUserInRole('Gerente')}" />
+			</rich:dropDownMenu>
+		
+			<!--Menu Parceiros -->
+			<rich:dropDownMenu popupWidth="50" showEvent="click" id="menuParceiros">
+				<f:facet name="label">
+					<h:panelGroup>
+						<h:outputText value="#{msg.menuParceiros}" />
+						<h:graphicImage value="#{resource['images/png:setaMenu.png']}" width="15px" height="10px"/>
+					</h:panelGroup>
+				</f:facet>
+				<rich:menuItem immediate="true" action="listaClientes" label="#{msg.menuCliente}" execute="@this" />
+				<rich:menuItem immediate="true" action="listaFornecedores" label="#{msg.menuFornecedor}" execute="@this" />
+				<rich:menuItem immediate="true" action="listaTransportadoras" label="#{msg.menuTransportadora}" execute="@this" />
+			</rich:dropDownMenu>
+			
+			<!-- Menu Produtos & Serviços -->
+			<rich:dropDownMenu popupWidth="50" showEvent="click" id="menuProdutosServicos">
+				<f:facet name="label">
+					<h:panelGroup>
+						<h:outputText value="#{msg.menuProdutosServicos}" />
+						<h:graphicImage value="#{resource['images/png:setaMenu.png']}" width="15px" height="10px"/>
+					</h:panelGroup>
+				</f:facet>
+				<rich:menuItem immediate="true" action="listaNcm" label="#{msg.menuNCM}" execute="@this" />
+				<rich:menuItem immediate="true" action="listaUnidadesMedida" label="#{msg.menuUnidadeMedida}" execute="@this" />
+				<rich:menuItem immediate="true" action="listaMaterial" label="#{msg.menuProdutosServicos}" execute="@this" />
+			</rich:dropDownMenu>
+			
+			<!-- Menu Impostos -->
+			<rich:dropDownMenu popupWidth="50" showEvent="click" id="menuImpostos">
+				<f:facet name="label">
+					<h:panelGroup>
+						<h:outputText value="#{msg.menuImpostos}" />
+						<h:graphicImage value="#{resource['images/png:setaMenu.png']}" width="15px" height="10px"/>
+					</h:panelGroup>
+				</f:facet>
+				<rich:menuItem immediate="true" action="listaNaturezaOperacao" label="#{msg.menuNaturezaOperacao}" execute="@this" />
+				<rich:menuItem immediate="true" action="listaSituacaoTributaria" label="#{msg.menuSituacaoTributaria}" execute="@this" />
+				<rich:menuGroup label="#{msg.menuSimplesNacional}" id="menuSimplesNacional">
+                    <rich:menuItem immediate="true" action="listaFaturamentoSn" label="#{msg.menuTabelaDoSimples}" execute="@this" />
+                </rich:menuGroup>
+			</rich:dropDownMenu>
+			
+		</rich:toolbar>
+	</ui:composition>
+</html>

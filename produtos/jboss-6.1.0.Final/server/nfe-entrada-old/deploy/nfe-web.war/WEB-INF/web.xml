@@ -1,0 +1,167 @@
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	
+	<display-name>NFE-ENTRADA</display-name>
+	
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Production</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.richfaces.resourceOptimization.enabled</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.ajax4jsf.DEFAULT_EXPIRE</param-name>
+		<param-value>86400</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.sun.faces.externalizeJavaScript</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value>/WEB-INF/faces-navigation.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.sun.faces.verifyObjects</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.sun.faces.validateXml</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.richfaces.skin</param-name>
+		<param-value>DEFAULT</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.richfaces.enableControlSkinning</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+	<mime-mapping>
+		<extension>ecss</extension>
+		<mime-type>text/css</mime-type>
+	</mime-mapping>
+	<welcome-file-list>
+		<welcome-file>/index.html</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/index.html</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/index.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/index.html</location>
+	</error-page>
+	<error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/index.html</location>
+	</error-page>
+	
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>profileJaas</realm-name>
+		<form-login-config>
+			<form-login-page>/index.xhtml</form-login-page>
+			<form-error-page>/index.xhtml?falhalogin=sim</form-error-page>
+		</form-login-config>
+	</login-config>
+	
+	<security-role>
+		<description>Acesso a todas as funcionalidades</description>
+		<role-name>Admin</role-name>
+	</security-role>
+	<security-role>
+		<description>Acesso a todas as funcionalidades</description>
+		<role-name>Gerente</role-name>
+	</security-role>
+	<security-role>
+		<description>Acesso a todas as funcionalidades do menu painel e consultas</description>
+		<role-name>Atendente</role-name>
+	</security-role>
+	<security-role>
+		<description>Acesso ao painel e manifestações pendentes, sem poder realizar manifestação ou reconsulta</description>
+		<role-name>Visualizador</role-name>
+	</security-role>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Home</web-resource-name>
+			<description>Pagina home</description>
+			<url-pattern>/home.xhtml</url-pattern>
+			<url-pattern>/pages/consulta/statusSefaz/*</url-pattern>
+			<url-pattern>/pages/consulta/statusServico/*</url-pattern>
+			<url-pattern>/pages/painel/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>Admin</role-name>
+			<role-name>Gerente</role-name>
+			<role-name>Atendente</role-name>
+			<role-name>Visualizador</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Home</web-resource-name>
+			<description>Parametrizacao</description>
+			<url-pattern>/pages/parametrizacao/*</url-pattern>
+			<url-pattern>/pages/empresa/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>Admin</role-name>
+			<role-name>Gerente</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Home</web-resource-name>
+			<description>Consulta Destinados</description>
+			<url-pattern>/pages/consulta/destinados/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>Admin</role-name>
+			<role-name>Gerente</role-name>
+			<role-name>Atendente</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+</web-app>

@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+    
+    <composite:interface>
+       <composite:attribute name="render" shortDescription="painel a ser atualizado"/>
+       <composite:attribute name="item"  shortDescription="atributo order para organização da lista" />
+       <composite:attribute name="oncomplete" default="focusFirstInput()" />
+    </composite:interface>
+    
+    <composite:implementation>
+		
+		<a4j:commandLink action="#{cc.attrs.item.sortBy}" status="modalStatus" render="#{cc.attrs.render}" immediate="true"
+			execute="@this" oncomplete="reSize(); #{cc.attrs.oncomplete};">
+	   		<h:graphicImage value="#{resource['images/png:setasSemOrdenacao.png']}" styleClass="MarginLeft5px BordaOff" 
+	   			rendered="#{cc.attrs.item.sortOrder == 'unsorted'}" width="5px" height="7px"/>
+	   		<h:graphicImage value="#{resource['images/png:setasOrdenacaoCrescente.png']}" styleClass="MarginLeft5px BordaOff" 
+	   			rendered="#{cc.attrs.item.sortOrder == 'ascending'}" width="5px" height="7px"/>
+	   		<h:graphicImage value="#{resource['images/png:setasOrdenacaoDecrescente.png']}" styleClass="MarginLeft5px BordaOff" 
+	   			rendered="#{cc.attrs.item.sortOrder == 'descending'}" width="5px" height="7px"/>
+	    </a4j:commandLink>
+
+    </composite:implementation>    
+</html>

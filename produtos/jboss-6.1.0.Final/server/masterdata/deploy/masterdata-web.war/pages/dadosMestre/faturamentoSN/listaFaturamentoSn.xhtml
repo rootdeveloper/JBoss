@@ -1,0 +1,147 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaFaturamentoSn}" />
+	</ui:define>
+	
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" render="header-content barraDeScroll" execute="@this" listener="#{mbFaturamentoSn.trocaValorComboFilial}"
+			oncomplete="renderAllListaFaturamentoSn(); renderPanelErroFaturamentoSn();" status="modalStatus"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalSimNao mensagem="#{mbFaturamentoSn.msgExcluirSelecionadosTela}" nomePainel="confirmPane"
+			tituloModal="#{msg.msgConfirmacaoExclusaoTela}" actionSim="#{mbFaturamentoSn.excluirSelecionados}"
+			render="barraDeScroll, modalInformativo" tituloFuncao="selecionado" idCheckbox="checkboxFaturamentoSn"
+			oncomplete="#{rich:component('modalInformativo')}.show(); renderBodyOfListaFaturamentoSn(); renderPanelErroFaturamentoSn();"/>
+		
+		<util:modalInformativo mensagemInformativo="#{mbFaturamentoSn.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo"/>
+	
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:novoAction action="#{mbFaturamentoSn.novo}" render="#{mbFaturamentoSn.processaRenderPanelErro}"
+					rendered="#{mbFaturamentoSn.verificaPermissao('Administrador, Gerente, Fiscal')}" />
+				<botao:excluir actionListener="#{mbFaturamentoSn.verificarExclusaoFaturamentoSn}" idModalSimNao="confirmPane"
+					idModalInformativo="modalInformativo" filialCadastrada="#{mbFaturamentoSn.idFilial != null}"
+					renderizarModal="#{mbFaturamentoSn.renderizarModal}" idPanelErro="erroEdicao"
+					rendered="#{mbFaturamentoSn.verificaPermissao('Administrador, Gerente, Fiscal')}" />
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+			
+			<rich:toolbarGroup location="right">
+				<botao:atualizar actionListener="#{mbFaturamentoSn.refreshList}" buttonStyle="MarginRight5px" render="barraDeScroll"
+					oncomplete="renderAllListaFaturamentoSn()" idPanelErro="erroEdicao" filialCadastrada="#{mbFaturamentoSn.idFilial != null}"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaFaturamentoSn" var="fsn" value="#{mbFaturamentoSn.listaFaturamentoSn}" rows="10" styleClass="Largura100pc"
+			onrowmouseover="className='SelecionaLinha'" onrowdblclick="editarFaturamento(#{rowKey})" onrowmouseout="className=''"
+			noDataLabel="#{msg.listaFaturamentoSnVazia}" rowKeyVar="rowKey">
+		
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxFaturamentoSn" valueChangeListener="#{mbFaturamentoSn.selecionarTodos}" tabindex="1"
+						styleClass="Margin0px checkboxFaturamentoSn" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();">
+						<a4j:ajax event="click" render="listaFaturamentoSn" status="modalStatus" immediate="true" 
+							oncomplete="reSize();"/>
+					</h:selectBooleanCheckbox>	
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{fsn.selected}" styleClass="Margin0px" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();">
+					<a4j:ajax event="valueChange" execute="@this"/>
+				</h:selectBooleanCheckbox>
+			</rich:column>	
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura80px"
+				filterExpression="#{fn:containsIgnoreCase(fsn.tabela, mbFaturamentoSn.columnFilter.mapColumnFilter['Tabela'].filterBy)}"> 
+				<f:facet name="header">
+					<h:outputText value="#{msg.tabela}"/>
+					<br/>
+					<h:inputText id="tabela" value="#{mbFaturamentoSn.columnFilter.mapColumnFilter['Tabela'].filterBy}" onkeypress="executeFilter(this,event)" 
+						styleClass="Campo Largura60px" maxlength="4" tabindex="2">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaFaturamentoSn();" execute="@this"
+							status="modalStatus" listener="#{mbFaturamentoSn.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{fsn.tabela}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura460px" 
+				filterExpression="#{fn:containsIgnoreCase(fsn.descricao, mbFaturamentoSn.columnFilter.mapColumnFilter['Descricao'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricao}"/>
+					<br/>
+					<h:inputText value="#{mbFaturamentoSn.columnFilter.mapColumnFilter['Descricao'].filterBy}" onkeypress="executeFilter(this,event)" 
+					styleClass="Campo Largura440px" maxlength="60" tabindex="3">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaFaturamentoSn();" execute="@this"
+							status="modalStatus" listener="#{mbFaturamentoSn.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{fsn.descricao}" title="#{fsn.descricao}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura260px" 
+				filterExpression="#{fn:containsIgnoreCase(fsn.tipo.nomeTipo, mbFaturamentoSn.columnFilter.mapColumnFilter['Tipo'].filterBy)}"> 
+				<f:facet name="header">
+					<h:outputText value="#{msg.tipo}"/>
+					<br/>
+					<h:inputText value="#{mbFaturamentoSn.columnFilter.mapColumnFilter['Tipo'].filterBy}" onkeypress="executeFilter(this,event)" 
+						styleClass="Campo Largura250px" maxlength="35" tabindex="4">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaFaturamentoSn();" execute="@this"
+							status="modalStatus" listener="#{mbFaturamentoSn.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{fsn.tipo.nomeTipo}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura130px"
+				filterExpression="#{fn:containsIgnoreCase(fsn.vigenciaInicial, mbFaturamentoSn.columnFilter.mapColumnFilter['DataVigencia'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataVigencia}"/>
+					<br/>
+					<h:inputText value="#{mbFaturamentoSn.columnFilter.mapColumnFilter['DataVigencia'].filterBy}" onfocus="origValue = this.value;"
+						onblur="if(this.value != origValue) valueChangeIE(this);" 
+						onkeypress="Mascara(this, Data); executeFilter(this,event);"
+						onkeydown="Mascara(this, Data);" onkeyup="Mascara(this, Data);" onmousedown="Mascara(this, Data);" onmouseup="Mascara(this, Data);"
+						onmouseout="Mascara(this, Data);" styleClass="Campo Largura120px" maxlength="10" tabindex="5" converter="dateConverter">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaFaturamentoSn(); executeFilter(this,event);" 
+							execute="@this" status="modalStatus" listener="#{mbFaturamentoSn.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{fsn.vigenciaInicial}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="listaFaturamentoSn" idPanelScroller="barraDeScroll" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px"
+			renderedTotalRegistros="#{not empty mbFaturamentoSn.listaFaturamentoSn}" totalRegistros="#{mbFaturamentoSn.quantidadeRegistros}" 
+			pageNumber="#{mbFaturamentoSn.scrollerPageNumber}" />
+		
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbFaturamentoSn.mensagemError}" >
+				<h:outputText value="#{mbFaturamentoSn.mensagemError}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="editarFaturamento" render="erroEdicao" action="#{mbFaturamentoSn.editar}">
+			<a4j:param name="linhaFaturamento" assignTo="#{mbFaturamentoSn.linhaSelecionada}" />
+		</a4j:jsFunction>
+		
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderBodyOfListaFaturamentoSn" status="modalStatus" render="listaFaturamentoSn@body" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderAllListaFaturamentoSn" status="modalStatus" render="listaFaturamentoSn" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderPanelErroFaturamentoSn" render="erroEdicao"/>
+		
+	</ui:define>
+</ui:composition>

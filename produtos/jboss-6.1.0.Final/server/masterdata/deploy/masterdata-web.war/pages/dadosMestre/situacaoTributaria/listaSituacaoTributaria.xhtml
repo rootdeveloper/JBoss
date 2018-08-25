@@ -1,0 +1,155 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaSituacaoTributaria}"/>
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<ui:include src="/pages/dadosMestre/situacaoTributaria/modalListaSituacaoTributaria.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" render="header-content barraDeScroll" execute="@this" listener="#{mbSituacaoTributaria.trocaValorComboFilial}"
+			oncomplete="renderAllListaSituacaoTributaria(); renderPanelErroSituacaoTributaria();" status="modalStatus"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalSimNao mensagem="#{mbSituacaoTributaria.msgExcluirSelecionadosTela}" nomePainel="confirmPane" tituloModal="#{msg.msgConfirmacaoExclusaoTela}" 
+			actionSim="#{mbSituacaoTributaria.desvinculaSelecionados}" render="barraDeScroll, modalInformativoSituacaoTributaria" tituloFuncao="selecionado"
+			idCheckbox="checkboxST" oncomplete="#{rich:component('modalInformativoSituacaoTributaria')}.show(); renderAllListaSituacaoTributaria(); renderPanelErroSituacaoTributaria();"/>
+			<!-- o oncomplete do modalSimNao precisa ficar na ordem que está, pois do contrário não renderiza de maneira correta o modalInformativoSituacaoTributaria.
+			precisei chamar a função renderPanelErroSituacaoTributaria() pois se na função renderAllListaSituacaoTributaria() fosse adicionado no render o id do
+			panelGroup de erro o modalInformativoSituacaoTributaria não era renderizado de maneira correta, com isso as mensagens do modal ficavam erradas -->
+		
+		<util:modalInformativo mensagemInformativo="#{mbSituacaoTributaria.mensagemModal}" tituloModal="#{msg.mensagem}" 
+			nomePainel="modalInformativoSituacaoTributaria"/>
+	
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:excluir actionListener="#{mbSituacaoTributaria.verificarExclusao}" idModalSimNao="confirmPane"
+					idModalInformativo="modalInformativoSituacaoTributaria" renderizarModal="#{mbSituacaoTributaria.renderizarModal}"
+					idPanelErro="erroEdicao" filialCadastrada="#{mbSituacaoTributaria.idFilial != null}"
+					rendered="#{mbSituacaoTributaria.verificaPermissao('Administrador, Gerente, Fiscal')}" />
+				<a4j:commandLink status="modalStatus" title="#{msg.titleImportar}" render="modalSituacaoTributaria" execute="@this" 
+					actionListener="#{mbSituacaoTributaria.carregaModal}" oncomplete="(#{mbSituacaoTributaria.idFilial != null} ? #{rich:component('modalSituacaoTributaria')}.show(): ''); desmarcaCheckboxForm('formSituacaoTributaria'); renderPanelErroSituacaoTributaria();"
+					rendered="#{mbSituacaoTributaria.verificaPermissao('Administrador, Gerente, Fiscal')}" >
+					<h:graphicImage value="#{resource['images/png:importar.png']}" alt="#{msg.titleImportar}" styleClass="BotaoImagem" width="26px" height="18px"/>
+				</a4j:commandLink>
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+			
+			<rich:toolbarGroup location="right">
+				<botao:atualizar actionListener="#{mbSituacaoTributaria.refreshList}" buttonStyle="MarginRight5px" render="barraDeScroll"
+					oncomplete="renderAllListaSituacaoTributaria()" idPanelErro="erroEdicao" filialCadastrada="#{mbSituacaoTributaria.idFilial != null}"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+	
+		<rich:dataTable id="listaSituacaoTributaria" var="st" value="#{mbSituacaoTributaria.listaSituacaoTributaria}" rows="10"
+			styleClass="Largura100pc OverflowHidden" onrowmouseover="className='SelecionaLinha'; mudaClassRowSpanOver('#{st.grupoImposto}');"
+			onrowmouseout="className=''; mudaClassRowSpanOut('#{st.grupoImposto}');" noDataLabel="#{msg.listaSituacaoTributariaVazia}" iterationStatusVar="it">
+			
+			<f:facet name="header">
+				<rich:columnGroup>
+					<rich:column styleClass="Largura110px">
+						<h:outputText value="#{msg.grupoImposto}"/>
+						<br />
+						<h:inputText id="grupoImposto" value="#{mbSituacaoTributaria.filtroGrupoImposto}" styleClass="Campo Largura90px" maxlength="10"
+							tabindex="1" onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" onkeyup="Mascara(this, LetraSemEspaco);" 
+							onkeydown="Mascara(this, LetraSemEspaco);" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+							onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+							<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" listener="#{mbSituacaoTributaria.grupoImpostoFilterExpression()}"
+								oncomplete="renderBodyOfListaSituacaoTributaria(); executeFilter(this,event);" execute="@this" status="modalStatus"/>
+						</h:inputText>
+					</rich:column>
+					<rich:column styleClass="Largura50px">
+						<h:selectBooleanCheckbox id="checkboxST" valueChangeListener="#{mbSituacaoTributaria.selecionarTodos}" styleClass="Margin0px" tabindex="2">
+							<a4j:ajax event="click" render="listaSituacaoTributaria" status="modalStatus" oncomplete="reSize();"/>
+						</h:selectBooleanCheckbox>
+					</rich:column>
+					<rich:column styleClass="Largura130px">
+						<h:outputText value="#{msg.tipoDeImposto}"/>
+						<br />
+						<h:inputText value="#{mbSituacaoTributaria.columnFilter.mapColumnFilter['TipoImposto'].filterBy}" styleClass="Campo Largura100px" 
+							maxlength="20" tabindex="3" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+							onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);"
+							onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" onkeyup="Mascara(this, LetraSemEspaco);" 
+							onkeydown="Mascara(this, LetraSemEspaco);">
+							<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaSituacaoTributaria(); executeFilter(this,event);"
+								execute="@this" status="modalStatus" listener="#{mbSituacaoTributaria.limpaMensagemErro}"/>
+						</h:inputText>
+					</rich:column>
+					<rich:column styleClass="Largura170px">
+						<h:outputText value="#{msg.codigoSituacaoTributaria}"/>
+						<br />
+						<h:inputText value="#{mbSituacaoTributaria.columnFilter.mapColumnFilter['SituacaoTributaria'].filterBy}" styleClass="Campo Largura150px" 
+							maxlength="3" tabindex="4" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+							onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+							onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+							<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaSituacaoTributaria(); executeFilter(this,event);"
+								execute="@this" status="modalStatus" listener="#{mbSituacaoTributaria.limpaMensagemErro}"/>
+						</h:inputText>
+					</rich:column>
+					<rich:column styleClass="Largura420px">
+						<h:outputText value="#{msg.descricao}"/>
+						<br />
+						<h:inputText value="#{mbSituacaoTributaria.columnFilter.mapColumnFilter['Descricao'].filterBy}" styleClass="Campo Largura400px" 
+							maxlength="200" onkeypress="executeFilter(this,event);"	tabindex="5">
+							<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaSituacaoTributaria();" execute="@this"
+								status="modalStatus" listener="#{mbSituacaoTributaria.limpaMensagemErro}"/>
+						</h:inputText>
+					</rich:column>
+				</rich:columnGroup>
+			</f:facet>
+			
+			<rich:column styleClass="AlignCenter rowspan#{st.grupoImposto}" rowspan="#{mbSituacaoTributaria.quantidadeGrupoImpostoNaMesmaPagina(it.index, st)}"
+				rendered="#{it.first || mbSituacaoTributaria.isPrimeiroRegistroDoMesmoGrupoImposto(st)}">
+				<h:outputText value="#{st.grupoImposto.nomeGrupo}" />
+			</rich:column>
+			<rich:column styleClass="AlignCenter row#{st.grupoImposto}">
+				<h:selectBooleanCheckbox id="sel" value="#{st.selected}">
+					<a4j:ajax event="valueChange" execute="@this" />
+				</h:selectBooleanCheckbox>
+			</rich:column>
+			<rich:column styleClass="AlignCenter row#{st.grupoImposto}"
+				filterExpression="#{fn:containsIgnoreCase(st.tipoDeImposto.nomeTipoImposto, mbSituacaoTributaria.columnFilter.mapColumnFilter['TipoImposto'].filterBy)}">
+				<h:outputText value="#{st.tipoDeImposto.nomeTipoImposto}"/>
+			</rich:column>
+			<rich:column styleClass="AlignCenter row#{st.grupoImposto}"
+				filterExpression="#{fn:containsIgnoreCase(st.codigoSituacaoTributaria, mbSituacaoTributaria.columnFilter.mapColumnFilter['SituacaoTributaria'].filterBy)}">
+				<h:outputText value="#{st.codigoSituacaoTributaria}"/>
+			</rich:column>
+			<rich:column styleClass="AlignLeft Truncate row#{st.grupoImposto}"
+				filterExpression="#{fn:containsIgnoreCase(st.descricao, mbSituacaoTributaria.columnFilter.mapColumnFilter['Descricao'].filterBy)}">
+				<h:outputText value="#{st.descricao}" title="#{st.descricao}"/>
+			</rich:column>
+
+		</rich:dataTable>
+
+		<table:scroller for="listaSituacaoTributaria" idPanelScroller="barraDeScroll" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px"
+			renderedTotalRegistros="#{not empty mbSituacaoTributaria.listaSituacaoTributaria}" totalRegistros="#{mbSituacaoTributaria.quantidadeRegistros}"
+			pageNumber="#{mbSituacaoTributaria.scrollerPageNumber}" />
+
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbSituacaoTributaria.mensagemValidacaoListagem}">
+				<h:outputText value="#{mbSituacaoTributaria.mensagemValidacaoListagem}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<!-- Método que recarrega a Lista Filtrada e renderiza a tabela -->
+		<a4j:jsFunction name="renderBodyOfListaSituacaoTributaria" status="modalStatus" render="listaSituacaoTributaria@body" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderAllListaSituacaoTributaria" status="modalStatus" render="listaSituacaoTributaria" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderPanelErroSituacaoTributaria" render="erroEdicao"/>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,181 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal">
+	
+	<rich:toolbar styleClass="BarraDeBotoes100pc">
+		<rich:toolbarGroup>
+			<a4j:commandLink status="modalStatus" title="#{msg.titleSalvar}" 
+				execute="cadastroFilial cadastroEnderecoFilial cadastroInfJuridicas" 
+				actionListener="#{mbEmpresa.verificaStatus}" render="painelMensagemErroFilial modalFilialStatus modalInformativoFilial"
+				oncomplete="#{mbEmpresa.renderizaModalJustificativa} ? #{rich:component('modalFilialStatus')}.show() : '' ; #{mbEmpresa.renderizarModalInformativo} ? #{rich:component('modalInformativoFilial')}.show() : '' "
+				rendered="#{mbEmpresa.verificaPermissao('Administrador')}">
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+	
+			<a4j:commandLink status="modalStatus" title="#{msg.titleVoltar}" render="abaFilial" immediate="true" 
+				actionListener="#{mbEmpresa.voltarParaListaFilial}" execute="@this">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbarGroup>
+	</rich:toolbar>
+	
+	<h:panelGroup id="cadastroFilial">
+		<h:panelGroup class="Linha980x25 MarginTop5px" layout="block">
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+			</div>	
+			<h:selectOneMenu id="status" value="#{mbEmpresa.filial.status}" disabled="#{empty mbEmpresa.filial.id}" 
+				styleClass="ComboField PositionRelativeFloatLeft Largura65px" tabindex="4">
+				<f:selectItems value="#{mbEmpresa.listaStatusEnum}" var="status" itemLabel="#{status.nomeTipo}"/>
+			</h:selectOneMenu>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			<a4j:commandButton immediate="true" image="/resources/images/gif/information.gif" title="#{msg.titleMotivo}" execute="@this"
+				actionListener="#{mbEmpresa.isJustificativaInformativo}" render="modalInformativoStatus, modalFilialStatus"
+				rendered="#{not empty mbEmpresa.filial.justificativa}" oncomplete="#{rich:component('modalFilialStatus')}.show()" 
+				styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft Tabwalk" />
+		</h:panelGroup>
+		
+		<div class="Linha980x25"> 
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.sufixoCnpj}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="sufixoCnpj" value="#{mbEmpresa.filial.sufixoCnpj}" styleClass="Campo Largura60px PositionRelativeFloatLeft"  
+				converter="sufixoCnpjConverter" readonly="#{mbEmpresa.filial.id != null}" tabindex="5">
+				<a4j:ajax listener="#{mbEmpresa.validaCnpj}" event="change" render="painelMensagemErroFilial" status="modalStatus" execute="@this"/>
+			</h:inputText>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.codFilial}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="codFilial" value="#{mbEmpresa.filial.codigoFilial}" styleClass="Campo Largura60px PositionRelativeFloatLeft" maxlength="4"
+				readonly="#{mbEmpresa.filial.id != null}" tabindex="6">
+				<a4j:ajax listener="#{mbEmpresa.validaCodigoFilial}" event="valueChange" render="painelMensagemErroFilial" status="modalStatus" execute="@this"/>
+			</h:inputText>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+	
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.descricao}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="descricao" value="#{mbEmpresa.filial.descricao}" styleClass="Campo Largura670px PositionRelativeFloatLeft"
+				maxlength="30" tabindex="7" readonly="#{mbEmpresa.statusInicio}"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+	
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.nomeFantasia}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="nomeFantasia" value="#{mbEmpresa.filial.nomeFantasia}" styleClass="Campo Largura670px PositionRelativeFloatLeft" 
+				maxlength="60" tabindex="8" readonly="#{mbEmpresa.statusInicio}" />
+		</div>
+		
+		<h:panelGroup id="panelIE" class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="inscricaoEstadual" value="#{mbEmpresa.filial.inscricaoEstadual}" styleClass="Campo Largura120px PositionRelativeFloatLeft"
+				disabled="#{mbEmpresa.filial.id != null or mbEmpresa.filial.isentoIcms or mbEmpresa.statusInicio}" tabindex="9">
+				<a4j:ajax event="valueChange" render="painelMensagemErroFilial" execute="@this" listener="#{mbEmpresa.validaIECNPJ}" status="modalStatus"/>
+			</h:inputText>
+			<div class="Padding0px PositionRelativeFloatLeft MarginLeft5px">
+				<div class="PositionRelativeFloatLeft MarginTop2px Padding0px">
+					<h:selectBooleanCheckbox id="isentoIcms" value="#{mbEmpresa.filial.isentoIcms}"
+						styleClass="Margin0px Padding0px PositionRelativeFloatLeft" disabled="#{mbEmpresa.filial.id != null or mbEmpresa.statusInicio}" tabindex="10">
+						<a4j:ajax event="valueChange" execute="@this" render="panelIE, painelMensagemErroFilial, jQueryIE" listener="#{mbEmpresa.renderizaIeIsento}"
+							status="modalStatus"/>
+					</h:selectBooleanCheckbox>
+				</div>
+				<h:outputText value="#{msg.isentoICMS}" styleClass="TituloDeCampo Largura110px MarginTop2px MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+		</h:panelGroup>
+		
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.inscricaoMunicipal}" styleClass="TituloDeCampo" />
+			</div>
+			<h:inputText id="inscricaoMunicipal" value="#{mbEmpresa.filial.inscricaoMunicipal}" styleClass="Campo Largura120px PositionRelativeFloatLeft"
+				maxlength="15" tabindex="11" readonly="#{mbEmpresa.statusInicio}"
+				onkeypress="Mascara(this, Integer)" onkeyup="Mascara(this, Integer)" onkeydown="Mascara(this, Integer)"
+				onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+		</div>
+		
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.cnae}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="cnae" value="#{mbEmpresa.filial.cnae}" styleClass="Campo Largura90px PositionRelativeFloatLeft"
+				maxlength="7" tabindex="12" readonly="#{mbEmpresa.statusInicio}" />
+		</div>
+		
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.email}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="email" value="#{mbEmpresa.filial.emailFilial}" styleClass="Campo Largura670px PositionRelativeFloatLeft"
+				maxlength="60" tabindex="13" readonly="#{mbEmpresa.statusInicio}" />
+		</div>
+		
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft MarginLeft10px MarginTop2px Largura150px">
+				<h:outputText value="#{msg.telefone}" styleClass="TituloDeCampo" />
+			</div>
+			<h:inputText id="telefone" styleClass="Campo Largura120px PositionRelativeFloatLeft" value="#{mbEmpresa.filial.telefone}" 
+				onkeypress="Mascara(this, Telefone)" maxlength="17" converter="telefoneConverter" tabindex="14" readonly="#{mbEmpresa.statusInicio}"/>
+		</div>
+		
+		<h:panelGroup styleClass="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.regimeTributario}" styleClass="TituloDeCampo"/>
+			</div>	
+			<h:selectOneMenu id="regimeTributario" value="#{mbEmpresa.filial.regimeTributario}" tabindex="15"
+				styleClass="ComboField PositionRelativeFloatLeft Largura300px" disabled="#{mbEmpresa.statusInicio}">
+				<f:selectItems value="#{mbEmpresa.listaRegimeTributarioEnum}" var="item" itemLabel="#{item.nomeTipo}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+	
+	</h:panelGroup>
+	
+	
+	<h:panelGroup layout="block" id="painelMensagemErroFilial" styleClass="PositionRelativeFloatLeft MarginLeft10px Largura980px">
+		<h:outputText value="#{mbEmpresa.mensagensErroFilial}" styleClass="MensagemDeErro" escape="false"/>
+		<h:outputText value="#{mbEmpresa.mensagemCep}" styleClass="MensagemDeErro" />
+		<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+	</h:panelGroup>
+		
+	<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+		<rich:tab id="abaEndereco" header="#{msg.abaEndereco}" immediate="true" execute="@this">
+			<ui:include src="/pages/dadosMestre/empresa/abas/dadosEndereco.xhtml" />
+		</rich:tab>
+		<rich:tab id="abaIeSubstTribut" header="#{msg.abaIeSubstTribut}" immediate="true" execute="@this">
+			<ui:include src="/pages/dadosMestre/empresa/abas/inscricaoEstadualST.xhtml" />
+		</rich:tab>
+		<rich:tab id="abaSegEmpresarial" header="#{msg.abaSegEmpresarial}" immediate="true" execute="@this">
+			<ui:include src="/pages/dadosMestre/empresa/abas/segmentoEmpresarial.xhtml"/>
+		</rich:tab>
+		<rich:tab id="abaInfJuridicas" header="#{msg.abaInformacoesJuridicas}" immediate="true" execute="@this" >
+			<ui:include src="/pages/dadosMestre/empresa/abas/informacoesJuridicas.xhtml"/>
+		</rich:tab>
+	</rich:tabPanel>
+	
+	<script type="text/javascript">
+		if(!#{mbEmpresa.verificaPermissao('Administrador')}) {
+			j(document).ready(function(){
+				disableInputText();
+			});
+		}
+	</script>
+		
+	<rich:jQuery id="jQuerySufixoCnpj" selector="#sufixoCnpj" timing="immediate"  query="maskMoney({maskMoney: false, mask : '9999-99'})" />
+	<rich:jQuery id="jQueryIE" selector="#inscricaoEstadual" timing="immediate"  query="maskMoney({maskMoney: false, mask : '99999999999999'})" />
+
+	
+</ui:composition>

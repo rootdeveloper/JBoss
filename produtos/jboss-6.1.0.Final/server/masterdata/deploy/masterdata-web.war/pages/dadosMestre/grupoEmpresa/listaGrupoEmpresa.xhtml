@@ -1,0 +1,127 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaGrupoEmpresa}"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalSimNao mensagem="#{mbGrupoEmpresa.msgExcluirSelecionadosTela}" nomePainel="confirmPane" tituloModal="#{msg.msgConfirmacaoExclusaoTela}" 
+			actionSim="#{mbGrupoEmpresa.excluirSelecionados}" render="barraDeScroll, modalInformativo" tituloFuncao="selecionado" idCheckbox="checkboxGrupoEmpresa" 
+			oncomplete="#{rich:component('modalInformativo')}.show(); renderBodyOfListaDeGrupoEmpresa();"/>
+		
+		<util:modalInformativo mensagemInformativo="#{mbGrupoEmpresa.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo"  />
+	
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:novoAction action="#{mbGrupoEmpresa.novo}" rendered="#{mbGrupoEmpresa.verificaPermissao('Administrador')}" />
+				<botao:excluir actionListener="#{mbGrupoEmpresa.verificarExclusao}" idModalSimNao="confirmPane" renderizarModal="#{mbGrupoEmpresa.renderizarModal}"
+					idModalInformativo="modalInformativo" rendered="#{mbGrupoEmpresa.verificaPermissao('Administrador')}"/>
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+			
+			<rich:toolbarGroup location="right">
+				<botao:atualizar actionListener="#{mbGrupoEmpresa.refreshList}" buttonStyle="MarginRight5px" render="barraDeScroll"
+					oncomplete="renderAllListaDeGrupoEmpresa()"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaDeGrupoEmpresa" var="item" value="#{mbGrupoEmpresa.listaDeGrupoEmpresa}" rows="10" styleClass="Largura100pc" 
+			onrowmouseover="className='SelecionaLinha'" noDataLabel="#{msg.listaGrupoEmpresaVazia}" rowKeyVar="rowKey"
+			onrowmouseout="className=''" onrowdblclick="editarGrupoEmpresa(#{rowKey})" >
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxGrupoEmpresa" valueChangeListener="#{mbGrupoEmpresa.selecionarTodos}" styleClass="Margin0px"
+						onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();" tabindex="1">
+						<a4j:ajax event="click" render="listaDeGrupoEmpresa" status="modalStatus" oncomplete="reSize();"/>
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{item.selected}" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();">
+					<a4j:ajax event="valueChange" execute="@this" />
+				</h:selectBooleanCheckbox>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura70px" sortBy="#{item.status.nomeTipo}" 
+				sortOrder="#{mbGrupoEmpresa.columnOrder.mapColumnOrder['Status'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(item.status) , fn:toLowerCase(mbGrupoEmpresa.columnFilter.mapColumnFilter['Status'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.status}"/>
+					<table:orderArrow action="#{mbGrupoEmpresa.columnOrder.mapColumnOrder['Status'].sortBy}" 
+						order="#{mbGrupoEmpresa.columnOrder.mapColumnOrder['Status'].sortOrder}" render="listaDeGrupoEmpresa"/>
+					<br/>
+					<h:inputText id="status" value="#{mbGrupoEmpresa.columnFilter.mapColumnFilter['Status'].filterBy}" styleClass="Campo Largura60px" 
+						onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" maxlength="7" tabindex="2"
+						onkeyup="Mascara(this, LetraSemEspaco);" onkeydown="Mascara(this, LetraSemEspaco);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderBodyOfListaDeGrupoEmpresa(); executeFilter(this,event);" 
+							execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.status.nomeTipo}"/>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura100px" sortBy="#{item.codigo}" 
+				sortOrder="#{mbGrupoEmpresa.columnOrder.mapColumnOrder['Codigo'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.codigo, mbGrupoEmpresa.columnFilter.mapColumnFilter['Codigo'].filterBy)}" >
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigo}"/>
+					<table:orderArrow action="#{mbGrupoEmpresa.columnOrder.mapColumnOrder['Codigo'].sortBy}" 
+						order="#{mbGrupoEmpresa.columnOrder.mapColumnOrder['Codigo'].sortOrder}" 
+						render="listaDeGrupoEmpresa"/>
+					<br/>
+					<h:inputText value="#{mbGrupoEmpresa.columnFilter.mapColumnFilter['Codigo'].filterBy}" onkeypress="executeFilter(this,event)" 
+						styleClass="Campo Largura95px" maxlength="4" tabindex="3">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderBodyOfListaDeGrupoEmpresa();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.codigo}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura430px" sortBy="#{item.descricao}" 
+				sortOrder="#{mbGrupoEmpresa.columnOrder.mapColumnOrder['Descricao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.descricao, mbGrupoEmpresa.columnFilter.mapColumnFilter['Descricao'].filterBy)}" >
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricao}"/>
+					<table:orderArrow action="#{mbGrupoEmpresa.columnOrder.mapColumnOrder['Descricao'].sortBy}" 
+						order="#{mbGrupoEmpresa.columnOrder.mapColumnOrder['Descricao'].sortOrder}" render="listaDeGrupoEmpresa"/>
+					<br/>
+					<h:inputText value="#{mbGrupoEmpresa.columnFilter.mapColumnFilter['Descricao'].filterBy}" styleClass="Campo Largura500px" 
+						onkeypress="executeFilter(this,event)" maxlength="100" tabindex="4">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderBodyOfListaDeGrupoEmpresa();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.descricao}" title="#{item.descricao}"/>
+			</rich:column>
+			
+		</rich:dataTable>
+		
+		<table:scroller for="listaDeGrupoEmpresa" idPanelScroller="barraDeScroll" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbGrupoEmpresa.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbGrupoEmpresa.listaDeGrupoEmpresa}" 
+			totalRegistros="#{mbGrupoEmpresa.quantidadeRegistros}" />
+			
+		<a4j:outputPanel ajaxRendered="true">
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages MarginTop6px Largura100pc Altura20px"/>
+		</a4j:outputPanel>
+		
+		<a4j:jsFunction name="editarGrupoEmpresa" render="erroEdicao" status="modalStatus" action="#{mbGrupoEmpresa.editar}"
+			rendered="#{mbGrupoEmpresa.verificaPermissao('Administrador')}" >
+			<a4j:param name="linha" assignTo="#{mbGrupoEmpresa.linhaSelecionada}"/>
+		</a4j:jsFunction>
+		
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderBodyOfListaDeGrupoEmpresa" status="modalStatus" render="listaDeGrupoEmpresa@body" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderAllListaDeGrupoEmpresa" status="modalStatus" render="listaDeGrupoEmpresa" oncomplete="reSize();"/>
+	</ui:define>
+</ui:composition>

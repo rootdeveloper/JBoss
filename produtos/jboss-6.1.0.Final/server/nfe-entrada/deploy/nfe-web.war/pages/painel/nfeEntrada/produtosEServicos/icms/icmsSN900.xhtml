@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	
+	<div class="Linha680x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_origemDaMercadoria}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.orig}" 
+				styleClass="Campo Largura294px" readonly="true" converter="origemDaMercadoriaConverter"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_modalidadeDeDeterminacaoDaBcDoIcms}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.modBC}" 
+				styleClass="Campo Largura298px" readonly="true" converter="modalidadeBcIcmsConverter"/>
+		</div>
+	</div>
+	<div class="Linha680x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_codigoSituacaoDaOperacao}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.csosn}" 
+				styleClass="Campo Largura600px" readonly="true" converter="codSitOpSimplesNacionalConverter"/>
+		</div>
+	</div>
+	<div class="Linha680x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_valorDaBcDoIcms}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.vbc}" 
+				styleClass="Campo Largura140px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_percentualDaReducaoDaBcDoIcms}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.pRedBC}" 
+				styleClass="Campo Largura140px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_aliquotaDoImposto}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.picms}" 
+				styleClass="Campo Largura150px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_valorDoIcms}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.vicms}" 
+				styleClass="Campo Largura138px AlignRight" readonly="true"/>
+		</div>
+	</div>
+	<div class="Linha680x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_modalidadeDeDeterminacaoDaBcDoIcmsSt}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.modBCST}"
+				styleClass="Campo Largura280px" readonly="true" converter="modalidadeBcIcmsStConverter"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_percentalAdicionadoDoIcmsSt}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.pmvast}" 
+				styleClass="Campo Largura150px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_percentualDaReducaoDaBcDoIcmsSt}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.pRedBCST}" 
+				styleClass="Campo Largura150px AlignRight" readonly="true"/>
+		</div>
+	</div>
+	<div class="Linha680x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_valorDaBcDoIcmsSt}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.vbcst}" 
+				styleClass="Campo Largura110px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_aliquotaDoImpostoIcmsSt}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.picmsst}" 
+				styleClass="Campo Largura155px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_valorDoIcmsSt}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.vicmsst}" 
+				styleClass="Campo Largura140px AlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_aliquotaAplicavelDeCalculoDoCredito}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.pCredSN}" 
+				styleClass="Campo Largura165px AlignRight" readonly="true"/>
+		</div>
+	</div>
+	<div class="Linha680x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_valorCreditoDoIcms}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900.vCredICMSSN}" 
+				styleClass="Campo Largura170px AlignRight" readonly="true"/>
+		</div>
+	</div>
+	
+</ui:composition>

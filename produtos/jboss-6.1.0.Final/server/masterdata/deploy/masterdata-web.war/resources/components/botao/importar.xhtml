@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="idModalImportador" shortDescription="Regra de Navegação a ser utilizada"/>
+		<composite:attribute name="buttonStyle" shortDescription="Estilo adicional para o botão"/>
+		<composite:attribute name="idPanelErro" shortDescription="Id utilizado no panel de erro da tela de listagem"/>
+		<composite:attribute name="filialCadastrada" shortDescription="Se true possui filial cadastrado, false caso contrário"/>
+	</composite:interface>
+
+	<composite:implementation>
+
+		<a4j:commandLink status="modalStatus" title="#{msg.titleImportar}" execute="@this"
+			oncomplete="(#{cc.attrs.filialCadastrada == null || cc.attrs.filialCadastrada} ?  #{rich:component(cc.attrs.idModalImportador)}.show() : renderiza());">
+			<h:graphicImage value="#{resource['images/png:importar.png']}" alt="#{msg.titleImportar}" styleClass="BotaoImagem"
+				width="26px" height="18px"/>
+		</a4j:commandLink>
+
+		<a4j:jsFunction name="renderiza" render="#{cc.attrs.idPanelErro}"/>
+	</composite:implementation>    
+</html>

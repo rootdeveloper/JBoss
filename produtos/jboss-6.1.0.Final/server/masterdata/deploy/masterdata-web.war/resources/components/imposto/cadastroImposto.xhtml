@@ -1,0 +1,98 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+    <composite:interface>
+       <composite:attribute name="ruleRender" required="false"/>
+       <composite:attribute name="securityRender" required="false"/>
+    </composite:interface>
+	
+	<composite:implementation>
+	<h:panelGroup id="cadastrodeDeImpostos">
+		<rich:toolbar styleClass="BarraDeBotoes100pc">
+			<rich:toolbarGroup>
+				<a4j:commandLink status="modalStatus" title="#{msg.titleSalvar}" 
+					execute="camposCadastroIcms camposCadastroCofins camposCadastroPis camposCadastroIPI" 
+					actionListener="#{mbImposto.salvar}" render="msgErroImposto painelImpostos" rendered="#{cc.attrs.ruleRender}">
+					<f:param name="acaoimposto" value="Lista" />
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="apagar" styleClass="BotaoImagem" width="26px" height="18px" />
+				</a4j:commandLink>
+		
+				<a4j:commandLink status="modalStatus" title="#{msg.titleVoltar}" render="abaImpostos" immediate="true" 
+					actionListener="#{mbImposto.voltar}">
+					<f:param name="acaoImpostoCadastro" value="Lista"/>
+					<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+				</a4j:commandLink>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+
+		<div class="Linha900x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.grupoImposto}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu value="#{mbImposto.impostoVO.grupoImposto}" styleClass="ComboField PositionRelativeFloatLeft Largura70px" 
+				disabled="#{mbImposto.desabilitaGrupoImposto || !cc.attrs.ruleRender}">
+				<f:selectItems value="#{mbImposto.getEnum('GrupoImpostoEnum')}" var="imposto" itemDisabled="#{mbImposto.isImpostoHabilidado(imposto)}"
+					itemLabel="#{imposto.nomeGrupo}"/> 
+				<a4j:ajax event="change"  listener="#{mbImposto.comboChangeListener}" render="cadastrodeDeImpostos" status="modalStatus"/>
+			</h:selectOneMenu>
+		</div>
+		
+		<div class="Linha940x25">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.situacaoTributaria}" styleClass="TituloDeCampo" />
+			</div>
+				<h:selectOneMenu  id="comboSituacao" value="#{mbImposto.situacaoTributaria}" styleClass="ComboField PositionRelativeFloatLeft Largura700px"
+					converter="entityConverter" disabled="#{!cc.attrs.ruleRender}">
+					<f:selectItems value="#{mbImposto.listaSituacaoTributaria}" var="situacao"
+						itemLabel="#{situacao.codigoSituacaoTributaria} - #{situacao.descricao}"/>
+					<a4j:ajax event="change" render="panelCadastroImpostos camposCadastroIcms camposCadastroCofins camposCadastroPis camposCadastroIPI" 
+						status="modalStatus" execute="comboSituacao" listener="#{mbImposto.carregaImposto}"/>
+				</h:selectOneMenu>
+		</div>
+		
+		<h:panelGroup id="panelCadastroImpostos" styleClass="PositionRelativeFloatLeft MarginTop20px Largura100pc" layout="block"
+			rendered="#{mbImposto.situacaoTributaria != null}">
+		
+			<h:panelGroup id="cadastroIcms" rendered="#{mbImposto.impostoVO.grupoImposto.nomeGrupo eq 'ICMS'}" layout="block">
+				<ui:include src="/resources/components/imposto/cadastroIcms.xhtml" styleClass="MarginLeft10px Altura50px" />		
+			</h:panelGroup>
+			
+			<h:panelGroup id="cadastroCofins" rendered="#{mbImposto.impostoVO.grupoImposto.nomeGrupo eq 'COFINS'}" layout="block">
+				<ui:include src="/resources/components/imposto/cadastroCofins.xhtml" styleClass="MarginLeft10px"/>		
+			</h:panelGroup>
+			
+			<h:panelGroup id="cadastroPis" rendered="#{mbImposto.impostoVO.grupoImposto.nomeGrupo eq 'PIS'}" layout="block">
+				<ui:include src="/resources/components/imposto/cadastroPis.xhtml" styleClass="MarginLeft10px"/>		
+			</h:panelGroup>
+			
+			<h:panelGroup id="cadastroIpi" rendered="#{mbImposto.impostoVO.grupoImposto.nomeGrupo eq 'IPI'}" layout="block">
+				<ui:include src="/resources/components/imposto/cadastroIpi.xhtml" styleClass="MarginLeft10px" layout="block" />		
+			</h:panelGroup>
+			
+		</h:panelGroup>
+	
+		<h:panelGroup id="msgErroImposto" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura980px MarginBottom5px">
+			<h:outputText value="#{mbImposto.mensagensErroImposto}" styleClass="MensagemDeErro" escape="false" />
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>	
+		</h:panelGroup>
+		
+			
+		<script type="text/javascript">
+			//<![CDATA[
+				if(#{!cc.attrs.securityRender}) {
+					j(document).ready(function(){
+						disableInputText();
+					});
+				}
+			//]]>
+		</script>
+		
+	</h:panelGroup>	
+	</composite:implementation>
+</html>

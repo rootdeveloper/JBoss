@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:composition>
+		<h:panelGroup layout="block" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav != null}" id="aquavID" styleClass="Largura980px">
+			<div class="Linha960x38">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.numeroDeControle}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.nCtrl}" styleClass="Campo Largura140px" readonly="true" />
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.numeroDoBooking_reserva}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.nBooking}" styleClass="Campo Largura210px" readonly="true" />
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.valorDaPrestacao}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.vPrest}" styleClass="Campo Largura140px" readonly="true" converter="valorMonetarioSefazConverter">
+					</h:inputText>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.tipoDeNavegacao}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.tpNav}" styleClass="Campo Largura150px" readonly="true" converter="tipoNavegacaoCodigoConverter" />
+				</div>
+			</div>
+			<div class="Linha960x38">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.adicionalDeFreteParaRenovacao}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.vafrmm}" styleClass="Campo Largura250px" readonly="true" converter="valorMonetarioSefazConverter">
+					</h:inputText>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.numeroDaViagem}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.nViag}" styleClass="Campo Largura140px" readonly="true" />
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.irinDoNavio}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.irin}" styleClass="Campo Largura120px" readonly="true" />
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.direcao}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.direc}" styleClass="Campo Largura130px" readonly="true" converter="direcaoNavegacaoConverter"/>
+				</div>
+			</div>
+			<div class="Linha450x160">
+				<div class="GrupoTituloCampo MarginTop5px">
+					<h:outputText value="#{msg.identificacaoDoNavio}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.xNavio}" styleClass="Campo Largura440px" readonly="true" />
+				</div>
+				<div class="GrupoTituloCampo MarginTop5px">
+					<h:outputText value="#{msg.portoDeEmbarque}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.prtEmb}" styleClass="Campo Largura440px" readonly="true" />
+				</div>
+				<div class="GrupoTituloCampo MarginTop5px">
+					<h:outputText value="#{msg.portoDeTransbordo}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.prtTrans}" styleClass="Campo Largura440px" readonly="true" />
+				</div>
+				<div class="GrupoTituloCampo MarginTop5px">
+					<h:outputText value="#{msg.portoDeDestino}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.prtDest}" styleClass="Campo Largura440px" readonly="true" />
+				</div>
+			</div>
+			<div class="Linha450x160">
+				<fieldset class="Fieldset200x150 MarginTop5px MarginLeft10px">
+					<legend class="TituloDeCampo">#{msg.lacresDoContainer}</legend>
+					<h:panelGroup layout="block" styleClass="GrupoTituloCampo MarginLeft10px MarginTop25px">
+						<rich:dataTable value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.lacre}" var="lacre" styleClass="Largura180px" rows="3" id="lacreAquavTabela">
+							<rich:column styleClass="alignCenter">
+								<f:facet name="header">
+									<h:outputText value="#{msg.numeroDoLacre}" />
+								</f:facet>
+								<h:outputText value="#{lacre.nLacre}" />
+							</rich:column>
+						</rich:dataTable>
+					</h:panelGroup>
+				</fieldset>
+				<fieldset class="Fieldset200x150 MarginTop5px MarginLeft10px">
+					<legend class="TituloDeCampo">#{msg.informacoesDasBalsas}</legend>
+					<h:panelGroup layout="block" styleClass="GrupoTituloCampo MarginLeft10px MarginTop25px">
+						<rich:dataTable value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aquav.balsa}" var="infBalsa" styleClass="Largura180px" rows="3" id="infBalsa">
+							<rich:column styleClass="alignCenter">
+								<f:facet name="header">
+									<h:outputText value="#{msg.identificadorDaBalsa}" />
+								</f:facet>
+								<h:outputText value="#{infBalsa.xBalsa}" />
+							</rich:column>
+						</rich:dataTable>
+					</h:panelGroup>
+				</fieldset>
+			</div>
+		</h:panelGroup>
+	</ui:composition>
+</html>

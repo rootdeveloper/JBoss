@@ -1,0 +1,164 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal">
+
+	<h:panelGroup id="camposCadastroIcms" layout="block" rendered="#{mbImposto.situacaoTributaria != null}">
+
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.sequencialDeCalculoTela}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="sequenciaCalculoIcms" value="#{mbImposto.impostoVO.abstractImposto.sequenciaCalculo}" maxlength="1" 
+				onkeypress="Mascara(this, Integer)" onkeydown="Mascara(this, Integer)" onkeyup="Mascara(this, Integer)"
+				onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"
+				styleClass="Campo PositionRelativeFloatLeft Largura10px" disabled="#{!cc.attrs.ruleRender}"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+
+		<h:panelGroup styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('ICMS_Tributacao10')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.tributacao}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu value="#{mbImposto.tributacao10}" styleClass="ComboField PositionRelativeFloatLeft Largura90px"
+				disabled="#{!cc.attrs.ruleRender}">
+				<f:selectItems value="#{mbImposto.getEnum('TributacaoICMS10Enum')}" var="modalidade" itemLabel="#{tributacao.nomeTributacao}"/>
+				<a4j:ajax event="change" render="camposCadastroIcms" listener="#{mbImposto.carregaImposto}" status="modalStatus" />
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+		<h:panelGroup styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('ICMS_Tributacao90')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.tributacao}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu value="#{mbImposto.tributacao90}" styleClass="ComboField PositionRelativeFloatLeft Largura85px" disabled="#{!cc.attrs.ruleRender}">
+				<f:selectItems value="#{mbImposto.getEnum('TributacaoICMS90Enum')}" var="modalidade" itemLabel="#{tributacao.nomeTributacao}"/>
+				<a4j:ajax event="change" render="camposCadastroIcms" listener="#{mbImposto.carregaImposto}" status="modalStatus" />
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+		<h:panelGroup  id="tributacao41" styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('ICMS_Tributacao41')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.tributacao}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu value="#{mbImposto.tributacao41}" styleClass="ComboField PositionRelativeFloatLeft Largura225px" disabled="#{!cc.attrs.ruleRender}">
+				<f:selectItems value="#{mbImposto.getEnum('TributacaoICMS41Enum')}" var="tributacao"  itemLabel="#{tributacao.nomeTributacao}"/>
+				<a4j:ajax event="change" render="camposCadastroIcms" listener="#{mbImposto.carregaImposto}" status="modalStatus" />
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+		<h:panelGroup id="motivoDesoneracao41" styleClass="Linha900x25"
+			rendered="#{mbImposto.verificaMapa('ICMS_Tributacao41') and (mbImposto.tributacao41 == 'NAO_TRIBUTADA')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.motivoDesoneracao}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu value="#{mbImposto.impostoVO.abstractImposto.motivoDesoneracaoIcms}" disabled="#{!cc.attrs.ruleRender}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura280px">
+				<f:selectItems value="#{mbImposto.getEnum('MotivoDesoneracaoIcmsEnum')}" var="motivo" itemLabel="#{motivo.motivoDesoneracaoIcms}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+		<h:panelGroup class="Linha900x25" id="bcIcmsSt41"
+			rendered="#{mbImposto.verificaMapa('ICMS_Tributacao41') and (mbImposto.tributacao41 == 'ICMSST')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.bcIcmsRetUFImitente}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="bcIcmsSt41IN" value="#{mbImposto.impostoVO.abstractImposto.bcIcmsSTRetidoUfRemetente}"
+				 disabled="#{!cc.attrs.ruleRender}" styleClass="Campo PositionRelativeFloatLeft Largura100px TextAlignRight" maxlength="6"
+				 onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+				 onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+				<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true" />
+			</h:inputText>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</h:panelGroup>
+
+		<h:panelGroup class="Linha900x25" id="bcIcmsUfDest"
+			rendered="#{mbImposto.verificaMapa('ICMS_Tributacao41') and (mbImposto.tributacao41 == 'ICMSST')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.bcIcmsUFDestino}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="bcIcmsSTRetido" value="#{mbImposto.impostoVO.abstractImposto.bcIcmsSTRetidoUfDestino}" disabled="#{!cc.attrs.ruleRender}"
+				styleClass="Campo PositionRelativeFloatLeft Largura100px TextAlignRight" maxlength="6">
+				<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true" />
+			</h:inputText>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</h:panelGroup> 
+
+		<h:panelGroup styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('ICMS_MotivoDesoneracaoIcms')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.motivoDesoneracao}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu value="#{mbImposto.impostoVO.abstractImposto.motivoDesoneracaoIcms}" disabled="#{!cc.attrs.ruleRender}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura380px">
+				<f:selectItems value="#{mbImposto.getEnum('MotivoDesoneracaoIcmsEnum')}" var="motivo" itemLabel="#{motivo.motivoDesoneracaoIcms}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+		<h:panelGroup styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('ICMS_ModBC')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.modalidadeBCICMS}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu value="#{mbImposto.impostoVO.abstractImposto.parametroCalculoIcms.modalidadeBCIcms}" disabled="#{!cc.attrs.ruleRender}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura170px">
+				<f:selectItems value="#{mbImposto.getEnum('ModalidadeBCIcmsEnum')}" var="modalidade" itemLabel="#{modalidade.descricaoModalidadeBC}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+		<h:panelGroup styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('ICMS_EsquemaBC')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.esquemaBC}" styleClass="TituloDeCampo" />
+			</div>
+			<h:selectOneMenu value="#{mbImposto.impostoVO.abstractImposto.parametroCalculoIcms.esquemaCalculoIcms}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura300px" disabled="#{!cc.attrs.ruleRender}">
+				<f:selectItems value="#{mbImposto.getEnum('EsquemaBaseCalculoIcmsEnum')}" var="esquema" itemLabel="#{esquema.esquemaBaseCalculoIcms}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+		<h:panelGroup styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('ICMS_FormaAliquota')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.aliquota}" styleClass="TituloDeCampo" />
+			</div>
+			<h:selectOneMenu value="#{mbImposto.impostoVO.abstractImposto.parametroCalculoIcms.formaCalculoAliquotaImposto}" disabled="#{!cc.attrs.ruleRender}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura140px">
+				<f:selectItems value="#{mbImposto.getEnum('FormaCalculoAliquotaImpostoEnum')}" var="aliquota" itemLabel="#{aliquota.formaCalculoAliquotaImposto}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+		<h:panelGroup styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('ICMS_ModBCST')}" >
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.modalidadeBCST}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu value="#{mbImposto.impostoVO.abstractImposto.parametroCalculoIcmsST.modalidadeBCIcmsST}" disabled="#{!cc.attrs.ruleRender}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura180px">
+				<f:selectItems value="#{mbImposto.getEnum('ModalidadeBCIcmsSTEnum')}" var="modalidade" itemLabel="#{modalidade.descricaoModalidadeBCST}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+		<h:panelGroup styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('ICMS_EsquemaBCST')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.esquemaBCST}" styleClass="TituloDeCampo" />
+			</div>
+			<h:selectOneMenu value="#{mbImposto.impostoVO.abstractImposto.parametroCalculoIcmsST.esquemaCalculoIcmsST}" disabled="#{!cc.attrs.ruleRender}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura300px">
+				<f:selectItems value="#{mbImposto.getEnum('EsquemaBaseCalculoIcmsSTEnum')}" var="esquema" itemLabel="#{esquema.esquemaBaseCalculoIcmsST}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+		<h:panelGroup styleClass="Linha900x25" rendered="#{mbImposto.verificaMapa('ICMS_FormaAliquotaST')}">
+			<div class="PositionRelativeFloatLeft Largura223px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.aliquotaSt}" styleClass="TituloDeCampo" />
+			</div>
+			<h:selectOneMenu value="#{mbImposto.impostoVO.abstractImposto.parametroCalculoIcmsST.formaCalculoAliquotaImpostoST}" disabled="#{!cc.attrs.ruleRender}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura140px">
+				<f:selectItems value="#{mbImposto.getEnum('FormaCalculoAliquotaImpostoSTEnum')}" var="aliquota" itemLabel="#{aliquota.formaCalculoAliquotaImpostoST}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+		
+	<rich:jQuery id="jQueryIcmsBCEmit" rendered="#{mbImposto.verificaMapa('ICMS_Tributacao41') and (mbImposto.tributacao41 == 'ICMSST')}" selector="#bcIcmsSt41IN" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	<rich:jQuery id="jQuerybcIcmsSTRetido" rendered="#{mbImposto.verificaMapa('ICMS_Tributacao41') and (mbImposto.tributacao41 == 'ICMSST')}" selector="#bcIcmsSTRetido" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	</h:panelGroup>
+		
+</ui:composition>

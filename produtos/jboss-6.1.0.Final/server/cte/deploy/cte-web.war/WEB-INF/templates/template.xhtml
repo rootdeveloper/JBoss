@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:a4j="http://richfaces.org/a4j"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich">
+
+	<ui:insert name="metadata"/>
+	<h:head>
+		<title>#{msg.tituloHome}</title>
+		<h:outputStylesheet name="richFacesCTe.css" library="css" />
+		<h:outputStylesheet name="estiloCTe.css" library="css"  />
+		<h:outputStylesheet name="book.css" library="css" />
+		<h:outputScript name="mascaras.js" library="js/mascara" target="head" />
+		<h:outputScript name="template.js" library="js/template" target="head" />
+	    <rich:jQuery timing="immediate"/>
+	</h:head>
+	<body class="Tudo" scroll="auto" ondragstart="return false;" ondrag="return false;">
+		<div class="Cabecalho">
+			<h:form id="formCabecalho">
+				<div id="NomeEmpresa">
+					<h:graphicImage value="#{resource['images/png:logoEmpresa.png']}" alt="DataPrimer" width="181px" height="65px"/>
+				</div>
+				<div id="NomeProduto">
+					<h:graphicImage url="#{resource['images/png:nomeProduto2.png']}" alt="CTe" height="35px" />
+				</div>
+				<div id="BotoesSecao">
+					<div id="BotaoLogoff">
+						<h:commandButton id="logout" styleClass="Altura50px BordaOff" alt="logout" image="#{resource['images/jpg:logoff2.jpg']}">
+							<f:ajax execute="@this" listener="#{userSession.logout}"/>
+						</h:commandButton>
+					</div>							
+				 	<div id="BotaoHome">
+						<h:commandButton styleClass="Altura50px BordaOff" action="home" image="#{resource['images/jpg:home.jpg']}">
+							<f:ajax execute="@this"/>
+						</h:commandButton>	 					
+				 	</div>
+				 	<div id="BotaoPerfil">
+						<h:commandButton styleClass="Altura50px BordaOff" action="perfil" alt="Perfil de Usuário" image="#{resource['images/jpg:perfil.jpg']}">
+							<f:ajax execute="@this"/>
+						</h:commandButton>	 					
+				 	</div> 
+				</div>
+				<div class="Informacoes">
+					<div id="UsuarioLogado">
+						<h:outputText value="#{msg.mensagemUsuarioLogado_}" />
+						<h:outputText value="#{request.remoteUser}" />
+					</div>	
+					<div class="Localizacao">
+						<h:panelGroup id="header-content" layout="block">
+							<h:panelGrid columns="2">
+								<ui:insert name="view">
+									<h:outputText value="#{msg.paginaInicial}" />
+								</ui:insert>
+								<h:outputText value="#{msg.ambiente_} #{userSession.empresaSelecionada.ambiente.nomeAmbiente} (v#{msg.codigoVersao})"/>
+							</h:panelGrid>
+						</h:panelGroup>
+					</div>
+				</div>	
+			</h:form>
+		</div>
+		<div class="BarraNavegacao">
+			<h:panelGroup styleClass="MenuNavegacao" id="header" layout="block">
+				<h:form id="main-form-menu" prependId="false">
+					<ui:include src="/WEB-INF/templates/menu.xhtml"/>
+				</h:form>
+			</h:panelGroup>
+			<h:form prependId="false">
+				<h:panelGroup styleClass="ConjuntoEmpresa" layout="block" id="painelConjuntoEmpresa">
+					<h:outputLabel value="#{msg.empresa_}" styleClass="Empresa"/>
+					<h:selectOneMenu styleClass="ComboField Largura250px " value="#{userSession.empresaSelecionada}"
+						converter="entityConverter">
+						<f:selectItems value="#{userSession.lista}" />
+						<ui:insert name="valueChangeComboDeEmpresas"> 
+							<a4j:ajax event="valueChange" render="header-content" execute="@this"/>
+						</ui:insert>
+					</h:selectOneMenu>
+				</h:panelGroup>
+			</h:form>
+		</div>
+		<h:panelGroup id="page" layout="block" styleClass="Conteudo MarginTop5px">
+			<h:form id="formConteudo" prependId="false" onkeypress="return bloqueioEnter(event);">
+				<f:view contentType="text/html">
+					<ui:insert name="content">Main Content</ui:insert>
+				</f:view>
+			</h:form>
+			<ui:insert name="contentModal" />
+		</h:panelGroup>
+		<h:panelGroup id="footer" layout="block" styleClass="Rodape">
+			<h:form>
+				<h:commandButton image="#{resource['images/png:status.png']}" action="statusServico" styleClass="MarginTop5px MarginBottom5px"/>
+				<div class="TextoRodape">
+					<h:outputLabel value="#{msg.cte}" />
+				</div>
+			</h:form>
+		</h:panelGroup>
+		
+		<ui:include src="/resources/components/modal/modalStatus.xhtml"/>
+		
+		<a4j:status name="modalStatus" onstart="#{rich:component('modalStatus')}.show();blockKeyPress('page');"
+			onstop="#{rich:component('modalStatus')}.hide();unBlockKeyPress('page');" />	
+	</body>
+</html>

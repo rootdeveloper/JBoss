@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#*" PATH="/*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#*:0" NAME="item" PATH="/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#pages#home.xhtml" NAME="output"
+    PATH="/pages/home.xhtml" TARGET="rules:#pages#home.xhtml"
+    TITLE="home" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="consultaStatus::#pages#consulta#consultaStatusSefaz.xhtml"
+    NAME="output1" PATH="/pages/consulta/consultaStatusSefaz.xhtml"
+    TARGET="rules:#pages#consulta#consultaStatusSefaz.xhtml"
+    TITLE="consultaStatus" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listaNfeEntrada::#pages#painel#listaNfeEntrada.xhtml"
+    NAME="output2" PATH="/pages/painel/listaNfeEntrada.xhtml"
+    TARGET="rules:#pages#painel#listaNfeEntrada.xhtml"
+    TITLE="listaNfeEntrada" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listaPacoteLiberacao::#pages#pacoteLiberacao#listaPacoteLiberacao.xhtml"
+    NAME="output4"
+    PATH="/pages/pacoteLiberacao/listaPacoteLiberacao.xhtml"
+    TARGET="rules:#pages#pacoteLiberacao#listaPacoteLiberacao.xhtml"
+    TITLE="listaPacoteLiberacao" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="listaManual::#pages#manual#listaManual.xhtml" NAME="output3"
+    PATH="/pages/manual/listaManual.xhtml"
+    TARGET="rules:#pages#manual#listaManual.xhtml" TITLE="listaManual" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#home.xhtml" PATH="/pages/home.xhtml"
+  SHAPE="512,337,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#painel#listaNfeEntrada.xhtml"
+  PATH="/pages/painel/listaNfeEntrada.xhtml" SHAPE="288,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#painel#listaNfeEntrada.xhtml:0"
+   NAME="item" PATH="/pages/painel/listaNfeEntrada.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="detalhesNfeEntrada::#pages#painel#detalhesNfeEntrada.xhtml"
+    NAME="output" PATH="/pages/painel/detalhesNfeEntrada.xhtml"
+    TARGET="rules:#pages#painel#detalhesNfeEntrada.xhtml"
+    TITLE="detalhesNfeEntrada" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#consulta#consultaStatusSefaz.xhtml"
+  PATH="/pages/consulta/consultaStatusSefaz.xhtml" SHAPE="288,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#pacoteLiberacao#listaPacoteLiberacao.xhtml"
+  PATH="/pages/pacoteLiberacao/listaPacoteLiberacao.xhtml"
+  SHAPE="304,273,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#pacoteLiberacao#listaPacoteLiberacao.xhtml:0"
+   NAME="item" PATH="/pages/pacoteLiberacao/listaPacoteLiberacao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastrarPacoteLiberacao::#pages#pacoteLiberacao#cadastroPacoteLiberacao.xhtml"
+    NAME="output"
+    PATH="/pages/pacoteLiberacao/cadastroPacoteLiberacao.xhtml"
+    TARGET="rules:#pages#pacoteLiberacao#cadastroPacoteLiberacao.xhtml"
+    TITLE="cadastrarPacoteLiberacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM
+  NAME="rules:#pages#pacoteLiberacao#cadastroPacoteLiberacao.xhtml"
+  PATH="/pages/pacoteLiberacao/cadastroPacoteLiberacao.xhtml"
+  SHAPE="240,721,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM
+   ID="rules:#pages#pacoteLiberacao#cadastroPacoteLiberacao.xhtml:0"
+   NAME="item"
+   PATH="/pages/pacoteLiberacao/cadastroPacoteLiberacao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="voltar::#pages#pacoteLiberacao#listaPacoteLiberacao.xhtml"
+    NAME="output"
+    PATH="/pages/pacoteLiberacao/listaPacoteLiberacao.xhtml"
+    TARGET="rules:#pages#pacoteLiberacao#listaPacoteLiberacao.xhtml"
+    TITLE="voltar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#manual#listaManual.xhtml"
+  PATH="/pages/manual/listaManual.xhtml" SHAPE="304,273,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#manual#listaManual.xhtml:0" NAME="item"
+   PATH="/pages/manual/listaManual.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastrarManual::#pages#manual#cadastroManual.xhtml"
+    NAME="output" PATH="/pages/manual/cadastroManual.xhtml"
+    TARGET="rules:#pages#manual#cadastroManual.xhtml"
+    TITLE="cadastrarManual" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#manual#cadastroManual.xhtml"
+  PATH="/pages/manual/cadastroManual.xhtml" SHAPE="32,257,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#manual#cadastroManual.xhtml:0"
+   NAME="item" PATH="/pages/manual/cadastroManual.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="voltar::#pages#manual#listaManual.xhtml"
+    NAME="output" PATH="/pages/manual/listaManual.xhtml"
+    TARGET="rules:#pages#manual#listaManual.xhtml" TITLE="voltar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#painel#detalhesNfeEntrada.xhtml"
+  PATH="/pages/painel/detalhesNfeEntrada.xhtml" SHAPE="512,369,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#painel#detalhesNfeEntrada.xhtml:0"
+   NAME="item" PATH="/pages/painel/detalhesNfeEntrada.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="voltar::#pages#painel#listaNfeEntrada.xhtml"
+    NAME="output" PATH="/pages/painel/listaNfeEntrada.xhtml"
+    TARGET="rules:#pages#painel#listaNfeEntrada.xhtml" TITLE="voltar" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

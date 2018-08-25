@@ -1,0 +1,148 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroWebService}"/>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<util:modalInformativoVoltar mensagemInformativo="#{mbWebService.mensagemModal}" nomePainel="modalInformativo"
+			tituloModal="#{msg.mensagem}" render="#{mbWebService.renderizarModal}"/>
+
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbWebService.salvar}" title="#{msg.titleSalvar}" 
+				oncomplete="#{mbWebService.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"
+				execute="cadastroWebService" render="modalInformativo, painelMensagemErro">
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem"
+					width="26px" height="18px"/>
+			</a4j:commandLink>
+			<a4j:commandLink status="modalStatus" action="voltar" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem"
+					width="26px" height="18px"/>
+			</a4j:commandLink>
+		</rich:toolbar>
+
+		<h:panelGroup id="cadastroWebService"> 
+
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.lbl_grupoSchema}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="grupoSchema" value="#{mbWebService.grupoSchema}" 
+					styleClass="ComboField PositionRelativeFloatLeft Largura198px" tabindex="1"
+					onkeydown="blockBackSpace(event)" onkeyup="unblockBackSpace()">
+					<f:selectItems value="#{mbWebService.listaGrupoSchemaSefazEnum}" var="itemGrupoSchema"
+						itemLabel="#{itemGrupoSchema.descricao}"/>
+					<a4j:ajax event="valueChange" execute="@this" render="painelTipoServico, painelPacoteLiberacao"
+						status="modalStatus"/>
+				</h:selectOneMenu>
+			</div>
+
+			<h:panelGroup id="painelTipoServico">
+				<div class="Linha980x25 MarginTop5px">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.lbl_tipoDeServico}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:selectOneMenu id="tipoServicoWS" value="#{mbWebService.sefazWS.tipoServicoWebService}" 
+						styleClass="ComboField PositionRelativeFloatLeft Largura198px" tabindex="2"
+						onkeydown="blockBackSpace(event)" onkeyup="unblockBackSpace()">
+						<f:selectItems value="#{mbWebService.listaTipoServicoWebServiceEnum}" var="itemTipoServicoWS"
+							itemLabel="#{itemTipoServicoWS.descricao}"/>
+						<a4j:ajax event="valueChange" execute="@this" status="modalStatus"/>
+					</h:selectOneMenu>
+				</div>
+			</h:panelGroup>
+
+			<h:panelGroup id="painelUf">
+				<!-- Tirei a renderizacao pois a UF é obrigatória na entidade e o render do componente tipoServicoWS
+				<h:panelGroup styleClass="Linha980x25" rendered="#{mbWebService.showUF}">-->
+				<h:panelGroup styleClass="Linha980x25">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.lbl_uf}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:selectOneMenu id="uf" value="#{mbWebService.sefazWS.uf}" 
+						styleClass="ComboField PositionRelativeFloatLeft Largura50px" tabindex="3"
+						onkeydown="blockBackSpace(event)" onkeyup="unblockBackSpace()">
+						<f:selectItems value="#{mbWebService.listaUFEnum}"/>
+						<a4j:ajax event="valueChange" execute="@this" render="@this painelMensagemErro" status="modalStatus"/>
+					</h:selectOneMenu>
+				</h:panelGroup>
+			</h:panelGroup>
+
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.lbl_ambiente}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="ambiente" value="#{mbWebService.sefazWS.ambiente}" 
+					styleClass="ComboField PositionRelativeFloatLeft Largura105px" tabindex="4"
+					onkeydown="blockBackSpace(event)" onkeyup="unblockBackSpace()">
+					<f:selectItems value="#{mbWebService.listaAmbienteEnum}" var="itemAmbiente"
+						itemLabel="#{itemAmbiente.nomeAmbiente}"/>
+				</h:selectOneMenu>
+			</div>
+
+			<h:panelGroup id="painelPacoteLiberacao" styleClass="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.lbl_pacoteLiberacao}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="pacoteLiberacao" value="#{mbWebService.sefazWS.pacoteLiberacao}" tabindex="5"
+					styleClass="ComboField PositionRelativeFloatLeft Largura305px" converter="entityConverter"
+					onkeydown="blockBackSpace(event)" onkeyup="unblockBackSpace()">
+					<f:selectItems value="#{mbWebService.listaPacoteLiberacaoSelectItem}" var="itemPacoteLiberacao"
+						itemLabel="#{itemPacoteLiberacao.versao}"/>
+					<a4j:ajax event="valueChange" execute="@this"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</h:panelGroup>
+
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.lbl_soap}" styleClass="TituloDeCampo"/>
+				</div>
+			<h:selectOneMenu id="protocoloSoap" value="#{mbWebService.sefazWS.tipoProtocoloSoap}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura80px" tabindex="6"
+				onkeydown="blockBackSpace(event)" onkeyup="unblockBackSpace()">
+				<f:selectItems value="#{mbWebService.listaTipoProtocoloSoapEnum}" var="itemProtocoloSoap"
+					itemLabel="#{itemProtocoloSoap.descricao}"/>
+			</h:selectOneMenu>
+			</div>
+
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.lbl_endpoint}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="endpoint" value="#{mbWebService.sefazWS.caminhoEndpoint}" tabindex="7"
+					styleClass="Campo Largura820px PositionRelativeFloatLeft" maxlength="90"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+
+			<div class="Linha980x125">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.lbl_modeloSoap}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputTextarea id="modeloSoap" value="#{mbWebService.sefazWS.modeloEnvelopeSoap}" tabindex="8"
+					onkeydown="limitText(this,600);" onkeyup="limitText(this,600);" onkeypress="limitText(this,600);"
+					onmousedown="limitText(this,600);" onmouseup="limitText(this,600);"
+					onmouseout="limitText(this,600);" onfocus="origValue = this.value;"
+					onblur="if(this.value != origValue) valueChangeIE(this);"
+					styleClass="TextArea820x115 PositionRelativeFloatLeft TabWalk"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+
+			<h:panelGroup layout="block" id="painelMensagemErro"
+				styleClass="PositionRelativeFloatLeft Largura980px MarginLeft10px MarginBottom5px">
+				<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+			</h:panelGroup>
+
+		</h:panelGroup>
+
+	</ui:define>
+</ui:composition>

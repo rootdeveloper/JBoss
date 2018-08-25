@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:composition>
+		<!-- PanelGroup referente ao Emitente -->
+		<h:panelGroup layout="block" styleClass="Altura70px">
+			<fieldset class="Fieldset826x60">
+				<legend class="TituloDeCampo">#{msg.emitente}</legend>
+				<div class="Linha810x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.cnpj}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.cnpj}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.xNome}" styleClass="Campo Largura460px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.ie}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.UF}" styleClass="Campo Largura30px" readonly="true"/>
+					</div>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+		<!-- PanelGroup referente ao Tomador. Somente sera renderizado caso o toma03 seja diferente de null e o papel do tomador seja igual a 0 (Remetente) -->
+		<h:panelGroup layout="block" styleClass="Altura70px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.ide.toma03 != null &amp;&amp; mbCteTerceiros.procCte.CTe.infCte.ide.toma03.toma == 0}">
+			<fieldset class="Fieldset826x60">
+				<legend class="TituloDeCampo">#{msg.tomador}</legend>
+				<div class="Linha810x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{mbCteTerceiros.procCte.CTe.infCte.rem.cnpj != null ? msg.cnpj : msg.cpf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.rem.cnpj != null ? mbCteTerceiros.procCte.CTe.infCte.rem.cnpj : mbCteTerceiros.procCte.CTe.infCte.rem.cpf}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.rem.xNome}" styleClass="Campo Largura460px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.rem.ie}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.rem.enderReme.UF}" styleClass="Campo Largura30px" readonly="true"/>
+					</div>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+		<!-- PanelGroup referente ao Tomador. Somente sera renderizado caso o toma03 seja diferente de null e o papel do tomador seja igual a 1 (Expedidor) -->
+		<h:panelGroup layout="block" styleClass="Altura70px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.ide.toma03 != null &amp;&amp; mbCteTerceiros.procCte.CTe.infCte.ide.toma03.toma == 1}">
+			<fieldset class="Fieldset826x60">
+				<legend class="TituloDeCampo">#{msg.tomador}</legend>
+				<div class="Linha810x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{mbCteTerceiros.procCte.CTe.infCte.exped.cnpj != null ? msg.cnpj : msg.cpf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.exped.cnpj != null ? mbCteTerceiros.procCte.CTe.infCte.exped.cnpj : mbCteTerceiros.procCte.CTe.infCte.exped.cpf}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.exped.xNome}" styleClass="Campo Largura460px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.exped.ie}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.exped.enderExped.UF}" styleClass="Campo Largura30px" readonly="true"/>
+					</div>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+		<!-- PanelGroup referente ao Tomador. Somente sera renderizado caso o toma03 seja diferente de null e o papel do tomador seja igual a 2 (Recebedor) -->
+		<h:panelGroup layout="block" styleClass="Altura70px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.ide.toma03 != null &amp;&amp; mbCteTerceiros.procCte.CTe.infCte.ide.toma03.toma == 2}">
+			<fieldset class="Fieldset826x60">
+				<legend class="TituloDeCampo">#{msg.tomador}</legend>
+				<div class="Linha810x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{mbCteTerceiros.procCte.CTe.infCte.receb.cnpj != null ? msg.cnpj : msg.cpf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.receb.cnpj != null ? mbCteTerceiros.procCte.CTe.infCte.receb.cnpj : mbCteTerceiros.procCte.CTe.infCte.receb.cpf}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.receb.xNome}" styleClass="Campo Largura460px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.receb.ie}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.receb.enderReceb.UF}" styleClass="Campo Largura40px" readonly="true"/>
+					</div>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+		<!-- PanelGroup referente ao Tomador. Somente sera renderizado caso o toma03 seja diferente de null e o papel do tomador seja igual a 3 (Destinatario) -->
+		<h:panelGroup layout="block" styleClass="Altura70px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.ide.toma03 != null &amp;&amp; mbCteTerceiros.procCte.CTe.infCte.ide.toma03.toma == 3}">
+			<fieldset class="Fieldset826x60">
+				<legend class="TituloDeCampo">#{msg.tomador}</legend>
+				<div class="Linha810x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{mbCteTerceiros.procCte.CTe.infCte.dest.cnpj != null ? msg.cnpj : msg.cpf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.dest.cnpj != null ? mbCteTerceiros.procCte.CTe.infCte.dest.cnpj : mbCteTerceiros.procCte.CTe.infCte.dest.cpf}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.dest.xNome}" styleClass="Campo Largura460px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.dest.ie}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.dest.enderDest.UF}" styleClass="Campo Largura30px" readonly="true"/>
+					</div>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+		<!-- PanelGroup referente ao Tomador. Somente sera renderizado caso toma04 seja diferente de null eo papel do tomador seja igual a 4 (Outros) -->
+		<h:panelGroup layout="block" styleClass="Altura70px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.ide.toma4 != null}">
+			<fieldset class="Fieldset826x60">
+				<legend class="TituloDeCampo">#{msg.tomador}</legend>
+				<div class="Linha810x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.toma4.cnpj != null ? msg.cnpj : msg.cpf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.toma4.cnpj != null ? mbCteTerceiros.procCte.CTe.infCte.ide.toma4.cnpj : mbCteTerceiros.procCte.CTe.infCte.ide.toma4.cpf}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.toma4.xNome}" styleClass="Campo Largura460px" readonly="true" />
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.toma4.ie}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.toma4.enderToma.UF}" styleClass="Campo Largura40px" readonly="true"/>
+					</div>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+		<!-- PanelGroup referente ao Remetente -->
+		<h:panelGroup layout="block" styleClass="Altura70px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.rem != null}">
+			<fieldset class="Fieldset826x60">
+				<legend class="TituloDeCampo">#{msg.remetente}</legend>
+				<div class="Linha810x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{mbCteTerceiros.procCte.CTe.infCte.rem.cnpj != null ? msg.cnpj : msg.cpf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.rem.cnpj != null ? mbCteTerceiros.procCte.CTe.infCte.rem.cnpj : mbCteTerceiros.procCte.CTe.infCte.rem.cpf}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.rem.xNome}" styleClass="Campo Largura460px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.rem.ie}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.rem.enderReme.UF}" styleClass="Campo Largura30px" readonly="true"/>
+					</div>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+		
+		
+		<!-- PanelGroup referente ao Expedidor -->
+		<h:panelGroup layout="block" styleClass="Altura70px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.exped != null}">
+			<fieldset class="Fieldset826x60">
+				<legend class="TituloDeCampo">#{msg.expedidor}</legend>
+				<div class="Linha810x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{mbCteTerceiros.procCte.CTe.infCte.exped.cnpj != null ? msg.cnpj : msg.cpf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.exped.cnpj != null ? mbCteTerceiros.procCte.CTe.infCte.exped.cnpj : mbCteTerceiros.procCte.CTe.infCte.exped.cpf}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.exped.xNome}" styleClass="Campo Largura460px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.exped.ie}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.exped.enderExped.UF}" styleClass="Campo Largura30px" readonly="true"/>
+					</div>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+		
+		
+		<!-- PanelGroup referente ao Recebedor -->
+		<h:panelGroup layout="block" styleClass="Altura70px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.receb != null}">
+			<fieldset class="Fieldset826x60">
+				<legend class="TituloDeCampo">#{msg.recebedor}</legend>
+				<div class="Linha810x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{mbCteTerceiros.procCte.CTe.infCte.receb.cnpj != null ? msg.cnpj : msg.cpf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.receb.cnpj != null ? mbCteTerceiros.procCte.CTe.infCte.receb.cnpj : mbCteTerceiros.procCte.CTe.infCte.receb.cpf}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.receb.xNome}" styleClass="Campo Largura460px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.receb.ie}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.receb.enderReceb.UF}" styleClass="Campo Largura40px" readonly="true"/>
+					</div>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+		
+		<!-- PanelGroup referente ao Destinatario -->
+		<h:panelGroup layout="block" styleClass="Altura70px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.dest != null}">
+			<fieldset class="Fieldset826x60">
+				<legend class="TituloDeCampo">#{msg.destinatario}</legend>
+				<div class="Linha810x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{mbCteTerceiros.procCte.CTe.infCte.dest.cnpj != null ? msg.cnpj : msg.cpf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.dest.cnpj != null ? mbCteTerceiros.procCte.CTe.infCte.dest.cnpj : mbCteTerceiros.procCte.CTe.infCte.dest.cpf}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.dest.xNome}" styleClass="Campo Largura460px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.dest.ie}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.dest.enderDest.UF}" styleClass="Campo Largura30px" readonly="true"/>
+					</div>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+	</ui:composition>
+</html>

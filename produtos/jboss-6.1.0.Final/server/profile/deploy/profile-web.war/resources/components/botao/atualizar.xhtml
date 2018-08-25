@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="actionListener" method-signature="void actionListener(javax.faces.event.ActionEvent)"/>
+		<composite:attribute name="render"/>
+		<composite:attribute name="buttonStyle" shortDescription="Estilo adicional para o botão"/>
+		<composite:attribute name="oncomplete" default="''"/>
+		<composite:attribute name="idPanelErro" shortDescription="Id utilizado no panel de erro da tela de listagem"/>
+		<composite:attribute name="filialCadastrada" shortDescription="Se true possui filial cadastrado, false caso contrário"/>
+	</composite:interface>   
+
+	<composite:implementation>
+		<a4j:commandLink id="botaoAtualizar" status="modalStatus" render="#{cc.attrs.render}"
+			actionListener="#{cc.attrs.actionListener}" execute="@this"
+			oncomplete="(#{cc.attrs.filialCadastrada == null || cc.attrs.filialCadastrada} ? #{cc.attrs.oncomplete} : ''); renderiza();">
+			<h:graphicImage value="#{resource['images/png:atualizar.png']}" styleClass="BotaoImagem #{cc.attrs.buttonStyle}"
+				title="#{msg.atualizar}" width="26px" height="18px"/>
+		</a4j:commandLink>
+
+		<a4j:jsFunction name="renderiza" render="#{cc.attrs.idPanelErro}"/>
+	</composite:implementation>    
+</html>

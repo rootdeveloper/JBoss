@@ -1,0 +1,192 @@
+08:51:30,165 INFO  [AbstractJBossASServerBase] Server Configuration:
+
+	JBOSS_HOME URL: file:/C:/jboss-6.1.0.Final/
+	Bootstrap: $JBOSS_HOME\server/sso/conf/bootstrap.xml
+	Common Base: $JBOSS_HOME\common/
+	Common Library: $JBOSS_HOME\common/lib/
+	Server Name: sso
+	Server Base: $JBOSS_HOME\server/
+	Server Library: $JBOSS_HOME\server/sso/lib/
+	Server Config: $JBOSS_HOME\server/sso/conf/
+	Server Home: $JBOSS_HOME\server/sso/
+	Server Data: $JBOSS_HOME\server/sso/data/
+	Server Log: $JBOSS_HOME\server/sso/log/
+	Server Temp: $JBOSS_HOME\server/sso/tmp/
+
+08:51:30,168 INFO  [AbstractServer] Starting: JBossAS [6.1.0.Final "Neo"]
+08:51:31,810 INFO  [ServerInfo] Java version: 1.6.0_21,Sun Microsystems Inc.
+08:51:31,811 INFO  [ServerInfo] Java Runtime: Java(TM) SE Runtime Environment (build 1.6.0_21-b07)
+08:51:31,811 INFO  [ServerInfo] Java VM: Java HotSpot(TM) Client VM 17.0-b17,Sun Microsystems Inc.
+08:51:31,811 INFO  [ServerInfo] OS-System: Windows 7 6.1,x86
+08:51:31,812 INFO  [ServerInfo] VM arguments: -Dprogram.name=JBossTools: JBoss 6.0 Runtime -Xms256m -Xmx768m -XX:MaxPermSize=256m -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djava.endorsed.dirs=C:\jboss-6.1.0.Final\lib\endorsed -Djava.library.path=C:/jboss-6.1.0.Final/bin/native -Dlogging.configuration=file:C:/jboss-6.1.0.Final/bin/logging.properties -Dfile.encoding=Cp1252 
+08:51:31,812 DEBUG [ServerInfo] Full System Properties Dump
+08:51:31,813 DEBUG [ServerInfo]     awt.toolkit: sun.awt.windows.WToolkit
+08:51:31,813 DEBUG [ServerInfo]     bind.address: localhost
+08:51:31,813 DEBUG [ServerInfo]     file.encoding: Cp1252
+08:51:31,813 DEBUG [ServerInfo]     file.encoding.pkg: sun.io
+08:51:31,814 DEBUG [ServerInfo]     file.separator: \
+08:51:31,814 DEBUG [ServerInfo]     java.awt.graphicsenv: sun.awt.Win32GraphicsEnvironment
+08:51:31,814 DEBUG [ServerInfo]     java.awt.printerjob: sun.awt.windows.WPrinterJob
+08:51:31,814 DEBUG [ServerInfo]     java.class.path: C:\jboss-6.1.0.Final\bin\run.jar
+08:51:31,815 DEBUG [ServerInfo]     java.class.version: 50.0
+08:51:31,815 DEBUG [ServerInfo]     java.endorsed.dirs: C:\jboss-6.1.0.Final\lib\endorsed
+08:51:31,815 DEBUG [ServerInfo]     java.ext.dirs: C:\Java\jdk1.6.0_21\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+08:51:31,815 DEBUG [ServerInfo]     java.home: C:\Java\jdk1.6.0_21\jre
+08:51:31,815 DEBUG [ServerInfo]     java.io.tmpdir: C:\Users\DANIEL~1.SAN\AppData\Local\Temp\
+08:51:31,816 DEBUG [ServerInfo]     java.library.path: C:/jboss-6.1.0.Final/bin/native
+08:51:31,816 DEBUG [ServerInfo]     java.protocol.handler.pkgs: org.jboss.net.protocol|org.jboss.vfs.protocol
+08:51:31,816 DEBUG [ServerInfo]     java.rmi.server.RMIClassLoaderSpi: org.jboss.system.JBossRMIClassLoader
+08:51:31,816 DEBUG [ServerInfo]     java.rmi.server.hostname: localhost
+08:51:31,816 DEBUG [ServerInfo]     java.runtime.name: Java(TM) SE Runtime Environment
+08:51:31,816 DEBUG [ServerInfo]     java.runtime.version: 1.6.0_21-b07
+08:51:31,817 DEBUG [ServerInfo]     java.specification.name: Java Platform API Specification
+08:51:31,817 DEBUG [ServerInfo]     java.specification.vendor: Sun Microsystems Inc.
+08:51:31,817 DEBUG [ServerInfo]     java.specification.version: 1.6
+08:51:31,817 DEBUG [ServerInfo]     java.util.logging.manager: org.jboss.logmanager.LogManager
+08:51:31,817 DEBUG [ServerInfo]     java.vendor: Sun Microsystems Inc.
+08:51:31,818 DEBUG [ServerInfo]     java.vendor.url: http://java.sun.com/
+08:51:31,818 DEBUG [ServerInfo]     java.vendor.url.bug: http://java.sun.com/cgi-bin/bugreport.cgi
+08:51:31,818 DEBUG [ServerInfo]     java.version: 1.6.0_21
+08:51:31,818 DEBUG [ServerInfo]     java.vm.info: mixed mode
+08:51:31,818 DEBUG [ServerInfo]     java.vm.name: Java HotSpot(TM) Client VM
+08:51:31,818 DEBUG [ServerInfo]     java.vm.specification.name: Java Virtual Machine Specification
+08:51:31,819 DEBUG [ServerInfo]     java.vm.specification.vendor: Sun Microsystems Inc.
+08:51:31,819 DEBUG [ServerInfo]     java.vm.specification.version: 1.0
+08:51:31,819 DEBUG [ServerInfo]     java.vm.vendor: Sun Microsystems Inc.
+08:51:31,819 DEBUG [ServerInfo]     java.vm.version: 17.0-b17
+08:51:31,819 DEBUG [ServerInfo]     javax.management.builder.initial: org.jboss.mx.server.MBeanServerBuilderImpl
+08:51:31,820 DEBUG [ServerInfo]     jboss.bind.address: localhost
+08:51:31,820 DEBUG [ServerInfo]     jboss.boot.server.log.dir: C:\jboss-6.1.0.Final\server\sso\log
+08:51:31,820 DEBUG [ServerInfo]     jboss.bootstrap.home.url: file:/C:/jboss-6.1.0.Final/server/sso/conf/
+08:51:31,820 DEBUG [ServerInfo]     jboss.bootstrap.name: bootstrap.xml
+08:51:31,820 DEBUG [ServerInfo]     jboss.bootstrap.url: file:/C:/jboss-6.1.0.Final/server/sso/conf/bootstrap.xml
+08:51:31,821 DEBUG [ServerInfo]     jboss.common.base.url: file:/C:/jboss-6.1.0.Final/common/
+08:51:31,821 DEBUG [ServerInfo]     jboss.common.lib.url: file:/C:/jboss-6.1.0.Final/common/lib/
+08:51:31,821 DEBUG [ServerInfo]     jboss.home: C:\jboss-6.1.0.Final
+08:51:31,821 DEBUG [ServerInfo]     jboss.home.dir: C:\jboss-6.1.0.Final
+08:51:31,821 DEBUG [ServerInfo]     jboss.home.url: file:/C:/jboss-6.1.0.Final/
+08:51:31,821 DEBUG [ServerInfo]     jboss.host.name: b181548
+08:51:31,822 DEBUG [ServerInfo]     jboss.lib.url: file:/C:/jboss-6.1.0.Final/lib/
+08:51:31,822 DEBUG [ServerInfo]     jboss.native.dir: C:\jboss-6.1.0.Final\server\sso\tmp\native
+08:51:31,822 DEBUG [ServerInfo]     jboss.native.load: false
+08:51:31,822 DEBUG [ServerInfo]     jboss.node.name: b181548
+08:51:31,822 DEBUG [ServerInfo]     jboss.partition.name: DefaultPartition
+08:51:31,822 DEBUG [ServerInfo]     jboss.platform.mbeanserver: true
+08:51:31,823 DEBUG [ServerInfo]     jboss.qualified.host.name: b181548
+08:51:31,823 DEBUG [ServerInfo]     jboss.server.base.dir: C:\jboss-6.1.0.Final\server
+08:51:31,823 DEBUG [ServerInfo]     jboss.server.base.url: file:/C:/jboss-6.1.0.Final/server/
+08:51:31,823 DEBUG [ServerInfo]     jboss.server.config.url: file:/C:/jboss-6.1.0.Final/server/sso/conf/
+08:51:31,823 DEBUG [ServerInfo]     jboss.server.data.dir: C:\jboss-6.1.0.Final\server\sso\data
+08:51:31,824 DEBUG [ServerInfo]     jboss.server.home.dir: C:\jboss-6.1.0.Final\server\sso
+08:51:31,824 DEBUG [ServerInfo]     jboss.server.home.url: file:/C:/jboss-6.1.0.Final/server/sso/
+08:51:31,824 DEBUG [ServerInfo]     jboss.server.lib.url: file:/C:/jboss-6.1.0.Final/server/sso/lib/
+08:51:31,824 DEBUG [ServerInfo]     jboss.server.log.dir: C:\jboss-6.1.0.Final\server\sso\log
+08:51:31,824 DEBUG [ServerInfo]     jboss.server.name: sso
+08:51:31,824 DEBUG [ServerInfo]     jboss.server.temp.dir: C:\jboss-6.1.0.Final\server\sso\tmp
+08:51:31,825 DEBUG [ServerInfo]     jboss.vfs.forceCopy: true
+08:51:31,825 DEBUG [ServerInfo]     jbossmx.loader.repository.class: org.jboss.mx.loading.UnifiedLoaderRepository3
+08:51:31,825 DEBUG [ServerInfo]     jgroups.bind_addr: localhost
+08:51:31,825 DEBUG [ServerInfo]     line.separator: 
+
+08:51:31,825 DEBUG [ServerInfo]     log4j.defaultInitOverride: true
+08:51:31,826 DEBUG [ServerInfo]     logging.configuration: file:C:/jboss-6.1.0.Final/bin/logging.properties
+08:51:31,826 DEBUG [ServerInfo]     org.jboss.deployers.spi.deployer.matchers.NameIgnoreMechanism: org.jboss.deployers.spi.deployer.helpers.DummyNameIgnoreMechanism
+08:51:31,826 DEBUG [ServerInfo]     org.jboss.logging.Logger.pluginClass: org.jboss.logging.logmanager.LoggerPluginImpl
+08:51:31,826 DEBUG [ServerInfo]     org.jboss.reflect.spi.TypeInfoFactory: org.jboss.reflect.plugins.introspection.IntrospectionTypeInfoFactory
+08:51:31,826 DEBUG [ServerInfo]     os.arch: x86
+08:51:31,826 DEBUG [ServerInfo]     os.name: Windows 7
+08:51:31,827 DEBUG [ServerInfo]     os.version: 6.1
+08:51:31,827 DEBUG [ServerInfo]     path.separator: ;
+08:51:31,827 DEBUG [ServerInfo]     program.name: JBossTools: JBoss 6.0 Runtime
+08:51:31,827 DEBUG [ServerInfo]     sun.arch.data.model: 32
+08:51:31,827 DEBUG [ServerInfo]     sun.boot.class.path: C:\jboss-6.1.0.Final\lib\endorsed\activation.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-annotations-api_1.1_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-jaxb-api_2.2_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-jaxws-api_2.2_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jbossws-cxf-factories.jar;C:\jboss-6.1.0.Final\lib\endorsed\stax-api.jar;C:\Java\jdk1.6.0_21\jre\lib\resources.jar;C:\Java\jdk1.6.0_21\jre\lib\rt.jar;C:\Java\jdk1.6.0_21\jre\lib\sunrsasign.jar;C:\Java\jdk1.6.0_21\jre\lib\jsse.jar;C:\Java\jdk1.6.0_21\jre\lib\jce.jar;C:\Java\jdk1.6.0_21\jre\lib\charsets.jar;C:\Java\jdk1.6.0_21\jre\classes
+08:51:31,827 DEBUG [ServerInfo]     sun.boot.library.path: C:\Java\jdk1.6.0_21\jre\bin
+08:51:31,828 DEBUG [ServerInfo]     sun.cpu.endian: little
+08:51:31,828 DEBUG [ServerInfo]     sun.cpu.isalist: pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86
+08:51:31,828 DEBUG [ServerInfo]     sun.desktop: windows
+08:51:31,828 DEBUG [ServerInfo]     sun.io.unicode.encoding: UnicodeLittle
+08:51:31,828 DEBUG [ServerInfo]     sun.java.launcher: SUN_STANDARD
+08:51:31,829 DEBUG [ServerInfo]     sun.jnu.encoding: Cp1252
+08:51:31,829 DEBUG [ServerInfo]     sun.management.compiler: HotSpot Client Compiler
+08:51:31,829 DEBUG [ServerInfo]     sun.os.patch.level: Service Pack 1
+08:51:31,829 DEBUG [ServerInfo]     sun.rmi.dgc.client.gcInterval: 3600000
+08:51:31,829 DEBUG [ServerInfo]     sun.rmi.dgc.server.gcInterval: 3600000
+08:51:31,829 DEBUG [ServerInfo]     user.country: BR
+08:51:31,830 DEBUG [ServerInfo]     user.dir: C:\jboss-6.1.0.Final\bin
+08:51:31,830 DEBUG [ServerInfo]     user.home: C:\Users\daniel.santos
+08:51:31,830 DEBUG [ServerInfo]     user.language: pt
+08:51:31,830 DEBUG [ServerInfo]     user.name: daniel.santos
+08:51:31,830 DEBUG [ServerInfo]     user.timezone: America/Sao_Paulo
+08:51:31,831 DEBUG [ServerInfo]     user.variant: 
+08:51:31,831 DEBUG [ServerInfo]     xb.builder.repeatableParticleHandlers: false
+08:51:31,831 DEBUG [ServerInfo]     xb.builder.useUnorderedSequence: true
+08:51:31,858 INFO  [JMXKernel] Legacy JMX core initialized
+08:51:39,226 INFO  [AbstractServerConfig] JBoss Web Services - Stack CXF Server 3.4.1.GA
+08:51:39,827 INFO  [JSFImplManagementDeployer] Initialized 3 JSF configurations: [Mojarra-1.2, MyFaces-2.0, Mojarra-2.0]
+08:51:55,622 AVISO [FileConfigurationParser] AIO wasn't located on this platform, it will fall back to using pure Java NIO. If your platform is Linux, install LibAIO to enable the AIO journal
+08:51:55,842 INFO  [JMXConnector] starting JMXConnector on host localhost:1090
+08:51:56,532 INFO  [MailService] Mail Service bound to java:/Mail
+08:51:57,455 INFO  [HornetQServerImpl] live server is starting with configuration HornetQ Configuration (clustered=false,backup=false,sharedStore=true,journalDirectory=C:\jboss-6.1.0.Final\server\sso\data/hornetq/journal,bindingsDirectory=C:\jboss-6.1.0.Final\server\sso\data/hornetq/bindings,largeMessagesDirectory=C:\jboss-6.1.0.Final\server\sso\data/hornetq/largemessages,pagingDirectory=C:\jboss-6.1.0.Final\server\sso\data/hornetq/paging)
+08:51:57,458 INFO  [HornetQServerImpl] Waiting to obtain live lock
+08:51:57,527 INFO  [JournalStorageManager] Using NIO Journal
+08:51:57,554 AVISO [HornetQServerImpl] Security risk! It has been detected that the cluster admin user and password have not been changed from the installation default. Please see the HornetQ user guide, cluster chapter, for instructions on how to do this.
+08:51:57,737 INFO  [FileLockNodeManager] Waiting to obtain live lock
+08:51:57,737 INFO  [FileLockNodeManager] Live Server Obtained live lock
+08:51:58,503 INFO  [NettyAcceptor] Started Netty Acceptor version 3.2.5.Final-a96d88c localhost:5445 for CORE protocol
+08:51:58,509 INFO  [NettyAcceptor] Started Netty Acceptor version 3.2.5.Final-a96d88c localhost:5455 for CORE protocol
+08:51:58,511 INFO  [HornetQServerImpl] Server is now live
+08:51:58,511 INFO  [HornetQServerImpl] HornetQ Server version 2.2.14.Final (HQ_2_2_14_FINAL, 122) [463dd141-fffd-11e0-82b0-f04da2df0108]) started
+08:51:58,565 INFO  [WebService] Using RMI server codebase: http://localhost:8083/
+08:51:59,329 INFO  [jbossatx] ARJUNA-32010 JBossTS Recovery Service (tag: JBOSSTS_4_14_0_Final) - JBoss Inc.
+08:51:59,337 INFO  [arjuna] ARJUNA-12324 Start RecoveryActivators
+08:51:59,363 INFO  [arjuna] ARJUNA-12296 ExpiredEntryMonitor running at Ter, 2 Abr 2013 08:51:59
+08:51:59,458 INFO  [arjuna] ARJUNA-12310 Recovery manager listening on endpoint 127.0.0.1:4712
+08:51:59,458 INFO  [arjuna] ARJUNA-12344 RecoveryManagerImple is ready on port 4712
+08:51:59,459 INFO  [jbossatx] ARJUNA-32013 Starting transaction recovery manager
+08:51:59,476 INFO  [arjuna] ARJUNA-12163 Starting service com.arjuna.ats.arjuna.recovery.ActionStatusService on port 4713
+08:51:59,482 INFO  [arjuna] ARJUNA-12337 TransactionStatusManagerItem host: 127.0.0.1 port: 4713
+08:51:59,513 INFO  [arjuna] ARJUNA-12170 TransactionStatusManager started on port 4713 and host 127.0.0.1 with service com.arjuna.ats.arjuna.recovery.ActionStatusService
+08:51:59,550 INFO  [jbossatx] ARJUNA-32017 JBossTS Transaction Service (JTA version - tag: JBOSSTS_4_14_0_Final) - JBoss Inc.
+08:51:59,584 INFO  [arjuna] ARJUNA-12202 registering bean jboss.jta:type=ObjectStore.
+08:51:59,858 INFO  [AprLifecycleListener] The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:/jboss-6.1.0.Final/bin/native
+08:52:00,112 INFO  [TomcatDeployment] deploy, ctxPath=/invoker
+08:52:00,541 INFO  [ModClusterService] Initializing mod_cluster 1.1.0.Final
+08:52:00,598 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/sso/deploy/jboss-local-jdbc.rar/META-INF/ra.xml
+08:52:00,613 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/sso/deploy/jboss-xa-jdbc.rar/META-INF/ra.xml
+08:52:00,621 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/sso/deploy/jms-ra.rar/META-INF/ra.xml
+08:52:00,640 INFO  [HornetQResourceAdapter] HornetQ resource adaptor started
+08:52:00,648 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/sso/deploy/mail-ra.rar/META-INF/ra.xml
+08:52:00,661 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/sso/deploy/quartz-ra.rar/META-INF/ra.xml
+08:52:00,778 INFO  [SimpleThreadPool] Job execution threads will use class loader of thread: Thread-2
+08:52:00,850 INFO  [SchedulerSignalerImpl] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+08:52:00,851 INFO  [QuartzScheduler] Quartz Scheduler v.1.8.3 created.
+08:52:00,854 INFO  [RAMJobStore] RAMJobStore initialized.
+08:52:00,857 INFO  [QuartzScheduler] Scheduler meta-data: Quartz Scheduler (v1.8.3) 'JBossQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+08:52:00,857 INFO  [StdSchedulerFactory] Quartz scheduler 'JBossQuartzScheduler' initialized from an externally opened InputStream.
+08:52:00,857 INFO  [StdSchedulerFactory] Quartz scheduler version: 1.8.3
+08:52:00,857 INFO  [QuartzScheduler] Scheduler JBossQuartzScheduler_$_NON_CLUSTERED started.
+08:52:02,033 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=DefaultDS' to JNDI name 'java:DefaultDS'
+08:52:02,329 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:service=ConnectionFactoryBinding,name=JmsXA' to JNDI name 'java:JmsXA'
+08:52:02,446 INFO  [xnio] XNIO Version 2.1.0.CR2
+08:52:02,458 INFO  [nio] XNIO NIO Implementation Version 2.1.0.CR2
+08:52:02,675 INFO  [remoting] JBoss Remoting version 3.1.0.Beta2
+08:52:02,804 INFO  [TomcatDeployment] deploy, ctxPath=/
+08:52:02,848 INFO  [TomcatDeployment] deploy, ctxPath=/sso
+08:52:02,950 INFO  [config] Inicializando Mojarra 2.0.3 ( b05) para o contexto '/sso'
+08:52:07,975 INFO  [Version] Hibernate Validator 4.1.0.Final
+08:52:07,993 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+08:52:08,106 INFO  [Cache] Selected fallback cache factory
+08:52:08,107 INFO  [Cache] Creating LRUMap cache instance using parameters: {javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL=true, org.ajax4jsf.DEFAULT_EXPIRE=86400, org.richfaces.resourceOptimization.enabled=true, javax.faces.CONFIG_FILES=/WEB-INF/faces-navigation.xml, com.sun.faces.duplicateJARPattern=^tmp\d+(\S*\.jar), com.sun.faces.externalizeJavaScript=true, org.richfaces.skin=DEFAULT, com.sun.faces.injectionProvider=org.jboss.web.jsf.integration.injection.JBossDelegatingInjectionProvider, javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE=true, com.sun.faces.validateXml=true, javax.faces.PROJECT_STAGE=Production, com.sun.faces.verifyObjects=false, org.richfaces.enableControlSkinning=false, javax.faces.FACELETS_SKIP_COMMENTS=true, javax.faces.STATE_SAVING_METHOD=server, javax.faces.DEFAULT_SUFFIX=.xhtml, resteasy.unwrapped.exceptions=javax.ejb.EJBException}
+08:52:08,110 INFO  [Cache] Creating LRUMap cache instance of 512 items capacity
+08:52:08,112 INFO  [Application] RichFaces Core Implementation by JBoss by Red Hat, version v.4.2.2.Final
+08:52:08,178 AVISO [Application] JMS API was found on the classpath; if you want to enable RichFaces Push JMS integration, set context-param 'org.richfaces.push.jms.enabled' in web.xml
+08:52:08,216 INFO  [HornetQServerImpl] trying to deploy queue jms.queue.ExpiryQueue
+08:52:08,246 INFO  [HornetQServerImpl] trying to deploy queue jms.queue.DLQ
+08:52:08,345 INFO  [service] Removing bootstrap log handlers

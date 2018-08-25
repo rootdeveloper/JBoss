@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table">
+	
+	
+	<rich:dataTable id="listaProdutosEServicos" var="var" value="#{mbNfeEntrada.nfeEntrada.infNFe.det}" rows="5"
+		styleClass="Largura100pc" noDataLabel="#{msg.listaProdutosEServicosVazia}" 
+		onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+		onrowdblclick="visualizarDetalhes(#{rowKey})" rowKeyVar="rowKey">
+		
+		<rich:column styleClass="AlignLeft Truncate" headerClass="Largura150px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_item}"/>
+			</f:facet>
+			<h:outputText value="#{var.prod.cProd}" title="#{var.prod.cProd}"/>
+		</rich:column>
+		
+		<rich:column styleClass="AlignLeft Truncate" headerClass="Largura320px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_produto}"/>
+			</f:facet>
+			<h:outputText value="#{var.prod.xProd}" title="#{var.prod.xProd}"/>
+		</rich:column>
+		
+		<rich:column styleClass="AlignCenter" headerClass="Largura100px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_qtd}"/>
+			</f:facet>
+			<h:outputText value="#{var.prod.qCom}" />
+		</rich:column>
+		
+		<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_un}"/>
+			</f:facet>
+			<h:outputText value="#{var.prod.uCom}" />
+		</rich:column>
+		
+		<rich:column styleClass="AlignRight" headerClass="Largura130px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_valor}"/>
+			</f:facet>
+			<h:outputText value="#{var.prod.vUnCom}" />
+		</rich:column>
+		
+	</rich:dataTable>
+	
+	<table:scroller for="listaProdutosEServicos" idPanelScroller="controle" maxPages="10" panelStyleClass="Scroller100pc" 
+		pageNumber="#{mbNfeEntrada.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbNfeEntrada.nfeEntrada.infNFe.det}" 
+		totalRegistros="#{mbNfeEntrada.quantidadeRegistrosListaProdutosEServicos}" />
+		
+	<a4j:jsFunction name="visualizarDetalhes" status="modalStatus" action="#{mbNfeEntrada.exibeDetalhesProdutosEServicos}" 
+		render="modalDetalhesProdutosEServicos" oncomplete="#{rich:component('modalDetalhesProdutosEServicos')}.show()">
+		<a4j:param name="indexDoProdutosEServicos" assignTo="#{mbNfeEntrada.indexDoProdutosEServicos}"/>
+	</a4j:jsFunction>
+
+	
+</ui:composition>

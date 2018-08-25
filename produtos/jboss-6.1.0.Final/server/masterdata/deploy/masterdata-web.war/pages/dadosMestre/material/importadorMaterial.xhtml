@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<h:form prependId="false">
+		<rich:popupPanel modal="true" id="importadorMaterial" autosized="true" resizeable="false" moveable="false" domElementAttachment="form" 
+			onbeforeshow="trocarStyleBotaoAdicionar(); renderMsg();return true;" styleClass="OverflowHidden Largura600px FundoBranco" 
+			onshow="disableInputsFormPrincipal();" onhide="enableInputsFormPrincipal();">
+			<f:facet name="header">
+				<h:outputText value="#{msg.importadorDeXls}" />
+			</f:facet>
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" oncomplete="#{rich:component('importadorMaterial')}.hide(); reSize();" 
+					styleClass="BotaoFechar" actionListener="#{mbMaterial.voltarModalImportador}" render="statusUpload, tabelaMateriais" execute="@this"/>
+			</f:facet>
+			<h:panelGroup layout="block" id="uploader">
+				<rich:fileUpload acceptedTypes="xls,xlsx"  fileUploadListener="#{mbMaterial.uploadListener}" clearLabel="#{msg.importadorLimpar}" doneLabel=" "  
+					serverErrorLabel="#{msg.importadorErro}"  clearAllLabel="#{msg.importadorLimparLista}" oncomplete="reSize();" execute="@this"
+					addLabel="#{msg.importadorSelecionar}" deleteLabel="#{msg.importadorCancelar}"
+					uploadLabel="#{msg.importadorEnviar}" onclick="return verificaQuantidade(); " render="tabelaMateriais, barraDeScroll">
+					<a4j:ajax event="filesubmit" onbegin="#{rich:component('modalStatus')}.show()"/>
+					<a4j:ajax event="uploadcomplete" render="uploader" oncomplete="reSize(); #{rich:component('modalStatus')}.hide()" />
+				</rich:fileUpload>
+				<h:panelGroup id="statusUpload">
+					<h:panelGroup rendered="#{not empty mbMaterial.msgLogImportacao}" styleClass="MarginLeft7px MarginBottom10px">
+						<div class="QuebraTexto">
+							<h:outputText value="#{mbMaterial.msgLogImportacao}" styleClass="MensagemDeErro QuebraTexto" id="mensagem"/>
+						</div>	
+					</h:panelGroup>
+					<div class="Largura570px">
+						<a4j:commandButton value="#{msg.botaoLimparTudoTela}" status="modalStatus" styleClass="BotaoTexto Largura100px MarginLeft240px" 
+							actionListener="#{mbMaterial.voltarModalImportador}" render="statusUpload,tabelaMateriais,uploader" oncomplete="reSize();" 
+							execute="@this" rendered="#{!mbMaterial.erroImportacao}"/>
+						<h:commandButton value="#{msg.msgDownload}" rendered="#{mbMaterial.erroImportacao}" onclick="#{rich:component('importadorMaterial')}.hide();"
+							actionListener="#{mbMaterial.download}" styleClass="BotaoTexto MarginLeft240px Largura100px"/>
+					</div>
+				</h:panelGroup>
+			</h:panelGroup>
+			<a4j:jsFunction name="renderMsg" render="statusUpload"/>
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

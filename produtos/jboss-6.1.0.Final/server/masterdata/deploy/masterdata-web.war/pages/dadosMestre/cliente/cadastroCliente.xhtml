@@ -1,0 +1,249 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:tributavel="http://java.sun.com/jsf/composite/components/aliquota"
+	xmlns:imposto="http://java.sun.com/jsf/composite/components/imposto"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroCliente}"/>
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<ui:include src="/resources/components/aliquota/modalListaTipoServico.xhtml"/>
+		<ui:include src="/resources/components/modal/modalFiltroAliquotas.xhtml"/>
+		<ui:include src="/pages/dadosMestre/cliente/modalListaNaturezaOperacao.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalInformativoVoltar mensagemInformativo="#{mbCliente.mensagemModal}" nomePainel="modalInformativo" 
+			tituloModal="#{msg.mensagem}" render="#{mbCliente.renderizarModal}"/>
+		
+		<util:modalJustificativaStatus idModal="modalClienteStatus" actionRenderizarModais="#{mbCliente.processaRenderizacaoModais}" 
+			justificativaInformativa="#{mbCliente.justificativa}" renderizarModal="#{mbCliente.renderizarModal}" 
+			justificativaEditavel="#{mbCliente.cliente.dadosBasicos.justificativa}" renderizaModalStatusInformativo="#{mbCliente.renderizaModalStatusInformativo}" 
+			tipoStatus="#{mbCliente.cliente.dadosBasicos.status.nomeTipo}" idModalInformativo="modalInformativo" salvar="#{mbCliente.salvaComStatus}" />
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbCliente.verificaStatus}" title="#{msg.titleSalvar}" 
+				oncomplete="#{mbCliente.renderizaModalStatus} ? #{rich:component('modalClienteStatus')}.show() : ''; #{mbCliente.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"
+				execute="cadastroCliente cadastroEnderecoCliente" render="modalInformativo, painelMensagemErro, modalClienteStatus"
+				rendered="#{mbCliente.verificaPermissao('Administrador, Gerente, Atendente')}" >
+				<f:param name="acao" value="edicaoJustificativa"/>
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px"  height="18px"/>
+			</a4j:commandLink>
+			<a4j:commandLink status="modalStatus" action="voltar" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+		
+		<h:panelGroup id="cadastroCliente"> 
+		
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+				</div>	
+				<h:selectOneMenu id="status" value="#{mbCliente.cliente.dadosBasicos.status}" 
+					disabled="#{empty mbCliente.cliente.id or !mbCliente.verificaPermissao('Administrador, Gerente')}" 
+					styleClass="ComboField PositionRelativeFloatLeft Largura70px" tabindex="1">
+					<f:selectItems value="#{mbCliente.listaStatusEnum}" var="status" itemLabel="#{status.nomeTipo}"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				<a4j:commandButton image="/resources/images/gif/information.gif" title="#{msg.titleMotivo}" render="modalInformativoStatus, modalClienteStatus" 
+					styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft Tabwalk" oncomplete="#{rich:component('modalClienteStatus')}.show()" 
+					rendered="#{not empty mbCliente.justificativa}" actionListener="#{mbCliente.processaRenderizacaoModais}" execute="@this"/>
+			</h:panelGroup>
+	
+			<h:panelGroup styleClass="Linha980x25" layout="block">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.tipoPessoa}"  styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="tipoPessoa" value="#{mbCliente.cliente.dadosBasicos.tipoDePessoa}" disabled="#{mbCliente.statusInicio}" 
+					styleClass="ComboField PositionRelativeFloatLeft Largura70px" tabindex="1">
+					<f:selectItems value="#{mbCliente.listaTipoDePessoaEnum}" var="tipoDePessoa" itemLabel="#{tipoDePessoa.nomeTipo}"/>
+					<a4j:ajax event="valueChange" render="panelCnpjCpf, panelNomes, panelInsEstadualSuframa, painelMensagemErro, jQueryCNPJ, jQueryCPF" 
+						execute="@this" listener="#{mbCliente.limparDadosNaoPertinenteAoTipoDePessoa}" status="modalStatus"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				<div class="PositionRelativeFloatLeft MarginLeft10px MarginTop2px Padding0px">
+					<h:selectBooleanCheckbox id="exterior" value="#{mbCliente.exterior}" disabled="#{mbCliente.statusInicio}" 
+						styleClass="PositionRelativeFloatLeft MarginTop0px Padding0px" tabindex="2">
+						<a4j:ajax event="valueChange" render="panelCnpjCpf, panelInsEstadualSuframa, dadosCep,  dadosPaisUfMunicipio, painelMensagemErro
+							jQueryCNPJ, jQueryCPF" execute="@this" listener="#{mbCliente.limparDadosNaoPertinentesAExterior}" status="modalStatus"/>
+					</h:selectBooleanCheckbox>
+				</div>
+				<h:outputText value="Exterior" styleClass="TituloDeCampo PositionRelativeFloatLeft MarginTop1px MarginLeft5px"/>
+			</h:panelGroup>
+	
+			<h:panelGroup layout="block" id="panelCnpjCpf">
+				<h:panelGroup layout="block" styleClass="Linha980x25" 
+					rendered="#{(mbCliente.cliente.dadosBasicos.tipoDePessoa eq 'JURIDICA' || mbCliente.cliente.dadosBasicos.tipoDePessoa == null) and !mbCliente.exterior}">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.cnpj}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="cnpj" value="#{mbCliente.cliente.dadosBasicos.cnpj}" styleClass="Campo Largura118px PositionRelativeFloatLeft"
+						converter="cnpjConverter" requiredMessage="#{msg.msgErroValidacaoCNPJ}" 
+						required="#{mbCliente.cliente.dadosBasicos.tipoDePessoa eq 'JURIDICA' and !mbCliente.exterior}" readonly="#{mbCliente.statusInicio}"
+						tabindex="3">
+						<a4j:ajax event="valueChange" render="painelMensagemErro" listener="#{mbCliente.verificaCNPJ}" status="modalStatus" execute="@this"/>
+					</h:inputText>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				</h:panelGroup>
+				<h:panelGroup layout="block" styleClass="Linha980x25" rendered="#{(mbCliente.cliente.dadosBasicos.tipoDePessoa eq 'FISICA') and !mbCliente.exterior}">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.cpf}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="cpf" value="#{mbCliente.cliente.dadosBasicos.cpf}" readonly="#{mbCliente.statusInicio}" 
+						styleClass="Campo Largura120px PositionRelativeFloatLeft" requiredMessage="#{msg.msgErroValidacaoCPF}" converter="cpfConverter"
+						required="#{mbCliente.cliente.dadosBasicos.tipoDePessoa eq 'FISICA' and !mbCliente.exterior}" tabindex="3">
+						<a4j:ajax event="valueChange" render="painelMensagemErro" listener="#{mbCliente.verificaCPF}" status="modalStatus" execute="@this"/>
+					</h:inputText>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<h:panelGroup layout="block" id="panelNomes">
+				<h:panelGroup rendered="#{mbCliente.cliente.dadosBasicos.tipoDePessoa eq 'JURIDICA' || mbCliente.cliente.dadosBasicos.tipoDePessoa == null}">
+					<div class="Linha980x25">
+						<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+							<h:outputText value="#{msg.razaoSocial}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText id="razaoSocial" value="#{mbCliente.cliente.dadosBasicos.razaoSocial}" readonly="#{mbCliente.statusInicio}"
+							styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" requiredMessage="#{msg.msgErroValidacaoRazaoSocial}"
+							required="#{mbCliente.cliente.dadosBasicos.tipoDePessoa eq 'JURIDICA'}" tabindex="4"/>
+						<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+					</div>
+					<div class="Linha980x25">
+						<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+							<h:outputText value="#{msg.nomeFantasia}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText id="nomeFantasia" value="#{mbCliente.cliente.dadosBasicos.nomeFantasia}" readonly="#{mbCliente.statusInicio}"
+							styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60"/>
+					</div>
+				</h:panelGroup>
+				<h:panelGroup styleClass="Linha980x25" rendered="#{mbCliente.cliente.dadosBasicos.tipoDePessoa eq 'FISICA'}">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.nome}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="nome" value="#{mbCliente.cliente.dadosBasicos.nome}" readonly="#{mbCliente.statusInicio}"
+						styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" 
+						required="#{mbCliente.cliente.dadosBasicos.tipoDePessoa eq 'FISICA'}" requiredMessage="#{msg.msgErroValidacaoNome}" tabindex="4"/>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				</h:panelGroup>
+			</h:panelGroup>
+	
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.email}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="email" value="#{mbCliente.cliente.dadosBasicos.email}" readonly="#{mbCliente.statusInicio}"
+					styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" tabindex="5"/>
+			</div>
+	
+			<h:panelGroup layout="block" id="panelInsEstadualSuframa">
+				<h:panelGroup rendered="#{!mbCliente.exterior}" styleClass="Linha980x25">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="inscricaoEstadual" value="#{mbCliente.cliente.dadosBasicos.inscricaoEstadual}" tabindex="6"  maxlength="14" 
+						disabled="#{mbCliente.statusInicio || mbCliente.cliente.dadosBasicos.isentoIcms}" styleClass="Campo Largura105px PositionRelativeFloatLeft" 
+						onkeydown="Mascara(this, Integer);" onkeypress="Mascara(this, Integer);" onkeyup="Mascara(this, Integer);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+					<div class="PositionRelativeFloatLeft Largura20px Altura20px">
+						<h:panelGroup layout="block" rendered="#{mbCliente.cliente.dadosBasicos.tipoDePessoa eq 'JURIDICA' and !mbCliente.cliente.dadosBasicos.isentoIcms }">
+							<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft" />
+						</h:panelGroup>
+					</div>
+					<h:panelGroup id="panelIsento" layout="block" rendered="#{!mbCliente.exterior}" styleClass="Padding0px PositionRelativeFloatLeft">
+						<div class="PositionRelativeFloatLeft MarginTop1px Padding0px">
+							<h:selectBooleanCheckbox id="isentoIcms" value="#{mbCliente.cliente.dadosBasicos.isentoIcms}" disabled="#{mbCliente.statusInicio}" 
+								readonly="#{mbCliente.statusInicio}" styleClass="MarginTop0px Padding0px PositionRelativeFloatLeft" tabindex="7">
+								<a4j:ajax  event="valueChange" execute="@this" render="panelInsEstadualSuframa" listener="#{mbCliente.renderizaIeIsento}" 
+									status="modalStatus"/>
+							</h:selectBooleanCheckbox>
+						</div>
+						<h:outputText value="#{msg.isentoICMS}" styleClass="TituloDeCampo Largura110px MarginTop2px MarginLeft5px"/>
+					</h:panelGroup>
+				</h:panelGroup>
+				
+				<h:panelGroup styleClass="Linha980x25" 
+					rendered="#{(mbCliente.cliente.dadosBasicos.tipoDePessoa eq 'JURIDICA' || mbCliente.cliente.dadosBasicos.tipoDePessoa == null) and !mbCliente.exterior}">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.inscricaoSuframa}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="inscricaoSuframa" value="#{mbCliente.cliente.inscricaoSuframa}" readonly="#{mbCliente.statusInicio}" 
+						styleClass="Campo Largura70px PositionRelativeFloatLeft" maxlength="9" onkeypress="Mascara(this, Integer);"/>
+				</h:panelGroup>
+			</h:panelGroup>
+		
+		</h:panelGroup>
+			
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="Largura980px PositionRelativeFloatLeft MarginLeft10px">
+			<h:outputText value="#{mbCliente.mensagemDocumento}" styleClass="MensagemDeErro" />
+			<h:outputText value="#{mbCliente.mensagemDeErro}" styleClass="MensagemDeErro" escape="false"/>
+			<h:outputText value="#{mbCliente.mensagemErroScript}" styleClass="MensagemDeErro" />
+			<h:outputText value="#{mbCliente.mensagemCep}" styleClass="MensagemDeErro" />
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+			
+		<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+			<rich:tab id="abaEndereco" header="#{msg.abaEndereco}" immediate="true" execute="@this">
+				<ui:include src="/pages/dadosMestre/cliente/dadosEndereco.xhtml" />
+			</rich:tab>
+			<rich:tab id="abaAliquotas" header="#{msg.abaAliquota}" immediate="true" execute="@this">
+				<h:panelGroup layout="block" id="painelAliquota">
+					<h:panelGroup rendered="#{!mbAliquota.cadastroAliquota}" layout="block">
+						<tributavel:listaAliquota ruleRender="#{!mbCliente.statusInicio and
+							mbCliente.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+					<h:panelGroup id="cadastroAliquotas" rendered="#{mbAliquota.cadastroAliquota}" layout="block">
+						<tributavel:cadastroAliquota ruleRender="#{!mbCliente.statusInicio and
+							mbCliente.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+				</h:panelGroup>
+			</rich:tab>
+			<rich:tab id="abaImpostos" header="#{msg.abaImpostos}" immediate="true" execute="@this">
+				<h:panelGroup id="painelImpostos" >
+					<h:panelGroup rendered="#{!mbImposto.cadatroImposto}" layout="block">
+						<imposto:listaImposto ruleRender="#{!mbCliente.statusInicio and
+							mbCliente.verificaPermissao('Administrador, Gerente, Atendente')}" 
+							securityRender="#{mbCliente.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{mbImposto.cadatroImposto}" layout="block">
+						<imposto:cadastroImposto ruleRender="#{!mbCliente.statusInicio and
+							mbCliente.verificaPermissao('Administrador, Gerente, Atendente')}" 
+							securityRender="#{mbCliente.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+				</h:panelGroup>
+			</rich:tab>
+			<rich:tab id="abaNaturezaOperacao" header="#{msg.abaNatOperacao}" immediate="true" execute="@this">
+				<ui:include src="/pages/dadosMestre/cliente/naturezaOperacao.xhtml" />
+			</rich:tab>
+		</rich:tabPanel>
+		
+		<div class="PositionRelativeFloatLeft Largura100pc MarginTop5px MarginBottom5px" >
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft18px"/>
+		</div>
+		
+		<script type="text/javascript">
+			//<![CDATA[
+				if(#{!mbCliente.verificaPermissao('Administrador, Gerente, Atendente')}) {
+					j(document).ready(function(){
+						disableInputText();
+					});
+				}
+			//]]>
+		</script>
+		
+																						
+		<rich:jQuery id="jQueryCNPJ" selector="#cnpj" timing="immediate"  query="maskMoney({maskMoney: false, mask : '99.999.999/9999-99'})" />
+		<rich:jQuery id="jQueryCPF" selector="#cpf" timing="immediate"  query="maskMoney({maskMoney: false, mask : '999.999.999-99'})" />
+		
+	</ui:define>
+</ui:composition>

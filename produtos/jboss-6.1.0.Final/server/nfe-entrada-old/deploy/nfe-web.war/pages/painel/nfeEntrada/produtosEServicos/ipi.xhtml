@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+       
+			
+	<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+		<rich:tab id="abaIpiGeral" header="#{msg.aba_Geral}" immediate="true" execute="@this" styleClass="Altura50px">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/ipi/geral.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIpiTributado" header="#{msg.aba_Tributado}" immediate="true" execute="@this">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/ipi/tributado.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIpiNaoTributado" header="#{msg.aba_NaoTributado}" immediate="true" execute="@this">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/ipi/naoTributado.xhtml" /> 
+		</rich:tab>
+	</rich:tabPanel>
+			
+</ui:composition>

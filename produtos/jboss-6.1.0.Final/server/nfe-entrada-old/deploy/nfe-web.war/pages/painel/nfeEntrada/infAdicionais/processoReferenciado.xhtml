@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table">
+		
+	<rich:dataTable id="listaProcessoReferenciado" var="var" value="#{mbNfeEntrada.nfeEntrada.infNFe.infAdic.procRef}"
+		rows="5" styleClass="Largura100pc LarguraMinima974px" noDataLabel="#{msg.lbl_listaProcessoReferenciadoVazia}" 
+		onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''">
+			
+		<rich:column styleClass="AlignLeft" headerClass="Largura670px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_identificadorProcesso}"/>
+			</f:facet>
+			<h:outputText value="#{var.nProc}" />
+		</rich:column>
+		
+		<rich:column styleClass="AlignLeft" headerClass="Largura200px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_origem}"/>
+			</f:facet>
+			<h:outputText value="#{var.indProc}" converter="identificadorOrigemConverter"/>
+		</rich:column>
+		
+	</rich:dataTable>
+	
+	<table:scroller for="listaProcessoReferenciado" idPanelScroller="controle" maxPages="10" 
+		panelStyleClass="Scroller100pc" pageNumber="#{mbNfeEntrada.scrollerPageNumber}" 
+		renderedTotalRegistros="#{not empty mbNfeEntrada.nfeEntrada.infNFe.infAdic.procRef}" 
+		totalRegistros="#{mbNfeEntrada.quantidadeRegistrosListaProcessoReferenciado}" />
+	
+</ui:composition>

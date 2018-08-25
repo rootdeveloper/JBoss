@@ -1,0 +1,115 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaEmpresa}"/>
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<ui:include src="/pages/dadosMestre/empresa/modalFiltroEmpresa.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalInformativo mensagemInformativo="#{mbEmpresa.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo"  />
+	
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:filtro idModalFiltro="filtro"/>
+				<botao:novoAction action="#{mbEmpresa.novo}" rendered="#{mbEmpresa.verificaPermissao('Administrador')}" />
+				<botao:voltarAction action="home"/>				
+			</rich:toolbarGroup>
+			
+			<rich:toolbarGroup location="right">
+				<botao:atualizar actionListener="#{mbEmpresa.refreshList}" buttonStyle="MarginRight5px" render="barraDeScroll"
+					oncomplete="renderAllListaEmpresa()" idPanelErro="erroEdicao"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaEmpresa" var="item" value="#{mbEmpresa.listaEmpresa}" rows="10" styleClass="Largura100pc" 
+			onrowmouseover="className='SelecionaLinha'" noDataLabel="#{msg.listaEmpresaVazia}" rowKeyVar="rowKey"
+			onrowmouseout="className=''" onrowdblclick="editarEmpresa(#{rowKey})">
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura150px" sortBy="#{item.codigoEmpresa}" 
+				sortOrder="#{mbEmpresa.columnOrder.mapColumnOrder['Codigo'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(fn:toLowerCase(item.codigoEmpresa) , fn:toLowerCase(mbEmpresa.columnFilter.mapColumnFilter['Codigo'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codEmp}"/>
+					<table:orderArrow action="#{mbEmpresa.columnOrder.mapColumnOrder['Codigo'].sortBy}" order="#{mbEmpresa.columnOrder.mapColumnOrder['Codigo'].sortOrder}" 
+						render="listaEmpresa"/>
+					<br/>
+					<h:inputText id="codEmpresa" value="#{mbEmpresa.columnFilter.mapColumnFilter['Codigo'].filterBy}" styleClass="Campo Largura70px"
+						onkeypress="executeFilter(this,event)" maxlength="4" tabindex="1">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaEmpresa();" execute="@this"
+							status="modalStatus" listener="#{mbEmpresa.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.codigoEmpresa}"/>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura150px" sortBy="#{item.cnpjRaiz}" 
+				sortOrder="#{mbEmpresa.columnOrder.mapColumnOrder['CNPJRAIZ'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(fn:toLowerCase(item.cnpjRaiz) , fn:toLowerCase(mbEmpresa.columnFilter.mapColumnFilter['CNPJRAIZ'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cnpjRaiz}"/>
+					<table:orderArrow action="#{mbEmpresa.columnOrder.mapColumnOrder['CNPJRAIZ'].sortBy}" 
+						order="#{mbEmpresa.columnOrder.mapColumnOrder['CNPJRAIZ'].sortOrder}" render="listaEmpresa"/>
+					<br/>
+					<h:inputText value="#{mbEmpresa.columnFilter.mapColumnFilter['CNPJRAIZ'].filterBy}" styleClass="Campo Largura80px" maxlength="7" tabindex="2" 
+						onkeypress="Mascara(this, Integer);executeFilter(this,event)" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);" 
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaEmpresa(); executeFilter(this,event);"
+							execute="@this" status="modalStatus" listener="#{mbEmpresa.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.cnpjRaiz}" converter="raizCnpjConverter"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura670px" sortBy="#{item.razaoSocial}" 
+				sortOrder="#{mbEmpresa.columnOrder.mapColumnOrder['RazaoSocial'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(fn:toLowerCase(item.razaoSocial) , fn:toLowerCase(mbEmpresa.columnFilter.mapColumnFilter['RazaoSocial'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.razaoSocial}"/>
+					<table:orderArrow action="#{mbEmpresa.columnOrder.mapColumnOrder['RazaoSocial'].sortBy}" order="#{mbEmpresa.columnOrder.mapColumnOrder['RazaoSocial'].sortOrder}" 
+						render="listaEmpresa"/>
+					<br/>
+					<h:inputText value="#{mbEmpresa.columnFilter.mapColumnFilter['RazaoSocial'].filterBy}" onkeypress="executeFilter(this,event);" 
+						styleClass="Campo Largura600px" maxlength="60" tabindex="3" immediate="true">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaEmpresa();" execute="@this"
+							status="modalStatus" listener="#{mbEmpresa.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.razaoSocial}" title="#{item.razaoSocial}"/>
+			</rich:column>
+
+		</rich:dataTable>
+		
+		<table:scroller for="listaEmpresa" idPanelScroller="barraDeScroll" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px"
+			renderedTotalRegistros="#{not empty mbEmpresa.listaEmpresa}" totalRegistros="#{mbEmpresa.quantidadeRegistros}" 
+			pageNumber="#{mbEmpresa.scrollerPageNumber}"/>
+		
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbEmpresa.mensagemErro}">
+				<h:outputText value="#{mbEmpresa.mensagemErro}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="editarEmpresa" render="erroEdicao" status="modalStatus" action="#{mbEmpresa.editar}">
+			<a4j:param name="linha" assignTo="#{mbEmpresa.linhaSelecionada}"/>
+		</a4j:jsFunction>
+		
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderBodyOfListaEmpresa" status="modalStatus" render="listaEmpresa@body" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderAllListaEmpresa" status="modalStatus" render="listaEmpresa" oncomplete="reSize();"/>
+	</ui:define>
+</ui:composition>

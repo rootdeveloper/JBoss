@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	<ui:composition>
+		<h:panelGroup id="panelDCL" layout="block">
+			<a4j:repeat value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.dcl}" var="dcl" rows="1" id="repeatDCL">
+				<fieldset class="Fielset960x370BaseQuadrada" >
+					<legend class="TituloDeCampo">#{msg.informacoes}</legend>
+					<div class="Linha950x38 MarginTop5px MarginLeft5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.numeroDCL}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{dcl.ndcl}" styleClass="Campo Largura150px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.serie}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{dcl.serie}" styleClass="Campo Largura40px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.dataDeEmissao}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{dcl.dEmi}" styleClass="Campo Largura110px" readonly="true" converter="dataSefazConverter"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.quantidadeVagoes}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{dcl.qVag}" styleClass="Campo Largura150px" readonly="true" />
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.peso}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{dcl.pCalc}" styleClass="Campo Largura150px" readonly="true" />
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.valorDaTarifa}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{dcl.vTar}" styleClass="Campo Largura150px" readonly="true" converter="valorMonetarioSefazConverter"/>
+						</div>
+					</div>
+					<div class="Linha950x38 MarginTop5px MarginLeft5px">	
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.valorDoFrete}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{dcl.vFrete}" styleClass="Campo Largura150px" readonly="true" converter="valorMonetarioSefazConverter"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.valorDosServicosAcessorios}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{dcl.vsAcess}" styleClass="Campo Largura200px" readonly="true" converter="valorMonetarioSefazConverter"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.valorTotalDoServico}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{dcl.vtServ}" styleClass="Campo Largura150px" readonly="true" converter="valorMonetarioSefazConverter"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.identificacaoDoTrem}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{dcl.idTrem}" styleClass="Campo Largura150px" readonly="true" />
+						</div>
+					</div>
+					<a4j:repeat value="#{dcl.detVagDCL}" var="detVagDCL" rows="1" id="repeatDetVagDCL">
+						<fieldset class="Fieldset940x230BaseQuadrada MarginTop5px MarginLeft5px" >
+							<legend class="TituloDeCampo">#{msg.informacoesDetalhesVagoes}</legend>
+							<div class="Linha930x38 MarginTop5px MarginLeft5px">
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.numeroIdentificacaoVagao}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{detVagDCL.nVag}" styleClass="Campo Largura230px" readonly="true"/>
+								</div>
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.capacidadeToneladas}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{detVagDCL.cap}" styleClass="Campo Largura180px" readonly="true"/>
+								</div>
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.tipoVagao}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{detVagDCL.tpVag}" styleClass="Campo Largura100px" readonly="true"/>
+								</div>
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.pesoRealTonelada}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{detVagDCL.pesoR}" styleClass="Campo Largura160px" readonly="true"/>
+								</div>
+								<div class="GrupoTituloCampo">
+									<h:outputText value="#{msg.pesoBaseCalculoFrete}" styleClass="TituloDeCampo"/>
+									<br />
+									<h:inputText value="#{detVagDCL.pesoBC}" styleClass="Campo Largura200px" readonly="true"/>
+								</div>
+							</div>
+							<fieldset class="Fieldset300x150 MarginTop5px MarginLeft5px" >
+								<legend class="TituloDeCampo">#{msg.lacresVagoesDCL}</legend>
+								<h:panelGroup layout="block">
+									<rich:dataTable styleClass="Largura280px MarginTop5px MarginLeft10px" rows="3" id="lacresVagoesDCL" value="#{detVagDCL.lacDetVagDCL}" var="lacDetVagDCL" >
+										<rich:column styleClass="AlignCenter">
+											<f:facet name="header">
+												<h:outputText value="#{msg.numeroDoLacre}" />
+											</f:facet>
+											<h:outputText value="#{lacDetVagDCL.nLacre}" />
+										</rich:column>
+									</rich:dataTable>
+									<h:panelGroup id="lacresVagoesDCLScroll" styleClass="Scroller MarginLeft10px Largura278px" layout="block">
+										<rich:dataScroller id="lacresVagoesDCLScroller" for="lacresVagoesDCL" fastControls="hide" maxPages="4">
+											<f:facet name="first">
+												<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+											</f:facet>
+											<f:facet name="last">
+												<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+											</f:facet>
+											<f:facet name="previous">
+												<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+											</f:facet>
+											<f:facet name="next">
+												<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+											</f:facet>
+										</rich:dataScroller>
+									</h:panelGroup>
+								</h:panelGroup>
+							</fieldset>
+							<fieldset class="Fieldset400x150 MarginTop5px MarginLeft5px ">
+								<legend class="TituloDeCampo">#{msg.informacoesContainersDCL}</legend>
+									<rich:dataTable styleClass="Largura380px MarginTop5px MarginLeft10px" rows="3" id="informacoesContainersDCL" value="#{detVagDCL.contDCL}" var="contDCL">
+										<rich:column styleClass="AlignCenter ">
+											<f:facet name="header">
+												<h:outputText value="#{msg.identificacaoContainer}" />
+											</f:facet>
+											<h:outputText value="#{contDCL.nCont}" />
+										</rich:column>
+										<rich:column styleClass="AlignCenter">
+											<f:facet name="header">
+												<h:outputText value="#{msg.dataPrevistaDeEntrega}" />
+											</f:facet>
+											<h:outputText value="#{contDCL.dPrev}" converter="dataSefazConverter"/>
+										</rich:column>
+									</rich:dataTable>
+									<h:panelGroup id="informacoesContainersDCLScroll" styleClass="Scroller MarginLeft10px Largura378px" layout="block">
+										<rich:dataScroller id="informacoesContainersDCLScroller" for="informacoesContainersDCL" fastControls="hide" maxPages="6">
+											<f:facet name="first">
+												<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+											</f:facet>
+											<f:facet name="last">
+												<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+											</f:facet>
+											<f:facet name="previous">
+												<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+											</f:facet>
+											<f:facet name="next">
+												<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+											</f:facet>
+										</rich:dataScroller>
+									</h:panelGroup>
+							</fieldset>
+						</fieldset>
+					</a4j:repeat>
+					<h:panelGroup id="informacoesDetalhesVagoesScroll" styleClass="Scroller Largura940px MarginLeft5px"  layout="block">
+						<rich:dataScroller id="informacoesDetalhesVagoesScroller" for="repeatDetVagDCL" fastControls="hide" render="panelDCL" maxPages="16">
+							<f:facet name="first">
+								<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+							</f:facet>
+							<f:facet name="last">
+								<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+							</f:facet>
+							<f:facet name="previous">
+								<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+							</f:facet>
+							<f:facet name="next">
+								<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+							</f:facet>
+						</rich:dataScroller>
+					</h:panelGroup>
+				</fieldset>
+			</a4j:repeat>
+		</h:panelGroup>
+		
+		<h:panelGroup id="informacoesScroll" styleClass="Scroller Largura960px MarginLeft2px" layout="block" >
+			<rich:dataScroller id="informacoesScroller" for="repeatDCL" fastControls="hide" render="panelDCL, informacoesScroller" maxPages="16">
+				<f:facet name="first">
+					<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+				</f:facet>
+				<f:facet name="last">
+					<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+				</f:facet>
+				<f:facet name="previous">
+					<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+				</f:facet>
+				<f:facet name="next">
+					<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+				</f:facet>
+			</rich:dataScroller>
+		</h:panelGroup>
+		
+	</ui:composition>
+</html>

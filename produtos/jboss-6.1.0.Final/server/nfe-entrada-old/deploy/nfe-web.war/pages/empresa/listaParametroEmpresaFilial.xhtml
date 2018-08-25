@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaParametroEmpresaFilial}"/>
+	</ui:define>
+	
+	 <ui:define name="content">
+		<util:modalInformativo mensagemInformativo="#{mbParametroEmpresaFilial.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo" />
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel" id="toolbarBotoes">
+			<rich:toolbarGroup location="left">
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaParametroEmpresa" var="item" value="#{mbParametroEmpresaFilial.listaParametroEmpresaFilial}" rows="10" styleClass="Largura100pc" 
+			noDataLabel="#{msg.listaParametroEmpresaFilialVazia}" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			onrowdblclick="editarParametroEmpresa(#{rowKey})" rowKeyVar="rowKey">
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura40px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigo}"/>
+				</f:facet>
+				<h:outputText value="#{item.id}" title="#{item.id}"/>
+			</rich:column>
+			<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigoEmpresa}"/>
+				</f:facet>
+				<h:outputText value="#{item.codigoEmpresa}" title="#{item.codigoEmpresa}" />
+			</rich:column>
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura230px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.lbl_razaoSocial}"/>
+				</f:facet>
+				<h:outputText value="#{item.razaoSocial}" title="#{item.razaoSocial}" />
+			</rich:column>
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura230px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricao}"/>
+				</f:facet>
+				<h:outputText value="#{item.descricaoFilial}" title="#{item.descricaoFilial}" />
+			</rich:column>
+			<rich:column styleClass="AlignCenter" headerClass="Largura100px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.lbl_cnpj}"/>
+				</f:facet>
+				<h:outputText value="#{item.cnpjEmpresa}" title="#{item.cnpjEmpresa}" converter="cnpjConverter"/>
+			</rich:column>
+			<rich:column styleClass="AlignCenter" headerClass="Largura70px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigoFilial}"/>
+				</f:facet>
+				<h:outputText value="#{item.codigoFilial}" title="#{item.codigoFilial}" />
+			</rich:column>
+		</rich:dataTable>
+		<table:scroller for="listaParametroEmpresa" idPanelScroller="controle" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbParametroEmpresaFilial.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbParametroEmpresaFilial.listaParametroEmpresaFilial}" 
+			totalRegistros="#{mbParametroEmpresaFilial.quantidadeRegistros}" />
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbParametroEmpresaFilial.mensagemDeErro}" >
+				<h:outputText value="#{mbParametroEmpresaFilial.mensagemDeErro}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</h:panelGroup>
+		</h:panelGroup>
+		<a4j:jsFunction name="editarParametroEmpresa" render="erroEdicao" status="modalStatus" action="#{mbParametroEmpresaFilial.editar}">
+			<a4j:param name="linhaDoParametro" assignTo="#{mbParametroEmpresaFilial.linhaSelecionada}"/>
+		</a4j:jsFunction>	
+		
+			
+	</ui:define>
+</ui:composition>

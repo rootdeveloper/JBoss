@@ -1,0 +1,34 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal">
+
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px" >
+			<h:outputText value="#{msg.vigenciaInicialTela}" styleClass="TituloDeCampo"/>
+		</div>
+		<rich:calendar id="vigenciaInicialImportacao" value="#{mbAliquota.aliquotaImportacao.vigenciaInicial}" datePattern="dd/MM/yyyy" 
+			inputClass="Largura73px TabWalk" showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll" 
+			disabled="#{!cc.attrs.ruleRender}" buttonClass="BotaoImagemSemMarginTop" tabindex="11"/>
+		<h:outputText value="*" styleClass="MarginLeft5px"/>
+	</div>
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px" >
+			<h:outputText value="#{msg.aliquotaTela}" styleClass="TituloDeCampo" />
+		</div>
+		<h:inputText id="aliquotaImportacao" value="#{mbAliquota.aliquotaImportacao.aliquota}" maxlength="6" tabindex="12"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true" />
+		</h:inputText>
+		<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+	</div>
+	
+	<rich:jQuery id="jQueryaliquotaImportacao" selector="#aliquotaImportacao" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	
+</ui:composition>
+

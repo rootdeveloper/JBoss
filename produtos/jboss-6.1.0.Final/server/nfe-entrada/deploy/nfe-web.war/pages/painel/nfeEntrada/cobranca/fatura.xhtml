@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+		
+	<div class="Linha990x38 ">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_numeroDaFatura}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.cobr.fat.nFat}" styleClass="Campo Largura670px" 
+				readonly="true"/>
+		</div>
+	</div>
+	<div class="Linha990x38 ">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_valorOriginal}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.cobr.fat.vOrig}" 
+				styleClass="Campo Largura220px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_desconto}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.cobr.fat.vDesc}" 
+				styleClass="Campo Largura220px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_valorLiquido}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.cobr.fat.vDesc}" 
+				styleClass="Campo Largura210px TextAlignRight" readonly="true"/>
+		</div>
+	</div>
+	
+</ui:composition>

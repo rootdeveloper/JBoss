@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<rich:popupPanel id="painelEventos" styleClass="Largura700px FundoBranco" autosized="true" resizeable="false" moveable="false"
+		onhide="enableInputsFormPrincipal();" onshow="disableInputsFormPrincipal();">
+		<f:facet name="header">
+			<h:outputText value="#{msg.eventos}"/>
+		</f:facet>
+		
+		<f:facet name="controls">
+			<a4j:commandButton image="/resources/images/png/close.png" styleClass="BotaoFechar TabWalk"
+					execute="@this" onclick="#{rich:component('painelEventos')}.hide(); return false;"
+					immediate="true"/>
+		</f:facet>
+		
+		<rich:dataTable value="#{mbConsultaDestinados.listaEventos}" var="item" styleClass="Largura100pc">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.nsu}" />
+				</f:facet>
+				<h:outputText value="#{item.nsu}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.data}" />
+				</f:facet>
+				<h:outputText value="#{item.dhRecebto}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.evento}" />
+				</f:facet>
+				<h:outputText value="#{item.tpEvento}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="#{msg.serie}" />
+				</f:facet>
+				<h:outputText value="#{item.nSeqEvento}" />
+			</h:column>
+			
+			<rich:column styleClass="AlignCenter">
+					<f:facet name="header">
+						<h:outputText value="#{msg.col_Justificativa}" />
+					</f:facet>
+					<a4j:commandButton image="/resources/images/png/detalhes.png" execute="@this" oncomplete="#{rich:component('justificativaEvento')}.show()"
+						status="modalStatus" render="justificativaEvento" rendered="#{not empty item.xCorrecao}" >
+ 						<a4j:actionListener listener="#{mbConsultaDestinados.carregaJustificativa(item.xCorrecao)}"/>
+					</a4j:commandButton>
+			</rich:column>
+		</rich:dataTable>
+	</rich:popupPanel>
+</ui:composition>

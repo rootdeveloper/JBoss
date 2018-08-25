@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputLabel value="#{msg.paginaListaSistema}" />
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:voltarAction action="home" />
+			</rich:toolbarGroup>
+		</rich:toolbar>
+	
+		<rich:dataTable id="listaSistema" var="item" value="#{mbSistema.listaSistema}" rows="10" styleClass="Largura100pc" 
+			noDataLabel="#{msg.listaSistemaVazia}" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			onrowdblclick="editarSistema(#{rowKey})" rowKeyVar="rowKey">
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura350px"
+				sortBy="#{item.codigo}" sortOrder="#{mbSistema.columnOrder.mapColumnOrder['codigo'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.codigo, mbSistema.columnFilter.mapColumnFilter['codigo'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigo}"/>
+					<table:orderArrow action="#{mbSistema.columnOrder.mapColumnOrder['codigo'].sortBy}" 
+						order="#{mbSistema.columnOrder.mapColumnOrder['codigo'].sortOrder}" render="listaSistema"/>
+					<br/>
+					<h:inputText maxlength="60" id="codigo" value="#{mbSistema.columnFilter.mapColumnFilter['codigo'].filterBy}" tabindex="1" 
+						styleClass="Campo Largura300px" onkeypress="executeFilter(this,event);" >
+						<a4j:ajax event="valueChange" oncomplete="renderizaCorpoLista()" execute="@this" status="modalStatus"
+							render="controle"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.codigo}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura350px"
+				sortBy="#{item.descricao}" sortOrder="#{mbSistema.columnOrder.mapColumnOrder['descricao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.descricao, mbSistema.columnFilter.mapColumnFilter['descricao'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricao}"/>
+					<table:orderArrow action="#{mbSistema.columnOrder.mapColumnOrder['descricao'].sortBy}" 
+						order="#{mbSistema.columnOrder.mapColumnOrder['descricao'].sortOrder}" render="listaSistema"/>
+					<br/>
+					<h:inputText maxlength="60" id="descricao" value="#{mbSistema.columnFilter.mapColumnFilter['descricao'].filterBy}" tabindex="2" 
+						styleClass="Campo Largura300px" onkeypress="executeFilter(this,event);" >
+						<a4j:ajax event="valueChange" oncomplete="renderizaCorpoLista()" execute="@this" status="modalStatus"
+							render="controle"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.descricao}" />
+			</rich:column>
+			
+		</rich:dataTable>
+		
+		<table:scroller for="listaSistema" idPanelScroller="controle" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbSistema.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbSistema.listaSistema}" 
+			totalRegistros="#{mbSistema.quantidadeRegistros}" />
+			
+		<h:panelGroup id="erroEdicao">
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="editarSistema" render="erroEdicao" status="modalStatus" action="#{mbSistema.editar}">
+			<a4j:param name="indexPerfil" assignTo="#{mbSistema.indexSistemaSelecionado}"/>
+		</a4j:jsFunction>
+		
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderizaCorpoLista" render="listaSistema@body" oncomplete="reSize();"/>
+	
+	</ui:define>
+	
+</ui:composition>

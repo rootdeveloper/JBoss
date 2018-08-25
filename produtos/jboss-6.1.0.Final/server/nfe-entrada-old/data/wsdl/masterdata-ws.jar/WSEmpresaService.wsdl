@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="WSEmpresaService" targetNamespace="http://www.dataprimer.com.br/WSEmpresaService" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.dataprimer.com.br/WSEmpresaService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://www.dataprimer.com.br/WSEmpresaService" version="1.0" xmlns:tns="http://www.dataprimer.com.br/WSEmpresaService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="empresaAtiva" type="tns:empresaAtiva" />
+<xs:element name="empresaAtivaResponse" type="tns:empresaAtivaResponse" />
+<xs:element name="obtemEmpresa" type="tns:obtemEmpresa" />
+<xs:element name="obtemEmpresaResponse" type="tns:obtemEmpresaResponse" />
+<xs:element name="obtemEmpresaSimplificada" type="tns:obtemEmpresaSimplificada" />
+<xs:element name="obtemEmpresaSimplificadaResponse" type="tns:obtemEmpresaSimplificadaResponse" />
+<xs:element name="obtemTodasEmpresasSimplificadas" type="tns:obtemTodasEmpresasSimplificadas" />
+<xs:element name="obtemTodasEmpresasSimplificadasResponse" type="tns:obtemTodasEmpresasSimplificadasResponse" />
+<xs:complexType name="empresaAtiva">
+<xs:sequence>
+<xs:element minOccurs="0" name="xmlConsultaEmpresaAtiva" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="empresaAtivaResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="obtemEmpresaSimplificada">
+<xs:sequence>
+<xs:element minOccurs="0" name="cnpj" type="xs:string" />
+<xs:element minOccurs="0" name="codigoFilial" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="obtemEmpresaSimplificadaResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="obtemTodasEmpresasSimplificadas">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="obtemTodasEmpresasSimplificadasResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="obtemEmpresa">
+<xs:sequence>
+<xs:element minOccurs="0" name="cnpj" type="xs:string" />
+<xs:element minOccurs="0" name="codigoFilial" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="obtemEmpresaResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="obtemEmpresaResponse">
+    <wsdl:part element="tns:obtemEmpresaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtemEmpresaSimplificadaResponse">
+    <wsdl:part element="tns:obtemEmpresaSimplificadaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtemEmpresaSimplificada">
+    <wsdl:part element="tns:obtemEmpresaSimplificada" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtemEmpresa">
+    <wsdl:part element="tns:obtemEmpresa" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtemTodasEmpresasSimplificadasResponse">
+    <wsdl:part element="tns:obtemTodasEmpresasSimplificadasResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="empresaAtiva">
+    <wsdl:part element="tns:empresaAtiva" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="obtemTodasEmpresasSimplificadas">
+    <wsdl:part element="tns:obtemTodasEmpresasSimplificadas" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="empresaAtivaResponse">
+    <wsdl:part element="tns:empresaAtivaResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSEmpresa">
+    <wsdl:operation name="empresaAtiva">
+      <wsdl:input message="tns:empresaAtiva" name="empresaAtiva">
+    </wsdl:input>
+      <wsdl:output message="tns:empresaAtivaResponse" name="empresaAtivaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtemEmpresaSimplificada">
+      <wsdl:input message="tns:obtemEmpresaSimplificada" name="obtemEmpresaSimplificada">
+    </wsdl:input>
+      <wsdl:output message="tns:obtemEmpresaSimplificadaResponse" name="obtemEmpresaSimplificadaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtemTodasEmpresasSimplificadas">
+      <wsdl:input message="tns:obtemTodasEmpresasSimplificadas" name="obtemTodasEmpresasSimplificadas">
+    </wsdl:input>
+      <wsdl:output message="tns:obtemTodasEmpresasSimplificadasResponse" name="obtemTodasEmpresasSimplificadasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtemEmpresa">
+      <wsdl:input message="tns:obtemEmpresa" name="obtemEmpresa">
+    </wsdl:input>
+      <wsdl:output message="tns:obtemEmpresaResponse" name="obtemEmpresaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSEmpresaServiceSoapBinding" type="tns:WSEmpresa">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="empresaAtiva">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="empresaAtiva">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="empresaAtivaResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtemEmpresaSimplificada">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="obtemEmpresaSimplificada">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="obtemEmpresaSimplificadaResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtemTodasEmpresasSimplificadas">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="obtemTodasEmpresasSimplificadas">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="obtemTodasEmpresasSimplificadasResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtemEmpresa">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="obtemEmpresa">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="obtemEmpresaResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSEmpresaService">
+    <wsdl:port binding="tns:WSEmpresaServiceSoapBinding" name="WSEmpresaPort">
+      <soap:address location="http://DP-JAVA006:8080/masterdata-ws/WSEmpresaService/WSEmpresa" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

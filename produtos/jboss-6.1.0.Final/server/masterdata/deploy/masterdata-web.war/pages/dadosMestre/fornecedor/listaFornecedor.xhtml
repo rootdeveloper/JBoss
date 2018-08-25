@@ -1,0 +1,214 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaFornecedores}"/>
+	</ui:define>
+	
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" listener="#{mbFornecedor.trocaValorComboFilial}" render="header-content controle" 
+		execute="@this" oncomplete="renderAllListaFornecedores(); renderPainelErro();" />
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<util:modalFiltroParceiros id="modalFiltro" mb="#{mbFornecedor}" render="listaFornecedores, controle, erroEdicao"/>
+	</ui:define>
+	
+	<ui:define name="content">
+		
+		<util:modalImportador nomePainel="importadorFornecedor" tituloModal="#{msg.importadorDeXls}" tiposArquivosAceitos="xls, xlsx"
+			actionVoltarModalImportador="#{mbFornecedor.voltarModalImportador}" actionUploadListener="#{mbFornecedor.uploadListener}" 
+			actionLimparDadosDoUpload="#{mbFornecedor.limparDadosDoUpload}" mensagemLogImportacao="#{mbFornecedor.msgLogImportacao}" 
+			render="listaFornecedores,controle, erroEdicao" actionDownload="#{mbFornecedor.download}" erroImportacao="#{mbFornecedor.erroImportacao}"/>
+			
+		<util:modalSimNao mensagem="#{mbFornecedor.excluirSelecionadosTela}" nomePainel="confirmPane" tituloModal="#{msg.msgConfirmacaoExclusaoTela}" 
+			actionSim="#{mbFornecedor.excluirSelecionados}" render="controle, modalInformativo" tituloFuncao="selecionado" 
+			idCheckbox="checkboxFornecedor" oncomplete="#{rich:component('modalInformativo')}.show(); renderAllListaFornecedores(); renderPainelErro();"/>
+			
+		<util:modalInformativo mensagemInformativo="#{mbFornecedor.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo"/>
+		
+		<util:modalExportar renderedBotao="#{mbFornecedor.itensSelecionados}" actionListener="#{mbFornecedor.exportaFornecedorParaXLS}"
+			mensagem="#{mbFornecedor.msgExportacao}" nomePainel="modalExportacao" tituloModal="#{msg.exportacao}"/>
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:filtro idModalFiltro="filtroParceiros" filialCadastrada="#{mbFornecedor.possuiFilialCadastrada}" idPanelErro="erroEdicao"/>
+				<botao:novoAction action="#{mbFornecedor.novo}" render="#{mbFornecedor.processaRenderPanelErro}"
+					rendered="#{mbFornecedor.verificaPermissao('Administrador, Gerente, Atendente')}" />
+				<botao:excluir actionListener="#{mbFornecedor.verificarExclusaoFornecedor}" filialCadastrada="#{mbFornecedor.idFilial != null}" idPanelErro="erroEdicao" 
+					idModalSimNao="confirmPane" renderizarModal="#{mbFornecedor.renderizarModal}" idModalInformativo="modalInformativo"
+					rendered="#{mbFornecedor.verificaPermissao('Administrador, Gerente')}" />
+				<botao:importar idModalImportador="importadorFornecedor" filialCadastrada="#{mbFornecedor.possuiFilialCadastrada}" idPanelErro="erroEdicao" 
+					rendered="#{mbFornecedor.verificaPermissao('Administrador, Gerente')}" />
+				<botao:exportar actionListener="#{mbFornecedor.fornecedoresSelecionados}" idModal="modalExportacao"
+					filialCadastrada="#{mbFornecedor.possuiFilialCadastrada}" idPanelErro="erroEdicao" 
+					rendered="#{mbFornecedor.verificaPermissao('Administrador, Gerente')}" />
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+			
+			<rich:toolbarGroup location="right">
+				<botao:atualizar actionListener="#{mbFornecedor.refreshList}" render="controle" oncomplete="renderAllListaFornecedores()" 
+					buttonStyle="MarginRight5px" filialCadastrada="#{mbFornecedor.idFilial != null}" idPanelErro="erroEdicao"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaFornecedores" var="item" value="#{mbFornecedor.listaFornecedores}" rows="10" styleClass="Largura100pc" 
+			onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" onrowdblclick="editarFornecedor(#{rowKey})" rowKeyVar="rowKey" 
+			noDataLabel="#{msg.listaFornecedorVazia}">
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxFornecedor" valueChangeListener="#{mbFornecedor.selecionarTodos}" 
+						styleClass="Margin0px" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();" tabindex="1">
+						<a4j:ajax event="click" render="listaFornecedores" status="modalStatus" oncomplete="reSize();"/>
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{item.selected}" styleClass="Margin0px" onkeydown="blockBackSpace(event);"
+					 onkeyup="unblockBackSpace();">
+					<a4j:ajax event="valueChange" execute="@this"/>
+				</h:selectBooleanCheckbox>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura80px"
+				sortBy="#{item.dadosBasicos.status}" sortOrder="#{mbFornecedor.columnOrder.mapColumnOrder['Status'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(item.dadosBasicos.status) , fn:toLowerCase(mbFornecedor.columnFilter.mapColumnFilter['Status'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.status}"/>
+					<table:orderArrow action="#{mbFornecedor.columnOrder.mapColumnOrder['Status'].sortBy}" order="#{mbFornecedor.columnOrder.mapColumnOrder['Status'].sortOrder}" 
+						render="listaFornecedores"/>
+					<br/>
+					<h:inputText id="status" value="#{mbFornecedor.columnFilter.mapColumnFilter['Status'].filterBy}" tabindex="2" styleClass="Campo Largura60px" maxlength="7"
+						onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" onkeyup="Mascara(this, LetraSemEspaco);"
+						onkeydown="Mascara(this, LetraSemEspaco);" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" render="controle, erroEdicao" oncomplete="renderBodyOfListaFornecedores(); executeFilter(this,event);" 
+						execute="@this" status="modalStatus" listener="#{mbFornecedor.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dadosBasicos.status}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura230px"
+				sortBy="#{item.dadosBasicos.razaoSocial}" sortOrder="#{mbFornecedor.columnOrder.mapColumnOrder['RazaoSocial'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.dadosBasicos.razaoSocial, mbFornecedor.columnFilter.mapColumnFilter['RazaoSocial'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.razaoSocial}"/>
+					<table:orderArrow action="#{mbFornecedor.columnOrder.mapColumnOrder['RazaoSocial'].sortBy}"
+						order="#{mbFornecedor.columnOrder.mapColumnOrder['RazaoSocial'].sortOrder}" render="listaFornecedores"/>
+					<br/>
+					<h:inputText value="#{mbFornecedor.columnFilter.mapColumnFilter['RazaoSocial'].filterBy}" tabindex="3" onkeypress="executeFilter(this,event)"
+						styleClass="Campo Largura220px" maxlength="60">
+						<a4j:ajax event="valueChange" render="controle, erroEdicao" oncomplete="renderBodyOfListaFornecedores();" 
+						execute="@this" status="modalStatus" listener="#{mbFornecedor.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dadosBasicos.razaoSocial}" title="#{item.dadosBasicos.razaoSocial}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura230px" 
+				sortBy="#{item.dadosBasicos.nome}" sortOrder="#{mbFornecedor.columnOrder.mapColumnOrder['Nome'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.dadosBasicos.nome, mbFornecedor.columnFilter.mapColumnFilter['Nome'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.nome}"/>
+					<table:orderArrow action="#{mbFornecedor.columnOrder.mapColumnOrder['Nome'].sortBy}" order="#{mbFornecedor.columnOrder.mapColumnOrder['Nome'].sortOrder}" 
+						render="listaFornecedores"/>
+                    <br/>
+                    <h:inputText value="#{mbFornecedor.columnFilter.mapColumnFilter['Nome'].filterBy}" tabindex="4" onkeypress="executeFilter(this,event)"
+                    	styleClass="Campo Largura220px" maxlength="60">
+                        <a4j:ajax event="valueChange" render="controle, erroEdicao" oncomplete="renderBodyOfListaFornecedores();" 
+                        execute="@this" status="modalStatus" listener="#{mbFornecedor.limpaMensagemErro}"/>
+                    </h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dadosBasicos.nome}" title="#{item.dadosBasicos.nome}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura125px" 
+				sortBy="#{item.dadosBasicos.cnpj}" sortOrder="#{mbFornecedor.columnOrder.mapColumnOrder['Cnpj'].sortOrder}"
+				filterExpression="#{mbFornecedor.contemStringNoLongCnpj(item.dadosBasicos.cnpj, mbFornecedor.columnFilter.mapColumnFilter['Cnpj'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cnpj}"/>
+					<table:orderArrow action="#{mbFornecedor.columnOrder.mapColumnOrder['Cnpj'].sortBy}" 
+						order="#{mbFornecedor.columnOrder.mapColumnOrder['Cnpj'].sortOrder}" render="listaFornecedores"/>
+					<br/>
+					<h:inputText value="#{mbFornecedor.columnFilter.mapColumnFilter['Cnpj'].filterBy}" tabindex="5" styleClass="Campo Largura110px" maxlength="14" 
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="controle, erroEdicao" oncomplete="renderBodyOfListaFornecedores(); executeFilter(this,event);" 
+						execute="@this" status="modalStatus" listener="#{mbFornecedor.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dadosBasicos.cnpj}" converter="cnpjConverter"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura105px"  
+				sortBy="#{item.dadosBasicos.cpf}" sortOrder="#{mbFornecedor.columnOrder.mapColumnOrder['Cpf'].sortOrder}"
+				filterExpression="#{mbFornecedor.contemStringNoLongCpf(item.dadosBasicos.cpf, mbFornecedor.columnFilter.mapColumnFilter['Cpf'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cpf}"/>
+					<table:orderArrow action="#{mbFornecedor.columnOrder.mapColumnOrder['Cpf'].sortBy}"
+						order="#{mbFornecedor.columnOrder.mapColumnOrder['Cpf'].sortOrder}" render="listaFornecedores"/>
+					<br/>
+					<h:inputText value="#{mbFornecedor.columnFilter.mapColumnFilter['Cpf'].filterBy}" tabindex="6" styleClass="Campo Largura90px" maxlength="11"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="controle, erroEdicao" oncomplete="renderBodyOfListaFornecedores(); executeFilter(this,event);"
+						 execute="@this" status="modalStatus" listener="#{mbFornecedor.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dadosBasicos.cpf}" converter="cpfConverter"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura60px" 
+				sortBy="#{item.endereco.uf.sigla}" sortOrder="#{mbFornecedor.columnOrder.mapColumnOrder['Uf'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.endereco.uf.sigla , mbFornecedor.columnFilter.mapColumnFilter['Uf'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.uf}"/>
+					<table:orderArrow action="#{mbFornecedor.columnOrder.mapColumnOrder['Uf'].sortBy}"
+						order="#{mbFornecedor.columnOrder.mapColumnOrder['Uf'].sortOrder}" render="listaFornecedores"/>
+					<br/>
+					<h:inputText value="#{mbFornecedor.columnFilter.mapColumnFilter['Uf'].filterBy}" tabindex="7" styleClass="Campo Largura40px" maxlength="2"
+						onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" onkeyup="Mascara(this, LetraSemEspaco);" 
+						onkeydown="Mascara(this, LetraSemEspaco);" onfocus="origValue = this.value;" 
+						onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="Mascara(this, LetraSemEspaco);"
+						onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" render="controle, erroEdicao" oncomplete="renderBodyOfListaFornecedores(); executeFilter(this,event);" 
+						execute="@this" status="modalStatus" listener="#{mbFornecedor.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.endereco.uf.sigla}"/>
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="listaFornecedores" idPanelScroller="controle" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px"
+			pageNumber="#{mbFornecedor.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbFornecedor.listaFornecedores}"
+			totalRegistros="#{mbFornecedor.quantidadeRegistros}" />
+		
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbFornecedor.mensagemDeErro}" >
+				<h:outputText value="#{mbFornecedor.mensagemDeErro}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</h:panelGroup>
+		</h:panelGroup>
+			
+		<a4j:jsFunction name="editarFornecedor" render="erroEdicao" status="modalStatus" action="#{mbFornecedor.editar}">
+			<a4j:param name="linhaDoFornecedor" assignTo="#{mbFornecedor.linhaSelecionada}"/>
+		</a4j:jsFunction>
+		
+		
+		<a4j:jsFunction name="renderPainelErro" render="erroEdicao"/>
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderBodyOfListaFornecedores" status="modalStatus" render="listaFornecedores@body" oncomplete="reSize();" />
+		<a4j:jsFunction name="renderAllListaFornecedores" status="modalStatus" render="listaFornecedores" oncomplete="reSize();"/>
+		
+	</ui:define>
+</ui:composition>

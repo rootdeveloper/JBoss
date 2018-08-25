@@ -1,0 +1,135 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+    
+	<h:form prependId="false" id="formFiltroAliquotas" onkeypress="return bloqueioEnter(event);">
+	
+		<rich:popupPanel modal="true" id="filtroAliquotas" autosized="true" resizeable="false" moveable="false" domElementAttachment="form" 
+			styleClass="Largura700px FundoBranco" onshow="iniciaFocusModal('abaAliquota', null); disableInputsFormPrincipal();"
+			onhide="enableInputsFormPrincipal()">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.filtrarAliquotas}"/>
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton id="fechar" image="/resources/images/png/close.png" styleClass="BotaoFechar TabWalk" execute="@this" immediate="true"
+					oncomplete="#{rich:component('filtroAliquotas')}.hide();" action="#{mbAliquota.processCleanModalFiltroAliquotas}"/>
+			</f:facet>	
+		
+			<rich:tabPanel id="AbasFiltro" switchType="client" >
+				
+				<!-- Aba Alíquota -->
+				<rich:tab header="#{msg.tipoAliquota}" id="abaAliquota" headerClass="abaAliquota" onenter="focus('tabTipoAliquota\\:checkboxAliquota')" >
+					
+					<div class="PositionRelativeFloatLeft Largura665px AlturaMax155px OverflowVerticalAuto">
+						<rich:dataTable id="tabTipoAliquota" value="#{mbAliquota.listaDeAliquotasFiltro}" var="aliquota" styleClass="Largura100pc" 
+							noDataLabel="#{msg.nenhumaAliquota}">
+							
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox styleClass="Margin0px checkboxStatus" id="checkboxAliquota"
+										valueChangeListener="#{mbAliquota.selecionaTodosTipoAliquotaFiltro}">
+										<a4j:ajax event="click" render="tabTipoAliquota"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{aliquota.selecionado}">
+									<a4j:ajax event="valueChange" execute="@this"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{msg.tipoAliquota}"/>
+								</f:facet>
+								<h:outputText value="#{aliquota.descricao}" styleClass="MarginLeft10px"/>
+							</rich:column>
+							
+						</rich:dataTable>
+					</div>
+				</rich:tab>
+				
+				<!-- Aba Data de Vigência -->	
+				<rich:tab header="#{msg.dataVigencia}" id="abaDataVigencia" onenter="focus('dataInicial')">
+				
+					<h:outputText value="#{msg.dataInicial}" styleClass="TituloDeCampo"/>
+					<rich:calendar id="dataInicial" value="#{mbAliquota.dataInicialFiltro}" datePattern="dd/MM/yyyy" buttonClass="BotaoImagemSemMarginTop"
+						showApplyButton="false" showWeeksBar="false" tabindex="1" showFooter="false" boundaryDatesMode="scroll"
+						inputClass="Largura78px MarginLeft20px TabWalk"/>
+						
+					<h:outputText value="#{msg.dataFinal}" styleClass="TituloDeCampo MarginLeft50px"/>
+					<rich:calendar id="dataFinal" value="#{mbAliquota.dataFinalFiltro}" datePattern="dd/MM/yyyy" buttonClass="BotaoImagemSemMarginTop"
+						showApplyButton="false" showWeeksBar="false" tabindex="2" showFooter="false" boundaryDatesMode="scroll" 
+						inputClass="Largura78px MarginLeft20px TabWalk"/>
+				
+				</rich:tab>
+				
+				<!-- Aba UF -->
+				<rich:tab header="#{msg.uf}" id="abaUf" onenter="focus('ufOrigem')" execute="@this"
+					rendered="#{mbAliquota.possuiAliquotaICMS}">
+				
+					<h:panelGroup id="panelUf" styleClass="Linha670x25" layout="block">
+						<div class="PositionRelativeFloatLeft Largura80px MarginTop2px MarginLeft10px">
+							<h:outputText value="#{msg.ufOrigem}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:selectOneMenu id="ufOrigem" value="#{mbAliquota.ufOrigemFiltroSelecionada}" 
+							styleClass="PositionRelativeFloatLeft ComboField Largura70px">
+							<f:selectItems value="#{mbAliquota.listaUfEnumAsSelectItem}"/>
+						</h:selectOneMenu>
+						<div class="PositionRelativeFloatLeft Largura80px MarginTop2px MarginLeft40px">
+							<h:outputText value="#{msg.ufDestino}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:selectOneMenu id="ufDestino" value="#{mbAliquota.ufDestinoFiltroSelecionada}" 
+							styleClass="PositionRelativeFloatLeft ComboField Largura70px">
+							<f:selectItems value="#{mbAliquota.listaUfEnumAsSelectItem}"/>
+						</h:selectOneMenu>
+						<a4j:commandButton value="#{msg.adicionar}" render="panelUf, tabUfSelecionadas" styleClass="BotaoTexto PositionRelativeFloatRight TabWalk"
+							actionListener="#{mbAliquota.adicionarUFEnumFiltro}"/>
+					</h:panelGroup>
+					
+					<div class="PositionRelativeFloatLeft Largura665px AlturaMax155px OverflowVerticalAuto">
+						<rich:dataTable id="tabUfSelecionadas" value="#{mbAliquota.listaUfEnumFiltroSelecionadas}" var="uf" styleClass="Largura100pc">
+							<rich:column styleClass="AlignCenter" headerClass="Largura100px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox styleClass="Margin0px checkboxStatus" id="checkboxUfs" 
+										valueChangeListener="#{mbAliquota.selecionaTodosUFsOrigemDestino}">
+										<a4j:ajax event="click" render="panelUf, tabUfSelecionadas"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{uf.selecionado}">
+									<a4j:ajax event="valueChange" execute="@this" render="panelUf, tabUfSelecionadas"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							<rich:column styleClass="AlignCenter" headerClass="Largura200px">
+								<f:facet name="header">
+									<h:outputText value="#{msg.ufOrigem}"/>
+								</f:facet>
+								<h:outputText value="#{uf.valor.ufOrigem}" styleClass="MarginLeft10px"/>
+							</rich:column>
+							<rich:column styleClass="AlignCenter" headerClass="Largura200px">
+								<f:facet name="header">
+									<h:outputText value="#{msg.ufDestino}"/>
+								</f:facet>
+								<h:outputText value="#{uf.valor.ufDestino}" styleClass="MarginLeft10px"/>
+							</rich:column>
+						</rich:dataTable>
+					</div>
+					
+				</rich:tab>
+				
+			</rich:tabPanel>
+			
+			<!-- Botões -->
+			<div class="PositionRelativeFloatLeft MarginLeft8px Linha670x25 MarginTop10px">
+				<a4j:commandButton value="#{msg.botaoFiltrar}" status="modalStatus" styleClass="BotaoTexto Largura50px TabWalk"
+					actionListener="#{mbAliquota.filtrar}" render="listaAliquotaVO, controle" oncomplete="#{rich:component('filtroAliquotas')}.hide();"/>
+				<a4j:commandButton value="#{msg.botaoVoltar}" oncomplete="#{rich:component('filtroAliquotas')}.hide(); return false;"
+					styleClass="BotaoTexto Largura50px TabWalk" action="#{mbAliquota.processCleanModalFiltroAliquotas}"/>
+			</div>
+			
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

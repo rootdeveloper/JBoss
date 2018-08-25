@@ -1,0 +1,247 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaWebServices}"/>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<util:modalInformativo mensagemInformativo="#{mbWebService.mensagemModal}" tituloModal="#{msg.mensagem}"
+			nomePainel="modalInformativo"/>
+
+		<util:modalSimNao nomePainel="confirmPane" tituloFuncao="selecionado" idCheckbox="checkboxWebService"
+			mensagem="#{mbWebService.msgExcluirSelecionadosTela}" tituloModal="#{msg.msgConfirmacaoExclusaoTela}"
+			actionSim="#{mbWebService.excluirSelecionados}" render="controleWS modalInformativo"
+			oncomplete="#{rich:component('modalInformativo')}.show(); renderListaWebService();"/>
+
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:novoAction action="#{mbWebService.novo}" render="painelMensagemErro"/>
+				<botao:excluir actionListener="#{mbWebService.verificarExclusaoWebService}" idModalSimNao="confirmPane"
+					idPanelErro="painelMensagemErro" renderizarModal="#{mbWebService.renderizarModal}"
+					idModalInformativo="modalInformativo"/>
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+
+			<rich:toolbarGroup location="right">
+				<botao:limparFiltro actionListener="#{mbWebService.limparFiltro}" render="controleWS"
+					oncomplete="renderListaWebService()" buttonStyle="MarginRight5px" idPanelErro="painelMensagemErro" />
+			</rich:toolbarGroup>
+		</rich:toolbar>
+
+		<rich:dataTable id="listaWebService" var="itemWebService" value="#{mbWebService.listaWebService}" rows="10"
+			styleClass="Largura100pc" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			onrowdblclick="editarWebService(#{rowKey})" noDataLabel="#{msg.listaWebServiceVazia}" rowKeyVar="rowKey">
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxWebService" styleClass="Margin0px" tabindex="1"
+						valueChangeListener="#{mbWebService.selecionarTodos}" onkeydown="blockBackSpace(event);"
+						onkeyup="unblockBackSpace();">
+						<a4j:ajax event="click" render="listaWebService" status="modalStatus"
+							oncomplete="reSize(); blockDuploCliqueCheckbox();"/>
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{itemWebService.selected}" onkeydown="blockBackSpace(event);"
+					onkeyup="unblockBackSpace();" valueChangeListener="#{mbWebService.processaListaRemocao}"
+					styleClass="TabWalk">
+					<f:param name="linhaWebService" value="#{rowKey}"/>
+					<a4j:ajax event="valueChange" execute="@this"/>
+				</h:selectBooleanCheckbox>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura140px"
+				sortBy="#{itemWebService.tipoServicoWebService.descricao}"
+				sortOrder="#{mbWebService.columnOrder.mapColumnOrder['Servico'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(itemWebService.tipoServicoWebService.descricao, mbWebService.columnFilter.mapColumnFilter['Servico'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.col_tipoDeServico}"/>
+					<table:orderArrow action="#{mbWebService.columnOrder.mapColumnOrder['Servico'].sortBy}"
+						order="#{mbWebService.columnOrder.mapColumnOrder['Servico'].sortOrder}"
+						render="listaWebService" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br/>
+					<h:inputText id="tipoServicoWS" tabindex="2" styleClass="Campo Largura130px" maxlength="19"
+						value="#{mbWebService.columnFilter.mapColumnFilter['Servico'].filterBy}"
+						onkeypress="Mascara(this, Letra); executeFilter(this,event);"
+						onkeyup="Mascara(this, Letra);" onkeydown="Mascara(this, Letra);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="controleWS, erroEdicao"
+							oncomplete="renderBodyOfListaWebService(); executeFilter(this,event);" execute="@this"
+							status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{itemWebService.tipoServicoWebService.descricao}" title="#{itemWebService.tipoServicoWebService.descricao}" />
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px"
+				sortBy="#{itemWebService.uf}"
+				sortOrder="#{mbWebService.columnOrder.mapColumnOrder['Uf'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(itemWebService.uf), fn:toLowerCase(mbWebService.columnFilter.mapColumnFilter['Uf'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.col_uf}"/>
+					<table:orderArrow action="#{mbWebService.columnOrder.mapColumnOrder['Uf'].sortBy}"
+						order="#{mbWebService.columnOrder.mapColumnOrder['Uf'].sortOrder}"
+						render="listaWebService" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br/>
+
+					<h:inputText id="uf" value="#{mbWebService.columnFilter.mapColumnFilter['Uf'].filterBy}" 
+						tabindex="3" styleClass="Campo Largura40px" maxlength="2" 
+						onkeypress="Mascara(this, Letra); executeFilter(this,event);" onkeyup="Mascara(this, Letra);" 
+						onkeydown="Mascara(this, Letra);" onmousedown="Mascara(this, Letra);" 
+						onmouseup="Mascara(this, Letra);" onmouseout="Mascara(this, Letra);" 
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="controleWS, erroEdicao" 
+							oncomplete="renderBodyOfListaWebService(); executeFilter(this,event);" 
+							execute="@this" status="modalStatus"/>
+					</h:inputText>
+
+				</f:facet>
+				<h:outputText value="#{itemWebService.uf}"/>
+			</rich:column>
+
+			<rich:column styleClass="AlignLeft  Truncate" headerClass="Largura305px"
+				sortBy="#{itemWebService.caminhoEndpoint}"
+				sortOrder="#{mbWebService.columnOrder.mapColumnOrder['Endereco'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(itemWebService.caminhoEndpoint, mbWebService.columnFilter.mapColumnFilter['Endereco'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.col_endpoint}"/>
+					<table:orderArrow action="#{mbWebService.columnOrder.mapColumnOrder['Endereco'].sortBy}"
+						order="#{mbWebService.columnOrder.mapColumnOrder['Endereco'].sortOrder}"
+						render="listaWebService" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br/>
+					<h:inputText id="endpoint" tabindex="4" styleClass="Campo Largura295px" 
+						onkeypress="executeFilter(this, event)" maxlength="255"
+						value="#{mbWebService.columnFilter.mapColumnFilter['Endereco'].filterBy}">
+						<a4j:ajax event="valueChange" render="controleWS, erroEdicao"
+							oncomplete="renderBodyOfListaWebService(); executeFilter(this,event);" execute="@this"
+							status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{itemWebService.caminhoEndpoint}" title="#{itemWebService.caminhoEndpoint}"/>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura70px"
+				sortBy="#{itemWebService.tipoProtocoloSoap.descricao}"
+				sortOrder="#{mbWebService.columnOrder.mapColumnOrder['Soap'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(itemWebService.tipoProtocoloSoap.descricao, mbWebService.columnFilter.mapColumnFilter['Soap'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.col_soap}"/>
+					<table:orderArrow action="#{mbWebService.columnOrder.mapColumnOrder['Soap'].sortBy}"
+						order="#{mbWebService.columnOrder.mapColumnOrder['Soap'].sortOrder}"
+						render="listaWebService" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br/>
+					<h:inputText id="protocoloSoap" tabindex="5" styleClass="Campo Largura60px" 
+						onkeypress="executeFilter(this, event)" maxlength="8"
+						value="#{mbWebService.columnFilter.mapColumnFilter['Soap'].filterBy}">
+						<a4j:ajax event="valueChange" render="controleWS, erroEdicao"
+							oncomplete="renderBodyOfListaWebService(); executeFilter(this,event);" execute="@this"
+							status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{itemWebService.tipoProtocoloSoap.descricao}"/>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura105px"
+				sortBy="#{itemWebService.ambiente.nomeAmbiente}"
+				sortOrder="#{mbWebService.columnOrder.mapColumnOrder['Ambiente'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(itemWebService.ambiente.nomeAmbiente), fn:toLowerCase(mbWebService.columnFilter.mapColumnFilter['Ambiente'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.col_ambiente}"/>
+					<table:orderArrow action="#{mbWebService.columnOrder.mapColumnOrder['Ambiente'].sortBy}"
+						order="#{mbWebService.columnOrder.mapColumnOrder['Ambiente'].sortOrder}"
+						render="listaWebService" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br/>
+					<h:inputText id="ambiente" tabindex="6" styleClass="Campo Largura95px" maxlength="11"
+						value="#{mbWebService.columnFilter.mapColumnFilter['Ambiente'].filterBy}"
+						onkeypress="Mascara(this, Letra); executeFilter(this,event);"
+						onkeyup="Mascara(this, Letra);" onkeydown="Mascara(this, Letra);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="controleWS, erroEdicao"
+							oncomplete="renderBodyOfListaWebService(); executeFilter(this,event);" execute="@this" 
+							status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{itemWebService.ambiente.nomeAmbiente}"/>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura135px"
+				sortBy="#{itemWebService.pacoteLiberacao.versao}"
+				sortOrder="#{mbWebService.columnOrder.mapColumnOrder['PacoteLiberacao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(itemWebService.pacoteLiberacao.versao, mbWebService.columnFilter.mapColumnFilter['PacoteLiberacao'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.col_pacoteLiberacao}"/>
+					<table:orderArrow action="#{mbWebService.columnOrder.mapColumnOrder['PacoteLiberacao'].sortBy}"
+						order="#{mbWebService.columnOrder.mapColumnOrder['PacoteLiberacao'].sortOrder}"
+						render="listaWebService" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br/>
+					<h:inputText id="pacoteLiberacao" tabindex="7" styleClass="Campo Largura125px" maxlength="30"
+						value="#{mbWebService.columnFilter.mapColumnFilter['PacoteLiberacao'].filterBy}"
+						onkeypress="executeFilter(this,event)">
+						<a4j:ajax event="valueChange" render="controleWS, erroEdicao"
+							oncomplete="renderBodyOfListaWebService(); executeFilter(this,event);" execute="@this"
+							status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{itemWebService.pacoteLiberacao.versao}" title="#{itemWebService.pacoteLiberacao.versao}" />
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura125px"
+				sortBy="#{itemWebService.pacoteLiberacao.grupoSchema.descricao}"
+				sortOrder="#{mbWebService.columnOrder.mapColumnOrder['GrupoSchema'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(itemWebService.pacoteLiberacao.grupoSchema.descricao, mbWebService.columnFilter.mapColumnFilter['GrupoSchema'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.col_grupoSchema}"/>
+					<table:orderArrow action="#{mbWebService.columnOrder.mapColumnOrder['GrupoSchema'].sortBy}"
+						order="#{mbWebService.columnOrder.mapColumnOrder['GrupoSchema'].sortOrder}"
+						render="listaWebService" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br/>
+					<h:inputText id="grupoSchema" tabindex="8" styleClass="Campo Largura115px" maxlength="19"
+						value="#{mbWebService.columnFilter.mapColumnFilter['GrupoSchema'].filterBy}"
+						onkeypress="Mascara(this, Letra); executeFilter(this,event);" onkeyup="Mascara(this, Letra);"
+						onkeydown="Mascara(this, Letra);" onfocus="origValue = this.value;"
+						onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="controleWS, erroEdicao"
+							oncomplete="renderBodyOfListaWebService(); executeFilter(this,event);" execute="@this"
+							status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{itemWebService.pacoteLiberacao.grupoSchema.descricao}"/>
+			</rich:column>
+		</rich:dataTable>
+
+		<table:scroller for="listaWebService" idPanelScroller="controleWS" maxPages="16"
+			panelStyleClass="ScrollerPainel MarginBottom5px" pageNumber="#{mbWebService.scrollerPageNumber}"
+			renderedTotalRegistros="#{not empty mbWebService.listaWebService}"
+			totalRegistros="#{mbWebService.quantidadeRegistros}"/>
+
+		<h:panelGroup id="painelMensagemErro">
+			<h:panelGroup layout="block" rendered="#{mbWebService.renderizaPainelErro}"
+				styleClass="Largura980px MarginLeft10px MarginTop6px Altura20px">
+				<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+			</h:panelGroup>
+		</h:panelGroup>
+
+		<a4j:jsFunction name="editarWebService" render="painelMensagemErro" status="modalStatus"
+			action="#{mbWebService.editar}">
+			<a4j:param name="linha" assignTo="#{mbWebService.linhaSelecionada}"/>
+		</a4j:jsFunction>
+
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve
+		renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderBodyOfListaWebService" status="modalStatus" render="listaWebService@body"
+			oncomplete="reSize(); blockDuploCliqueCheckbox();"/>
+		<a4j:jsFunction name="renderListaWebService" status="modalStatus" render="listaWebService"
+			oncomplete="reSize(); blockDuploCliqueCheckbox();"/>
+
+	</ui:define>
+</ui:composition>

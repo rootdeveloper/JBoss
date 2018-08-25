@@ -1,0 +1,182 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal">
+
+	<h:panelGroup id="controleNaturezaJuridica">
+
+		<div class="Linha940x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura195px MarginLeft10px">
+				<h:outputText value="#{msg.descricaoNaturezaJuridica}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="descricaoNaturezaJuridicaText" value="#{mbEmpresa.filial.informacoesJuridicas.naturezaJuridica.descricaoNatureza}"
+				styleClass="Campo Largura650px PositionRelativeFloatLeft"/>
+				
+			<a4j:commandButton id="descricaoNaturezaJuridica" status="modalStatus" oncomplete="#{rich:component('modalListaNaturezaJuridica')}.show()" 
+				render="modalListaNaturezaJuridica" immediate="true" title="#{msg.pesquisarNaturezaJuridica}" execute="@this" 
+				actionListener="#{mbEmpresa.populaListaNaturezaJuridica}" styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk" 
+				image="/resources/images/png/detalhes.png" rendered="#{mbEmpresa.verificaPermissao('Administrador') and !mbEmpresa.statusInicio}" />
+				
+			<a4j:commandButton id="deletaNaturezaJuridica" status="modalStatus" title="#{msg.removerNaturezaJuridica}"
+				render="controleNaturezaJuridica, jQueryNaturezaJuridica"
+				execute="@this" actionListener="#{mbEmpresa.removeNaturezaJuridica}" disabled="#{mbEmpresa.statusInicio}"
+				styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabTalk" image="/resources/images/png/removerFiltro.png"
+				rendered="#{mbEmpresa.verificaPermissao('Administrador') and mbEmpresa.filial.informacoesJuridicas.naturezaJuridica.codigo != null}" />
+		</div>
+	
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura195px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.codigoNaturezaJuridica}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="codigoNaturezaJuridicaText" value="#{mbEmpresa.filial.informacoesJuridicas.naturezaJuridica.codigo}" readonly="true" 
+				styleClass="Campo Largura50px PositionRelativeFloatLeft"/>
+		</div>
+
+	</h:panelGroup>
+	
+	<h:panelGroup id="cadastroInfJuridicas">
+	
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura195px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.cei}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.cei}" styleClass="Campo Largura140px PositionRelativeFloatLeft" maxlength="12"
+				readonly="#{mbEmpresa.statusInicio}" id="ijcei" tabindex="16"/>
+	
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft110px">
+				<h:outputText value="#{msg.nit}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.nit}" styleClass="Campo Largura130px PositionRelativeFloatLeft" maxlength="11"
+				readonly="#{mbEmpresa.statusInicio}" id="ijnit" tabindex="17"/>
+		</div>
+		
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura195px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.licenca}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.licenca}" styleClass="Campo Largura230px PositionRelativeFloatLeft" maxlength="20"
+				readonly="#{mbEmpresa.statusInicio}" id="ijlicenca" tabindex="18"/>
+			
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft20px">
+				<h:outputText value="#{msg.nire}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.nire}" styleClass="Campo Largura85px PositionRelativeFloatLeft" maxlength="11"
+				onkeypress="Mascara(this,Integer)" onkeydown="Mascara(this,Integer)" onkeyup="Mascara(this, Integer)" readonly="#{mbEmpresa.statusInicio}"
+				id="ijnire" tabindex="19"/>
+		</div>
+	
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura195px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.nJuntaComercial}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.nrJuntaComercial}" styleClass="Campo Largura150px PositionRelativeFloatLeft" maxlength="20"
+				onkeypress="Mascara(this,Integer)" onkeydown="Mascara(this,Integer)" onkeyup="Mascara(this, Integer)" readonly="#{mbEmpresa.statusInicio}"
+				id="ijnrjuntacomercial" tabindex="20"/>
+			
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft100px">
+				<h:outputText value="#{msg.dataJuntaComercial}" styleClass="TituloDeCampo"/>
+			</div>
+			<rich:calendar value="#{mbEmpresa.filial.informacoesJuridicas.dataJuntaComercial}" datePattern="dd/MM/yyyy" inputClass="Largura65px TabWalk" 
+				showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll" 
+				disabled="#{!mbEmpresa.verificaPermissao('Administrador') or mbEmpresa.statusInicio}"
+				buttonClass="BotaoImagemSemMarginTop" tabindex="21"  />
+		</div>
+	
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura195px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.aliqIcmsEstado}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="aliquotaICMSEstado" value="#{mbEmpresa.filial.informacoesJuridicas.aliquotaICMSEstado}"
+				styleClass="Campo Largura45px PositionRelativeFloatLeft" maxlength="6" readonly="#{mbEmpresa.statusInicio}" tabindex="22">
+				<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+			</h:inputText>
+		</div>
+	
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura195px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.centDaEscrituracao}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu value="#{mbEmpresa.filial.informacoesJuridicas.centralizacaoEscrituracao}" id="ijcentralizacaoescrituracao"
+				styleClass="ComboField PositionRelativeFloatLeft Largura275px" disabled="#{mbEmpresa.statusInicio}" tabindex="23">
+				<f:selectItems value="#{mbEmpresa.listaCentralizacaoEscrituracaoEnum}"/>
+			</h:selectOneMenu>
+		</div>
+	
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura195px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.nomePrefeitura}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.nomePrefeitura}" styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60"
+				readonly="#{mbEmpresa.statusInicio}" id="ijnomeprefeitura" tabindex="24" />
+		</div>
+	
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura195px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.cnpjPrefeitura}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.cnpjPrefeitura}" styleClass="Campo Largura125px PositionRelativeFloatLeft" maxlength="18"
+				onkeypress="Mascara(this, Cnpj);" onkeyup="Mascara(this, Cnpj);" onkeydown="Mascara(this, Cnpj);" converter="cnpjConverter" 
+				readonly="#{mbEmpresa.statusInicio}" tabindex="25">
+				<a4j:ajax event="valueChange" render="painelMensagemErroFilial" listener="#{mbEmpresa.verificaCNPJPrefeitura}" status="modalStatus" 
+					execute="@this"/>
+			</h:inputText>
+			
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft125px">
+				<h:outputText value="#{msg.codigoSusep}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.codigoSusep}" styleClass="Campo Largura45px PositionRelativeFloatLeft" maxlength="5"
+				onkeypress="Mascara(this,Integer)" onkeydown="Mascara(this,Integer)" onkeyup="Mascara(this, Integer)" readonly="#{mbEmpresa.statusInicio}"
+				id="ijcodigosusep" tabindex="26" />
+		</div>
+	
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura195px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.codigoCVM}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.codigoCVM}" styleClass="Campo Largura45px PositionRelativeFloatLeft" maxlength="5"
+				onkeypress="Mascara(this,Integer)" onkeydown="Mascara(this,Integer)" onkeyup="Mascara(this, Integer)" readonly="#{mbEmpresa.statusInicio}"
+				id="ijcodigocvm" tabindex="27"/>
+			
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft205px">
+				<h:outputText value="#{msg.codidoAnpAgente}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.codigoANP}" styleClass="Campo Largura230px PositionRelativeFloatLeft" maxlength="20"
+				readonly="#{mbEmpresa.statusInicio}" id="ijcodigoanp" tabindex="28"/>
+		</div>
+	
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura195px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.codigoSPC}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.codigoSPC}" styleClass="Campo Largura230px PositionRelativeFloatLeft" maxlength="20"
+				readonly="#{mbEmpresa.statusInicio}" id="ijcodigospc" tabindex="29"/>
+			
+			<div class="PositionRelativeFloatLeft Largura150px MarginTop2px MarginLeft20px">
+				<h:outputText value="#{msg.cacealSomenteAl}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbEmpresa.filial.informacoesJuridicas.caceal}" styleClass="Campo Largura75px PositionRelativeFloatLeft" maxlength="10"
+				onkeypress="Mascara(this, Caceal);" onkeyup="Mascara(this, Caceal);" onkeydown="Mascara(this, Caceal);" readonly="#{mbEmpresa.statusInicio}"
+				id="ijcaceal" converter="cacealConverter" tabindex="30"/>
+		</div>
+	
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura195px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.formaDecDipj}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu value="#{mbEmpresa.filial.informacoesJuridicas.formaDIPJ}" styleClass="ComboField PositionRelativeFloatLeft Largura80px"
+				disabled="#{mbEmpresa.statusInicio}" id="ijformadipj" tabindex="31">
+				<f:selectItems value="#{mbEmpresa.listaFormaDIPJEnum}"/>
+			</h:selectOneMenu>
+		</div>
+	
+	</h:panelGroup>
+	
+	<rich:jQuery id="jQueryNaturezaJuridica" selector="#descricaoNaturezaJuridicaText" timing="immediate"
+		query="attr('readonly', 'readonly');"/>
+	<rich:jQuery id="jQueryAliquota" selector="#aliquotaICMSEstado" timing="immediate"
+		query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+	
+</ui:composition>

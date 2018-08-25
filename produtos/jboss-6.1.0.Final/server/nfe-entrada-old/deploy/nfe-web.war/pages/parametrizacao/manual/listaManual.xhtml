@@ -1,0 +1,174 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaDeManuais}"/>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<util:modalInformativo mensagemInformativo="#{mbManual.mensagemModal}" tituloModal="#{msg.mensagem}"
+			nomePainel="modalInformativo"/>
+
+		<util:modalSimNao mensagem="#{mbManual.msgExcluirSelecionadosTela}" nomePainel="confirmPane"
+			tituloModal="#{msg.msgConfirmacaoExclusaoTela}" actionSim="#{mbManual.excluirSelecionados}"
+			render="controle modalInformativo checkboxManual" tituloFuncao="selecionado" idCheckbox="checkboxManual"
+			oncomplete="#{rich:component('modalInformativo')}.show(); renderList();"/>
+
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:novoAction action="#{mbManual.novo}"/>
+				<botao:excluir actionListener="#{mbManual.verificarExclusaoManuais}" idModalSimNao="confirmPane"
+					renderizarModal="#{mbManual.renderizarModal}" idModalInformativo="modalInformativo"
+					idPanelErro="erroEdicao"/>
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+
+			<rich:toolbarGroup location="right">
+				<botao:limparFiltro actionListener="#{mbManual.limparFiltro}" render="controle"
+					oncomplete="renderList()" buttonStyle="MarginRight5px" idPanelErro="erroEdicao"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+
+		<rich:dataTable id="listaManual" var="item" value="#{mbManual.listaManuais}" rows="10"
+			styleClass="Largura100pc" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			onrowdblclick="editarManual(#{rowKey})" rowKeyVar="rowKey" noDataLabel="#{msg.listaManualVazia}">
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxManual" valueChangeListener="#{mbManual.selecionarTodos}"
+						styleClass="Margin0px" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();"
+						tabindex="1">
+						<a4j:ajax event="click" render="listaManual" status="modalStatus"
+							oncomplete="blockDuploCliqueCheckbox();"/>
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{item.selected}" styleClass="Margin0px TabWalk"
+					onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();">
+					<a4j:ajax event="valueChange" execute="@this"/>
+				</h:selectBooleanCheckbox>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura100px"
+				sortBy="#{item.versao}" sortOrder="#{mbManual.columnOrder.mapColumnOrder['versao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.versao, mbManual.columnFilter.mapColumnFilter['versao'].filterBy)}">
+
+				<f:facet name="header">
+					<h:outputText value="#{msg.versao}"/>
+					<table:orderArrow action="#{mbManual.columnOrder.mapColumnOrder['versao'].sortBy}"
+						order="#{mbManual.columnOrder.mapColumnOrder['versao'].sortOrder}" render="listaManual"
+						oncomplete="blockDuploCliqueCheckbox();"/>
+					<br />
+					<h:inputText tabindex="2" value="#{mbManual.columnFilter.mapColumnFilter['versao'].filterBy}"
+						onkeypress="executeFilter(this,event)" styleClass="Campo Largura90px" maxlength="10">
+						<a4j:ajax event="valueChange" render="controle" oncomplete="renderListBody();" execute="@this"
+							status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.versao}"/>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura130px" sortBy="#{item.dataLiberacao}"
+				sortOrder="#{mbManual.columnOrder.mapColumnOrder['dataLiberacao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.dataLiberacao, mbManual.columnFilter.mapColumnFilter['dataLiberacao'].filterBy)}">
+
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataLiberacao}"/>
+					<table:orderArrow action="#{mbManual.columnOrder.mapColumnOrder['dataLiberacao'].sortBy}"
+						order="#{mbManual.columnOrder.mapColumnOrder['dataLiberacao'].sortOrder}"
+						render="listaManual" oncomplete="blockDuploCliqueCheckbox();"/>
+					<br />
+					<h:inputText value="#{mbManual.columnFilter.mapColumnFilter['dataLiberacao'].filterBy}"
+						styleClass="Campo Largura120px" onkeypress="Mascara(this, Data); executeFilter(this,event);"
+						maxlength="10" tabindex="3" onkeyup="Mascara(this, Data);" onkeydown="Mascara(this, Data);"
+						converter="dateFilterConverter" onfocus="origValue = this.value;"
+						onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="Mascara(this, Data);"
+						onmouseup="Mascara(this, Data);" onmouseout="Mascara(this, Data);">
+						<a4j:ajax event="valueChange" render="controle" oncomplete="renderListBody();" execute="@this"
+							status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dataLiberacao}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura120px" sortBy="#{item.dataInclusao}"
+				sortOrder="#{mbManual.columnOrder.mapColumnOrder['dataInclusao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.dataInclusao, mbManual.columnFilter.mapColumnFilter['dataInclusao'].filterBy)}">
+
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataInclusao}"/>
+					<table:orderArrow action="#{mbManual.columnOrder.mapColumnOrder['dataInclusao'].sortBy}"
+						order="#{mbManual.columnOrder.mapColumnOrder['dataInclusao'].sortOrder}" render="listaManual"
+						oncomplete="blockDuploCliqueCheckbox();"/>
+					<br />
+					<h:inputText value="#{mbManual.columnFilter.mapColumnFilter['dataInclusao'].filterBy}"
+						styleClass="Campo Largura110px" onkeypress="Mascara(this, Data); executeFilter(this,event);"
+						maxlength="10" tabindex="4" onkeyup="Mascara(this, Data);" onkeydown="Mascara(this, Data);"
+						converter="dateFilterConverter" onfocus="origValue = this.value;"
+						onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="Mascara(this, Data);"
+						onmouseup="Mascara(this, Data);" onmouseout="Mascara(this, Data);">
+						<a4j:ajax event="valueChange" render="controle" oncomplete="renderListBody();" execute="@this"
+							status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dataInclusao}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura500px" sortBy="#{item.descricao}"
+				sortOrder="#{mbManual.columnOrder.mapColumnOrder['descricao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.descricao, mbManual.columnFilter.mapColumnFilter['descricao'].filterBy)}">
+
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricao}"/>
+					<table:orderArrow action="#{mbManual.columnOrder.mapColumnOrder['descricao'].sortBy}"
+						order="#{mbManual.columnOrder.mapColumnOrder['descricao'].sortOrder}" render="listaManual"
+						oncomplete="blockDuploCliqueCheckbox();"/>
+					<br />
+					<h:inputText tabindex="5" value="#{mbManual.columnFilter.mapColumnFilter['descricao'].filterBy}"
+						onkeypress="executeFilter(this,event)" styleClass="Campo Largura400px" maxlength="60">
+						<a4j:ajax event="valueChange" render="controle" oncomplete="renderListBody();" execute="@this"
+							status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.descricao}" title="#{item.descricao}" />
+			</rich:column>
+
+		</rich:dataTable>
+
+		<table:scroller for="listaManual" idPanelScroller="controle" maxPages="16"
+			panelStyleClass="ScrollerPainel MarginBottom5px" pageNumber="#{mbManual.scrollerPageNumber}"
+			renderedTotalRegistros="#{not empty mbManual.listaManuais}"
+			totalRegistros="#{mbManual.quantidadeRegistros}"/>
+
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px"
+				rendered="#{not empty mbManual.mensagemDeErro}">
+				<h:outputText value="#{mbManual.mensagemDeErro}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</h:panelGroup>
+		</h:panelGroup>
+
+		<a4j:jsFunction name="editarManual" render="erroEdicao" status="modalStatus" action="#{mbManual.editar}">
+			<a4j:param name="linha" assignTo="#{mbManual.linhaSelecionada}"/>
+		</a4j:jsFunction>
+
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve
+			renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderListBody"	status="modalStatus" render="listaManual@body"
+			oncomplete="blockDuploCliqueCheckbox();"/>
+		<a4j:jsFunction name="renderList"		status="modalStatus" render="listaManual"
+			oncomplete="blockDuploCliqueCheckbox();"/>
+	</ui:define>
+</ui:composition>

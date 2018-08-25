@@ -1,0 +1,212 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroTransportadora}"/>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<util:modalInformativoVoltar mensagemInformativo="#{mbTransportadora.mensagemModal}" nomePainel="modalInformativo" tituloModal="#{msg.mensagem}" 
+			render="#{mbTransportadora.renderizarModal}"/>
+
+		<util:modalJustificativaStatus idModal="modalTransportadorStatus" actionRenderizarModais="#{mbTransportadora.processaRenderizacaoModais}" 
+			justificativaInformativa="#{mbTransportadora.justificativa}"  idModalInformativo="modalInformativo"
+			justificativaEditavel="#{mbTransportadora.transportadora.dadosBasicos.justificativa}" renderizaModalStatusInformativo="#{mbTransportadora.renderizaModalStatusInformativo}" 
+			renderizarModal="#{mbTransportadora.renderizarModal}" salvar="#{mbTransportadora.salvaComStatus}" 
+			tipoStatus="#{mbTransportadora.transportadora.dadosBasicos.status.nomeTipo}"/>
+
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbTransportadora.verificaStatus}" title="#{msg.titleSalvar}"
+				execute="cadastroTransportadora, cadastroEnderecoTransportadora" render="modalInformativo, panelErros, modalTransportadorStatus"
+				oncomplete="#{mbTransportadora.renderizaModalStatus} ? #{rich:component('modalTransportadorStatus')}.show() : ''; #{mbTransportadora.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"
+				rendered="#{mbTransportadora.verificaPermissao('Administrador, Gerente, Atendente')}" >
+				<f:param name="acao" value="edicaoJustificativa"/>
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="apagar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		
+			<a4j:commandLink status="modalStatus" action="voltar" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink>
+		</rich:toolbar>
+		
+		<h:panelGroup id="cadastroTransportadora"> 
+		
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px" id="statusTransportadora">
+				<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px"> 
+					<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+				</div>			
+				<h:selectOneMenu value="#{mbTransportadora.transportadora.dadosBasicos.status}" 
+					disabled="#{empty mbTransportadora.transportadora.id or !mbTransportadora.verificaPermissao('Administrador, Gerente')}" 
+					styleClass="ComboField PositionRelativeFloatLeft Largura70px" tabindex="0">
+					<f:selectItems value="#{mbTransportadora.listaStatusEnum}" var="status" itemLabel="#{status.nomeTipo}"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				
+				<a4j:commandButton image="/resources/images/gif/information.gif" title="#{msg.titleMotivo}" immediate="true" 
+					oncomplete="#{rich:component('modalTransportadorStatus')}.show()" rendered="#{not empty mbTransportadora.justificativa}"
+					styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft Tabwalk" render="modalInformativoStatus, modalTransportadorStatus" 
+					actionListener="#{mbTransportadora.processaRenderizacaoModais}" />
+			</h:panelGroup>	
+		
+			<h:panelGroup id="tipoPessoaTransportadora" styleClass="Linha980x25" layout="block">
+				<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.tipoPessoa}"  styleClass="TituloDeCampo"/>
+				</div>
+				<f:validateBean disabled="true">
+					<h:selectOneMenu value="#{mbTransportadora.transportadora.dadosBasicos.tipoDePessoa}" disabled="#{mbTransportadora.statusInicio}" 
+						styleClass="ComboField PositionRelativeFloatLeft Largura70px" tabindex="1">
+						<f:selectItems value="#{mbTransportadora.listaTipoDePessoaEnum}"  var="tipoDePessoa" itemLabel="#{tipoDePessoa.nomeTipo}"/>
+						<a4j:ajax event="valueChange" render="panelCnpjCpf, panelNomes, panelInsEstadual, panelIsento,  panelErros, jQueryCNPJ, jQueryCPF"
+							execute="@this" listener="#{mbTransportadora.limparDadosNaoPertinenteAoTipoDePessoa}" status="modalStatus"/>
+					</h:selectOneMenu>
+				</f:validateBean>			
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				
+				<div class="PositionRelativeFloatLeft MarginLeft10px MarginTop2px Padding0px">	
+					<h:selectBooleanCheckbox  value="#{mbTransportadora.exterior}" disabled="#{mbTransportadora.statusInicio}" 
+						styleClass="PositionRelativeFloatLeft MarginTop0px Padding0px" tabindex="2">
+						<a4j:ajax event="valueChange" render="panelCnpjCpf, panelInsEstadual, abaEndereco, panelErros, jQueryCNPJ, jQueryCPF" 
+							execute="@this" listener="#{mbTransportadora.limparDadosNaoPertinentesAExterior}" status="modalStatus"/>
+					</h:selectBooleanCheckbox>
+				</div>
+				<h:outputText value="#{msg.exterior}" styleClass="TituloDeCampo PositionRelativeFloatLeft MarginTop1px MarginLeft5px"/>
+			</h:panelGroup>	
+		
+			<h:panelGroup layout="block" id="panelCnpjCpf">
+				<h:panelGroup layout="block" styleClass="Linha980x25" 
+					rendered="#{(mbTransportadora.transportadora.dadosBasicos.tipoDePessoa eq 'JURIDICA' || mbTransportadora.transportadora.dadosBasicos.tipoDePessoa == null) and !mbTransportadora.exterior}">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.cnpj}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="cnpj" value="#{mbTransportadora.transportadora.dadosBasicos.cnpj}" styleClass="Campo Largura118px PositionRelativeFloatLeft"
+						converter="cnpjConverter" requiredMessage="#{msg.msgErroValidacaoCNPJ}"  readonly="#{mbTransportadora.statusInicio}" 
+						required="#{mbTransportadora.transportadora.dadosBasicos.tipoDePessoa eq 'JURIDICA' and !mbTransportadora.exterior}" tabindex="3"> 
+						<a4j:ajax event="change" render="panelErros" listener="#{mbTransportadora.verificaCNPJ}" status="modalStatus"/>
+					</h:inputText>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				</h:panelGroup>
+				<h:panelGroup styleClass="Linha980x25" layout="block" 
+					rendered="#{(mbTransportadora.transportadora.dadosBasicos.tipoDePessoa eq 'FISICA') and !mbTransportadora.exterior}">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.cpf}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText value="#{mbTransportadora.transportadora.dadosBasicos.cpf}" readonly="#{mbTransportadora.statusInicio}" id="cpf"
+						styleClass="Campo Largura120px PositionRelativeFloatLeft" converter="cpfConverter"  requiredMessage="#{msg.msgErroValidacaoCPF}"
+						required="#{mbTransportadora.transportadora.dadosBasicos.tipoDePessoa eq 'FISICA' and !mbTransportadora.exterior}" tabindex="3">
+						<a4j:ajax event="valueChange" render="panelErros" listener="#{mbTransportadora.verificaCPF}" status="modalStatus"/>
+					</h:inputText>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				</h:panelGroup>
+			</h:panelGroup>
+		
+			<h:panelGroup layout="block" id="panelNomes">
+				<h:panelGroup rendered="#{mbTransportadora.transportadora.dadosBasicos.tipoDePessoa eq 'JURIDICA' || mbTransportadora.transportadora.dadosBasicos.tipoDePessoa == null}">
+					<div class="Linha980x25">
+						<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+							<h:outputText value="#{msg.razaoSocial}" styleClass="TituloDeCampo" />
+						</div>
+						<h:inputText value="#{mbTransportadora.transportadora.dadosBasicos.razaoSocial}" readonly="#{mbTransportadora.statusInicio}" 
+							styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" requiredMessage="#{msg.msgErroValidacaoRazaoSocial}" 
+							required="#{mbTransportadora.transportadora.dadosBasicos.tipoDePessoa eq 'JURIDICA'}" tabindex="4"/>
+						<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+					</div>
+					<div class="Linha980x25">
+						<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+							<h:outputText value="#{msg.nomeFantasia}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText value="#{mbTransportadora.transportadora.dadosBasicos.nomeFantasia}" readonly="#{mbTransportadora.statusInicio}" 
+							styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60"/>
+					</div>
+				</h:panelGroup>
+				<h:panelGroup styleClass="Linha980x25" rendered="#{mbTransportadora.transportadora.dadosBasicos.tipoDePessoa eq 'FISICA'}">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.nome}" styleClass="TituloDeCampo" />
+					</div>
+					<h:inputText value="#{mbTransportadora.transportadora.dadosBasicos.nome}" readonly="#{mbTransportadora.statusInicio}"  
+						styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" tabindex="4"
+						required="#{mbTransportadora.transportadora.dadosBasicos.tipoDePessoa eq 'FISICA'}" requiredMessage="#{msg.msgErroValidacaoNome}">
+						<a4j:ajax event="valueChange" execute="@this"/>
+					</h:inputText>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				</h:panelGroup>
+			</h:panelGroup>
+		
+			<h:panelGroup id="emailTransportadora" styleClass="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.email}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText value="#{mbTransportadora.transportadora.dadosBasicos.email}" readonly="#{mbTransportadora.statusInicio}"  
+					styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" tabindex="5"/>
+			</h:panelGroup>	
+		
+			<h:panelGroup layout="block" id="panelInsEstadual">
+				<h:panelGroup styleClass="Linha980x25" rendered="#{not mbTransportadora.exterior}">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText value="#{mbTransportadora.transportadora.dadosBasicos.inscricaoEstadual}"
+						styleClass="Campo Largura105px PositionRelativeFloatLeft"
+						disabled="#{mbTransportadora.statusInicio || mbTransportadora.transportadora.dadosBasicos.isentoIcms }"
+						maxlength="14" onkeypress="Mascara(this, Integer);" onkeyup="Mascara(this, Integer);"
+						onkeydown="Mascara(this, Integer);" tabindex="6" onmousedown="Mascara(this, Integer);"
+						onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+					<div class="PositionRelativeFloatLeft Largura20px Altura20px">
+						<h:panelGroup layout="block" 
+						 	rendered="#{mbTransportadora.transportadora.dadosBasicos.tipoDePessoa eq 'JURIDICA' and !mbTransportadora.transportadora.dadosBasicos.isentoIcms }">	
+							<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft" />
+						</h:panelGroup>
+					</div>
+					<h:panelGroup  id="panelIsento" layout="block" rendered="#{!mbTransportadora.exterior}" 
+						styleClass="MarginLeft10px MarginTop2px PositionRelativeFloatLeft">
+						<h:selectBooleanCheckbox value="#{mbTransportadora.transportadora.dadosBasicos.isentoIcms}"  disabled="#{mbTransportadora.statusInicio}"  
+							readonly="#{mbTransportadora.statusInicio}" styleClass="MarginTop0px Marginleft10px Padding0px PositionRelativeFloatLeft" tabindex="7">
+							<a4j:ajax  event="valueChange" execute="@this" render="panelInsEstadual" listener="#{mbTransportadora.renderizaIeIsento}" 
+								status="modalStatus"/>
+						</h:selectBooleanCheckbox>
+						<h:outputText value="#{msg.isentoICMS}" styleClass="TituloDeCampo MarginTop3px MarginLeft5px Largura150px"/>
+					</h:panelGroup>
+				</h:panelGroup>
+			</h:panelGroup>	
+		
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" id="panelErros" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura980px">
+			<h:outputText value="#{mbTransportadora.mensagemDocumento}" styleClass="MensagemDeErro" />
+			<h:outputText value="#{mbTransportadora.mensagemDeErro}" styleClass="MensagemDeErro" escape="false" />
+			<h:outputText value="#{mbTransportadora.mensagemErroScript}" styleClass="MensagemDeErro" />
+			<h:outputText value="#{mbTransportadora.mensagemCep}" styleClass="MensagemDeErro" />
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages" />
+		</h:panelGroup>
+		
+		<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+			<rich:tab  id="abaEndereco" header="#{msg.abaEndereco}">
+				<ui:include src="/pages/dadosMestre/transportadora/dadosEndereco.xhtml" />
+			</rich:tab>
+		</rich:tabPanel>
+		
+		<div class="PositionRelativeFloatLeft Largura100pc MarginTop5px MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft5px MarginLeft18px"/>
+		</div>
+		
+		<script type="text/javascript">
+			//<![CDATA[
+				if(#{!mbTransportadora.verificaPermissao('Administrador, Gerente, Atendente')}) {
+					j(document).ready(function(){
+						disableInputText();
+					});
+				}
+			//]]>
+		</script>
+		
+		<rich:jQuery id="jQueryCNPJ" selector="#cnpj" timing="immediate"  query="maskMoney({maskMoney: false, mask : '99.999.999/9999-99'})" />
+		<rich:jQuery id="jQueryCPF" selector="#cpf" timing="immediate"  query="maskMoney({maskMoney: false, mask : '999.999.999-99'})" />
+		
+	</ui:define>
+</ui:composition>

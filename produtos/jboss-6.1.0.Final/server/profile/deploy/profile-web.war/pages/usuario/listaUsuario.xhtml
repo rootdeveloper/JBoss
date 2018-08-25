@@ -1,0 +1,118 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputLabel value="#{msg.paginaListaUsuario}" />
+	</ui:define>
+	
+	<ui:define name="content">
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:novoAction action="#{mbUsuario.novo}" rendered="#{mbPermissao.criarUsuario}"/>
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaUsuario" var="item" value="#{mbUsuario.listaUsuario}" rows="10" styleClass="Largura100pc" 
+			noDataLabel="#{msg.listaUsuarioVazia}" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			onrowdblclick="editarUsuario(#{rowKey})" rowKeyVar="rowKey">
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura100px"
+				sortBy="#{item.senha}" sortOrder="#{mbUsuario.columnOrder.mapColumnOrder['status'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(item.status), fn:toLowerCase(mbUsuario.columnFilter.mapColumnFilter['status'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.status}"/>
+					<table:orderArrow action="#{mbUsuario.columnOrder.mapColumnOrder['status'].sortBy}" 
+						order="#{mbUsuario.columnOrder.mapColumnOrder['status'].sortOrder}" render="listaUsuario"/>
+					<br/>
+					<h:inputText id="status" value="#{mbUsuario.columnFilter.mapColumnFilter['status'].filterBy}" tabindex="1" styleClass="Campo Largura60px"
+						maxlength="7" onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" onkeyup="Mascara(this, LetraSemEspaco);" 
+						onkeydown="Mascara(this, LetraSemEspaco);" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" oncomplete="renderizaCorpoLista()" execute="@this" status="modalStatus" 
+							render="controle"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.status}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura340px" 
+				sortBy="#{item.nome}" sortOrder="#{mbUsuario.columnOrder.mapColumnOrder['nome'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.nome, mbUsuario.columnFilter.mapColumnFilter['nome'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.nome}"/>
+					<table:orderArrow action="#{mbUsuario.columnOrder.mapColumnOrder['nome'].sortBy}"
+						order="#{mbUsuario.columnOrder.mapColumnOrder['nome'].sortOrder}" render="listaUsuario"/>
+					<br/>
+					<h:inputText id="nome" value="#{mbUsuario.columnFilter.mapColumnFilter['nome'].filterBy}" tabindex="2" 
+						styleClass="Campo Largura300px" onkeypress="executeFilter(this,event);" maxlength="60">
+						<a4j:ajax event="valueChange" oncomplete="renderizaCorpoLista()" execute="@this" status="modalStatus"
+							render="controle"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.nome}" title="#{item.nome}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura340px" 
+				sortBy="#{item.login}" sortOrder="#{mbUsuario.columnOrder.mapColumnOrder['login'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.login, mbUsuario.columnFilter.mapColumnFilter['login'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.login}"/>
+					<table:orderArrow action="#{mbUsuario.columnOrder.mapColumnOrder['login'].sortBy}"
+						order="#{mbUsuario.columnOrder.mapColumnOrder['login'].sortOrder}" render="listaUsuario"/>
+					<br/>
+					<h:inputText id="login" value="#{mbUsuario.columnFilter.mapColumnFilter['login'].filterBy}" tabindex="3" 
+						styleClass="Campo Largura300px" onkeypress="executeFilter(this,event);" maxlength="60">
+						<a4j:ajax event="valueChange" oncomplete="renderizaCorpoLista()" execute="@this" status="modalStatus"
+							render="controle"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.login}" title="#{item.login}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura200px" 
+				sortBy="#{item.cpf}" sortOrder="#{mbUsuario.columnOrder.mapColumnOrder['cpf'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.cpf, mbUsuario.columnFilter.mapColumnFilter['cpf'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cpf}"/>
+					<table:orderArrow action="#{mbUsuario.columnOrder.mapColumnOrder['cpf'].sortBy}"
+						order="#{mbUsuario.columnOrder.mapColumnOrder['cpf'].sortOrder}" render="listaUsuario"/>
+					<br/>
+					<h:inputText id="cpf" value="#{mbUsuario.columnFilter.mapColumnFilter['cpf'].filterBy}" tabindex="4" styleClass="Campo Largura150px"
+						maxlength="11" onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" 
+						onkeydown="Mascara(this, Integer);" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" oncomplete="renderizaCorpoLista()" execute="@this" status="modalStatus" 
+							render="controle"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.cpf}" converter="cpfConverter" />
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="listaUsuario" idPanelScroller="controle" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbUsuario.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbUsuario.listaUsuario}" 
+			totalRegistros="#{mbUsuario.quantidadeRegistros}" />
+		
+		<h:panelGroup id="erroEdicao">
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="editarUsuario" render="erroEdicao" status="modalStatus" action="#{mbUsuario.editar}">
+			<a4j:param name="indexUsuario" assignTo="#{mbUsuario.indexUsuarioSelecionado}"/>
+		</a4j:jsFunction>
+		
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderizaCorpoLista" render="listaUsuario@body" oncomplete="reSize();"/>
+	</ui:define>
+	
+</ui:composition>

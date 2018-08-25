@@ -1,0 +1,348 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:tributavel="http://java.sun.com/jsf/composite/components/aliquota"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroFaturamento}"/>
+	</ui:define>
+
+	<ui:define name="content">
+	
+		<util:modalInformativoVoltar mensagemInformativo="#{mbFaturamentoSn.mensagemModal}" nomePainel="modalInformativo" 
+			tituloModal="#{msg.mensagem}" render="#{mbFaturamentoSn.renderizarModal}"/>
+
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbFaturamentoSn.verificaAntesSalvar}"
+				oncomplete="#{mbFaturamentoSn.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"
+				render="modalInformativo painelMsgErro" execute="info" title="#{msg.titleSalvar}"
+				rendered="#{mbFaturamentoSn.verificaPermissao('Administrador, Gerente, Fiscal')}" >
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink>
+
+			<a4j:commandLink status="modalStatus" action="voltar" immediate="true" title="#{msg.titleVoltar}">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+
+		<h:panelGroup id="info" layout="block">
+
+			<div class="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.tabela}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="tabela" value="#{mbFaturamentoSn.faturamentoSN.tabela}" maxlength="4" tabindex="1"
+					styleClass="Campo Largura55px PositionRelativeFloatLeft" required="true" requiredMessage="#{msg.msgErroValidacaoTabela}"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.descricao}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="descricao" value="#{mbFaturamentoSn.faturamentoSN.descricao}" maxlength="60" tabindex="2"
+					styleClass="Campo Largura670px PositionRelativeFloatLeft" required="true" requiredMessage="#{msg.msgErroValidacaoDescricao}"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.tipo}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="tipo" value="#{mbFaturamentoSn.faturamentoSN.tipo}" styleClass="ComboField PositionRelativeFloatLeft Largura210px"
+					tabindex="3">
+					<f:selectItems value="#{mbFaturamentoSn.listaTipoEnum}" var="tipo" itemLabel="#{tipo.nomeTipo}"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+
+			<div class="Linha900x25 MarginBottom20px">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.vigenciaInicial}" styleClass="TituloDeCampo"/>
+				</div>
+				<rich:calendar value="#{mbFaturamentoSn.faturamentoSN.vigenciaInicial}" datePattern="dd/MM/yyyy" showApplyButton="false" showWeeksBar="false" 
+					showFooter="false" boundaryDatesMode="scroll" inputClass="Largura65px TabWalk" buttonClass="BotaoImagemSemMarginTop" tabindex="4" 
+					disabled="#{!mbFaturamentoSn.verificaPermissao('Administrador, Gerente, Fiscal')}" >
+					<a4j:ajax event="hide" render="@this"/>
+				</rich:calendar>
+				<h:outputText value="*" styleClass="MarginLeft5px"/>
+			</div>
+
+		</h:panelGroup>
+
+		<h:panelGroup id="painelPorcentagens" layout="block">
+
+			<div class="Linha910x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura100px MarginTop2px MarginLeft20px">
+					<h:outputText value="#{msg.faixaInicial}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px">
+					<h:inputText id="campoFI" value="#{mbFaturamentoSn.faixaFaturamentoSN.faixaInicial}" maxlength="11"
+						styleClass="Campo Largura75px PositionRelativeFloatLeft TextAlignRight TabWalk"
+						readonly="#{mbFaturamentoSn.linhaSelecionada eq -1 ? mbFaturamentoSn.primeiraFaixaInicialValida : false}">
+						<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+					</h:inputText>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				</div>
+
+				<div class="PositionRelativeFloatLeft Largura100px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.faixaFinal}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px">
+					<h:inputText id="campoFF" value="#{mbFaturamentoSn.faixaFaturamentoSN.faixaFinal}" maxlength="11"
+						styleClass="Campo Largura75px PositionRelativeFloatLeft TextAlignRight TabWalk" tabindex="6">
+						<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+					</h:inputText>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				</div>
+			</div>
+
+			<div class="Linha910x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura100px MarginTop2px MarginLeft20px">
+					<h:outputText value="#{msg.irpj}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px">
+					<h:inputText id="campoIRPJ" value="#{mbFaturamentoSn.faixaFaturamentoSN.irpj}" maxlength="6"
+						styleClass="Campo Largura75px PositionRelativeFloatLeft TextAlignRight">
+						<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+					</h:inputText>
+				</div>
+
+				<div class="PositionRelativeFloatLeft Largura100px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.cofins}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px">
+					<h:inputText id="campoCOFINS" value="#{mbFaturamentoSn.faixaFaturamentoSN.cofins}" maxlength="6"
+						styleClass="Campo Largura75px PositionRelativeFloatLeft TextAlignRight">
+						<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+					</h:inputText>
+				</div>
+
+				<div class="PositionRelativeFloatLeft Largura70px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.cpp}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px">
+					<h:inputText id="campoCPP" value="#{mbFaturamentoSn.faixaFaturamentoSN.cpp}" maxlength="6"
+						styleClass="Campo Largura75px PositionRelativeFloatLeft TextAlignRight">
+						<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+					</h:inputText>
+				</div>
+
+				<div class="PositionRelativeFloatLeft Largura70px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.ipi}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px">
+					<h:inputText id="campoIPI" value="#{mbFaturamentoSn.faixaFaturamentoSN.ipi}" maxlength="6"
+						styleClass="Campo Largura75px PositionRelativeFloatLeft TextAlignRight">
+						<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+					</h:inputText>
+				</div>
+			</div>
+
+			<div class="Linha910x25 MarginBottom20px MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura100px MarginTop2px MarginLeft20px">
+					<h:outputText value="#{msg.csll}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px">
+					<h:inputText id="campoCSLL" value="#{mbFaturamentoSn.faixaFaturamentoSN.csll}" maxlength="6"
+						styleClass="Campo Largura75px PositionRelativeFloatLeft TextAlignRight">
+						<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+					</h:inputText>
+				</div>
+
+				<div class="PositionRelativeFloatLeft Largura100px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.pispasep}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px ">
+					<h:inputText id="campoPISPASEP" value="#{mbFaturamentoSn.faixaFaturamentoSN.pisPasep}" maxlength="6"
+						styleClass="Campo Largura75px PositionRelativeFloatLeft TextAlignRight">
+						<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+					</h:inputText>
+				</div>
+
+				<div class="PositionRelativeFloatLeft Largura70px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.icms}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura140px MarginTop2px ">
+					<h:inputText id="campoICMS" value="#{mbFaturamentoSn.faixaFaturamentoSN.icms}" maxlength="6"
+						styleClass="Campo Largura75px PositionRelativeFloatLeft TextAlignRight">
+						<f:convertNumber maxFractionDigits="2" minIntegerDigits="1" minFractionDigits="2" groupingUsed="true"/>
+					</h:inputText>
+			  	</div>
+
+				<a4j:commandButton actionListener="#{mbFaturamentoSn.incluiFaixaFaturamentoNaLista}"
+					execute="painelPorcentagens" title="#{msg.adicionar}" value="#{mbFaturamentoSn.linhaSelecionada eq -1 ? msg.adicionar : msg.alterar }" 
+					styleClass="BotaoTexto Largura70px TabWalk" status="modalStatus" render="painelTabela painelPorcentagens mensagemDeErro jqueries mensagemErroValidacao"
+					rendered="#{mbFaturamentoSn.verificaPermissao('Administrador, Gerente, Fiscal')}" />
+			</div>
+
+		</h:panelGroup>
+
+		<h:panelGroup id="painelTabela" styleClass="Largura100pc PositionRelativeFloatLeft" layout="block">
+			<div class="MarginLeftAuto MarginRightAuto Largura850px">
+				<rich:dataTable id="listaFaixaFaturamento" var="item" value="#{mbFaturamentoSn.listaFaixaFaturamento}" rows="20" 
+					styleClass="Largura850px" noDataLabel="#{msg.listaFaixaFaturamentoSNVazia}" 
+					onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" onrowdblclick="editarFaixaFaturamento(#{rowkey})" rowKeyVar="rowkey">
+					
+					<rich:column styleClass="AlignCenter" headerClass="Largura40px">
+						<f:facet name="header">
+							<h:selectBooleanCheckbox id="checkboxSN" styleClass="Margin0px checkboxSN"
+								valueChangeListener="#{mbFaturamentoSn.selecionarTodasFaixasFaturamento}">
+								<a4j:ajax event="click" render="painelTabela" status="modalStatus"/>
+							</h:selectBooleanCheckbox>
+						</f:facet>
+						<h:selectBooleanCheckbox id="sel" value="#{item.selected}" styleClass="Margin0px"
+							valueChangeListener="#{mbFaturamentoSn.verificarExclusaoFaixaFaturamentoSn}">
+							<a4j:ajax event="valueChange" render="painelTabela"/>
+							<f:param name="linhaFaixaFaturamento" value="#{rowkey}"/>
+						</h:selectBooleanCheckbox>
+					</rich:column>
+	
+					<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura80px" sortBy="#{item.faixaInicial}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.faixaInicial}"/>
+						</f:facet>
+						<h:outputText value="#{item.faixaInicial}">
+							<f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+						</h:outputText>
+					</rich:column>
+	
+					<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura80px" sortBy="#{item.faixaFinal}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.faixaFinal}"/>
+						</f:facet>
+						<h:outputText value="#{item.faixaFinal}">
+							<f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+						</h:outputText>
+					</rich:column>
+	
+					<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura70px" sortBy="#{item.aliquota}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.pcAliquota}"/>
+						</f:facet>
+						<h:outputText value="#{item.aliquota}">
+							<f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+						</h:outputText>
+					</rich:column>
+	
+					<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura60px" sortBy="#{item.irpj}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.irpj}"/>
+						</f:facet>
+						<h:outputText value="#{item.irpj}">
+							<f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+						</h:outputText>
+					</rich:column>
+	
+					<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura60px" sortBy="#{item.csll}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.csll}"/>
+						</f:facet>
+						<h:outputText value="#{item.csll}">
+							<f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+						</h:outputText>
+					</rich:column>
+	
+					<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura60px" sortBy="#{item.cofins}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.cofins}"/>
+						</f:facet>
+						<h:outputText value="#{item.cofins}">
+							<f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+						</h:outputText>
+					</rich:column>
+	
+					<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura80px" sortBy="#{item.pisPasep}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.pispasep}"/>
+						</f:facet>
+						<h:outputText value="#{item.pisPasep}">
+							<f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+						</h:outputText>
+					</rich:column>
+	
+					<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura60px" sortBy="#{item.cpp}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.cpp}"/>
+						</f:facet>
+						<h:outputText value="#{item.cpp}">
+							<f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+						</h:outputText>
+					</rich:column>
+	
+					<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura60px" sortBy="#{item.icms}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.icms}"/>
+						</f:facet>
+						<h:outputText value="#{item.icms}">
+							<f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+						</h:outputText>
+					</rich:column>
+	
+					<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura60px" sortBy="#{item.ipi}">
+						<f:facet name="header">
+							<h:outputText value="#{msg.ipi}"/>
+						</f:facet>
+						<h:outputText value="#{item.ipi}">
+							<f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+						</h:outputText>
+					</rich:column>
+					
+				</rich:dataTable>
+				<br />
+				
+				<a4j:commandButton actionListener="#{mbFaturamentoSn.excluirFaixaFaturamentoSelecionadas}" execute="@this"
+					title="#{msg.titleRemover}" rendered="#{mbFaturamentoSn.exibirBotaoRemocao}" 
+					render="painelPorcentagens painelTabela mensagemDeErro jqueries mensagemErroValidacao"
+					value="#{msg.remover}" styleClass="BotaoTexto Largura70px TabWalk" status="modalStatus"
+					immediate="true"/>
+			</div>	
+		</h:panelGroup>
+		
+		<h:panelGroup id="painelMsgErro" layout="block" styleClass="PositionRelativeFloatLeft Largura100pc  MarginBottom5px">
+			<h:outputText id="mensagemErroValidacao" value="#{mbFaturamentoSn.mensagemError}" styleClass="MensagemDeErro MarginLeft10px" escape="false"/>
+			<h:messages id="mensagemDeErro" styleClass="MensagemDeErro BeanValidatorMessages MarginLeft10px"/>
+		</h:panelGroup>
+
+		<div class="PositionRelativeFloatLeft Largura100pc MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft10px"/>
+		</div>
+
+		<h:panelGroup id="jqueries">
+			<rich:jQuery id="jQueryIRPJ" selector="#campoIRPJ" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})"/>
+			<rich:jQuery id="jQueryCOFINS" selector="#campoCOFINS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})"/>
+			<rich:jQuery id="jQueryCPP" selector="#campoCPP" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})"/>
+			<rich:jQuery id="jQueryIPI" selector="#campoIPI" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})"/>
+			<rich:jQuery id="jQueryCSLL" selector="#campoCSLL" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})"/>
+			<rich:jQuery id="jQueryPISPASEP" selector="#campoPISPASEP" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})"/>
+			<rich:jQuery id="jQueryICMS" selector="#campoICMS" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', percent: true})"/>
+			<rich:jQuery id="jQueryFaixaInicial" selector="#campoFI" timing="immediate" 
+				query="maskMoney({decimal: ',', thousands: '.', precision: 2, allowZero:true})"/>
+			<rich:jQuery id="jQueryFaixaFinal" selector="#campoFF" timing="immediate" query="maskMoney({decimal: ',', thousands: '.', precision: 2})"/>
+		</h:panelGroup>
+
+		<a4j:jsFunction name="editarFaixaFaturamento" status="modalStatus" action="#{mbFaturamentoSn.editarFaixaFaturamento}" 
+			render="painelPorcentagens jqueries" immediate="true"
+			rendered="#{mbFaturamentoSn.verificaPermissao('Administrador, Gerente, Fiscal')}" >
+			<a4j:param name="linha" assignTo="#{mbFaturamentoSn.linhaSelecionada}"/>
+		</a4j:jsFunction>
+		
+		<script type="text/javascript">
+			//<![CDATA[
+				if(#{!mbFaturamentoSn.verificaPermissao('Administrador, Gerente, Fiscal')}) {
+					j(document).ready(function(){
+						disableInputText();
+					});
+				}
+			//]]>
+		</script>
+
+	</ui:define>
+
+</ui:composition>
+		

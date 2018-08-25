@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	<composite:interface>
+       <composite:attribute name="nomePainel"/>
+       <composite:attribute name="tituloModal" />
+       <composite:attribute name="tiposArquivosAceitos" />
+       <composite:attribute name="actionVoltarModalImportador" method-signature="java.lang.Void voltarModalImportador(javax.faces.event.ActionEvent)" />
+       <composite:attribute name="actionDownload" method-signature="java.lang.Void download(javax.faces.event.ActionEvent)" />
+       <composite:attribute name="actionUploadListener" method-signature="java.lang.Void uploadListener(org.richfaces.event.FileUploadEvent)" />
+       <composite:attribute name="actionLimparDadosDoUpload" method-signature="java.lang.Void limparDadosDoUpload(javax.faces.event.ActionEvent)" />
+       <composite:attribute name="erroImportacao"/>
+       <composite:attribute name="mensagemLogImportacao" />
+       <composite:attribute name="render"/>
+    </composite:interface>
+    
+    <composite:implementation>
+    
+    	<rich:popupPanel modal="true" id="#{cc.attrs.nomePainel}" autosized="true" resizeable="false" moveable="false" domElementAttachment="form" 
+			onbeforeshow="trocarStyleBotaoAdicionar(); renderMsg(); return true;" styleClass="OverflowHidden Largura700px FundoBranco" 
+			onshow="disableInputsFormPrincipal();" onhide="enableInputsFormPrincipal();" >
+			
+			<f:facet name="header">
+				<h:outputText value="#{cc.attrs.tituloModal}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton id="fechar" image="/resources/images/png/close.png" styleClass="BotaoFechar" 
+					onclick="clickVoltar()"	execute="@this" immediate="true"/> 
+			</f:facet>
+			
+			<h:panelGroup layout="block" id="uploader">
+			
+				<rich:fileUpload id="testeimportador" acceptedTypes="#{cc.attrs.tiposArquivosAceitos}"  fileUploadListener="#{cc.attrs.actionUploadListener}" execute="@this"
+					clearLabel="#{msg.importadorLimpar}"  serverErrorLabel="#{msg.importadorErro}" addLabel="#{msg.importadorSelecionar}"
+					deleteLabel="#{msg.importadorCancelar}" clearAllLabel="#{msg.importadorLimparLista}" uploadLabel="#{msg.importadorEnviar}"
+					onclick="return verificaQuantidade(); " render="#{cc.attrs.render}" >
+					<a4j:ajax event="filesubmit" onbegin="#{rich:component('modalStatus')}.show()"/>
+					<a4j:ajax event="uploadcomplete" render="uploader" oncomplete="reSize(); #{rich:component('modalStatus')}.hide();" />
+				</rich:fileUpload>
+				
+				<h:panelGroup id="statusUpload" styleClass="PositionRelative Largura100pc" layout="block">
+					<h:panelGroup layout="block" rendered="#{not empty cc.attrs.mensagemLogImportacao}" styleClass="MarginLeft10px MarginRight10px QuebraTexto">
+						<h:outputText value="#{cc.attrs.mensagemLogImportacao}" styleClass="MensagemDeErro QuebraTexto" id="mensagem"/>
+					</h:panelGroup>
+					<div class="Largura100px MarginTop5px PositionRelative MarginLeftAuto MarginRightAuto">
+						<a4j:commandButton value="#{msg.botaoLimparTudoTela}" rendered="#{!cc.attrs.erroImportacao}" actionListener="#{cc.attrs.actionLimparDadosDoUpload}" status="modalStatus" 
+							styleClass="BotaoTexto Largura100px" render="uploader" execute="@this"/>
+						<h:commandButton value="#{msg.msgDownload}" onclick="#{rich:component(cc.attrs.nomePainel)}.hide();" rendered="#{cc.attrs.erroImportacao}"  actionListener="#{cc.attrs.actionDownload}" styleClass="BotaoTexto Largura100px"/>
+					</div>	
+				</h:panelGroup>
+			</h:panelGroup>
+		</rich:popupPanel>
+		<a4j:jsFunction name="renderMsg" render="statusUpload"/>
+		<a4j:jsFunction name="clickVoltar" actionListener="#{cc.attrs.actionVoltarModalImportador}"  oncomplete="#{rich:component(cc.attrs.nomePainel)}.hide();" 
+			render="statusUpload uploader" />
+	</composite:implementation>
+</html>

@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+	
+		<rich:popupPanel modal="true" id="modalCadastroUM" autosized="true" resizeable="false" moveable="false" domElementAttachment="form"
+			styleClass="OverflowHidden Largura700px FundoBranco" onshow="focus('sigla'); disableInputsFormPrincipal();"
+			onhide="enableInputsFormPrincipal();">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.unidadeMedida}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" oncomplete="#{rich:component('modalCadastroUM')}.hide();" 
+					styleClass="BotaoFechar TabWalk" />
+			</f:facet>
+			
+			<rich:toolbar styleClass="BarraDeBotoes100pc">
+				<a4j:commandLink status="modalStatus" actionListener="#{mbMaterial.salvarUnidadeMedida}"
+					oncomplete="#{mbMaterial.renderizarModalNcmUM} ? #{rich:component('modalInformativo2')}.show() : '';#{mbMaterial.renderizarModalNcmUM} ? #{rich:component('modalCadastroUM')}.hide() : ''"
+					render="modalInformativo2 painelMensagemErroModalUM linhaUnidadeMedidaMaterial jQueryUnidadeMedida">
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px" height="18px" />
+				</a4j:commandLink>
+			</rich:toolbar>
+
+			<div class="Linha680x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura75px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.sigla}" styleClass="TituloDeCampo" />
+				</div>
+				<h:inputText id="sigla" value="#{mbMaterial.unidadeMedida.sigla}" readonly="#{mbMaterial.unidadeMedida.status eq 'INATIVO'}" maxlength="6" 
+					onkeyup="upper(this)" styleClass="Campo Largura80px PositionRelativeFloatLeft" tabindex="1"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft" />
+			</div>
+			
+			<div class="Linha680x25">
+				<div class="PositionRelativeFloatLeft Largura75px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.descricao}" styleClass="TituloDeCampo" />
+				</div>
+				<h:inputText value="#{mbMaterial.unidadeMedida.descricao}" readonly="#{mbMaterial.unidadeMedida.status eq 'INATIVO'}" 
+					styleClass="Campo Largura150px PositionRelativeFloatLeft" maxlength="20" tabindex="2"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft" />
+			</div>
+			
+			<h:panelGroup id="painelMensagemErroModalUM" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura600px">
+				<h:outputText value="#{mbMaterial.mensagensErro}" styleClass="MensagemDeErro" escape="false"/>
+				<h:messages styleClass="MensagemDeErro BeanValidatorMessages" />
+			</h:panelGroup>
+			
+			<div class="PositionRelativeFloatLeft MarginLeft10px Largura600px Altura20px MarginTop5px">
+				<h:outputText value="#{msg.msgCampoObrigatorio}"/>
+			</div>
+			
+		</rich:popupPanel>
+	</h:form> 
+</ui:composition>

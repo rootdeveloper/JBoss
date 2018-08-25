@@ -1,0 +1,177 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="metadata" />
+	<ui:define name="view">
+		<h:outputText value="#{msg.cteTerceiros}"/>
+	</ui:define>
+	<ui:define name="contentModal">
+		<ui:include src="/pages/painel/modalFiltros.xhtml"/>
+		<ui:include src="/pages/painel/modalImportador.xhtml"/>
+		<ui:include src="/pages/painel/repositorio.xhtml"/>
+	</ui:define>
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" render="header-content" oncomplete="recarregarTabela();" status="modalStatus"/>
+	</ui:define>
+	<ui:define name="content">
+	<util:modalInformativo mensagemInformativo="#{msg.msgStatusSefaz}" nomePainel="modalInformativo" tituloModal="#{msg.mensagem}" />
+
+	
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup>
+				<h:commandButton image="#{resource['images/gif:filtro.gif']}" styleClass="BotaoImagem" title="#{msg.titleFiltrar}">
+					<rich:componentControl operation="show" target="filtro" />
+				</h:commandButton>
+				<h:commandButton image="#{resource['images/jpg:importar.jpg']}" styleClass="BotaoImagem" title="#{msg.titleImportar}">
+					<rich:componentControl operation="show" target="importador" />
+				</h:commandButton>
+				<a4j:commandLink  actionListener="#{mbCteTerceiros.carregaCTeEmpresa}" render="tableCteTerceiros controle" status="modalStatus">
+					<h:graphicImage value="#{resource['images/png:atualizar.png']}" styleClass="BotaoImagem" title="#{msg.titleAtualizar}"/>
+				</a4j:commandLink>
+				<h:commandButton action="#{mbCteTerceiros.voltar}" image="#{resource['images/png:voltar.png']}" styleClass="BotaoImagem" title="#{msg.titleVoltar}"/>
+			</rich:toolbarGroup>	
+			<rich:toolbarGroup location="right">
+				<h:outputText value="#{msg.consultarChaveDeAcesso}" styleClass="MarginRight5px" />
+				<h:panelGroup layout="block" id="inputChaveCTE">
+					<h:inputText id="chaveDeAcesso" value="#{mbCteTerceiros.chaveAcessoConsulta}" onkeyup="Mascara(this, Integer); scanner(this.value);"  onkeypress="Mascara(this, Integer); scanner(this.value);" onkeydown="Mascara(this, Integer); scanner(this.value);" onblur="Mascara(this, Integer); scanner(this.value);" styleClass="Campo Largura350px MarginTop3px MarginRight5px" maxlength="44"/>
+				</h:panelGroup>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable value="#{mbCteTerceiros.listaDeCte}" var="cte" rows="10" rowKeyVar="row" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+        	id="tableCteTerceiros" styleClass="Largura100pc" onrowdblclick="visualizar('#{cte.id}')" iterationStatusVar="it" noDataLabel="#{msg.listaCteVazia}">
+        	
+        	<rich:column headerClass="Largura80px" styleClass="AlignCenter" sortBy="#{cte.codigoStatus}"
+        		sortOrder="#{mbCteTerceiros.columnOrder.mapColumnOrder['status'].sortOrder}">
+            	<f:facet name="header">
+	            	<h:outputText value="#{msg.status}" />
+	            	<table:orderArrow item="#{mbCteTerceiros.columnOrder.mapColumnOrder['status']}" render="tableCteTerceiros"/>
+                </f:facet>
+                <h:graphicImage value="#{resource['images/gif:status-aprovada.gif']}" rendered="#{cte.codigoStatus.codigo == cte.statusSefaz.codigo and cte.codigoStatus.codigo == 100}" styleClass="MarginLeft-10px MarginRight5px"/>
+                <h:graphicImage value="#{resource['images/gif:status-cancelada.gif']}" rendered="#{cte.codigoStatus.codigo == cte.statusSefaz.codigo and cte.codigoStatus.codigo == 101}" styleClass="MarginLeft-10px MarginRight5px"/>
+                <h:graphicImage value="#{resource['images/gif:status-erro.gif']}" rendered="#{cte.codigoStatus.codigo != cte.statusSefaz.codigo}" styleClass="MarginLeft-10px MarginRight5px"/>
+                <h:outputText value="#{cte.codigoStatus.nomeStatus}"/>
+                <a4j:commandLink onclick="#{rich:component('modalInformativo')}.show()" execute="@this" rendered="#{cte.codigoStatus.codigo != cte.statusSefaz.codigo}" status="modalStatus">
+                	<h:graphicImage value="#{resource['images/gif:information.gif']}" styleClass="BordaOff"/>
+                </a4j:commandLink>
+            </rich:column>
+            
+           	<rich:column headerClass="Largura85px" styleClass="AlignCenter" sortBy="#{cte.numeroDocumento}"
+           		sortOrder="#{mbCteTerceiros.columnOrder.mapColumnOrder['numeroDocumento'].sortOrder}">
+            	<f:facet name="header">
+                	<h:outputText value="#{msg.documento}" />
+                	<table:orderArrow item="#{mbCteTerceiros.columnOrder.mapColumnOrder['numeroDocumento']}" render="tableCteTerceiros"/>
+                </f:facet>
+                <h:outputText value="#{cte.numeroDocumento}" converter="numeroCTeConverter"/>
+            </rich:column>
+            
+            <rich:column headerClass="Largura55px" styleClass="AlignCenter" sortBy="#{cte.serie}"
+            	sortOrder="#{mbCteTerceiros.columnOrder.mapColumnOrder['serie'].sortOrder}" rendered="#{mbCteTerceiros.renderSerie}">
+            	<f:facet name="header">
+                	<h:outputText value="#{msg.serie}" />
+                	<table:orderArrow item="#{mbCteTerceiros.columnOrder.mapColumnOrder['serie']}" render="tableCteTerceiros"/>
+                </f:facet>
+                <h:outputText value="#{cte.serie}"/>
+            </rich:column>
+            
+			<rich:column headerClass="Largura75px" styleClass="AlignCenter" sortBy="#{cte.modal}"
+				sortOrder="#{mbCteTerceiros.columnOrder.mapColumnOrder['modal'].sortOrder}" rendered="#{mbCteTerceiros.renderModal}">
+            	<f:facet name="header">
+                	<h:outputText value="#{msg.modal}" />
+                	<table:orderArrow item="#{mbCteTerceiros.columnOrder.mapColumnOrder['modal']}" render="tableCteTerceiros"/>
+                </f:facet>
+                <h:outputText value="#{cte.modal.nome}" />
+            </rich:column>
+            
+            <rich:column headerClass="Largura100px" styleClass="AlignCenter" sortBy="#{cte.dataEmissao}"
+            	sortOrder="#{mbCteTerceiros.columnOrder.mapColumnOrder['dataEmissao'].sortOrder}" rendered="#{mbCteTerceiros.renderDataEmissao}">
+            	<f:facet name="header">
+                	<h:outputText value="#{msg.dataEmissao}" />
+                	<table:orderArrow item="#{mbCteTerceiros.columnOrder.mapColumnOrder['dataEmissao']}" render="tableCteTerceiros"/>
+                </f:facet>
+                <h:outputText value="#{cte.dataEmissao}">
+               		<f:convertDateTime pattern="dd/MM/yyyy HH:mm" locale="pt,BR" timeZone="America/Sao_Paulo"/>
+                </h:outputText>
+            </rich:column>
+            
+            <rich:column headerClass="Largura120px" styleClass="AlignCenter" sortBy="#{cte.cnpjEmitente}"
+            	sortOrder="#{mbCteTerceiros.columnOrder.mapColumnOrder['cnpjEmitente'].sortOrder}" rendered="#{mbCteTerceiros.renderEmitente}">
+                <f:facet name="header">
+                    <h:outputText value="#{msg.emitente}" />
+                    <table:orderArrow item="#{mbCteTerceiros.columnOrder.mapColumnOrder['cnpjEmitente']}" render="tableCteTerceiros"/>
+                </f:facet>
+              	<h:outputText value="#{cte.cnpjEmitente}" converter="cnpjConverter" />
+            </rich:column>
+            
+            <rich:column headerClass="Largura105px" styleClass="AlignCenter" rendered="#{mbCteTerceiros.renderValor}"
+     			sortOrder="#{mbCteTerceiros.columnOrder.mapColumnOrder['valorDocumento'].sortOrder}" comparator="#{mbCteTerceiros.valorDocumentoComparator}">
+            	<f:facet name="header">
+                	<h:outputText value="#{msg.valor}"/>
+                	<table:orderArrow item="#{mbCteTerceiros.columnOrder.mapColumnOrder['valorDocumento']}" render="tableCteTerceiros"/>
+                </f:facet>
+                <h:outputText value="#{cte.valorDocumento}" converter="valorMonetarioSefazConverter"/>
+            </rich:column>
+            
+            <rich:column headerClass="Largura40px" styleClass="AlignCenter" sortBy="#{cte.UF}"
+            	sortOrder="#{mbCteTerceiros.columnOrder.mapColumnOrder['uf'].sortOrder}" rendered="#{mbCteTerceiros.renderUF}">
+                <f:facet name="header">
+                	 <h:outputText value="#{msg.uf}" />
+                	 <table:orderArrow item="#{mbCteTerceiros.columnOrder.mapColumnOrder['uf']}" render="tableCteTerceiros"/>
+                </f:facet>
+                <h:outputText value="#{cte.UF}" />
+            </rich:column>
+            
+            <rich:column headerClass="Largura110px" styleClass="AlignCenter" sortBy="#{cte.dataAutorizacao}"
+            	sortOrder="#{mbCteTerceiros.columnOrder.mapColumnOrder['dataAutorizacao'].sortOrder}" rendered="#{mbCteTerceiros.renderDataAutorizacao}">
+	            <f:facet name="header">
+	            	<h:outputText value="#{msg.dataAutorizacao}" />
+	            	<table:orderArrow item="#{mbCteTerceiros.columnOrder.mapColumnOrder['dataAutorizacao']}" render="tableCteTerceiros"/>
+	            </f:facet>
+                <h:outputText value="#{cte.dataAutorizacao}">
+                	<f:convertDateTime pattern="dd/MM/yyyy HH:mm" locale="pt,BR" timeZone="America/Sao_Paulo"/>
+                </h:outputText>
+            </rich:column>
+            
+            <rich:column headerClass="Largura95px" styleClass="AlignCenter" sortBy="#{cte.formaEnvio}"
+            	sortOrder="#{mbCteTerceiros.columnOrder.mapColumnOrder['formaEnvio'].sortOrder}" rendered="#{mbCteTerceiros.renderFormaEnvio}">
+                <f:facet name="header">
+                    <h:outputText value="#{msg.formaEnvio}" />
+                    <table:orderArrow item="#{mbCteTerceiros.columnOrder.mapColumnOrder['formaEnvio']}" render="tableCteTerceiros"/>
+                </f:facet>
+                <h:outputText value="#{cte.formaEnvio.tipoDeEmissao}" />
+            </rich:column>
+            
+            <rich:column headerClass="Largura60px" styleClass="AlignCenter" rendered="#{mbCteTerceiros.renderExportarXML}">
+                <f:facet name="header">
+                	<h:outputText value="#{msg.repositorio}" />
+                </f:facet>
+				<a4j:commandButton image="/resources/images/png/xml.png" actionListener="#{mbRepositorioCte.listarArquivos}" oncomplete="#{rich:component('panel-repositorio')}.show();" render="panel-repositorio" status="modalStatus">
+	  	  			<f:param name="idCte" value="#{cte.id}"/>
+	  	  		</a4j:commandButton>
+	  	  	</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="tableCteTerceiros" idPanelScroller="controle" maxPages="16" panelStyleClass="Scroller100pc"
+			renderedTotalRegistros="#{not empty mbCteTerceiros.listaDeCte}" totalRegistros="#{mbCteTerceiros.quantidadeRegistros}" 
+			pageNumber="#{mbCteTerceiros.scrollerPageNumber}"/>
+		
+		<a4j:jsFunction name="visualizar" action="#{mbCteTerceiros.visualizarCteTerceiro}" status="modalStatus">
+			<a4j:param name="linhaDoCte" assignTo="#{mbCteTerceiros.indexObjetoSelecionado}"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="recarregarTabela" actionListener="#{mbCteTerceiros.carregaCTeEmpresa}" render="tableCteTerceiros controle" status="modalStatus"/>
+		
+		<a4j:jsFunction name="consultarCTe" render="tableCteTerceiros chaveDeAcesso controle" oncomplete="focus('chaveDeAcesso')" status="modalStatus">
+			<a4j:param name="chaveScanner" assignTo="#{mbCteTerceiros.chaveAcessoConsulta}" />
+			<a4j:actionListener listener="#{mbCteTerceiros.consultarChaveDeAcesso}" />
+		</a4j:jsFunction>
+		
+	</ui:define>
+</ui:composition>	

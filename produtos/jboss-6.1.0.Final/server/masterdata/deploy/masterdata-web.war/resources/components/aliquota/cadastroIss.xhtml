@@ -1,0 +1,79 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal">
+
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.vigenciaInicial}" styleClass="TituloDeCampo"/>
+		</div>
+		<rich:calendar id="vigenciaInicialIss" value="#{mbAliquota.aliquotaIss.vigenciaInicial}" datePattern="dd/MM/yyyy" inputClass="Largura73px TabWalk"
+			showApplyButton="false" showWeeksBar="false" disabled="#{!cc.attrs.ruleRender}" showFooter="false" boundaryDatesMode="scroll"
+			buttonClass="BotaoImagemSemMarginTop" tabindex="11"/>
+		<h:outputText value="*" styleClass="MarginLeft5px"/>
+	</div>
+
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.aliquota}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="aliquotaIss" value="#{mbAliquota.aliquotaIss.aliquota}" maxlength="6" tabindex="12"
+			styleClass="Campo Largura98px PositionRelativeFloatLeft TextAlignRight" readonly="#{!cc.attrs.ruleRender}"
+			onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+			onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+			<f:convertNumber minIntegerDigits="1" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/>
+		</h:inputText>
+		<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+	</div>
+
+	<div class="Linha980x25" id="linhaTipoServico">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.listaDeServico}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="descricaoIss" value="#{mbAliquota.aliquotaIss.servico.descricao}" 
+			required="true" requiredMessage="#{msg.selecioneUmTipoServico}" styleClass="Campo Largura650px PositionRelativeFloatLeft"/>
+		<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		<div id="controleTipoServico">
+			<a4j:commandButton id="servicoIss" status="modalStatus" oncomplete="#{rich:component('modalListaTipoServico')}.show()" tabindex="13"
+				render="modalListaTipoServico" immediate="true" title="#{msg.pesquisarServico}" rendered="#{cc.attrs.ruleRender}" execute="@this"
+				image="/resources/images/png/detalhes.png" styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk"/>
+		</div>
+	</div>
+
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:panelGroup layout="block" id="ufAliquota" styleClass="PositionRelativeFloatLeft">
+			<h:selectOneMenu id="ufIss" value="#{mbAliquota.aliquotaIss.uf}" converter="entityConverter" styleClass="ComboField Largura50px" 
+				disabled="#{!cc.attrs.ruleRender}" tabindex="14">
+				<f:selectItems value="#{mbAliquota.listaUfAsSelectItem}"/>
+				<a4j:ajax event="change" render="munAliquotaIss" />
+			</h:selectOneMenu>
+		</h:panelGroup>
+		<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+	</div>
+	
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura223px MarginTop2px">
+			<h:outputText value="#{msg.municipioDeOcorrencia}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:selectOneMenu id="munAliquotaIss" value="#{mbAliquota.aliquotaIss.municipioDeOcorrencia}" disabled="#{!cc.attrs.ruleRender}"
+			converter="entityConverter" styleClass="ComboField Largura220px PositionRelativeFloatLeft" tabindex="15">
+			<f:selectItems value="#{mbAliquota.listaMunAsSelectItem}"/>
+		</h:selectOneMenu>
+		<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+	</div>
+	
+	<h:panelGroup layout="block" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura980px ">
+		<h:outputText value="#{mbAliquota.mensagemErroScript}" styleClass="MensagemDeErro" />
+	</h:panelGroup>
+
+	<rich:jQuery id="jQueryTipoServico" selector="#descricaoIss" timing="immediate"
+		query="attr('readonly', 'readonly');"/>
+	<rich:jQuery id="jQueryIssAliquota" selector="#aliquotaIss" timing="immediate"
+		query="maskMoney({decimal: ',', thousands: '.', percent: true})" />
+</ui:composition>

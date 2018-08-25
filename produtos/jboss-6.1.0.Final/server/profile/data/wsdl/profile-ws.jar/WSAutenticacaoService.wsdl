@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="WSAutenticacaoService" targetNamespace="http://www.dataprimer.com.br/profile" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.dataprimer.com.br/profile" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://www.dataprimer.com.br/profile" version="1.0" xmlns:tns="http://www.dataprimer.com.br/profile" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="autenticarUsuario" type="tns:autenticarUsuario" />
+<xs:element name="autenticarUsuarioResponse" type="tns:autenticarUsuarioResponse" />
+<xs:complexType name="autenticarUsuario">
+<xs:sequence>
+<xs:element minOccurs="0" name="login" type="xs:string" />
+<xs:element minOccurs="0" name="senha" type="xs:string" />
+<xs:element minOccurs="0" name="codSistema" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="autenticarUsuarioResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:autResult" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="autResult">
+<xs:sequence>
+<xs:element minOccurs="0" name="codigo" type="xs:int" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="empresasVO" nillable="true" type="tns:empresaVO" />
+<xs:element minOccurs="0" name="mensagem" type="xs:string" />
+<xs:element maxOccurs="unbounded" minOccurs="0" name="rules" nillable="true" type="xs:string" />
+<xs:element minOccurs="0" name="usuario" type="tns:usuarioVO" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="empresaVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="ativo" type="xs:boolean" />
+<xs:element minOccurs="0" name="cnpj" type="xs:string" />
+<xs:element minOccurs="0" name="codigoEmpresa" type="xs:string" />
+<xs:element minOccurs="0" name="codigoFilial" type="xs:string" />
+<xs:element minOccurs="0" name="descricaoFilial" type="xs:string" />
+<xs:element minOccurs="0" name="ie" type="xs:string" />
+<xs:element minOccurs="0" name="nomeFantasia" type="xs:string" />
+<xs:element minOccurs="0" name="razaoSocial" type="xs:string" />
+<xs:element minOccurs="0" name="uf" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="usuarioVO">
+<xs:sequence>
+<xs:element minOccurs="0" name="cpf" type="xs:string" />
+<xs:element minOccurs="0" name="email" type="xs:string" />
+<xs:element minOccurs="0" name="login" type="xs:string" />
+<xs:element minOccurs="0" name="nome" type="xs:string" />
+<xs:element minOccurs="0" name="telefone" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="autenticarUsuario">
+    <wsdl:part element="tns:autenticarUsuario" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="autenticarUsuarioResponse">
+    <wsdl:part element="tns:autenticarUsuarioResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSAutenticacao">
+    <wsdl:operation name="autenticarUsuario">
+      <wsdl:input message="tns:autenticarUsuario" name="autenticarUsuario">
+    </wsdl:input>
+      <wsdl:output message="tns:autenticarUsuarioResponse" name="autenticarUsuarioResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSAutenticacaoServiceSoapBinding" type="tns:WSAutenticacao">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="autenticarUsuario">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="autenticarUsuario">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="autenticarUsuarioResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSAutenticacaoService">
+    <wsdl:port binding="tns:WSAutenticacaoServiceSoapBinding" name="WSAutenticacaoPort">
+      <soap:address location="http://B181548:8080/profile-ws/WSAutenticacaoService/WSAutenticacao" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,973 @@
+09:50:10,501 INFO  [AbstractJBossASServerBase] Server Configuration:
+
+	JBOSS_HOME URL: file:/C:/jboss-6.1.0.Final/
+	Bootstrap: $JBOSS_HOME\server/profile/conf/bootstrap.xml
+	Common Base: $JBOSS_HOME\common/
+	Common Library: $JBOSS_HOME\common/lib/
+	Server Name: profile
+	Server Base: $JBOSS_HOME\server/
+	Server Library: $JBOSS_HOME\server/profile/lib/
+	Server Config: $JBOSS_HOME\server/profile/conf/
+	Server Home: $JBOSS_HOME\server/profile/
+	Server Data: $JBOSS_HOME\server/profile/data/
+	Server Log: $JBOSS_HOME\server/profile/log/
+	Server Temp: $JBOSS_HOME\server/profile/tmp/
+
+09:50:10,505 INFO  [AbstractServer] Starting: JBossAS [6.1.0.Final "Neo"]
+09:50:11,920 INFO  [ServerInfo] Java version: 1.6.0_21,Sun Microsystems Inc.
+09:50:11,920 INFO  [ServerInfo] Java Runtime: Java(TM) SE Runtime Environment (build 1.6.0_21-b07)
+09:50:11,920 INFO  [ServerInfo] Java VM: Java HotSpot(TM) Client VM 17.0-b17,Sun Microsystems Inc.
+09:50:11,920 INFO  [ServerInfo] OS-System: Windows 7 6.1,x86
+09:50:11,921 INFO  [ServerInfo] VM arguments: -Dprogram.name=JBossTools: JBoss 6.0 Runtime -Xms256m -Xmx768m -XX:MaxPermSize=256m -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djava.endorsed.dirs=C:\jboss-6.1.0.Final\lib\endorsed -Djava.library.path=C:/jboss-6.1.0.Final/bin/native -Dlogging.configuration=file:C:/jboss-6.1.0.Final/bin/logging.properties -Dhttp.proxyHost=192.168.3.161 -Dhttp.proxyPort=3128 -Dhttp.proxyUser=daniel.santos -Dhttp.proxyPassword=100segredoQ -Dhttp.nonProxyHosts=localhost|127.0.0.1|192.168.3.111 -Dfile.encoding=ISO-8859-1 
+09:50:11,921 DEBUG [ServerInfo] Full System Properties Dump
+09:50:11,921 DEBUG [ServerInfo]     awt.toolkit: sun.awt.windows.WToolkit
+09:50:11,922 DEBUG [ServerInfo]     bind.address: localhost
+09:50:11,922 DEBUG [ServerInfo]     file.encoding: ISO-8859-1
+09:50:11,922 DEBUG [ServerInfo]     file.encoding.pkg: sun.io
+09:50:11,922 DEBUG [ServerInfo]     file.separator: \
+09:50:11,922 DEBUG [ServerInfo]     http.nonProxyHosts: localhost|127.0.0.1|192.168.3.111
+09:50:11,922 DEBUG [ServerInfo]     http.proxyHost: 192.168.3.161
+09:50:11,923 DEBUG [ServerInfo]     http.proxyPassword: 100segredoQ
+09:50:11,923 DEBUG [ServerInfo]     http.proxyPort: 3128
+09:50:11,923 DEBUG [ServerInfo]     http.proxyUser: daniel.santos
+09:50:11,923 DEBUG [ServerInfo]     java.awt.graphicsenv: sun.awt.Win32GraphicsEnvironment
+09:50:11,923 DEBUG [ServerInfo]     java.awt.printerjob: sun.awt.windows.WPrinterJob
+09:50:11,923 DEBUG [ServerInfo]     java.class.path: C:\jboss-6.1.0.Final\bin\run.jar
+09:50:11,923 DEBUG [ServerInfo]     java.class.version: 50.0
+09:50:11,924 DEBUG [ServerInfo]     java.endorsed.dirs: C:\jboss-6.1.0.Final\lib\endorsed
+09:50:11,924 DEBUG [ServerInfo]     java.ext.dirs: C:\Java\jdk1.6.0_21\jre\lib\ext;C:\Windows\Sun\Java\lib\ext
+09:50:11,924 DEBUG [ServerInfo]     java.home: C:\Java\jdk1.6.0_21\jre
+09:50:11,924 DEBUG [ServerInfo]     java.io.tmpdir: C:\Users\DANIEL~1.SAN\AppData\Local\Temp\
+09:50:11,924 DEBUG [ServerInfo]     java.library.path: C:/jboss-6.1.0.Final/bin/native
+09:50:11,924 DEBUG [ServerInfo]     java.protocol.handler.pkgs: org.jboss.net.protocol|org.jboss.vfs.protocol
+09:50:11,924 DEBUG [ServerInfo]     java.rmi.server.RMIClassLoaderSpi: org.jboss.system.JBossRMIClassLoader
+09:50:11,925 DEBUG [ServerInfo]     java.rmi.server.hostname: localhost
+09:50:11,925 DEBUG [ServerInfo]     java.runtime.name: Java(TM) SE Runtime Environment
+09:50:11,925 DEBUG [ServerInfo]     java.runtime.version: 1.6.0_21-b07
+09:50:11,925 DEBUG [ServerInfo]     java.specification.name: Java Platform API Specification
+09:50:11,925 DEBUG [ServerInfo]     java.specification.vendor: Sun Microsystems Inc.
+09:50:11,925 DEBUG [ServerInfo]     java.specification.version: 1.6
+09:50:11,925 DEBUG [ServerInfo]     java.util.logging.manager: org.jboss.logmanager.LogManager
+09:50:11,926 DEBUG [ServerInfo]     java.vendor: Sun Microsystems Inc.
+09:50:11,926 DEBUG [ServerInfo]     java.vendor.url: http://java.sun.com/
+09:50:11,926 DEBUG [ServerInfo]     java.vendor.url.bug: http://java.sun.com/cgi-bin/bugreport.cgi
+09:50:11,926 DEBUG [ServerInfo]     java.version: 1.6.0_21
+09:50:11,926 DEBUG [ServerInfo]     java.vm.info: mixed mode
+09:50:11,926 DEBUG [ServerInfo]     java.vm.name: Java HotSpot(TM) Client VM
+09:50:11,927 DEBUG [ServerInfo]     java.vm.specification.name: Java Virtual Machine Specification
+09:50:11,927 DEBUG [ServerInfo]     java.vm.specification.vendor: Sun Microsystems Inc.
+09:50:11,927 DEBUG [ServerInfo]     java.vm.specification.version: 1.0
+09:50:11,927 DEBUG [ServerInfo]     java.vm.vendor: Sun Microsystems Inc.
+09:50:11,927 DEBUG [ServerInfo]     java.vm.version: 17.0-b17
+09:50:11,927 DEBUG [ServerInfo]     javax.management.builder.initial: org.jboss.mx.server.MBeanServerBuilderImpl
+09:50:11,927 DEBUG [ServerInfo]     jboss.bind.address: 0.0.0.0
+09:50:11,928 DEBUG [ServerInfo]     jboss.boot.server.log.dir: C:\jboss-6.1.0.Final\server\profile\log
+09:50:11,928 DEBUG [ServerInfo]     jboss.bootstrap.home.url: file:/C:/jboss-6.1.0.Final/server/profile/conf/
+09:50:11,928 DEBUG [ServerInfo]     jboss.bootstrap.name: bootstrap.xml
+09:50:11,928 DEBUG [ServerInfo]     jboss.bootstrap.url: file:/C:/jboss-6.1.0.Final/server/profile/conf/bootstrap.xml
+09:50:11,928 DEBUG [ServerInfo]     jboss.common.base.url: file:/C:/jboss-6.1.0.Final/common/
+09:50:11,928 DEBUG [ServerInfo]     jboss.common.lib.url: file:/C:/jboss-6.1.0.Final/common/lib/
+09:50:11,928 DEBUG [ServerInfo]     jboss.home: C:\jboss-6.1.0.Final
+09:50:11,929 DEBUG [ServerInfo]     jboss.home.dir: C:\jboss-6.1.0.Final
+09:50:11,929 DEBUG [ServerInfo]     jboss.home.url: file:/C:/jboss-6.1.0.Final/
+09:50:11,929 DEBUG [ServerInfo]     jboss.host.name: b181548
+09:50:11,929 DEBUG [ServerInfo]     jboss.lib.url: file:/C:/jboss-6.1.0.Final/lib/
+09:50:11,929 DEBUG [ServerInfo]     jboss.native.dir: C:\jboss-6.1.0.Final\server\profile\tmp\native
+09:50:11,929 DEBUG [ServerInfo]     jboss.native.load: false
+09:50:11,929 DEBUG [ServerInfo]     jboss.node.name: b181548
+09:50:11,930 DEBUG [ServerInfo]     jboss.partition.name: DefaultPartition
+09:50:11,930 DEBUG [ServerInfo]     jboss.platform.mbeanserver: true
+09:50:11,930 DEBUG [ServerInfo]     jboss.qualified.host.name: b181548
+09:50:11,930 DEBUG [ServerInfo]     jboss.server.base.dir: C:\jboss-6.1.0.Final\server
+09:50:11,930 DEBUG [ServerInfo]     jboss.server.base.url: file:/C:/jboss-6.1.0.Final/server/
+09:50:11,930 DEBUG [ServerInfo]     jboss.server.config.url: file:/C:/jboss-6.1.0.Final/server/profile/conf/
+09:50:11,930 DEBUG [ServerInfo]     jboss.server.data.dir: C:\jboss-6.1.0.Final\server\profile\data
+09:50:11,931 DEBUG [ServerInfo]     jboss.server.home.dir: C:\jboss-6.1.0.Final\server\profile
+09:50:11,931 DEBUG [ServerInfo]     jboss.server.home.url: file:/C:/jboss-6.1.0.Final/server/profile/
+09:50:11,931 DEBUG [ServerInfo]     jboss.server.lib.url: file:/C:/jboss-6.1.0.Final/server/profile/lib/
+09:50:11,931 DEBUG [ServerInfo]     jboss.server.log.dir: C:\jboss-6.1.0.Final\server\profile\log
+09:50:11,931 DEBUG [ServerInfo]     jboss.server.name: profile
+09:50:11,931 DEBUG [ServerInfo]     jboss.server.temp.dir: C:\jboss-6.1.0.Final\server\profile\tmp
+09:50:11,931 DEBUG [ServerInfo]     jboss.vfs.forceCopy: true
+09:50:11,932 DEBUG [ServerInfo]     jbossmx.loader.repository.class: org.jboss.mx.loading.UnifiedLoaderRepository3
+09:50:11,932 DEBUG [ServerInfo]     jgroups.bind_addr: localhost
+09:50:11,932 DEBUG [ServerInfo]     line.separator: 
+
+09:50:11,932 DEBUG [ServerInfo]     log4j.defaultInitOverride: true
+09:50:11,932 DEBUG [ServerInfo]     logging.configuration: file:C:/jboss-6.1.0.Final/bin/logging.properties
+09:50:11,932 DEBUG [ServerInfo]     org.jboss.deployers.spi.deployer.matchers.NameIgnoreMechanism: org.jboss.deployers.spi.deployer.helpers.DummyNameIgnoreMechanism
+09:50:11,932 DEBUG [ServerInfo]     org.jboss.logging.Logger.pluginClass: org.jboss.logging.logmanager.LoggerPluginImpl
+09:50:11,932 DEBUG [ServerInfo]     org.jboss.reflect.spi.TypeInfoFactory: org.jboss.reflect.plugins.introspection.IntrospectionTypeInfoFactory
+09:50:11,933 DEBUG [ServerInfo]     os.arch: x86
+09:50:11,933 DEBUG [ServerInfo]     os.name: Windows 7
+09:50:11,933 DEBUG [ServerInfo]     os.version: 6.1
+09:50:11,933 DEBUG [ServerInfo]     path.separator: ;
+09:50:11,933 DEBUG [ServerInfo]     program.name: JBossTools: JBoss 6.0 Runtime
+09:50:11,933 DEBUG [ServerInfo]     sun.arch.data.model: 32
+09:50:11,933 DEBUG [ServerInfo]     sun.boot.class.path: C:\jboss-6.1.0.Final\lib\endorsed\activation.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-annotations-api_1.1_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-jaxb-api_2.2_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jboss-jaxws-api_2.2_spec.jar;C:\jboss-6.1.0.Final\lib\endorsed\jbossws-cxf-factories.jar;C:\jboss-6.1.0.Final\lib\endorsed\stax-api.jar;C:\Java\jdk1.6.0_21\jre\lib\resources.jar;C:\Java\jdk1.6.0_21\jre\lib\rt.jar;C:\Java\jdk1.6.0_21\jre\lib\sunrsasign.jar;C:\Java\jdk1.6.0_21\jre\lib\jsse.jar;C:\Java\jdk1.6.0_21\jre\lib\jce.jar;C:\Java\jdk1.6.0_21\jre\lib\charsets.jar;C:\Java\jdk1.6.0_21\jre\classes
+09:50:11,934 DEBUG [ServerInfo]     sun.boot.library.path: C:\Java\jdk1.6.0_21\jre\bin
+09:50:11,934 DEBUG [ServerInfo]     sun.cpu.endian: little
+09:50:11,934 DEBUG [ServerInfo]     sun.cpu.isalist: pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86
+09:50:11,934 DEBUG [ServerInfo]     sun.desktop: windows
+09:50:11,934 DEBUG [ServerInfo]     sun.io.unicode.encoding: UnicodeLittle
+09:50:11,934 DEBUG [ServerInfo]     sun.java.launcher: SUN_STANDARD
+09:50:11,934 DEBUG [ServerInfo]     sun.jnu.encoding: Cp1252
+09:50:11,935 DEBUG [ServerInfo]     sun.management.compiler: HotSpot Client Compiler
+09:50:11,935 DEBUG [ServerInfo]     sun.os.patch.level: Service Pack 1
+09:50:11,935 DEBUG [ServerInfo]     sun.rmi.dgc.client.gcInterval: 3600000
+09:50:11,935 DEBUG [ServerInfo]     sun.rmi.dgc.server.gcInterval: 3600000
+09:50:11,935 DEBUG [ServerInfo]     user.country: BR
+09:50:11,935 DEBUG [ServerInfo]     user.dir: C:\jboss-6.1.0.Final\bin
+09:50:11,935 DEBUG [ServerInfo]     user.home: C:\Users\daniel.santos
+09:50:11,935 DEBUG [ServerInfo]     user.language: pt
+09:50:11,936 DEBUG [ServerInfo]     user.name: daniel.santos
+09:50:11,936 DEBUG [ServerInfo]     user.timezone: America/Sao_Paulo
+09:50:11,936 DEBUG [ServerInfo]     user.variant: 
+09:50:11,936 DEBUG [ServerInfo]     xb.builder.repeatableParticleHandlers: false
+09:50:11,936 DEBUG [ServerInfo]     xb.builder.useUnorderedSequence: true
+09:50:11,960 INFO  [JMXKernel] Legacy JMX core initialized
+09:50:17,531 INFO  [AbstractServerConfig] JBoss Web Services - Stack CXF Server 3.4.1.GA
+09:50:18,151 INFO  [JSFImplManagementDeployer] Initialized 3 JSF configurations: [Mojarra-1.2, MyFaces-2.0, Mojarra-2.0]
+09:50:22,121 INFO  [PersistenceUnitValueMetaData] iDependOn persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+09:50:22,169 WARN  [MappedReferenceMetaDataResolverDeployer] Unresolved references exist in JBossMetaData:[#profileParametroSistemaBean:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.core.ParametroSistemaBean/parametroSistemaManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileParametroSistemaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.domain.ParametroSistemaManagerLocal}, #profileSistemaBean:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.core.SistemaBean/sistemaManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileSistemaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.domain.SistemaManagerLocal}, #profileEmpresaFilialUsuarioBean:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.core.EmpresaFilialUsuarioBean/empresaFilialUsuarioManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileEmpresaFilialUsuarioManager/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.domain.EmpresaFilialUsuarioManagerLocal}, #profileUsuarioBean:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.core.UsuarioBean/usuarioManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileUsuarioManager/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.domain.UsuarioManagerLocal}, #profileEmpresaFilialBean:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.core.EmpresaFilialBean/empresaManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileEmpresaFilialManager/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.domain.EmpresaFilialManagerLocal}, #profileEmpresaFilialBean:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.core.EmpresaFilialBean/parametroSistemaManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileParametroSistemaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.domain.ParametroSistemaManagerLocal}, #profilePerfilBean:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.core.PerfilBean/perfilManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profilePerfilManager/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.domain.PerfilManagerLocal}, #profileEmpresaFilialSistemaBean:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.core.EmpresaFilialSistemaBean/empresaFilialSistemaManagerLocal,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileEmpresaFilialSistemaManager/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.domain.EmpresaFilialSistemaManagerLocal}]
+09:50:22,300 WARN  [MappedReferenceMetaDataResolverDeployer] Unresolved references exist in JBossMetaData:[#profileBusiness:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.ws.autenticacao.ProfileBusinessBean/usuarioBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileUsuarioBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.UsuarioBeanLocal}, #profileBusiness:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.ws.autenticacao.ProfileBusinessBean/parametroSistemaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileParametroSistemaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.ParametroSistemaBeanLocal}, #profileBusiness:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.ws.autenticacao.ProfileBusinessBean/empresaFilialBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileEmpresaFilialBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.EmpresaFilialBeanLocal}]
+09:50:26,945 WARN  [MappedReferenceMetaDataResolverDeployer] Unresolved references exist in JBossWebMetaData:[#web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBEmpresaFilial/empresaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileEmpresaFilialBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.EmpresaFilialBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBAlterarSenha/usuarioBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileUsuarioBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.UsuarioBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBParametroSistema/parametroSistemaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileParametroSistemaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.ParametroSistemaBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBUserSession/usuarioBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileUsuarioBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.UsuarioBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBRelacionaEmpresa/empresaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileEmpresaFilialBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.EmpresaFilialBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBUsuario/usuarioBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileUsuarioBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.UsuarioBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBUsuario/sistemaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileSistemaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.SistemaBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBUsuario/empresaFilialUsuarioBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileEmpresaFilialUsuarioBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.EmpresaFilialUsuarioBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBPerfil/perfilBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profilePerfilBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.PerfilBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBPerfil/sistemaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileSistemaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.SistemaBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBSistema/sistemaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileSistemaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.SistemaBeanLocal}, #web-app:AnnotatedEJBReferenceMetaData{name=br.com.dataprimer.profile.bean.MBSistema/empresaFilialSistemaBean,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=profileEmpresaFilialSistemaBean/local,resolved-jndi-name=null,beanInterface=interface br.com.dataprimer.profile.core.EmpresaFilialSistemaBeanLocal}]
+09:50:27,932 AVISO [FileConfigurationParser] AIO wasn't located on this platform, it will fall back to using pure Java NIO. If your platform is Linux, install LibAIO to enable the AIO journal
+09:50:28,038 INFO  [JMXConnector] starting JMXConnector on host 0.0.0.0:1090
+09:50:28,115 INFO  [MailService] Mail Service bound to java:/Mail
+09:50:28,897 INFO  [HornetQServerImpl] live server is starting with configuration HornetQ Configuration (clustered=false,backup=false,sharedStore=true,journalDirectory=C:\jboss-6.1.0.Final\server\profile\data/hornetq/journal,bindingsDirectory=C:\jboss-6.1.0.Final\server\profile\data/hornetq/bindings,largeMessagesDirectory=C:\jboss-6.1.0.Final\server\profile\data/hornetq/largemessages,pagingDirectory=C:\jboss-6.1.0.Final\server\profile\data/hornetq/paging)
+09:50:28,898 INFO  [HornetQServerImpl] Waiting to obtain live lock
+09:50:28,940 INFO  [JournalStorageManager] Using NIO Journal
+09:50:28,954 AVISO [HornetQServerImpl] Security risk! It has been detected that the cluster admin user and password have not been changed from the installation default. Please see the HornetQ user guide, cluster chapter, for instructions on how to do this.
+09:50:29,047 INFO  [FileLockNodeManager] Waiting to obtain live lock
+09:50:29,047 INFO  [FileLockNodeManager] Live Server Obtained live lock
+09:50:29,489 INFO  [NettyAcceptor] Started Netty Acceptor version 3.2.3.Final-r${buildNumber} 0.0.0.0:5445 for CORE protocol
+09:50:29,492 INFO  [NettyAcceptor] Started Netty Acceptor version 3.2.3.Final-r${buildNumber} 0.0.0.0:5455 for CORE protocol
+09:50:29,493 INFO  [HornetQServerImpl] Server is now live
+09:50:29,493 INFO  [HornetQServerImpl] HornetQ Server version 2.2.5.Final (HQ_2_2_5_FINAL_AS7, 121) [463dd141-fffd-11e0-82b0-f04da2df0108] started
+09:50:29,521 INFO  [WebService] Using RMI server codebase: http://localhost:8083/
+09:50:29,629 INFO  [jbossatx] ARJUNA-32010 JBossTS Recovery Service (tag: JBOSSTS_4_14_0_Final) - JBoss Inc.
+09:50:29,633 INFO  [arjuna] ARJUNA-12324 Start RecoveryActivators
+09:50:29,657 INFO  [arjuna] ARJUNA-12296 ExpiredEntryMonitor running at Ter, 30 Out 2012 09:50:29
+09:50:29,704 INFO  [arjuna] ARJUNA-12310 Recovery manager listening on endpoint 0.0.0.0:4712
+09:50:29,704 INFO  [arjuna] ARJUNA-12344 RecoveryManagerImple is ready on port 4712
+09:50:29,704 INFO  [jbossatx] ARJUNA-32013 Starting transaction recovery manager
+09:50:29,713 INFO  [arjuna] ARJUNA-12163 Starting service com.arjuna.ats.arjuna.recovery.ActionStatusService on port 4713
+09:50:29,716 INFO  [arjuna] ARJUNA-12337 TransactionStatusManagerItem host: 0.0.0.0 port: 4713
+09:50:29,743 INFO  [arjuna] ARJUNA-12170 TransactionStatusManager started on port 4713 and host 0.0.0.0 with service com.arjuna.ats.arjuna.recovery.ActionStatusService
+09:50:29,762 INFO  [jbossatx] ARJUNA-32017 JBossTS Transaction Service (JTA version - tag: JBOSSTS_4_14_0_Final) - JBoss Inc.
+09:50:29,789 INFO  [arjuna] ARJUNA-12202 registering bean jboss.jta:type=ObjectStore.
+09:50:29,915 INFO  [AprLifecycleListener] The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:/jboss-6.1.0.Final/bin/native
+09:50:30,432 INFO  [TomcatDeployment] deploy, ctxPath=/invoker
+09:50:30,615 INFO  [ModClusterService] Initializing mod_cluster 1.1.0.Final
+09:50:30,645 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/profile/deploy/jboss-local-jdbc.rar/META-INF/ra.xml
+09:50:30,652 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/profile/deploy/jboss-xa-jdbc.rar/META-INF/ra.xml
+09:50:30,656 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/profile/deploy/jms-ra.rar/META-INF/ra.xml
+09:50:30,666 INFO  [HornetQResourceAdapter] HornetQ resource adaptor started
+09:50:30,670 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/profile/deploy/mail-ra.rar/META-INF/ra.xml
+09:50:30,677 INFO  [RARDeployment] Required license terms exist, view vfs:/C:/jboss-6.1.0.Final/server/profile/deploy/quartz-ra.rar/META-INF/ra.xml
+09:50:30,734 INFO  [SimpleThreadPool] Job execution threads will use class loader of thread: Thread-2
+09:50:30,767 INFO  [SchedulerSignalerImpl] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+09:50:30,767 INFO  [QuartzScheduler] Quartz Scheduler v.1.8.3 created.
+09:50:30,768 INFO  [RAMJobStore] RAMJobStore initialized.
+09:50:30,770 INFO  [QuartzScheduler] Scheduler meta-data: Quartz Scheduler (v1.8.3) 'JBossQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+09:50:30,770 INFO  [StdSchedulerFactory] Quartz scheduler 'JBossQuartzScheduler' initialized from an externally opened InputStream.
+09:50:30,770 INFO  [StdSchedulerFactory] Quartz scheduler version: 1.8.3
+09:50:30,770 INFO  [QuartzScheduler] Scheduler JBossQuartzScheduler_$_NON_CLUSTERED started.
+09:50:31,112 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=DefaultDS' to JNDI name 'java:DefaultDS'
+09:50:31,112 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+09:50:31,611 INFO  [Version] Hibernate Commons Annotations 3.2.0.Final
+09:50:31,619 INFO  [Environment] Hibernate 3.6.6.Final
+09:50:31,620 INFO  [Environment] hibernate.properties not found
+09:50:31,623 INFO  [Environment] Bytecode provider name : javassist
+09:50:31,627 INFO  [Environment] using JDK 1.4 java.sql.Timestamp handling
+09:50:31,702 INFO  [Version] Hibernate EntityManager 3.6.6.Final
+09:50:31,723 INFO  [Ejb3Configuration] Processing PersistenceUnitInfo [
+	name: timerdb
+	...]
+09:50:31,740 WARN  [Ejb3Configuration] Persistence provider caller does not implement the EJB3 spec correctly.PersistenceUnitInfo.getNewTempClassLoader() is null.
+09:50:31,788 INFO  [AnnotationBinder] Binding entity from annotated class: org.jboss.ejb3.timerservice.mk2.persistence.TimerEntity
+09:50:31,829 INFO  [EntityBinder] Bind entity org.jboss.ejb3.timerservice.mk2.persistence.TimerEntity on table timer
+09:50:31,875 INFO  [AnnotationBinder] Binding entity from annotated class: org.jboss.ejb3.timerservice.mk2.persistence.TimeoutMethod
+09:50:31,880 INFO  [EntityBinder] Bind entity org.jboss.ejb3.timerservice.mk2.persistence.TimeoutMethod on table timeout_method
+09:50:31,906 INFO  [AnnotationBinder] Binding entity from annotated class: org.jboss.ejb3.timerservice.mk2.persistence.CalendarTimerEntity
+09:50:31,907 INFO  [EntityBinder] Bind entity org.jboss.ejb3.timerservice.mk2.persistence.CalendarTimerEntity on table calendar_timer
+09:50:31,938 INFO  [Version] Hibernate Validator 3.1.0.GA
+09:50:31,970 INFO  [Version] Hibernate Validator 4.1.0.Final
+09:50:31,978 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+09:50:32,070 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+09:50:32,073 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+09:50:32,078 INFO  [HibernateSearchEventListenerRegister] Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+09:50:32,086 INFO  [ConnectionProviderFactory] Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+09:50:32,089 INFO  [InjectedDataSourceConnectionProvider] Using provided datasource
+09:50:32,209 INFO  [Dialect] Using dialect: org.hibernate.dialect.HSQLDialect
+09:50:32,586 INFO  [JdbcSupportLoader] Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+09:50:32,586 INFO  [SettingsFactory] Database ->
+       name : HSQL Database Engine
+    version : 1.8.0
+      major : 1
+      minor : 8
+09:50:32,586 INFO  [SettingsFactory] Driver ->
+       name : HSQL Database Engine Driver
+    version : 1.8.0
+      major : 1
+      minor : 8
+09:50:32,589 INFO  [TransactionFactoryFactory] Transaction strategy: org.hibernate.ejb.transaction.JoinableCMTTransactionFactory
+09:50:32,591 INFO  [TransactionManagerLookupFactory] instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+09:50:32,592 INFO  [TransactionManagerLookupFactory] instantiated TransactionManagerLookup
+09:50:32,592 INFO  [SettingsFactory] Automatic flush during beforeCompletion(): disabled
+09:50:32,593 INFO  [SettingsFactory] Automatic session close at end of transaction: disabled
+09:50:32,593 INFO  [SettingsFactory] JDBC batch size: 15
+09:50:32,593 INFO  [SettingsFactory] JDBC batch updates for versioned data: disabled
+09:50:32,593 INFO  [SettingsFactory] Scrollable result sets: enabled
+09:50:32,594 INFO  [SettingsFactory] JDBC3 getGeneratedKeys(): disabled
+09:50:32,594 INFO  [SettingsFactory] Connection release mode: auto
+09:50:32,594 INFO  [SettingsFactory] Default batch fetch size: 1
+09:50:32,595 INFO  [SettingsFactory] Generate SQL with comments: disabled
+09:50:32,595 INFO  [SettingsFactory] Order SQL updates by primary key: disabled
+09:50:32,595 INFO  [SettingsFactory] Order SQL inserts for batching: disabled
+09:50:32,595 INFO  [SettingsFactory] Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+09:50:32,597 INFO  [ASTQueryTranslatorFactory] Using ASTQueryTranslatorFactory
+09:50:32,597 INFO  [SettingsFactory] Query language substitutions: {}
+09:50:32,598 INFO  [SettingsFactory] JPA-QL strict compliance: enabled
+09:50:32,598 INFO  [SettingsFactory] Second-level cache: enabled
+09:50:32,598 INFO  [SettingsFactory] Query cache: disabled
+09:50:32,598 INFO  [SettingsFactory] Cache region factory : org.hibernate.cache.impl.bridge.RegionFactoryCacheProviderBridge
+09:50:32,604 INFO  [RegionFactoryCacheProviderBridge] Cache provider: org.hibernate.cache.HashtableCacheProvider
+09:50:32,605 INFO  [SettingsFactory] Optimize cache for minimal puts: disabled
+09:50:32,605 INFO  [SettingsFactory] Cache region prefix: persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+09:50:32,605 INFO  [SettingsFactory] Structured second-level cache entries: disabled
+09:50:32,611 INFO  [SettingsFactory] Statistics: disabled
+09:50:32,611 INFO  [SettingsFactory] Deleted entity synthetic identifier rollback: disabled
+09:50:32,611 INFO  [SettingsFactory] Default entity-mode: pojo
+09:50:32,611 INFO  [SettingsFactory] Named query checking : enabled
+09:50:32,611 INFO  [SettingsFactory] Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+09:50:32,631 INFO  [SessionFactoryImpl] building session factory
+09:50:32,638 INFO  [BasicTypeRegistry] Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@1fbf741
+09:50:32,638 INFO  [BasicTypeRegistry] Type registration [clob] overrides previous : org.hibernate.type.ClobType@125d6a7
+09:50:32,638 INFO  [BasicTypeRegistry] Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@125d6a7
+09:50:32,638 INFO  [BasicTypeRegistry] Type registration [blob] overrides previous : org.hibernate.type.BlobType@12f6f8e
+09:50:32,638 INFO  [BasicTypeRegistry] Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@12f6f8e
+09:50:32,638 INFO  [BasicTypeRegistry] Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@144e8c1
+09:50:32,638 INFO  [BasicTypeRegistry] Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@10d0ce5
+09:50:32,638 INFO  [BasicTypeRegistry] Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@1c9a477
+09:50:32,639 INFO  [BasicTypeRegistry] Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@14cb4d6
+09:50:32,808 INFO  [SessionFactoryObjectFactory] Factory name: persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+09:50:32,810 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+09:50:32,811 INFO  [SessionFactoryObjectFactory] Bound factory to JNDI name: persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+09:50:32,817 INFO  [SchemaUpdate] Running hbm2ddl schema update
+09:50:32,817 INFO  [SchemaUpdate] fetching database metadata
+09:50:32,827 INFO  [SchemaUpdate] updating schema
+09:50:32,828 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+09:50:32,851 INFO  [TableMetadata] table found: PUBLIC.TIMEOUTMETHOD_METHODPARAMS
+09:50:32,852 INFO  [TableMetadata] columns: [methodparams, timeoutmethod_id]
+09:50:32,852 INFO  [TableMetadata] foreign keys: [fkf294c964b7de2d8a]
+09:50:32,852 INFO  [TableMetadata] indexes: [sys_idx_55]
+09:50:32,857 INFO  [TableMetadata] table found: PUBLIC.CALENDAR_TIMER
+09:50:32,857 INFO  [TableMetadata] columns: [scheduleexprtimezone, scheduleexprsecond, autotimer, scheduleexprstartdate, scheduleexprminute, scheduleexprhour, timeoutmethod_id, id, scheduleexprdayofmonth, scheduleexprenddate, scheduleexprmonth, scheduleexprdayofweek, scheduleexpryear]
+09:50:32,857 INFO  [TableMetadata] foreign keys: [fk2b697f04b7de2d8a, fk2b697f04e6e6ef93]
+09:50:32,857 INFO  [TableMetadata] indexes: [sys_idx_57, sys_idx_48, sys_idx_59]
+09:50:32,862 INFO  [TableMetadata] table found: PUBLIC.TIMEOUT_METHOD
+09:50:32,862 INFO  [TableMetadata] columns: [id, methodname, declaringclass]
+09:50:32,862 INFO  [TableMetadata] foreign keys: []
+09:50:32,862 INFO  [TableMetadata] indexes: [sys_idx_50]
+09:50:32,867 INFO  [TableMetadata] table found: PUBLIC.TIMER
+09:50:32,867 INFO  [TableMetadata] columns: [id, previousrun, initialdate, repeatinterval, timedobjectid, timerstate, nextdate, info]
+09:50:32,867 INFO  [TableMetadata] foreign keys: []
+09:50:32,867 INFO  [TableMetadata] indexes: [sys_idx_52]
+09:50:32,868 INFO  [SchemaUpdate] schema update complete
+09:50:32,871 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+09:50:32,980 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:service=ConnectionFactoryBinding,name=JmsXA' to JNDI name 'java:JmsXA'
+09:50:32,997 INFO  [ConnectionFactoryBindingService] Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=profile' to JNDI name 'java:profile'
+09:50:33,020 WARN  [InterceptorInfoRepository] EJBTHREE-1852: InterceptorInfoRepository is deprecated
+09:50:33,081 WARN  [InterceptorInfoRepository] EJBTHREE-1852: InterceptorInfoRepository is deprecated
+09:50:33,308 INFO  [JBossASKernel] Created KernelDeployment for: profile-core.jar
+09:50:33,310 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialSistemaBean,service=EJB3
+09:50:33,310 INFO  [JBossASKernel]   with dependencies:
+09:50:33,310 INFO  [JBossASKernel]   and demands:
+09:50:33,311 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-core.jar,unit=profile-core.jar,bean=profileEmpresaFilialSistemaBean; Required: Described
+09:50:33,311 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:33,311 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-core,module=profile-core,name=profileEmpresaFilialSistemaBean; Required: Create
+09:50:33,311 INFO  [JBossASKernel]   and supplies:
+09:50:33,311 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialSistemaBean/local-br.com.dataprimer.profile.core.EmpresaFilialSistemaBeanLocal
+09:50:33,311 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialSistemaBean
+09:50:33,311 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialSistemaBean/local
+09:50:33,311 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.core.EmpresaFilialSistemaBeanLocal
+09:50:33,313 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialSistemaBean,service=EJB3) to KernelDeployment of: profile-core.jar
+09:50:33,314 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialUsuarioBean,service=EJB3
+09:50:33,314 INFO  [JBossASKernel]   with dependencies:
+09:50:33,314 INFO  [JBossASKernel]   and demands:
+09:50:33,314 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:33,314 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-core,module=profile-core,name=profileEmpresaFilialUsuarioBean; Required: Create
+09:50:33,314 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-core.jar,unit=profile-core.jar,bean=profileEmpresaFilialUsuarioBean; Required: Described
+09:50:33,315 INFO  [JBossASKernel]   and supplies:
+09:50:33,315 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.core.EmpresaFilialUsuarioBeanLocal
+09:50:33,315 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialUsuarioBean
+09:50:33,315 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialUsuarioBean/local-br.com.dataprimer.profile.core.EmpresaFilialUsuarioBeanLocal
+09:50:33,315 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialUsuarioBean/local
+09:50:33,315 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialUsuarioBean,service=EJB3) to KernelDeployment of: profile-core.jar
+09:50:33,315 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialBean,service=EJB3
+09:50:33,315 INFO  [JBossASKernel]   with dependencies:
+09:50:33,315 INFO  [JBossASKernel]   and demands:
+09:50:33,316 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:33,316 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-core,module=profile-core,name=profileEmpresaFilialBean; Required: Create
+09:50:33,316 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-core.jar,unit=profile-core.jar,bean=profileEmpresaFilialBean; Required: Described
+09:50:33,316 INFO  [JBossASKernel]   and supplies:
+09:50:33,316 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialBean/local
+09:50:33,316 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialBean
+09:50:33,316 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialBean/local-br.com.dataprimer.profile.core.EmpresaFilialBeanLocal
+09:50:33,316 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.core.EmpresaFilialBeanLocal
+09:50:33,316 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialBean,service=EJB3) to KernelDeployment of: profile-core.jar
+09:50:33,316 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-core.jar,name=profileUsuarioBean,service=EJB3
+09:50:33,317 INFO  [JBossASKernel]   with dependencies:
+09:50:33,317 INFO  [JBossASKernel]   and demands:
+09:50:33,317 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:33,317 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-core,module=profile-core,name=profileUsuarioBean; Required: Create
+09:50:33,317 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-core.jar,unit=profile-core.jar,bean=profileUsuarioBean; Required: Described
+09:50:33,317 INFO  [JBossASKernel]   and supplies:
+09:50:33,317 INFO  [JBossASKernel] 	jndi:profileUsuarioBean
+09:50:33,317 INFO  [JBossASKernel] 	jndi:profileUsuarioBean/local
+09:50:33,317 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.core.UsuarioBeanLocal
+09:50:33,317 INFO  [JBossASKernel] 	jndi:profileUsuarioBean/local-br.com.dataprimer.profile.core.UsuarioBeanLocal
+09:50:33,317 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-core.jar,name=profileUsuarioBean,service=EJB3) to KernelDeployment of: profile-core.jar
+09:50:33,318 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-core.jar,name=profileSistemaBean,service=EJB3
+09:50:33,318 INFO  [JBossASKernel]   with dependencies:
+09:50:33,318 INFO  [JBossASKernel]   and demands:
+09:50:33,318 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:33,318 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-core,module=profile-core,name=profileSistemaBean; Required: Create
+09:50:33,318 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-core.jar,unit=profile-core.jar,bean=profileSistemaBean; Required: Described
+09:50:33,318 INFO  [JBossASKernel]   and supplies:
+09:50:33,318 INFO  [JBossASKernel] 	jndi:profileSistemaBean
+09:50:33,318 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.core.SistemaBeanLocal
+09:50:33,318 INFO  [JBossASKernel] 	jndi:profileSistemaBean/local
+09:50:33,318 INFO  [JBossASKernel] 	jndi:profileSistemaBean/local-br.com.dataprimer.profile.core.SistemaBeanLocal
+09:50:33,318 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-core.jar,name=profileSistemaBean,service=EJB3) to KernelDeployment of: profile-core.jar
+09:50:33,319 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-core.jar,name=profilePerfilBean,service=EJB3
+09:50:33,319 INFO  [JBossASKernel]   with dependencies:
+09:50:33,319 INFO  [JBossASKernel]   and demands:
+09:50:33,319 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-core,module=profile-core,name=profilePerfilBean; Required: Create
+09:50:33,319 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:33,319 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-core.jar,unit=profile-core.jar,bean=profilePerfilBean; Required: Described
+09:50:33,319 INFO  [JBossASKernel]   and supplies:
+09:50:33,319 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.core.PerfilBeanLocal
+09:50:33,319 INFO  [JBossASKernel] 	jndi:profilePerfilBean/local
+09:50:33,319 INFO  [JBossASKernel] 	jndi:profilePerfilBean/local-br.com.dataprimer.profile.core.PerfilBeanLocal
+09:50:33,319 INFO  [JBossASKernel] 	jndi:profilePerfilBean
+09:50:33,319 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-core.jar,name=profilePerfilBean,service=EJB3) to KernelDeployment of: profile-core.jar
+09:50:33,353 INFO  [SingletonContainerDeployer] Installing container for EJB profileParametroSistemaBean
+09:50:33,353 INFO  [SingletonContainerDeployer] with dependencies: 
+09:50:33,354 INFO  [SingletonContainerDeployer] with demands: 
+09:50:33,354 INFO  [SingletonContainerDeployer] jboss-injector:topLevelUnit=profile-core.jar,unit=profile-core.jar,bean=profileParametroSistemaBean
+09:50:33,354 INFO  [SingletonContainerDeployer] with supplies: 
+09:50:33,354 INFO  [SingletonContainerDeployer] Class:br.com.dataprimer.profile.core.ParametroSistemaBeanLocal
+09:50:33,358 INFO  [SingletonContainerDeployer] Installing container for EJB CoreBundleBean
+09:50:33,358 INFO  [SingletonContainerDeployer] with dependencies: 
+09:50:33,358 INFO  [SingletonContainerDeployer] with demands: 
+09:50:33,358 INFO  [SingletonContainerDeployer] with supplies: 
+09:50:33,366 INFO  [SingletonBeanJNDIBinderDeployer] Binding the following entries in JNDI for singleton bean: profileParametroSistemaBean
+
+profileParametroSistemaBean/local		->EJB3.x Default Local Business Interface
+profileParametroSistemaBean/local-br.com.dataprimer.profile.core.ParametroSistemaBeanLocal		->EJB3.x Local Business Interface
+
+09:50:33,366 INFO  [SingletonBeanJNDIBinderDeployer] Binding the following entries in JNDI for singleton bean: CoreBundleBean
+
+
+09:50:33,434 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-core.jar,name=CoreBundleBean,service=EJB3
+09:50:33,434 WARN  [SessionSpecContainer] EJBTHREE-2126: container jboss.j2ee:jar=profile-core.jar,name=CoreBundleBean,service=EJB3 does not verify the businessObjectFactory
+09:50:33,434 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.core.CoreBundleBean ejbName: CoreBundleBean
+09:50:33,436 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:34,059 INFO  [AbstractNoInterfaceViewBinder] Binding the following entry in Global JNDI for bean:CoreBundleBean
+
+	CoreBundleBean/no-interface -> EJB3.1 no-interface view
+
+09:50:34,073 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-core.jar,name=profileUsuarioBean,service=EJB3
+09:50:34,076 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.core.UsuarioBean ejbName: profileUsuarioBean
+09:50:34,096 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileUsuarioBean/local - EJB3.x Default Local Business Interface
+	profileUsuarioBean/local-br.com.dataprimer.profile.core.UsuarioBeanLocal - EJB3.x Local Business Interface
+
+09:50:34,096 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:34,097 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-core.jar,name=profileParametroSistemaBean,service=EJB3
+09:50:34,097 WARN  [SessionSpecContainer] EJBTHREE-2126: container jboss.j2ee:jar=profile-core.jar,name=profileParametroSistemaBean,service=EJB3 does not verify the businessObjectFactory
+09:50:34,097 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.core.ParametroSistemaBean ejbName: profileParametroSistemaBean
+09:50:34,097 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:34,098 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-core.jar,name=profileSistemaBean,service=EJB3
+09:50:34,098 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.core.SistemaBean ejbName: profileSistemaBean
+09:50:34,102 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileSistemaBean/local - EJB3.x Default Local Business Interface
+	profileSistemaBean/local-br.com.dataprimer.profile.core.SistemaBeanLocal - EJB3.x Local Business Interface
+
+09:50:34,103 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:34,103 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-core.jar,name=profilePerfilBean,service=EJB3
+09:50:34,103 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.core.PerfilBean ejbName: profilePerfilBean
+09:50:34,105 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profilePerfilBean/local - EJB3.x Default Local Business Interface
+	profilePerfilBean/local-br.com.dataprimer.profile.core.PerfilBeanLocal - EJB3.x Local Business Interface
+
+09:50:34,105 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:34,105 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialSistemaBean,service=EJB3
+09:50:34,105 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.core.EmpresaFilialSistemaBean ejbName: profileEmpresaFilialSistemaBean
+09:50:34,107 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileEmpresaFilialSistemaBean/local - EJB3.x Default Local Business Interface
+	profileEmpresaFilialSistemaBean/local-br.com.dataprimer.profile.core.EmpresaFilialSistemaBeanLocal - EJB3.x Local Business Interface
+
+09:50:34,107 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:34,107 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialBean,service=EJB3
+09:50:34,107 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.core.EmpresaFilialBean ejbName: profileEmpresaFilialBean
+09:50:34,109 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileEmpresaFilialBean/local - EJB3.x Default Local Business Interface
+	profileEmpresaFilialBean/local-br.com.dataprimer.profile.core.EmpresaFilialBeanLocal - EJB3.x Local Business Interface
+
+09:50:34,109 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:34,114 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialUsuarioBean,service=EJB3
+09:50:34,114 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.core.EmpresaFilialUsuarioBean ejbName: profileEmpresaFilialUsuarioBean
+09:50:34,115 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileEmpresaFilialUsuarioBean/local - EJB3.x Default Local Business Interface
+	profileEmpresaFilialUsuarioBean/local-br.com.dataprimer.profile.core.EmpresaFilialUsuarioBeanLocal - EJB3.x Local Business Interface
+
+09:50:34,115 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:34,127 WARN  [InterceptorInfoRepository] EJBTHREE-1852: InterceptorInfoRepository is deprecated
+09:50:34,219 INFO  [JBossASKernel] Created KernelDeployment for: profile-domain.jar
+09:50:34,219 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialUsuarioManager,service=EJB3
+09:50:34,219 INFO  [JBossASKernel]   with dependencies:
+09:50:34,219 INFO  [JBossASKernel]   and demands:
+09:50:34,219 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:34,219 INFO  [JBossASKernel] 	persistence.unit:unitName=profile-domain.jar#persistence-profile; Required: Described
+09:50:34,219 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-domain.jar,unit=profile-domain.jar,bean=profileEmpresaFilialUsuarioManager; Required: Described
+09:50:34,219 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-domain,module=profile-domain,name=profileEmpresaFilialUsuarioManager; Required: Create
+09:50:34,219 INFO  [JBossASKernel]   and supplies:
+09:50:34,219 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.domain.EmpresaFilialUsuarioManagerLocal
+09:50:34,219 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialUsuarioManager
+09:50:34,219 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialUsuarioManager/local
+09:50:34,219 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialUsuarioManager/local-br.com.dataprimer.profile.domain.EmpresaFilialUsuarioManagerLocal
+09:50:34,219 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialUsuarioManager,service=EJB3) to KernelDeployment of: profile-domain.jar
+09:50:34,220 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-domain.jar,name=profilePerfilManager,service=EJB3
+09:50:34,220 INFO  [JBossASKernel]   with dependencies:
+09:50:34,220 INFO  [JBossASKernel]   and demands:
+09:50:34,220 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:34,220 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-domain,module=profile-domain,name=profilePerfilManager; Required: Create
+09:50:34,220 INFO  [JBossASKernel] 	persistence.unit:unitName=profile-domain.jar#persistence-profile; Required: Described
+09:50:34,220 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-domain.jar,unit=profile-domain.jar,bean=profilePerfilManager; Required: Described
+09:50:34,220 INFO  [JBossASKernel]   and supplies:
+09:50:34,220 INFO  [JBossASKernel] 	jndi:profilePerfilManager
+09:50:34,221 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.domain.PerfilManagerLocal
+09:50:34,221 INFO  [JBossASKernel] 	jndi:profilePerfilManager/local-br.com.dataprimer.profile.domain.PerfilManagerLocal
+09:50:34,221 INFO  [JBossASKernel] 	jndi:profilePerfilManager/local
+09:50:34,221 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-domain.jar,name=profilePerfilManager,service=EJB3) to KernelDeployment of: profile-domain.jar
+09:50:34,221 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialManager,service=EJB3
+09:50:34,221 INFO  [JBossASKernel]   with dependencies:
+09:50:34,221 INFO  [JBossASKernel]   and demands:
+09:50:34,221 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-domain,module=profile-domain,name=profileEmpresaFilialManager; Required: Create
+09:50:34,221 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:34,221 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-domain.jar,unit=profile-domain.jar,bean=profileEmpresaFilialManager; Required: Described
+09:50:34,221 INFO  [JBossASKernel] 	persistence.unit:unitName=profile-domain.jar#persistence-profile; Required: Described
+09:50:34,222 INFO  [JBossASKernel]   and supplies:
+09:50:34,222 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialManager/local-br.com.dataprimer.profile.domain.EmpresaFilialManagerLocal
+09:50:34,222 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialManager
+09:50:34,222 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialManager/local
+09:50:34,222 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.domain.EmpresaFilialManagerLocal
+09:50:34,222 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialManager,service=EJB3) to KernelDeployment of: profile-domain.jar
+09:50:34,222 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-domain.jar,name=profileUsuarioManager,service=EJB3
+09:50:34,222 INFO  [JBossASKernel]   with dependencies:
+09:50:34,222 INFO  [JBossASKernel]   and demands:
+09:50:34,222 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:34,222 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-domain.jar,unit=profile-domain.jar,bean=profileUsuarioManager; Required: Described
+09:50:34,222 INFO  [JBossASKernel] 	persistence.unit:unitName=profile-domain.jar#persistence-profile; Required: Described
+09:50:34,223 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-domain,module=profile-domain,name=profileUsuarioManager; Required: Create
+09:50:34,223 INFO  [JBossASKernel]   and supplies:
+09:50:34,223 INFO  [JBossASKernel] 	jndi:profileUsuarioManager
+09:50:34,223 INFO  [JBossASKernel] 	jndi:profileUsuarioManager/local-br.com.dataprimer.profile.domain.UsuarioManagerLocal
+09:50:34,223 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.domain.UsuarioManagerLocal
+09:50:34,223 INFO  [JBossASKernel] 	jndi:profileUsuarioManager/local
+09:50:34,223 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-domain.jar,name=profileUsuarioManager,service=EJB3) to KernelDeployment of: profile-domain.jar
+09:50:34,223 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-domain.jar,name=profileSistemaManager,service=EJB3
+09:50:34,223 INFO  [JBossASKernel]   with dependencies:
+09:50:34,223 INFO  [JBossASKernel]   and demands:
+09:50:34,223 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-domain,module=profile-domain,name=profileSistemaManager; Required: Create
+09:50:34,224 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:34,224 INFO  [JBossASKernel] 	persistence.unit:unitName=profile-domain.jar#persistence-profile; Required: Described
+09:50:34,224 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-domain.jar,unit=profile-domain.jar,bean=profileSistemaManager; Required: Described
+09:50:34,224 INFO  [JBossASKernel]   and supplies:
+09:50:34,224 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.domain.SistemaManagerLocal
+09:50:34,224 INFO  [JBossASKernel] 	jndi:profileSistemaManager/local-br.com.dataprimer.profile.domain.SistemaManagerLocal
+09:50:34,224 INFO  [JBossASKernel] 	jndi:profileSistemaManager/local
+09:50:34,224 INFO  [JBossASKernel] 	jndi:profileSistemaManager
+09:50:34,224 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-domain.jar,name=profileSistemaManager,service=EJB3) to KernelDeployment of: profile-domain.jar
+09:50:34,224 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-domain.jar,name=profileTransactionBean,service=EJB3
+09:50:34,224 INFO  [JBossASKernel]   with dependencies:
+09:50:34,224 INFO  [JBossASKernel]   and demands:
+09:50:34,225 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:34,225 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-domain,module=profile-domain,name=profileTransactionBean; Required: Create
+09:50:34,225 INFO  [JBossASKernel]   and supplies:
+09:50:34,225 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.domain.util.Caller
+09:50:34,225 INFO  [JBossASKernel] 	jndi:profileTransactionBean
+09:50:34,225 INFO  [JBossASKernel] 	jndi:profileTransactionBean/local
+09:50:34,225 INFO  [JBossASKernel] 	jndi:profileTransactionBean/local-br.com.dataprimer.profile.domain.util.Caller
+09:50:34,225 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-domain.jar,name=profileTransactionBean,service=EJB3) to KernelDeployment of: profile-domain.jar
+09:50:34,225 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialSistemaManager,service=EJB3
+09:50:34,225 INFO  [JBossASKernel]   with dependencies:
+09:50:34,225 INFO  [JBossASKernel]   and demands:
+09:50:34,226 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:34,226 INFO  [JBossASKernel] 	persistence.unit:unitName=profile-domain.jar#persistence-profile; Required: Described
+09:50:34,226 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-domain.jar,unit=profile-domain.jar,bean=profileEmpresaFilialSistemaManager; Required: Described
+09:50:34,226 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-domain,module=profile-domain,name=profileEmpresaFilialSistemaManager; Required: Create
+09:50:34,226 INFO  [JBossASKernel]   and supplies:
+09:50:34,226 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialSistemaManager/local-br.com.dataprimer.profile.domain.EmpresaFilialSistemaManagerLocal
+09:50:34,226 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialSistemaManager
+09:50:34,226 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.domain.EmpresaFilialSistemaManagerLocal
+09:50:34,226 INFO  [JBossASKernel] 	jndi:profileEmpresaFilialSistemaManager/local
+09:50:34,226 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialSistemaManager,service=EJB3) to KernelDeployment of: profile-domain.jar
+09:50:34,226 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-domain.jar,name=profileParametroSistemaManager,service=EJB3
+09:50:34,226 INFO  [JBossASKernel]   with dependencies:
+09:50:34,227 INFO  [JBossASKernel]   and demands:
+09:50:34,227 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:34,227 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-domain,module=profile-domain,name=profileParametroSistemaManager; Required: Create
+09:50:34,227 INFO  [JBossASKernel] 	persistence.unit:unitName=profile-domain.jar#persistence-profile; Required: Described
+09:50:34,227 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-domain.jar,unit=profile-domain.jar,bean=profileParametroSistemaManager; Required: Described
+09:50:34,227 INFO  [JBossASKernel]   and supplies:
+09:50:34,227 INFO  [JBossASKernel] 	jndi:profileParametroSistemaManager/local
+09:50:34,227 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.domain.ParametroSistemaManagerLocal
+09:50:34,227 INFO  [JBossASKernel] 	jndi:profileParametroSistemaManager
+09:50:34,227 INFO  [JBossASKernel] 	jndi:profileParametroSistemaManager/local-br.com.dataprimer.profile.domain.ParametroSistemaManagerLocal
+09:50:34,227 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-domain.jar,name=profileParametroSistemaManager,service=EJB3) to KernelDeployment of: profile-domain.jar
+09:50:34,243 INFO  [PersistenceUnitDeployment] Starting persistence unit persistence.unit:unitName=profile-domain.jar#persistence-profile
+09:50:34,243 INFO  [Ejb3Configuration] Processing PersistenceUnitInfo [
+	name: persistence-profile
+	...]
+09:50:34,246 WARN  [Ejb3Configuration] Persistence provider caller does not implement the EJB3 spec correctly.PersistenceUnitInfo.getNewTempClassLoader() is null.
+09:50:34,248 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.dataprimer.profile.entity.RoleAvailable
+09:50:34,249 INFO  [EntityBinder] Bind entity br.com.dataprimer.profile.entity.RoleAvailable on table PROFILE_ROLE_AVAILABLE
+09:50:34,253 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.dataprimer.profile.entity.Usuario
+09:50:34,253 INFO  [EntityBinder] Bind entity br.com.dataprimer.profile.entity.Usuario on table PROFILE_USUARIO
+09:50:34,260 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.dataprimer.profile.entity.EmpresaFilialUsuario
+09:50:34,261 INFO  [EntityBinder] Bind entity br.com.dataprimer.profile.entity.EmpresaFilialUsuario on table PROFILE_EMPRESAFILIAL_USUARIO
+09:50:34,262 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.dataprimer.profile.entity.Role
+09:50:34,263 INFO  [EntityBinder] Bind entity br.com.dataprimer.profile.entity.Role on table PROFILE_ROLE
+09:50:34,264 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.dataprimer.profile.entity.Perfil
+09:50:34,264 INFO  [EntityBinder] Bind entity br.com.dataprimer.profile.entity.Perfil on table PROFILE_PERFIL
+09:50:34,265 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.dataprimer.profile.entity.EmpresaFilial
+09:50:34,266 INFO  [EntityBinder] Bind entity br.com.dataprimer.profile.entity.EmpresaFilial on table PROFILE_EMPRESAFILIAL
+09:50:34,268 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.dataprimer.profile.entity.ParametroSistema
+09:50:34,268 INFO  [EntityBinder] Bind entity br.com.dataprimer.profile.entity.ParametroSistema on table PROFILE_PARAMETRO_SISTEMA
+09:50:34,272 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.dataprimer.profile.entity.Sistema
+09:50:34,272 INFO  [EntityBinder] Bind entity br.com.dataprimer.profile.entity.Sistema on table PROFILE_SISTEMA
+09:50:34,274 INFO  [AnnotationBinder] Binding entity from annotated class: br.com.dataprimer.profile.entity.EmpresaFilialSistema
+09:50:34,274 INFO  [EntityBinder] Bind entity br.com.dataprimer.profile.entity.EmpresaFilialSistema on table PROFILE_EMPRESAFILIAL_SISTEMA
+09:50:34,279 INFO  [CollectionBinder] Mapping collection: br.com.dataprimer.profile.entity.Usuario.empresaFilialUsuario -> PROFILE_EMPRESAFILIAL_USUARIO
+09:50:34,279 INFO  [CollectionBinder] Mapping collection: br.com.dataprimer.profile.entity.Usuario.usuariosCadastrados -> PROFILE_USUARIO
+09:50:34,279 INFO  [CollectionBinder] Mapping collection: br.com.dataprimer.profile.entity.Perfil.roles -> PROFILE_ROLE
+09:50:34,279 INFO  [CollectionBinder] Mapping collection: br.com.dataprimer.profile.entity.EmpresaFilial.empresaFilialSistema -> PROFILE_EMPRESAFILIAL_SISTEMA
+09:50:34,279 INFO  [CollectionBinder] Mapping collection: br.com.dataprimer.profile.entity.EmpresaFilial.empresaFilialUsuarios -> PROFILE_EMPRESAFILIAL_USUARIO
+09:50:34,279 INFO  [CollectionBinder] Mapping collection: br.com.dataprimer.profile.entity.Sistema.empresaFilialSistema -> PROFILE_EMPRESAFILIAL_SISTEMA
+09:50:34,279 INFO  [CollectionBinder] Mapping collection: br.com.dataprimer.profile.entity.Sistema.perfis -> PROFILE_PERFIL
+09:50:34,279 INFO  [CollectionBinder] Mapping collection: br.com.dataprimer.profile.entity.Sistema.rolesAvailable -> PROFILE_ROLE_AVAILABLE
+09:50:34,291 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+09:50:34,318 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+09:50:34,329 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+09:50:34,331 INFO  [HibernateSearchEventListenerRegister] Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+09:50:34,341 INFO  [ConnectionProviderFactory] Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+09:50:34,341 INFO  [InjectedDataSourceConnectionProvider] Using provided datasource
+09:50:34,904 INFO  [Dialect] Using dialect: org.hibernate.dialect.Oracle10gDialect
+09:50:34,924 INFO  [SettingsFactory] Database ->
+       name : Oracle
+    version : Oracle Database 10g Enterprise Edition Release 10.2.0.3.0 - Production
+With the Partitioning, OLAP and Data Mining options
+      major : 10
+      minor : 2
+09:50:34,924 INFO  [SettingsFactory] Driver ->
+       name : Oracle JDBC driver
+    version : 11.1.0.6.0-Production+
+      major : 11
+      minor : 1
+09:50:34,924 INFO  [TransactionFactoryFactory] Transaction strategy: org.hibernate.ejb.transaction.JoinableCMTTransactionFactory
+09:50:34,924 INFO  [TransactionManagerLookupFactory] instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+09:50:34,924 INFO  [TransactionManagerLookupFactory] instantiated TransactionManagerLookup
+09:50:34,925 INFO  [SettingsFactory] Automatic flush during beforeCompletion(): disabled
+09:50:34,925 INFO  [SettingsFactory] Automatic session close at end of transaction: disabled
+09:50:34,925 INFO  [SettingsFactory] JDBC batch size: 15
+09:50:34,925 INFO  [SettingsFactory] JDBC batch updates for versioned data: disabled
+09:50:34,925 INFO  [SettingsFactory] Scrollable result sets: enabled
+09:50:34,925 INFO  [SettingsFactory] JDBC3 getGeneratedKeys(): disabled
+09:50:34,925 INFO  [SettingsFactory] Connection release mode: auto
+09:50:34,925 INFO  [SettingsFactory] Default batch fetch size: 1
+09:50:34,925 INFO  [SettingsFactory] Generate SQL with comments: disabled
+09:50:34,925 INFO  [SettingsFactory] Order SQL updates by primary key: disabled
+09:50:34,925 INFO  [SettingsFactory] Order SQL inserts for batching: disabled
+09:50:34,926 INFO  [SettingsFactory] Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+09:50:34,926 INFO  [ASTQueryTranslatorFactory] Using ASTQueryTranslatorFactory
+09:50:34,926 INFO  [SettingsFactory] Query language substitutions: {}
+09:50:34,926 INFO  [SettingsFactory] JPA-QL strict compliance: enabled
+09:50:34,926 INFO  [SettingsFactory] Second-level cache: enabled
+09:50:34,926 INFO  [SettingsFactory] Query cache: disabled
+09:50:34,926 INFO  [SettingsFactory] Cache region factory : org.hibernate.cache.impl.bridge.RegionFactoryCacheProviderBridge
+09:50:34,926 INFO  [RegionFactoryCacheProviderBridge] Cache provider: org.hibernate.cache.HashtableCacheProvider
+09:50:34,926 INFO  [SettingsFactory] Optimize cache for minimal puts: disabled
+09:50:34,927 INFO  [SettingsFactory] Cache region prefix: persistence.unit:unitName=profile-domain.jar#persistence-profile
+09:50:34,927 INFO  [SettingsFactory] Structured second-level cache entries: disabled
+09:50:34,927 INFO  [SettingsFactory] Echoing all SQL to stdout
+09:50:34,927 INFO  [SettingsFactory] Statistics: disabled
+09:50:34,927 INFO  [SettingsFactory] Deleted entity synthetic identifier rollback: disabled
+09:50:34,927 INFO  [SettingsFactory] Default entity-mode: pojo
+09:50:34,927 INFO  [SettingsFactory] Named query checking : enabled
+09:50:34,927 INFO  [SettingsFactory] Check Nullability in Core (should be disabled when Bean Validation is on): disabled
+09:50:34,943 INFO  [SessionFactoryImpl] building session factory
+09:50:34,943 INFO  [BasicTypeRegistry] Type registration [wrapper_characters_clob] overrides previous : org.hibernate.type.CharacterArrayClobType@1fbf741
+09:50:34,943 INFO  [BasicTypeRegistry] Type registration [clob] overrides previous : org.hibernate.type.ClobType@125d6a7
+09:50:34,943 INFO  [BasicTypeRegistry] Type registration [java.sql.Clob] overrides previous : org.hibernate.type.ClobType@125d6a7
+09:50:34,943 INFO  [BasicTypeRegistry] Type registration [blob] overrides previous : org.hibernate.type.BlobType@12f6f8e
+09:50:34,943 INFO  [BasicTypeRegistry] Type registration [java.sql.Blob] overrides previous : org.hibernate.type.BlobType@12f6f8e
+09:50:34,944 INFO  [BasicTypeRegistry] Type registration [characters_clob] overrides previous : org.hibernate.type.PrimitiveCharacterArrayClobType@144e8c1
+09:50:34,944 INFO  [BasicTypeRegistry] Type registration [materialized_blob] overrides previous : org.hibernate.type.MaterializedBlobType@10d0ce5
+09:50:34,944 INFO  [BasicTypeRegistry] Type registration [materialized_clob] overrides previous : org.hibernate.type.MaterializedClobType@1c9a477
+09:50:34,944 INFO  [BasicTypeRegistry] Type registration [wrapper_materialized_blob] overrides previous : org.hibernate.type.WrappedMaterializedBlobType@14cb4d6
+09:50:35,029 INFO  [SessionFactoryObjectFactory] Factory name: persistence.unit:unitName=profile-domain.jar#persistence-profile
+09:50:35,029 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+09:50:35,034 INFO  [SessionFactoryObjectFactory] Bound factory to JNDI name: persistence.unit:unitName=profile-domain.jar#persistence-profile
+09:50:35,034 INFO  [SchemaUpdate] Running hbm2ddl schema update
+09:50:35,034 INFO  [SchemaUpdate] fetching database metadata
+09:50:36,466 INFO  [SchemaUpdate] updating schema
+09:50:36,476 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+09:50:36,827 INFO  [TableMetadata] table found: JAVA_TESTE.PROFILE_EMPRESAFILIAL
+09:50:36,827 INFO  [TableMetadata] columns: [nome_fantasia, cod_empresa, data_modificacao, id, inscricao_estadual, uf, data_criacao, cnpj, razao_social, cod_filial, descricao]
+09:50:36,827 INFO  [TableMetadata] foreign keys: []
+09:50:36,827 INFO  [TableMetadata] indexes: [sys_c00292114, sys_c00292053, sys_c00292052]
+09:50:36,894 INFO  [TableMetadata] table found: JAVA_TESTE.PROFILE_EMPRESAFILIAL_SISTEMA
+09:50:36,894 INFO  [TableMetadata] columns: [data_modificacao, data_criacao, id_empresa_filial, id_sistema]
+09:50:36,894 INFO  [TableMetadata] foreign keys: [fk6bae31e1aea917d9, fk6bae31e12f3de7a0]
+09:50:36,894 INFO  [TableMetadata] indexes: [sys_c00292058]
+09:50:36,959 INFO  [TableMetadata] table found: JAVA_TESTE.PROFILE_EMPRESAFILIAL_USUARIO
+09:50:36,960 INFO  [TableMetadata] columns: [data_modificacao, id_usuario, data_criacao, id_empresa_filial]
+09:50:36,960 INFO  [TableMetadata] foreign keys: [fke69edaed251f39b8, fke69edaedaea917d9]
+09:50:36,960 INFO  [TableMetadata] indexes: [sys_c00292063]
+09:50:37,022 INFO  [TableMetadata] table found: JAVA_TESTE.PROFILE_PARAMETRO_SISTEMA
+09:50:37,022 INFO  [TableMetadata] columns: [data_modificacao, id, data_criacao]
+09:50:37,022 INFO  [TableMetadata] foreign keys: []
+09:50:37,022 INFO  [TableMetadata] indexes: [sys_c00292067]
+09:50:37,091 INFO  [TableMetadata] table found: JAVA_TESTE.PROFILE_PERFIL
+09:50:37,091 INFO  [TableMetadata] columns: [data_modificacao, id, data_criacao, nome, id_sistema]
+09:50:37,091 INFO  [TableMetadata] foreign keys: [fkec7ba9422f3de7a0]
+09:50:37,091 INFO  [TableMetadata] indexes: [sys_c00292074, sys_c00292073]
+09:50:37,175 INFO  [TableMetadata] table found: JAVA_TESTE.PROFILE_PERFIL_USUARIO
+09:50:37,175 INFO  [TableMetadata] columns: [id_usuario, id_perfil]
+09:50:37,175 INFO  [TableMetadata] foreign keys: [fk57d76d11496ba4bc, fk57d76d11251f39b8]
+09:50:37,175 INFO  [TableMetadata] indexes: [sys_c00292077]
+09:50:37,246 INFO  [TableMetadata] table found: JAVA_TESTE.PROFILE_PROPRIEDADES_SISTEMA
+09:50:37,246 INFO  [TableMetadata] columns: [valor, chave, parametrosistema_id]
+09:50:37,246 INFO  [TableMetadata] foreign keys: [fk2fe5a43982d0e7a]
+09:50:37,246 INFO  [TableMetadata] indexes: [sys_c00292081]
+09:50:37,313 INFO  [TableMetadata] table found: JAVA_TESTE.PROFILE_ROLE
+09:50:37,313 INFO  [TableMetadata] columns: [data_modificacao, id, data_criacao, id_perfil, descricao]
+09:50:37,313 INFO  [TableMetadata] foreign keys: [fkd4d4296c496ba4bc]
+09:50:37,313 INFO  [TableMetadata] indexes: [sys_c00292087]
+09:50:37,379 INFO  [TableMetadata] table found: JAVA_TESTE.PROFILE_ROLE_AVAILABLE
+09:50:37,379 INFO  [TableMetadata] columns: [data_modificacao, id, data_criacao, id_sistema, descricao]
+09:50:37,379 INFO  [TableMetadata] foreign keys: [fk6e8ae7962f3de7a0]
+09:50:37,379 INFO  [TableMetadata] indexes: [sys_c00292093, sys_c00292094]
+09:50:37,441 INFO  [TableMetadata] table found: JAVA_TESTE.PROFILE_SISTEMA
+09:50:37,441 INFO  [TableMetadata] columns: [codigo, data_modificacao, id, data_criacao, descricao]
+09:50:37,441 INFO  [TableMetadata] foreign keys: []
+09:50:37,441 INFO  [TableMetadata] indexes: [sys_c00292101, sys_c00292100]
+09:50:37,548 INFO  [TableMetadata] table found: JAVA_TESTE.PROFILE_USUARIO
+09:50:37,549 INFO  [TableMetadata] columns: [data_modificacao, status, expirar_senha, data_expiracao_senha, senha, id, email, justificativa, telefone, data_criacao, ultimo_login, id_usuario_criador, cpf, login, quantidade_tentativas, nome]
+09:50:37,549 INFO  [TableMetadata] foreign keys: [fkc384a25862c5d899]
+09:50:37,549 INFO  [TableMetadata] indexes: [sys_c00292113, sys_c00292112, sys_c00292111]
+09:50:37,549 INFO  [SchemaUpdate] schema update complete
+09:50:37,550 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+09:50:37,559 ERROR [MetadataContext] Unable to locate static metamodel field : br.com.dataprimer.profile.entity.EmpresaFilial_#uf
+09:50:37,592 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-domain.jar,name=profileTransactionBean,service=EJB3
+09:50:37,592 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.domain.util.TransactionBean ejbName: profileTransactionBean
+09:50:37,598 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialManager,service=EJB3
+09:50:37,606 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.domain.EmpresaFilialManager ejbName: profileEmpresaFilialManager
+09:50:37,609 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileEmpresaFilialManager/local - EJB3.x Default Local Business Interface
+	profileEmpresaFilialManager/local-br.com.dataprimer.profile.domain.EmpresaFilialManagerLocal - EJB3.x Local Business Interface
+
+09:50:37,609 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:37,611 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileTransactionBean/local - EJB3.x Default Local Business Interface
+	profileTransactionBean/local-br.com.dataprimer.profile.domain.util.Caller - EJB3.x Local Business Interface
+
+09:50:37,611 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:37,621 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-domain.jar,name=profileSistemaManager,service=EJB3
+09:50:37,622 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.domain.SistemaManager ejbName: profileSistemaManager
+09:50:37,625 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileSistemaManager/local - EJB3.x Default Local Business Interface
+	profileSistemaManager/local-br.com.dataprimer.profile.domain.SistemaManagerLocal - EJB3.x Local Business Interface
+
+09:50:37,625 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:37,640 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialSistemaManager,service=EJB3
+09:50:37,641 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.domain.EmpresaFilialSistemaManager ejbName: profileEmpresaFilialSistemaManager
+09:50:37,644 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileEmpresaFilialSistemaManager/local - EJB3.x Default Local Business Interface
+	profileEmpresaFilialSistemaManager/local-br.com.dataprimer.profile.domain.EmpresaFilialSistemaManagerLocal - EJB3.x Local Business Interface
+
+09:50:37,644 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:37,651 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-domain.jar,name=profilePerfilManager,service=EJB3
+09:50:37,652 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.domain.PerfilManager ejbName: profilePerfilManager
+09:50:37,654 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profilePerfilManager/local - EJB3.x Default Local Business Interface
+	profilePerfilManager/local-br.com.dataprimer.profile.domain.PerfilManagerLocal - EJB3.x Local Business Interface
+
+09:50:37,655 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:37,662 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-domain.jar,name=profileParametroSistemaManager,service=EJB3
+09:50:37,663 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.domain.ParametroSistemaManager ejbName: profileParametroSistemaManager
+09:50:37,665 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileParametroSistemaManager/local - EJB3.x Default Local Business Interface
+	profileParametroSistemaManager/local-br.com.dataprimer.profile.domain.ParametroSistemaManagerLocal - EJB3.x Local Business Interface
+
+09:50:37,665 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:37,670 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-domain.jar,name=profileUsuarioManager,service=EJB3
+09:50:37,671 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.domain.UsuarioManager ejbName: profileUsuarioManager
+09:50:37,674 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileUsuarioManager/local - EJB3.x Default Local Business Interface
+	profileUsuarioManager/local-br.com.dataprimer.profile.domain.UsuarioManagerLocal - EJB3.x Local Business Interface
+
+09:50:37,674 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:37,688 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialUsuarioManager,service=EJB3
+09:50:37,689 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.domain.EmpresaFilialUsuarioManager ejbName: profileEmpresaFilialUsuarioManager
+09:50:37,691 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileEmpresaFilialUsuarioManager/local - EJB3.x Default Local Business Interface
+	profileEmpresaFilialUsuarioManager/local-br.com.dataprimer.profile.domain.EmpresaFilialUsuarioManagerLocal - EJB3.x Local Business Interface
+
+09:50:37,692 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:37,708 WARN  [InterceptorInfoRepository] EJBTHREE-1852: InterceptorInfoRepository is deprecated
+09:50:37,848 WARN  [DescriptorDeploymentAspect] Spring not available, skipping check for user provided jbossws-cxf.xml / cxf.xml configuration files.
+09:50:37,857 INFO  [MetadataBuilder] Add Service
+ id=profileAutenticacaoService
+ address=http://B181548:8080/profile-ws/WSAutenticacaoService/WSAutenticacao
+ implementor=br.com.dataprimer.profile.ws.autenticacao.WSAutenticacaoService
+ invoker=org.jboss.wsf.stack.cxf.InvokerEJB3
+ serviceName={http://www.dataprimer.com.br/profile}WSAutenticacaoService
+ portName={http://www.dataprimer.com.br/profile}WSAutenticacaoPort
+ wsdlLocation=null
+ mtomEnabled=false
+09:50:38,103 INFO  [ReflectionServiceFactoryBean] Creating Service {http://www.dataprimer.com.br/profile}WSAutenticacaoService from class br.com.dataprimer.profile.ws.autenticacao.WSAutenticacaoService
+09:50:38,873 INFO  [ServerImpl] Setting the server's publish address to be http://B181548:8080/profile-ws/WSAutenticacaoService/WSAutenticacao
+09:50:39,848 INFO  [WSDLFilePublisher] WSDL published to: file:/C:/jboss-6.1.0.Final/server/profile/data/wsdl/profile-ws.jar/WSAutenticacaoService.wsdl
+09:50:39,860 INFO  [DefaultEndpointRegistry] register: jboss.ws:context=profile-ws,endpoint=profileAutenticacaoService
+09:50:39,875 INFO  [JBossASKernel] Created KernelDeployment for: profile-ws.jar
+09:50:39,875 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-ws.jar,name=profileBusiness,service=EJB3
+09:50:39,875 INFO  [JBossASKernel]   with dependencies:
+09:50:39,875 INFO  [JBossASKernel]   and demands:
+09:50:39,875 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:39,875 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-ws,module=profile-ws; Required: Create
+09:50:39,875 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-ws.jar,unit=profile-ws.jar,bean=profileBusiness; Required: Described
+09:50:39,876 INFO  [JBossASKernel]   and supplies:
+09:50:39,876 INFO  [JBossASKernel] 	jndi:profileBusiness/local
+09:50:39,876 INFO  [JBossASKernel] 	jndi:profileBusiness/local-br.com.dataprimer.profile.ws.autenticacao.ProfileBusinessBeanLocal
+09:50:39,876 INFO  [JBossASKernel] 	jndi:profileBusiness
+09:50:39,876 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.ws.autenticacao.ProfileBusinessBeanLocal
+09:50:39,876 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-ws.jar,name=profileBusiness,service=EJB3) to KernelDeployment of: profile-ws.jar
+09:50:39,877 INFO  [JBossASKernel] installing bean: jboss.j2ee:jar=profile-ws.jar,name=profileAutenticacaoService,service=EJB3
+09:50:39,877 INFO  [JBossASKernel]   with dependencies:
+09:50:39,877 INFO  [JBossASKernel]   and demands:
+09:50:39,877 INFO  [JBossASKernel] 	jboss.ejb:service=EJBTimerService; Required: Described
+09:50:39,878 INFO  [JBossASKernel] 	jboss-switchboard:appName=profile-ws,module=profile-ws; Required: Create
+09:50:39,878 INFO  [JBossASKernel] 	jboss-injector:topLevelUnit=profile-ws.jar,unit=profile-ws.jar,bean=profileAutenticacaoService; Required: Described
+09:50:39,878 INFO  [JBossASKernel]   and supplies:
+09:50:39,878 INFO  [JBossASKernel] 	jndi:profileAutenticacaoService
+09:50:39,878 INFO  [JBossASKernel] 	jndi:profileAutenticacaoService/remote-br.com.dataprimer.profile.ws.autenticacao.WSAutenticacaoServiceRemote
+09:50:39,878 INFO  [JBossASKernel] 	Class:br.com.dataprimer.profile.ws.autenticacao.WSAutenticacaoServiceRemote
+09:50:39,878 INFO  [JBossASKernel] 	jndi:profileAutenticacaoService/remote
+09:50:39,878 INFO  [JBossASKernel] Added bean(jboss.j2ee:jar=profile-ws.jar,name=profileAutenticacaoService,service=EJB3) to KernelDeployment of: profile-ws.jar
+09:50:39,902 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-ws.jar,name=profileAutenticacaoService,service=EJB3
+09:50:39,902 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.ws.autenticacao.WSAutenticacaoService ejbName: profileAutenticacaoService
+09:50:39,918 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileAutenticacaoService/remote - EJB3.x Default Remote Business Interface
+	profileAutenticacaoService/remote-br.com.dataprimer.profile.ws.autenticacao.WSAutenticacaoServiceRemote - EJB3.x Remote Business Interface
+
+09:50:39,918 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:39,926 INFO  [SessionSpecContainer] Starting jboss.j2ee:jar=profile-ws.jar,name=profileBusiness,service=EJB3
+09:50:39,927 INFO  [EJBContainer] STARTED EJB: br.com.dataprimer.profile.ws.autenticacao.ProfileBusinessBean ejbName: profileBusiness
+09:50:39,929 INFO  [JndiSessionRegistrarBase] Binding the following Entries in Global JNDI:
+
+	profileBusiness/local - EJB3.x Default Local Business Interface
+	profileBusiness/local-br.com.dataprimer.profile.ws.autenticacao.ProfileBusinessBeanLocal - EJB3.x Local Business Interface
+
+09:50:39,929 WARN  [TimerServiceContainer] EJBTHREE-2193: using deprecated TimerServiceFactory for restoring timers
+09:50:39,936 INFO  [TomcatDeployment] deploy, ctxPath=/profile-ws
+09:50:40,061 INFO  [xnio] XNIO Version 2.1.0.CR2
+09:50:40,072 INFO  [nio] XNIO NIO Implementation Version 2.1.0.CR2
+09:50:40,235 INFO  [remoting] JBoss Remoting version 3.1.0.Beta2
+09:50:40,354 INFO  [TomcatDeployment] deploy, ctxPath=/
+09:50:40,385 INFO  [TomcatDeployment] deploy, ctxPath=/profile
+09:50:40,428 INFO  [config] Inicializando Mojarra 2.0.3 ( b05) para o contexto '/profile'
+09:50:44,394 INFO  [DefaultTraversableResolver] Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+09:50:44,420 INFO  [Cache] Selected fallback cache factory
+09:50:44,422 INFO  [Cache] Creating LRUMap cache instance using parameters: {javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL=true, org.ajax4jsf.DEFAULT_EXPIRE=86400, org.richfaces.resourceOptimization.enabled=true, javax.faces.CONFIG_FILES=/WEB-INF/faces-navigation.xml, com.sun.faces.duplicateJARPattern=^tmp\d+(\S*\.jar), com.sun.faces.externalizeJavaScript=true, org.richfaces.skin=DEFAULT, com.sun.faces.injectionProvider=org.jboss.web.jsf.integration.injection.JBossDelegatingInjectionProvider, com.sun.faces.validateXml=true, javax.faces.PROJECT_STAGE=Production, com.sun.faces.verifyObjects=false, org.richfaces.enableControlSkinning=false, javax.faces.FACELETS_SKIP_COMMENTS=true, javax.faces.STATE_SAVING_METHOD=server, javax.faces.DEFAULT_SUFFIX=.xhtml, resteasy.unwrapped.exceptions=javax.ejb.EJBException}
+09:50:44,424 INFO  [Cache] Creating LRUMap cache instance of 512 items capacity
+09:50:44,426 INFO  [Application] RichFaces Core Implementation by JBoss by Red Hat, version v.4.2.2.Final
+09:50:44,477 AVISO [Application] JMS API was found on the classpath; if you want to enable RichFaces Push JMS integration, set context-param 'org.richfaces.push.jms.enabled' in web.xml
+09:50:44,559 INFO  [HornetQServerImpl] trying to deploy queue jms.queue.ExpiryQueue
+09:50:44,591 INFO  [HornetQServerImpl] trying to deploy queue jms.queue.DLQ
+09:50:44,615 INFO  [service] Removing bootstrap log handlers
+09:58:54,337 INFO  [service] Restored bootstrap log handlers
+09:58:54,350 INFO  [TomcatDeployment] undeploy, ctxPath=/profile
+09:58:54,355 INFO  [ProfileHttpSessionContextListener] Session sendo finalizada :C02D776D0D2A01C2B70FCB4B8614FE5C... Efetuando o logoff do usuario...
+09:58:54,378 INFO  [TomcatDeployment] undeploy, ctxPath=/
+09:58:54,401 INFO  [TomcatDeployment] undeploy, ctxPath=/profile-ws
+09:58:54,406 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-ws.jar,name=profileBusiness,service=EJB3
+09:58:54,409 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.ws.autenticacao.ProfileBusinessBean ejbName: profileBusiness
+09:58:54,414 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-ws.jar,name=profileAutenticacaoService,service=EJB3
+09:58:54,416 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.ws.autenticacao.WSAutenticacaoService ejbName: profileAutenticacaoService
+09:58:54,420 WARN  [StartStopLifecycleAction] Error during stop for jboss-switchboard:appName=profile-ws,module=profile-ws,name=profileAutenticacaoService: javax.naming.NameNotFoundException: ORB not bound
+	at org.jnp.server.NamingServer.getBinding(NamingServer.java:771) [:5.0.5.Final]
+	at org.jnp.server.NamingServer.getBinding(NamingServer.java:779) [:5.0.5.Final]
+	at org.jnp.server.NamingServer.unbind(NamingServer.java:349) [:5.0.5.Final]
+	at org.jnp.interfaces.NamingContext.unbind(NamingContext.java:873) [:5.0.5.Final]
+	at org.jboss.util.naming.Util.unbind(Util.java:151) [jboss-common-core.jar:2.2.17.GA]
+	at org.jboss.util.naming.Util.unbind(Util.java:141) [jboss-common-core.jar:2.2.17.GA]
+	at org.jboss.switchboard.mc.SwitchBoardImpl.unbindFromRelevantContext(SwitchBoardImpl.java:303) [:1.0.0-alpha-15]
+	at org.jboss.switchboard.mc.SwitchBoardImpl.stop(SwitchBoardImpl.java:102) [:1.0.0-alpha-15]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [:1.6.0_21]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39) [:1.6.0_21]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25) [:1.6.0_21]
+	at java.lang.reflect.Method.invoke(Method.java:597) [:1.6.0_21]
+	at org.jboss.reflect.plugins.introspection.ReflectionUtils.invoke(ReflectionUtils.java:60) [jboss-reflect.jar:2.2.1.SP1]
+	at org.jboss.reflect.plugins.introspection.ReflectMethodInfoImpl.invoke(ReflectMethodInfoImpl.java:168) [jboss-reflect.jar:2.2.1.SP1]
+	at org.jboss.joinpoint.plugins.BasicMethodJoinPoint.dispatch(BasicMethodJoinPoint.java:66) [jboss-reflect.jar:2.2.1.SP1]
+	at org.jboss.kernel.plugins.dependency.KernelControllerContextAction$JoinpointDispatchWrapper.execute(KernelControllerContextAction.java:257) [jboss-kernel.jar:2.2.0.SP2]
+	at org.jboss.kernel.plugins.dependency.ExecutionWrapper.execute(ExecutionWrapper.java:47) [jboss-kernel.jar:2.2.0.SP2]
+	at org.jboss.kernel.plugins.dependency.KernelControllerContextAction.dispatchExecutionWrapper(KernelControllerContextAction.java:125) [jboss-kernel.jar:2.2.0.SP2]
+	at org.jboss.kernel.plugins.dependency.KernelControllerContextAction.dispatchJoinPoint(KernelControllerContextAction.java:72) [jboss-kernel.jar:2.2.0.SP2]
+	at org.jboss.kernel.plugins.dependency.LifecycleAction.uninstallActionInternal(LifecycleAction.java:286) [jboss-kernel.jar:2.2.0.SP2]
+	at org.jboss.kernel.plugins.dependency.InstallsAwareAction.uninstallAction(InstallsAwareAction.java:175) [jboss-kernel.jar:2.2.0.SP2]
+	at org.jboss.kernel.plugins.dependency.InstallsAwareAction.uninstallAction(InstallsAwareAction.java:42) [jboss-kernel.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.action.SimpleControllerContextAction.simpleUninstallAction(SimpleControllerContextAction.java:79) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.action.AccessControllerContextAction.uninstall(AccessControllerContextAction.java:131) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractControllerContextActions.uninstall(AbstractControllerContextActions.java:58) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractControllerContext.uninstall(AbstractControllerContext.java:385) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.uninstall(AbstractController.java:2078) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.uninstallContext(AbstractController.java:1624) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.uninstallContext(AbstractController.java:1472) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.uninstallContext(AbstractController.java:1537) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.uninstallContext(AbstractController.java:1472) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.uninstall(AbstractController.java:756) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.uninstall(AbstractController.java:669) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.deployers.vfs.deployer.kernel.BeanMetaDataDeployer.undeploy(BeanMetaDataDeployer.java:230) [:2.2.2.GA]
+	at org.jboss.deployers.vfs.deployer.kernel.BeanMetaDataDeployer.undeploy(BeanMetaDataDeployer.java:58) [:2.2.2.GA]
+	at org.jboss.deployers.spi.deployer.helpers.AbstractSimpleRealDeployer.internalUndeploy(AbstractSimpleRealDeployer.java:70) [:2.2.2.GA]
+	at org.jboss.deployers.spi.deployer.helpers.AbstractRealDeployer.undeploy(AbstractRealDeployer.java:117) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployerWrapper.undeploy(DeployerWrapper.java:204) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.doUndeploy(DeployersImpl.java:1862) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.doUninstallParentLast(DeployersImpl.java:1769) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.doUninstallParentLast(DeployersImpl.java:1762) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.uninstall(DeployersImpl.java:1724) [:2.2.2.GA]
+	at org.jboss.dependency.plugins.AbstractControllerContext.uninstall(AbstractControllerContext.java:385) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.uninstall(AbstractController.java:2078) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.uninstallContext(AbstractController.java:1624) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:948) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:654) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.change(DeployersImpl.java:1983) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.change(DeployersImpl.java:1968) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.process(DeployersImpl.java:1001) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.main.MainDeployerImpl.process(MainDeployerImpl.java:656) [:2.2.2.GA]
+	at org.jboss.system.server.profileservice.deployers.MainDeployerPlugin.process(MainDeployerPlugin.java:106) [:6.1.0.Final]
+	at org.jboss.profileservice.dependency.ProfileControllerContext$DelegateDeployer.process(ProfileControllerContext.java:143) [:0.2.2]
+	at org.jboss.profileservice.dependency.ProfileDeployAction.undeploy(ProfileDeployAction.java:195) [:0.2.2]
+	at org.jboss.profileservice.dependency.ProfileDeployAction.uninstallActionInternal(ProfileDeployAction.java:112) [:0.2.2]
+	at org.jboss.kernel.plugins.dependency.InstallsAwareAction.uninstallAction(InstallsAwareAction.java:175) [jboss-kernel.jar:2.2.0.SP2]
+	at org.jboss.kernel.plugins.dependency.InstallsAwareAction.uninstallAction(InstallsAwareAction.java:42) [jboss-kernel.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.action.SimpleControllerContextAction.simpleUninstallAction(SimpleControllerContextAction.java:79) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.action.AccessControllerContextAction.uninstall(AccessControllerContextAction.java:131) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractControllerContextActions.uninstall(AbstractControllerContextActions.java:58) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractControllerContext.uninstall(AbstractControllerContext.java:385) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.uninstall(AbstractController.java:2078) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.uninstallContext(AbstractController.java:1624) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:948) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:654) [jboss-dependency.jar:2.2.0.SP2]
+	at org.jboss.profileservice.dependency.ProfileActivationWrapper$BasicProfileActivation.stop(ProfileActivationWrapper.java:210) [:0.2.2]
+	at org.jboss.profileservice.dependency.ProfileActivationWrapper.stop(ProfileActivationWrapper.java:101) [:0.2.2]
+	at org.jboss.profileservice.dependency.ProfileActivationService.deactivateProfile(ProfileActivationService.java:220) [:0.2.2]
+	at org.jboss.profileservice.dependency.ProfileActivationService.deactivate(ProfileActivationService.java:170) [:0.2.2]
+	at org.jboss.profileservice.bootstrap.AbstractProfileServiceBootstrap.stop(AbstractProfileServiceBootstrap.java:130) [:0.2.2]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.shutdown(BasicProfileServiceBootstrap.java:160) [:6.1.0.Final]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.shutdown(BasicProfileServiceBootstrap.java:56) [:6.1.0.Final]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer.shutdownBootstraps(AbstractServer.java:859) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer.shutdown(AbstractServer.java:300) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at org.jboss.Main$ShutdownHook$1.run(Main.java:1005) [run.jar:6.1.0.Final (Build SVNTag:JBoss_6.1.0.Final date: 20110816)]
+
+09:58:54,437 INFO  [DefaultEndpointRegistry] remove: jboss.ws:context=profile-ws,endpoint=profileAutenticacaoService
+09:58:54,448 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialUsuarioManager,service=EJB3
+09:58:54,449 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.domain.EmpresaFilialUsuarioManager ejbName: profileEmpresaFilialUsuarioManager
+09:58:54,455 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-domain.jar,name=profileUsuarioManager,service=EJB3
+09:58:54,457 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.domain.UsuarioManager ejbName: profileUsuarioManager
+09:58:54,460 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-domain.jar,name=profileParametroSistemaManager,service=EJB3
+09:58:54,461 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.domain.ParametroSistemaManager ejbName: profileParametroSistemaManager
+09:58:54,466 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-domain.jar,name=profilePerfilManager,service=EJB3
+09:58:54,482 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.domain.PerfilManager ejbName: profilePerfilManager
+09:58:54,491 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialSistemaManager,service=EJB3
+09:58:54,493 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.domain.EmpresaFilialSistemaManager ejbName: profileEmpresaFilialSistemaManager
+09:58:54,500 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-domain.jar,name=profileSistemaManager,service=EJB3
+09:58:54,502 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.domain.SistemaManager ejbName: profileSistemaManager
+09:58:54,509 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-domain.jar,name=profileTransactionBean,service=EJB3
+09:58:54,510 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.domain.util.TransactionBean ejbName: profileTransactionBean
+09:58:54,512 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-domain.jar,name=profileEmpresaFilialManager,service=EJB3
+09:58:54,514 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.domain.EmpresaFilialManager ejbName: profileEmpresaFilialManager
+09:58:54,525 INFO  [PersistenceUnitDeployment] Stopping persistence unit persistence.unit:unitName=profile-domain.jar#persistence-profile
+09:58:54,526 INFO  [SessionFactoryImpl] closing
+09:58:54,526 INFO  [SessionFactoryObjectFactory] Unbinding factory from JNDI name: persistence.unit:unitName=profile-domain.jar#persistence-profile
+09:58:54,526 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+09:58:54,527 INFO  [SessionFactoryObjectFactory] Unbound factory from JNDI name: persistence.unit:unitName=profile-domain.jar#persistence-profile
+09:58:54,551 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialUsuarioBean,service=EJB3
+09:58:54,553 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.core.EmpresaFilialUsuarioBean ejbName: profileEmpresaFilialUsuarioBean
+09:58:54,559 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-core.jar,name=profileParametroSistemaBean,service=EJB3
+09:58:54,560 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.core.ParametroSistemaBean ejbName: profileParametroSistemaBean
+09:58:54,563 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialBean,service=EJB3
+09:58:54,564 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.core.EmpresaFilialBean ejbName: profileEmpresaFilialBean
+09:58:54,568 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-core.jar,name=profilePerfilBean,service=EJB3
+09:58:54,569 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.core.PerfilBean ejbName: profilePerfilBean
+09:58:54,573 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-core.jar,name=profileSistemaBean,service=EJB3
+09:58:54,575 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.core.SistemaBean ejbName: profileSistemaBean
+09:58:54,578 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-core.jar,name=profileEmpresaFilialSistemaBean,service=EJB3
+09:58:54,579 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.core.EmpresaFilialSistemaBean ejbName: profileEmpresaFilialSistemaBean
+09:58:54,582 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-core.jar,name=profileUsuarioBean,service=EJB3
+09:58:54,584 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.core.UsuarioBean ejbName: profileUsuarioBean
+09:58:54,594 INFO  [SessionSpecContainer] Stopping jboss.j2ee:jar=profile-core.jar,name=CoreBundleBean,service=EJB3
+09:58:54,594 INFO  [EJBContainer] STOPPED EJB: br.com.dataprimer.profile.core.CoreBundleBean ejbName: CoreBundleBean
+09:58:54,639 INFO  [ConnectionFactoryBindingService] Unbound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=profile' from JNDI name 'java:profile'
+09:58:54,688 INFO  [ConnectionFactoryBindingService] Unbound ConnectionManager 'jboss.jca:service=ConnectionFactoryBinding,name=JmsXA' from JNDI name 'java:JmsXA'
+09:58:54,694 INFO  [PersistenceUnitDeployment] Stopping persistence unit persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+09:58:54,694 INFO  [SessionFactoryImpl] closing
+09:58:54,694 INFO  [SessionFactoryObjectFactory] Unbinding factory from JNDI name: persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+09:58:54,694 INFO  [NamingHelper] JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+09:58:54,694 INFO  [SessionFactoryObjectFactory] Unbound factory from JNDI name: persistence.unit:unitName=jboss-ejb3-timerservice-mk2.jar#timerdb
+09:58:54,695 INFO  [ConnectionFactoryBindingService] Unbound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=DefaultDS' from JNDI name 'java:DefaultDS'
+09:58:54,929 INFO  [HypersonicDatabase] Database standalone closed clean
+09:58:54,932 INFO  [QuartzScheduler] Scheduler JBossQuartzScheduler_$_NON_CLUSTERED shutting down.
+09:58:54,932 INFO  [QuartzScheduler] Scheduler JBossQuartzScheduler_$_NON_CLUSTERED paused.
+09:58:54,932 INFO  [QuartzScheduler] Scheduler JBossQuartzScheduler_$_NON_CLUSTERED shutdown complete.
+09:58:54,933 WARN  [ComponentDeploymentContext] Removing name on null names: jboss.naming:application=quartz-ra
+09:58:54,936 WARN  [ComponentDeploymentContext] Removing name on null names: jboss.naming:application=mail-ra
+09:58:54,938 INFO  [HornetQResourceAdapter] HornetQ resource adapter stopped
+09:58:54,939 WARN  [ComponentDeploymentContext] Removing name on null names: jboss.naming:application=jms-ra
+09:58:54,941 WARN  [ComponentDeploymentContext] Removing name on null names: jboss.naming:application=jboss-xa-jdbc
+09:58:54,944 WARN  [ComponentDeploymentContext] Removing name on null names: jboss.naming:application=jboss-local-jdbc
+09:58:54,954 INFO  [TomcatDeployment] undeploy, ctxPath=/invoker
+09:58:54,965 INFO  [jbossatx] ARJUNA-32018 Destroying TransactionManagerService
+09:58:54,972 INFO  [jbossatx] ARJUNA-32014 Stopping transaction recovery manager
+09:58:55,159 INFO  [HornetQServerImpl] HornetQ Server version 2.2.5.Final (HQ_2_2_5_FINAL_AS7, 121) [463dd141-fffd-11e0-82b0-f04da2df0108] stopped
+09:58:55,217 INFO  [MailService] Mail service 'java:/Mail' removed from JNDI
+09:58:55,223 INFO  [JMXConnector] JMXConnector stopped

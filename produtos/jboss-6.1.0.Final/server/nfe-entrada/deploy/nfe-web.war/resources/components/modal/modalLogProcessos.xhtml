@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:composite="http://java.sun.com/jsf/composite"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:rich="http://richfaces.org/rich">
+    
+    <composite:interface>
+		<composite:attribute name="idModal" shortDescription="Identificador do modal"/>
+		<composite:attribute name="listaDeProcessos" shortDescription="Lista que contêm os logs"/>
+		<composite:attribute name="chaveDeAcesso" shortDescription="Chave de acesso da nota"/>
+		<composite:attribute name="scrollerPageNumber" shortDescription="Controle da paginação da lista"/>
+		<composite:attribute name="quantidadeRegistrosProcessos" shortDescription="Quantidade de registros na lista"/>
+		<composite:attribute name="resetScrollerPageNumber" method-signature="java.lang.Void resetScrollerPageNumber()" 
+       		shortDescription="metodo que zera o controle de paginação"/>
+	</composite:interface>
+	
+	<composite:implementation>
+		
+		<rich:popupPanel id="#{cc.attrs.idModal}" autosized="true" resizeable="false" moveable="false" styleClass="Largura700px FundoBranco">
+
+    		<f:facet name="header">
+				<h:outputText value="#{msg.titleInformacoesDoProcessso}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton id="fecharProcessos" image="/resources/images/png/close.png" styleClass="BotaoFechar" execute="@this"
+					immediate="true" oncomplete="#{rich:component(cc.attrs.idModal)}.hide(); return false;" render="barraDeScrollModalProcessos"
+					action="#{cc.attrs.resetScrollerPageNumber}">
+				</a4j:commandButton>
+			</f:facet>
+	
+			<div class="MarginBottom10px">
+				<h:outputText value="#{msg.lbl_chaveDeAcesso}" styleClass="TituloDeCampo"/>
+				<h:outputText value="#{cc.attrs.chaveDeAcesso}" styleClass="MarginLeft20px" />
+			</div>
+		
+			<rich:dataTable value="#{cc.attrs.listaDeProcessos}" var="item" id="listaModalProcessos" rows="7" styleClass="Largura100pc" 
+				onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" rowKeyVar="rowKey" noDataLabel="#{msg.listaProcessosVazia}">
+				
+				<rich:column styleClass="AlignCenter" headerClass="Largura160px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.data}" />
+					</f:facet>
+					<h:outputText value="#{item.dataOcorrencia}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+					</h:outputText>
+				</rich:column>
+			
+				<rich:column styleClass="AlignLeft Truncate">
+					<f:facet name="header">
+						<h:outputText value="#{msg.descricao}" />
+					</f:facet>
+					<h:outputText value="#{item.descricao}" title="#{item.descricao}"/>
+				</rich:column>
+				
+			</rich:dataTable>
+	
+			<table:scroller for="listaModalProcessos" idPanelScroller="barraDeScrollModalProcessos" maxPages="3" panelStyleClass="Scroller100pc MarginBottom5px" 
+				pageNumber="#{cc.attrs.scrollerPageNumber}" renderedTotalRegistros="#{not empty cc.attrs.listaDeProcessos}" 
+				totalRegistros="#{cc.attrs.quantidadeRegistrosProcessos}"/>
+				
+		</rich:popupPanel>
+	
+	</composite:implementation>
+</html>	

@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+	
+		<rich:popupPanel modal="true" id="modalListaNaturezaJuridica" autosized="true" resizeable="false"
+			moveable="false" domElementAttachment="form" styleClass="OverflowHidden Largura700px FundoBranco" onbeforeshow="renderBodyOfListaNJ();"
+			onshow="disableInputsFormPrincipal(); reSize(); mudaFocus('dataNaturezaJuridica:codigo');" 
+			onhide="enableInputsFormPrincipal();">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.naturezaJuridica}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" oncomplete="#{rich:component('modalListaNaturezaJuridica')}.hide();" 
+					action="#{mbEmpresa.processCleanModalNaturezaJuridica}" styleClass="BotaoFechar TabWalk" execute="@this"/>
+			</f:facet>
+			
+			<rich:dataTable id="dataNaturezaJuridica" var="item" value="#{mbEmpresa.listaNaturezaJuridica}"
+				rows="5" styleClass="Largura100pc" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+				onrowdblclick="selecionarNaturezaJuridica(#{rowKey})" noDataLabel="#{msg.listaNaturezaJuridicaVazia}"
+				rowKeyVar="rowKey">
+				
+				<rich:column styleClass="AlignCenter" headerClass="Largura80px"
+					filterExpression="#{fn:containsIgnoreCase(item.codigo, mbEmpresa.modalNaturezaJuridicaFilter.mapColumnFilter['Codigo'].filterBy)}" 
+					sortBy="#{item.codigo}" sortOrder="#{mbEmpresa.modalNaturezaJuridicaOrder.mapColumnOrder['Codigo'].sortOrder}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.codigo}"/>
+						<table:orderArrow action="#{mbEmpresa.modalNaturezaJuridicaOrder.mapColumnOrder['Codigo'].sortBy}"
+							order="#{mbEmpresa.modalNaturezaJuridicaOrder.mapColumnOrder['Codigo'].sortOrder}" render="dataNaturezaJuridica"/>
+						<br/>
+						<h:inputText value="#{mbEmpresa.modalNaturezaJuridicaFilter.mapColumnFilter['Codigo'].filterBy}"
+							styleClass="Campo Largura60px" maxlength="4" tabindex="1" id="codigo"
+							onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+							onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+							onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+							<a4j:ajax event="valueChange" render="datacontroler" oncomplete="renderBodyOfListaNJ();" execute="@this" status="modalStatus"/>
+						</h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.codigo}"/>
+				</rich:column>
+				
+				<rich:column styleClass="AlignLeft Truncate" headerClass="Largura500px"
+					filterExpression="#{fn:containsIgnoreCase(item.descricaoNatureza, mbEmpresa.modalNaturezaJuridicaFilter.mapColumnFilter['DescricaoNatureza'].filterBy)}" 
+					sortBy="#{item.descricaoNatureza}" sortOrder="#{mbEmpresa.modalNaturezaJuridicaOrder.mapColumnOrder['DescricaoNatureza'].sortOrder}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.descricaoNatureza}"/>
+						<table:orderArrow action="#{mbEmpresa.modalNaturezaJuridicaOrder.mapColumnOrder['DescricaoNatureza'].sortBy}"
+							order="#{mbEmpresa.modalNaturezaJuridicaOrder.mapColumnOrder['DescricaoNatureza'].sortOrder}"
+							render="dataNaturezaJuridica"/>
+	                    <br/>
+	                    <h:inputText id="descricao" value="#{mbEmpresa.modalNaturezaJuridicaFilter.mapColumnFilter['DescricaoNatureza'].filterBy}"
+	                    	styleClass="Campo Largura160px" maxlength="20" tabindex="2" onkeypress="executeFilter(this,event)">
+	                        <a4j:ajax event="valueChange" render="datacontroler" oncomplete="renderBodyOfListaNJ();" execute="@this"
+	                        	status="modalStatus"/>
+	                    </h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.descricaoNatureza}" title="#{item.descricaoNatureza}"/>
+				</rich:column>
+			</rich:dataTable>
+		
+			<table:scroller for="dataNaturezaJuridica" idPanelScroller="datacontroler" maxPages="4" panelStyleClass="Scroller100pc" 
+				totalRegistros="#{mbEmpresa.quantidadeRegistrosNaturezaJuridica}" renderedTotalRegistros="#{not empty mbEmpresa.listaNaturezaJuridica}"
+				pageNumber="#{mbEmpresa.scrollerPageNumberNaturezaJuridica}"/>
+						
+			<a4j:jsFunction name="selecionarNaturezaJuridica" status="modalStatus" action="#{mbEmpresa.selecionarNaturezaJuridica}" 
+				oncomplete="#{rich:component('modalListaNaturezaJuridica')}.hide(); return false;" 
+				render="datacontroler, jQueryNaturezaJuridica controleNaturezaJuridica">
+				<a4j:param name="linhaNaturezaJuridica" assignTo="#{mbEmpresa.linhaSelecionada}"/>
+			</a4j:jsFunction>
+			
+			<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+			<a4j:jsFunction name="renderBodyOfListaNJ" status="modalStatus" render="dataNaturezaJuridica@body" oncomplete="reSize();"/>
+			
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

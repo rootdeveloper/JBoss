@@ -1,0 +1,76 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="metadata"/>
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaManual}"/>
+	</ui:define>
+	<ui:define name="content">
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<h:commandButton action="#{mbManual.novo}" image="#{resource['images/png:novo.png']}" styleClass="BotaoImagem" title="#{msg.titleNovo}"/>
+				<h:commandButton action="#{mbManual.voltarParaHome}" image="#{resource['images/png:voltar.png']}" styleClass="BotaoImagem" title="#{msg.titleVoltar}"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		<rich:dataTable id="tableManual" var="manual" value="#{mbManual.listaDeManuais}" rows="10"
+			styleClass="Largura100pc" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			onrowdblclick="alterar('#{manual.id}');" iterationStatusVar="it" noDataLabel="#{msg.listaManuaisVazia}">
+			<rich:column headerClass="Largura60px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigo}"/>
+				</f:facet>
+				<h:outputText value="#{manual.id}"/>			
+			</rich:column>
+			<rich:column headerClass="Largura200px" styleClass="AlignCenter Truncate">
+				<f:facet name="header">
+					<h:outputText value="#{msg.versaoDoManual}"/>
+				</f:facet>
+				<h:outputText value="#{manual.versao}" title="#{manual.versao}"/>			
+			</rich:column>
+			<rich:column headerClass="Largura340px" styleClass="AlignCenter Truncate">
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricaoDoManual}"/>
+				</f:facet>
+				<h:outputText value="#{manual.descricao}" title="#{manual.descricao}"/>			
+			</rich:column>
+			<rich:column headerClass="Largura120px" styleClass="AlignCenter" sortBy="#{manual.dataLiberacao}" sortOrder="#{mbManual.dataLiberacaoOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataDeLiberacao}"/>
+                </f:facet>
+				<h:outputText value="#{manual.dataLiberacao}">
+					<f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/>
+				</h:outputText>			
+			</rich:column>
+			<rich:column headerClass="Largura120px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataDeInclusao}"/>
+				</f:facet>
+				<h:outputText value="#{manual.dataCriacao}">
+					<f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/>
+				</h:outputText>			
+			</rich:column>
+			<rich:column headerClass="Largura120px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataDeAlteracao}"/>
+				</f:facet>
+				<h:outputText value="#{manual.dataModificacao}">
+					<f:convertDateTime type="date" dateStyle="short" pattern="dd/MM/yyyy"/>
+				</h:outputText>			
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="tableManual" idPanelScroller="controle" maxPages="16" panelStyleClass="Scroller100pc"
+			renderedTotalRegistros="#{not empty mbManual.listaDeManuais}" totalRegistros="#{mbManual.quantidadeRegistros}" 
+			pageNumber="#{mbManual.scrollerPageNumber}"/>
+			
+		<a4j:jsFunction name="alterar" action="#{mbManual.editarManual}" status="modalStatus">
+			<a4j:param name="linhaDoManual" assignTo="#{mbManual.indexObjetoSelecionado}"/>
+		</a4j:jsFunction>
+	</ui:define>
+</ui:composition>

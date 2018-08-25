@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	
+	<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px"
+		rendered="#{mbNfeEntrada.produtoOuServico != null}">
+		<rich:tab id="abaIcms00" header="#{msg.aba_Icms00}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icms00 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icms00.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcms10" header="#{msg.aba_Icms10}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icms10 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icms10.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcms20" header="#{msg.aba_Icms20}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icms20 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icms20.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcms30" header="#{msg.aba_Icms30}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icms30 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icms30.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcms40" header="#{msg.aba_Icms40}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icms40 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icms40.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcms51" header="#{msg.aba_Icms51}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icms51 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icms51.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcms60" header="#{msg.aba_Icms60}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icms60 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icms60.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcms70" header="#{msg.aba_Icms70}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icms70 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icms70.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcms90" header="#{msg.aba_Icms90}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icms90 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icms90.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcmsPart" header="#{msg.aba_IcmsPart}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmsPart != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icmsPart.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcmsSt" header="#{msg.aba_IcmsSt}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmsst != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icmsSt.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcmsSn101" header="#{msg.aba_IcmsSn101}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn101 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icmsSN101.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcmsSn102" header="#{msg.aba_IcmsSn102}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn102 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icmsSN102.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcmsSn201" header="#{msg.aba_IcmsSn201}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn201 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icmsSN201.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcmsSn202" header="#{msg.aba_IcmsSn202}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn202 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icmsSN202.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcmsSn500" header="#{msg.aba_IcmsSn500}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn500 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icmsSN500.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaIcmsSn900" header="#{msg.aba_IcmsSn900}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.icms.icmssn900 != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/icms/icmsSN900.xhtml" /> 
+		</rich:tab>
+	</rich:tabPanel>
+	
+</ui:composition>

@@ -1,0 +1,138 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaUnidadeMedida}"/>
+	</ui:define>
+	
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" render="header-content barraDeScroll" execute="@this" listener="#{mbUnidadeMedida.trocaValorComboFilial}"
+			oncomplete="renderAllListaUnidadeMedida(); renderPainelErroUnidadeMedida();" status="modalStatus"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalSimNao mensagem="#{mbUnidadeMedida.msgExcluirSelecionadosTela}" nomePainel="confirmPane" tituloModal="#{msg.msgConfirmacaoExclusaoTela}"
+			actionSim="#{mbUnidadeMedida.excluirSelecionados}" render="barraDeScroll, modalInformativo" tituloFuncao="selecionado" idCheckbox="checkboxUnidadeMedida" 
+			oncomplete="#{rich:component('modalInformativo')}.show(); renderAllListaUnidadeMedida(); renderPainelErroUnidadeMedida();"/>
+			
+		<util:modalInformativo mensagemInformativo="#{mbUnidadeMedida.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo"/>
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:novoAction action="#{mbUnidadeMedida.novo}" render="#{mbUnidadeMedida.processaRenderPanelErro}"
+					rendered="#{mbUnidadeMedida.verificaPermissao('Administrador, Gerente, Atendente')}" />
+				<botao:excluir actionListener="#{mbUnidadeMedida.verificarExclusaoUnidades}" idModalSimNao="confirmPane"
+					idModalInformativo="modalInformativo" renderizarModal="#{mbUnidadeMedida.renderizarModal}"
+					filialCadastrada="#{mbUnidadeMedida.idFilial != null}" idPanelErro="erroEdicao"
+					rendered="#{mbUnidadeMedida.verificaPermissao('Administrador, Gerente, Atendente')}" />
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+			
+			<rich:toolbarGroup location="right">
+				<botao:atualizar actionListener="#{mbUnidadeMedida.refreshList}" render="barraDeScroll" filialCadastrada="#{mbUnidadeMedida.idFilial != null}" 
+					idPanelErro="erroEdicao" oncomplete="renderAllListaUnidadeMedida()" buttonStyle="MarginRight5px"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaUnidadeMedida" var="item" value="#{mbUnidadeMedida.listaDeUnidadeMedida}" rows="10" styleClass="Largura100pc"
+			onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" onrowdblclick="editarUnidadeMedida(#{rowKey})"
+			rowKeyVar="rowKey" noDataLabel="#{msg.listaUnidadeMedidaVazia}">
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxUnidadeMedida" valueChangeListener="#{mbUnidadeMedida.selecionarTodos}"
+						styleClass="Margin0px" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();" tabindex="1">
+						<a4j:ajax event="click" render="listaUnidadeMedida" status="modalStatus" oncomplete="reSize();"/>
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{item.selected}" styleClass="Margin0px" onkeydown="blockBackSpace(event);"
+					onkeyup="unblockBackSpace();">
+					<a4j:ajax event="valueChange" execute="@this"/>
+				</h:selectBooleanCheckbox>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura90px" sortBy="#{item.status}" 
+				sortOrder="#{mbUnidadeMedida.columnOrder.mapColumnOrder['Status'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(item.status) , fn:toLowerCase(mbUnidadeMedida.columnFilter.mapColumnFilter['Status'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.status}"/>
+					<table:orderArrow action="#{mbUnidadeMedida.columnOrder.mapColumnOrder['Status'].sortBy}" 
+						order="#{mbUnidadeMedida.columnOrder.mapColumnOrder['Status'].sortOrder}" render="listaUnidadeMedida"/>
+					<br/>
+					<h:inputText id="status" value="#{mbUnidadeMedida.columnFilter.mapColumnFilter['Status'].filterBy}" tabindex="2"
+						styleClass="Campo Largura70px" maxlength="7" onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);"
+						onkeyup="Mascara(this, LetraSemEspaco);" onkeydown="Mascara(this, LetraSemEspaco);" onfocus="origValue = this.value;"
+						onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="Mascara(this, LetraSemEspaco);"
+						onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" oncomplete="renderBodyOfListaUnidadeMedida(); executeFilter(this,event);" execute="@this"
+							status="modalStatus" render="barraDeScroll, erroEdicao" listener="#{mbUnidadeMedida.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.status}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura395px" sortOrder="#{mbUnidadeMedida.columnOrder.mapColumnOrder['Sigla'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.sigla, mbUnidadeMedida.columnFilter.mapColumnFilter['Sigla'].filterBy)}" sortBy="#{item.sigla}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.sigla}"/>
+					<table:orderArrow action="#{mbUnidadeMedida.columnOrder.mapColumnOrder['Sigla'].sortBy}" 
+						order="#{mbUnidadeMedida.columnOrder.mapColumnOrder['Sigla'].sortOrder}" render="listaUnidadeMedida"/>
+					<br/>
+					<h:inputText value="#{mbUnidadeMedida.columnFilter.mapColumnFilter['Sigla'].filterBy}" onkeypress="executeFilter(this,event)" 
+						styleClass="Campo Largura100px" maxlength="6" tabindex="3" onkeyup="upper(this)"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaUnidadeMedida(); executeFilter(this,event);"
+							execute="@this" status="modalStatus" listener="#{mbUnidadeMedida.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.sigla}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura395px" sortOrder="#{mbUnidadeMedida.columnOrder.mapColumnOrder['Descricao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.descricao, mbUnidadeMedida.columnFilter.mapColumnFilter['Descricao'].filterBy)}" 
+				sortBy="#{item.descricao}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricao}"/>
+					<table:orderArrow action="#{mbUnidadeMedida.columnOrder.mapColumnOrder['Descricao'].sortBy}" 
+						order="#{mbUnidadeMedida.columnOrder.mapColumnOrder['Descricao'].sortOrder}" render="listaUnidadeMedida"/>
+                    <br/>
+                    <h:inputText value="#{mbUnidadeMedida.columnFilter.mapColumnFilter['Descricao'].filterBy}" onkeypress="executeFilter(this,event)" 
+                    	styleClass="Campo Largura250px" maxlength="20" tabindex="4">
+                        <a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" execute="@this" oncomplete="renderBodyOfListaUnidadeMedida();"
+                        	status="modalStatus" listener="#{mbUnidadeMedida.limpaMensagemErro}"/>
+                    </h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.descricao}"/>
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="listaUnidadeMedida" idPanelScroller="barraDeScroll" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbUnidadeMedida.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbUnidadeMedida.listaDeUnidadeMedida}" 
+			totalRegistros="#{mbUnidadeMedida.quantidadeRegistros}"/>
+
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbUnidadeMedida.mensagemDeErro}">
+				<h:outputText value="#{mbUnidadeMedida.mensagemDeErro}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</h:panelGroup>
+		</h:panelGroup>
+
+		<a4j:jsFunction name="editarUnidadeMedida" status="modalStatus" action="#{mbUnidadeMedida.editar}">
+			<a4j:param name="linhaDaUnidadeMedida" assignTo="#{mbUnidadeMedida.linhaSelecionada}"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="renderPainelErroUnidadeMedida" render="erroEdicao"/>
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderBodyOfListaUnidadeMedida" status="modalStatus" render="listaUnidadeMedida@body" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderAllListaUnidadeMedida" status="modalStatus" render="listaUnidadeMedida" oncomplete="reSize();"/>
+	</ui:define>
+</ui:composition>

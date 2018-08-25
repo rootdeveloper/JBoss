@@ -1,0 +1,77 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+	
+		<rich:popupPanel modal="true" id="modalCadastroNCM" autosized="true" resizeable="false" moveable="false" domElementAttachment="form" 
+			styleClass="OverflowHidden Largura700px FundoBranco" onshow="focus('genero'); disableInputsFormPrincipal();"
+			onhide="enableInputsFormPrincipal();">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.cadastroNCM}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" oncomplete="#{rich:component('modalCadastroNCM')}.hide();" 
+					styleClass="BotaoFechar TabWalk" />
+			</f:facet>
+			
+			<rich:toolbar styleClass="BarraDeBotoes100pc">
+				<a4j:commandLink status="modalStatus" actionListener="#{mbMaterial.salvarNCM}"
+					oncomplete="#{mbMaterial.renderizarModalNcmUM} ? #{rich:component('modalInformativo2')}.show() : '';#{mbMaterial.renderizarModalNcmUM} ? #{rich:component('modalCadastroNCM')}.hide() : ''"
+					render="modalInformativo2 painelMensagemErroModalNCM linhaNCMMaterial jQueryNCM">
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px" height="18px" />
+				</a4j:commandLink>
+			</rich:toolbar>
+			
+			<div class="Linha680x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura75px MarginTop2px MarginLeft10px">
+					<h:outputText value="Gênero" styleClass="TituloDeCampo" />
+				</div>
+				<h:inputText id="genero" value="#{mbMaterial.ncmModal.genero}" maxlength="2" readonly="#{mbMaterial.ncmModal.status eq 'INATIVO'}" 
+					onkeypress="Mascara(this,Integer)" onkeydown="Mascara(this,Integer)" styleClass="Campo Largura25px PositionRelativeFloatLeft"
+					onkeyup="Mascara(this, Integer);"
+					onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft" />
+			</div>
+			
+			<div class="Linha680x25">
+				<div class="PositionRelativeFloatLeft Largura75px MarginTop2px MarginLeft10px">
+					<h:outputText value="Código" styleClass="TituloDeCampo" />
+				</div>
+				<h:inputText id="codigo" value="#{mbMaterial.ncmModal.codigo}" readonly="#{mbMaterial.ncmModal.status eq 'INATIVO'}" maxlength="8" 
+					styleClass="Campo Largura100px PositionRelativeFloatLeft"
+					onkeypress="Mascara(this,Integer)" onkeydown="Mascara(this,Integer)" onkeyup="Mascara(this, Integer)"
+					onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);" />
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft" />
+			</div>
+			
+			<div class="Linha680x90">
+				<div class="PositionRelativeFloatLeft Largura75px MarginTop2px MarginLeft10px">
+					<h:outputText value="Descrição" styleClass="TituloDeCampo" />
+				</div>
+				<h:inputTextarea id="descricao" value="#{mbMaterial.ncmModal.descricao}" readonly="#{mbMaterial.ncmModal.status eq 'INATIVO'}" 
+					styleClass="Campo TextArea572x85 PositionRelativeFloatLeft TabWalk" tabindex="4" onkeydown="limitText(this,350);" onkeyup="limitText(this,350);"
+					onkeypress="limitText(this,350);" onmousedown="limitText(this,350);" onmouseup="limitText(this,350);" onmouseout="limitText(this,350);"
+					onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft" />
+			</div>
+			
+			<h:panelGroup id="painelMensagemErroModalNCM" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura600px">
+				<h:outputText value="#{mbMaterial.mensagemErroModal}" styleClass="MensagemDeErro" />
+				<h:messages styleClass="MensagemDeErro BeanValidatorMessages" />
+			</h:panelGroup>
+			
+			<div class="PositionRelativeFloatLeft MarginLeft10px Largura600px Altura20px MarginTop5px">
+				<h:outputText value="#{msg.msgCampoObrigatorio}"/>
+			</div>
+			
+			
+		</rich:popupPanel>
+	</h:form> 
+</ui:composition>

@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table">
+	
+	
+	<rich:dataTable id="listaVolumes" var="var" value="#{mbNfeEntrada.nfeEntrada.infNFe.transp.vol}" rows="5" 
+		styleClass="Largura100pc" noDataLabel="#{msg.listaVolumeVazia}" 
+		onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+		onrowdblclick="visualizarLacres(#{rowKey})" rowKeyVar="rowKey">
+			
+		<rich:column styleClass="AlignLeft" headerClass="Largura110px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_qtd}"/>
+			</f:facet>
+			<h:outputText value="#{var.qVol}" />
+		</rich:column>
+		
+		<rich:column styleClass="AlignLeft Truncate" headerClass="Largura300px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_especieDoVolume}"/>
+			</f:facet>
+			<h:outputText value="#{var.esp}" title="#{var.esp}"/>
+		</rich:column>
+		
+		<rich:column styleClass="AlignLeft Truncate" headerClass="Largura300px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_marcaDoVolume}"/>
+			</f:facet>
+			<h:outputText value="#{var.marca}" title="#{var.marca}"/>
+		</rich:column>
+		
+		<rich:column styleClass="AlignRight" headerClass="Largura110px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_pesoLiquido}"/>
+			</f:facet>
+			<h:outputText value="#{var.pesoL}"/>
+		</rich:column>
+		
+		<rich:column styleClass="AlignRight" headerClass="Largura110px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.col_pesoBruto}"/>
+			</f:facet>
+			<h:outputText value="#{var.pesoB}"/>
+		</rich:column>
+		
+	</rich:dataTable>
+	
+	<table:scroller for="listaVolumes" idPanelScroller="controle" maxPages="10" 
+		panelStyleClass="Scroller100pc" pageNumber="#{mbNfeEntrada.scrollerPageNumber}" 
+		renderedTotalRegistros="#{not empty mbNfeEntrada.nfeEntrada.infNFe.transp.vol}" 
+		totalRegistros="#{mbNfeEntrada.quantidadeRegistrosListaVolumes}" />
+		
+	<a4j:jsFunction name="visualizarLacres" status="modalStatus" action="#{mbNfeEntrada.exibeLacresDoVolume}" 
+		render="modalListaDeLacresDosVolumes" oncomplete="#{rich:component('modalListaDeLacresDosVolumes')}.show()">
+		<a4j:param name="indexDoVolume" assignTo="#{mbNfeEntrada.indexDoVolume}"/>
+	</a4j:jsFunction>
+
+</ui:composition>

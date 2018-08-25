@@ -1,0 +1,136 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<rich:popupPanel modal="true" id="filtro" autosized="true" resizeable="false" moveable="false" domElementAttachment="form" styleClass="Largura700px FundoBranco">
+		<f:facet name="header">
+			<h:outputText value="#{msg.filtroCTe}" />
+		</f:facet>
+		<f:facet name="controls">
+			<h:commandButton id="fechar" image="#{resource['images/png:close.png']}" styleClass="BotaoFechar" immediate="true" render="#{cc.attrs.render}" onclick="#{rich:component('filtro')}.hide();"/> 
+		</f:facet>		
+		<h:form prependId="false" id="formFiltro">
+			<rich:tabPanel id="tabFiltro" switchType="client" >
+				<rich:tab header="#{msg.status}">
+					<rich:dataTable value="#{mbCteTerceiros.listaDeStatus}" var="status" styleClass="Largura100pc">
+						<rich:column styleClass="Largura80px AlignCenter" >
+							<f:facet name="header">
+								<h:outputText value="#{msg.selecione}"/>
+							</f:facet>
+							<h:selectBooleanCheckbox value="#{status.selecionado}" styleClass="Margin0px">
+								<a4j:ajax event="change" render="@this" status="modalStatus"/>
+							</h:selectBooleanCheckbox>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="Status"/>
+							</f:facet>
+							<h:outputText value="#{status.descricao}" />
+						</rich:column>
+					</rich:dataTable>
+				</rich:tab>
+				<rich:tab header="#{msg.data}">
+					<div class="Altura25px">
+						<div class="FloatLeft MarginTop3px Largura125px">
+							<h:outputText value="#{msg.dataInicial}" styleClass="TituloDeCampo"/>
+						</div>
+						<div class="FloatLeft Largura160px">
+							<rich:calendar value="#{mbCteTerceiros.filtroCTe.dataInicial}" locale="PT" datePattern="dd/MM/yyyy HH:mm:ss" 
+								showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll"
+								buttonClass="BotaoImagemSemMarginTop" inputClass="Largura125px">
+								<a4j:ajax event="hide" render="@this" status="modalStatus"/>
+							</rich:calendar>
+						</div>
+						<div class="FloatLeft MarginTop3px Largura125px">
+							<h:outputText value="#{msg.dataFinal}" styleClass="TituloDeCampo MarginLeft10px"/>
+						</div>
+						<div class="FloatLeft Largura160px">
+							<rich:calendar value="#{mbCteTerceiros.filtroCTe.dataFinal}" locale="PT" datePattern="dd/MM/yyyy HH:mm:ss"
+								showApplyButton="false" showWeeksBar="false" showFooter="false" boundaryDatesMode="scroll"
+								buttonClass="BotaoImagemSemMarginTop" inputClass="Largura125px">
+								<a4j:ajax event="hide" render="@this" status="modalStatus"/>
+							</rich:calendar>
+						</div>
+					</div>
+				</rich:tab>
+				<rich:tab header="#{msg.numeroDeDocumento}">
+					<div class="Altura25px">
+						<div class="FloatLeft MarginTop3px Largura125px">
+							<h:outputText value="#{msg.documentoInicial}" styleClass="TituloDeCampo"/>
+						</div>
+						<div class="FloatLeft Largura160px">
+							<h:inputText value="#{mbCteTerceiros.filtroCTe.documentoInicial}" styleClass="Campo Largura120px MarginTop1px" 
+								onkeypress="Mascara(this, Integer)" onkeydown="Mascara(this, Integer)" onkeyup="Mascara(this, Integer)" maxlength="9">
+								<a4j:ajax event="change" render="@this" status="modalStatus"/>
+							</h:inputText>
+						</div>
+						<div class="FloatLeft MarginTop3px Largura125px">
+							<h:outputText value="#{msg.documentoFinal}" styleClass="TituloDeCampo MarginLeft10px"/>
+						</div>
+						<div class="FloatLeft Largura160px">
+							<h:inputText value="#{mbCteTerceiros.filtroCTe.documentoFinal}" styleClass="Campo Largura120px MarginTop1px"
+								onkeypress="Mascara(this, Integer)" onkeydown="Mascara(this, Integer)" onkeyup="Mascara(this, Integer)" maxlength="9">
+								<a4j:ajax event="change" render="@this" status="modalStatus"/>
+							</h:inputText>
+						</div>
+					</div>
+				</rich:tab>
+				<rich:tab header="#{msg.numeroDeSerie}">
+					<div class="Altura25px">
+						<div class="FloatLeft MarginTop3px Largura125px">
+							<h:outputText value="#{msg.numeroDeSerie}" styleClass="TituloDeCampo"/>
+						</div>
+						<div class="FloatLeft Largura160px">
+							<h:inputText value="#{mbCteTerceiros.filtroCTe.numeroDeSerie}" styleClass="Campo Largura50px MarginTop1px"
+								onkeypress="Mascara(this, Integer)" onkeydown="Mascara(this, Integer)" onkeyup="Mascara(this, Integer)" maxlength="3">
+								<a4j:ajax event="change" render="@this" status="modalStatus"/>
+							</h:inputText>
+						</div>
+					</div>
+				</rich:tab>
+				<rich:tab header="#{msg.uf}">
+				<h:panelGroup layout="block" styleClass="Altura150px OverflowAuto">
+					<rich:dataTable value="#{mbCteTerceiros.listaDeFiltroUF}" var="uf" styleClass="Largura100pc">
+						<rich:column styleClass="Largura80px AlignCenter">
+							<f:facet name="header">
+								<h:outputText value="#{msg.selecione}" />
+							</f:facet>
+							<h:selectBooleanCheckbox id="sel" value="#{uf.selecionado}">
+								<a4j:ajax event="change" render="@this" status="modalStatus"/>
+							</h:selectBooleanCheckbox>
+						</rich:column>
+						<rich:column>
+							<f:facet name="header">
+								<h:outputText value="#{msg.estado}" />
+							</f:facet>
+							<h:outputText value="#{uf.descricao}" />
+						</rich:column>
+					</rich:dataTable>
+					</h:panelGroup>
+				</rich:tab>
+				<rich:tab header="#{msg.cnpjEmitente}" id="tabCNPJ">
+					<div class="Altura25px">
+						<div class="FloatLeft MarginTop2px Largura125px">
+							<h:outputText value="#{msg.cnpjEmitente}" styleClass="TituloDeCampo"/>
+						</div>
+						<div class="FloatLeft Largura160px">
+							<h:inputText value="#{mbCteTerceiros.filtroCTe.cnpjEmitente}" id="cnpj" styleClass="Campo Largura120px MarginTop1px"
+								onkeypress="Mascara(this, Integer)" onkeydown="Mascara(this, Integer)" onkeyup="Mascara(this, Integer)" maxlength="14">
+								<a4j:ajax event="change" render="@this" status="modalStatus"/>
+							</h:inputText>
+						</div>						
+					</div>
+				</rich:tab>
+			</rich:tabPanel>
+			<h:panelGrid columns="2">
+				<a4j:commandButton value="#{msg.botaoFiltrar}" onclick="clickFiltrar()" styleClass="BotaoTexto Largura50px" status="modalStatus"/>
+				<h:commandButton value="#{msg.botaoVoltar}" onclick="#{rich:component('filtro')}.hide(); return false;" styleClass="BotaoTexto Largura50px"/>
+			</h:panelGrid>
+			<a4j:jsFunction name="clickFiltrar" actionListener="#{mbCteTerceiros.filtrar}" status="modalStatus" 
+				render="tableCteTerceiros tabFiltro mensagemListaVazia controle" execute="formFiltro" oncomplete="#{rich:component('filtro')}.hide();"/>
+		</h:form>
+	</rich:popupPanel>
+</ui:composition>

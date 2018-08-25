@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	<ui:composition>
+		<div class="Altura38px MarginLeft10px MarginTop5px MarginBottom5px">
+			<div class="GrupoTituloCampo">
+				<h:outputText value="#{msg.chaveDeAcessoASerSubstituido}" styleClass="TituloDeCampo"/>
+				<br />
+				<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.infCteSub.chCte}" styleClass="Campo Largura370px" readonly="true"/>
+			</div>
+		</div>
+		<rich:tabPanel switchType="client">
+			<rich:tab header="#{msg.informacoesAdicionais}" styleClass="Largura980px Altura145px">
+				<ui:include src="/pages/painel/cte/informacoesAdicionais/abaInformacoesAdicionais.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.tomadorContribuinteICMS}" styleClass="Largura980px Altura100px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.infCteSub.tomaICMS != null}">
+				<ui:include src="/pages/painel/cte/informacoesAdicionais/abaTomadorContribuinteICMS.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.tomadorNaoContribuinteICMS}" styleClass="Largura980px Altura60px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.infCteSub.tomaNaoICMS != null}">
+				<ui:include src="/pages/painel/cte/informacoesAdicionais/abaTomadorNaoContribuinteICMS.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.cteComplementado}" styleClass="Largura980px Altura340px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCteComp != null}">
+				<ui:include src="/pages/painel/cte/informacoesAdicionais/abaCTeComplementado.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.cteAnulacaoDeValores}" styleClass="Largura980px Altura60px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCteAnu != null}">
+				<ui:include src="/pages/painel/cte/informacoesAdicionais/abaCTeAnulacaoValores.xhtml"/>
+			</rich:tab>
+		</rich:tabPanel>
+	</ui:composition>
+</html>
+                

@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    
+	<h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+	
+    	<rich:popupPanel modal="true" id="modalListaNCM" autosized="true" resizeable="false" moveable="false" domElementAttachment="form" 
+			styleClass="OverflowHidden Largura700px FundoBranco" onbeforeshow="renderBodyOfListaDeNcm(); reSize();" 
+			onshow="disableInputsFormPrincipal(); reSize(); mudaFocus('listaDeNcm:genero');" 
+			onhide="enableInputsFormPrincipal();">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.listaNCM}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton id="fecharModalNcm" image="/resources/images/png/close.png" oncomplete="#{rich:component('modalListaNCM')}.hide()" 
+					action="#{mbMaterial.processClean}" styleClass="BotaoFechar TabWalk" immediate="true" execute="@this" render="barraDeScrollNCM"/>
+			</f:facet>
+			
+			<rich:dataTable id="listaDeNcm" var="ncm" value="#{mbMaterial.listaDeNcm}" rows="5" onrowmouseover="className='SelecionaLinha'" rowKeyVar="rowKey"
+				onrowmouseout="className=''" onrowdblclick="selecionarNCM(#{rowKey})" noDataLabel="#{msg.listaNcmVazia}" styleClass="Largura100pc">
+				
+				<rich:column styleClass="AlignCenter" headerClass="Largura80px" sortOrder="#{mbMaterial.orderModalNcm.mapColumnOrder['Genero'].sortOrder}"
+					filterExpression="#{fn:containsIgnoreCase(ncm.genero, mbMaterial.modalNCMFilter.mapColumnFilter['Genero'].filterBy)}" sortBy="#{ncm.genero}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.genero}"/>
+						<table:orderArrow action="#{mbMaterial.orderModalNcm.mapColumnOrder['Genero'].sortBy}"
+							order="#{mbMaterial.orderModalNcm.mapColumnOrder['Genero'].sortOrder}" render="listaDeNcm"/>
+						<br/>
+						<h:inputText id="genero" value="#{mbMaterial.modalNCMFilter.mapColumnFilter['Genero'].filterBy}" styleClass="Campo Largura60px" 
+							maxlength="2" tabindex="1" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+							onkeypress="Mascara(this, Integer);executeFilter(this,event)" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+							onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+							<a4j:ajax event="valueChange" render="barraDeScrollNCM" oncomplete="renderBodyOfListaDeNcm(); executeFilter(this,event);" 
+								execute="@this" status="modalStatus"/>
+						</h:inputText>
+					</f:facet>
+					<h:outputText value="#{ncm.genero}"/>
+				</rich:column>
+					
+				<rich:column styleClass="AlignCenter" headerClass="Largura90px"
+					filterExpression="#{fn:containsIgnoreCase(ncm.codigo, mbMaterial.modalNCMFilter.mapColumnFilter['Codigo'].filterBy)}" 
+					sortBy="#{ncm.codigo}" sortOrder="#{mbMaterial.orderModalNcm.mapColumnOrder['Codigo'].sortOrder}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.codigo}"/>
+						<table:orderArrow action="#{mbMaterial.orderModalNcm.mapColumnOrder['Codigo'].sortBy}" 
+							order="#{mbMaterial.orderModalNcm.mapColumnOrder['Codigo'].sortOrder}" render="listaDeNcm"/>
+						<br/>
+						<h:inputText value="#{mbMaterial.modalNCMFilter.mapColumnFilter['Codigo'].filterBy}" styleClass="Campo Largura70px" maxlength="8" 
+							tabindex="2" id="filtroCodigoNcm" onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" 
+							onkeydown="Mascara(this, Integer);" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+							onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+							<a4j:ajax event="valueChange" render="barraDeScrollNCM" oncomplete="renderBodyOfListaDeNcm(); executeFilter(this,event);" 
+								execute="@this" status="modalStatus"/>
+						</h:inputText>
+					</f:facet>
+					<h:outputText value="#{ncm.codigo}"/>
+				</rich:column>
+					
+				<rich:column filterExpression="#{fn:containsIgnoreCase(ncm.descricao, mbMaterial.modalNCMFilter.mapColumnFilter['Descricao'].filterBy)}"
+					styleClass="AlignLeft Truncate" sortOrder="#{mbMaterial.orderModalNcm.mapColumnOrder['Descricao'].sortOrder}" sortBy="#{ncm.descricao}" 
+					headerClass="Largura480px">
+					<f:facet name="header">
+						<h:outputText value="#{msg.descricao}"/>
+						<table:orderArrow action="#{mbMaterial.orderModalNcm.mapColumnOrder['Descricao'].sortBy}" 
+							order="#{mbMaterial.orderModalNcm.mapColumnOrder['Descricao'].sortOrder}" render="listaDeNcm"/>
+						<br/>
+						<h:inputText id="desc" value="#{mbMaterial.modalNCMFilter.mapColumnFilter['Descricao'].filterBy}" styleClass="Campo Largura480px" 
+							maxlength="100" tabindex="3" onkeypress="executeFilter(this,event)">
+							<a4j:ajax event="valueChange" render="barraDeScrollNCM" oncomplete="renderBodyOfListaDeNcm();" execute="@this" status="modalStatus"/>
+						</h:inputText>
+					</f:facet>
+					<h:outputText value="#{ncm.descricao}" title="#{ncm.descricao}"/>
+				</rich:column>
+				
+			</rich:dataTable>
+				
+			<table:scroller for="listaDeNcm" idPanelScroller="barraDeScrollNCM" maxPages="4" panelStyleClass="Scroller100pc" 
+				pageNumber="#{mbMaterial.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbMaterial.listaDeNcm}" 
+				totalRegistros="#{mbMaterial.quantidadeRegistrosNcm}" />
+			
+			<a4j:jsFunction name="selecionarNCM" status="modalStatus" render="linhaNCMMaterial jQueryNCM barraDeScrollNCM"
+				oncomplete="#{rich:component('modalListaNCM')}.hide(); return false;">
+				<a4j:param name="idNcmSelecionado" assignTo="#{mbMaterial.linhaSelecionada}" />
+				<a4j:actionListener listener="#{mbMaterial.selecionaNcm}" />
+			</a4j:jsFunction>
+			
+			<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+			<a4j:jsFunction name="renderBodyOfListaDeNcm" status="modalStatus" render="listaDeNcm@body" oncomplete="reSize();"/>
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

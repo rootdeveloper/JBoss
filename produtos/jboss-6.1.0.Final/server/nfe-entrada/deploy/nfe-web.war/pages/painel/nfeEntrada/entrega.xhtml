@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<div class="Linha980x38 ">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_cnpj}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.entrega.cnpj}" styleClass="Campo Largura120px" 
+				readonly="true" converter="cnpjConverter"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_logradouro}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.entrega.xLgr}" styleClass="Campo Largura685px" 
+				readonly="true"/>
+		</div>
+	</div>
+	
+	<div class="Linha980x38 ">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_numero}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.entrega.nro}" styleClass="Campo Largura815px" 
+				readonly="true"/>
+		</div>
+	</div>
+	
+	<div class="Linha980x38 ">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_complemento}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.entrega.xCpl}" styleClass="Campo Largura815px" 
+				readonly="true"/>
+		</div>
+	</div>
+	
+	<div class="Linha980x38 ">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_bairro}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.entrega.xBairro}" styleClass="Campo Largura815px" 
+				readonly="true"/>
+		</div>
+		
+	</div>
+	
+	<div class="Linha980x38 ">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_codigoDoMunicipio}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.entrega.cMun}" styleClass="Campo Largura90px" 
+				readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo ">
+			<h:outputText value="#{msg.lbl_municipio}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.entrega.xMun}" styleClass="Campo Largura670px" 
+				readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo ">
+			<h:outputText value="#{msg.lbl_uf}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.nfeEntrada.infNFe.entrega.uf}" styleClass="Campo Largura30px" 
+				readonly="true"/>
+		</div>
+	</div>
+	
+</ui:composition>

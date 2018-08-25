@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:composition>
+		<h:panelGroup layout="block" id="divVeicNovos">
+			<a4j:repeat value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.veicNovos}" var="veicNovos" rows="1" id="veiculosNovos">
+				<fieldset class="Fieldset680x100BaseQuadrada">
+					<legend class="TituloDeCampo">#{msg.informacoes}</legend>
+					<div class="Linha660x38 MarginLeft5px MarginTop5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.chassiDoveiculo}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{veicNovos.chassi}" styleClass="Campo Largura200px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.codigoMarcaModelo}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{veicNovos.cMod}" styleClass="Campo Largura150px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.freteDoVeiculo}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{veicNovos.vFrete}" styleClass="Campo Largura130px" readonly="true" converter="valorMonetarioSefazConverter"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.corDoVeiculo}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{veicNovos.cCor}" styleClass="Campo Largura100px" readonly="true" />
+						</div>
+					</div>
+					<div class="Linha660x38 MarginLeft5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.descricaoDaCor}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{veicNovos.xCor}" styleClass="Campo Largura460px" readonly="true" />
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.valorUnitarioDoVeiculo}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{veicNovos.vUnit}" styleClass="Campo Largura170px" converter="valorMonetarioSefazConverter" readonly="true" />
+						</div>
+					</div>
+				</fieldset>
+			</a4j:repeat>
+		
+			<h:panelGroup id="controleVeiculosNovos" styleClass="Scroller MarginLeft2px Largura680px" layout="block">
+				<rich:dataScroller id="scrollVeiculosNovos" for="veiculosNovos" maxPages="12" fastControls="hide" render="scrollVeiculosNovos divVeicNovos">
+					<f:facet name="first">
+	                    <h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll"/>
+	                </f:facet>
+	                <f:facet name="last">
+	                    <h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll"/>
+	                </f:facet>
+	                <f:facet name="previous">
+	                    <h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll"/>
+	                </f:facet>
+	                <f:facet name="next">
+	                    <h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+	                </f:facet>
+				</rich:dataScroller>
+			</h:panelGroup>
+		</h:panelGroup>
+	
+	</ui:composition>
+</html>

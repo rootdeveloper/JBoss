@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<h:form prependId="false" onkeypress="return bloqueioEnter(event);" >
+	
+   	<rich:popupPanel modal="true" id="modalListaTipoServico" autosized="true" resizeable="false" moveable="false" onbeforeshow="renderBodyOfListaTipoServico();"
+   		domElementAttachment="form" styleClass="OverflowHidden Largura700px FundoBranco" onshow="reSize(); mudaFocus('listaDeTipoServico:codigo');">
+		
+		<f:facet name="header">
+			<h:outputText value="#{msg.listaDeServico}" />
+		</f:facet>
+		
+		<f:facet name="controls">
+			<a4j:commandButton image="/resources/images/png/close.png" action="#{mbAliquota.processClean}" execute="@this"
+				styleClass="BotaoFechar TabWalk" oncomplete="#{rich:component('modalListaTipoServico')}.hide(); return false;"/>
+		</f:facet>
+		
+		<rich:dataTable id="listaDeTipoServico" var="tipoServico" value="#{mbAliquota.listaTipoServico}" rows="5"
+			styleClass="Largura100pc" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" rowKeyVar="rowKey"
+			onrowdblclick="selecionarTipoServico(#{rowKey})" noDataLabel="#{msg.listaTipoServicoVazia}">
+
+			<rich:column styleClass="AlignCenter" headerClass="Largura80px" 
+				filterExpression="#{fn:containsIgnoreCase(tipoServico.codigo, mbAliquota.columnFilter.mapColumnFilter['Codigo'].filterBy)}" 
+				sortBy="#{tipoServico.codigo}" sortOrder="#{mbAliquota.columnOrder.mapColumnOrder['Codigo'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigo}"/>
+		            <table:orderArrow action="#{mbAliquota.columnOrder.mapColumnOrder['Codigo'].sortBy}" 
+		            	order="#{mbAliquota.columnOrder.mapColumnOrder['Codigo'].sortOrder}" render="listaDeTipoServico"/>
+					<br/>
+					<h:inputText value="#{mbAliquota.columnFilter.mapColumnFilter['Codigo'].filterBy}" styleClass="Campo Largura60px" maxlength="4"
+						tabindex="1" onkeypress="executeFilter(this,event)" id="codigo">
+						<a4j:ajax event="valueChange" render="barraDeScrollTipoServico" oncomplete="renderBodyOfListaTipoServico();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{tipoServico.codigo}"/>
+			</rich:column>
+
+			<rich:column styleClass="AlignLeft Truncate Largura540px" 
+				filterExpression="#{fn:containsIgnoreCase(tipoServico.descricao, mbAliquota.columnFilter.mapColumnFilter['Descricao'].filterBy)}"
+				sortBy="#{tipoServico.descricao}" sortOrder="#{mbAliquota.columnOrder.mapColumnOrder['Descricao'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricao}"/>
+		            <table:orderArrow action="#{mbAliquota.columnOrder.mapColumnOrder['Descricao'].sortBy}" order="#{mbAliquota.columnOrder.mapColumnOrder['Descricao'].sortOrder}" 
+		            	render="listaDeTipoServico"/>
+					<br/>
+					<h:inputText value="#{mbAliquota.columnFilter.mapColumnFilter['Descricao'].filterBy}" styleClass="Campo Largura500px" maxlength="60"
+						tabindex="2" onkeypress="executeFilter(this,event)" id="descricao">
+						<a4j:ajax event="valueChange" render="barraDeScrollTipoServico" oncomplete="renderBodyOfListaTipoServico();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{tipoServico.descricao}" title="#{tipoServico.descricao}"/>
+			</rich:column>
+		</rich:dataTable>
+
+		<table:scroller for="listaDeTipoServico" idPanelScroller="barraDeScrollTipoServico" maxPages="4" pageNumber="#{mbAliquota.scrollerPageNumberTipoServico}"
+			panelStyleClass="Scroller100pc" renderedTotalRegistros="#{not empty mbAliquota.listaTipoServico}"
+			totalRegistros="#{mbAliquota.quantidadeRegistrosTipoServico}"/>
+
+		<a4j:jsFunction name="selecionarTipoServico" status="modalStatus" render="descricaoIss jQueryTipoServico"
+			oncomplete="#{rich:component('modalListaTipoServico')}.hide(); return false;" action="#{mbAliquota.selecionaTipoServico}">
+			<a4j:param name="idTipoServicoSelecionado" assignTo="#{mbAliquota.linhaSelecionadaTipoServico}" />
+		</a4j:jsFunction>
+
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve
+			renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderBodyOfListaTipoServico" render="listaDeTipoServico@body" oncomplete="reSize();"/>
+	</rich:popupPanel>
+	</h:form>
+</ui:composition>

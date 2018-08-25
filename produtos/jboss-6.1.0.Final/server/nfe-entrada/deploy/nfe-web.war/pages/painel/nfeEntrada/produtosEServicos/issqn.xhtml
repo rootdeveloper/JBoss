@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+       
+	<div class="Linha660x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_valorDaBcDoIssqn}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.issqn.vBc}" 
+				styleClass="Campo Largura200px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_aliquotaDoIssqn}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.issqn.vAliq}" 
+				styleClass="Campo Largura192px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_valor}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.issqn.vIssqn}" 
+				styleClass="Campo Largura200px TextAlignRight" readonly="true"/>
+		</div>
+	</div>
+	<div class="Linha660x38">
+			<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_codigoDoMunicipioDoIssqn}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.issqn.cMunFG}" 
+				styleClass="Campo Largura200px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_itemDaListaDeServico}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.issqn.cListServ}" 
+				styleClass="Campo Largura192px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_codigoTributacaoDoIssqn}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.issqn.cSitTrib}" 
+				styleClass="Campo Largura200px TextAlignRight" readonly="true" converter="codSitIssqnConverter"/>
+		</div>
+	</div>		
+</ui:composition>

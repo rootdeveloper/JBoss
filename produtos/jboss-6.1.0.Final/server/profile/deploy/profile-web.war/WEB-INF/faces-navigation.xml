@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<faces-config metadata-complete="false" version="2.0"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+	<navigation-rule>
+		<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/home.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listaSistema</from-outcome>
+			<to-view-id>/pages/sistema/listaSistema.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listaPerfil</from-outcome>
+			<to-view-id>/pages/perfil/listaPerfil.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listaEmpresa</from-outcome>
+			<to-view-id>/pages/empresa/listaEmpresa.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>listaUsuario</from-outcome>
+			<to-view-id>/pages/usuario/listaUsuario.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>alterarSenha</from-outcome>
+			<to-view-id>/pages/usuario/alterarSenhaUsuarios.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroParametroSistema</from-outcome>
+			<to-view-id>/pages/parametros/cadastroParametroSistema.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- PERFIL -->
+	<navigation-rule>
+		<from-view-id>/pages/perfil/listaPerfil.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastroPerfil</from-outcome>
+			<to-view-id>/pages/perfil/cadastroPerfil.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/pages/perfil/cadastroPerfil.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/perfil/listaPerfil.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- USUARIO -->
+	<navigation-rule>
+		<from-view-id>/pages/usuario/listaUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastroUsuario</from-outcome>
+			<to-view-id>/pages/usuario/cadastroUsuario.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/pages/usuario/cadastroUsuario.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/usuario/listaUsuario.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<!-- SISTEMA -->
+	<navigation-rule>
+		<from-view-id>/pages/sistema/listaSistema.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>cadastroSistema</from-outcome>
+			<to-view-id>/pages/sistema/cadastroSistema.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/pages/sistema/cadastroSistema.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>voltar</from-outcome>
+			<to-view-id>/pages/sistema/listaSistema.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

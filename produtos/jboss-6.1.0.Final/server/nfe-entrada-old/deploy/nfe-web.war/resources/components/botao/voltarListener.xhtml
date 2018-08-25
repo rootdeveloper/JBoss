@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+    
+    <composite:interface>
+	    <composite:attribute name="actionListener" shortDescription="ActionListener do botão" method-signature="java.lang.Void actionListener()" />
+	    <composite:attribute name="render" shortDescription="Componentes a serem renderizados ao acionar o botão" />
+	    <composite:attribute name="paramValue" shortDescription="Valor passado como parâmetro de requisição com o nome de acaoBotao" />
+   		<composite:attribute name="buttonStyle" shortDescription="Estilo adicional para o botão" />
+    </composite:interface>
+    
+    <composite:implementation>
+		
+		<a4j:commandLink status="modalStatus" title="#{msg.titleVoltar}" execute="@this" actionListener="#{cc.attrs.actionListener}" render="#{cc.attrs.render}">
+			<f:param name="acaoBotao" value="#{cc.attrs.paramValue}" />
+			<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="#{msg.titleVoltar}" styleClass="BotaoImagem" width="26px" height="18px" />
+		</a4j:commandLink>
+
+    </composite:implementation>    
+</html>

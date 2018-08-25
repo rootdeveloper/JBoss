@@ -1,0 +1,155 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroParametrosGerais}"/>
+	</ui:define>
+	
+	<ui:define name="content">
+		<util:modalInformativo mensagemInformativo="#{mbParametrosGerais.mensagem}" nomePainel="modalInformativo" render="panel, painelWebServiceIntegracao, erros, header-content, painelConjuntoEmpresa" tituloModal="#{msg.mensagem}"/>
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left" >
+				<a4j:commandLink actionListener="#{mbParametrosGerais.salvar}" render="modalInformativo, erros, panel, painelWebServiceIntegracao, painelParametrosGerais, header-content, painelConjuntoEmpresa" oncomplete="#{mbParametrosGerais.renderizarModalInformativo} ? #{rich:component('modalInformativo')}.show() : ''" title="#{msg.titleSalvar}" status="modalStatus">
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="apagar" styleClass="BotaoImagem"/>
+					<f:param name="acao" value="Salvar"/>
+				</a4j:commandLink>
+				<h:commandButton action="#{mbParametrosGerais.voltar}" image="#{resource['images/png:voltar.png']}" immediate="true" styleClass="BotaoImagem" title="#{msg.titleVoltar}"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		<rich:tabPanel switchType="client">
+			<rich:tab header="#{msg.menuParametrosGerais}">
+				<h:panelGroup id="painelParametrosGerais" layout="block" styleClass="MarginTop10px MarginLeft10px">
+					<div class="Linha990x25">
+						<div class="PositionRelativeFloatLeft Largura190px MarginTop2px">
+							<h:outputText value="#{msg.aliasDoCertificado}" styleClass="TituloDeCampo"/>
+						</div>
+						<div class="PositionRelativeFloatLeft">
+							<h:inputText id="alias" value="#{mbParametrosGerais.parametroSistema.properties['ALIAS_CERT']}" styleClass="Campo Largura220px" maxlength="30"/>
+						</div>
+						<div class="PositionRelativeFloatLeft">
+							<h:outputText value="*" styleClass="MarginLeft5px"/>
+						</div>
+					</div>
+					<div class="Linha990x25">
+						<div class="PositionRelativeFloatLeft Largura190px MarginTop2px">
+							<h:outputText value="#{msg.senhaDoCertificado}" styleClass="TituloDeCampo"/>
+						</div>
+						<div class="PositionRelativeFloatLeft">
+							<h:inputSecret id="senha" value="#{mbParametrosGerais.parametroSistema.properties['SENHA_CERT']}" styleClass="Campo Largura220px" redisplay="true" maxlength="30"/>
+						</div>
+						<div class="PositionRelativeFloatLeft">
+							<h:outputText value="*" styleClass="MarginLeft5px"/>
+						</div>
+					</div>
+					<div class="Linha990x25">
+						<div class="PositionRelativeFloatLeft Largura190px MarginTop2px">
+							<h:outputText value="#{msg.caminhoDoCertificado}" styleClass="TituloDeCampo"/>
+						</div>
+						<div class="PositionRelativeFloatLeft">
+							<h:inputText id="caminho" value="#{mbParametrosGerais.parametroSistema.properties['PATH_CHAVE']}" styleClass="Campo Largura430px" maxlength="60"/>
+						</div>
+						<div class="PositionRelativeFloatLeft">
+							<h:outputText value="*" styleClass="MarginLeft5px"/>
+						</div>
+					</div>
+					<div class="Linha990x25">
+						<div class="PositionRelativeFloatLeft Largura190px MarginTop2px">
+							<h:outputText value="#{msg.emailDoAdministrador}" styleClass="TituloDeCampo"/>
+						</div>
+						<div class="PositionRelativeFloatLeft">
+							<h:inputText id="email" value="#{mbParametrosGerais.parametroSistema.properties['EMAIL_ADMIN']}" styleClass="Campo Largura430px" maxlength="60"/>
+						</div>
+						<div class="PositionRelativeFloatLeft">
+							<h:outputText value="*" styleClass="MarginLeft5px"/>
+						</div>
+					</div>
+					<div class="Linha990x25">
+						<div class="PositionRelativeFloatLeft Largura190px MarginTop2px">
+							<h:outputText value="#{msg.notificarAdministrador}" styleClass="TituloDeCampo"/>
+						</div>
+						<div class="PositionRelativeFloatLeft">
+							<h:selectOneMenu value="#{mbParametrosGerais.parametroSistema.properties['NOTIFICAR_ADMIN']}" styleClass="ComboField">
+								<f:selectItem itemValue="Sim" itemLabel="#{msg.sim}"/>
+								<f:selectItem itemValue="Nao" itemLabel="#{msg.nao}"/>
+							</h:selectOneMenu>
+						</div>
+						<div class="PositionRelativeFloatLeft">
+							<h:outputText value="*" styleClass="MarginLeft5px"/>
+						</div>
+					</div>
+					<div class="Largura980px PositionRelativeFloatLeft MarginTop5px">
+						<div class="PositionRelativeFloatLeft">
+							<h:outputText value="* #{msg.camposObrigatorios}"/>
+						</div>
+					</div>
+				</h:panelGroup>
+			</rich:tab>
+			<rich:tab header="#{msg.webServiceIntegracao}" id="formWS">
+				<h:panelGroup id="panel">
+					<h:panelGroup layout="block" styleClass="Linha940x30 MarginTop10px MarginLeft10px">
+						<div class="Largura80px PositionRelativeFloatLeft MarginTop3px">
+							<h:outputText value="#{msg.webservice}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:selectOneMenu value="#{mbParametrosGerais.webServiceIntegracao.tipoServicoIntegracao}" converter="genericEnumConverter" styleClass="ComboField MarginLeft10px PositionRelativeFloatLeft">
+							<f:selectItems value="#{mbParametrosGerais.tipoWSIntegracao}" var="servico" itemLabel="#{servico.nome}"/>
+						</h:selectOneMenu>
+					</h:panelGroup>
+					<h:panelGroup layout="block" styleClass="Linha940x30 MarginLeft10px">
+						<div class="Largura80px PositionRelativeFloatLeft MarginTop3px ">
+							<h:outputText value="#{msg.versaoXsd}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText value="#{mbParametrosGerais.webServiceIntegracao.versaoXSD}" styleClass="Campo MarginLeft10px Largura50px" maxlength="5"/>
+						<h:outputText value="#{msg.caminhoXsd}" styleClass="TituloDeCampo MarginLeft10px"/>
+						<h:inputText value="#{mbParametrosGerais.webServiceIntegracao.caminhoXSD}" styleClass="Campo MarginLeft10px Largura500px" maxlength="60"/>
+						<a4j:commandButton actionListener="#{mbParametrosGerais.incluirWebServiceIntegracaoNaLista}" render="listaWSIntegracao, erros, formWS" status="ajaxStatus" styleClass="BotaoTexto Largura50px MarginLeft10px" value="#{mbParametrosGerais.numeroLinhaTabelaWS == -1 ? msg.botaoIncluir : msg.botaoAlterar}">
+							<f:param name="acao" value="IncluirLista"/>
+						</a4j:commandButton>
+					</h:panelGroup>
+				</h:panelGroup>
+				<h:panelGroup layout="block" id="listaWSIntegracao">
+					<div class="Largura940px PositionRelativeFloatLeft MarginLeft10px">
+						<rich:dataTable var="ws" value="#{mbParametrosGerais.listaWSIntegracao}" id="tabela" rows="10"
+							onrowmouseover="className='SelecionaLinha'" styleClass="Largura100pc MarginTop10px" onrowmouseout="className=''"
+							onrowdblclick="alterar('#{it.index}');" iterationStatusVar="it" noDataLabel="#{msg.listaWSIntegracaoVazia}">
+							<rich:column headerClass="Largura290px">
+								<f:facet name="header">
+									<h:outputText value="#{msg.webservice}" />
+								</f:facet>
+								<h:outputText value="#{ws.tipoServicoIntegracao.nome}" />
+							</rich:column>
+							<rich:column headerClass="Largura100px" styleClass="AlignCenter">
+								<f:facet name="header">
+									<h:outputText value="#{msg.versaoXsd}" />
+								</f:facet>
+								<h:outputText value="#{ws.versaoXSD}" />
+							</rich:column>
+							<rich:column styleClass="Truncate" headerClass="Largura300px">
+								<f:facet name="header">
+									<h:outputText value="#{msg.caminhoXsd}" />
+								</f:facet>
+								<h:outputText value="#{ws.caminhoXSD}" title="#{ws.caminhoXSD}"/>
+							</rich:column>
+						</rich:dataTable>
+						<div class="Scroller100pc Altura20px" />
+					</div>
+				</h:panelGroup>
+			</rich:tab>		
+		</rich:tabPanel>
+		<h:panelGroup layout="block" id="erros" styleClass="Largura980px PositionRelativeFloatLeft MarginLeft18px MarginBottom5px">
+			<h:outputText value="#{mbParametrosGerais.mensagemDeErro}" styleClass="MensagemDeErro" escape="false"/>
+			<div>
+				<h:outputText value="#{mbParametrosGerais.mensagemErroWS}" styleClass="MensagemDeErro" />
+			</div>
+		</h:panelGroup>
+		<a4j:jsFunction name="alterar" action="#{mbParametrosGerais.editarWebServiceIntegracao}" render="panel, painelWebServiceIntegracao, erros" status="modalStatus">
+			<a4j:param name="currentRow" assignTo="#{mbParametrosGerais.numeroLinhaTabelaWS}"/>
+			<f:param name="acao" value="IncluirLista"/>
+		</a4j:jsFunction>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:empresa="http://java.sun.com/jsf/composite/components/empresa"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputLabel value="#{msg.paginaCadastroSistema}" />
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<empresa:modalListaEmpresaNaoVinculada id="modalLista" nome="modalEmpresaNaoVinculada" idPainelErro="painelMensagemErro"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" action="voltar" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+		
+		<h:panelGroup id="cadastroSistema"> 
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.codigo}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="codigo" value="#{mbSistema.sistema.codigo}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					maxlength="60" tabindex="-1" readonly="true"/>
+			</h:panelGroup>
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.descricao}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="descricao" value="#{mbSistema.sistema.descricao}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					maxlength="60" tabindex="-1" readonly="true" />
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+			<rich:tab header="#{msg.empresa}" immediate="true" execute="@this">
+				<empresa:listaEmpresaVinculada idPainelErro="painelMensagemErro" renderizado="#{mbPermissao.vincularEmpresa}"/>
+			</rich:tab>
+		</rich:tabPanel>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="Largura980px PositionRelativeFloatLeft MarginLeft10px">
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+	</ui:define>
+	
+</ui:composition>

@@ -1,0 +1,67 @@
+2013-04-02 03:27:33,168 INFO  [com.arjuna.ats.arjuna] (Transaction Expired Entry Monitor) ARJUNA-12296 ExpiredEntryMonitor running at Ter, 2 Abr 2013 03:27:33
+2013-04-02 08:12:09,206 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-19) Server exit called, exiting the JVM now!
+2013-04-02 08:12:09,209 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2013-04-02 08:12:09,210 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-20) Stopping: JBossAS [6.1.0.Final "Neo"]
+2013-04-02 08:12:09,212 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-20) Pausing Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-02 08:12:09,213 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-20) Stopping Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-02 08:12:09,216 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-20) Pausing Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-02 08:12:09,217 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-20) Stopping Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-02 08:22:27,737 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-02 08:22:27,743 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-02 08:22:27,744 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:895ms
+2013-04-02 08:25:46,893 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-1) BEFORE: RESTORE_VIEW 1
+2013-04-02 08:25:46,920 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-1) AFTER: RESTORE_VIEW 1
+2013-04-02 08:25:46,920 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-1) BEFORE: RENDER_RESPONSE 6
+2013-04-02 08:25:47,044 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-1) AFTER: RENDER_RESPONSE 6
+2013-04-02 08:26:31,585 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-6) BEFORE: RESTORE_VIEW 1
+2013-04-02 08:26:31,594 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-6) AFTER: RESTORE_VIEW 1
+2013-04-02 08:26:31,594 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-6) BEFORE: RENDER_RESPONSE 6
+2013-04-02 08:26:31,644 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-6) AFTER: RENDER_RESPONSE 6
+2013-04-02 08:30:22,380 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-02 08:30:22,421 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-02 08:30:22,421 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:408ms
+2013-04-02 08:30:36,034 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) BEFORE: RESTORE_VIEW 1
+2013-04-02 08:30:36,060 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) AFTER: RESTORE_VIEW 1
+2013-04-02 08:30:36,060 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) BEFORE: RENDER_RESPONSE 6
+2013-04-02 08:30:36,208 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) AFTER: RENDER_RESPONSE 6
+2013-04-02 08:30:44,414 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-4) BEFORE: RESTORE_VIEW 1
+2013-04-02 08:30:44,416 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-4) AFTER: RESTORE_VIEW 1
+2013-04-02 08:30:44,416 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-4) BEFORE: RENDER_RESPONSE 6
+2013-04-02 08:30:44,427 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-4) AFTER: RENDER_RESPONSE 6
+2013-04-02 08:30:45,325 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-3) BEFORE: RESTORE_VIEW 1
+2013-04-02 08:30:45,326 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-3) AFTER: RESTORE_VIEW 1
+2013-04-02 08:30:45,326 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-3) BEFORE: RENDER_RESPONSE 6
+2013-04-02 08:30:45,334 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-3) AFTER: RENDER_RESPONSE 6
+2013-04-02 08:30:45,781 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-4) BEFORE: RESTORE_VIEW 1
+2013-04-02 08:30:45,782 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-4) AFTER: RESTORE_VIEW 1
+2013-04-02 08:30:45,782 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-4) BEFORE: RENDER_RESPONSE 6
+2013-04-02 08:30:45,793 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-4) AFTER: RENDER_RESPONSE 6
+2013-04-02 08:30:45,949 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-7) BEFORE: RESTORE_VIEW 1
+2013-04-02 08:30:45,950 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-7) AFTER: RESTORE_VIEW 1
+2013-04-02 08:30:45,950 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-7) BEFORE: RENDER_RESPONSE 6
+2013-04-02 08:30:45,957 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-7) AFTER: RENDER_RESPONSE 6
+2013-04-02 08:39:29,576 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-02 08:39:29,618 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-02 08:39:29,618 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:766ms
+2013-04-02 08:41:04,245 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) BEFORE: RESTORE_VIEW 1
+2013-04-02 08:41:04,271 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) AFTER: RESTORE_VIEW 1
+2013-04-02 08:41:04,271 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) BEFORE: RENDER_RESPONSE 6
+2013-04-02 08:41:04,427 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) AFTER: RENDER_RESPONSE 6
+2013-04-02 08:42:38,929 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-02 08:42:38,936 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-02 08:42:38,937 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:249ms
+2013-04-02 08:44:25,376 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) BEFORE: RESTORE_VIEW 1
+2013-04-02 08:44:25,403 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) AFTER: RESTORE_VIEW 1
+2013-04-02 08:44:25,403 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) BEFORE: RENDER_RESPONSE 6
+2013-04-02 08:44:25,555 INFO  [org.apache.catalina.core.ContainerBase.[jboss.web].[localhost].[/sso]] (http-localhost%2F127.0.0.1-8080-2) AFTER: RENDER_RESPONSE 6
+2013-04-02 08:51:22,610 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-24) Server exit called, exiting the JVM now!
+2013-04-02 08:51:22,613 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2013-04-02 08:51:22,614 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-25) Stopping: JBossAS [6.1.0.Final "Neo"]
+2013-04-02 08:51:22,616 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-25) Pausing Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-02 08:51:22,617 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-25) Stopping Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-02 08:51:22,620 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-25) Pausing Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-02 08:51:22,621 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-25) Stopping Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-02 08:52:08,491 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2013-04-02 08:52:08,516 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2013-04-02 08:52:08,516 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 38s:344ms
+2013-04-02 20:52:00,020 INFO  [com.arjuna.ats.arjuna] (Transaction Expired Entry Monitor) ARJUNA-12296 ExpiredEntryMonitor running at Ter, 2 Abr 2013 20:52:00

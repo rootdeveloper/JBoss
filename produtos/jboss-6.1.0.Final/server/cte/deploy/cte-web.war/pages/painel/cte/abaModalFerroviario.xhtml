@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	  
+	<ui:composition>
+		<rich:tabPanel switchType="client">
+			<rich:tab header="#{msg.informacoesFerroviario}" styleClass="AbasDetalhesCTe" >
+				<ui:include src="/pages/painel/cte/ferroviario/abaInformacoesFerroviario.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.informacoesDaDcl}" styleClass="Largura980px Altura430px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.dcl != null}">
+				<ui:include src="/pages/painel/cte/ferroviario/abaInformacoesDCL.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.informacoesDeDetalhesDosVagoes}" styleClass="Largura100pc Altura260px">
+				<ui:include src="/pages/painel/cte/ferroviario/abaInformacoesDeDetalhesDosVagoes.xhtml"/>
+			</rich:tab>
+		</rich:tabPanel>
+	</ui:composition>
+</html>

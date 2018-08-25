@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ServicoImportacaoCTeTerc" targetNamespace="http://www.dataprimer.com.br/cte" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.dataprimer.com.br/cte" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.dataprimer.com.br/cte" xmlns:tns="http://www.dataprimer.com.br/cte" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="cabec" nillable="true" type="xsd:string" />
+<xsd:element name="dados" nillable="true" type="xsd:string" />
+<xsd:element name="resposta" nillable="true" type="xsd:string" />
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="importaCTeTerceiroResponse">
+    <wsdl:part element="tns:resposta" name="resposta">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="importaCTeTerceiro">
+    <wsdl:part element="tns:cabec" name="cabec">
+    </wsdl:part>
+    <wsdl:part element="tns:dados" name="dados">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ServicoImportacaoCTeTerc">
+    <wsdl:operation name="importaCTeTerceiro">
+      <wsdl:input message="tns:importaCTeTerceiro" name="importaCTeTerceiro">
+    </wsdl:input>
+      <wsdl:output message="tns:importaCTeTerceiroResponse" name="importaCTeTerceiroResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicoImportacaoCTeTercSoapBinding" type="tns:ServicoImportacaoCTeTerc">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="importaCTeTerceiro">
+      <soap:operation soapAction="importaCTeTerceiro" style="document" />
+      <wsdl:input name="importaCTeTerceiro">
+        <soap:header message="tns:importaCTeTerceiro" part="cabec" use="literal">
+        </soap:header>
+        <soap:header message="tns:importaCTeTerceiro" part="dados" use="literal">
+        </soap:header>
+        <soap:body parts="" use="literal" />
+      </wsdl:input>
+      <wsdl:output name="importaCTeTerceiroResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicoImportacaoCTeTerc">
+    <wsdl:port binding="tns:ServicoImportacaoCTeTercSoapBinding" name="ServicoImportacaoCTeTercPort">
+      <soap:address location="http://B181548:8080/cte-ws/ServicoImportacaoCTeTerc/ServicoImportacaoCTeTerc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

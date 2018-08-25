@@ -1,0 +1,356 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroEmpresaFilial}"/>
+	</ui:define>
+	
+	 <ui:define name="content">
+	 
+ 		<util:modalInformativoVoltar mensagemInformativo="#{mbParametroEmpresaFilial.mensagemModal}" nomePainel="modalInformativo" tituloModal="#{msg.mensagem}" 
+		render="#{mbManual.renderizarModal}"/>
+	 
+		<rich:toolbar styleClass="BarraDeBotoesPainel" id="toolbarBotoes">
+			<rich:toolbarGroup location="left">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbParametroEmpresaFilial.salvar}" title="#{msg.titleSalvar}"
+				oncomplete="#{mbParametroEmpresaFilial.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''" 
+				execute="abaParametroGeral abaEntrada abaEmail" render="modalInformativo, painelMensagemErro">
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink>		
+				<a4j:commandLink status="modalStatus" action="voltar" title="#{msg.titleVoltar}" immediate="true">
+					<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+				</a4j:commandLink>
+			</rich:toolbarGroup>
+		</rich:toolbar>	
+		<div class="Linha980x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura130px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.codigoEmpresa}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="codigoEmpresa" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.codigoEmpresa}" tabindex="1" 
+				styleClass="Campo Largura40px PositionRelativeFloatLeft" readonly="true"/>
+		</div>
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura130px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.lbl_razaoSocial}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="razaoSocial" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.razaoSocial}" tabindex="2" 
+				styleClass="Campo Largura670px PositionRelativeFloatLeft" readonly="true"/>
+		</div>
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura130px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.descricao}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="descricao" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.descricaoFilial}" tabindex="3" 
+				styleClass="Campo Largura670px PositionRelativeFloatLeft" readonly="true" />
+		</div>		
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura130px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.codigoFilial}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="codigoFilial" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.codigoFilial}" tabindex="4" 
+				styleClass="Campo Largura80px PositionRelativeFloatLeft" readonly="true"/>
+		</div>		
+		
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura980px MarginBottom5px">
+			<h:panelGroup rendered="#{!mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.autenticacao}">
+				<h:outputText value="#{mbParametroEmpresaFilial.mensagemDeErroDeEmail}" styleClass="MensagemDeErro" escape="false"/>
+			</h:panelGroup>
+			<h:outputText value="#{mbParametroEmpresaFilial.mensagemDeErro}" styleClass="MensagemDeErro" escape="false"/>
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>		
+		
+		<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+			<rich:tab id="abaInformacoesJuridicas" header="#{msg.informacoesJuridicas}" immediate="true" execute="@this">
+				<div class="Linha980x30">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.lbl_cnpj}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="cnpj" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.cnpjEmpresa}" tabindex="5" 
+						styleClass="Campo Largura120px PositionRelativeFloatLeft" readonly="true"
+						converter="cnpjConverter"/>
+				</div>	
+				<div class="Linha980x30">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.lbl_ie}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="ie" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.inscricaoEstadual}" tabindex="6" 
+						styleClass="Campo Largura110px PositionRelativeFloatLeft" readonly="true"/>
+				</div>		
+				<div class="Linha980x30 MarginBottom5px">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="uf" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.uf}" tabindex="7" 
+						styleClass="Campo Largura25px PositionRelativeFloatLeft" readonly="true"/>
+				</div>								
+			</rich:tab>
+			<rich:tab id="abaParametroGeral" header="#{msg.parametroGeral}" immediate="true" execute="@this">
+				<div class="Linha100PCx30PX MarginBottom5px">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.caminhoDoCertificado}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="caminhoCertificado" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.certificado.caminhoCertificado}"
+						styleClass="Campo Largura830px PositionRelativeFloatLeft MarginTop6px" maxlength="120" tabindex="5"/>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft MarginTop4px"/>
+				</div>
+				<div class="Linha980x30 MarginBottom5px">
+					<div class="PositionRelativeFloatLeft Largura100px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.aliasDoCertificado}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="aliasCertificado" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.certificado.aliasCertificado}" tabindex="6" 
+						styleClass="Campo Largura340px PositionRelativeFloatLeft MarginTop6px MarginLeft20px" maxlength="30"/>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft MarginTop4px"/>
+				</div>	
+				<div class="Linha980x30 MarginBottom5px">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.senhaDoCertificado}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputSecret id="senhaCertificado" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.certificado.senhaCertificado}" tabindex="7" 
+						styleClass="Campo Largura340px PositionRelativeFloatLeft MarginTop6px MarginLeft10px" maxlength="30" redisplay="true"/>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft MarginTop4px"/>
+				</div>
+				<div class="Linha980x30 MarginBottom5px">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.emailAdm}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="ambienteSistema" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.email}" tabindex="8" 
+						styleClass="Campo Largura670px PositionRelativeFloatLeft MarginTop6px MarginLeft10px" maxlength="100" />
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft MarginTop4px"/>
+				</div>	
+				<div class="Linha980x30 MarginBottom5px">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.ambienteSistema}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:selectOneMenu id="ambiente" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.ambiente}" 
+						styleClass="ComboField PositionRelativeFloatLeft Largura110px MarginTop6px MarginLeft10px"
+						tabindex="9" onkeydown="blockBackSpace(event)" onkeyup="unblockBackSpace()">
+						<f:selectItems value="#{mbParametroEmpresaFilial.listaAmbienteEnum}" var="ambiente" itemLabel="#{ambiente.nomeAmbiente}"/>
+					</h:selectOneMenu>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft MarginTop4px"/>
+				</div>									
+				<div class="Linha980x30 MarginBottom5px">
+					<div class="PositionRelativeFloatLeft Largura115px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.quantidadeDeXmlVisualizados}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="qtdXml" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.qtdeVisualizacaoNF}" tabindex="10" 
+						styleClass="Campo Largura40px PositionRelativeFloatLeft MarginTop6px MarginLeft5px" maxlength="4"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);"
+						onkeydown="Mascara(this, Integer);" onfocus="origValue = this.value;"
+						onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="Mascara(this, Integer);"
+						onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft MarginTop4px"/>
+				</div>
+				<div class="Linha980x30 MarginBottom5px">
+					<div class="PositionRelativeFloatLeft Largura105px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.prazoDataLimite}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="prazo" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.prazoDataLimiteManifestacao}" tabindex="11" 
+						styleClass="Campo Largura40px PositionRelativeFloatLeft MarginTop6px MarginLeft15px" maxlength="3"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);"
+						onkeydown="Mascara(this, Integer);" onfocus="origValue = this.value;"
+						onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="Mascara(this, Integer);"
+						onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft MarginTop4px"/>
+				</div>
+				<div class="Linha980x30 MarginBottom5px">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.lbl_exibirManifAExpirarEmDias}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="exibiManifesExpirar" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.exibirManifestacaoExpirar}"
+						tabindex="12" styleClass="Campo Largura20px PositionRelativeFloatLeft MarginTop6px MarginLeft10px" maxlength="2"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);"
+						onkeydown="Mascara(this, Integer);" onfocus="origValue = this.value;"
+						onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="Mascara(this, Integer);"
+						onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft MarginTop4px"/>
+				</div>
+				<div class="Linha980x30 MarginBottom5px">
+					<div class="PositionRelativeFloatLeft Largura100px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.cienciaAutomatica}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:selectBooleanCheckbox value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.cienciaAutomatica}"
+						tabindex="13" styleClass="Padding0px MarginLeft20px MarginTop9px PositionRelativeFloatLeft"/>
+					<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft MarginTop8px"/>
+				</div>
+				<div class="Linha980x30 MarginBottom5px">
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.lbl_tempoMinimoConsDestMin}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="tempoMinConsDest" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.tempoMinimoConsultaDestinados}"
+						tabindex="14" styleClass="Campo Largura30px PositionRelativeFloatLeft MarginTop6px MarginLeft10px" maxlength="3"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);"
+						onkeydown="Mascara(this, Integer);" onfocus="origValue = this.value;"
+						onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="Mascara(this, Integer);"
+						onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+				</div>
+			</rich:tab>			
+			<rich:tab id="abaEntrada" header="#{msg.entrada}" immediate="true" execute="@this">
+				<fieldset class="MarginBottom10px MarginLeft10px Fieldset800x40">
+					<legend class="TituloDeCampo">#{msg.manifestacao}</legend>
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.manual}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="PositionRelativeFloatLeft Largura160px">
+						<h:selectOneMenu id="manifestacaoManual" value="#{mbParametroEmpresaFilial.mapaManuais['EVENTO_MANIFESTACAO']}"
+							styleClass="ComboField Largura130px" tabindex="5" converter="entityConverter">
+							<a4j:ajax event="valueChange" render="pacoteLiberacaoManifestacao painelMensagemErro" execute="@this"
+								listener="#{mbParametroEmpresaFilial.alteraMapaPacotes('EVENTO_MANIFESTACAO')}" status="modalStatus" oncomplete="reSize();"/>
+							<f:selectItems value="#{mbParametroEmpresaFilial.listaManualSelectItem}" />
+						</h:selectOneMenu>	
+					</div>						
+					<div class="PositionRelativeFloatLeft Largura140px MarginTop2px">
+						<h:outputText value="#{msg.pacoteLiberacao}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="PositionRelativeFloatLeft Largura320px">
+						<h:selectOneMenu id="pacoteLiberacaoManifestacao" value="#{mbParametroEmpresaFilial.mapaPacotes['EVENTO_MANIFESTACAO']}" 
+							styleClass="ComboField Largura305px" converter="entityConverter" tabindex="9" onkeydown="blockBackSpace(event)"
+							onkeyup="unblockBackSpace()" required="true" requiredMessage="#{msg.msgPacoteLiberacaoManifestacaoObrigatorio}">
+							<f:selectItems value="#{mbParametroEmpresaFilial.mapaListaPacotes['EVENTO_MANIFESTACAO']}" />
+						</h:selectOneMenu>
+					</div>	
+				</fieldset>	
+			</rich:tab>
+			<rich:tab id="abaSaida" header="#{msg.saida}" immediate="true" execute="@this" rendered="false">
+				<fieldset class="MarginBottom10px MarginLeft10px Fieldset800x40">
+					<legend class="TituloDeCampo">#{msg.nfe}</legend>
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.manual}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="PositionRelativeFloatLeft Largura160px">
+						<h:selectOneMenu id="nfeManual" value="#{mbParametroEmpresaFilial.mapaManuais['NFE']}"
+							styleClass="ComboField Largura130px" tabindex="5" converter="entityConverter">
+							<a4j:ajax event="valueChange" render="pacoteLiberacaoNfe painelMensagemErro" execute="@this"
+								listener="#{mbParametroEmpresaFilial.alteraMapaPacotes('NFE')}" status="modalStatus" oncomplete="reSize();"/>
+							<f:selectItems value="#{mbParametroEmpresaFilial.listaManualSelectItem}" />
+						</h:selectOneMenu>	
+					</div>						
+					<div class="PositionRelativeFloatLeft Largura140px MarginTop2px">
+						<h:outputText value="#{msg.pacoteLiberacao}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="PositionRelativeFloatLeft Largura320px">
+						<h:selectOneMenu id="pacoteLiberacaoNfe" value="#{mbParametroEmpresaFilial.mapaPacotes['NFE']}" 
+							styleClass="ComboField Largura305px" converter="entityConverter" tabindex="7" onkeydown="blockBackSpace(event)"
+							onkeyup="unblockBackSpace()" required="true" requiredMessage="#{msg.msgPacoteLiberacaoNFeObrigatorio}">
+							<f:selectItems value="#{mbParametroEmpresaFilial.mapaListaPacotes['NFE']}" />
+						</h:selectOneMenu>
+					</div>	
+				</fieldset>
+				<fieldset class="MarginBottom10px MarginLeft10px Fieldset800x40">
+					<legend class="TituloDeCampo">#{msg.cancelamento}</legend>
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.manual}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="PositionRelativeFloatLeft Largura160px">
+						<h:selectOneMenu id="cancelamentoManual" value="#{mbParametroEmpresaFilial.mapaManuais['EVENTO_CANCELAMENTO']}"
+							styleClass="ComboField Largura130px" tabindex="5" converter="entityConverter">
+							<a4j:ajax event="valueChange" render="pacoteLiberacaoCancelamento painelMensagemErro" execute="@this"
+								listener="#{mbParametroEmpresaFilial.alteraMapaPacotes('EVENTO_CANCELAMENTO')}" status="modalStatus" oncomplete="reSize();"/>
+							<f:selectItems value="#{mbParametroEmpresaFilial.listaManualSelectItem}" />
+						</h:selectOneMenu>	
+					</div>						
+					<div class="PositionRelativeFloatLeft Largura140px MarginTop2px">
+						<h:outputText value="#{msg.pacoteLiberacao}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="PositionRelativeFloatLeft Largura320px">
+						<h:selectOneMenu id="pacoteLiberacaoCancelamento" value="#{mbParametroEmpresaFilial.mapaPacotes['EVENTO_CANCELAMENTO']}" 
+							styleClass="ComboField Largura305px" converter="entityConverter" tabindex="11" onkeydown="blockBackSpace(event)"
+							onkeyup="unblockBackSpace()" required="true" requiredMessage="#{msg.msgPacoteLiberacaoCancelamentobrigatorio}">
+							<f:selectItems value="#{mbParametroEmpresaFilial.mapaListaPacotes['EVENTO_CANCELAMENTO']}" />
+						</h:selectOneMenu>
+					</div>	
+				</fieldset>
+				<fieldset class="MarginBottom10px MarginLeft10px Fieldset800x40">
+					<legend class="TituloDeCampo">#{msg.cce}</legend>
+					<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.manual}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="PositionRelativeFloatLeft Largura160px">
+						<h:selectOneMenu id="cceManual" value="#{mbParametroEmpresaFilial.mapaManuais['EVENTO_CCE']}"
+							styleClass="ComboField Largura130px" tabindex="5" converter="entityConverter">
+							<a4j:ajax event="valueChange" render="pacoteLiberacaoCce painelMensagemErro" execute="@this"
+								listener="#{mbParametroEmpresaFilial.alteraMapaPacotes('EVENTO_CCE')}" status="modalStatus" oncomplete="reSize();"/>
+							<f:selectItems value="#{mbParametroEmpresaFilial.listaManualSelectItem}" />
+						</h:selectOneMenu>	
+					</div>						
+					<div class="PositionRelativeFloatLeft Largura140px MarginTop2px">
+						<h:outputText value="#{msg.pacoteLiberacao}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="PositionRelativeFloatLeft Largura320px">
+						<h:selectOneMenu id="pacoteLiberacaoCce" value="#{mbParametroEmpresaFilial.mapaPacotes['EVENTO_CCE']}" 
+							styleClass="ComboField Largura305px" converter="entityConverter" tabindex="13" onkeydown="blockBackSpace(event)"
+							onkeyup="unblockBackSpace()" required="true" requiredMessage="#{msg.msgPacoteLiberacaoCCEObrigatorio}">
+							<f:selectItems value="#{mbParametroEmpresaFilial.mapaListaPacotes['EVENTO_CCE']}" />
+						</h:selectOneMenu>
+					</div>	
+				</fieldset>
+			</rich:tab>	
+			<rich:tab id="abaEmail" header="#{msg.envioDeEmail}" immediate="true" execute="@this">
+				<div class="Linha980x30">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.smtp}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="host" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.smtp}"
+						styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="100" 
+						required="#{mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.autenticacao}"
+						requiredMessage="#{msg.msgSmtpNaoPodeSerNulo}"/>
+				</div>
+				<div class="Linha980x30">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.email}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText id="email" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.email}"
+						styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="100"
+						required="#{mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.autenticacao}"
+						requiredMessage="#{msg.msgEmailNaoPodeSerNulo}"/>
+				</div>
+				<div class="Linha980x30">
+					<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+						<h:outputText value="#{msg.autenticacao}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:selectBooleanCheckbox value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.autenticacao}"
+						styleClass="Padding0px PositionRelativeFloatLeft">
+						<a4j:ajax event="click" render="camposAutenticacao @this" status="modalStatus" execute="@this"
+							listener="#{mbParametroEmpresaFilial.limpaAutenticacao}"/>
+					</h:selectBooleanCheckbox>
+				</div>
+				<h:panelGroup id="camposAutenticacao">
+					<h:panelGroup rendered="#{mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.autenticacao}">		
+						<div class="Linha980x30">
+							<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+								<h:outputText value="#{msg.senha}" styleClass="TituloDeCampo"/>
+							</div>
+							<h:inputSecret id="senha" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.senha}"
+								styleClass="Campo Largura190px PositionRelativeFloatLeft" maxlength="30" redisplay="true"
+								required="#{mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.autenticacao}"
+								requiredMessage="#{msg.msgSenhaNaoPodeSerNula}" />
+						</div>
+						<div class="Linha980x30">
+							<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+								<h:outputText value="#{msg.porta}" styleClass="TituloDeCampo"/>
+							</div>
+							<h:inputText id="porta" value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.porta}"
+								styleClass="Campo Largura40px PositionRelativeFloatLeft" maxlength="4"
+								required="#{mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.autenticacao}"
+								requiredMessage="#{msg.msgPortaNaoPodeSerNula}" />
+						</div>
+						<div class="Linha980x30">
+							<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+								<h:outputText value="#{msg.criptografia}" styleClass="TituloDeCampo"/>
+							</div>
+							<h:selectBooleanCheckbox value="#{mbParametroEmpresaFilial.parametroEmpresaFilial.dadosDeEnvioDeEmail.criptografia}"
+								styleClass="Padding0px PositionRelativeFloatLeft"/>
+						</div>	
+					</h:panelGroup>	
+				</h:panelGroup>
+			</rich:tab>	
+		</rich:tabPanel>		
+	 </ui:define>
+</ui:composition>

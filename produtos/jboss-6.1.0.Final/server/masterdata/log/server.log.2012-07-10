@@ -1,0 +1,1424 @@
+2012-07-10 08:14:21,505 INFO  [com.arjuna.ats.arjuna] (Transaction Expired Entry Monitor) ARJUNA-12296 ExpiredEntryMonitor running at Ter, 10 Jul 2012 08:14:21
+2012-07-10 08:28:58,348 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-287) Server exit called, exiting the JVM now!
+2012-07-10 08:28:58,489 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2012-07-10 08:28:58,491 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-288) Stopping: JBossAS [6.1.0.Final "Neo"]
+2012-07-10 08:28:58,626 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-288) Pausing Coyote HTTP/1.1 on http-0.0.0.0-8080
+2012-07-10 08:28:58,627 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-288) Stopping Coyote HTTP/1.1 on http-0.0.0.0-8080
+2012-07-10 08:28:58,633 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-288) Pausing Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2012-07-10 08:28:58,634 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-288) Stopping Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2012-07-10 09:23:33,815 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-0.0.0.0-8080
+2012-07-10 09:23:33,868 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2012-07-10 09:23:33,868 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 1m:6s:210ms
+2012-07-10 09:40:54,413 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-1) Buscando Filial por Status : Ativo
+2012-07-10 09:40:54,985 INFO  [STDOUT] (http-0.0.0.0-8080-1) Hibernate: 
+2012-07-10 09:40:54,985 INFO  [STDOUT] (http-0.0.0.0-8080-1)     select
+2012-07-10 09:40:54,985 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.ID as ID40_0_,
+2012-07-10 09:40:54,985 INFO  [STDOUT] (http-0.0.0.0-8080-1)         empresa1_.ID as ID26_1_,
+2012-07-10 09:40:54,985 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.IE as IE40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.IM as IM40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 09:40:54,986 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)     from
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)     inner join
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)     where
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)         and filial0_.STATUS=? 
+2012-07-10 09:40:54,987 INFO  [STDOUT] (http-0.0.0.0-8080-1)     order by
+2012-07-10 09:40:54,988 INFO  [STDOUT] (http-0.0.0.0-8080-1)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 09:40:55,097 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-1) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 09:40:55,159 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:40:55,159 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:40:58,742 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:40:58,742 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:41:03,768 INFO  [org.hibernate.validator.engine.resolver.DefaultTraversableResolver] (http-0.0.0.0-8080-3) Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+2012-07-10 09:41:19,782 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:41:19,782 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:41:32,655 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:41:32,655 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:42:32,592 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:42:32,592 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:43:06,997 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:43:06,997 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:45:27,550 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:45:27,550 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:45:31,245 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:45:31,245 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:47:01,170 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-6) Buscando Filial por Status : Ativo
+2012-07-10 09:47:01,179 INFO  [STDOUT] (http-0.0.0.0-8080-6) Hibernate: 
+2012-07-10 09:47:01,179 INFO  [STDOUT] (http-0.0.0.0-8080-6)     select
+2012-07-10 09:47:01,179 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ID as ID40_0_,
+2012-07-10 09:47:01,179 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.ID as ID26_1_,
+2012-07-10 09:47:01,179 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 09:47:01,179 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 09:47:01,179 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 09:47:01,179 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 09:47:01,179 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 09:47:01,179 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.IE as IE40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.IM as IM40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)     from
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)     inner join
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 09:47:01,180 INFO  [STDOUT] (http-0.0.0.0-8080-6)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 09:47:01,181 INFO  [STDOUT] (http-0.0.0.0-8080-6)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 09:47:01,181 INFO  [STDOUT] (http-0.0.0.0-8080-6)     where
+2012-07-10 09:47:01,181 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 09:47:01,181 INFO  [STDOUT] (http-0.0.0.0-8080-6)         and filial0_.STATUS=? 
+2012-07-10 09:47:01,181 INFO  [STDOUT] (http-0.0.0.0-8080-6)     order by
+2012-07-10 09:47:01,181 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 09:47:01,214 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-6) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 09:47:01,239 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:47:01,239 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:47:03,432 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:47:03,433 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:49:58,434 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:49:58,434 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:49:58,480 INFO  [javax.enterprise.resource.webcontainer.jsf.renderkit] (http-0.0.0.0-8080-2) AVISO: FacesMessage(s) foram enfileirados, mas podem não ter sido exibidos.
+sourceId=null[severity=(ERROR 2), summary=(Um ou mais recursos possuem o destino de 'body', mas nenhum componente de 'body' foi definido na exibição.), detail=(Um ou mais recursos possuem o destino de 'body', mas nenhum componente de 'body' foi definido na exibição.)]
+2012-07-10 09:49:58,533 INFO  [javax.enterprise.resource.webcontainer.jsf.renderkit] (http-0.0.0.0-8080-2) AVISO: FacesMessage(s) foram enfileirados, mas podem não ter sido exibidos.
+sourceId=null[severity=(ERROR 2), summary=(Um ou mais recursos possuem o destino de 'body', mas nenhum componente de 'body' foi definido na exibição.), detail=(Um ou mais recursos possuem o destino de 'body', mas nenhum componente de 'body' foi definido na exibição.)]
+2012-07-10 09:50:00,019 INFO  [javax.enterprise.resource.webcontainer.jsf.renderkit] (http-0.0.0.0-8080-3) AVISO: FacesMessage(s) foram enfileirados, mas podem não ter sido exibidos.
+sourceId=null[severity=(ERROR 2), summary=(Um ou mais recursos possuem o destino de 'body', mas nenhum componente de 'body' foi definido na exibição.), detail=(Um ou mais recursos possuem o destino de 'body', mas nenhum componente de 'body' foi definido na exibição.)]
+2012-07-10 09:50:01,756 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:50:01,756 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:50:01,770 INFO  [javax.enterprise.resource.webcontainer.jsf.renderkit] (http-0.0.0.0-8080-3) AVISO: FacesMessage(s) foram enfileirados, mas podem não ter sido exibidos.
+sourceId=null[severity=(ERROR 2), summary=(Um ou mais recursos possuem o destino de 'body', mas nenhum componente de 'body' foi definido na exibição.), detail=(Um ou mais recursos possuem o destino de 'body', mas nenhum componente de 'body' foi definido na exibição.)]
+2012-07-10 09:52:04,672 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:52:04,672 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:52:07,631 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:52:07,631 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:57:38,068 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:57:38,068 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:57:40,234 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:57:40,234 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:57:45,323 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:57:45,323 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:57:47,898 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-12) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:57:47,898 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-12) [null] Populando a Lista de AliquotaVO
+2012-07-10 09:58:04,562 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-14) Buscando Filial por Status : Ativo
+2012-07-10 09:58:04,572 INFO  [STDOUT] (http-0.0.0.0-8080-14) Hibernate: 
+2012-07-10 09:58:04,572 INFO  [STDOUT] (http-0.0.0.0-8080-14)     select
+2012-07-10 09:58:04,572 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ID as ID40_0_,
+2012-07-10 09:58:04,572 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.ID as ID26_1_,
+2012-07-10 09:58:04,572 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.IE as IE40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.IM as IM40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 09:58:04,573 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 09:58:04,578 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 09:58:04,579 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)     from
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)     inner join
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)     where
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)         and filial0_.STATUS=? 
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)     order by
+2012-07-10 09:58:04,580 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 09:58:04,619 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-14) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 09:58:08,983 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-17) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 09:58:08,983 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-17) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:02:57,097 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:02:57,097 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:02:59,517 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:02:59,517 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:03:05,078 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:03:05,078 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:03:43,950 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:03:43,950 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:28:15,966 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :7BD5E008737EAC9560B6C4C9C35F4946... Efetuando o logoff do usuario...
+2012-07-10 10:28:16,003 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :6D66F3B8948042EA9907AA1E07BCFDA3... Efetuando o logoff do usuario...
+2012-07-10 10:34:16,043 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :6CCBE976C9FF100BC87A6C6E3ED2BC07... Efetuando o logoff do usuario...
+2012-07-10 10:44:49,988 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-16) Buscando Filial por Status : Ativo
+2012-07-10 10:44:50,140 INFO  [STDOUT] (http-0.0.0.0-8080-16) Hibernate: 
+2012-07-10 10:44:50,141 INFO  [STDOUT] (http-0.0.0.0-8080-16)     select
+2012-07-10 10:44:50,141 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ID as ID40_0_,
+2012-07-10 10:44:50,141 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.ID as ID26_1_,
+2012-07-10 10:44:50,141 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 10:44:50,141 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 10:44:50,141 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 10:44:50,141 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 10:44:50,141 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 10:44:50,141 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 10:44:50,141 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 10:44:50,141 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 10:44:50,142 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 10:44:50,142 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 10:44:50,142 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.IE as IE40_0_,
+2012-07-10 10:44:50,142 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.IM as IM40_0_,
+2012-07-10 10:44:50,142 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 10:44:50,142 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 10:44:50,142 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 10:44:50,142 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 10:44:50,143 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 10:44:50,143 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 10:44:50,143 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 10:44:50,143 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 10:44:50,143 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 10:44:50,143 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 10:44:50,143 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 10:44:50,143 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)     from
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)     inner join
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)     where
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)         and filial0_.STATUS=? 
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)     order by
+2012-07-10 10:44:50,144 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 10:44:50,182 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-16) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 10:44:50,213 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:44:50,213 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:45:37,064 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:45:37,064 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:46:24,173 INFO  [br.com.dataprimer.masterdata.core.parceiro.ClienteBean] (http-0.0.0.0-8080-16) Buscando entidade Cliente por Filial : CPF vinculado a 191 de {4} : {5}
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16) Hibernate: 
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)     select
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.ID as ID20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.DATA_CRIACAO as DATA2_20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.DATA_MODIFICACAO as DATA3_20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.ID_CALCULO_ALIQUOTA as ID19_20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.ID_CALCULO_IMPOSTO as ID20_20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.CNPJ as CNPJ20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.CPF as CPF20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.EMAIL as EMAIL20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.INSCRICAO_ESTADUAL as INSCRICAO7_20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.ISENTO_ICMS as ISENTO8_20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.JUSTIFICATIVA as JUSTIFIC9_20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.NOME as NOME20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.NOME_FANTASIA as NOME11_20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.RAZAO_SOCIAL as RAZAO12_20_,
+2012-07-10 10:46:24,198 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.STATUS as STATUS20_,
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.TIPO_PESSOA as TIPO14_20_,
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.UC_CPF_CNPJ as UC15_20_,
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.ID_ENDERECO as ID21_20_,
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.ID_FILIAL as ID16_20_,
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.INSCRICAO_SUFRAMA as INSCRICAO17_20_,
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.NATUREZA_OPERACAO_ID as NATUREZA22_20_,
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.versao as versao20_ 
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)     from
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)         MASTERDATA_CLIENTE cliente0_ 
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)     where
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)         cliente0_.CPF=191 
+2012-07-10 10:46:24,199 INFO  [STDOUT] (http-0.0.0.0-8080-16)         and cliente0_.ID_FILIAL=544
+2012-07-10 10:46:24,310 INFO  [br.com.dataprimer.masterdata.core.parceiro.ClienteBean] (http-0.0.0.0-8080-16) CPF 191 não consta na base
+2012-07-10 10:46:24,313 INFO  [br.com.dataprimer.masterdata.bean.AbstractParceiro] (http-0.0.0.0-8080-16) O Documento CPF:191 não existe na base
+2012-07-10 10:49:24,166 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:49:24,166 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:49:26,940 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-17) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:49:26,940 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-17) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:52:18,988 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-18) Buscando Filial por Status : Ativo
+2012-07-10 10:52:18,997 INFO  [STDOUT] (http-0.0.0.0-8080-18) Hibernate: 
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)     select
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ID as ID40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.ID as ID26_1_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.IE as IE40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.IM as IM40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)     from
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)     inner join
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 10:52:18,998 INFO  [STDOUT] (http-0.0.0.0-8080-18)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 10:52:18,999 INFO  [STDOUT] (http-0.0.0.0-8080-18)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 10:52:18,999 INFO  [STDOUT] (http-0.0.0.0-8080-18)     where
+2012-07-10 10:52:18,999 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 10:52:18,999 INFO  [STDOUT] (http-0.0.0.0-8080-18)         and filial0_.STATUS=? 
+2012-07-10 10:52:18,999 INFO  [STDOUT] (http-0.0.0.0-8080-18)     order by
+2012-07-10 10:52:18,999 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 10:52:19,033 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-18) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 10:52:19,056 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:52:19,056 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:52:23,131 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:52:23,131 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:52:25,495 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:52:25,495 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:53:00,099 INFO  [br.com.dataprimer.masterdata.core.parceiro.ClienteBean] (http-0.0.0.0-8080-4) Buscando entidade Cliente por Filial : CPF vinculado a 191 de {4} : {5}
+2012-07-10 10:53:00,105 INFO  [STDOUT] (http-0.0.0.0-8080-4) Hibernate: 
+2012-07-10 10:53:00,105 INFO  [STDOUT] (http-0.0.0.0-8080-4)     select
+2012-07-10 10:53:00,105 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ID as ID20_,
+2012-07-10 10:53:00,105 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.DATA_CRIACAO as DATA2_20_,
+2012-07-10 10:53:00,105 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.DATA_MODIFICACAO as DATA3_20_,
+2012-07-10 10:53:00,105 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ID_CALCULO_ALIQUOTA as ID19_20_,
+2012-07-10 10:53:00,105 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ID_CALCULO_IMPOSTO as ID20_20_,
+2012-07-10 10:53:00,105 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.CNPJ as CNPJ20_,
+2012-07-10 10:53:00,105 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.CPF as CPF20_,
+2012-07-10 10:53:00,105 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.EMAIL as EMAIL20_,
+2012-07-10 10:53:00,105 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.INSCRICAO_ESTADUAL as INSCRICAO7_20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ISENTO_ICMS as ISENTO8_20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.JUSTIFICATIVA as JUSTIFIC9_20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.NOME as NOME20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.NOME_FANTASIA as NOME11_20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.RAZAO_SOCIAL as RAZAO12_20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.STATUS as STATUS20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.TIPO_PESSOA as TIPO14_20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.UC_CPF_CNPJ as UC15_20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ID_ENDERECO as ID21_20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ID_FILIAL as ID16_20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.INSCRICAO_SUFRAMA as INSCRICAO17_20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.NATUREZA_OPERACAO_ID as NATUREZA22_20_,
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.versao as versao20_ 
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)     from
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         MASTERDATA_CLIENTE cliente0_ 
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)     where
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.CPF=191 
+2012-07-10 10:53:00,106 INFO  [STDOUT] (http-0.0.0.0-8080-4)         and cliente0_.ID_FILIAL=544
+2012-07-10 10:53:00,116 INFO  [br.com.dataprimer.masterdata.core.parceiro.ClienteBean] (http-0.0.0.0-8080-4) CPF 191 não consta na base
+2012-07-10 10:53:00,119 INFO  [br.com.dataprimer.masterdata.bean.AbstractParceiro] (http-0.0.0.0-8080-4) O Documento CPF:191 não existe na base
+2012-07-10 10:57:19,034 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:57:19,034 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 10:57:21,663 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 10:57:21,663 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:04:49,392 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:04:49,392 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:04:51,512 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:04:51,512 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:05:47,869 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-2) Buscando Filial por Status : Ativo
+2012-07-10 11:05:47,876 INFO  [STDOUT] (http-0.0.0.0-8080-2) Hibernate: 
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)     select
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ID as ID40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.ID as ID26_1_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.IE as IE40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.IM as IM40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 11:05:47,877 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 11:05:47,878 INFO  [STDOUT] (http-0.0.0.0-8080-2)     from
+2012-07-10 11:05:47,878 INFO  [STDOUT] (http-0.0.0.0-8080-2)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 11:05:47,878 INFO  [STDOUT] (http-0.0.0.0-8080-2)     inner join
+2012-07-10 11:05:47,878 INFO  [STDOUT] (http-0.0.0.0-8080-2)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 11:05:47,878 INFO  [STDOUT] (http-0.0.0.0-8080-2)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 11:05:47,878 INFO  [STDOUT] (http-0.0.0.0-8080-2)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 11:05:47,878 INFO  [STDOUT] (http-0.0.0.0-8080-2)     where
+2012-07-10 11:05:47,878 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 11:05:47,878 INFO  [STDOUT] (http-0.0.0.0-8080-2)         and filial0_.STATUS=? 
+2012-07-10 11:05:47,878 INFO  [STDOUT] (http-0.0.0.0-8080-2)     order by
+2012-07-10 11:05:47,878 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 11:05:47,914 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-2) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 11:05:53,488 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:05:53,488 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:06:24,362 INFO  [br.com.dataprimer.masterdata.core.parceiro.ClienteBean] (http-0.0.0.0-8080-5) Buscando entidade Cliente por Filial : CPF vinculado a 37710843859 de {4} : {5}
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5) Hibernate: 
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)     select
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.ID as ID20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.DATA_CRIACAO as DATA2_20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.DATA_MODIFICACAO as DATA3_20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.ID_CALCULO_ALIQUOTA as ID19_20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.ID_CALCULO_IMPOSTO as ID20_20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.CNPJ as CNPJ20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.CPF as CPF20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.EMAIL as EMAIL20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.INSCRICAO_ESTADUAL as INSCRICAO7_20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.ISENTO_ICMS as ISENTO8_20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.JUSTIFICATIVA as JUSTIFIC9_20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.NOME as NOME20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.NOME_FANTASIA as NOME11_20_,
+2012-07-10 11:06:24,373 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.RAZAO_SOCIAL as RAZAO12_20_,
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.STATUS as STATUS20_,
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.TIPO_PESSOA as TIPO14_20_,
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.UC_CPF_CNPJ as UC15_20_,
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.ID_ENDERECO as ID21_20_,
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.ID_FILIAL as ID16_20_,
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.INSCRICAO_SUFRAMA as INSCRICAO17_20_,
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.NATUREZA_OPERACAO_ID as NATUREZA22_20_,
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.versao as versao20_ 
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)     from
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)         MASTERDATA_CLIENTE cliente0_ 
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)     where
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)         cliente0_.CPF=37710843859 
+2012-07-10 11:06:24,374 INFO  [STDOUT] (http-0.0.0.0-8080-5)         and cliente0_.ID_FILIAL=544
+2012-07-10 11:06:24,389 INFO  [br.com.dataprimer.masterdata.core.parceiro.ClienteBean] (http-0.0.0.0-8080-5) CPF 37710843859 não consta na base
+2012-07-10 11:06:24,392 INFO  [br.com.dataprimer.masterdata.bean.AbstractParceiro] (http-0.0.0.0-8080-5) O Documento CPF:37710843859 não existe na base
+2012-07-10 11:07:09,091 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-6) Buscando Filial por Status : Ativo
+2012-07-10 11:07:09,096 INFO  [STDOUT] (http-0.0.0.0-8080-6) Hibernate: 
+2012-07-10 11:07:09,096 INFO  [STDOUT] (http-0.0.0.0-8080-6)     select
+2012-07-10 11:07:09,096 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ID as ID40_0_,
+2012-07-10 11:07:09,096 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.ID as ID26_1_,
+2012-07-10 11:07:09,096 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 11:07:09,096 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.IE as IE40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.IM as IM40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 11:07:09,097 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)     from
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)     inner join
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)     where
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)         and filial0_.STATUS=? 
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)     order by
+2012-07-10 11:07:09,098 INFO  [STDOUT] (http-0.0.0.0-8080-6)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 11:07:09,138 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-6) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 11:07:12,840 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:07:12,841 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:13:19,148 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:13:19,148 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:14:55,385 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:14:55,385 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:14:57,136 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:14:57,136 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:17:00,000 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:17:00,000 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:17:01,978 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:17:01,978 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:17:19,256 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:17:19,256 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:17:21,852 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:17:21,852 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:17:40,342 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:17:40,343 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:17:42,627 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:17:42,627 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:21:33,717 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:21:33,717 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:21:42,303 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:21:42,304 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:21:54,365 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:21:54,365 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:21:57,680 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:21:57,680 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:23:00,977 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:23:00,977 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:23:02,991 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:23:02,991 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:25:42,636 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:25:42,637 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:25:45,594 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:25:45,594 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:32:35,291 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:32:35,291 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:32:36,974 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:32:36,974 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:33:15,985 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:33:15,985 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:33:18,207 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:33:18,207 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:33:50,952 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:33:50,952 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:33:52,902 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:33:52,902 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:33:59,397 GRAVE [org.richfaces.log.Context] (http-0.0.0.0-8080-2) For input string: ";;utyui": java.lang.NumberFormatException: For input string: ";;utyui"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:48) [:1.6.0_22]
+	at java.lang.Long.parseLong(Long.java:410) [:1.6.0_22]
+	at java.lang.Long.parseLong(Long.java:468) [:1.6.0_22]
+	at br.com.dataprimer.masterdata.converter.CPFConverter.getAsObject(CPFConverter.java:38) [:]
+	at com.sun.faces.renderkit.html_basic.HtmlBasicInputRenderer.getConvertedValue(HtmlBasicInputRenderer.java:167) [:2.0.3-]
+	at javax.faces.component.UIInput.getConvertedValue(UIInput.java:1023) [:2.0.3-]
+	at javax.faces.component.UIInput.validate(UIInput.java:953) [:2.0.3-]
+	at javax.faces.component.UIInput.executeValidate(UIInput.java:1204) [:2.0.3-]
+	at javax.faces.component.UIInput.processValidators(UIInput.java:693) [:2.0.3-]
+	at org.richfaces.context.PartialViewExecuteVisitCallback.visit(PartialViewExecuteVisitCallback.java:55) [:4.2.2.Final]
+	at org.richfaces.context.BaseExtendedVisitContext.invokeVisitCallback(BaseExtendedVisitContext.java:321) [:4.2.2.Final]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1476) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIForm.visitTree(UIForm.java:322) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.executeComponents(ExtendedPartialViewContextImpl.java:237) [:4.2.2.Final]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.processPartialExecutePhase(ExtendedPartialViewContextImpl.java:217) [:4.2.2.Final]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.processPartial(ExtendedPartialViewContextImpl.java:196) [:4.2.2.Final]
+	at javax.faces.component.UIViewRoot.processValidators(UIViewRoot.java:1157) [:2.0.3-]
+	at com.sun.faces.lifecycle.ProcessValidationsPhase.execute(ProcessValidationsPhase.java:72) [:2.0.3-]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:97) [:2.0.3-]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:114) [:2.0.3-]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:308) [:2.0.3-]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:324) [:6.1.0.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:242) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [:6.1.0.Final]
+	at org.jboss.web.tomcat.security.SecurityAssociationValve.invoke(SecurityAssociationValve.java:181) [:6.1.0.Final]
+	at org.jboss.modcluster.catalina.CatalinaContext$RequestListenerValve.event(CatalinaContext.java:285) [:1.1.0.Final]
+	at org.jboss.modcluster.catalina.CatalinaContext$RequestListenerValve.invoke(CatalinaContext.java:261) [:1.1.0.Final]
+	at org.jboss.web.tomcat.security.JaccContextValve.invoke(JaccContextValve.java:88) [:6.1.0.Final]
+	at org.jboss.web.tomcat.security.SecurityContextEstablishmentValve.invoke(SecurityContextEstablishmentValve.java:100) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:159) [:6.1.0.Final]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [:6.1.0.Final]
+	at org.jboss.web.tomcat.service.jca.CachedConnectionValve.invoke(CachedConnectionValve.java:158) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [:6.1.0.Final]
+	at org.jboss.web.tomcat.service.request.ActiveRequestResponseCacheValve.invoke(ActiveRequestResponseCacheValve.java:53) [:6.1.0.Final]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:362) [:6.1.0.Final]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [:6.1.0.Final]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:654) [:6.1.0.Final]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:951) [:6.1.0.Final]
+	at java.lang.Thread.run(Thread.java:662) [:1.6.0_22]
+
+2012-07-10 11:34:05,955 GRAVE [org.richfaces.log.Context] (http-0.0.0.0-8080-16) For input string: ";;utyui": java.lang.NumberFormatException: For input string: ";;utyui"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:48) [:1.6.0_22]
+	at java.lang.Long.parseLong(Long.java:410) [:1.6.0_22]
+	at java.lang.Long.parseLong(Long.java:468) [:1.6.0_22]
+	at br.com.dataprimer.masterdata.converter.CPFConverter.getAsObject(CPFConverter.java:38) [:]
+	at com.sun.faces.renderkit.html_basic.HtmlBasicInputRenderer.getConvertedValue(HtmlBasicInputRenderer.java:167) [:2.0.3-]
+	at javax.faces.component.UIInput.getConvertedValue(UIInput.java:1023) [:2.0.3-]
+	at javax.faces.component.UIInput.validate(UIInput.java:953) [:2.0.3-]
+	at javax.faces.component.UIInput.executeValidate(UIInput.java:1204) [:2.0.3-]
+	at javax.faces.component.UIInput.processValidators(UIInput.java:693) [:2.0.3-]
+	at org.richfaces.context.PartialViewExecuteVisitCallback.visit(PartialViewExecuteVisitCallback.java:55) [:4.2.2.Final]
+	at org.richfaces.context.BaseExtendedVisitContext.invokeVisitCallback(BaseExtendedVisitContext.java:321) [:4.2.2.Final]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1476) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIForm.visitTree(UIForm.java:322) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.executeComponents(ExtendedPartialViewContextImpl.java:237) [:4.2.2.Final]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.processPartialExecutePhase(ExtendedPartialViewContextImpl.java:217) [:4.2.2.Final]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.processPartial(ExtendedPartialViewContextImpl.java:196) [:4.2.2.Final]
+	at javax.faces.component.UIViewRoot.processValidators(UIViewRoot.java:1157) [:2.0.3-]
+	at com.sun.faces.lifecycle.ProcessValidationsPhase.execute(ProcessValidationsPhase.java:72) [:2.0.3-]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:97) [:2.0.3-]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:114) [:2.0.3-]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:308) [:2.0.3-]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:324) [:6.1.0.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:242) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [:6.1.0.Final]
+	at org.jboss.web.tomcat.security.SecurityAssociationValve.invoke(SecurityAssociationValve.java:181) [:6.1.0.Final]
+	at org.jboss.modcluster.catalina.CatalinaContext$RequestListenerValve.event(CatalinaContext.java:285) [:1.1.0.Final]
+	at org.jboss.modcluster.catalina.CatalinaContext$RequestListenerValve.invoke(CatalinaContext.java:261) [:1.1.0.Final]
+	at org.jboss.web.tomcat.security.JaccContextValve.invoke(JaccContextValve.java:88) [:6.1.0.Final]
+	at org.jboss.web.tomcat.security.SecurityContextEstablishmentValve.invoke(SecurityContextEstablishmentValve.java:100) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:159) [:6.1.0.Final]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [:6.1.0.Final]
+	at org.jboss.web.tomcat.service.jca.CachedConnectionValve.invoke(CachedConnectionValve.java:158) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [:6.1.0.Final]
+	at org.jboss.web.tomcat.service.request.ActiveRequestResponseCacheValve.invoke(ActiveRequestResponseCacheValve.java:53) [:6.1.0.Final]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:362) [:6.1.0.Final]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [:6.1.0.Final]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:654) [:6.1.0.Final]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:951) [:6.1.0.Final]
+	at java.lang.Thread.run(Thread.java:662) [:1.6.0_22]
+
+2012-07-10 11:34:17,586 GRAVE [org.richfaces.log.Context] (http-0.0.0.0-8080-7) For input string: ";;utyui": java.lang.NumberFormatException: For input string: ";;utyui"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:48) [:1.6.0_22]
+	at java.lang.Long.parseLong(Long.java:410) [:1.6.0_22]
+	at java.lang.Long.parseLong(Long.java:468) [:1.6.0_22]
+	at br.com.dataprimer.masterdata.converter.CPFConverter.getAsObject(CPFConverter.java:38) [:]
+	at com.sun.faces.renderkit.html_basic.HtmlBasicInputRenderer.getConvertedValue(HtmlBasicInputRenderer.java:167) [:2.0.3-]
+	at javax.faces.component.UIInput.getConvertedValue(UIInput.java:1023) [:2.0.3-]
+	at javax.faces.component.UIInput.validate(UIInput.java:953) [:2.0.3-]
+	at javax.faces.component.UIInput.executeValidate(UIInput.java:1204) [:2.0.3-]
+	at javax.faces.component.UIInput.processValidators(UIInput.java:693) [:2.0.3-]
+	at org.richfaces.context.PartialViewExecuteVisitCallback.visit(PartialViewExecuteVisitCallback.java:55) [:4.2.2.Final]
+	at org.richfaces.context.BaseExtendedVisitContext.invokeVisitCallback(BaseExtendedVisitContext.java:321) [:4.2.2.Final]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1476) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIForm.visitTree(UIForm.java:322) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.executeComponents(ExtendedPartialViewContextImpl.java:237) [:4.2.2.Final]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.processPartialExecutePhase(ExtendedPartialViewContextImpl.java:217) [:4.2.2.Final]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.processPartial(ExtendedPartialViewContextImpl.java:196) [:4.2.2.Final]
+	at javax.faces.component.UIViewRoot.processValidators(UIViewRoot.java:1157) [:2.0.3-]
+	at com.sun.faces.lifecycle.ProcessValidationsPhase.execute(ProcessValidationsPhase.java:72) [:2.0.3-]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:97) [:2.0.3-]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:114) [:2.0.3-]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:308) [:2.0.3-]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:324) [:6.1.0.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:242) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [:6.1.0.Final]
+	at org.jboss.web.tomcat.security.SecurityAssociationValve.invoke(SecurityAssociationValve.java:181) [:6.1.0.Final]
+	at org.jboss.modcluster.catalina.CatalinaContext$RequestListenerValve.event(CatalinaContext.java:285) [:1.1.0.Final]
+	at org.jboss.modcluster.catalina.CatalinaContext$RequestListenerValve.invoke(CatalinaContext.java:261) [:1.1.0.Final]
+	at org.jboss.web.tomcat.security.JaccContextValve.invoke(JaccContextValve.java:88) [:6.1.0.Final]
+	at org.jboss.web.tomcat.security.SecurityContextEstablishmentValve.invoke(SecurityContextEstablishmentValve.java:100) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:159) [:6.1.0.Final]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [:6.1.0.Final]
+	at org.jboss.web.tomcat.service.jca.CachedConnectionValve.invoke(CachedConnectionValve.java:158) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [:6.1.0.Final]
+	at org.jboss.web.tomcat.service.request.ActiveRequestResponseCacheValve.invoke(ActiveRequestResponseCacheValve.java:53) [:6.1.0.Final]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:362) [:6.1.0.Final]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [:6.1.0.Final]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:654) [:6.1.0.Final]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:951) [:6.1.0.Final]
+	at java.lang.Thread.run(Thread.java:662) [:1.6.0_22]
+
+2012-07-10 11:35:29,114 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:35:29,114 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:35:31,850 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:35:31,850 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:36:24,053 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:36:24,053 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:36:25,979 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:36:25,979 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:36:49,735 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:36:49,735 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:36:52,796 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:36:52,796 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:37:00,192 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:37:00,192 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:37:12,346 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:37:12,346 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:37:16,279 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :C528F9E8EF339AB40B7A0DFFD52FC228... Efetuando o logoff do usuario...
+2012-07-10 11:37:16,279 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :AB68B65323AF430BE7ECEB75025A161B... Efetuando o logoff do usuario...
+2012-07-10 11:37:57,131 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:37:57,131 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:38:00,294 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:38:00,294 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:41:46,492 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:41:46,493 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:41:50,257 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:41:50,257 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:42:45,872 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:42:45,872 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:42:48,281 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:42:48,281 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:43:21,228 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:43:21,228 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:43:24,199 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:43:24,199 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:43:32,006 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:43:32,006 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:43:34,758 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:43:34,758 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:46:07,465 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-16) Buscando Filial por Status : Ativo
+2012-07-10 11:46:07,538 INFO  [STDOUT] (http-0.0.0.0-8080-16) Hibernate: 
+2012-07-10 11:46:07,538 INFO  [STDOUT] (http-0.0.0.0-8080-16)     select
+2012-07-10 11:46:07,538 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ID as ID40_0_,
+2012-07-10 11:46:07,538 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.ID as ID26_1_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.IE as IE40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.IM as IM40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)     from
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)     inner join
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 11:46:07,539 INFO  [STDOUT] (http-0.0.0.0-8080-16)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 11:46:07,540 INFO  [STDOUT] (http-0.0.0.0-8080-16)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 11:46:07,540 INFO  [STDOUT] (http-0.0.0.0-8080-16)     where
+2012-07-10 11:46:07,540 INFO  [STDOUT] (http-0.0.0.0-8080-16)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 11:46:07,540 INFO  [STDOUT] (http-0.0.0.0-8080-16)         and filial0_.STATUS=? 
+2012-07-10 11:46:07,540 INFO  [STDOUT] (http-0.0.0.0-8080-16)     order by
+2012-07-10 11:46:07,540 INFO  [STDOUT] (http-0.0.0.0-8080-16)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 11:46:07,576 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-16) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 11:46:07,587 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:46:07,587 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:50:36,925 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:50:36,925 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 11:50:38,902 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 11:50:38,902 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 12:12:16,399 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :8E80D48D6DFB9897B3B8C1A116B28254... Efetuando o logoff do usuario...
+2012-07-10 12:16:16,413 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :E117E5A34C26D13AAC84A427AE8A5E09... Efetuando o logoff do usuario...
+2012-07-10 12:59:43,619 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :53A431CD84D075F4CACE11774182E504... Efetuando o logoff do usuario...
+2012-07-10 13:23:16,911 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-5) Buscando Filial por Status : Ativo
+2012-07-10 13:23:17,020 INFO  [STDOUT] (http-0.0.0.0-8080-5) Hibernate: 
+2012-07-10 13:23:17,020 INFO  [STDOUT] (http-0.0.0.0-8080-5)     select
+2012-07-10 13:23:17,020 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.ID as ID40_0_,
+2012-07-10 13:23:17,020 INFO  [STDOUT] (http-0.0.0.0-8080-5)         empresa1_.ID as ID26_1_,
+2012-07-10 13:23:17,020 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 13:23:17,020 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 13:23:17,020 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.IE as IE40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.IM as IM40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 13:23:17,021 INFO  [STDOUT] (http-0.0.0.0-8080-5)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)     from
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)     inner join
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)     where
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)         and filial0_.STATUS=? 
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)     order by
+2012-07-10 13:23:17,022 INFO  [STDOUT] (http-0.0.0.0-8080-5)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 13:23:17,088 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-5) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 13:23:17,119 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:23:17,119 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:23:19,116 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:23:19,116 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:24:26,041 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:24:26,041 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:24:28,078 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:24:28,079 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:24:36,795 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:24:36,795 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:24:38,452 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:24:38,453 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:25:07,756 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:25:07,756 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:25:10,811 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:25:10,811 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:27:25,719 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-18) Buscando Filial por Status : Ativo
+2012-07-10 13:27:25,727 INFO  [STDOUT] (http-0.0.0.0-8080-18) Hibernate: 
+2012-07-10 13:27:25,727 INFO  [STDOUT] (http-0.0.0.0-8080-18)     select
+2012-07-10 13:27:25,727 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ID as ID40_0_,
+2012-07-10 13:27:25,727 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.ID as ID26_1_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.IE as IE40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.IM as IM40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)     from
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)     inner join
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 13:27:25,728 INFO  [STDOUT] (http-0.0.0.0-8080-18)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 13:27:25,729 INFO  [STDOUT] (http-0.0.0.0-8080-18)     where
+2012-07-10 13:27:25,729 INFO  [STDOUT] (http-0.0.0.0-8080-18)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 13:27:25,729 INFO  [STDOUT] (http-0.0.0.0-8080-18)         and filial0_.STATUS=? 
+2012-07-10 13:27:25,729 INFO  [STDOUT] (http-0.0.0.0-8080-18)     order by
+2012-07-10 13:27:25,729 INFO  [STDOUT] (http-0.0.0.0-8080-18)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 13:27:25,762 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-18) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 13:27:25,779 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:27:25,779 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:27:27,648 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:27:27,649 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:27:59,815 GRAVE [org.richfaces.log.Context] (http-0.0.0.0-8080-6) For input string: "12356789g": java.lang.NumberFormatException: For input string: "12356789g"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:48) [:1.6.0_22]
+	at java.lang.Long.parseLong(Long.java:419) [:1.6.0_22]
+	at java.lang.Long.parseLong(Long.java:468) [:1.6.0_22]
+	at br.com.dataprimer.masterdata.converter.CPFConverter.getAsObject(CPFConverter.java:38) [:]
+	at com.sun.faces.renderkit.html_basic.HtmlBasicInputRenderer.getConvertedValue(HtmlBasicInputRenderer.java:167) [:2.0.3-]
+	at javax.faces.component.UIInput.getConvertedValue(UIInput.java:1023) [:2.0.3-]
+	at javax.faces.component.UIInput.validate(UIInput.java:953) [:2.0.3-]
+	at javax.faces.component.UIInput.executeValidate(UIInput.java:1204) [:2.0.3-]
+	at javax.faces.component.UIInput.processValidators(UIInput.java:693) [:2.0.3-]
+	at org.richfaces.context.PartialViewExecuteVisitCallback.visit(PartialViewExecuteVisitCallback.java:55) [:4.2.2.Final]
+	at org.richfaces.context.BaseExtendedVisitContext.invokeVisitCallback(BaseExtendedVisitContext.java:321) [:4.2.2.Final]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1476) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIForm.visitTree(UIForm.java:322) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at javax.faces.component.UIComponent.visitTree(UIComponent.java:1487) [:2.0.3-]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.executeComponents(ExtendedPartialViewContextImpl.java:237) [:4.2.2.Final]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.processPartialExecutePhase(ExtendedPartialViewContextImpl.java:217) [:4.2.2.Final]
+	at org.richfaces.context.ExtendedPartialViewContextImpl.processPartial(ExtendedPartialViewContextImpl.java:196) [:4.2.2.Final]
+	at javax.faces.component.UIViewRoot.processValidators(UIViewRoot.java:1157) [:2.0.3-]
+	at com.sun.faces.lifecycle.ProcessValidationsPhase.execute(ProcessValidationsPhase.java:72) [:2.0.3-]
+	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:97) [:2.0.3-]
+	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:114) [:2.0.3-]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:308) [:2.0.3-]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:324) [:6.1.0.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:242) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [:6.1.0.Final]
+	at org.jboss.web.tomcat.security.SecurityAssociationValve.invoke(SecurityAssociationValve.java:181) [:6.1.0.Final]
+	at org.jboss.modcluster.catalina.CatalinaContext$RequestListenerValve.event(CatalinaContext.java:285) [:1.1.0.Final]
+	at org.jboss.modcluster.catalina.CatalinaContext$RequestListenerValve.invoke(CatalinaContext.java:261) [:1.1.0.Final]
+	at org.jboss.web.tomcat.security.JaccContextValve.invoke(JaccContextValve.java:88) [:6.1.0.Final]
+	at org.jboss.web.tomcat.security.SecurityContextEstablishmentValve.invoke(SecurityContextEstablishmentValve.java:100) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:159) [:6.1.0.Final]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [:6.1.0.Final]
+	at org.jboss.web.tomcat.service.jca.CachedConnectionValve.invoke(CachedConnectionValve.java:158) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [:6.1.0.Final]
+	at org.jboss.web.tomcat.service.request.ActiveRequestResponseCacheValve.invoke(ActiveRequestResponseCacheValve.java:53) [:6.1.0.Final]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:362) [:6.1.0.Final]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [:6.1.0.Final]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:654) [:6.1.0.Final]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:951) [:6.1.0.Final]
+	at java.lang.Thread.run(Thread.java:662) [:1.6.0_22]
+
+2012-07-10 13:30:20,633 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:30:20,634 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:34:31,752 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:34:31,752 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:34:39,134 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:34:39,134 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:36:05,920 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:36:05,920 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:36:08,899 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:36:08,899 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:36:41,026 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:36:41,026 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:37:00,381 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:37:00,381 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:38:21,370 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:38:21,370 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:38:23,816 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:38:23,816 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:42:16,482 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:42:16,482 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:56:53,977 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 13:56:53,977 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 13:58:32,144 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-4) Buscando Filial por Status : Ativo
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4) Hibernate: 
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)     select
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.ID as ID40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         empresa1_.ID as ID26_1_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.IE as IE40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.IM as IM40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 13:58:32,151 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)     from
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)     inner join
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)     where
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         and filial0_.STATUS=? 
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)     order by
+2012-07-10 13:58:32,152 INFO  [STDOUT] (http-0.0.0.0-8080-4)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 13:58:32,186 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-4) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 14:00:45,599 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:00:45,599 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 14:00:50,760 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:00:50,760 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 14:08:43,874 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :BFB455606736DE8BE79136FA2D8244BA... Efetuando o logoff do usuario...
+2012-07-10 14:12:13,479 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:12:13,479 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 14:12:15,286 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:12:15,286 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 14:13:04,612 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:13:04,612 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 14:13:07,396 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:13:07,396 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 14:13:22,793 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:13:22,793 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 14:13:26,913 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:13:26,913 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 14:13:58,163 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:13:58,163 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 14:15:40,694 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:15:40,694 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 14:28:44,036 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :C754A982455F9AA55E7E9ED84A04064D... Efetuando o logoff do usuario...
+2012-07-10 14:49:05,578 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :FF5005E17BC623E4141B9DEE960B343C... Efetuando o logoff do usuario...
+2012-07-10 14:54:43,305 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-15) Buscando Filial por Status : Ativo
+2012-07-10 14:54:43,366 INFO  [STDOUT] (http-0.0.0.0-8080-15) Hibernate: 
+2012-07-10 14:54:43,366 INFO  [STDOUT] (http-0.0.0.0-8080-15)     select
+2012-07-10 14:54:43,366 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.ID as ID40_0_,
+2012-07-10 14:54:43,366 INFO  [STDOUT] (http-0.0.0.0-8080-15)         empresa1_.ID as ID26_1_,
+2012-07-10 14:54:43,366 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 14:54:43,366 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 14:54:43,366 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.IE as IE40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.IM as IM40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 14:54:43,367 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)     from
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)     inner join
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)     where
+2012-07-10 14:54:43,368 INFO  [STDOUT] (http-0.0.0.0-8080-15)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 14:54:43,369 INFO  [STDOUT] (http-0.0.0.0-8080-15)         and filial0_.STATUS=? 
+2012-07-10 14:54:43,369 INFO  [STDOUT] (http-0.0.0.0-8080-15)     order by
+2012-07-10 14:54:43,369 INFO  [STDOUT] (http-0.0.0.0-8080-15)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 14:54:43,412 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-15) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 14:54:43,437 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:54:43,437 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 14:56:02,083 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 14:56:02,083 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:09:10,365 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:09:10,365 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:09:19,172 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:09:19,172 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:10:31,674 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:10:31,674 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:10:35,274 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:10:35,274 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:12:29,817 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:12:29,817 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:12:50,490 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:12:50,490 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:13:04,460 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:13:04,460 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:13:06,693 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:13:06,693 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:14:11,811 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:14:11,811 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:14:20,916 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:14:20,916 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:18:36,087 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:18:36,087 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:18:40,148 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:18:40,148 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:19:00,761 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:19:00,761 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:19:03,772 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:19:03,772 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:19:21,770 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:19:21,770 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:19:23,954 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:19:23,954 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:20:31,705 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:20:31,705 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:20:34,284 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:20:34,284 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-1) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:22:28,941 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:22:28,941 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:27:36,259 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:27:36,259 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:33:01,888 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:33:01,888 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:33:17,577 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:33:17,577 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:34:00,809 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:34:00,809 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:34:02,438 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:34:02,438 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:34:17,594 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:34:17,594 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-15) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:34:21,733 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:34:21,733 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-5) [null] Populando a Lista de AliquotaVO
+2012-07-10 15:59:00,957 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-14) Buscando Filial por Status : Ativo
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14) Hibernate: 
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)     select
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ID as ID40_0_,
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.ID as ID26_1_,
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 15:59:01,017 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.IE as IE40_0_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.IM as IM40_0_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)     from
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 15:59:01,018 INFO  [STDOUT] (http-0.0.0.0-8080-14)     inner join
+2012-07-10 15:59:01,019 INFO  [STDOUT] (http-0.0.0.0-8080-14)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 15:59:01,019 INFO  [STDOUT] (http-0.0.0.0-8080-14)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 15:59:01,019 INFO  [STDOUT] (http-0.0.0.0-8080-14)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 15:59:01,019 INFO  [STDOUT] (http-0.0.0.0-8080-14)     where
+2012-07-10 15:59:01,019 INFO  [STDOUT] (http-0.0.0.0-8080-14)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 15:59:01,019 INFO  [STDOUT] (http-0.0.0.0-8080-14)         and filial0_.STATUS=? 
+2012-07-10 15:59:01,019 INFO  [STDOUT] (http-0.0.0.0-8080-14)     order by
+2012-07-10 15:59:01,019 INFO  [STDOUT] (http-0.0.0.0-8080-14)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 15:59:01,077 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-14) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 15:59:05,319 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 15:59:05,319 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:00:04,463 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:00:04,463 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-18) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:00:08,954 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:00:08,954 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-14) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:00:20,121 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:00:20,121 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:00:23,858 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:00:23,858 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:00:42,888 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:00:42,888 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:00:44,549 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-17) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:00:44,550 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-17) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:01:22,312 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:01:22,312 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:01:30,415 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:01:30,415 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:01:58,492 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:01:58,493 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:02:03,325 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:02:03,325 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:02:19,764 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:02:19,764 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:02:28,937 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:02:28,937 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-16) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:03:52,120 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-17) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:03:52,120 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-17) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:03:56,123 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-17) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:03:56,123 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-17) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:22:17,900 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-0.0.0.0-8080
+2012-07-10 16:22:17,911 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2012-07-10 16:22:17,923 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 1m:12s:410ms
+2012-07-10 16:23:20,047 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-2) Buscando Filial por Status : Ativo
+2012-07-10 16:23:20,066 INFO  [STDOUT] (http-0.0.0.0-8080-2) Hibernate: 
+2012-07-10 16:23:20,066 INFO  [STDOUT] (http-0.0.0.0-8080-2)     select
+2012-07-10 16:23:20,066 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ID as ID40_0_,
+2012-07-10 16:23:20,066 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.ID as ID26_1_,
+2012-07-10 16:23:20,066 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 16:23:20,066 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 16:23:20,066 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 16:23:20,066 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.IE as IE40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.IM as IM40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)     from
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)     inner join
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)     where
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         and filial0_.STATUS=? 
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)     order by
+2012-07-10 16:23:20,067 INFO  [STDOUT] (http-0.0.0.0-8080-2)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 16:23:20,113 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-2) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 16:23:20,304 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:23:20,304 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:23:24,344 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-8) Buscando Filial por Status : Ativo
+2012-07-10 16:23:24,350 INFO  [STDOUT] (http-0.0.0.0-8080-8) Hibernate: 
+2012-07-10 16:23:24,350 INFO  [STDOUT] (http-0.0.0.0-8080-8)     select
+2012-07-10 16:23:24,350 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.ID as ID40_0_,
+2012-07-10 16:23:24,350 INFO  [STDOUT] (http-0.0.0.0-8080-8)         empresa1_.ID as ID26_1_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.DATA_CRIACAO as DATA2_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.DATA_MODIFICACAO as DATA3_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.CNAE as CNAE40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.COD_FILIAL as COD5_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.DESCRICAO as DESCRICAO40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.EMAIL_FILIAL as EMAIL7_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.EMPRESA_ID as EMPRESA8_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.ID_ENDERECO as ID9_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.ID_GRUPO_EMPRESA as ID19_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.ID_INF_JUR as ID20_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.IE as IE40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.IM as IM40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.ISENTO_ICMS as ISENTO12_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.JUSTIFICATIVA as JUSTIFI13_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.NOME_FANTASIA as NOME14_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.REGIME_TRIBUTARIO as REGIME15_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.ID_SEG_EMP as ID21_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.STATUS as STATUS40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.SUFIXO_CNPJ as SUFIXO17_40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.TELEFONE as TELEFONE40_0_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         empresa1_.DATA_CRIACAO as DATA2_26_1_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         empresa1_.DATA_MODIFICACAO as DATA3_26_1_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         empresa1_.CNPJ_RAIZ as CNPJ4_26_1_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         empresa1_.CODIGO_EMPRESA as CODIGO5_26_1_,
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         empresa1_.RAZAO_SOCIAL as RAZAO6_26_1_ 
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)     from
+2012-07-10 16:23:24,351 INFO  [STDOUT] (http-0.0.0.0-8080-8)         MASTERDATA_FILIAL filial0_ 
+2012-07-10 16:23:24,352 INFO  [STDOUT] (http-0.0.0.0-8080-8)     inner join
+2012-07-10 16:23:24,352 INFO  [STDOUT] (http-0.0.0.0-8080-8)         MASTERDATA_EMPRESA empresa1_ 
+2012-07-10 16:23:24,352 INFO  [STDOUT] (http-0.0.0.0-8080-8)             on filial0_.EMPRESA_ID=empresa1_.ID,
+2012-07-10 16:23:24,352 INFO  [STDOUT] (http-0.0.0.0-8080-8)         MASTERDATA_EMPRESA empresa2_ 
+2012-07-10 16:23:24,352 INFO  [STDOUT] (http-0.0.0.0-8080-8)     where
+2012-07-10 16:23:24,352 INFO  [STDOUT] (http-0.0.0.0-8080-8)         filial0_.EMPRESA_ID=empresa2_.ID 
+2012-07-10 16:23:24,352 INFO  [STDOUT] (http-0.0.0.0-8080-8)         and filial0_.STATUS=? 
+2012-07-10 16:23:24,352 INFO  [STDOUT] (http-0.0.0.0-8080-8)     order by
+2012-07-10 16:23:24,352 INFO  [STDOUT] (http-0.0.0.0-8080-8)         empresa2_.CODIGO_EMPRESA asc
+2012-07-10 16:23:24,396 INFO  [br.com.dataprimer.masterdata.core.empresa.FilialBean] (http-0.0.0.0-8080-8) Busca Filial por Status : Ativo realizada com sucesso
+2012-07-10 16:23:24,419 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-8) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:23:24,420 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-8) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:23:26,318 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:23:26,318 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-13) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:23:32,219 INFO  [org.hibernate.validator.engine.resolver.DefaultTraversableResolver] (http-0.0.0.0-8080-9) Instantiated an instance of org.hibernate.validator.engine.resolver.JPATraversableResolver.
+2012-07-10 16:26:55,142 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-11) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:26:55,143 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-11) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:26:59,345 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:26:59,345 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:27:13,760 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:27:13,760 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:28:11,165 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:28:11,165 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:29:23,414 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:29:23,414 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:29:27,956 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:29:27,956 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:53:03,252 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:53:03,252 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:53:05,367 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:53:05,368 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:54:07,573 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :EC68ECF74DFBDF23F38D99887FEBF645... Efetuando o logoff do usuario...
+2012-07-10 16:58:28,010 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:58:28,010 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:58:30,329 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 16:58:30,329 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 16:59:30,196 INFO  [br.com.dataprimer.masterdata.core.parceiro.ClienteBean] (http-0.0.0.0-8080-4) Buscando entidade Cliente por Filial : CPF vinculado a 22177754801 de {4} : {5}
+2012-07-10 16:59:30,372 INFO  [STDOUT] (http-0.0.0.0-8080-4) Hibernate: 
+2012-07-10 16:59:30,372 INFO  [STDOUT] (http-0.0.0.0-8080-4)     select
+2012-07-10 16:59:30,372 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ID as ID20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.DATA_CRIACAO as DATA2_20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.DATA_MODIFICACAO as DATA3_20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ID_CALCULO_ALIQUOTA as ID19_20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ID_CALCULO_IMPOSTO as ID20_20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.CNPJ as CNPJ20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.CPF as CPF20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.EMAIL as EMAIL20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.INSCRICAO_ESTADUAL as INSCRICAO7_20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ISENTO_ICMS as ISENTO8_20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.JUSTIFICATIVA as JUSTIFIC9_20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.NOME as NOME20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.NOME_FANTASIA as NOME11_20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.RAZAO_SOCIAL as RAZAO12_20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.STATUS as STATUS20_,
+2012-07-10 16:59:30,373 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.TIPO_PESSOA as TIPO14_20_,
+2012-07-10 16:59:30,374 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.UC_CPF_CNPJ as UC15_20_,
+2012-07-10 16:59:30,374 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ID_ENDERECO as ID21_20_,
+2012-07-10 16:59:30,374 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.ID_FILIAL as ID16_20_,
+2012-07-10 16:59:30,374 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.INSCRICAO_SUFRAMA as INSCRICAO17_20_,
+2012-07-10 16:59:30,374 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.NATUREZA_OPERACAO_ID as NATUREZA22_20_,
+2012-07-10 16:59:30,374 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.versao as versao20_ 
+2012-07-10 16:59:30,374 INFO  [STDOUT] (http-0.0.0.0-8080-4)     from
+2012-07-10 16:59:30,374 INFO  [STDOUT] (http-0.0.0.0-8080-4)         MASTERDATA_CLIENTE cliente0_ 
+2012-07-10 16:59:30,374 INFO  [STDOUT] (http-0.0.0.0-8080-4)     where
+2012-07-10 16:59:30,374 INFO  [STDOUT] (http-0.0.0.0-8080-4)         cliente0_.CPF=22177754801 
+2012-07-10 16:59:30,374 INFO  [STDOUT] (http-0.0.0.0-8080-4)         and cliente0_.ID_FILIAL=544
+2012-07-10 16:59:30,518 INFO  [br.com.dataprimer.masterdata.core.parceiro.ClienteBean] (http-0.0.0.0-8080-4) Busca Cliente por CPF : 22177754801 realizada com sucesso
+2012-07-10 17:08:00,890 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:08:00,890 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:08:17,313 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:08:17,313 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:08:49,587 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:08:49,587 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:08:51,512 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:08:51,512 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:10:21,773 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:10:21,773 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:10:27,479 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:10:27,480 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:11:16,618 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-11) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:11:16,619 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-11) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:11:18,397 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-11) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:11:18,397 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-11) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:12:48,153 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:12:48,153 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:12:50,883 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:12:50,883 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:13:15,920 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:13:15,920 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:13:17,549 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:13:17,549 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:19:29,243 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:19:29,243 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:19:31,801 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-11) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:19:31,802 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-11) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:30:04,729 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:30:04,729 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:30:07,192 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:30:07,193 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:30:36,474 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:30:36,474 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-3) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:30:42,277 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:30:42,277 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:31:24,058 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:31:24,058 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:31:26,502 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:31:26,502 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:32:35,043 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:32:35,044 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:32:35,885 AVISO [javax.enterprise.resource.webcontainer.jsf.application] (http-0.0.0.0-8080-2) JSF1064: Não foi possível encontrar ou fornecer o recurso, org.richfaces.staticResource/4.2.2.Final/PackedCompressed/packed/packed.js.
+2012-07-10 17:32:35,886 AVISO [javax.enterprise.resource.webcontainer.jsf.application] (http-0.0.0.0-8080-2) : ClientAbortException:  java.net.SocketException: Connection reset by peer: socket write error
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:402) [:6.1.0.Final]
+	at org.apache.tomcat.util.buf.ByteChunk.flushBuffer(ByteChunk.java:449) [:6.1.0.Final]
+	at org.apache.tomcat.util.buf.ByteChunk.append(ByteChunk.java:349) [:6.1.0.Final]
+	at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:425) [:6.1.0.Final]
+	at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:414) [:6.1.0.Final]
+	at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:89) [:6.1.0.Final]
+	at java.nio.channels.Channels$WritableByteChannelImpl.write(Channels.java:296) [:1.6.0_22]
+	at com.sun.faces.application.resource.ResourceHandlerImpl.handleResourceRequest(ResourceHandlerImpl.java:277) [:2.0.3-]
+	at org.richfaces.resource.ResourceHandlerImpl.handleResourceRequest(ResourceHandlerImpl.java:259) [:4.2.2.Final]
+	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:306) [:2.0.3-]
+	at org.richfaces.webapp.ResourceServlet.httpService(ResourceServlet.java:98) [:4.2.2.Final]
+	at org.richfaces.webapp.ResourceServlet.service(ResourceServlet.java:93) [:4.2.2.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:324) [:6.1.0.Final]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:242) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:275) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:161) [:6.1.0.Final]
+	at org.jboss.web.tomcat.security.SecurityAssociationValve.invoke(SecurityAssociationValve.java:181) [:6.1.0.Final]
+	at org.jboss.modcluster.catalina.CatalinaContext$RequestListenerValve.event(CatalinaContext.java:285) [:1.1.0.Final]
+	at org.jboss.modcluster.catalina.CatalinaContext$RequestListenerValve.invoke(CatalinaContext.java:261) [:1.1.0.Final]
+	at org.jboss.web.tomcat.security.JaccContextValve.invoke(JaccContextValve.java:88) [:6.1.0.Final]
+	at org.jboss.web.tomcat.security.SecurityContextEstablishmentValve.invoke(SecurityContextEstablishmentValve.java:100) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:159) [:6.1.0.Final]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102) [:6.1.0.Final]
+	at org.jboss.web.tomcat.service.jca.CachedConnectionValve.invoke(CachedConnectionValve.java:158) [:6.1.0.Final]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109) [:6.1.0.Final]
+	at org.jboss.web.tomcat.service.request.ActiveRequestResponseCacheValve.invoke(ActiveRequestResponseCacheValve.java:53) [:6.1.0.Final]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:362) [:6.1.0.Final]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:877) [:6.1.0.Final]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:654) [:6.1.0.Final]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:951) [:6.1.0.Final]
+	at java.lang.Thread.run(Thread.java:662) [:1.6.0_22]
+Caused by: java.net.SocketException: Connection reset by peer: socket write error
+	at java.net.SocketOutputStream.socketWrite0(Native Method) [:1.6.0_22]
+	at java.net.SocketOutputStream.socketWrite(SocketOutputStream.java:92) [:1.6.0_22]
+	at java.net.SocketOutputStream.write(SocketOutputStream.java:136) [:1.6.0_22]
+	at org.apache.coyote.http11.InternalOutputBuffer.realWriteBytes(InternalOutputBuffer.java:726) [:6.1.0.Final]
+	at org.apache.tomcat.util.buf.ByteChunk.flushBuffer(ByteChunk.java:449) [:6.1.0.Final]
+	at org.apache.tomcat.util.buf.ByteChunk.append(ByteChunk.java:349) [:6.1.0.Final]
+	at org.apache.coyote.http11.InternalOutputBuffer$OutputStreamOutputBuffer.doWrite(InternalOutputBuffer.java:750) [:6.1.0.Final]
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:126) [:6.1.0.Final]
+	at org.apache.coyote.http11.filters.GzipOutputFilter$FakeOutputStream.write(GzipOutputFilter.java:164) [:6.1.0.Final]
+	at java.util.zip.DeflaterOutputStream.deflate(DeflaterOutputStream.java:161) [:1.6.0_22]
+	at java.util.zip.DeflaterOutputStream.write(DeflaterOutputStream.java:118) [:1.6.0_22]
+	at java.util.zip.GZIPOutputStream.write(GZIPOutputStream.java:72) [:1.6.0_22]
+	at org.apache.coyote.http11.filters.GzipOutputFilter.doWrite(GzipOutputFilter.java:87) [:6.1.0.Final]
+	at org.apache.coyote.http11.InternalOutputBuffer.doWrite(InternalOutputBuffer.java:559) [:6.1.0.Final]
+	at org.apache.coyote.Response.doWrite(Response.java:567) [:6.1.0.Final]
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:397) [:6.1.0.Final]
+	... 30 more
+
+2012-07-10 17:32:47,974 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-11) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:32:47,974 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-11) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:33:16,619 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:33:16,619 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-7) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:33:18,715 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:33:18,715 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-2) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:34:04,855 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:34:04,855 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-6) [null] Populando a Lista de AliquotaVO
+2012-07-10 17:34:07,767 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Recuperando o CalculoAliquota do ManagedBean encontrado na View"
+2012-07-10 17:34:07,767 INFO  [br.com.dataprimer.masterdata.bean.dadosmestre.MBAliquota] (http-0.0.0.0-8080-4) [null] Populando a Lista de AliquotaVO
+2012-07-10 18:05:07,826 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :32C591C90DB1F19A846A2979FA8CF3B3... Efetuando o logoff do usuario...

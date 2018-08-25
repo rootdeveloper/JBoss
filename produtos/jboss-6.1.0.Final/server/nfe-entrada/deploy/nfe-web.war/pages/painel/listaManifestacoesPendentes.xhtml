@@ -1,0 +1,229 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaManifPendentes}"/>
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<ui:include src="/pages/painel/modalManifestacaoDePendentes.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" listener="#{mbManifPendentes.trocaValorComboFilial}" render="header-content barraDeScroll" execute="@this" 
+			oncomplete="renderList(); renderPainelErro();" status="modalStatus"/>
+	</ui:define>
+
+	<ui:define name="content">
+	
+		<util:modalLogProcessos idModal="modalLogProcessos" listaDeProcessos="#{mbManifPendentes.listaDeProcessos}" scrollerPageNumber="#{mbManifPendentes.scrollerPageNumber}" 
+			quantidadeRegistrosProcessos="#{mbManifPendentes.quantidadeRegistrosLogProcessos}" resetScrollerPageNumber="#{mbManifPendentes.resetScrollerPageNumber}"
+			chaveDeAcesso="#{mbManifPendentes.nfe.chaveAcesso}"/>
+
+		<util:modalSimNao mensagem="#{mbManifPendentes.mensagemConfirmacaoManifestacao}" nomePainel="modalConfirmPane" tituloFuncao="selecionado"
+			tituloModal="#{msg.msgConfirmacaoManifestacaoTela}" actionSim="#{mbManifPendentes.enviarManifestacaoSefaz}"
+			render="modalInformativo barraDeScroll" oncomplete="#{rich:component('modalInformativo')}.show(); renderListBody()"/>
+
+		<util:modalSimNao mensagem="#{msg.confirmaCienciaoOperacao}" nomePainel="modalConfirmPaneCienOperEmMassa" tituloFuncao="manifestacaoEmMassa"
+			tituloModal="#{msg.msgConfirmacaoManifestacaoTela}" actionSim="#{mbManifPendentes.enviarManifestacaoSefazEmMassa}"
+			render="modalInformativo painelMensagemErro barraDeScroll" oncomplete="renderList(); #{rich:component('modalInformativo')}.show();"/>
+
+		<util:modalJustificativaManifestacao idModal="modalJustificativaManifestacao" idModalSimNao="modalConfirmPane"
+			justificativaManifestacao="#{mbManifPendentes.justificativaManifestacao}" render="modalConfirmPane"
+			tituloModal="#{mbManifPendentes.tipoXml.descricao}" validarJustificativa="#{mbManifPendentes.validarJustificativa}"
+			justificativaValida="#{mbManifPendentes.justificativaValida}"/>
+
+		<util:modalInformativo mensagemInformativo="#{mbManifPendentes.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo"/>
+		
+		<util:modalInformativo mensagemInformativo="#{mbManifPendentes.mensagemConfirmacaoManifestacao}"
+			tituloModal="#{msg.mensagem}" nomePainel="modalInformativoManifestacao" />
+
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:manifestacaoEmMassa actionListener="#{mbManifPendentes.agruparListaNFeEntradaPorUF}"
+					filialCadastrada="#{not empty mbManifPendentes.idFilial}" idModalInformativo="modalInformativo"
+					idModalSimNao="modalConfirmPaneCienOperEmMassa" idPanelErro="painelErro"
+					renderizarModal="#{mbManifPendentes.renderizarModal}"/>
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaNfeEntrada" var="item" value="#{mbManifPendentes.listaNFeEntrada}" rows="10" styleClass="Largura100pc" 
+			onrowmouseover="className='SelecionaLinha'" rowKeyVar="rowKey" noDataLabel="#{msg.listaNfeEntradaVazia}" onrowmouseout="className=''">
+			
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura100px"
+				sortBy="#{item.numeroDocumentoFiscal}" sortOrder="#{mbManifPendentes.columnOrder.mapColumnOrder['ndoc'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.numeroDocumentoFiscal, mbManifPendentes.columnFilter.mapColumnFilter['ndoc'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.numeroDocumento_}"/>
+					<table:orderArrow action="#{mbManifPendentes.columnOrder.mapColumnOrder['ndoc'].sortBy}" 
+						order="#{mbManifPendentes.columnOrder.mapColumnOrder['ndoc'].sortOrder}" 
+						render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbManifPendentes.columnFilter.mapColumnFilter['ndoc'].filterBy}" styleClass="Campo Largura90px" 
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" maxlength="9" tabindex="1"
+						onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.numeroDocumentoFiscal}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura100px"
+				sortBy="#{item.dataAutorizacao}" sortOrder="#{mbManifPendentes.columnOrder.mapColumnOrder['dataEmissao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.dataAutorizacao, mbManifPendentes.columnFilter.mapColumnFilter['dataEmissao'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataEmissao}"/>
+					<table:orderArrow action="#{mbManifPendentes.columnOrder.mapColumnOrder['dataEmissao'].sortBy}" 
+						order="#{mbManifPendentes.columnOrder.mapColumnOrder['dataEmissao'].sortOrder}" 
+						render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbManifPendentes.columnFilter.mapColumnFilter['dataEmissao'].filterBy}" styleClass="Campo Largura90px" 
+						onkeypress="Mascara(this, Data); executeFilter(this,event);" maxlength="10" tabindex="2"
+						onkeyup="Mascara(this, Data);" onkeydown="Mascara(this, Data);" converter="dateFilterConverter"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Data);" onmouseup="Mascara(this, Data);" onmouseout="Mascara(this, Data);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dataAutorizacao}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura120px"
+				sortBy="#{item.cnpjEmitente}" sortOrder="#{mbManifPendentes.columnOrder.mapColumnOrder['cnpjEmit'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.cnpjEmitente, mbManifPendentes.columnFilter.mapColumnFilter['cnpjEmit'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cnpjEmitente}"/>
+					<table:orderArrow action="#{mbManifPendentes.columnOrder.mapColumnOrder['cnpjEmit'].sortBy}" 
+						order="#{mbManifPendentes.columnOrder.mapColumnOrder['cnpjEmit'].sortOrder}" 
+						render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbManifPendentes.columnFilter.mapColumnFilter['cnpjEmit'].filterBy}" 
+						styleClass="Campo Largura110px" maxlength="14" tabindex="3"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);"
+						onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.cnpjEmitente}" converter="cnpjConverter"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura200px" 
+				sortBy="#{item.valorTotal}" sortOrder="#{mbManifPendentes.columnOrder.mapColumnOrder['valorTotal'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.valorTotal, mbManifPendentes.columnFilter.mapColumnFilter['valorTotal'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.valor}"/>
+					<table:orderArrow action="#{mbManifPendentes.columnOrder.mapColumnOrder['valorTotal'].sortBy}" 
+						order="#{mbManifPendentes.columnOrder.mapColumnOrder['valorTotal'].sortOrder}" 
+						render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText id="valorUnitario" value="#{mbManifPendentes.columnFilter.mapColumnFilter['valorTotal'].filterBy}" 
+						styleClass="Campo Largura190px" maxlength="25" tabindex="4"
+						onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+						onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+						<f:convertNumber  minFractionDigits="0" maxFractionDigits="2" maxIntegerDigits="13" groupingUsed="true" />
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.valorTotal}">
+					<f:convertNumber minFractionDigits="2" locale="pt_BR" />
+				</h:outputText>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura50px"
+				sortBy="#{item.ufEmissaoNF}" sortOrder="#{mbManifPendentes.columnOrder.mapColumnOrder['uf'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(item.ufEmissaoNF), fn:toLowerCase(mbManifPendentes.columnFilter.mapColumnFilter['uf'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.uf}"/>
+					<table:orderArrow action="#{mbManifPendentes.columnOrder.mapColumnOrder['uf'].sortBy}" 
+						order="#{mbManifPendentes.columnOrder.mapColumnOrder['uf'].sortOrder}" render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbManifPendentes.columnFilter.mapColumnFilter['uf'].filterBy}" styleClass="Campo Largura40px"
+						maxlength="2" tabindex="5" onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);"
+						onkeyup="Mascara(this, LetraSemEspaco);" onkeydown="Mascara(this, LetraSemEspaco);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.ufEmissaoNF}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura110px"
+				sortBy="#{mbManifPendentes.diasParaExpirar(item.dataAutorizacao)}" sortOrder="#{mbManifPendentes.columnOrder.mapColumnOrder['expira'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(mbManifPendentes.diasParaExpirar(item.dataAutorizacao), mbManifPendentes.columnFilter.mapColumnFilter['expira'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.expiraEmDias}"/>
+					<table:orderArrow action="#{mbManifPendentes.columnOrder.mapColumnOrder['expira'].sortBy}" 
+						order="#{mbManifPendentes.columnOrder.mapColumnOrder['expira'].sortOrder}" 
+						render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbManifPendentes.columnFilter.mapColumnFilter['expira'].filterBy}" 
+						styleClass="Campo Largura100px" maxlength="8" tabindex="6"
+						onkeypress="Mascara(this, LetraNumeroSemEspaco); executeFilter(this,event);"
+						onkeyup="Mascara(this, LetraNumeroSemEspaco);" onkeydown="Mascara(this, LetraNumeroSemEspaco);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraNumeroSemEspaco);" onmouseup="Mascara(this, LetraNumeroSemEspaco);" onmouseout="Mascara(this, LetraNumeroSemEspaco);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{mbManifPendentes.diasParaExpirar(item.dataAutorizacao)}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura70px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.logProcessos}"/>
+				</f:facet>
+				<a4j:commandButton image="/resources/images/png/log.png" title="#{msg.logProcessos}" onclick="buscarRepositorio(#{rowKey});" 
+					render="modalLogProcessos barraDeScrollModalProcessos" execute="@this"
+					oncomplete="#{rich:component('modalLogProcessos')}.show(); reSize();" status="modalStatus"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura70px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.manifestacao}"/>
+				</f:facet>
+				<a4j:commandButton title="#{(empty item.eventoConclusivo) ? msg.titleNaoManifestado : ((item.eventoConclusivo) ? msg.titleConclusivo : msg.titleInconclusivo)}"
+					image="#{(empty item.eventoConclusivo) ? '/resources/images/png/arrow_red.png' : ((item.eventoConclusivo) ? '/resources/images/png/arrow_green.png' : '/resources/images/png/arrow_yellow.png')}" 
+					render="painelErro eventoManifestacao" execute="@this" oncomplete="#{rich:component('eventoManifestacao')}.show()">
+					<f:param name="linhaNFeEntrada" value="#{rowKey}"/>
+					<a4j:actionListener listener="#{mbManifPendentes.populaListaEventoManifestacao}"/>
+				</a4j:commandButton>
+			</rich:column>
+			
+		
+		</rich:dataTable>
+		
+		<table:scroller for="listaNfeEntrada" idPanelScroller="barraDeScroll" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbManifPendentes.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbManifPendentes.listaNFeEntrada}" 
+			totalRegistros="#{mbManifPendentes.quantidadeRegistros}" />
+		
+		<h:panelGroup layout="block" id="painelMensagemErro"
+			styleClass="MarginLeft10px Largura980px MarginBottom5px MarginTop5px">
+			<h:outputText value="#{mbManifPendentes.mensagemErro}" styleClass="MensagemDeErro MarginLeft10px" escape="false"/>
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="buscarRepositorio" status="modalStatus" action="#{mbManifPendentes.buscaProcessos}">
+			<a4j:param name="indexNfeSelecionado" assignTo="#{mbManifPendentes.indexNfeSelecionado}"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="renderListBody" status="modalStatus" render="listaNfeEntrada@body" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderList" status="modalStatus" render="listaNfeEntrada" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderPainelErro" status="modalStatus" render="painelErro painelMensagemErro"/>
+	</ui:define>
+</ui:composition>

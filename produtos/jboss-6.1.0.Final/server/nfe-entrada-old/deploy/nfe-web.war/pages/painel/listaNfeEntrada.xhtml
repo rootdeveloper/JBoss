@@ -1,0 +1,327 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaNfeEntrada}"/>
+	</ui:define>
+	
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" listener="#{mbNfeEntrada.trocaValorComboFilial}" render="header-content barraDeScroll" execute="@this" 
+			oncomplete="renderList(); renderPainelErro();" status="modalStatus"/>
+	</ui:define>
+
+	<ui:define name="contentModal">
+		<ui:include src="/resources/components/modal/modalManifestacao.xhtml"/>
+		<ui:include src="/resources/components/modal/modalXMLs.xhtml"/>
+		<ui:include src="/pages/painel/modalFiltroNfeEntrada.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="content">
+
+		<util:modalJustificativaEvento nomePainel="modalInfEvento"  mensagem="#{mbNfeEntrada.justificativa}" tituloModal="#{msg.justificativa}"/>
+		<util:modalSimNao mensagem="#{mbNfeEntrada.mensagemConfirmacaoManifestacao}" nomePainel="modalConfirmPane" tituloFuncao="selecionado"
+			tituloModal="#{msg.msgConfirmacaoManifestacaoTela}" actionSim="#{mbNfeEntrada.enviarManifestacaoSefaz}"
+			render="modalInformativo" oncomplete="#{rich:component('modalInformativo')}.show();"/>
+
+		<util:modalSimNao mensagem="#{msg.confirmaCienciaoOperacao}" nomePainel="modalConfirmPaneCienOperEmMassa" tituloFuncao="manifestacaoEmMassa"
+			tituloModal="#{msg.msgConfirmacaoManifestacaoTela}" actionSim="#{mbNfeEntrada.enviarManifestacaoSefazEmMassa}"
+			render="modalInformativo" oncomplete="#{rich:component('modalInformativo')}.show();"/>
+
+		<util:modalJustificativaManifestacao idModal="modalJustificativaManifestacao" idModalSimNao="modalConfirmPane"
+			justificativaManifestacao="#{mbNfeEntrada.justificativaManifestacao}" render="modalConfirmPane"
+			tituloModal="#{mbNfeEntrada.tipoXml.descricaoEvento}" validarJustificativa="#{mbNfeEntrada.validarJustificativa}"
+			justificativaValida="#{mbNfeEntrada.justificativaValida}"/>
+
+		<util:modalInformativo mensagemInformativo="#{mbNfeEntrada.mensagemModal}" tituloModal="#{msg.mensagem}"
+			nomePainel="modalInformativo" render="statusUpload barraDeScroll" oncomplete="renderListBody()"/>
+		
+		<util:modalInformativo mensagemInformativo="#{mbNfeEntrada.mensagemConfirmacaoManifestacao}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativoManifestacao" />
+
+		<util:modalImportador actionLimparDadosDoUpload="#{mbNfeEntrada.limparDadosDoUpload}" nomePainel="importadorNfe" tiposArquivosAceitos="xml"
+			actionUploadListener="#{mbNfeEntrada.uploadListener}" actionVoltarModalImportador="#{mbNfeEntrada.voltarModalImportador}" tituloModal="#{msg.importador}"
+			mensagemLogImportacao="#{mbNfeEntrada.msgLogImportacao}" idModalInformativo="modalInformativo" msgModalInformativo="#{mbNfeEntrada.mensagemModal}"
+			xmlExiste="#{not empty mbNfeEntrada.nfeEntradaImportacao}" render="modalInformativo painelErro" confirmarImportacao="#{mbNfeEntrada.confirmarImportacao}"/>
+
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:filtro idModalFiltro="filtroNfeEntrada" idPanelErro="painelErro" executeOnShow="nrMaxResult" filialCadastrada="#{not empty mbNfeEntrada.idFilial}"/>
+				<botao:importar idModalImportador="importadorNfe" idPanelErro="painelErro" filialCadastrada="#{not empty mbNfeEntrada.idFilial}"
+					rendered="#{mbUserSession.isUserInRole('Admin') or mbUserSession.isUserInRole('Gerente') or mbUserSession.isUserInRole('Atendente')}" />
+				<botao:voltarAction action="home"/>
+				<!--<botao:manifestacaoEmMassa actionListener="#{mbNfeEntrada.agruparListaNFeEntradaPorUF}" filialCadastrada="#{not empty mbNfeEntrada.idFilial}"
+					idModalInformativo="modalInformativo" idModalSimNao="modalConfirmPaneCienOperEmMassa" idPanelErro="painelErro"
+					renderizarModal="#{mbNfeEntrada.renderizarModal}"/>-->
+				<a4j:commandButton image="/resources/images/png/reconsulta_massa.png" title="#{msg.consulta}" actionListener="#{mbNfeEntrada.reconsultaEmMassa}" 
+					execute="@this"  status="modalStatus" render="listaNfeEntrada modalInformativo"  styleClass="BotaoImagem"
+					oncomplete="#{not empty mbNfeEntrada.mensagemModal} ? #{rich:component('modalInformativo')}.show():'';"
+					rendered="#{mbUserSession.isUserInRole('Admin') or mbUserSession.isUserInRole('Gerente') or mbUserSession.isUserInRole('Atendente')}"/>
+			</rich:toolbarGroup>
+			<rich:toolbarGroup location="right" styleClass="MarginRight5px">
+				<h:panelGroup layout="block">
+					<h:outputText value="#{msg.maxResultado}"/>
+					<h:inputText id="nrMaxResult" value="#{mbNfeEntrada.maxResultTela}" onkeyup="Mascara(this, Integer);" onblur="Mascara(this, Integer);" 
+						onkeypress="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						styleClass="Campo Largura45px MarginTop3px MarginLeft5px" maxlength="4"/>
+				</h:panelGroup>
+				<h:panelGroup layout="block" id="inputChave" styleClass="MarginLeft10px">
+					<h:outputText value="#{msg.chaveDeAcesso}" styleClass="MarginRight5px"/>
+					<h:inputText id="chaveDeAcesso" onkeyup="Mascara(this, Integer); scanner(this.value);"
+						onkeypress="Mascara(this, Integer); scanner(this.value);" onkeydown="Mascara(this, Integer); scanner(this.value);"
+						onblur="Mascara(this, Integer); scanner(this.value);" styleClass="Campo Largura320px MarginTop3px MarginRight5px" maxlength="44"/>
+				</h:panelGroup>
+				<botao:atualizar actionListener="#{mbNfeEntrada.refreshList}" render="barraDeScroll"
+					oncomplete="renderList()" buttonStyle="MarginRight5px" idPanelErro="painelErro"
+					filialCadastrada="#{not empty mbNfeEntrada.idFilial}" execute="nrMaxResult"/>
+					
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaNfeEntrada" var="item" value="#{mbNfeEntrada.listaNfeEntrada}" rows="10" styleClass="Largura100pc" 
+			onrowmouseover="className='SelecionaLinha'" rowKeyVar="rowKey" noDataLabel="#{msg.listaNfeEntradaVazia}"
+			onrowmouseout="className=''" onrowdblclick="visualizar(#{item.id})">
+
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura110px"
+				sortBy="#{item.statusSefazAtual.nome}" sortOrder="#{mbNfeEntrada.columnOrder.mapColumnOrder['statusSefaz'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(item.statusSefazAtual.nome), fn:toLowerCase(mbNfeEntrada.columnFilter.mapColumnFilter['statusSefaz'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.statusSefaz}"/>
+					<table:orderArrow action="#{mbNfeEntrada.columnOrder.mapColumnOrder['statusSefaz'].sortBy}" 
+						order="#{mbNfeEntrada.columnOrder.mapColumnOrder['statusSefaz'].sortOrder}" 
+						render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbNfeEntrada.columnFilter.mapColumnFilter['statusSefaz'].filterBy}" styleClass="Campo Largura105px" 
+						onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" maxlength="9" tabindex="3"
+						onkeyup="Mascara(this, LetraSemEspaco);" onkeydown="Mascara(this, LetraSemEspaco);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.statusSefazAtual.nome}"/>
+			</rich:column>
+
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura110px"
+				sortBy="#{item.statusSefazDocXml.nome}" sortOrder="#{mbNfeEntrada.columnOrder.mapColumnOrder['statusArquivo'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(item.statusSefazDocXml.nome), fn:toLowerCase(mbNfeEntrada.columnFilter.mapColumnFilter['statusArquivo'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.statusArquivo}"/>
+					<table:orderArrow action="#{mbNfeEntrada.columnOrder.mapColumnOrder['statusArquivo'].sortBy}" 
+						order="#{mbNfeEntrada.columnOrder.mapColumnOrder['statusArquivo'].sortOrder}" 
+						render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbNfeEntrada.columnFilter.mapColumnFilter['statusArquivo'].filterBy}" styleClass="Campo Largura105px" 
+						onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" maxlength="9" tabindex="3"
+						onkeyup="Mascara(this, LetraSemEspaco);" onkeydown="Mascara(this, LetraSemEspaco);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.statusSefazDocXml.nome}" rendered="#{item.statusSefazAtual.codigo != item.statusSefazDocXml.codigo}"
+					styleClass="MarginLeft6px"/>
+				<h:outputText value="#{item.statusSefazDocXml.nome}" rendered="#{item.statusSefazAtual.codigo == item.statusSefazDocXml.codigo}"/>
+				<h:graphicImage value="#{resource['images/gif:status-aprovada.gif']}" title="#{msg.titleAprovada}" styleClass="MarginLeft2px"
+					rendered="#{item.statusSefazAtual.codigo == item.statusSefazDocXml.codigo and item.statusSefazDocXml.codigo == '100'}" />
+                <h:graphicImage value="#{resource['images/gif:status-cancelada.gif']}" title="#{msg.titleCancelada}" styleClass="MarginLeft2px"
+                	rendered="#{item.statusSefazAtual.codigo == item.statusSefazDocXml.codigo and item.statusSefazDocXml.codigo == '101'}" />
+				<a4j:commandLink render="modalInformativo" execute="@this" actionListener="#{mbNfeEntrada.conflitoStatus}"
+					oncomplete="#{rich:component('modalInformativo')}.show()">
+	                <h:graphicImage value="#{resource['images/gif:warning.gif']}" styleClass="BordaOff MarginLeft2px" title="#{msg.titleDesatualizada}"
+	                	rendered="#{item.statusSefazAtual.codigo != item.statusSefazDocXml.codigo}" />
+				</a4j:commandLink>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura110px"
+				sortBy="#{item.numeroDocumentoFiscal}" sortOrder="#{mbNfeEntrada.columnOrder.mapColumnOrder['ndoc'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.numeroDocumentoFiscal, mbNfeEntrada.columnFilter.mapColumnFilter['ndoc'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.numeroDocumento_}"/>
+					<table:orderArrow action="#{mbNfeEntrada.columnOrder.mapColumnOrder['ndoc'].sortBy}" 
+						order="#{mbNfeEntrada.columnOrder.mapColumnOrder['ndoc'].sortOrder}" render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbNfeEntrada.columnFilter.mapColumnFilter['ndoc'].filterBy}" styleClass="Campo Largura105px" 
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" maxlength="9" tabindex="4"
+						onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.numeroDocumentoFiscal}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura70px"
+				sortBy="#{item.serieNF}" sortOrder="#{mbNfeEntrada.columnOrder.mapColumnOrder['serie'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.serieNF, mbNfeEntrada.columnFilter.mapColumnFilter['serie'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.serie}"/>
+					<table:orderArrow action="#{mbNfeEntrada.columnOrder.mapColumnOrder['serie'].sortBy}" 
+						order="#{mbNfeEntrada.columnOrder.mapColumnOrder['serie'].sortOrder}" render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbNfeEntrada.columnFilter.mapColumnFilter['serie'].filterBy}" styleClass="Campo Largura60px" 
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" maxlength="3" tabindex="4"
+						onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.serieNF}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura100px"
+				sortBy="#{item.statusSefazDocXml.codigo eq 100 ? item.dataAutorizacao : item.dataCancelamento}" sortOrder="#{mbNfeEntrada.columnOrder.mapColumnOrder['dataEmissao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.statusSefazDocXml.codigo eq 100 ? item.dataAutorizacao : item.dataCancelamento, mbNfeEntrada.columnFilter.mapColumnFilter['dataEmissao'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.dataEmissao}"/>
+					<table:orderArrow action="#{mbNfeEntrada.columnOrder.mapColumnOrder['dataEmissao'].sortBy}" 
+						order="#{mbNfeEntrada.columnOrder.mapColumnOrder['dataEmissao'].sortOrder}" render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbNfeEntrada.columnFilter.mapColumnFilter['dataEmissao'].filterBy}" styleClass="Campo Largura90px" 
+						onkeypress="Mascara(this, Data); executeFilter(this,event);" maxlength="10" tabindex="4"
+						onkeyup="Mascara(this, Data);" onkeydown="Mascara(this, Data);" converter="dateFilterConverter"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Data);" onmouseup="Mascara(this, Data);" onmouseout="Mascara(this, Data);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.dataAutorizacao}" rendered="#{item.statusSefazDocXml.codigo eq 100}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+				<h:outputText value="#{item.dataCancelamento}" rendered="#{item.statusSefazDocXml.codigo eq 101}">
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
+				</h:outputText>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura50px"
+				sortBy="#{item.tipoOperacao.sigla}" sortOrder="#{mbNfeEntrada.columnOrder.mapColumnOrder['es'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.tipoOperacao.sigla, mbNfeEntrada.columnFilter.mapColumnFilter['es'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.es_}"/>
+					<table:orderArrow action="#{mbNfeEntrada.columnOrder.mapColumnOrder['es'].sortBy}" 
+						order="#{mbNfeEntrada.columnOrder.mapColumnOrder['es'].sortOrder}" render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbNfeEntrada.columnFilter.mapColumnFilter['es'].filterBy}" styleClass="Campo Largura40px" 
+						onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" maxlength="1" tabindex="4"
+						onkeyup="Mascara(this, LetraSemEspaco);" onkeydown="Mascara(this, LetraSemEspaco);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.tipoOperacao.sigla}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura110px"
+				sortBy="#{item.cnpjEmitente}" sortOrder="#{mbNfeEntrada.columnOrder.mapColumnOrder['cnpjEmit'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.cnpjEmitente, mbNfeEntrada.columnFilter.mapColumnFilter['cnpjEmit'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cnpjEmitente}"/>
+					<table:orderArrow action="#{mbNfeEntrada.columnOrder.mapColumnOrder['cnpjEmit'].sortBy}" 
+						order="#{mbNfeEntrada.columnOrder.mapColumnOrder['cnpjEmit'].sortOrder}" render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbNfeEntrada.columnFilter.mapColumnFilter['cnpjEmit'].filterBy}" 
+						styleClass="Campo Largura100px" maxlength="14" tabindex="8"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);"
+						onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.cnpjEmitente}" converter="cnpjConverter"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura50px"
+				sortBy="#{item.ufEmissaoNF}" sortOrder="#{mbNfeEntrada.columnOrder.mapColumnOrder['uf'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.ufEmissaoNF, mbNfeEntrada.columnFilter.mapColumnFilter['uf'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.uf}"/>
+					<table:orderArrow action="#{mbNfeEntrada.columnOrder.mapColumnOrder['uf'].sortBy}" 
+						order="#{mbNfeEntrada.columnOrder.mapColumnOrder['uf'].sortOrder}" render="listaNfeEntrada"/>
+					<br/>
+					<h:inputText value="#{mbNfeEntrada.columnFilter.mapColumnFilter['uf'].filterBy}" styleClass="Campo Largura40px"
+						maxlength="2" tabindex="9" onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);"
+						onkeyup="Mascara(this, LetraSemEspaco);" onkeydown="Mascara(this, LetraSemEspaco);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" render="barraDeScroll" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.ufEmissaoNF}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura70px"
+				rendered="#{mbUserSession.isUserInRole('Admin') or mbUserSession.isUserInRole('Gerente') or mbUserSession.isUserInRole('Atendente')}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.repositorio}"/>
+				</f:facet>
+				<a4j:commandButton image="/resources/images/png/xml.png" title="#{msg.titleXMl}" onclick="buscarRepositorio(#{item.id});" render="repositorioXML" execute="@this"
+					oncomplete="#{rich:component('repositorioXML')}.show()" status="modalStatus"/>
+			</rich:column>
+			<!-- Inicio -->
+			<rich:column styleClass="AlignCenter" headerClass="Largura60px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.consulta}"/>
+				</f:facet>
+				<a4j:commandButton image="/resources/images/png/reprocessamento.png" title="#{msg.consulta}" onclick="consultaIndividual(#{rowKey});" execute="@this"
+				status="modalStatus" render="listaNfeEntrada modalInformativo" 
+				oncomplete="#{not empty mbNfeEntrada.mensagemModal} ? #{rich:component('modalInformativo')}.show():'';"/>
+			</rich:column>
+			<!-- Fim -->
+			<rich:column styleClass="AlignCenter" headerClass="Largura85px"
+				rendered="#{mbUserSession.isUserInRole('Admin') or mbUserSession.isUserInRole('Gerente') or mbUserSession.isUserInRole('Atendente')}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.manifestacao}"/>
+				</f:facet>
+				<a4j:commandButton title="#{(empty item.eventoConclusivo) ? msg.titleNaoManifestado : ((item.eventoConclusivo) ? msg.titleConclusivo : msg.titleInconclusivo)}"
+					image="#{(empty item.eventoConclusivo) ? '/resources/images/png/arrow_red.png' : ((item.eventoConclusivo) ? '/resources/images/png/arrow_green.png' : '/resources/images/png/arrow_yellow.png')}" render="eventoManifestacao painelErro listaNfeEntrada" execute="@this"
+					oncomplete="#{mbNfeEntrada.manifestacaoPermitida} ? #{rich:component('eventoManifestacao')}.show() : ''">
+					<f:param name="linhaNFeEntrada" value="#{rowKey}"/>
+					<a4j:actionListener listener="#{mbNfeEntrada.populaListaEventoManifestacao}"/>
+				</a4j:commandButton>
+			</rich:column>
+			
+		</rich:dataTable>
+		
+		<table:scroller for="listaNfeEntrada" idPanelScroller="barraDeScroll" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbNfeEntrada.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbNfeEntrada.listaNfeEntrada}" 
+			totalRegistros="#{mbNfeEntrada.quantidadeRegistros}" />
+			
+		<h:panelGroup id="painelErro">
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+			<h:outputText value="#{mbNfeEntrada.mensagemErro}" styleClass="MensagemDeErro"/>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="visualizar" status="modalStatus" action="#{mbNfeEntrada.visualizar}">
+			<a4j:param name="idNfe" assignTo="#{mbNfeEntrada.idNfeSelecionado}"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="buscarRepositorio" status="modalStatus" action="#{mbNfeEntrada.buscaRepositorio}">
+			<a4j:param name="idDaNFeNaLista" assignTo="#{mbNfeEntrada.idNFeEntrada}"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="consultaIndividual" status="modalStatus" action="#{mbNfeEntrada.consultaIndividual}">
+			<a4j:param name="posicaoNaLista" assignTo="#{mbNfeEntrada.idNfeSelecionado}"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="consultarNFe" render="barraDeScroll chaveDeAcesso painelErro" oncomplete="renderList(); focus('chaveDeAcesso');">
+			<a4j:param name="chaveScanner" assignTo="#{mbNfeEntrada.chaveAcessoConsulta}" />
+			<a4j:actionListener listener="#{mbNfeEntrada.consultarChaveDeAcesso}" />
+		</a4j:jsFunction>
+		
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando Ã© realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderListBody" status="modalStatus" render="listaNfeEntrada@body" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderList" status="modalStatus" render="listaNfeEntrada" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderPainelErro" status="modalStatus" render="painelErro"/>
+	</ui:define>
+</ui:composition>

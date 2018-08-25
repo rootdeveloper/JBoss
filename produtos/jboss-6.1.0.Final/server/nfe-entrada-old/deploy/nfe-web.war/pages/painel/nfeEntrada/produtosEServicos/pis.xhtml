@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px"
+		rendered="#{mbNfeEntrada.produtoOuServico != null}">
+		<rich:tab id="abaPisAliquota" header="#{msg.aba_PisAliquota}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.pis.pisAliq != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/pis/pisAliquota.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaPisQtde" header="#{msg.aba_PisQtde}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.pis.pisQtde != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/pis/pisQtde.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaPisNt" header="#{msg.aba_PisNt}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.pis.pisNT != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/pis/pisNt.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaPisOutros" header="#{msg.aba_PisOutros}" immediate="true" execute="@this"
+			rendered="#{mbNfeEntrada.produtoOuServico.imposto.pis.pisOutr != null}">
+			<ui:include src="/pages/painel/nfeEntrada/produtosEServicos/pis/pisOutros.xhtml" /> 
+		</rich:tab>
+	</rich:tabPanel>
+	
+</ui:composition>

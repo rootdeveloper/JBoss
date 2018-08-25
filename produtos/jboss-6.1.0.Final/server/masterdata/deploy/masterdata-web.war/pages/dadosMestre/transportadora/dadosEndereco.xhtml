@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal">
+		
+	<h:panelGroup id="cadastroEnderecoTransportadora">	
+		
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.cep}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="cep" styleClass="Campo Largura70px PositionRelativeFloatLeft" disabled="#{mbTransportadora.statusInicio}" maxlength="9" 
+				onkeypress="Mascara(this, Cep)" onkeydown="Mascara(this, Cep)" value="#{mbTransportadora.transportadora.endereco.cep}" converter="cepConverter"
+				onmousedown="Mascara(this, Cep);" onmouseup="Mascara(this, Cep);" onmouseout="Mascara(this, Cep);" rendered="#{mbTransportadora.parceiroBrasileiro}">
+				<a4j:ajax event="blur" render="bairro, logradouro, ufOne, mun, panelErros" status="modalStatus"
+					execute="@this" listener="#{mbTransportadora.populaEnderecoComCep}" immediate="false"/>
+			</h:inputText>
+			<h:inputText styleClass="Campo Largura70px PositionRelativeFloatLeft" disabled="#{mbTransportadora.statusInicio}" maxlength="8" 
+				value="#{mbTransportadora.transportadora.endereco.cep}" rendered="#{!mbTransportadora.parceiroBrasileiro}">
+			</h:inputText>
+			<div class="PositionRelativeFloatLeft MarginLeft10px MarginTop2px Largura70px">
+				<h:outputText value="#{msg.telefone}" styleClass="TituloDeCampo" />
+			</div>
+			<h:inputText id="telefone" styleClass="Campo Largura120px PositionRelativeFloatLeft" value="#{mbTransportadora.transportadora.endereco.telefone}" 
+				readonly="#{mbTransportadora.statusInicio}" onkeypress="Mascara(this, Telefone)" onkeydown="Mascara(this, Telefone)" onkeyup="Mascara(this, Telefone)"
+				onmousedown="Mascara(this, Telefone);" onmouseup="Mascara(this, Telefone);" onmouseout="Mascara(this, Telefone);" 
+				maxlength="17" converter="telefoneConverter"/>
+		</div>
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.logradouro}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="logradouro" value="#{mbTransportadora.transportadora.endereco.logradouro}" readonly="#{mbTransportadora.statusInicio}" 
+				maxlength="60" styleClass="Campo Largura670px PositionRelativeFloatLeft"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.numero}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="numero" value="#{mbTransportadora.transportadora.endereco.numero}" readonly="#{mbTransportadora.statusInicio}"
+				maxlength="60" styleClass="Campo Largura670px PositionRelativeFloatLeft"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.complemento}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" readonly="#{mbTransportadora.statusInicio}" 
+				value="#{mbTransportadora.transportadora.endereco.complemento}"/>
+		</div>
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.bairro}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="bairro" styleClass="Campo Largura670px PositionRelativeFloatLeft" readonly="#{mbTransportadora.statusInicio}"  
+				maxlength="60" value="#{mbTransportadora.transportadora.endereco.bairro}"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.pais}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu value="#{mbTransportadora.transportadora.endereco.pais}" 
+				disabled="#{!mbTransportadora.exterior || mbTransportadora.transportadora.dadosBasicos.status.nomeTipo eq 'Inativo'}"
+				rendered="#{!mbTransportadora.exterior}" converter="entityConverter"  styleClass="ComboField Largura220px PositionRelativeFloatLeft">
+				 <f:selectItems value="#{mbPais.listaDePaisesAsSelectItem}"/>
+				 <a4j:ajax event="change" render="ufOne, mun" />
+			</h:selectOneMenu>
+			<h:selectOneMenu value="#{mbTransportadora.transportadora.endereco.pais}" rendered="#{mbTransportadora.exterior}"
+				 disabled="#{mbTransportadora.statusInicio}" converter="entityConverter" styleClass="ComboField Largura220px PositionRelativeFloatLeft">
+				 <f:selectItems value="#{mbPais.listaDePaisesSemBrasilAsSelectItem}"/>
+				 <a4j:ajax event="change" render="ufOne, mun" />
+			</h:selectOneMenu>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu id="ufOne" value="#{mbTransportadora.transportadora.endereco.uf}" disabled="#{mbTransportadora.statusInicio}" 
+				converter="entityConverter" styleClass="ComboField Largura50px PositionRelativeFloatLeft">
+				<f:selectItems value="#{mbTransportadora.listaUfAsSelectItem}" />
+				<a4j:ajax event="change" render="mun" />
+			</h:selectOneMenu>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.municipio}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu id="mun" value="#{mbTransportadora.transportadora.endereco.municipio}" disabled="#{mbTransportadora.statusInicio}" 
+				converter="entityConverter" styleClass="ComboField Largura220px PositionRelativeFloatLeft">
+				<f:selectItems value="#{mbTransportadora.listaMunAsSelectItem}"/>
+			</h:selectOneMenu>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+	
+	</h:panelGroup>
+	
+</ui:composition>

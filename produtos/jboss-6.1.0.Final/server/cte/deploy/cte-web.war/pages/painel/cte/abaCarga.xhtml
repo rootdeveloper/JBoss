@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	<ui:composition>
+		<rich:tabPanel switchType="client">
+			<rich:tab header="#{msg.informacoesDaCarga}" styleClass="Altura180px">
+				<ui:include src="/pages/painel/cte/carga/abaInformacoesCarga.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.informacoesDosContainers}" styleClass="Largura700px Altura305px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.contQt != null}">
+				<ui:include src="/pages/painel/cte/carga/abaInformacoesDosContainers.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.documentosDeTransporteAnterior}" styleClass="Altura265px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.docAnt != null}">
+				<ui:include src="/pages/painel/cte/carga/abaDocumentosDeTransporteAnterior.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.seguroDaCarga}" styleClass="Altura140px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.seg != null}">
+				<ui:include src="/pages/painel/cte/carga/abaSeguroDaCarga.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.produtosPerigosos}" styleClass="Largura980px Altura185px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.peri != null}">
+				<ui:include src="/pages/painel/cte/carga/abaProdutosPerigosos.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.veiculosTransportados}" styleClass="Largura980px Altura145px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.veicNovos != null}">
+				<ui:include src="/pages/painel/cte/carga/abaVeiculosTransportados.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.abaDadosDaCobranca}" styleClass="Altura220px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.cobr != null}">
+				<ui:include src="/pages/painel/cte/carga/abaDadosDaCobranca.xhtml"/>
+			</rich:tab>
+		</rich:tabPanel>
+	</ui:composition>
+</html>
+                

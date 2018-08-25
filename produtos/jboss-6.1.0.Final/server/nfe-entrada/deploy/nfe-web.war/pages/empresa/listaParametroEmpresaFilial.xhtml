@@ -1,0 +1,155 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaParametroEmpresaFilial}"/>
+	</ui:define>
+	
+	 <ui:define name="content">
+		<util:modalInformativo mensagemInformativo="#{mbParametroEmpresaFilial.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo" />
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel" id="toolbarBotoes">
+			<rich:toolbarGroup location="left">
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaParametroEmpresa" var="item" value="#{mbParametroEmpresaFilial.listaParametroEmpresaFilial}" rows="10" styleClass="Largura100pc" 
+			noDataLabel="#{msg.listaParametroEmpresaFilialVazia}" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			onrowdblclick="editarParametroEmpresa(#{rowKey})" rowKeyVar="rowKey">
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura70px"
+				sortBy="#{item.id}" sortOrder="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['codigo'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.id, mbParametroEmpresaFilial.columnFilter.mapColumnFilter['codigo'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigo}"/>
+					<table:orderArrow action="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['codigo'].sortBy}" 
+						order="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['codigo'].sortOrder}" 
+						render="listaParametroEmpresa"/>
+					<br/>
+					<h:inputText value="#{mbParametroEmpresaFilial.columnFilter.mapColumnFilter['codigo'].filterBy}" styleClass="Campo Largura60px" 
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" maxlength="19" tabindex="1"
+						onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="controle" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.id}" title="#{item.id}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura110px"
+				sortBy="#{item.codigoEmpresa}" sortOrder="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['codigoEmpresa'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.codigoEmpresa, mbParametroEmpresaFilial.columnFilter.mapColumnFilter['codigoEmpresa'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigoEmpresa}"/>
+					<table:orderArrow action="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['codigoEmpresa'].sortBy}" 
+						order="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['codigoEmpresa'].sortOrder}" 
+						render="listaParametroEmpresa"/>
+					<br/>
+					<h:inputText value="#{mbParametroEmpresaFilial.columnFilter.mapColumnFilter['codigoEmpresa'].filterBy}" styleClass="Campo Largura100px" 
+						onkeypress="executeFilter(this,event);" maxlength="4" tabindex="2"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="controle" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.codigoEmpresa}" title="#{item.codigoEmpresa}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura250px"
+				sortBy="#{item.razaoSocial}" sortOrder="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['razaoSocial'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.razaoSocial, mbParametroEmpresaFilial.columnFilter.mapColumnFilter['razaoSocial'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.lbl_razaoSocial}"/>
+					<table:orderArrow action="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['razaoSocial'].sortBy}" 
+						order="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['razaoSocial'].sortOrder}" 
+						render="listaParametroEmpresa"/>
+					<br/>
+					<h:inputText value="#{mbParametroEmpresaFilial.columnFilter.mapColumnFilter['razaoSocial'].filterBy}" styleClass="Campo Largura200px" 
+						onkeypress="executeFilter(this,event);" maxlength="60" tabindex="3"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="controle" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.razaoSocial}" title="#{item.razaoSocial}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter Truncate" headerClass="Largura200px"
+				sortBy="#{item.descricaoFilial}" sortOrder="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['descricao'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.descricaoFilial, mbParametroEmpresaFilial.columnFilter.mapColumnFilter['descricao'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricao}"/>
+					<table:orderArrow action="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['descricao'].sortBy}" 
+						order="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['descricao'].sortOrder}" render="listaParametroEmpresa"/>
+					<br/>
+					<h:inputText value="#{mbParametroEmpresaFilial.columnFilter.mapColumnFilter['descricao'].filterBy}" styleClass="Campo Largura200px" 
+						onkeypress="executeFilter(this,event);" maxlength="60" tabindex="4"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="controle" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.descricaoFilial}" title="#{item.descricaoFilial}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura120px"
+				sortBy="#{item.cnpjEmpresa}" sortOrder="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['cnpj'].sortOrder}"
+				filterExpression="#{fn:containsIgnoreCase(item.cnpjEmpresa, mbParametroEmpresaFilial.columnFilter.mapColumnFilter['cnpj'].filterBy)}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.lbl_cnpj}"/>
+					<table:orderArrow action="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['cnpj'].sortBy}" 
+						order="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['cnpj'].sortOrder}" 
+						render="listaParametroEmpresa"/>
+					<br/>
+					<h:inputText value="#{mbParametroEmpresaFilial.columnFilter.mapColumnFilter['cnpj'].filterBy}" styleClass="Campo Largura100px" 
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" maxlength="14" tabindex="5"
+						onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="controle" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.cnpjEmpresa}" title="#{item.cnpjEmpresa}" converter="cnpjConverter"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura100px"
+				sortBy="#{item.codigoFilial}" sortOrder="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['codigoFilial'].sortOrder}"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(item.codigoFilial), fn:toLowerCase(mbParametroEmpresaFilial.columnFilter.mapColumnFilter['codigoFilial'].filterBy))}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigoFilial}"/>
+					<table:orderArrow action="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['codigoFilial'].sortBy}" 
+						order="#{mbParametroEmpresaFilial.columnOrder.mapColumnOrder['codigoFilial'].sortOrder}" 
+						render="listaParametroEmpresa"/>
+					<br/>
+					<h:inputText value="#{mbParametroEmpresaFilial.columnFilter.mapColumnFilter['codigoFilial'].filterBy}" styleClass="Campo Largura80px" 
+						onkeypress="executeFilter(this,event);" maxlength="4" tabindex="6"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="controle" oncomplete="renderListBody();" execute="@this" status="modalStatus"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.codigoFilial}" title="#{item.codigoFilial}" />
+			</rich:column>
+		</rich:dataTable>
+		<table:scroller for="listaParametroEmpresa" idPanelScroller="controle" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbParametroEmpresaFilial.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbParametroEmpresaFilial.listaParametroEmpresaFilial}" 
+			totalRegistros="#{mbParametroEmpresaFilial.quantidadeRegistros}" />
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbParametroEmpresaFilial.mensagemDeErro}" >
+				<h:outputText value="#{mbParametroEmpresaFilial.mensagemDeErro}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</h:panelGroup>
+		</h:panelGroup>
+		<a4j:jsFunction name="editarParametroEmpresa" render="erroEdicao" status="modalStatus" action="#{mbParametroEmpresaFilial.editar}">
+			<a4j:param name="linhaDoParametro" assignTo="#{mbParametroEmpresaFilial.linhaSelecionada}"/>
+		</a4j:jsFunction>	
+		<a4j:jsFunction name="renderListBody" status="modalStatus" render="listaParametroEmpresa@body" oncomplete="reSize();"/>
+			
+	</ui:define>
+</ui:composition>

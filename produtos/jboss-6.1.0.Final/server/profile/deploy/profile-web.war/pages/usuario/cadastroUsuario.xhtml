@@ -1,0 +1,182 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:empresa="http://java.sun.com/jsf/composite/components/empresa"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputLabel value="#{msg.paginaCadastroUsuario}" />
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<empresa:modalListaEmpresaNaoVinculada id="modalLista" nome="modalEmpresaNaoVinculada" idPainelErro="painelMensagemErro"/>
+		<ui:include src="modalAlterarSenha.xhtml" />
+	</ui:define>
+	
+	<ui:define name="content">
+		<util:modalInformativoVoltar mensagemInformativo="#{mbUsuario.mensagemModal}" nomePainel="modalInformativoVoltar" 
+			tituloModal="#{msg.mensagem}" />
+			
+		<util:modalJustificativaStatus idModal="modalJustificativa" actionRenderizarModais="#{mbUsuario.fecharModalInformativo}"
+			justificativaInformativa="#{mbUsuario.justificativa}" tipoStatus="#{mbUsuario.usuario.status.nomeTipo}"
+			idModalInformativo="modalInformativoVoltar" justificativaEditavel="#{mbUsuario.usuario.justificativa}" salvar="#{mbUsuario.salvar}"
+			renderizaModalStatusInformativo="#{mbUsuario.justificativaInformativa}" renderizarModal="#{mbUsuario.renderizarModal}"/>
+			
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<a4j:commandLink status="modalStatus" actionListener="#{mbUsuario.verificaStatus}" title="#{msg.titleSalvar}" 
+				oncomplete="#{mbUsuario.renderizarModalJustificativa} ? #{rich:component('modalJustificativa')}.show() : '' ; #{mbUsuario.renderizarModal} ? #{rich:component('modalInformativoVoltar')}.show() : '' "
+				execute="cadastroUsuario vincularPerfil" render="modalInformativoVoltar painelMensagemErro modalJustificativa">
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink>
+			
+			<a4j:commandLink status="modalStatus" title="#{msg.alterarSenha}" oncomplete="#{rich:component('modalAlterarSenha')}.show()"
+				render="modalAlterarSenha" actionListener="#{mbAlterarSenha.novo}" rendered="#{mbUsuario.usuario.id != null}" execute="@this">
+				<h:graphicImage value="#{resource['images/gif:chave.gif']}" alt="alterar senha" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+			
+			<a4j:commandLink status="modalStatus" action="voltar" title="#{msg.titleVoltar}" immediate="true">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+		</rich:toolbar>
+		
+		<h:panelGroup id="cadastroUsuario"> 
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="status" value="#{mbUsuario.usuario.status}" disabled="#{empty mbUsuario.usuario.id}" 
+					styleClass="ComboField PositionRelativeFloatLeft Largura70px" tabindex="1">
+					<f:selectItems value="#{mbUsuario.listaStatusEnum}" var="status" itemLabel="#{status.nomeTipo}"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				<a4j:commandButton image="/resources/images/gif/information.gif" title="#{msg.titleMotivo}" render="modalInformativoStatus modalJustificativa" 
+					styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft Tabwalk" oncomplete="#{rich:component('modalJustificativa')}.show()" 
+					rendered="#{not empty mbUsuario.justificativa}" actionListener="#{mbUsuario.processaRenderizacaoModais}" execute="@this" />
+			</h:panelGroup>
+		
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.nome}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="nome" value="#{mbUsuario.usuario.nome}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					maxlength="60" tabindex="2" readonly="#{mbUsuario.inativo}"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</h:panelGroup>
+			
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.cpf}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="cnpj" value="#{mbUsuario.usuario.cpf}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					onkeypress="Mascara(this, Cpf);" onkeyup="Mascara(this, Cpf);" onkeydown="Mascara(this, Cpf);"
+					onmousedown="Mascara(this, Cpf);" onmouseup="Mascara(this, Cpf);" onmouseout="Mascara(this, Cpf);"
+					converter="cpfConverter" readonly="#{mbUsuario.inativo}" tabindex="3" maxlength="14" />
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</h:panelGroup>
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.telefone}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="telefone" value="#{mbUsuario.usuario.telefone}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					onkeypress="Mascara(this, Telefone);" onkeyup="Mascara(this, Telefone);" onkeydown="Mascara(this, Telefone);"
+					onmousedown="Mascara(this, Telefone);" onmouseup="Mascara(this, Telefone);" onmouseout="Mascara(this, Telefone);"
+					converter="telefoneConverter" maxlength="17" tabindex="4" readonly="#{mbUsuario.inativo}"/>
+			</h:panelGroup>
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.email}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="email" value="#{mbUsuario.usuario.email}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					maxlength="60" tabindex="5" readonly="#{mbUsuario.inativo}"/>
+			</h:panelGroup>
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.login}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="login" value="#{mbUsuario.usuario.login}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					maxlength="60" tabindex="6" readonly="#{mbUsuario.inativo}"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</h:panelGroup>
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px" rendered="#{mbUsuario.usuario.id eq null}">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.senha}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputSecret id="senha" value="#{mbUsuario.usuario.senha}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					maxlength="60" tabindex="7" readonly="#{mbUsuario.inativo}"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</h:panelGroup>
+			<h:panelGroup styleClass="Linha980x25 MarginTop5px" rendered="#{mbUsuario.usuario.id eq null}">
+				<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.confirmaSenha}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputSecret id="confirmaSenha" value="#{mbUsuario.confirmaSenha}" styleClass="Campo Largura400px PositionRelativeFloatLeft"
+					maxlength="60" tabindex="8" readonly="#{mbUsuario.inativo}"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</h:panelGroup>
+		
+		</h:panelGroup>
+		
+		<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+			<rich:tab header="#{msg.perfil}" immediate="true" execute="@this">
+				<h:panelGroup id="vincularPerfil"> 
+					<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+						<div class="PositionRelativeFloatLeft Largura120px MarginTop2px MarginLeft3px">
+							<h:outputText value="#{msg.sistema}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:selectOneMenu id="sistema" value="#{mbUsuario.sistemaSelecionado}" readonly="#{mbUsuario.inativo}"
+							styleClass="ComboField PositionRelativeFloatLeft Largura200px" tabindex="9" converter="entityConverter">
+							<f:selectItems value="#{mbUsuario.listaSistemaSelectItem}" var="sistema" itemLabel="#{sistema.codigo}"/>
+							<f:ajax execute="@this" render="picklist" listener="#{mbUsuario.changeSistema}"/>
+						</h:selectOneMenu>
+					</h:panelGroup>
+					<h:panelGroup styleClass="Linha980x115 MarginTop5px MarginLeft3px" id="picklist">
+						<h:selectManyListbox value="#{mbUsuario.picklist.listaEsquerdaSelecionados}" id="left" converter="entityConverter"
+							styleClass="Largura300px Altura110px PositionRelativeFloatLeft SelectMultiple" tabindex="10">
+							<f:selectItems value="#{mbUsuario.picklist.listaEsquerda}"/>
+						</h:selectManyListbox>
+						<h:panelGroup styleClass="PositionRelativeFloatLeft Largura35px AlignCenter MarginLeft5px">
+							<a4j:commandLink styleClass="PositionRelativeFloatLeft" actionListener="#{mbUsuario.picklist.adicionarTodos}" render="picklist" execute="left"
+								title="#{msg.titleAdicionarTodos}">
+								<h:graphicImage value="#{resource['images/png:setasDireita.png']}" alt="add all" styleClass="BotaoImagem" width="21px" height="15px"/>
+							</a4j:commandLink>
+							<a4j:commandLink styleClass="PositionRelativeFloatLeft" actionListener="#{mbUsuario.picklist.adicionar}" render="picklist" execute="left"
+								title="#{msg.titleAdicionar}">
+								<h:graphicImage value="#{resource['images/png:setaDireita.png']}" alt="add" styleClass="BotaoImagem" width="21px" height="15px"/>
+							</a4j:commandLink>
+							<a4j:commandLink styleClass="PositionRelativeFloatLeft MarginTop15px" actionListener="#{mbUsuario.picklist.remover}" render="picklist" execute="right"
+								title="#{msg.titleRemover}">
+								<h:graphicImage value="#{resource['images/png:setaEsquerda.png']}" alt="remove" styleClass="BotaoImagem" width="21px" height="15px"/>
+							</a4j:commandLink>
+							<a4j:commandLink styleClass="PositionRelativeFloatLeft" actionListener="#{mbUsuario.picklist.removerTodos}" render="picklist" execute="right"
+								title="#{msg.titleRemoverTodos}">
+								<h:graphicImage value="#{resource['images/png:setasEsquerda.png']}" alt="remove all" styleClass="BotaoImagem" width="21px" height="15px"/>
+							</a4j:commandLink>
+						</h:panelGroup>
+						<h:selectManyListbox value="#{mbUsuario.picklist.listaDireitaSelecionados}" id="right" converter="entityConverter"
+							styleClass="Largura300px Altura110px PositionRelativeFloatLeft SelectMultiple" tabindex="10">
+							<f:selectItems value="#{mbUsuario.picklist.listaDireita}"/>
+						</h:selectManyListbox>
+					</h:panelGroup>
+				</h:panelGroup>
+			</rich:tab>
+			<rich:tab header="#{msg.empresa}" immediate="true" execute="@this">
+				<empresa:listaEmpresaVinculada idPainelErro="painelMensagemErro" renderizado="#{not mbUsuario.inativo and mbPermissao.vincularEmpresa}"/>
+			</rich:tab>
+		</rich:tabPanel>
+			
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="Largura980px PositionRelativeFloatLeft MarginLeft10px">
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+			
+		<div class="PositionRelativeFloatLeft Largura100pc MarginTop5px MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft10px"/>
+		</div>
+		
+	</ui:define>
+	
+</ui:composition>

@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	  
+	<ui:composition>
+		<h:panelGroup layout="block" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCteComp != null and not empty mbCteTerceiros.procCte.CTe.infCte.infCteComp}" id="infCteCompID">
+			<a4j:repeat value="#{mbCteTerceiros.procCte.CTe.infCte.infCteComp}" var="cteComp" rows="1" id="repeatInfCteComp">
+				<fieldset class="Fieldset930x290BaseQuadrada">
+					<legend class="TituloDeCampo">#{msg.informacoes}</legend>
+					<!-- Fieldset das chaves complementares -->
+					<fieldset class="Fieldset660x60 MarginTop5px MarginLeft5px">
+						<legend class="TituloDeCampo">#{msg.chavesComplementares}</legend>
+						<div class="Linha610x38 MarginTop5px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.chaveDeAcessoComplementado}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{cteComp.chave}" styleClass="Campo Largura320px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDaPrestacaoDeServico}" styleClass="TituloDeCampo"/>
+								<br />
+								<h:inputText value="#{cteComp.vPresComp.vtPrest}" styleClass="Campo Largura260px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>
+							</div>
+						</div>
+					</fieldset>
+					<!-- Fim do fieldset das chaves complementares -->
+					
+					<!-- Fieldset Componentes -->	
+					<fieldset class="Fieldset660x150 MarginTop5px MarginLeft5px">
+						<legend class="TituloDeCampo">#{msg.componentes}</legend>
+						<h:panelGroup layout="block">
+							<rich:dataTable value="#{cteComp.vPresComp.compComp}" var="compComp" rows="3" id="compCompTabela" styleClass="Largura640px MarginLeft5px MarginTop5px">
+								<rich:column styleClass="AlignCenter">
+									<f:facet name="header">
+										<h:outputText value="#{msg.nomeDoComponente}" />
+									</f:facet>
+									<h:outputText value="#{compComp.xNome}"/>
+								</rich:column>
+								<rich:column styleClass="AlignCenter">
+									<f:facet name="header">
+										<h:outputText value="#{msg.valorDoComponente}" />
+									</f:facet>
+									<h:outputText value="#{compComp.vComp}" converter="valorMonetarioSefazConverter">
+									</h:outputText>
+								</rich:column>								
+							</rich:dataTable>
+							<!-- Scroller da tabela de componentes -->
+							<h:panelGroup id="compCompTabelaScr" styleClass="Scroller Largura638px MarginLeft5px" layout="block">
+								<rich:dataScroller id="compCompTabelaScroll" for="compCompTabela" fastControls="hide" maxPages="10">
+									<f:facet name="first">
+										<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+									</f:facet>
+									<f:facet name="last">
+										<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+									</f:facet>
+									<f:facet name="previous">
+										<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+									</f:facet>
+									<f:facet name="next">
+										<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+									</f:facet>
+								</rich:dataScroller>
+							</h:panelGroup>
+						</h:panelGroup>
+						<!-- Fim do scroller da tabela de componentes -->
+					</fieldset>
+					<!-- Fim do Fieldset componentes -->
+					
+					<!-- Divs de impostos cst00-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsComp.CST00 != null}" id="impCompcst00ID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST00.cst}" styleClass="Campo Largura35px" readonly="true"/>
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.aliquotaICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST00.picms}" styleClass="Campo Largura110px" converter="valorMonetarioSefazConverter" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.baseDeCalculoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST00.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST00.vicms}" styleClass="Campo Largura160px" converter="valorMonetarioSefazConverter" />
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos CST00-->
+					
+					<!-- Divs de impostos ICMS00-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsCompv104.icms00 != null}" id="impCompicms00ID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms00.cst}" styleClass="Campo Largura35px" readonly="true"/>
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.aliquotaICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms00.picms}" styleClass="Campo Largura110px" converter="valorMonetarioSefazConverter" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.baseDeCalculoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms00.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms00.vicms}" styleClass="Campo Largura160px" converter="valorMonetarioSefazConverter" />
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos ICMS00-->
+					
+					<!-- Divs de impostos CST20-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsComp.CST20 != null}" id="impCompCST20ID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST20.cst}" styleClass="Campo Largura35px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.aliquotaICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST20.picms}" styleClass="Campo Largura110px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>			
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.baseDeCalculoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST20.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>			
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST20.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>										
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.reducaoBaseDeCalculo}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST20.pRedBC}" styleClass="Campo Largura170px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>										
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos CST20-->
+					
+					<!-- Divs de impostos ICMS20-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsCompv104.icms20 != null}" id="impCompicms20ID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms20.cst}" styleClass="Campo Largura35px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.aliquotaICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms20.picms}" styleClass="Campo Largura110px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>			
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.baseDeCalculoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms20.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>			
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms20.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>										
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.reducaoBaseDeCalculo}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms20.pRedBC}" styleClass="Campo Largura170px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>										
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos ICMS20-->
+					
+					<!-- Divs de impostos CST45-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsComp.CST45 != null}" id="impCompCST45ID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST45.cst}" styleClass="Campo Largura35px" readonly="true" />
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos cst45-->
+					
+					<!-- Divs de impostos ICMS45-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsCompv104.icms45 != null}" id="impCompicms45ID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms45.cst}" styleClass="Campo Largura35px" readonly="true" />
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos ICMS45-->
+					
+					<!-- Divs de impostos CST80-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsComp.CST80 != null}" id="impCompCST80ID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST80.cst}" styleClass="Campo Largura35px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.aliquotaICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST80.picms}" styleClass="Campo Largura110px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>										
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.baseDeCalculoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST80.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>			
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST80.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>										
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoCreditoPresumido}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST80.vCred}" styleClass="Campo Largura200px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>										
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos CST80-->
+					
+					<!-- Divs de impostos CST81-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsComp.CST81 != null}" id="impCompCST81ID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST81.cst}" styleClass="Campo Largura35px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.aliquotaICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST81.picms}" styleClass="Campo Largura110px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>										
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.baseDeCalculoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST81.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>										
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST81.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>									
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.reducaoBaseDeCalculo}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST81.pRedBC}" styleClass="Campo Largura170px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>										
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos CST81-->
+					
+					<!-- Divs de impostos CST90-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsComp.CST90 != null}" id="impCompCST90ID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST90.cst}" styleClass="Campo Largura35px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.aliquotaICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST90.picms}" styleClass="Campo Largura110px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>									
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.baseDeCalculoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST90.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter"/>
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST90.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>									
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.reducaoBaseDeCalculo}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST90.pRedBC}" styleClass="Campo Largura170px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>						
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoCreditoPresumido}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsComp.CST90.vCred}" styleClass="Campo Largura200px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>						
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos CST90-->
+					
+					<!-- Divs de impostos icms90-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsCompv104.icms90 != null}" id="impCompicms90ID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms90.cst}" styleClass="Campo Largura35px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.aliquotaICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms90.picms}" styleClass="Campo Largura110px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>									
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.baseDeCalculoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms90.vbc}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter"/>
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms90.vicms}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>									
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.reducaoBaseDeCalculo}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms90.pRedBC}" styleClass="Campo Largura170px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>						
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoCreditoPresumido}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms90.vCred}" styleClass="Campo Largura200px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>						
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos icms90-->
+					
+					<!-- Divs de impostos icms60-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsCompv104.icms60 != null}" id="impCompicms60ID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms60.cst}" styleClass="Campo Largura35px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.aliquotaICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms60.picmsstRet}" styleClass="Campo Largura110px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>									
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.baseDeCalculoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms60.vbcstRet}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter"/>
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoCreditoPresumido}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms60.vCred}" styleClass="Campo Largura200px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>						
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorICMSSTRetido}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icms60.vicmsstRet}" styleClass="Campo Largura200px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>						
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos icms60-->
+					
+					<!-- Divs de impostos icmsOutraUF-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsCompv104.icmsOutraUF != null}" id="impCompOutraUFID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icmsOutraUF.cst}" styleClass="Campo Largura35px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.aliquotaICMSOutraUF}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icmsOutraUF.picmsOutraUF}" styleClass="Campo Largura110px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>									
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.baseDeCalculoICMSOutraUF}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icmsOutraUF.vbcOutraUF}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter"/>
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoICMSOutraUF}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icmsOutraUF.vicmsOutraUF}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>									
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.reducaoBaseDeCalculoOutraUF}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icmsOutraUF.pRedBCOutraUF}" styleClass="Campo Largura170px" readonly="true" converter="valorMonetarioSefazConverter">
+								</h:inputText>						
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos icmsOutraUF-->
+					
+					<!-- Divs de impostos icmssn-->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsCompv104.icmssn != null}" id="impCompicmssnID">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.simplesNacional}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="#{cteComp.impComp.icmsCompv104.icmssn.indSN}" styleClass="Campo Largura170px" readonly="true">
+								</h:inputText>						
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos icmssn-->
+					
+					<!-- Divs de impostos -->
+					<h:panelGroup layout="block" rendered="#{cteComp.impComp.icmsComp == null}" id="impCompIDDef">
+						<div class="Linha900x38 MarginTop10px MarginLeft5px">
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.cst}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="" styleClass="Campo Largura35px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.aliquotaICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="" styleClass="Campo Largura110px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.baseDeCalculoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="" styleClass="Campo Largura160px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoICMS}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="" styleClass="Campo Largura160px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.reducaoBaseDeCalculo}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="" styleClass="Campo Largura170px" readonly="true" />
+							</div>
+							<div class="GrupoTituloCampo">
+								<h:outputText value="#{msg.valorDoCreditoPresumido}" styleClass="TituloDeCampo"/>
+									<br />
+								<h:inputText value="" styleClass="Campo Largura200px" readonly="true" />
+							</div>
+						</div>
+					</h:panelGroup>
+					<!-- Fim das divs de impostos -->
+				</fieldset>
+				
+				<!-- SCROLLER DE PÁGINAÇÃO -->
+				<h:panelGroup id="infCteCompScr" styleClass="Scroller Largura930px MarginLeft2px" layout="block" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCteComp != null and not empty mbCteTerceiros.procCte.CTe.infCte.infCteComp}">
+					<rich:dataScroller id="infCteCompScroller" for="repeatInfCteComp" fastControls="hide" render="infCteCompID" maxPages="15">
+						<f:facet name="first">
+							<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+						</f:facet>
+						<f:facet name="last">
+							<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+						</f:facet>
+						<f:facet name="previous">
+							<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+						</f:facet>
+						<f:facet name="next">
+							<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+						</f:facet>
+					</rich:dataScroller>
+				</h:panelGroup>
+				<!-- FIM DO SCROLLER DE PÁGINAÇÃO -->
+			</a4j:repeat>			
+		</h:panelGroup>
+	</ui:composition>
+</html>
+                

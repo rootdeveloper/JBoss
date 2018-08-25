@@ -1,0 +1,19 @@
+2011-11-12 13:57:00,951 INFO  [com.arjuna.ats.arjuna] (Transaction Expired Entry Monitor) ARJUNA-12296 ExpiredEntryMonitor running at Sáb, 12 Nov 2011 13:57:00
+2011-11-12 13:57:02,055 AVISO [javax.management.remote.misc] (RMI TCP Connection(468)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,062 AVISO [javax.management.remote.misc] (RMI TCP Connection(469)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,072 AVISO [javax.management.remote.misc] (RMI TCP Connection(455)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,071 AVISO [javax.management.remote.misc] (RMI TCP Connection(464)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,072 AVISO [javax.management.remote.misc] (RMI TCP Connection(456)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,071 AVISO [javax.management.remote.misc] (RMI TCP Connection(463)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,072 AVISO [javax.management.remote.misc] (RMI TCP Connection(457)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,071 AVISO [javax.management.remote.misc] (RMI TCP Connection(462)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,055 AVISO [javax.management.remote.misc] (RMI TCP Connection(466)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,072 AVISO [javax.management.remote.misc] (RMI TCP Connection(458)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,071 AVISO [javax.management.remote.misc] (RMI TCP Connection(461)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,055 AVISO [javax.management.remote.misc] (RMI TCP Connection(467)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,071 AVISO [javax.management.remote.misc] (RMI TCP Connection(459)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,062 AVISO [javax.management.remote.misc] (RMI TCP Connection(470)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,062 AVISO [javax.management.remote.misc] (RMI TCP Connection(471)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,062 AVISO [javax.management.remote.misc] (RMI TCP Connection(472)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,061 AVISO [javax.management.remote.misc] (RMI TCP Connection(473)-127.0.0.1) The server has decided to close this client connection.
+2011-11-12 13:57:02,061 AVISO [javax.management.remote.misc] (RMI TCP Connection(474)-127.0.0.1) The server has decided to close this client connection.

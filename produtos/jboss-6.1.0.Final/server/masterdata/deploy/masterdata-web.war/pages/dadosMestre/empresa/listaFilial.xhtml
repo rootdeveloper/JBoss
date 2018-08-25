@@ -1,0 +1,121 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<rich:toolbar styleClass="BarraDeBotoesPainel">
+		<rich:toolbarGroup>
+			<a4j:commandLink status="modalStatus" title="#{msg.titleFiltrar}" render="filtroFilial"
+				oncomplete="#{rich:component('filtroFilial')}.show(); desmarcaCheckboxForm('formFiltro'); reSize();">
+				<h:graphicImage value="#{resource['images/gif:filtro.gif']}" alt="#{msg.titleFiltrar}" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink>
+			<a4j:commandLink status="modalStatus" execute="@this" title="#{msg.titleNovo}"	action="#{mbEmpresa.novaFilial}"
+				render="panelFilial painelMensagemErroFilial painelMensagemErro painelIEST" 
+				rendered="#{mbEmpresa.verificaPermissao('Administrador')}">
+				<h:graphicImage value="#{resource['images/png:novo.png']}" alt="novo" width="26px" height="18px" styleClass="BotaoImagem" />
+			</a4j:commandLink>
+		</rich:toolbarGroup>
+		
+		<rich:toolbarGroup location="right">
+			<botao:atualizar actionListener="#{mbEmpresa.refreshListFiliais}" render="panelScroller" buttonStyle="MarginRight5px" 
+				oncomplete="renderAllListaFiliais()" idPanelErro="erroEdicao"/>
+		</rich:toolbarGroup>
+	</rich:toolbar>
+
+	<rich:dataTable id="listaFiliais" var="item" rows="10" styleClass="Largura100pc" value="#{mbEmpresa.listaFiliais}"
+		onrowmouseover="className='SelecionaLinha'" onrowdblclick="editarFilial(#{rowkey})" rowKeyVar="rowkey"
+		onrowmouseout="className=''" noDataLabel="#{msg.listaFilialVazia}">
+		
+		<rich:column styleClass="AlignCenter" headerClass="Largura60px" filterExpression="#{userSession.controlador.isVisible(item)}">
+			<f:facet name="header">
+				<h:outputText value="#{msg.status}" />
+				<br />
+			</f:facet>
+			<h:outputText value="#{item.status}" />
+		</rich:column>
+
+		<rich:column styleClass="AlignCenter" headerClass="Largura70px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.codFilial}" />
+				<br />
+			</f:facet>
+			<h:outputText value="#{item.codigoFilial}" />
+		</rich:column>
+
+		<rich:column styleClass="AlignCenter" headerClass="Largura70px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.sufixoCnpj}" />
+				<br />
+			</f:facet>
+			<h:outputText value="#{item.sufixoCnpj}" converter="sufixoCnpjConverter"/>
+		</rich:column>
+
+		<rich:column styleClass="AlignCenter" headerClass="Largura100px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.ie}" />
+				<br />
+			</f:facet>
+			<h:outputText value="#{item.inscricaoEstadual}" />
+		</rich:column>
+
+		<rich:column styleClass="AlignCenter Truncate" headerClass="Largura300px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.descricao}" />
+				<br />
+			</f:facet>
+			<h:outputText value="#{item.descricao}" title="#{item.descricao}"/>
+		</rich:column>
+
+		<rich:column styleClass="AlignCenter Truncate" headerClass="Largura300px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.nomeFantasia}" />
+				<br />
+			</f:facet>
+			<h:outputText value="#{item.nomeFantasia}" title="#{item.nomeFantasia}"/>
+		</rich:column>
+
+		<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.uf}" />
+				<br />
+			</f:facet>
+			<h:outputText value="#{item.endereco.uf.sigla}" />
+		</rich:column>
+
+	</rich:dataTable>
+
+	<h:panelGroup id="panelScroller">
+		<table:scroller for="listaFiliais" idPanelScroller="controle" maxPages="16" panelStyleClass="Scroller100pc MarginBottom5px"
+			renderedTotalRegistros="#{not empty mbEmpresa.listaFiliais}" totalRegistros="#{mbEmpresa.quantidadeRegistrosFiliais}"
+			pageNumber="#{mbEmpresa.scrollerPageNumberFilial}" />
+	</h:panelGroup>
+	
+	<h:panelGroup id="erroEdicao">
+		<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbEmpresa.mensagemErro}">
+			<h:outputText value="#{mbEmpresa.mensagemErro}" styleClass="MensagemDeErro MarginLeft10px"/>
+		</h:panelGroup>
+	</h:panelGroup>
+	
+	<!--  <a4j:jsFunction name="editarFilial"  status="modalStatus" render="erroEdicao abaFilial" oncomplete="renderIE()" action="#{mbEmpresa.editarFilial}" 
+		immediate="true">
+		<a4j:param name="linhaDaFilial" assignTo="#{mbEmpresa.linhaSelecionada}" />
+	</a4j:jsFunction>-->
+	
+	
+	<a4j:jsFunction name="editarFilial"  status="modalStatus" render="erroEdicao abaFilial" action="#{mbEmpresa.editarFilial}" 
+		immediate="true">
+		<a4j:param name="linhaDaFilial" assignTo="#{mbEmpresa.linhaSelecionada}" />
+	</a4j:jsFunction>
+	
+	
+	
+	<a4j:jsFunction name="renderBodyOfListaFiliais" status="modalStatus" render="listaFiliais@body" oncomplete="reSize();"/>
+	<a4j:jsFunction name="renderAllListaFiliais" status="modalStatus" render="listaFiliais" oncomplete="reSize();"/>
+	
+</ui:composition>

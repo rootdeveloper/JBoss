@@ -1,0 +1,148 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroPacoteLiberacao}" />
+	</ui:define>
+	
+	<ui:define name="content">
+		<util:modalSimNao mensagem="#{msg.apagarSefazSchema}" nomePainel="confirmPane" actionSim="#{mbPacoteLiberacao.apagarSchema}"
+			render="controle" tituloModal="#{msg.exclusao}" oncomplete="renderLista()"/>
+		<util:modalInformativoVoltar mensagemInformativo="#{mbPacoteLiberacao.mensagem}" nomePainel="modalInformativo" render="painelPrincipal" tituloModal="#{msg.mensagem}"/>
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<a4j:commandLink actionListener="#{mbPacoteLiberacao.salvar}" oncomplete="#{mbPacoteLiberacao.renderizarModalInformativo} ? #{rich:component('modalInformativo')}.show() : ''" render="modalInformativo, painelMensagemErro" status="modalStatus">
+					<f:param name="acao" value="Salvar"/>
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="apagar" styleClass="BotaoImagem" />
+				</a4j:commandLink>
+				<a4j:commandLink actionListener="#{mbPacoteLiberacao.verificarExclusaoSchemas}" oncomplete="#{mbPacoteLiberacao.renderizarModalExclusao} ? #{rich:component('confirmPane')}.show() : ''" status="modalStatus">
+					<h:graphicImage value="#{resource['images/png:delete.png']}" alt="apagar" styleClass="BotaoImagem" />
+					<f:param name="acao" value="excluirLista"/>
+				</a4j:commandLink>
+				<h:commandButton action="#{mbPacoteLiberacao.voltar}" image="#{resource['images/png:voltar.png']}" immediate="true" styleClass="BotaoImagem">
+					<f:param name="acao" value="Voltar"/>
+				</h:commandButton>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		<h:panelGroup layout="block" styleClass="MarginTop10px">
+			<div class="Linha990x25">
+				<div class="PositionRelativeFloatLeft Largura140px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.versaoDoManual}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:selectOneMenu value="#{mbPacoteLiberacao.pacoteLiberacao.manual}" id="comboManual" converter="entityConverter" styleClass="ComboField Largura80px">
+						<f:selectItems value="#{mbPacoteLiberacao.listaManual}" />
+					</h:selectOneMenu>
+				</div>
+			</div>
+			<div class="Linha990x25">
+				<div class="PositionRelativeFloatLeft Largura140px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.dataDeLiberacao}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<rich:calendar value="#{mbPacoteLiberacao.pacoteLiberacao.dataLiberacao}" locale="PT"
+						datePattern="dd/MM/yyyy" boundaryDatesMode="scroll" showApplyButton="false" showWeeksBar="false"
+						showFooter="false" id="dataLiberacaoPacoteLiberacao" buttonClass="BotaoImagemSemMarginTop"
+						inputClass="PositionRelativeFloatLeft"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:outputText value="*" styleClass="MarginLeft5px" />
+				</div>
+			</div>
+			<div class="Linha990x25">
+				<div class="PositionRelativeFloatLeft Largura140px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.versaoDoPacote}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:inputText value="#{mbPacoteLiberacao.pacoteLiberacao.versao}" styleClass="Campo Largura150px" maxlength="20" />
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:outputText value="*" styleClass="MarginLeft5px" />
+				</div>
+			</div>
+			<h:panelGroup layout="block" styleClass="Linha990x25 MarginTop10px" id="CadSchema">
+				<div class="PositionRelativeFloatLeft Largura140px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.tipoDoSchema}" styleClass="TituloDeCampo" />
+				</div>
+				<div class="PositionRelativeFloatLeft Largura170px">
+					<h:selectOneMenu value="#{mbPacoteLiberacao.sefazSchema.tipoSchemaXSDSefaz}" styleClass="ComboField Largura152px" id="TipoDeSchema" converter="genericEnumConverter">
+						<f:selectItems value="#{mbPacoteLiberacao.listaTipoSchemaSefaz}" />
+					</h:selectOneMenu>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura140px MarginTop2px">
+					<h:outputText value="#{msg.caminhoDoSchema}" styleClass="TituloDeCampo" />
+				</div>
+				<div class="PositionRelativeFloatLeft Largura440px">
+					<h:inputText value="#{mbPacoteLiberacao.sefazSchema.caminho}" styleClass="Campo Largura440px" maxlength="90"/>
+				</div>
+				<div class="PositionRelativeFloatRight Largura80px">
+					<a4j:commandButton actionListener="#{mbPacoteLiberacao.incluir}" render="CadSchema controle painelMensagemErro" execute="CadSchema"
+						styleClass="BotaoTexto Largura60px" oncomplete="renderLista()"
+						value="#{mbPacoteLiberacao.linhaDoSchema == -1 ? msg.botaoIncluir : msg.botaoEditar}">
+						<f:param name="acao" value="Salvar"/>
+					</a4j:commandButton>
+				</div>
+			</h:panelGroup>
+			<div class="Largura960px PositionRelativeFloatLeft MarginTop5px MarginLeft10px" >
+				<rich:dataTable var="schema" value="#{mbPacoteLiberacao.pacoteLiberacao.sefazSchemas}" id="tabela" rows="4"
+					onrowdblclick="alterar('#{it.index}')" onrowmouseover="className='SelecionaLinha'" styleClass="Largura100pc PositionRelative"
+					onrowmouseout="className=''" iterationStatusVar="it" noDataLabel="#{msg.listaSchemaVazia}">
+					<rich:column headerClass="Largura40px" styleClass="AlignCenter">
+						<f:facet name="header">
+							<h:outputText />
+						</f:facet>
+						<h:selectBooleanCheckbox id="sel" value="#{schema.selected}" styleClass="Margin0px"/>
+					</rich:column>
+					<rich:column headerClass="Largura100px" styleClass="AlignCenter">
+						<f:facet name="header">
+							<h:outputText value="#{msg.tipoDoSchema}" />
+						</f:facet>
+						<h:outputText value="#{schema.tipoSchemaXSDSefaz}" />
+					</rich:column>
+					<rich:column headerClass="Largura100px" styleClass="AlignCenter">
+						<f:facet name="header">
+							<h:outputText value="#{msg.dataDeCriacao}" />
+						</f:facet>
+						<h:outputText value="#{schema.dataCriacao}">
+							<f:convertDateTime pattern="dd/MM/yyyy"/>
+						</h:outputText>
+					</rich:column>
+					<rich:column headerClass="Largura450px" styleClass="Truncate">
+						<f:facet name="header">
+							<h:outputText value="#{msg.caminhoDoArquivo}" />
+						</f:facet>
+						<h:outputText value="#{schema.caminho}" title="#{schema.caminho}" />
+					</rich:column>
+				</rich:dataTable>
+				
+				<table:scroller for="tabela" idPanelScroller="controle" maxPages="16" panelStyleClass="Scroller Largura958px"
+					renderedTotalRegistros="#{not empty mbPacoteLiberacao.pacoteLiberacao.sefazSchemas}"
+					totalRegistros="#{mbPacoteLiberacao.quantidadeRegistrosSchemas}" pageNumber="#{mbPacoteLiberacao.scrollerPageNumber}"/>
+				
+			</div>
+			<h:panelGroup layout="block" id="painelMensagemErro" styleClass="Largura980px PositionRelativeFloatLeft MarginLeft10px MarginBottom5px">
+				<div >
+					<h:outputText value="* #{msg.camposObrigatorios}" />
+				</div>
+				<div>
+					<h:outputText value="#{mbPacoteLiberacao.mensagemErroPrincipal}" styleClass="MensagemDeErro"/>
+				</div>
+			</h:panelGroup> 
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="alterar" action="#{mbPacoteLiberacao.editarSchema}" render="CadSchema" status="modalStatus">
+			<a4j:param name="linhaDoSchema" assignTo="#{mbPacoteLiberacao.linhaDoSchema}"/>
+			<f:param name="acao" value="IncluirLista"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="renderLista" render="tabela" status="modalStatus"/>
+		
+	</ui:define>
+</ui:composition>

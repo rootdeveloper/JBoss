@@ -1,0 +1,53 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	
+	<div class="Linha660x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_codSituacao}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.ipi.ipiTrib.cst}" 
+			styleClass="Campo Largura250px" readonly="true" converter="cstIpiConverter"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_valorBaseCalculoDoIpi}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.ipi.ipiTrib.vbc}" 
+				styleClass="Campo Largura250px TextAlignRight" readonly="true"/>
+		</div>
+	</div>
+	<div class="Linha660x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_qtdTotalUnidadePadrao}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.ipi.ipiTrib.qUnid}" 
+				styleClass="Campo Largura250px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_valorUnidadeTributavel}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.ipi.ipiTrib.vUnid}" 
+				styleClass="Campo Largura250px TextAlignRight" readonly="true"/>
+		</div>
+	</div>
+	
+	<div class="Linha660x38">
+		<div class="GrupoTituloCampo MarginLeft10px">
+			<h:outputText value="#{msg.lbl_aliquotaDoIpi}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.ipi.ipiTrib.pipi}" 
+				styleClass="Campo Largura250px TextAlignRight" readonly="true"/>
+		</div>
+		<div class="GrupoTituloCampo">
+			<h:outputText value="#{msg.lbl_vlIPI}" styleClass="TituloDeCampo"/>
+			<br />
+			<h:inputText value="#{mbNfeEntrada.produtoOuServico.imposto.ipi.ipiTrib.vipi}" 
+				styleClass="Campo Largura250px TextAlignRight" readonly="true"/>
+		</div>
+	</div>
+	
+</ui:composition>

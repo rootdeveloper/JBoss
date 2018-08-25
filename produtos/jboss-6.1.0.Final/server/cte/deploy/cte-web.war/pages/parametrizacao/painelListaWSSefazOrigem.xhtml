@@ -1,0 +1,116 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaWebService}"/>
+	</ui:define>
+	
+	<ui:define name="content">
+		<util:modalSimNao nomePainel="confirmPane" actionSim="#{mbWebServiceSefazOrigem.remover}" mensagem="#{msg.apagarWS}"
+			render="controle, painelMensagemErro" tituloModal="#{msg.exclusao}" oncomplete="renderLista()"/>
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<h:commandButton value="Novo" action="#{mbWebServiceSefazOrigem.novo}" image="#{resource['images/png:novo.png']}"
+					styleClass="BotaoImagem" title="#{msg.titleNovo}"/>
+				<a4j:commandLink actionListener="#{mbWebServiceSefazOrigem.verificarExclusaoWebServices}" oncomplete="#{mbWebServiceSefazOrigem.renderizarModalExclusao} ? #{rich:component('confirmPane')}.show() : ''" title="#{msg.titleExcluir}" status="modalStatus">
+					<h:graphicImage value="#{resource['images/png:delete.png']}" alt="salvar" styleClass="BotaoImagem" />
+				</a4j:commandLink>
+				<h:commandButton value="Voltar" action="home" image="#{resource['images/png:voltar.png']}" styleClass="BotaoImagem" title="#{msg.titleVoltar}"/>
+			</rich:toolbarGroup>
+			<rich:toolbarGroup location="right">
+				<h:outputText value="#{msg.filtrarPor_}" styleClass="MarginRight5px" />
+				<h:selectOneMenu id="selecFiltro" value="#{mbWebServiceSefazOrigem.tipoFiltro}" styleClass="ComboField MarginTop4px">
+					<f:selectItems value="#{mbWebServiceSefazOrigem.filtros}"/>
+					<f:ajax event="valueChange" execute="@this" render="combosFiltro"/>
+				</h:selectOneMenu>
+				<h:panelGroup id="combosFiltro" layout="block">
+					<h:selectOneMenu id="selectedFiltro" rendered="#{mbWebServiceSefazOrigem.tipoFiltro == 1}" value="#{mbWebServiceSefazOrigem.ufFiltro}" converter="ufConverter" styleClass="ComboField MarginTop4px MarginLeft5px">
+						<f:selectItems value="#{mbWebServiceSefazOrigem.listaEstados}" var="estado" itemLabel="#{estado.nomeEstado}"/>
+						<f:ajax event="valueChange" execute="@this" />
+					</h:selectOneMenu>
+					<h:selectOneMenu id="selectedServicoFiltro" rendered="#{mbWebServiceSefazOrigem.tipoFiltro == 2}" styleClass="ComboField MarginTop4px MarginLeft5px" value="#{mbWebServiceSefazOrigem.servicoFiltro}" converter="genericEnumConverter">
+						<f:selectItems value="#{mbWebServiceSefazOrigem.listaServicos}" var="servico" itemLabel="#{servico.nome}"/>
+						<f:ajax event="valueChange" execute="@this" />
+					</h:selectOneMenu>
+				</h:panelGroup>
+				<a4j:commandButton id="busque" actionListener="#{mbWebServiceSefazOrigem.buscar}" execute="paineTabela"
+					image="/resources/images/png/selecionar.png" render="painelTabela controle" styleClass="BotaoImagem MarginRight5px"
+					status="modalStatus" oncomplete="renderLista()"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="data" var="item" value="#{mbWebServiceSefazOrigem.listaSefazWebService}" rows="10" styleClass="Largura100pc"
+			iterationStatusVar="it" onrowdblclick="selectRow('#{item.id}')" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''"
+			noDataLabel="#{msg.listaWSVazia}">
+			<rich:column headerClass="Largura60px" styleClass="AlignCenter">
+				<f:facet name="header">
+					<h:outputText/>
+				</f:facet>
+				 <h:selectBooleanCheckbox id="sel" value="#{item.selected}" styleClass="Margin0px"/>
+			</rich:column>
+			<rich:column sortBy="#{item.tipoWebService.nome}" headerClass="Largura100px" styleClass="AlignCenter"
+				sortOrder="#{mbWebServiceSefazOrigem.columnOrder.mapColumnOrder['servico'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.servico}"/>
+					<table:orderArrow item="#{mbWebServiceSefazOrigem.columnOrder.mapColumnOrder['servico']}" render="data"/>
+				</f:facet>
+				<h:outputText value="#{item.tipoWebService.nome}"/>
+			</rich:column>
+			<rich:column sortBy="#{item.uf}" headerClass="Largura60px" styleClass="AlignCenter"
+				sortOrder="#{mbWebServiceSefazOrigem.columnOrder.mapColumnOrder['uf'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.uf}"/>
+					<table:orderArrow item="#{mbWebServiceSefazOrigem.columnOrder.mapColumnOrder['uf']}" render="data"/>
+				</f:facet>
+				<h:outputText value="#{item.uf}" />
+			</rich:column>
+			<rich:column headerClass="Largura300px" styleClass="AlignLeft Truncate">
+				<f:facet name="header">
+					<h:outputText value="#{msg.endereco}"/>
+				</f:facet>
+				<h:outputText value="#{item.caminhoEndpoint}" title="#{item.caminhoEndpoint}"/>
+			</rich:column>
+			<rich:column styleClass="AlignCenter" headerClass="Largura60px">
+				<f:facet name="header">
+					<h:outputText value="#{msg.soap}"/>
+				</f:facet>
+				<h:outputText value="#{item.tipoProtocoloSoap}" />
+			</rich:column>
+			<rich:column sortBy="#{item.ambiente}" headerClass="Largura90px" styleClass="AlignCenter"
+				sortOrder="#{mbWebServiceSefazOrigem.columnOrder.mapColumnOrder['ambiente'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.ambiente}"/>
+					<table:orderArrow item="#{mbWebServiceSefazOrigem.columnOrder.mapColumnOrder['ambiente']}" render="data"/>
+				</f:facet>
+				<h:outputText value="#{item.ambiente}" />
+			</rich:column>
+			<rich:column headerClass="Largura100px" styleClass="AlignCenter Truncate">
+				<f:facet name="header">
+					<h:outputText value="#{msg.versaoSchema}"/>
+				</f:facet>
+				<h:outputText value="#{item.pacoteLiberacao.versao}" title="#{item.pacoteLiberacao.versao}"/>
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="data" idPanelScroller="controle" maxPages="16" panelStyleClass="Scroller100pc"
+			renderedTotalRegistros="#{not empty mbWebServiceSefazOrigem.listaSefazWebService}" totalRegistros="#{mbWebServiceSefazOrigem.quantidadeRegistros}" 
+			pageNumber="#{mbWebServiceSefazOrigem.scrollerPageNumber}"/>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro">
+			<h:outputText value="#{mbWebServiceSefazOrigem.mensagemErroPrincipal}" styleClass="MensagemDeErro" escape="false"/>
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="selectRow" action="#{mbWebServiceSefazOrigem.editar}" status="modalStatus">
+			<a4j:param name="currentRow" assignTo="#{mbWebServiceSefazOrigem.indexObjetoSelecionado}"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="renderLista" render="data" status="modalStatus"/>
+	</ui:define>
+</ui:composition>

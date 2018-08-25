@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:composition>
+		<!-- Caso tenha informações -->
+		<h:panelGroup layout="block" id="containerId">
+			<a4j:repeat value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.contQt}" var="container" rows="1" id="repeatContainer">
+				<fieldset class="Fieldset440x260BaseQuadrada">
+				<legend class="TituloDeCampo">#{msg.informacoesDosContainers}</legend>
+					<div class="Linha420x38 MarginLeft18px MarginTop10px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.numeroDoContainer}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{container.nCont}" styleClass="Campo Largura196px" readonly="true" />
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.dataPrevistaDeEntrega}" styleClass="TituloDeCampo"/>
+							<br/>
+							<h:inputText value="#{container.dPrev}" styleClass="Campo Largura196px" converter="dataSefazConverter" readonly="true"/>
+						</div>
+					</div>
+					<fieldset class="Fieldset400x180 MarginLeft18px">
+						<legend class="TituloDeCampo">#{msg.lacresDoContainer}</legend>
+						<h:panelGroup layout="block">
+							<rich:dataTable value="#{container.lacContQt}" var="lacre" styleClass="Largura380px MarginLeft10px MarginTop10px" rows="3" id="lacreTabela">
+								<rich:column styleClass="AlignCenter">
+									<f:facet name="header">
+										<h:outputText value="#{msg.numeroDoLacre}" />
+									</f:facet>
+									<h:outputText value="#{lacre.nLacre}" />
+								</rich:column>
+							</rich:dataTable>
+							<h:panelGroup id="lacreScr" styleClass="Scroller Largura378px MarginLeft10px" layout="block">
+								<rich:dataScroller id="lacreScroll" for="lacreTabela" fastControls="hide" maxPages="8">
+									<f:facet name="first">
+										<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+									</f:facet>
+									<f:facet name="last">
+										<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+									</f:facet>
+									<f:facet name="previous">
+										<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+									</f:facet>
+									<f:facet name="next">
+										<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+									</f:facet>
+								</rich:dataScroller>
+							</h:panelGroup>
+						</h:panelGroup>
+					</fieldset>
+				</fieldset>
+			</a4j:repeat>
+		</h:panelGroup>
+		
+		<!-- Se não houver informação de container será renderizado o panelGroup abaixo -->
+		
+		<h:panelGroup layout="block" id="containerIdVazio" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.contQt == null || empty mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.contQt}">
+			<fieldset class="Fieldset440x260BaseQuadrada">
+				<legend class="TituloDeCampo">#{msg.informacoesDosContainers}</legend>
+				<div class="Linha420x38 MarginLeft18px MarginTop10px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.numeroDoContainer}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="" styleClass="Campo Largura196px" readonly="true" />
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.dataPrevistaDeEntrega}" styleClass="TituloDeCampo"/>
+						<br/>
+						<h:inputText value="" styleClass="Campo Largura196px" readonly="true"/>
+					</div>
+				</div>
+				<fieldset class="Fieldset400x180 MarginLeft18px">
+					<legend class="TituloDeCampo">#{msg.lacresDoContainer}</legend>
+					<rich:dataTable value="#{container.lacContQt}" var="lacre" styleClass="Largura380px MarginLeft10px MarginTop10px" rows="3" id="lacreTabelaVazio">
+						<rich:column styleClass="AlignCenter">
+							<f:facet name="header">
+								<h:outputText value="#{msg.numeroDoLacre}" />
+							</f:facet>
+							<h:outputText value="" />
+						</rich:column>
+					</rich:dataTable>
+					<h:panelGroup id="lacreScrVazio" styleClass="Scroller Largura378px MarginLeft10px" layout="block">
+						<rich:dataScroller id="lacreScrollVazio" for="lacreTabelaVazio" fastControls="hide" maxPages="7">
+							<f:facet name="first">
+								<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+							</f:facet>
+							<f:facet name="last">
+								<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+							</f:facet>
+							<f:facet name="previous">
+								<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+							</f:facet>
+							<f:facet name="next">
+								<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+							</f:facet>
+						</rich:dataScroller>
+					</h:panelGroup>
+				</fieldset>
+			</fieldset>
+		</h:panelGroup>
+		
+		<h:panelGroup id="containerScr" styleClass="Scroller Largura440px MarginLeft2px" layout="block">
+			<rich:dataScroller id="containerScroller" for="repeatContainer" fastControls="hide" render="containerId" maxPages="9">
+				<f:facet name="first">
+					<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+				</f:facet>
+				<f:facet name="last">
+					<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+				</f:facet>
+				<f:facet name="previous">
+					<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+				</f:facet>
+				<f:facet name="next">
+					<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+				</f:facet>
+			</rich:dataScroller>
+		</h:panelGroup>
+	</ui:composition>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j">
+	<h:head>
+		<title>#{msg.tituloHome}</title>
+		<h:outputStylesheet name="loginProfile.css" library="css"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	</h:head>
+	<h:body styleClass="Body">
+		<div class="LogoEmpresa">
+			<div id="Logo" />
+		</div>
+		<div class="NomeProduto">
+			<div id="Produto" />
+		</div>
+		<form action="j_security_check" method="post" id="form1" name="form1">
+			<div class="Largura100pc Altura150px">
+				<div class="EspacoDosCampos MarginTop30px">
+					<div class="CaixaDeTitulo" >
+						<h:outputText value="#{msg.usuario}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="CaixaDeTexto">
+						<h:inputText id="j_username" maxlength="20" styleClass="Campo Largura140px"/>
+					</div>
+				</div>
+				<div class="EspacoDosCampos">
+					<div class="CaixaDeTitulo" >
+						<h:outputText value="#{msg.senha}" styleClass="TituloDeCampo"/>
+					</div>
+					<div class="CaixaDeTexto">
+						<h:inputSecret id="j_password" type="password" maxlength="20" styleClass="Campo Largura140px"/>
+					</div>
+				</div>
+				<div class="EspacoDosCampos">
+					<div class="CaixaDeTitulo" >
+					</div>
+					<div class="CaixaDeTexto">
+						<h:commandButton id="envia" value="#{msg.login}" type="submit" styleClass="BotaoTexto Largura50px" />
+					</div>
+				</div>
+				<h:panelGroup layout="block" styleClass="EspacoDosCampos Validacao">
+					<h:outputText  value="Usuário ou senha inválido." rendered="#{param['falhalogin'] != null}" />			
+				</h:panelGroup>
+			</div>
+		</form>
+		<div class="Rodape TituloDeCampo">
+			<p><a href="http://www.dataprimer.com.br/" target="_blank">#{msg.siteEmpresa}</a></p>
+			<p>#{msg.copyrightEmpresa}</p>
+		</div>
+	</h:body>
+</html>

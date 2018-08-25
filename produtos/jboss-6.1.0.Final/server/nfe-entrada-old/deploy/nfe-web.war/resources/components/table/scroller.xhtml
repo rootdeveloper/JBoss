@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+    <composite:interface>
+       <composite:attribute name="for"/>
+       <composite:attribute name="idPanelScroller"/>
+       <composite:attribute name="maxPages"/>
+       <composite:attribute name="panelStyleClass"/>
+       <composite:attribute name="renderedTotalRegistros"/>
+       <composite:attribute name="totalRegistros"/>
+       <composite:attribute name="pageNumber"/>
+    </composite:interface>
+    <composite:implementation>
+    	<h:panelGroup id="#{cc.attrs.idPanelScroller}" styleClass="#{cc.attrs.panelStyleClass} Altura20px"
+    		layout="block">
+			<h:panelGroup rendered="#{cc.attrs.renderedTotalRegistros}"
+				class="PositionRelativeFloatLeft Largura200px MarginTop2px MarginLeft5px" layout="block"/>
+			<rich:dataScroller for="#{cc.attrs.for}" fastControls="hide" status="modalStatus"
+				maxPages="#{cc.attrs.maxPages}" renderIfSinglePage="false" page="#{cc.attrs.pageNumber}"
+				oncomplete="reSize(); blockDuploCliqueCheckbox();" execute="@this">
+				<f:facet name="first">
+                	<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll"
+                		width="12px" height="6px"/>
+                </f:facet>
+                <f:facet name="last">
+	                <h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll"
+	                	width="12px" height="6px"/>
+                </f:facet>
+                <f:facet name="previous">
+	                <h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll"
+	                	width="12px" height="6px"/>
+                </f:facet>
+                <f:facet name="next">
+   	            	<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll"
+   	            		width="12px" height="6px"/>
+                </f:facet>
+			</rich:dataScroller>
+			<h:panelGroup rendered="#{cc.attrs.renderedTotalRegistros}" layout="block"
+				class="PositionRelativeFloatRight Largura200px MarginTop4px AlignRight MarginRight5px">
+				<h:outputText styleClass="TextoScroll" value="#{cc.attrs.totalRegistros}"/>
+			</h:panelGroup>
+		</h:panelGroup>
+    </composite:implementation>
+</html>

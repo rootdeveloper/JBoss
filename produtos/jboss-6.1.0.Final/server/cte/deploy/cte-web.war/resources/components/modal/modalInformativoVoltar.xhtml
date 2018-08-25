@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core" 
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+    <composite:interface>
+       <composite:attribute name="mensagemInformativo"/>
+       <composite:attribute name="nomePainel" />
+       <composite:attribute name="render" default="content"/>
+       <composite:attribute name="tituloModal"/>
+    </composite:interface>
+    <composite:implementation>
+    	<rich:popupPanel id="#{cc.attrs.nomePainel}" autosized="true" resizeable="false" moveable="false" styleClass="FundoBranco">
+    	   	<f:facet name="header">
+				<h:outputText value="#{cc.attrs.tituloModal}" />
+			</f:facet>
+			<f:facet name="controls">
+				<a4j:commandLink action="voltar" onclick="#{rich:component(cc.attrs.nomePainel)}.hide();" render="#{cc.attrs.render}" status="modalStatus">
+		    		<h:graphicImage value="#{resource['images/png:close.png']}" styleClass="BotaoFechar"/>
+					<f:param name="acao" value="Voltar"/>
+				</a4j:commandLink>
+			</f:facet>
+    		<h:outputText id="mensagemConfirmacao" value="#{cc.attrs.mensagemInformativo}" styleClass="TituloDeCampo"/>
+    		<br/>
+    		<h:panelGroup layout="block" styleClass="MarginTop10px">
+				<div align="center">
+		    		<a4j:commandButton value="#{msg.ok}" action="voltar" onclick="#{rich:component(cc.attrs.nomePainel)}.hide();" render="#{cc.attrs.render}" styleClass="BotaoTexto Largura50px" status="modalStatus">
+						<f:param name="acao" value="Voltar"/>
+					</a4j:commandButton>
+				</div>
+			</h:panelGroup>
+		</rich:popupPanel>
+    </composite:implementation>    
+</html>

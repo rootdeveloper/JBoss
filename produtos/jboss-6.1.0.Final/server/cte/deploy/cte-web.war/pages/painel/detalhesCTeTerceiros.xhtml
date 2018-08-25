@@ -1,0 +1,90 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="metadata" />
+	<ui:define name="view">
+		<h:outputText value="#{msg.detalhesCTeTerceiros}" />
+	</ui:define>
+	<ui:define name="content">
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<h:commandButton action="#{mbCteTerceiros.voltarParaLista}" image="#{resource['images/png:voltar.png']}" title="Voltar" styleClass="BotaoImagem" immediate="true"/>
+		</rich:toolbar>
+		
+		<!-- Div referente as informacoes globais do CTE acima das abas -->
+		
+		<div class="Altura50px">
+			<div class="Linha990x38 MarginTop5px">
+				<div class="GrupoTituloCampo MarginLeft10px">
+					<h:outputText value="#{msg.chaveDeAcesso}" styleClass="TituloDeCampo" />
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.protCTe.infProt.chCTe}" styleClass="Campo Largura330px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.numeroCTe}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.ide.nct}" styleClass="Campo Largura90px" readonly="true" converter="numeroCTeConverter"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.versaoXml}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.versao}" styleClass="Campo Largura80px" readonly="true"/>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Inclusao de abas das telas do cte-->
+		
+		<rich:tabPanel switchType="client">
+			<rich:tab header="#{msg.cte_}" styleClass="AbasDetalhesCte">
+				<ui:include src="/pages/painel/cte/abaCte.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.abaEmitente}" styleClass="Altura210px" >
+				<ui:include src="/pages/painel/cte/abaEmitente.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.abaTomador}">
+				<ui:include src="/pages/painel/cte/abaTomador.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.abaRemetente}" styleClass="AbasDetalhesCte">
+				<ui:include src="/pages/painel/cte/abaRemetente.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.abaExpedidor}" styleClass="Altura250px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.exped != null}">
+				<ui:include src="/pages/painel/cte/abaExpedidor.xhtml"/>
+			</rich:tab>		
+			<rich:tab header="#{msg.abaRecebedor}" styleClass="Altura250px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.receb != null}">
+				<ui:include src="/pages/painel/cte/abaRecebedor.xhtml"/>
+			</rich:tab>	
+			<rich:tab header="#{msg.abaDestinatario}" styleClass="AbasDetahesCte">
+				<ui:include src="/pages/painel/cte/abaDestinatario.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.abaValoresTotais}" styleClass="AbasDetalhesCte">
+				<ui:include src="/pages/painel/cte/abaValoresTotais.xhtml"/>
+			</rich:tab>		
+			<rich:tab header="#{msg.abaCarga}" styleClass="AbasDetalhesCte">
+				<ui:include src="/pages/painel/cte/abaCarga.xhtml"/>
+			</rich:tab>	
+			<rich:tab header="#{msg.abaModalRodoviario}" styleClass="AbasDetalhesCte" rendered="#{mbCteTerceiros.modal == 01}">
+				<ui:include src="/pages/painel/cte/abaModalRodoviario.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.aereo}" styleClass="AbasDetalhesCte" rendered="#{mbCteTerceiros.modal == 02}">
+				<ui:include src="/pages/painel/cte/abaModalAereo.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.aquaviario}" styleClass="Altura250px" rendered="#{mbCteTerceiros.modal == 03}">
+				<ui:include src="/pages/painel/cte/abaModalAquaviario.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.abaFerroviario}" styleClass="AbasDetalhesCte" rendered="#{mbCteTerceiros.modal == 04}">
+				<ui:include src="/pages/painel/cte/abaModalFerroviario.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.abaDutoviario}" styleClass="Altura50px" rendered="#{mbCteTerceiros.modal == 05}">
+				<ui:include src="/pages/painel/cte/abaModalDutoviario.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.abaInformacoesAdicionais_}" styleClass="AbasDetalhesCte">
+				<ui:include src="/pages/painel/cte/abaInformacoesAdicionais.xhtml"/>
+			</rich:tab>
+		</rich:tabPanel>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,116 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal">
+	
+	<h:panelGroup id="cadastroEnderecoCliente" >
+	
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.cep}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:panelGroup id="dadosCep">
+				<h:inputText id="cep" styleClass="Campo Largura70px PositionRelativeFloatLeft" disabled="#{mbCliente.statusInicio}" 
+					maxlength="9" onkeypress="Mascara(this, Cep)" onkeydown="Mascara(this, Cep)" value="#{mbCliente.cliente.endereco.cep}" converter="cepConverter"
+					onmousedown="Mascara(this, Cep);" onmouseup="Mascara(this, Cep);" onmouseout="Mascara(this, Cep);" rendered="#{mbCliente.parceiroBrasileiro}">
+					<a4j:ajax event="blur" render="bairro, logradouro, ufOne, municipio, painelMensagemErro" status="modalStatus"
+						execute="@this" listener="#{mbCliente.populaEnderecoComCep}" immediate="false"/>
+				</h:inputText>
+				<h:inputText styleClass="Campo Largura70px PositionRelativeFloatLeft" disabled="#{mbCliente.statusInicio}" 
+					maxlength="8" value="#{mbCliente.cliente.endereco.cep}" rendered="#{!mbCliente.parceiroBrasileiro}">
+				</h:inputText>
+			</h:panelGroup>
+			<div class="PositionRelativeFloatLeft MarginLeft10px MarginTop2px Largura70px">
+				<h:outputText value="#{msg.telefone}" styleClass="TituloDeCampo" />
+			</div>
+			<h:inputText id="telefone" styleClass="Campo Largura120px PositionRelativeFloatLeft" value="#{mbCliente.cliente.endereco.telefone}"
+				readonly="#{mbCliente.statusInicio}" onkeypress="Mascara(this, Telefone)" onkeydown="Mascara(this, Telefone)" onkeyup="Mascara(this, Telefone)"
+				onmousedown="Mascara(this, Telefone);" onmouseup="Mascara(this, Telefone);" onmouseout="Mascara(this, Telefone);"
+				maxlength="17" converter="telefoneConverter"/>
+		</div>
+		
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.logradouro}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="logradouro" value="#{mbCliente.cliente.endereco.logradouro}" readonly="#{mbCliente.statusInicio}" maxlength="60" 
+			styleClass="Campo Largura670px PositionRelativeFloatLeft"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.numero}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="numero" value="#{mbCliente.cliente.endereco.numero}" readonly="#{mbCliente.statusInicio}" maxlength="60" 
+			styleClass="Campo Largura670px PositionRelativeFloatLeft"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.complemento}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="complemento" styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" readonly="#{mbCliente.statusInicio}" 
+			value="#{mbCliente.cliente.endereco.complemento}"/>
+		</div>
+		
+		<div class="Linha900x25">
+			<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.bairro}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="bairro" styleClass="Campo Largura670px PositionRelativeFloatLeft" readonly="#{mbCliente.statusInicio}"  
+			maxlength="60" value="#{mbCliente.cliente.endereco.bairro}"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		
+		<h:panelGroup id="dadosPaisUfMunicipio" layout="block">			
+			
+			<div class="Linha900x25">
+				<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.pais}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="paisBrasil" value="#{mbCliente.cliente.endereco.pais}" disabled="#{not empty mbPais.listaDePaisesAsSelectItem and (!mbCliente.exterior || mbCliente.statusInicio)}" 
+				rendered="#{!mbCliente.exterior}" converter="entityConverter" styleClass="ComboField Largura220px PositionRelativeFloatLeft">
+					<f:selectItems value="#{mbPais.listaDePaisesAsSelectItem}"/>
+					<a4j:ajax event="change" render="ufOne, municipio"/>
+				</h:selectOneMenu>
+				<h:selectOneMenu id="paisExterior" value="#{mbCliente.cliente.endereco.pais}" rendered="#{mbCliente.exterior}" disabled="#{mbCliente.statusInicio}" 
+				converter="entityConverter" styleClass="ComboField Largura220px PositionRelativeFloatLeft">
+					<f:selectItems value="#{mbPais.listaDePaisesSemBrasilAsSelectItem}"/>
+					<a4j:ajax event="change" render="ufOne, municipio"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+			
+			<div class="Linha900x25">
+				<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="ufOne" value="#{mbCliente.cliente.endereco.uf}" disabled="#{mbCliente.statusInicio}" converter="entityConverter" 
+					styleClass="ComboField Largura50px PositionRelativeFloatLeft">
+					<f:selectItems value="#{mbCliente.listaUfAsSelectItem}"/>
+					<a4j:ajax event="change" render="municipio"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+			
+			<div class="Linha900x25">
+				<div class="PositionRelativeFloatLeft Largura110px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.municipio}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="municipio" value="#{mbCliente.cliente.endereco.municipio}" disabled="#{mbCliente.statusInicio}" 
+				converter="entityConverter" styleClass="ComboField Largura220px PositionRelativeFloatLeft">
+					<f:selectItems value="#{mbCliente.listaMunAsSelectItem}"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>
+			
+		</h:panelGroup>
+	
+	</h:panelGroup>
+</ui:composition>
+

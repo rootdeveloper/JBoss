@@ -1,0 +1,204 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaProdutosServicos}"/>
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<ui:include src="/pages/dadosMestre/material/modalFiltroMaterial.xhtml"/>
+		<ui:include src="/pages/dadosMestre/material/importadorMaterial.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" render="header-content barraDeScroll" execute="@this" listener="#{mbMaterial.trocaValorComboFilial}"
+			oncomplete="renderAllTabelaMateriais(); renderPainelErroMateriais();" status="modalStatus"/>
+	</ui:define>
+	
+	<ui:define name="content">
+			
+		<util:modalSimNao mensagem="#{mbMaterial.excluirSelecionadosTela}" nomePainel="confirmPane" tituloModal="#{msg.msgConfirmacaoExclusaoTela}" 
+			actionSim="#{mbMaterial.excluirSelecionados}" render="barraDeScroll, modalInformativo" tituloFuncao="selecionado" 
+			idCheckbox="checkboxMaterial" oncomplete="#{rich:component('modalInformativo')}.show(); renderAllTabelaMateriais(); renderPainelErroMateriais();"/>
+			
+		<util:modalInformativo mensagemInformativo="#{mbMaterial.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo"  />
+		
+		<util:modalExportar renderedBotao="#{mbMaterial.itensSelecionados}" actionListener="#{mbMaterial.exportaMaterialParaXLS}" 
+			mensagem="#{mbMaterial.msgExportacao}" nomePainel="modalExportacao" tituloModal="#{msg.exportacao}"/>
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel" id="toolbarBotoes">
+			<rich:toolbarGroup location="left">
+				<botao:filtro idModalFiltro="filtro" idPanelErro="erroEdicao" filialCadastrada="#{mbMaterial.possuiFilialCadastrada}"/>
+				<botao:novoAction action="#{mbMaterial.novo}" render="#{mbMaterial.processaRenderPanelErro}"
+					rendered="#{mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}" />
+				<botao:excluir actionListener="#{mbMaterial.verificarExclusaoMaterial}" idModalSimNao="confirmPane" filialCadastrada="#{mbMaterial.idFilial != null}"
+					idModalInformativo="modalInformativo" renderizarModal="#{mbMaterial.renderizarModal}" idPanelErro="erroEdicao"
+					rendered="#{mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}" />
+				<botao:importar idModalImportador="importadorMaterial" idPanelErro="erroEdicao" filialCadastrada="#{mbMaterial.possuiFilialCadastrada}"
+					rendered="#{mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}" />
+				<botao:exportar actionListener="#{mbMaterial.materiaisSelecionados}" idModal="modalExportacao" idPanelErro="erroEdicao"
+					filialCadastrada="#{mbMaterial.idFilial != null}"
+					rendered="#{mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}" />
+				<botao:voltarAction action="home" />
+			</rich:toolbarGroup>
+			
+			<rich:toolbarGroup location="right">
+				<botao:atualizar actionListener="#{mbMaterial.refreshList}" render="barraDeScroll" oncomplete="renderAllTabelaMateriais()" 
+					buttonStyle="MarginRight5px" idPanelErro="erroEdicao" filialCadastrada="#{mbMaterial.idFilial != null}"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="tabelaMateriais" var="item" value="#{mbMaterial.listaMaterial}" rows="10" styleClass="Largura100pc" 
+			onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" onrowdblclick="editarMaterial(#{rowKey})" 
+			noDataLabel="#{msg.listaMaterialVazia}" rowKeyVar="rowKey">
+			
+			<rich:column id="colunaSelecionarTudo" styleClass="AlignCenter" headerClass="Largura40px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxMaterial" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();" 
+						valueChangeListener="#{mbMaterial.selecionarTodos}" styleClass="Margin0px" tabindex="1">
+						<a4j:ajax event="click" render="tabelaMateriais" status="modalStatus" oncomplete="reSize();"/>
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{item.selected}" styleClass="Margin0px" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();">
+					<a4j:ajax event="valueChange" execute="@this"/>
+				</h:selectBooleanCheckbox>
+			</rich:column>
+			
+			<rich:column id="colunaStatus" styleClass="AlignCenter" headerClass="Largura80px"
+				filterExpression="#{fn:startsWith(fn:toLowerCase(item.status) , fn:toLowerCase(mbMaterial.columnFilter.mapColumnFilter['Status'].filterBy))}" 
+				sortBy="#{item.status.nomeTipo}" sortOrder="#{mbMaterial.columnOrder.mapColumnOrder['Status'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.status}"/>
+					<table:orderArrow action="#{mbMaterial.columnOrder.mapColumnOrder['Status'].sortBy}" 
+						order="#{mbMaterial.columnOrder.mapColumnOrder['Status'].sortOrder}" render="tabelaMateriais"/>
+					<br/>
+					<h:inputText id="status" value="#{mbMaterial.columnFilter.mapColumnFilter['Status'].filterBy}" styleClass="Campo Largura60px" maxlength="7" 
+						onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" onkeyup="Mascara(this, LetraSemEspaco);" tabindex="2"
+						onkeydown="Mascara(this, LetraSemEspaco);" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfTabelaMateriais(); executeFilter(this,event);"
+							execute="@this" status="modalStatus" listener="#{mbMaterial.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.status.nomeTipo}"/>
+			</rich:column>
+			
+			<rich:column id="colunaCodigo" styleClass="AlignLeft Truncate" headerClass="Largura190px" 
+				filterExpression="#{fn:containsIgnoreCase(item.codigo, mbMaterial.columnFilter.mapColumnFilter['Codigo'].filterBy)}" 
+				sortBy="#{item.codigo}" sortOrder="#{mbMaterial.columnOrder.mapColumnOrder['Codigo'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.codigo}"/>
+					<table:orderArrow action="#{mbMaterial.columnOrder.mapColumnOrder['Codigo'].sortBy}" 
+						order="#{mbMaterial.columnOrder.mapColumnOrder['Codigo'].sortOrder}" render="tabelaMateriais"/>
+					<br/>
+					<h:inputText value="#{mbMaterial.columnFilter.mapColumnFilter['Codigo'].filterBy}" styleClass="Campo Largura170px" 
+						onkeypress="executeFilter(this,event)" maxlength="60" tabindex="3">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfTabelaMateriais();"
+							execute="@this" status="modalStatus" listener="#{mbMaterial.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.codigo}" title="#{item.codigo}"/>
+			</rich:column>
+
+			<rich:column id="colunaDescricao" styleClass="AlignLeft Truncate" headerClass="Largura350px" 
+				filterExpression="#{fn:containsIgnoreCase(item.descricao, mbMaterial.columnFilter.mapColumnFilter['Descricao'].filterBy)}" 
+				sortBy="#{item.descricao}" sortOrder="#{mbMaterial.columnOrder.mapColumnOrder['Descricao'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricao}"/>
+					<table:orderArrow action="#{mbMaterial.columnOrder.mapColumnOrder['Descricao'].sortBy}" 
+						order="#{mbMaterial.columnOrder.mapColumnOrder['Descricao'].sortOrder}" render="tabelaMateriais"/>
+					<br/>
+					<h:inputText value="#{mbMaterial.columnFilter.mapColumnFilter['Descricao'].filterBy}" styleClass="Campo Largura240px" 
+						onkeypress="executeFilter(this,event)" maxlength="120" tabindex="4">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfTabelaMateriais();"
+							execute="@this" status="modalStatus" listener="#{mbMaterial.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.descricao}" title="#{item.descricao}"/>
+			</rich:column>
+			
+			<rich:column id="colunaUtilizacao" styleClass="AlignCenter" headerClass="Largura120px"
+				filterExpression="#{fn:containsIgnoreCase(item.utilizacao, mbMaterial.columnFilter.mapColumnFilter['Utilizacao'].filterBy)}" 
+				sortBy="#{item.utilizacao.nomeTipo}" sortOrder="#{mbMaterial.columnOrder.mapColumnOrder['Utilizacao'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.utilizacao}"/>
+					<table:orderArrow action="#{mbMaterial.columnOrder.mapColumnOrder['Utilizacao'].sortBy}" 
+						order="#{mbMaterial.columnOrder.mapColumnOrder['Utilizacao'].sortOrder}" render="tabelaMateriais"/>
+					<br/>
+					<h:inputText value="#{mbMaterial.columnFilter.mapColumnFilter['Utilizacao'].filterBy}" styleClass="Campo Largura100px" 
+						onkeypress="executeFilter(this,event)" maxlength="20" tabindex="5">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfTabelaMateriais();"
+							execute="@this" status="modalStatus" listener="#{mbMaterial.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.utilizacao.nomeTipo}"/>
+			</rich:column>
+			
+			<rich:column id="colunaUnidadeMedida" styleClass="AlignCenter" headerClass="Largura120px"
+				filterExpression="#{fn:containsIgnoreCase(item.unidadeMedida.sigla, mbMaterial.columnFilter.mapColumnFilter['UnidadeMedida'].filterBy)}" 
+				sortBy="#{item.unidadeMedida.sigla}" sortOrder="#{mbMaterial.columnOrder.mapColumnOrder['UnidadeMedida'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.unidadeMedida}"/>
+					<table:orderArrow action="#{mbMaterial.columnOrder.mapColumnOrder['UnidadeMedida'].sortBy}" 
+						order="#{mbMaterial.columnOrder.mapColumnOrder['UnidadeMedida'].sortOrder}" render="tabelaMateriais"/>
+					<br/>
+					<h:inputText value="#{mbMaterial.columnFilter.mapColumnFilter['UnidadeMedida'].filterBy}" styleClass="Campo Largura100px" 
+						onkeypress="executeFilter(this,event)" maxlength="6" tabindex="6">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfTabelaMateriais();"
+							execute="@this" status="modalStatus" listener="#{mbMaterial.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.unidadeMedida.sigla}"/>
+			</rich:column>
+			
+			<rich:column id="colunaNCM" styleClass="AlignCenter" headerClass="Largura80px"
+				filterExpression="#{fn:containsIgnoreCase(item.ncm.codigo, mbMaterial.columnFilter.mapColumnFilter['NCM'].filterBy)}" 
+				sortBy="#{item.ncm.codigo}" sortOrder="#{mbMaterial.columnOrder.mapColumnOrder['NCM'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.ncm}"/>
+					<table:orderArrow action="#{mbMaterial.columnOrder.mapColumnOrder['NCM'].sortBy}" 
+						order="#{mbMaterial.columnOrder.mapColumnOrder['NCM'].sortOrder}" render="tabelaMateriais"/>
+					<br/>
+					<h:inputText value="#{mbMaterial.columnFilter.mapColumnFilter['NCM'].filterBy}" styleClass="Campo Largura60px" maxlength="8" tabindex="7" 
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"
+						onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfTabelaMateriais(); executeFilter(this,event);"
+							execute="@this" status="modalStatus" listener="#{mbMaterial.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{item.ncm.codigo}"/>
+				</rich:column>
+			
+		</rich:dataTable>
+		
+		<table:scroller for="tabelaMateriais" idPanelScroller="barraDeScroll" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px" 
+			pageNumber="#{mbMaterial.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbMaterial.listaMaterial}" 
+			totalRegistros="#{mbMaterial.quantidadeRegistros}"/>
+		
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbMaterial.mensagensErro}">
+				<h:outputText value="#{mbMaterial.mensagensErro}" styleClass="MensagemDeErro MarginLeft10px" escape="false"/>
+			</h:panelGroup>	
+		</h:panelGroup>
+		
+		<a4j:jsFunction name="editarMaterial"  render="erroEdicao" status="modalStatus" action="#{mbMaterial.editar}">
+			<a4j:param name="linhaDoMaterial" assignTo="#{mbMaterial.linhaSelecionada}"/>
+		</a4j:jsFunction>
+		
+		<a4j:jsFunction name="renderPainelErroMateriais" render="erroEdicao"/>
+		<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+		<a4j:jsFunction name="renderBodyOfTabelaMateriais" status="modalStatus" render="tabelaMateriais@body" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderAllTabelaMateriais" status="modalStatus" render="tabelaMateriais" oncomplete="reSize();"/>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core" 
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+   
+    <composite:interface>
+       <composite:attribute name="mensagem"/>
+       <composite:attribute name="nomePainel"/>
+       <composite:attribute name="tituloModal"/>
+    </composite:interface>
+   
+   <composite:implementation>
+    	<rich:popupPanel id="#{cc.attrs.nomePainel}" autosized="true" resizeable="false" moveable="false" styleClass="Largura600px FundoBranco">
+    	   	<f:facet name="header">
+				<h:outputText value="#{cc.attrs.tituloModal}" />
+			</f:facet>
+			<f:facet name="controls">
+				<h:commandButton id="fecharDetalhesEvento" image="#{resource['images/png:close.png']}" styleClass="BotaoFechar" immediate="true"
+					onclick="#{rich:component(cc.attrs.nomePainel)}.hide();" >
+					<f:ajax execute="@this" />
+				</h:commandButton> 
+			</f:facet>
+			<div align="center">			
+    			<h:inputTextarea value="#{cc.attrs.mensagem}" readonly="true" styleClass="TextArea450x100"/>
+    		</div>
+			<div align="center" class="MarginTop10px">
+   				<a4j:commandButton id="botaoOK" value="#{msg.ok}" oncomplete="#{rich:component(cc.attrs.nomePainel)}.hide();" 
+   					immediate="true" styleClass="BotaoTexto Largura50px" execute="@this"/>
+   			</div>
+		</rich:popupPanel>
+	</composite:implementation>
+</html>

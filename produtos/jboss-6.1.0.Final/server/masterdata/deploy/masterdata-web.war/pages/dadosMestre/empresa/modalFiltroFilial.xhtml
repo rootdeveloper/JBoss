@@ -1,0 +1,267 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	       
+	<h:form prependId="false" id="formFiltro" styleClass="formFiltro" onkeypress="return bloqueioEnter(event);">
+		<rich:popupPanel onshow="iniciaFocusModal('tabStatus', null); disableInputsFormPrincipal();"
+			modal="true" id="filtroFilial" autosized="true" resizeable="false" moveable="false"
+			domElementAttachment="form" styleClass="Largura700px FundoBranco" onhide="enableInputsFormPrincipal()">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.filtroFilial}"/>
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton id="fechar" image="/resources/images/png/close.png" styleClass="BotaoFechar TabWalk" execute="@this"
+					onclick="#{rich:component('filtroFilial')}.hide();" actionListener="#{mbEmpresa.processCleanModalFiltroFilial}"
+					immediate="true"/> 
+			</f:facet>	
+		
+			<rich:tabPanel id="AbasFiltro" switchType="client" >
+				
+				<!-- Aba Status Material -->
+				<rich:tab header="#{msg.status}" id="tabStatus"  headerClass="tabStatus" onenter="focus('tabelaDeStatus\\:checkboxStatus')" >   
+					<div class="PositionRelativeFloatLeft Largura665px"> 
+						<rich:dataTable value="#{mbEmpresa.listaStatusFiltro}" var="status" styleClass="Largura100pc" id="tabelaDeStatus">
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox styleClass="Margin0px checkboxStatus" id="checkboxStatus" value="#{mbEmpresa.checkboxHeaderStatus}"
+										valueChangeListener="#{mbEmpresa.selecionarTodosCheckboxFiltroFilial}">
+										<a4j:ajax event="click" render="tabelaDeStatus"/>
+										<f:param name="pegaListaFiltro" value="filtroStatus"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{status.selecionado}">
+									<a4j:ajax event="valueChange" execute="@this"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{msg.status}"/>
+								</f:facet>
+								<h:outputText value="#{status.descricao}" styleClass="MarginLeft10px"/>
+							</rich:column>
+						</rich:dataTable>
+					</div>
+				</rich:tab>
+				
+				<!-- Aba Nome Fantasia -->
+				<rich:tab header="#{msg.nomeFantasia}" id="tabNomeFantasia" onenter="focus('inputNomeFantasia')" > 
+					<h:panelGroup id="panelNomeFantasia" styleClass="Linha670x25" layout="block">
+						<div class="PositionRelativeFloatLeft Largura110px MarginTop2px">
+							<h:outputText value="#{msg.nomeFantasia}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText value="#{mbEmpresa.nomeFantasiaFiltro}" styleClass="Campo Largura450px" maxlength="60" id="inputNomeFantasia" tabindex="0"/>
+						<a4j:commandButton value="#{msg.adicionar}" actionListener="#{mbEmpresa.adicionarValorNaListaFiltroFilial}" status="modalStatus" tabindex="1"
+							render="panelNomeFantasia, tabelaFiltroNomeFantasia" styleClass="BotaoTexto PositionRelativeFloatRight TabWalk" 
+							execute="panelNomeFantasia">
+							<f:param name="pegaListaFiltro" value="filtroNomeFantatasia"/>
+						 	<f:param name="valueCampoFilro" value="#{mbEmpresa.nomeFantasiaFiltro}"/> 
+							<f:param name="pegaCampoFiltro" value="nomeFantasia"/>
+						</a4j:commandButton>
+					</h:panelGroup>
+					<div class="PositionRelativeFloatLeft Largura665px AlturaMax155px OverflowVerticalAuto">
+						<rich:dataTable id="tabelaFiltroNomeFantasia" var="item" value="#{mbEmpresa.listaNomeFantasiaFiltro}" styleClass="Largura100pc"
+							onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" rowKeyVar="rowkey">
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox id="checkboxNomeFantasia" styleClass="Margin0px checkboxCodigo"
+										valueChangeListener="#{mbEmpresa.selecionarTodosCheckboxFiltroFilial}">
+										<a4j:ajax event="click" render="panelNomeFantasia, tabelaFiltroNomeFantasia"/>
+										<f:param name="pegaListaFiltro" value="filtroNomeFantatasia"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{item.selecionado}" valueChangeListener="#{mbEmpresa.verificarExclusaoCheckboxFiltroFilial}">
+									<a4j:ajax event="valueChange" render="panelNomeFantasia, tabelaFiltroNomeFantasia"/>
+									<f:param name="pegaListaFiltro" value="filtroNomeFantatasia"/>
+									<f:param name="selecionaLinha" value="#{rowkey}"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							<rich:column styleClass="AlignLeft">
+								<f:facet name="header">
+									<h:outputText value="#{msg.nomeFantasia}"/>
+								</f:facet>
+								<h:outputText value="#{item.descricao}"/>
+							</rich:column>
+						</rich:dataTable>
+					</div>
+				</rich:tab>
+				
+				<!-- Aba Sufixo CNPJ -->
+				<rich:tab header="#{msg.sufixoCnpj}" id="tabCnpj" onenter="focus('inputCnpj')" > 
+					<h:panelGroup id="panelCnpj" styleClass="Linha670x25" layout="block">
+						<div class="PositionRelativeFloatLeft Largura110px MarginTop2px">
+							<h:outputText value="#{msg.sufixoCnpj}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText value="#{mbEmpresa.cnpjFiltro}" styleClass="Campo Largura450px" maxlength="6" id="inputCnpj" tabindex="0"
+							onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);" 
+							onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+						<a4j:commandButton value="#{msg.adicionar}" actionListener="#{mbEmpresa.adicionarValorNaListaFiltroFilial}" tabindex="1"
+							render="panelCnpj, tabelaFiltroCnpj" styleClass="BotaoTexto PositionRelativeFloatRight TabWalk" execute="panelCnpj" status="modalStatus">
+							<f:param name="pegaListaFiltro" value="filtroCNPJ"/>
+							<f:param name="valueCampoFilro" value="#{mbEmpresa.cnpjFiltro}"/> 
+							<f:param name="pegaCampoFiltro" value="codigoCnpj"/>
+						</a4j:commandButton>
+					</h:panelGroup>
+					<div class="PositionRelativeFloatLeft Largura665px AlturaMax155px OverflowVerticalAuto">
+						<rich:dataTable id="tabelaFiltroCnpj" var="cnpj" value="#{mbEmpresa.listaCNPJFiltro}" styleClass="Largura100pc"
+							onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" rowKeyVar="rowkey">
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox id="checkboxCnpj" styleClass="Margin0px checkboxCnpj"
+										valueChangeListener="#{mbEmpresa.selecionarTodosCheckboxFiltroFilial}">
+										<a4j:ajax event="click" render="panelCnpj, tabelaFiltroCnpj"/>
+										<f:param name="pegaListaFiltro" value="filtroCNPJ"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{cnpj.selecionado}" valueChangeListener="#{mbEmpresa.verificarExclusaoCheckboxFiltroFilial}">
+									<a4j:ajax event="click" render="panelCnpj, tabelaFiltroCnpj"/>
+									<f:param name="pegaListaFiltro" value="filtroCNPJ"/>
+									<f:param name="selecionaLinha" value="#{rowkey}"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							<rich:column styleClass="AlignCenter">
+								<f:facet name="header">
+									<h:outputText value="#{msg.cnpj}"/>
+								</f:facet>
+								<h:outputText value="#{cnpj.descricao}" converter="sufixoCnpjConverter"/>
+							</rich:column>
+						</rich:dataTable>
+					</div>
+				</rich:tab>
+				
+				<!-- Aba UF -->
+				<rich:tab header="#{msg.uf}" id="tabUf" headerClass="tabUf" onenter="focus('tabelaFiltroUf\\:checkboxUf')" >   
+					<div class="PositionRelativeFloatLeft Largura665px Altura155px OverflowVerticalAuto">
+						<rich:dataTable value="#{mbEmpresa.listaFiltroUF}" var="uf" styleClass="Largura100pc" id="tabelaFiltroUf">
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox styleClass="Margin0px checkboxUf" id="checkboxUf" value="#{mbEmpresa.checkboxHeaderUF}"
+										valueChangeListener="#{mbEmpresa.selecionarTodosCheckboxFiltroFilial}">
+										<a4j:ajax event="click" render="tabelaFiltroUf"/>
+										<f:param name="pegaListaFiltro" value="filtroUF"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{uf.selecionado}">
+									<a4j:ajax event="valueChange" execute="@this"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							<rich:column>
+								<f:facet name="header">
+									<h:outputText value="#{msg.uf}"/>
+								</f:facet>
+								<h:outputText value="#{uf.descricao}" styleClass="MarginLeft10px"/>
+							</rich:column>
+						</rich:dataTable>
+					</div>
+				</rich:tab>
+				
+				<!-- Aba Insc. Estadual -->
+				<rich:tab header="#{msg.filtroIE}" id="tabfiltroIE" onenter="focus('inputfiltroIE')" > 
+					<h:panelGroup id="panelfiltroIE" styleClass="Linha670x25" layout="block">
+						<div class="PositionRelativeFloatLeft Largura110px MarginTop2px">
+							<h:outputText value="#{msg.filtroIE}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText value="#{mbEmpresa.ieFiltro}" styleClass="Campo Largura450px" maxlength="14" id="inputfiltroIE" tabindex="0"
+						onkeypress="Mascara(this, IE)"/>
+						<a4j:commandButton value="#{msg.adicionar}" actionListener="#{mbEmpresa.adicionarValorNaListaIE}" tabindex="1"
+							render="panelfiltroIE, tabelaFiltroIE" styleClass="BotaoTexto PositionRelativeFloatRight TabWalk" execute="panelfiltroIE" 
+							status="modalStatus">
+							<f:param name="pegaListaFiltro" value="filtroIE"/>
+							<f:param name="valueCampoFiltro" value="#{mbEmpresa.ieFiltro}"/> 
+							<f:param name="pegaCampoFiltro" value="filtroIE"/>
+						</a4j:commandButton>
+					</h:panelGroup>
+					<div class="PositionRelativeFloatLeft Largura665px AlturaMax155px OverflowVerticalAuto">
+						<rich:dataTable id="tabelaFiltroIE" var="item" value="#{mbEmpresa.listaFiltroIE}" styleClass="Largura100pc"
+							onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" rowKeyVar="rowkey">
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox id="checkboxfiltroIE" styleClass="Margin0px checkboxCodigo"
+										valueChangeListener="#{mbEmpresa.selecionarTodosCheckboxFiltroFilial}">
+										<a4j:ajax event="click" render="panelfiltroIE, tabelaFiltroIE"/>
+										<f:param name="pegaListaFiltro" value="filtroIE"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{item.selecionado}" valueChangeListener="#{mbEmpresa.verificarExclusaoCheckboxFiltroFilial}">
+									<a4j:ajax event="valueChange" render="panelfiltroIE, tabelaFiltroIE"/>
+									<f:param name="pegaListaFiltro" value="filtroIE"/>
+									<f:param name="selecionaLinha" value="#{rowkey}"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							<rich:column styleClass="AlignCenter">
+								<f:facet name="header">
+									<h:outputText value="#{msg.filtroIE}"/>
+								</f:facet>
+								<h:outputText value="#{item.descricao}"/>
+							</rich:column>
+						</rich:dataTable>
+					</div>
+				</rich:tab>
+				
+				<!-- Aba Cod. Filial -->
+				<rich:tab header="#{msg.tabelafiltroCodFilial}" id="tabelafiltroCodFilial" onenter="focus('inputfiltroCodFilial')" > 
+					<h:panelGroup id="panelfiltroCodFilial" styleClass="Linha670x25" layout="block">
+						<div class="PositionRelativeFloatLeft Largura110px MarginTop2px">
+							<h:outputText value="#{msg.tabelafiltroCodFilial}" styleClass="TituloDeCampo"/>
+						</div>
+						<h:inputText value="#{mbEmpresa.codFilial}" styleClass="Campo Largura450px" maxlength="4" id="inputfiltroCodFilial" tabindex="0"/>
+						<a4j:commandButton value="#{msg.adicionar}" actionListener="#{mbEmpresa.adicionarValorNaListaFiltroFilial}" tabindex="1"
+							render="panelfiltroCodFilial, tabfiltroCodFilial" styleClass="BotaoTexto PositionRelativeFloatRight TabWalk" 
+							execute="panelfiltroCodFilial" status="modalStatus">
+							<f:param name="pegaListaFiltro" value="filtroCodFilial"/>
+							<f:param name="valueCampoFiltro" value="#{mbEmpresa.ieFiltro}"/> 
+							<f:param name="pegaCampoFiltro" value="codFilial"/>
+						</a4j:commandButton>
+					</h:panelGroup>
+					<div class="PositionRelativeFloatLeft Largura665px AlturaMax155px OverflowVerticalAuto">
+						<rich:dataTable id="tabfiltroCodFilial" var="item" value="#{mbEmpresa.listaFiltroCodFilial}" styleClass="Largura100pc"
+							onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" rowKeyVar="rowkey">
+							<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+								<f:facet name="header">
+									<h:selectBooleanCheckbox id="checkboxfiltroCodFilial" styleClass="Margin0px checkboxCodigo" 
+										valueChangeListener="#{mbEmpresa.selecionarTodosCheckboxFiltroFilial}">
+										<a4j:ajax event="click" render="panelfiltroCodFilial, tabfiltroCodFilial"/>
+										<f:param name="pegaListaFiltro" value="filtroCodFilial"/>
+									</h:selectBooleanCheckbox>
+								</f:facet>
+								<h:selectBooleanCheckbox value="#{item.selecionado}" valueChangeListener="#{mbEmpresa.verificarExclusaoCheckboxFiltroFilial}">
+									<a4j:ajax event="valueChange" render="panelfiltroCodFilial tabelafiltroCodFilial"/>
+									<f:param name="pegaListaFiltro" value="filtroCodFilial"/>
+									<f:param name="selecionaLinha" value="#{rowkey}"/>
+								</h:selectBooleanCheckbox>
+							</rich:column>
+							<rich:column styleClass="AlignCenter">
+								<f:facet name="header">
+									<h:outputText value="#{msg.tabelafiltroCodFilial}"/>
+								</f:facet>
+								<h:outputText value="#{item.descricao}"/>
+							</rich:column>
+						</rich:dataTable>
+					</div>
+				</rich:tab>
+
+			</rich:tabPanel>
+			
+			<h:panelGroup id="panelErroFilial"> 
+				<h:panelGroup layout="block" styleClass="Linha670x25 MarginTop5px" rendered="#{not empty mbEmpresa.mensagemErroFiltroModal}" >
+					<h:outputText value="#{mbEmpresa.mensagemErroFiltroModal}" styleClass="MensagemDeErro"/>
+				</h:panelGroup>
+			</h:panelGroup>
+			
+			<!-- Botões -->
+			<div class="PositionRelativeFloatLeft MarginLeft8px Linha670x25 MarginTop10px">
+				<a4j:commandButton value="#{msg.botaoFiltrar}" styleClass="BotaoTexto Largura50px TabWalk" 
+					oncomplete="#{ empty mbEmpresa.mensagemErroFiltroModal} ? #{rich:component('filtroFilial')}.hide() : ''"
+					actionListener="#{mbEmpresa.filtrarFilial}" render="listaFiliais panelScroller AbasFiltro panelErroFilial erroEdicao"
+					execute="@this" status="modalStatus"/>
+				<a4j:commandButton value="#{msg.botaoVoltar}" onclick="#{rich:component('filtroFilial')}.hide()" immediate="true"
+					styleClass="BotaoTexto Largura50px TabWalk" actionListener="#{mbEmpresa.processCleanModalFiltroFilial}"/>
+			</div>
+
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

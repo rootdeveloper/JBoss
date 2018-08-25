@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+    
+	<h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+	
+		<rich:popupPanel modal="true" id="modalListaUM" autosized="true" resizeable="false" moveable="false" domElementAttachment="form" 
+			styleClass="OverflowHidden Largura700px FundoBranco" onbeforeshow="renderBodyOfListaUnidadeMedida();" 
+			onhide="enableInputsFormPrincipal();"
+			onshow="disableInputsFormPrincipal(); mudaFocus('listaUnidadeMedida:sigla');" >
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.unidadeMedida}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" oncomplete="#{rich:component('modalListaUM')}.hide();" execute="@this"
+				action="#{mbMaterial.processClean}" styleClass="BotaoFechar TabWalk" immediate="true" render="BarraScrollerUnidadeMedida"/>
+			</f:facet>
+			
+			<rich:dataTable id="listaUnidadeMedida" var="item" value="#{mbMaterial.listaDeUnidadeMedida}" rows="5" styleClass="Largura100pc" 
+				onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" onrowdblclick="selecionarUnidadeMedida(#{rowKey})" 
+				noDataLabel="#{msg.listaUnidadeMedidaVazia}" rowKeyVar="rowKey">
+					
+				<rich:column styleClass="AlignCenter" headerClass="Largura100px"
+					filterExpression="#{fn:containsIgnoreCase(item.sigla, mbMaterial.modalUnidadeMedidaFilter.mapColumnFilter['Sigla'].filterBy)}" 
+					sortBy="#{item.sigla}" sortOrder="#{mbMaterial.orderModalUnidadeMedida.mapColumnOrder['Sigla'].sortOrder}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.sigla}"/>
+						<table:orderArrow action="#{mbMaterial.orderModalUnidadeMedida.mapColumnOrder['Sigla'].sortBy}" 
+							order="#{mbMaterial.orderModalUnidadeMedida.mapColumnOrder['Sigla'].sortOrder}" render="listaUnidadeMedida"/>
+						<br/>
+						<h:inputText id="sigla" value="#{mbMaterial.modalUnidadeMedidaFilter.mapColumnFilter['Sigla'].filterBy}" styleClass="Campo Largura80px" 
+							maxlength="6" tabindex="1" onkeypress="executeFilter(this,event);" onkeyup="upper(this);" onfocus="origValue = this.value;" 
+							onblur="if(this.value != origValue) valueChangeIE(this);" onmousedown="upper(this);" onmouseup="upper(this);" onmouseout="upper(this);">
+							<a4j:ajax event="valueChange" render="BarraScrollerUnidadeMedida" 
+								oncomplete="renderBodyOfListaUnidadeMedida(); executeFilter(this,event);" execute="@this" status="modalStatus"/>
+						</h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.sigla}"/>
+				</rich:column>
+					
+				<rich:column styleClass="AlignCenter" headerClass="Largura500px"
+					filterExpression="#{fn:containsIgnoreCase(item.descricao, mbMaterial.modalUnidadeMedidaFilter.mapColumnFilter['Descricao'].filterBy)}" 
+					sortBy="#{item.descricao}" sortOrder="#{mbMaterial.orderModalUnidadeMedida.mapColumnOrder['Descricao'].sortOrder}">
+					<f:facet name="header">
+						<h:outputText value="#{msg.descricao}"/>
+						<table:orderArrow action="#{mbMaterial.orderModalUnidadeMedida.mapColumnOrder['Descricao'].sortBy}" 
+							order="#{mbMaterial.orderModalUnidadeMedida.mapColumnOrder['Descricao'].sortOrder}" render="listaUnidadeMedida"/>
+	                    <br/>
+	                    <h:inputText id="desc" value="#{mbMaterial.modalUnidadeMedidaFilter.mapColumnFilter['Descricao'].filterBy}" styleClass="Campo Largura250px" 
+	                    	maxlength="20" tabindex="2" onkeypress="executeFilter(this,event)">
+                        	<a4j:ajax event="valueChange" render="BarraScrollerUnidadeMedida" oncomplete="renderBodyOfListaUnidadeMedida();" execute="@this" 
+                        		status="modalStatus"/>
+	                    </h:inputText>
+					</f:facet>
+					<h:outputText value="#{item.descricao}"/>
+				</rich:column>
+				
+			</rich:dataTable>
+			
+			<table:scroller for="listaUnidadeMedida" idPanelScroller="BarraScrollerUnidadeMedida" maxPages="4" panelStyleClass="Scroller100pc" 
+				pageNumber="#{mbMaterial.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbMaterial.listaDeUnidadeMedida}" 
+				totalRegistros="#{mbMaterial.quantidadeRegistrosUnidadeMedida}"/>
+
+			<a4j:jsFunction name="selecionarUnidadeMedida" status="modalStatus" action="#{mbMaterial.selecionarUnidadeMedida}" 
+				oncomplete="#{rich:component('modalListaUM')}.hide(); return false;"
+				render="linhaUnidadeMedidaMaterial jQueryUnidadeMedida BarraScrollerUnidadeMedida" >
+				<a4j:param name="linhaDaUnidadeMedida" assignTo="#{mbMaterial.linhaSelecionada}"/>
+			</a4j:jsFunction>
+			
+			<!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+			<a4j:jsFunction name="renderBodyOfListaUnidadeMedida" status="modalStatus" render="listaUnidadeMedida@body"/>
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

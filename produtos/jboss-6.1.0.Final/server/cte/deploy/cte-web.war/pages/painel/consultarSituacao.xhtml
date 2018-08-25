@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="metadata" />
+	<ui:define name="view">
+		<h:outputText value="#{msg.consultarSituacaoCTE}"/>
+	</ui:define>
+	<ui:define name="content">
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<h:commandButton action="#{mbConsultarSituacao.voltar}" image="#{resource['images/png:voltar.png']}" styleClass="BotaoImagem"/>
+		</rich:toolbar>
+		<h:panelGroup layout="block" styleClass="Largura100pc FundoBranco">
+			<div class="Linha990x25 MarginTop10px">
+				<div class="PositionRelativeFloatLeft Largura200px MarginLeft10px">
+					<h:outputText value="#{msg.informeChaveDeAcesso}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="chave" value="#{mbConsultarSituacao.chaveDeAcesso}" styleClass="Campo Largura330px" onkeypress="Mascara(this, Integer)" onkeydown="Mascara(this, Integer)" onkeyup="Mascara(this, Integer)" maxlength="44"/>
+			</div>
+			<div class="Linha990x25">
+				<div class="PositionRelativeFloatLeft Largura200px MarginLeft10px MarginTop5px">
+					<h:outputText value="#{msg.ambiente}" styleClass="TituloDeCampo" />
+				</div>
+				<div class="PositionRelativeFloatLeft Largura220px MarginLeft70px">
+					<h:selectOneRadio value="#{mbConsultarSituacao.ambiente}" styleClass="TituloDeCampo">
+		                <f:selectItem itemLabel="#{msg.producao}" itemValue="PRODUCAO" />
+		                <f:selectItem itemLabel="#{msg.homologacao}" itemValue="HOMOLOGACAO"/>
+		            </h:selectOneRadio>
+		      	</div>
+				<h:commandButton value="#{msg.botaoConsultar}" actionListener="#{mbConsultarSituacao.consultar}" render="tabelaDados, campos, msgChave" styleClass="MarginLeft50px BotaoTexto Largura70px"/>
+				<h:commandButton value="#{msg.botaoLimpar}" action="#{mbConsultarSituacao.limpar}" render="tabelaDados, campos, msgChave" styleClass="MarginLeft20px BotaoTexto Largura60px"/>
+			</div>
+			<div class="Largura960px PositionRelativeFloatLeft MarginBottom5px">
+				<h:message id="msgChave" for="chave" rendered="#{mbConsultarSituacao.mensagemDeErro != null}" styleClass="MensagemDeErro" />
+				<h:outputText value="#{mbConsultarSituacao.mensagemDeErro}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</div>
+		</h:panelGroup>
+		<h:panelGroup layout="block" rendered="#{mbConsultarSituacao.response != null}" styleClass="Largura100pc Altura210px FundoBranco">
+			<fieldset class="Fieldset700x190 MarginLeft10px" >
+				<legend class="TituloDeCampo" >#{msg.resultadoDaConsultaNaSefaz}</legend>
+				<div class="Linha680x25 MarginLeft10px MarginTop5px" >
+					<div class="PositionRelativeFloatLeft Largura200px">
+						<h:outputText value="#{msg.versaoAplicativo}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText value="#{mbConsultarSituacao.response.verAplic}" styleClass="CampoDesabilitado Largura105px" readonly="true" />
+				</div>
+				<div class="Linha680x25 MarginLeft10px" >
+					<div class="PositionRelativeFloatLeft Largura200px">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText value="#{mbConsultarSituacao.response.uf}" styleClass="CampoDesabilitado Largura25px" readonly="true"/>
+				</div>
+				<div class="Linha680x25 MarginLeft10px" >
+					<div class="PositionRelativeFloatLeft Largura200px">
+						<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText value="#{mbConsultarSituacao.response.cStat}" styleClass="CampoDesabilitado Largura25px" readonly="true"/>
+				</div>
+				<div class="Linha680x25 MarginLeft10px" >
+					<div class="PositionRelativeFloatLeft Largura200px">
+						<h:outputText value="#{msg.chaveDeAcesso}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText styleClass="CampoDesabilitado Largura300px" readonly="true"
+					value="#{mbConsultarSituacao.response.protocolo != null ? mbConsultarSituacao.response.protocolo.chCTe : mbConsultarSituacao.response.protocoloCancelamento != null ? mbConsultarSituacao.response.protocoloCancelamento.chCTe : ''}"/> 
+				</div>
+				<div class="Linha680x25 MarginLeft10px" >
+					<div class="PositionRelativeFloatLeft Largura200px">
+						<h:outputText value="#{msg.numeroDoProtocolo}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText styleClass="CampoDesabilitado Largura105px" readonly="true"  
+					value="#{mbConsultarSituacao.response.protocolo != null ? mbConsultarSituacao.response.protocolo.nProt : mbConsultarSituacao.response.protocoloCancelamento != null ? mbConsultarSituacao.response.protocoloCancelamento.nProt : ''}"/>
+				</div>
+				<div class="Linha680x25 MarginLeft10px" >
+					<div class="PositionRelativeFloatLeft Largura200px">
+						<h:outputText value="#{msg.dataDeRecebimento}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText styleClass="CampoDesabilitado Largura70px" readonly="true"
+					value="#{mbConsultarSituacao.response.protocolo != null ? mbConsultarSituacao.response.protocolo.dhRecbto : mbConsultarSituacao.response.protocoloCancelamento != null ? mbConsultarSituacao.response.protocoloCancelamento.dhRecbto : ''}">
+						<f:convertDateTime pattern="dd/MM/yyyy" locale="pt,BR" timeZone="America/Sao_Paulo"/>
+					</h:inputText>
+				</div>
+				<div class="Linha680x25 MarginLeft10px" >
+					<div class="PositionRelativeFloatLeft Largura200px">
+						<h:outputText value="#{msg.motivo}" styleClass="TituloDeCampo"/>
+					</div>
+					<h:inputText value="#{mbConsultarSituacao.response.xMotivo}" styleClass="CampoDesabilitado Largura450px" readonly="true"/>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>	

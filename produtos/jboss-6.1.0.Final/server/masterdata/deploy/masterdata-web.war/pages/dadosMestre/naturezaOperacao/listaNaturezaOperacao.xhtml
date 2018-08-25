@@ -1,0 +1,178 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.listaNaturezaOperacao}"/>
+	</ui:define>
+
+	<ui:define name="valueChangeComboDeEmpresas">
+		<a4j:ajax event="valueChange" render="header-content barraDeScroll" execute="@this" listener="#{mbNaturezaOperacao.trocaValorComboFilial}"
+			oncomplete="renderAllListaDeNaturezaOperacao(); renderPanelErroNaturezaOperacao();" status="modalStatus"/>
+	</ui:define>
+
+	<ui:define name="content">
+	
+		<util:modalSimNao mensagem="#{mbNaturezaOperacao.msgExcluirSelecionadosTela}" nomePainel="confirmPane"
+			tituloModal="#{msg.msgConfirmacaoExclusaoTela}" actionSim="#{mbNaturezaOperacao.excluirSelecionados}"
+			render="barraDeScroll modalInformativo" tituloFuncao="selecionado" idCheckbox="checkboxNaturezaOperacao"
+			oncomplete="#{rich:component('modalInformativo')}.show(); renderAllListaDeNaturezaOperacao(); renderPanelErroNaturezaOperacao();"/>
+	
+		<util:modalInformativo mensagemInformativo="#{mbNaturezaOperacao.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="modalInformativo"/>
+	
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<botao:novoAction action="#{mbNaturezaOperacao.novo}" render="#{mbNaturezaOperacao.processaRenderPanelErro}"
+					rendered="#{mbNaturezaOperacao.verificaPermissao('Administrador, Gerente, Fiscal')}" />
+				<botao:excluir actionListener="#{mbNaturezaOperacao.verificaExclusao}" idModalSimNao="confirmPane" 
+					renderizarModal="#{mbNaturezaOperacao.renderizarModal}" idModalInformativo="modalInformativo"
+					idPanelErro="erroEdicao" filialCadastrada="#{mbNaturezaOperacao.idFilial != null}"
+					rendered="#{mbNaturezaOperacao.verificaPermissao('Administrador, Gerente, Fiscal')}" />
+				<botao:voltarAction action="home"/>
+			</rich:toolbarGroup>
+
+			<rich:toolbarGroup location="right">
+				<botao:atualizar actionListener="#{mbNaturezaOperacao.refreshList}" render="barraDeScroll" filialCadastrada="#{mbNaturezaOperacao.idFilial != null}"
+					oncomplete="renderAllListaDeNaturezaOperacao()" buttonStyle="MarginRight5px" idPanelErro="erroEdicao"/>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<rich:dataTable id="listaDeNaturezaOperacao" var="naturezaOperacao" value="#{mbNaturezaOperacao.listaNaturezaOperacao}" rows="10"
+			styleClass="Largura100pc" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" noDataLabel="#{msg.listaNaturezaOperacaoVazia}"
+			onrowdblclick="editarNaturezaOperacao(#{rowKey})" rowKeyVar="rowKey">
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura40px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxNaturezaOperacao" valueChangeListener="#{mbNaturezaOperacao.selecionarTodos}"
+						styleClass="Margin0px" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();" tabindex="1">
+						<a4j:ajax event="click" render="listaDeNaturezaOperacao" status="modalStatus" oncomplete="reSize();"/>
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{naturezaOperacao.selected}" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();">
+					<a4j:ajax event="valueChange" execute="@this" />
+				</h:selectBooleanCheckbox>
+			</rich:column> 
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura80px" 
+				filterExpression="#{fn:startsWith(fn:toLowerCase(naturezaOperacao.status), fn:toLowerCase(mbNaturezaOperacao.columnFilter.mapColumnFilter['Status'].filterBy))}"
+				sortBy="#{naturezaOperacao.status}" sortOrder="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['Status'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.status}"/>
+					<table:orderArrow action="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['Status'].sortBy}" 
+						order="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['Status'].sortOrder}" render="listaDeNaturezaOperacao"/>
+					<br/>
+					<h:inputText id="status" value="#{mbNaturezaOperacao.columnFilter.mapColumnFilter['Status'].filterBy}" styleClass="Campo Largura60px" 
+						maxlength="7" tabindex="2" onkeypress="Mascara(this, LetraSemEspaco); executeFilter(this,event);" onkeyup="Mascara(this, LetraSemEspaco);" 
+						onkeydown="Mascara(this, LetraSemEspaco);" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onmousedown="Mascara(this, LetraSemEspaco);" onmouseup="Mascara(this, LetraSemEspaco);" onmouseout="Mascara(this, LetraSemEspaco);">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaDeNaturezaOperacao(); executeFilter(this,event);" 
+							execute="@this" status="modalStatus" listener="#{mbNaturezaOperacao.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{naturezaOperacao.status}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignLeft Truncate" headerClass="Largura360px" 
+				filterExpression="#{fn:containsIgnoreCase(naturezaOperacao.descricao, mbNaturezaOperacao.columnFilter.mapColumnFilter['Descricao'].filterBy)}"
+				sortBy="#{naturezaOperacao.descricao}" sortOrder="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['Descricao'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.descricao}"/>
+					<table:orderArrow action="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['Descricao'].sortBy}" 
+						order="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['Descricao'].sortOrder}" render="listaDeNaturezaOperacao"/>
+					<br/>
+					<h:inputText value="#{mbNaturezaOperacao.columnFilter.mapColumnFilter['Descricao'].filterBy}" styleClass="Campo Largura340px" maxlength="100" 
+						tabindex="3" onkeypress="executeFilter(this,event);">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaDeNaturezaOperacao();" execute="@this" 
+							status="modalStatus" listener="#{mbNaturezaOperacao.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{naturezaOperacao.descricao}" title="#{naturezaOperacao.descricao}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura140px" 
+				filterExpression="#{fn:containsIgnoreCase(naturezaOperacao.cfopMesmoEstado, mbNaturezaOperacao.columnFilter.mapColumnFilter['CfopMesmoEstado'].filterBy)}"
+				sortBy="#{naturezaOperacao.cfopMesmoEstado}" sortOrder="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['CfopMesmoEstado'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cfopMesmoEstado}"/>
+					<table:orderArrow action="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['CfopMesmoEstado'].sortBy}"
+						order="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['CfopMesmoEstado'].sortOrder}" render="listaDeNaturezaOperacao"/>
+					<br/>
+					<h:inputText value="#{mbNaturezaOperacao.columnFilter.mapColumnFilter['CfopMesmoEstado'].filterBy}" styleClass="Campo Largura130px" 
+						maxlength="4" tabindex="4" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+						onkeypress="Mascara(this, Integer);executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaDeNaturezaOperacao(); executeFilter(this,event);" 
+							execute="@this" status="modalStatus" listener="#{mbNaturezaOperacao.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{naturezaOperacao.cfopMesmoEstado}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura160px" 
+				filterExpression="#{fn:containsIgnoreCase(naturezaOperacao.cfopEstadoDiferente, mbNaturezaOperacao.columnFilter.mapColumnFilter['CfopEstadoDiferente'].filterBy)}"
+				sortBy="#{naturezaOperacao.cfopEstadoDiferente}" sortOrder="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['CfopEstadoDiferente'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cfopEstadoDiferente}"/>
+					<table:orderArrow action="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['CfopEstadoDiferente'].sortBy}" 
+						order="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['CfopEstadoDiferente'].sortOrder}" render="listaDeNaturezaOperacao"/>
+					<br/>
+					<h:inputText value="#{mbNaturezaOperacao.columnFilter.mapColumnFilter['CfopEstadoDiferente'].filterBy}" styleClass="Campo Largura150px" 
+						maxlength="4" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);" tabindex="5"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaDeNaturezaOperacao(); executeFilter(this,event);" 
+							execute="@this" status="modalStatus" listener="#{mbNaturezaOperacao.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{naturezaOperacao.cfopEstadoDiferente}"/>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura110px" 
+				filterExpression="#{fn:containsIgnoreCase(naturezaOperacao.cfopExterior, mbNaturezaOperacao.columnFilter.mapColumnFilter['CfopExterior'].filterBy)}"
+				sortBy="#{naturezaOperacao.cfopExterior}" sortOrder="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['CfopExterior'].sortOrder}">
+				<f:facet name="header">
+					<h:outputText value="#{msg.cfopExterior}"/>
+					<table:orderArrow action="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['CfopExterior'].sortBy}" 
+						order="#{mbNaturezaOperacao.columnOrder.mapColumnOrder['CfopExterior'].sortOrder}" render="listaDeNaturezaOperacao"/>
+					<br/>
+					<h:inputText value="#{mbNaturezaOperacao.columnFilter.mapColumnFilter['CfopExterior'].filterBy}" styleClass="Campo Largura100px" maxlength="4" 
+						onblur="if(this.value != origValue) valueChangeIE(this);" tabindex="6"
+						onkeypress="Mascara(this, Integer); executeFilter(this,event);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);"
+						onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);" 
+						onfocus="origValue = this.value;">
+						<a4j:ajax event="valueChange" render="barraDeScroll, erroEdicao" oncomplete="renderBodyOfListaDeNaturezaOperacao(); executeFilter(this,event);" 
+							execute="@this" status="modalStatus" listener="#{mbNaturezaOperacao.limpaMensagemErro}"/>
+					</h:inputText>
+				</f:facet>
+				<h:outputText value="#{naturezaOperacao.cfopExterior}"/>
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="listaDeNaturezaOperacao" idPanelScroller="barraDeScroll" maxPages="16" panelStyleClass="ScrollerPainel MarginBottom5px"   
+			pageNumber="#{mbNaturezaOperacao.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbNaturezaOperacao.listaNaturezaOperacao}" 
+			totalRegistros="#{mbNaturezaOperacao.quantidadeRegistros}" />
+		
+		<h:panelGroup id="erroEdicao">
+			<h:panelGroup layout="block" styleClass="MarginTop6px Largura100pc Altura20px" rendered="#{not empty mbNaturezaOperacao.mensagemDeErro}">
+				<h:outputText value="#{mbNaturezaOperacao.mensagemDeErro}" styleClass="MensagemDeErro MarginLeft10px"/>
+			</h:panelGroup>
+		</h:panelGroup>
+			
+		<a4j:jsFunction name="editarNaturezaOperacao" render="erroEdicao" status="modalStatus" action="#{mbNaturezaOperacao.editar}">
+			<a4j:param name="linhaDaListaNaturezaOperacao" assignTo="#{mbNaturezaOperacao.linhaSelecionada}"/>
+		</a4j:jsFunction>
+		
+		 <!-- Este JavaScript tem como objetivo renderizar a lista pois, quando é realizado o filtro, a lista deve renderizar na tela depois do scroller --> 
+		<a4j:jsFunction name="renderBodyOfListaDeNaturezaOperacao" status="modalStatus" render="listaDeNaturezaOperacao@body" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderAllListaDeNaturezaOperacao" status="modalStatus" render="listaDeNaturezaOperacao" oncomplete="reSize();"/>
+		<a4j:jsFunction name="renderPanelErroNaturezaOperacao" render="erroEdicao"/>
+	</ui:define>
+</ui:composition>

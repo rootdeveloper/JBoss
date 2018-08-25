@@ -1,0 +1,103 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:botao="http://java.sun.com/jsf/composite/components/botao"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+	
+	<util:modalSimNao mensagem="#{mbNcm.msgExcluirAliquotasSelecionadasTela}" nomePainel="confirmPaneAliquota"
+		tituloModal="#{msg.msgConfirmacaoExclusaoTela}" actionSim="#{mbNcm.excluirAliquotasSelecionadas}" render="panelScroller, informativoModalAliquotaNcm"
+		tituloFuncao="selecionado" idCheckbox="checkboxAliquota" oncomplete="#{rich:component('informativoModalAliquotaNcm')}.show(); renderAllListaAliquotaVO();"/>
+	
+	<util:modalInformativo mensagemInformativo="#{mbNcm.mensagemModal}" tituloModal="#{msg.mensagem}" nomePainel="informativoModalAliquotaNcm"
+		render="#{mbNcm.renderizarModal}"/>
+	
+	<rich:toolbar styleClass="BarraDeBotoes100pc">
+		<rich:toolbarGroup location="left">
+			<a4j:commandLink status="modalStatus" oncomplete="#{rich:component('filtroNCMAliquota')}.show(); desmarcaCheckboxForm('formFiltroAliquotaNCM')"
+			 	title="#{msg.titleFiltrar}" render="filtroNCMAliquota" execute="@this">
+				<h:graphicImage value="#{resource['images/gif:filtro.gif']}" alt="#{msg.titleFiltrar}" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink>
+
+			<a4j:commandLink title="#{msg.titleNovo}" action="#{mbNcm.controlaPainelAliquota}" immediate="true" execute="@this"
+				render="painelAliquota, panelCadastroAliquota" status="modalStatus" 
+				rendered="#{!mbNcm.statusInativo and mbNcm.verificaPermissao('Administrador, Gerente, Atendente') and !mbNcm.statusInicio}" >
+				<f:param name="acaoAliquota" value="Cadastro"/>
+				<h:graphicImage value="#{resource['images/png:novo.png']}" alt="novo" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink>
+			
+			<a4j:commandLink status="modalStatus" actionListener="#{mbNcm.verificarExclusaoAliquota}" title="#{msg.titleRemover}" execute="@this"
+				oncomplete="#{mbNcm.renderizarModal} ? #{rich:component('confirmPaneAliquota')}.show() : #{rich:component('informativoModalAliquotaNcm')}.show()"
+				render="confirmPaneAliquota, informativoModalAliquotaNcm" immediate="true" 
+				rendered="#{!mbNcm.statusInativo and mbNcm.verificaPermissao('Administrador, Gerente, Atendente') and !mbNcm.statusInicio}" >
+				<h:graphicImage value="#{resource['images/png:delete.png']}" alt="apagar" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink> 
+		</rich:toolbarGroup>
+		
+		<rich:toolbarGroup location="right">
+			<botao:atualizar actionListener="#{mbNcm.refreshListaAliquota}" render="controle" buttonStyle="MarginRight5px" 
+				oncomplete="renderAllListaAliquotaVO()" />
+		</rich:toolbarGroup>
+		
+	</rich:toolbar>
+	
+	<rich:dataTable id="listaAliquotaVO" var="item" value="#{mbNcm.listaAliquotaVO}" rows="10" styleClass="Largura100pc" onrowdblclick="editarAliquota(#{rowkey})" 
+		noDataLabel="#{msg.listaAliquotaVazia}" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" rowKeyVar="rowkey">
+		
+		<rich:column styleClass="AlignCenter" headerClass="Largura50px" rendered="#{!mbNcm.statusInativo}">
+			<f:facet name="header">
+				<h:selectBooleanCheckbox id="checkboxAliquota" styleClass="Margin0px checkboxAliquota" valueChangeListener="#{mbNcm.selecionarTodasAliquotas}"
+					disabled="#{empty mbNcm.listaAliquotaVO}" onkeydown="blockBackSpace(event);" onkeyup="unblockBackSpace();">
+					<a4j:ajax event="click" render="listaAliquotaVO" status="modalStatus" />
+				</h:selectBooleanCheckbox>
+			</f:facet>
+			<h:selectBooleanCheckbox id="sel" value="#{item.selected}" styleClass="Margin0px" tabindex="0"  onkeydown="blockBackSpace(event);"
+				onkeyup="unblockBackSpace();">
+				<a4j:ajax event="valueChange" execute="@this"/>
+			</h:selectBooleanCheckbox>
+		</rich:column>
+		
+		<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura120px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.tipoAliquota}"/>
+			</f:facet>
+			<h:outputText value="#{item.tipoAliquota}" />
+		</rich:column>
+		
+		<rich:column styleClass="AlignCenter QuebraTexto" headerClass="Largura200px">
+			<f:facet name="header">
+				<h:outputText value="#{msg.vigenciaInicial}"/>
+			</f:facet>
+			<h:outputText value="#{item.vigenciaInicial}" >
+				<f:convertDateTime pattern="dd/MM/yyyy"/>
+			</h:outputText>
+		</rich:column>
+		
+		<rich:column styleClass="AlignCenter" headerClass="Largura100px" >
+			<f:facet name="header">
+				<h:outputText value="#{msg.aliquota}"/>
+			</f:facet>
+			<h:outputText value="#{item.aliquota}">
+				<f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+			</h:outputText>
+		</rich:column>
+	</rich:dataTable>
+	
+	<h:panelGroup id="panelScroller">
+		<table:scroller for="listaAliquotaVO" idPanelScroller="controle" maxPages="16" panelStyleClass="Scroller100pc" pageNumber="#{mbNcm.scrollerPageNumber}"
+			renderedTotalRegistros="#{not empty mbNcm.listaAliquotaVO}" totalRegistros="#{mbNcm.quantidadeRegistrosAliquota}"/>
+	</h:panelGroup>
+	
+	<a4j:jsFunction name="editarAliquota" status="modalStatus" render="painelAliquota" action="#{mbNcm.editarAliquota}" immediate="true">
+		<a4j:param name="linhaDaAliquota" assignTo="#{mbNcm.linhaSelecionada}" />
+	</a4j:jsFunction>
+	
+	<!-- Este JavaScript tem como objetivo renderizar a lista pois, 
+	quando é realizado o filtro, a lista deve renderizar na tela depois do scroller -->
+	<a4j:jsFunction name="renderAllListaAliquotaVO" status="modalStatus" render="listaAliquotaVO"/>
+</ui:composition>

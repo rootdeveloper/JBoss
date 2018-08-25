@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+    
+    <composite:interface>
+       <composite:attribute name="mensagem" />
+       <composite:attribute name="nomePainel" />
+       <composite:attribute name="actionListener" targets="confirmarExportar"/>
+       <composite:attribute name="tituloModal"/>
+       <composite:attribute name="renderedBotao"/>
+    </composite:interface>
+    
+    <composite:implementation>
+    	<rich:popupPanel id="#{cc.attrs.nomePainel}" autosized="true" resizeable="false" moveable="false" styleClass="Largura300px FundoBranco"
+    		onshow="disableInputsFormPrincipal();" onhide="enableInputsFormPrincipal();">
+    		<f:facet name="header">
+				<h:outputText value="#{cc.attrs.tituloModal}" />
+			</f:facet>
+			<f:facet name="controls">
+				<h:commandButton id="fechar" image="#{resource['images/png:close.png']}" styleClass="BotaoFechar" 
+					onclick="#{rich:component(cc.attrs.nomePainel)}.hide(); return false;" >
+					<f:ajax execute="@this" />
+				</h:commandButton>
+			</f:facet>
+			<div align="center">
+	    		<h:outputText id="mensagemConfirmacao" value="#{cc.attrs.mensagem}" styleClass="TituloDeCampo"/>
+			</div>
+			<div align="center" class="MarginTop10px">
+				<h:commandButton value="#{msg.exportar}" id="confirmarExportar" rendered="#{cc.attrs.renderedBotao}" 
+					onclick="#{rich:component(cc.attrs.nomePainel)}.hide()" title="#{msg.titleExportar}" styleClass="BotaoTexto Largura60px" />
+				<a4j:commandButton value="#{cc.attrs.renderedBotao ? msg.cancelar : msg.ok}" 
+					onclick="#{rich:component(cc.attrs.nomePainel)}.hide(); return false;" styleClass="BotaoTexto Largura60px"/>
+			</div>
+		</rich:popupPanel>
+    </composite:implementation>
+</html>

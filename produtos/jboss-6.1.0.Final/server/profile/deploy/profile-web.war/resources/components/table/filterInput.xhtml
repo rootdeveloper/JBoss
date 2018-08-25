@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+    
+	<composite:interface>
+		<composite:attribute name="name" shortDescription="ID do input"/>
+		<composite:attribute name="value" shortDescription="Valor do input"/>
+		<composite:attribute name="tabindex" shortDescription="Tabindex do input"/>
+		<composite:attribute name="styleClass" shortDescription="CSS Class do input"/>
+		<composite:attribute name="maxlength" shortDescription="Tamanho máximo de caracteres do input"/>
+		<composite:attribute name="oncomplete" shortDescription="JS executado após o filtro" />
+		<composite:attribute name="render" shortDescription="ID do componente que será renderizado" />
+	</composite:interface>
+  
+	<composite:implementation>
+		<h:inputText id="#{cc.attrs.name}" value="#{cc.attrs.value}" tabindex="#{cc.attrs.tabindex}" styleClass="Campo #{cc.attrs.styleClass}"
+			onkeypress="executeFilter(this,event);" maxlength="#{cc.attrs.maxlength}">
+			<a4j:ajax event="valueChange" oncomplete="#{cc.attrs.oncomplete}" execute="@this" status="modalStatus"
+				render="#{cc.attrs.render}"/>
+		</h:inputText>
+	</composite:implementation>    
+</html>

@@ -1,0 +1,83 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j"
+    xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<h:form prependId="false" id="formEnvioEmail">
+   		<rich:popupPanel id="envioEmail" autosized="true" resizeable="false" moveable="false" styleClass="Largura600px FundoBranco"
+   			domElementAttachment="form">
+
+    		<f:facet name="header">
+				<h:outputText value="#{msg.envioEmail}" />
+			</f:facet>
+
+			<f:facet name="controls">
+				<a4j:commandButton id="fechaEnvioEmail" styleClass="BotaoFechar" image="/resources/images/png/close.png"
+					oncomplete="#{rich:component('envioEmail')}.hide(); return false;" execute="@this" immediate="true">
+				</a4j:commandButton>
+			</f:facet>
+			
+			<h:panelGroup id="destinatarios" styleClass="Largura100pc Altura100pc">
+				<h:outputText value="#{msg.destinatarios}" styleClass="TituloDeCampo"/>
+				<h:inputTextarea value="#{mbNfeEntrada.destinatariosEmail}" styleClass="TextArea575x85OverflowVertical" required="true"
+					requiredMessage="#{msg.remetenteNulo}" onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"
+					onkeypress="Mascara(this, Destinatario);" onkeyup="Mascara(this, Destinatario);" onkeydown="Mascara(this, Destinatario);"
+					onmousedown="Mascara(this, Destinatario);" onmouseup="Mascara(this, Destinatario);" onmouseout="Mascara(this, Destinatario);"/>
+			</h:panelGroup>
+			
+			<rich:dataTable value="#{mbNfeEntrada.listaRepositorios}" var="item" id="tabelaDeAnexos" rows="8" styleClass="Largura100pc MarginTop10px" 
+				onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" rowKeyVar="rowKey" noDataLabel="#{msg.listaRepositorioVazia}">
+				
+				<rich:column styleClass="AlignCenter" headerClass="Largura80px">
+					<f:facet name="header">
+						<h:selectBooleanCheckbox styleClass="Margin0px checkboxStatus" id="checkboxStatusTipoXml"
+							valueChangeListener="#{mbNfeEntrada.selecionarTodosXmlRepositorio}">
+							<a4j:ajax render="tabelaDeAnexos"/>
+						</h:selectBooleanCheckbox>
+					</f:facet>
+					<h:selectBooleanCheckbox value="#{item.selected}" styleClass="TabWalk">
+						<a4j:ajax event="valueChange" execute="@this"/>
+					</h:selectBooleanCheckbox>
+				</rich:column>
+				
+				<rich:column styleClass="AlignCenter">
+					<f:facet name="header">
+						<h:outputText value="#{msg.tipoXml}"/>
+					</f:facet>
+					<h:outputText value="#{item.tipoXMLImportado}" styleClass="MarginLeft10px"/>
+				</rich:column>
+				
+				<rich:column styleClass="AlignCenter">
+					<f:facet name="header">
+						<h:outputText value="#{msg.dataAutorizacaoSefaz}"/>
+					</f:facet>
+					<h:outputText value="#{item.dataAutorizacaoSefaz}" styleClass="MarginLeft10px">
+						<f:convertDateTime pattern="dd/MM/yyyy"/>
+					</h:outputText>
+				</rich:column>
+				
+			</rich:dataTable>
+
+			<table:scroller for="tabelaDeAnexos" idPanelScroller="barraDeScrollTabelaDeAnexos" maxPages="16" panelStyleClass="Scroller100pc MarginBottom5px" 
+				pageNumber="#{mbNfeEntrada.scrollerPageNumber}" renderedTotalRegistros="#{not empty mbNfeEntrada.listaRepositorios}" 
+				totalRegistros="#{mbNfeEntrada.quantidadeRegistrosXmls}"/>
+
+				
+			<div class="TextAlignCenter">
+				<a4j:commandButton status="modalStatus" oncomplete="#{mbNfeEntrada.renderizarModal}? #{rich:component('modalInformativoEmail')}.show() : ''" execute="destinatarios"
+					value="#{msg.enviar}" styleClass="BotaoTexto PositionRelative Largura80px MarginLeft20px" render="modalInformativoEmail painelMensagemErro">
+					<a4j:actionListener listener="#{mbNfeEntrada.identificaDestinatarios}" />
+				</a4j:commandButton>	
+			</div>	
+			
+			<h:panelGroup layout="block" id="painelMensagemErro" styleClass="PositionRelativeFloatLeft Largura550px MarginTop5px MarginBottom5px">
+				<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+			</h:panelGroup>
+			
+			<a4j:jsFunction name="renderListXml" status="modalStatus" render="tableModalXML@body" oncomplete="reSize();"/>
+		</rich:popupPanel>
+    </h:form>    
+</ui:composition>

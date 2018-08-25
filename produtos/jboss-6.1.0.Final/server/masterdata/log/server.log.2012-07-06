@@ -1,0 +1,4 @@
+2012-07-06 10:45:35,567 INFO  [com.arjuna.ats.arjuna] (Transaction Expired Entry Monitor) ARJUNA-12296 ExpiredEntryMonitor running at Sex, 6 Jul 2012 10:45:35
+2012-07-06 10:45:35,581 AVISO [javax.management.remote.misc] (RMI TCP Connection(1558)-127.0.0.1) The server has decided to close this client connection.
+2012-07-06 10:45:35,575 AVISO [javax.management.remote.misc] (RMI TCP Connection(1547)-127.0.0.1) The server has decided to close this client connection.
+2012-07-06 10:45:35,575 AVISO [javax.management.remote.misc] (RMI TCP Connection(1546)-127.0.0.1) The server has decided to close this client connection.

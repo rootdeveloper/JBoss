@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+       
+	<h:form prependId="false" onkeypress="return bloqueioEnter(event);">
+	
+		<rich:popupPanel modal="true" id="modalListaDeLacresDosVolumes" autosized="true" resizeable="false"
+			moveable="false" domElementAttachment="form" styleClass="OverflowHidden Largura700px FundoBranco"
+			onshow="reSize();">
+			
+			<f:facet name="header">
+				<h:outputText value="#{msg.lbl_numeroDosLacres}" />
+			</f:facet>
+			
+			<f:facet name="controls">
+				<a4j:commandButton image="/resources/images/png/close.png" 
+					oncomplete="#{rich:component('modalListaDeLacresDosVolumes')}.hide();" styleClass="BotaoFechar"/>
+			</f:facet>
+			
+			<rich:dataTable id="listaLacres" var="var" value="#{mbNfeEntrada.listaDeLacres}" rows="5" 
+				styleClass="Largura100pc" noDataLabel="#{msg.lbl_listaLacresVazia}" 
+				onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''">
+				
+				<rich:column headerClass="Largura100pc">
+					<f:facet name="header">
+						<h:outputText value="#{msg.lbl_numeroDosLacres}"/>
+					</f:facet>
+					<h:outputText value="#{var.nLacre}" />
+				</rich:column>
+				
+			</rich:dataTable>
+			
+			<table:scroller for="listaLacres" idPanelScroller="controle" maxPages="10" panelStyleClass="Scroller100pc" 
+				renderedTotalRegistros="#{not empty mbNfeEntrada.listaDeLacres}" 
+				totalRegistros="#{mbNfeEntrada.quantidadeRegistrosListaDeLacres}" 
+				pageNumber="#{mbNfeEntrada.scrollerPageNumber}" />
+			
+			
+		</rich:popupPanel>
+	</h:form>
+</ui:composition>

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	  
+	<ui:composition>
+		
+		<!-- Caso a versão do procCte seja 1.03 -->
+		<h:panelGroup layout="block" id="infValePedagioId" rendered="#{mbCteTerceiros.procCte.versao=='1.03'}" styleClass="Altura130px">
+			<div class="Linha960x38 MarginLeft5px">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.numeroDoCertificadoDoRegimeEspecial}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.rodo.valePed.nroRE}" styleClass="Campo Largura280px" readonly="true" />
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.valorTotalDosValesPedagio}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.rodo.valePed.vtValePed}" styleClass="Campo Largura200px" readonly="true" converter="valorMonetarioSefazConverter">
+					</h:inputText>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.responsavelPeloPagamentoDoValePedagio}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.rodo.valePed.respPg}" styleClass="Campo Largura300px" readonly="true" converter="responsavelPagamentoValePedagioCodigoConverter"/>
+				</div>
+			</div>
+			<a4j:repeat value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.rodo.valePed.disp}" var="disp" rows="1" id="rodoDisp">
+				<fieldset class="Fieldset950x60BaseQuadrada MarginTop5px">
+					<legend class="TituloDeCampo">#{msg.informacoesDosDispositivosDoValePedagio}</legend>
+					<div class="Linha940x38 MarginLeft5px MarginTop5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.tipoDoDispositivo}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{disp.tpDisp}" styleClass="Campo Largura130px" readonly="true" converter="tipoDispositivoCodigoConverter"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.empresaFornecedoraDoValePedagio}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{disp.xEmp}" styleClass="Campo Largura250px" readonly="true" />
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.datasDaVigenciaDoContrato}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{disp.dVig}" styleClass="Campo Largura200px" readonly="true" converter="dataSefazConverter">
+							</h:inputText>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.numeroDoDispositivo}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{disp.nDisp}" styleClass="Campo Largura150px" readonly="true" />
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.numeroDeOrdem}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{disp.nCompC}" styleClass="Campo Largura130px" readonly="true" />
+						</div>
+					</div>	
+				</fieldset>
+			</a4j:repeat>
+			<h:panelGroup styleClass="Scroller MarginLeft2px Largura950px" layout="block">
+				<rich:dataScroller id="scrollRodoDisp" for="rodoDisp" fastControls="hide" render="infValePedagioId" maxPages="16">
+					<f:facet name="first">
+	               		<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll"/>
+	            	</f:facet>
+		            <f:facet name="last">
+	    	            <h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll"/>
+	        	    </f:facet>
+		            <f:facet name="previous">
+	    	            <h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll"/>
+	        	    </f:facet>
+					<f:facet name="next">
+	   	            	<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+	            	</f:facet>
+				</rich:dataScroller>
+			</h:panelGroup>
+		</h:panelGroup>
+		
+		<!-- Caso a versão do procCte seja 1.04 -->
+		<h:panelGroup layout="block" rendered="#{mbCteTerceiros.procCte.versao=='1.04'}" styleClass="Altura50px">
+			<div class="Linha970x38">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.cnpjDaEmpresaFornecedora}" styleClass="TituloDeCampo" />
+					<br/>
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.rodo.valePed.cnpjForn}" styleClass="Campo Largura205px" converter="cnpjConverter"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.numeroDaOrdemDoComprovanteDeCompra}" styleClass="TituloDeCampo" />
+					<br/>
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.rodo.valePed.nCompra}" styleClass="Campo Largura310px"  />
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.cnpjDoResponsavelPeloPagamento}" styleClass="TituloDeCampo" />
+					<br/>
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.rodo.valePed.cnpjPg}" styleClass="Campo Largura250px" converter="cnpjConverter" />
+				</div>
+			</div>
+		</h:panelGroup>
+	</ui:composition>
+</html>

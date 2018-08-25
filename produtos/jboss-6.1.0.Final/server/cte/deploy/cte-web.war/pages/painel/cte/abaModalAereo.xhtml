@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	<ui:composition>
+		<h:panelGroup layout="block" styleClass="Altura140px">
+			<div class="Linha960x38 MarginLeft3px">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.numeroDaMinuta}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.nMinu}" styleClass="Campo Largura180px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.numeroOperacionalDoConhecimento}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.noca}" styleClass="Campo Largura360px" readonly="true"/>
+				</div>
+			</div>	
+			<div class="Linha960x38 MarginLeft3px">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.dataPrevistaDaEntrega}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.dPrev}" styleClass="Campo Largura180px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.lojaAgenteEmissor}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.xlAgEmi}" styleClass="Campo Largura200px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.codigoIATA}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.ciata}" styleClass="Campo Largura153px" readonly="true"/>
+				</div>
+			</div>
+			<fieldset class="Fieldset640x60">
+				<legend class="TituloDeCampo">#{msg.informacoesDaTarifa}</legend>
+					<div class="Linha570x38 MarginTop5px MarginLeft5px MarginBottom5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.trecho}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.tarifa.trecho}" styleClass="Campo Largura120px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.cl}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.tarifa.cl}" styleClass="Campo Largura120px" readonly="true" converter="classeTarifaConverter" />
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.codigoDaTarifa}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.tarifa.cTar}" styleClass="Campo Largura120px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.valorDaTarifa}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.tarifa.vTar}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+						</div>
+					</div>						
+			</fieldset>
+		</h:panelGroup>	
+		<h:panelGroup layout="block" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.natCarga != null}" styleClass="Altura200px" >
+			<fieldset class="Fieldset640x180 MarginTop5px">
+				<legend class="TituloDeCampo">#{msg.naturezaCarga}</legend>
+				
+					<div class="GrupoTituloCampo MarginLeft5px MarginTop5px">
+						<h:outputText value="#{msg.dimensao}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.natCarga.xDime}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+				
+				
+					<fieldset class="Fieldset240x150 MarginTop5px MarginLeft5px">
+						<legend class="TituloDeCampo">#{msg.informacoesManuseio}</legend>
+						<rich:dataTable value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.natCarga.cInfManu}" var="manuseio" id="manuseioID" rows="3" styleClass="Largura220px MarginTop5px MarginLeft10px">
+							<rich:column styleClass="AlignCenter">
+								<f:facet name="header">
+									<h:outputText value="#{msg.codigoDoManuseio}" />
+								</f:facet>
+								<h:outputText value="#{manuseio}" />
+							</rich:column>
+						</rich:dataTable>
+						<h:panelGroup id="manuseioPanel" styleClass="Scroller MarginLeft10px Largura218px" layout="block">
+							<rich:dataScroller id="manuseioPanelScroll" for="manuseioID" fastControls="hide" maxPages="3">
+								<f:facet name="first">
+									<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+								</f:facet>
+								<f:facet name="last">
+									<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+								</f:facet>
+								<f:facet name="previous">
+									<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+								</f:facet>
+								<f:facet name="next">
+									<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+								</f:facet>
+							</rich:dataScroller>
+						</h:panelGroup>
+					</fieldset>
+					
+				
+					<fieldset class="Fieldset240x150 MarginTop5px MarginLeft5px">
+						<legend class="TituloDeCampo">#{msg.cargaEspecial}</legend>
+						<rich:dataTable value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.aereo.natCarga.cimp}" var="cargaEspecial" id="cargaEspecialTable" rows="3" styleClass="Largura220px MarginTop5px MarginLeft10px">
+							<rich:column styleClass="AlignCenter">
+								<f:facet name="header">
+									<h:outputText value="#{msg.codigoIMP}" />
+								</f:facet>
+								<h:outputText value="#{cargaEspecial}" />
+							</rich:column>
+						</rich:dataTable>
+						<h:panelGroup id="cargaEspecialPanel" styleClass="Scroller MarginLeft10px Largura218px" layout="block">
+							<rich:dataScroller id="cargaEspecialPanelScroll" for="cargaEspecialTable" fastControls="hide" maxPages="3">
+								<f:facet name="first">
+									<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+								</f:facet>
+								<f:facet name="last">
+									<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+								</f:facet>
+								<f:facet name="previous">
+									<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+								</f:facet>
+								<f:facet name="next">
+									<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+								</f:facet>
+							</rich:dataScroller>
+						</h:panelGroup>
+					</fieldset>
+			</fieldset>
+		</h:panelGroup>
+	</ui:composition>
+</html>
+                

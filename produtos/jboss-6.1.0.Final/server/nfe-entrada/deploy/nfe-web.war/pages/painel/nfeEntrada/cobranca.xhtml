@@ -1,0 +1,17 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	
+	<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+		<rich:tab id="abaFatura" header="#{msg.aba_Fatura}" immediate="true" execute="@this">
+			<ui:include src="/pages/painel/nfeEntrada/cobranca/fatura.xhtml" /> 
+		</rich:tab>
+		<rich:tab id="abaDuplicatas" header="#{msg.aba_Duplicatas}" immediate="true" execute="@this">
+			<ui:include src="/pages/painel/nfeEntrada/cobranca/duplicatas.xhtml" /> 
+		</rich:tab>
+	</rich:tabPanel>
+	
+</ui:composition>

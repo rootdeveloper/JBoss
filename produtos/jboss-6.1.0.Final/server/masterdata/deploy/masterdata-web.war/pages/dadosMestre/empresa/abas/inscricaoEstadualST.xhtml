@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:table="http://java.sun.com/jsf/composite/components/table">
+
+	<h:panelGroup styleClass="Largura930px Altura40px MarginLeft10px MarginTop5px" id="painelIEST" layout="block">
+
+		<div class="PositionRelativeFloatLeft Largura195px MarginTop2px">
+			<h:outputText value="#{msg.inscricaoEstadualST}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="ieSTinscricaoEstadual" value="#{mbEmpresa.inscricaoEstadualST.inscricaoEstadual}" 
+			styleClass="Campo Largura105px PositionRelativeFloatLeft" maxlength="14"
+			onkeypress="Mascara(this,Integer)" onkeyup="Mascara(this,Integer)"
+			readonly="#{mbEmpresa.statusInicio || not mbEmpresa.habilidataCadastroIEST}" tabindex="16">
+		</h:inputText>
+		
+		<div class="PositionRelativeFloatLeft Largura20px MarginLeft30px MarginTop2px">
+			<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"  />
+		</div>
+		<div class="PositionRelativeFloatLeft Largura50px MarginLeft10px">
+			<h:selectOneMenu id="ieSTUf" value="#{mbEmpresa.inscricaoEstadualST.uf}" styleClass="ComboField" 
+				disabled="#{mbEmpresa.statusInicio || not mbEmpresa.habilidataCadastroIEST}" tabindex="17">
+				<f:selectItems value="#{mbEmpresa.listUfBrasilAsSelectItem}" />
+			</h:selectOneMenu>
+		</div>
+		<div class="PositionRelativeFloatLeft Largura150px MarginLeft35px">
+			<a4j:commandButton  id="botaoSa" actionListener="#{mbEmpresa.incluiIEST}" title="#{msg.adicionar}"
+				execute="ieSTinscricaoEstadual ieSTUf" value="#{mbEmpresa.linhaSelecionadaIEST eq -1 ? msg.adicionar : msg.alterar }"
+				render="listaIEST painelIEST controleIEST erroIEST erroUFIEST"
+				styleClass="BotaoTexto Largura70px PositionRelativeFloatLeft TabWalk" status="modalStatus" 
+				rendered="#{mbEmpresa.verificaPermissao('Administrador') and !(mbEmpresa.statusInicio || not mbEmpresa.habilidataCadastroIEST)}" />
+		</div>
+
+	</h:panelGroup>
+	
+	<h:message id="erroIEST" for="ieSTinscricaoEstadual" styleClass="MensagemDeErro BeanValidatorMessages"/>
+	<br/>
+	<h:message id="erroUFIEST" for="ieSTUf" styleClass="MensagemDeErro BeanValidatorMessages"/>
+		
+	<div class="Largura400px MarginLeftAuto MarginRightAuto">
+	
+		<rich:dataTable id="listaIEST" var="item" value="#{mbEmpresa.listaIESubstituicaoTributaria}" rows="5" styleClass="Largura400px"
+			noDataLabel="#{msg.listaIEST}" onrowmouseover="className='SelecionaLinha'" onrowmouseout="className=''" 
+			onrowdblclick="editarIEST(#{rowKey})" rowKeyVar="rowKey" disabled="#{mbEmpresa.statusInicio}">
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px">
+				<f:facet name="header">
+					<h:selectBooleanCheckbox id="checkboxIEST" immediate="true" styleClass="Margin0px checkboxIEST" 
+						valueChangeListener="#{mbEmpresa.selecionarTodasIEST}" disabled="#{mbEmpresa.statusInicio}" >
+						<a4j:ajax event="click" render="listaIEST, painelIEST, botaoExcluirIEST" status="modalStatus" />
+					</h:selectBooleanCheckbox>
+				</f:facet>
+				<h:selectBooleanCheckbox id="sel" value="#{item.selected}" styleClass="Margin0px" 
+					valueChangeListener="#{mbEmpresa.verificaExclusaoIEST}" tabindex="0" disabled="#{mbEmpresa.statusInicio}">
+					<a4j:ajax event="valueChange" render="listaIEST, painelIEST, botaoExcluirIEST"/>
+					<f:param name="linhaIEST" value="#{rowKey}"/>
+				</h:selectBooleanCheckbox>
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura200px" sortBy="#{item.inscricaoEstadual}" >
+				<f:facet name="header">
+					<h:outputText value="#{msg.inscricaoEstadualST}"/>
+				</f:facet>
+				<h:outputText value="#{item.inscricaoEstadual}" />
+			</rich:column>
+			
+			<rich:column styleClass="AlignCenter" headerClass="Largura50px" sortBy="#{item.uf}" >
+				<f:facet name="header">
+					<h:outputText value="#{msg.uf}"/>
+				</f:facet>
+				<h:outputText value="#{item.uf}" />
+			</rich:column>
+		</rich:dataTable>
+		
+		<table:scroller for="listaIEST" idPanelScroller="controleIEST" maxPages="6" panelStyleClass="Largura398px Scroller MarginLeftAuto MarginRightAuto"
+			renderedTotalRegistros="#{not empty mbEmpresa.listaIESubstituicaoTributaria}" totalRegistros="#{mbEmpresa.quantidadeRegistrosIEST}" 
+			pageNumber="#{mbEmpresa.scrollerPageNumberIEST}"/>
+		
+		<br/>
+		<h:panelGroup id="botaoExcluirIEST">
+			<a4j:commandButton actionListener="#{mbEmpresa.excluirIEST}" title="#{msg.remover}"
+					value="#{msg.remover}" execute="@this" render="painelIEST listaIEST controleIEST botaoExcluirIEST"
+					styleClass="BotaoTexto Largura70px PositionRelativeFloatLeft MarginTop5px" status="modalStatus"
+					immediate="true" rendered="#{mbEmpresa.exibirIconeRemocaoCodigo}"/>
+		</h:panelGroup>
+	</div>
+
+	<a4j:jsFunction name="editarIEST" status="modalStatus" render="painelIEST" rendered="#{mbEmpresa.verificaPermissao('Administrador')}">
+		<a4j:param name="linhaSelecionada" assignTo="#{mbEmpresa.linhaSelecionadaIEST}" />
+		<a4j:actionListener listener="#{mbEmpresa.editarIEST}" />
+	</a4j:jsFunction>
+
+</ui:composition>
+		

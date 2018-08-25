@@ -1,0 +1,162 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:tributavel="http://java.sun.com/jsf/composite/components/aliquota"
+	xmlns:imposto="http://java.sun.com/jsf/composite/components/imposto"
+	template="/WEB-INF/templates/template.xhtml">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroNaturezaOperacao}"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalInformativoVoltar mensagemInformativo="#{mbNaturezaOperacao.mensagemModal}" nomePainel="modalInformativo" 
+		tituloModal="#{msg.mensagem}" render="#{mbNaturezaOperacao.renderizarModal}"/>
+		
+		<util:modalJustificativaStatus idModal="modalNaturezaOperacaoStatus" actionRenderizarModais="#{mbNaturezaOperacao.processaRenderizacaoModais}" 
+			justificativaInformativa="#{mbNaturezaOperacao.justificativa}" renderizarModal="#{mbNaturezaOperacao.renderizarModal}" 
+			justificativaEditavel="#{mbNaturezaOperacao.naturezaOperacao.justificativa}" renderizaModalStatusInformativo="#{mbNaturezaOperacao.renderizaModalStatusInformativo}" 
+			tipoStatus="#{mbNaturezaOperacao.naturezaOperacao.status.nomeTipo}" idModalInformativo="modalInformativo" salvar="#{mbNaturezaOperacao.salvaComStatus}" />
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+		
+			<a4j:commandLink status="modalStatus" actionListener="#{mbNaturezaOperacao.verificaStatus}" title="#{msg.titleSalvar}" 
+				execute="status descricao cfopMesmoEstado cfopEstadoDiferente cfopExterior faturamentoSN naoInfAproveitamentoSn"
+				oncomplete="#{mbNaturezaOperacao.renderizaModalStatus} ? #{rich:component('modalNaturezaOperacaoStatus')}.show() : ''; #{mbNaturezaOperacao.renderizarModal} ? #{rich:component('modalInformativo')}.show() : ''"
+				render="modalInformativo, painelMensagemErro, modalNaturezaOperacaoStatus"
+				rendered="#{mbNaturezaOperacao.verificaPermissao('Administrador, Gerente, Fiscal')}" >
+				<f:param name="acao" value="edicaoJustificativa"/>
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink>
+			
+			<a4j:commandLink status="modalStatus" immediate="true" title="#{msg.titleVoltar}" action="voltar">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+			</a4j:commandLink>
+			
+		</rich:toolbar>
+
+		<h:panelGroup styleClass="Linha980x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu id="status" value="#{mbNaturezaOperacao.naturezaOperacao.status}" 
+				disabled="#{empty mbNaturezaOperacao.naturezaOperacao.id or !mbNaturezaOperacao.verificaPermissao('Administrador, Gerente')}"
+				styleClass="ComboField PositionRelativeFloatLeft Largura70px" tabindex="0">
+				<f:selectItems value="#{mbNaturezaOperacao.listaStatusEnum}" var="status" itemLabel="#{status.nomeTipo}"/>
+			</h:selectOneMenu>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			<a4j:commandButton image="/resources/images/gif/information.gif" title="#{msg.titleMotivo}" oncomplete="#{rich:component('modalNaturezaOperacaoStatus')}.show()" 
+				styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft Tabwalk" render="modalInformativoStatus, modalNaturezaOperacaoStatus" 
+				rendered="#{not empty mbNaturezaOperacao.naturezaOperacao.justificativa}" actionListener="#{mbNaturezaOperacao.processaRenderizacaoModais}" />
+		</h:panelGroup>
+
+		<h:panelGroup styleClass="Linha980x96" layout="block">
+			<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.descricao}"  styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputTextarea id="descricao" value="#{mbNaturezaOperacao.naturezaOperacao.descricao}" readonly="#{mbNaturezaOperacao.statusInicio}" 
+				styleClass="TextArea572x85 PositionRelativeFloatLeft TabWalk" tabindex="1" onkeydown="limitText(this,350);" onkeyup="limitText(this,350);"
+				onkeypress="limitText(this,350);" onmousedown="limitText(this,350);" onmouseup="limitText(this,350);" onmouseout="limitText(this,350);"
+				onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</h:panelGroup>
+
+		<h:panelGroup styleClass="Linha980x25 MarginTop5px" >
+			<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.tabelaDoSimples}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:selectOneMenu id="faturamentoSN" value="#{mbNaturezaOperacao.naturezaOperacao.faturamentoSN}" tabindex="2"
+				disabled="#{mbNaturezaOperacao.statusInicio}" styleClass="ComboField PositionRelativeFloatLeft Largura580px" converter="entityConverter">
+				<f:selectItems value="#{mbNaturezaOperacao.listaSelectItemsFaturamentoSN}"/>
+			</h:selectOneMenu>
+		</h:panelGroup>
+
+		<h:panelGroup styleClass="Linha980x25" layout="block">
+			<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.aproveitamentoSilmpleNacinal}"  styleClass="TituloDeCampo"/>
+			</div>
+			<div class="PositionRelativeFloatLeft MarginTop2px Padding0px">
+				<h:selectBooleanCheckbox id="naoInfAproveitamentoSn" value="#{mbNaturezaOperacao.naturezaOperacao.naoInfAproveitamentoSn}" 
+					disabled="#{mbNaturezaOperacao.statusInicio}" styleClass="PositionRelativeFloatLeft MarginTop0px Padding0px" tabindex="3">
+				</h:selectBooleanCheckbox>
+			</div>
+		</h:panelGroup>
+		
+		<h:panelGroup styleClass="Linha980x25" layout="block"/>
+
+		<h:panelGroup layout="block" styleClass="Linha980x25"> 
+			<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.cfopMesmoEstado}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="cfopMesmoEstado" value="#{mbNaturezaOperacao.naturezaOperacao.cfopMesmoEstado}" readonly="#{mbNaturezaOperacao.statusInicio}"
+				styleClass="Campo Largura35px PositionRelativeFloatLeft" tabindex="4"
+				onkeypress="Mascara(this, Integer);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);" maxlength="4"
+				onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" styleClass="Linha980x25"> 
+			<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.cfopEstadoDiferente}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="cfopEstadoDiferente" value="#{mbNaturezaOperacao.naturezaOperacao.cfopEstadoDiferente}" readonly="#{mbNaturezaOperacao.statusInicio}"
+				styleClass="Campo Largura35px PositionRelativeFloatLeft" tabindex="5"
+				onkeypress="Mascara(this, Integer);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);" maxlength="4"
+				onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" styleClass="Linha980x25"> 
+			<div class="PositionRelativeFloatLeft Largura170px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.cfopExterior}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="cfopExterior" value="#{mbNaturezaOperacao.naturezaOperacao.cfopExterior}" readonly="#{mbNaturezaOperacao.statusInicio}"
+				styleClass="Campo Largura35px PositionRelativeFloatLeft" tabindex="6"
+				onkeypress="Mascara(this, Integer);" onkeyup="Mascara(this, Integer);" onkeydown="Mascara(this, Integer);" maxlength="4"
+				onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+		</h:panelGroup>
+		
+		
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura980px MarginBottom5px">
+			<h:outputText value="#{mbNaturezaOperacao.mensagemDocumento}" styleClass="MensagemDeErro" />
+			<h:outputText value="#{mbNaturezaOperacao.mensagemDeErro}" styleClass="MensagemDeErro" escape="false"/>
+			<h:outputText value="#{mbNaturezaOperacao.mensagemMapErro}" styleClass="MensagemDeErro" escape="false"/>
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+		
+		<div class="PositionRelativeFloatLeft Largura100pc MarginTop5px MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft10px"/>
+		</div>
+		
+		<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+			<rich:tab id="abaImpostos" header="#{msg.abaImpostos}">
+				<h:panelGroup id="painelImpostos" >
+						<h:panelGroup rendered="#{!mbImposto.cadatroImposto}" layout="block">
+							<imposto:listaImposto ruleRender="#{!mbNaturezaOperacao.statusInicio and 
+								mbNaturezaOperacao.verificaPermissao('Administrador, Gerente, Fiscal')}" 
+								securityRender="#{mbNaturezaOperacao.verificaPermissao('Administrador, Gerente, Fiscal')}" />
+						</h:panelGroup>
+						<h:panelGroup rendered="#{mbImposto.cadatroImposto}" layout="block">
+							<imposto:cadastroImposto ruleRender="#{!mbNaturezaOperacao.statusInicio and
+								mbNaturezaOperacao.verificaPermissao('Administrador, Gerente, Fiscal')}"
+								securityRender="#{mbNaturezaOperacao.verificaPermissao('Administrador, Gerente, Fiscal')}" />
+						</h:panelGroup>
+					</h:panelGroup>
+			</rich:tab>
+		</rich:tabPanel>
+		
+		<script type="text/javascript">
+			//<![CDATA[
+				if(#{!mbNaturezaOperacao.verificaPermissao('Administrador, Gerente, Fiscal')}) {
+					j(document).ready(function(){
+						disableInputText();
+					});
+				}
+			//]]>
+		</script>
+		
+	</ui:define>
+</ui:composition>

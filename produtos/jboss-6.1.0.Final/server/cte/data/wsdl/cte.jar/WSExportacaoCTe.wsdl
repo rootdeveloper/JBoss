@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="WSExportacaoCTe" targetNamespace="http://www.dataprimer.com.br/cte" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.dataprimer.com.br/cte" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.dataprimer.com.br/cte" xmlns:tns="http://www.dataprimer.com.br/cte" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="requestXml" nillable="true" type="xsd:string" />
+<xsd:element name="xmlRetornoConsultaCTe" nillable="true" type="xsd:string" />
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="exportaCTeResponse">
+    <wsdl:part element="tns:xmlRetornoConsultaCTe" name="xmlRetornoConsultaCTe">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="exportaCTe">
+    <wsdl:part element="tns:requestXml" name="requestXml">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSExportacaoService">
+    <wsdl:operation name="exportaCTe">
+      <wsdl:input message="tns:exportaCTe" name="exportaCTe">
+    </wsdl:input>
+      <wsdl:output message="tns:exportaCTeResponse" name="exportaCTeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSExportacaoCTeSoapBinding" type="tns:WSExportacaoService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="exportaCTe">
+      <soap:operation soapAction="exportaCTe" style="document" />
+      <wsdl:input name="exportaCTe">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="exportaCTeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSExportacaoCTe">
+    <wsdl:port binding="tns:WSExportacaoCTeSoapBinding" name="WSExportacaoServicePort">
+      <soap:address location="http://B181548:8080/cte-ws/WSExportacaoCTe/WSExportacaoService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

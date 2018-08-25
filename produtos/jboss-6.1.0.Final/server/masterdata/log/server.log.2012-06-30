@@ -1,0 +1,4 @@
+2012-06-30 05:39:37,514 INFO  [com.arjuna.ats.arjuna] (Transaction Expired Entry Monitor) ARJUNA-12296 ExpiredEntryMonitor running at Sáb, 30 Jun 2012 05:39:37
+2012-06-30 05:39:38,971 INFO  [com.arjuna.ats.arjuna] (Transaction Expired Entry Monitor) ARJUNA-12332 Failed to establish connection to server
+2012-06-30 05:39:47,298 INFO  [com.arjuna.ats.arjuna] (Transaction Expired Entry Monitor) ARJUNA-12304 Removing old transaction status manager item 0:ffffbd4035e4:126a:4f8f0669:7
+2012-06-30 05:39:57,550 INFO  [br.com.dataprimer.masterdata.servlet.MasterDataHttpSessionContextListener] (ContainerBackgroundProcessor[StandardEngine[jboss.web]]) Session sendo finalizada :ED626A7A57E624590542FC0BEE295163... Efetuando o logoff do usuario...

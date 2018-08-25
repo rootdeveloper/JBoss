@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="WSManifestacaoNFEntradaService" targetNamespace="http://www.pwc.com.br/WSManifestacaoNFEntradaService" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.pwc.com.br/WSManifestacaoNFEntradaService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.pwc.com.br/WSManifestacaoNFEntradaService" xmlns:tns="http://www.pwc.com.br/WSManifestacaoNFEntradaService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="manifestacaoNFEntrada" nillable="true" type="xsd:string" />
+<xsd:element name="retManifestacaoNFEntrada" nillable="true" type="xsd:string" />
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="manifestacaoNFEntrada">
+    <wsdl:part element="tns:manifestacaoNFEntrada" name="manifestacaoNFEntrada">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="manifestacaoNFEntradaResponse">
+    <wsdl:part element="tns:retManifestacaoNFEntrada" name="retManifestacaoNFEntrada">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSManifestacaoNFEntrada">
+    <wsdl:operation name="manifestacaoNFEntrada">
+      <wsdl:input message="tns:manifestacaoNFEntrada" name="manifestacaoNFEntrada">
+    </wsdl:input>
+      <wsdl:output message="tns:manifestacaoNFEntradaResponse" name="manifestacaoNFEntradaResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSManifestacaoNFEntradaServiceSoapBinding" type="tns:WSManifestacaoNFEntrada">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="manifestacaoNFEntrada">
+      <soap:operation soapAction="manifestarNF" style="document" />
+      <wsdl:input name="manifestacaoNFEntrada">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="manifestacaoNFEntradaResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSManifestacaoNFEntradaService">
+    <wsdl:port binding="tns:WSManifestacaoNFEntradaServiceSoapBinding" name="WSManifestacaoNFEntradaPort">
+      <soap:address location="http://jbossws.undefined.host:8080/nfe-ws/WSManifestacaoNFEntradaService/WSManifestacaoNFEntrada" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

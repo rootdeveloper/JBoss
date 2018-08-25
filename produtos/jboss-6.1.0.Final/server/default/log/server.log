@@ -1,0 +1,200 @@
+2011-10-26 16:17:39,707 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-localhost%2F127.0.0.1-8080
+2011-10-26 16:17:39,707 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-localhost%2F127.0.0.1-8009
+2011-10-26 16:17:39,707 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 15s:139ms
+2011-11-28 09:47:37,085 ERROR [ProfileServiceBootstrap] (Thread-2) Failed to load profile:: org.jboss.deployers.client.spi.IncompleteDeploymentException: Summary of incomplete deployments (SEE PREVIOUS ERRORS FOR DETAILS):
+
+DEPLOYMENTS MISSING DEPENDENCIES:
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata" is missing the following dependencies:
+    Dependency "jboss.jca:name=masterdata,service=DataSourceBinding" (should be in state "Create", but is actually in state "** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **")
+
+DEPLOYMENTS IN ERROR:
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "jboss.jca:name=masterdata,service=DataSourceBinding" is in error due to the following reason(s): ** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar" is in error due to the following reason(s): java.lang.ClassNotFoundException: org.apache.commons.httpclient.HttpException from BaseClassLoader@192ce93{vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar}
+
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:1228) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.main.MainDeployerImpl.checkComplete(MainDeployerImpl.java:905) [:2.2.2.GA]
+	at org.jboss.system.server.profileservice.deployers.MainDeployerPlugin.checkComplete(MainDeployerPlugin.java:87) [:6.1.0.Final]
+	at org.jboss.profileservice.deployment.ProfileDeployerPluginRegistry.checkAllComplete(ProfileDeployerPluginRegistry.java:107) [:0.2.2]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:135) [:6.1.0.Final]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:56) [:6.1.0.Final]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer.startBootstraps(AbstractServer.java:827) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer$StartServerTask.run(AbstractServer.java:417) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at java.lang.Thread.run(Thread.java:662) [:1.6.0_22]
+
+2011-11-28 09:47:37,113 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 09:47:37,116 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 09:47:37,116 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 24s:670ms
+2011-11-28 09:49:50,327 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-17) Server exit called, exiting the JVM now!
+2011-11-28 09:49:50,341 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2011-11-28 09:49:50,341 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-18) Stopping: JBossAS [6.1.0.Final "Neo"]
+2011-11-28 09:49:50,343 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-18) Pausing Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 09:49:50,344 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-18) Stopping Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 09:49:50,348 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-18) Pausing Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 09:49:50,348 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-18) Stopping Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 09:53:06,405 ERROR [ProfileServiceBootstrap] (Thread-2) Failed to load profile:: org.jboss.deployers.client.spi.IncompleteDeploymentException: Summary of incomplete deployments (SEE PREVIOUS ERRORS FOR DETAILS):
+
+DEPLOYMENTS MISSING DEPENDENCIES:
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata" is missing the following dependencies:
+    Dependency "jboss.jca:name=masterdata,service=DataSourceBinding" (should be in state "Create", but is actually in state "** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **")
+
+DEPLOYMENTS IN ERROR:
+  Deployment "vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-web.war" is in error due to the following reason(s): org.jboss.deployers.spi.DeploymentException: URL file:/C:/jboss-6.1.0.Final/server/default/deploy/masterdata-web.war/ deployment failed
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "jboss.jca:name=masterdata,service=DataSourceBinding" is in error due to the following reason(s): ** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar" is in error due to the following reason(s): java.lang.ClassNotFoundException: org.apache.commons.httpclient.HttpException from BaseClassLoader@1e2e2f4{vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar}
+
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:1228) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.main.MainDeployerImpl.checkComplete(MainDeployerImpl.java:905) [:2.2.2.GA]
+	at org.jboss.system.server.profileservice.deployers.MainDeployerPlugin.checkComplete(MainDeployerPlugin.java:87) [:6.1.0.Final]
+	at org.jboss.profileservice.deployment.ProfileDeployerPluginRegistry.checkAllComplete(ProfileDeployerPluginRegistry.java:107) [:0.2.2]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:135) [:6.1.0.Final]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:56) [:6.1.0.Final]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer.startBootstraps(AbstractServer.java:827) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer$StartServerTask.run(AbstractServer.java:417) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at java.lang.Thread.run(Thread.java:662) [:1.6.0_22]
+
+2011-11-28 09:53:06,420 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 09:53:06,425 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 09:53:06,425 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 30s:150ms
+2011-11-28 10:13:16,653 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-18) Server exit called, exiting the JVM now!
+2011-11-28 10:13:16,697 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2011-11-28 10:13:16,712 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-19) Stopping: JBossAS [6.1.0.Final "Neo"]
+2011-11-28 10:13:16,727 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-19) Pausing Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 10:13:16,728 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-19) Stopping Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 10:13:16,737 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-19) Pausing Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 10:13:16,738 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-19) Stopping Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 10:17:47,002 ERROR [ProfileServiceBootstrap] (Thread-2) Failed to load profile:: org.jboss.deployers.client.spi.IncompleteDeploymentException: Summary of incomplete deployments (SEE PREVIOUS ERRORS FOR DETAILS):
+
+DEPLOYMENTS MISSING DEPENDENCIES:
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" is missing the following dependencies:
+    Dependency "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" (should be in state "Installed", but is actually in state "** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **")
+  Deployment "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3_endpoint" is missing the following dependencies:
+    Dependency "jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3" (should be in state "Installed", but is actually in state "PreInstall")
+  Deployment "persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata" is missing the following dependencies:
+    Dependency "jboss.jca:name=masterdata,service=DataSourceBinding" (should be in state "Create", but is actually in state "** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **")
+
+DEPLOYMENTS IN ERROR:
+  Deployment "vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-web.war" is in error due to the following reason(s): org.jboss.deployers.spi.DeploymentException: URL file:/C:/jboss-6.1.0.Final/server/default/deploy/masterdata-web.war/ deployment failed
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=fornecedorManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=ncmManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "jboss.jca:name=masterdata,service=DataSourceBinding" is in error due to the following reason(s): ** NOT FOUND Depends on 'jboss.jca:name=masterdata,service=DataSourceBinding' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=clienteManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=transportadoraManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=paisManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=unidadeMedidaManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "<UNKNOWN jboss.j2ee:jar=masterdata-domain.jar,name=materialManager,service=EJB3>" is in error due to the following reason(s): ** UNRESOLVED Demands 'persistence.unit:unitName=masterdata-domain.jar#persistence-masterdata' **
+  Deployment "vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar" is in error due to the following reason(s): java.lang.ClassNotFoundException: org.apache.commons.httpclient.HttpException from BaseClassLoader@29b46a{vfs:///C:/jboss-6.1.0.Final/server/default/deploy/masterdata-core.jar}
+
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.checkComplete(DeployersImpl.java:1228) [:2.2.2.GA]
+	at org.jboss.deployers.plugins.main.MainDeployerImpl.checkComplete(MainDeployerImpl.java:905) [:2.2.2.GA]
+	at org.jboss.system.server.profileservice.deployers.MainDeployerPlugin.checkComplete(MainDeployerPlugin.java:87) [:6.1.0.Final]
+	at org.jboss.profileservice.deployment.ProfileDeployerPluginRegistry.checkAllComplete(ProfileDeployerPluginRegistry.java:107) [:0.2.2]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:135) [:6.1.0.Final]
+	at org.jboss.system.server.profileservice.bootstrap.BasicProfileServiceBootstrap.start(BasicProfileServiceBootstrap.java:56) [:6.1.0.Final]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer.startBootstraps(AbstractServer.java:827) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at org.jboss.bootstrap.impl.base.server.AbstractServer$StartServerTask.run(AbstractServer.java:417) [jboss-bootstrap-impl-base.jar:2.1.0-alpha-6]
+	at java.lang.Thread.run(Thread.java:662) [:1.6.0_22]
+
+2011-11-28 10:17:47,018 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-2) Starting Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 10:17:47,025 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-2) Starting Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 10:17:47,025 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-2) JBossAS [6.1.0.Final "Neo"] Started in 30s:138ms
+2011-11-28 10:20:30,688 INFO  [org.jboss.system.server.jmx.JMXKernel] (Thread-19) Server exit called, exiting the JVM now!
+2011-11-28 10:20:30,693 INFO  [STDOUT] (Thread-1) Posting Shutdown Request to the server...
+2011-11-28 10:20:30,694 INFO  [org.jboss.bootstrap.impl.base.server.AbstractServer] (Thread-20) Stopping: JBossAS [6.1.0.Final "Neo"]
+2011-11-28 10:20:30,696 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-20) Pausing Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 10:20:30,696 INFO  [org.apache.coyote.http11.Http11Protocol] (Thread-20) Stopping Coyote HTTP/1.1 on http-0.0.0.0-8080
+2011-11-28 10:20:30,705 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-20) Pausing Coyote AJP/1.3 on ajp-0.0.0.0-8009
+2011-11-28 10:20:30,707 INFO  [org.apache.coyote.ajp.AjpProtocol] (Thread-20) Stopping Coyote AJP/1.3 on ajp-0.0.0.0-8009

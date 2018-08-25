@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	<ui:composition>
+		<rich:tabPanel switchType="client">
+			<rich:tab header="#{msg.dadosDoRemetente}" styleClass="Altura240px" >
+				<ui:include src="/pages/painel/cte/remetente/abaDadosRemetente.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.informacoesDasNf}" styleClass="Altura380px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.rem.infNF != null}">
+				<ui:include src="/pages/painel/cte/remetente/abaInformacoesNF.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.informacoesDasNfe}" styleClass="Altura150px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.rem.infNFe != null}">
+				<ui:include src="/pages/painel/cte/remetente/abaInformacoesNFe.xhtml"/>
+			</rich:tab>
+			<rich:tab header="#{msg.informacoesDosDemaisDocumentos}" styleClass="Largura650px Altura150px" rendered="#{mbCteTerceiros.procCte.CTe.infCte.rem.infOutros != null}">
+				<ui:include src="/pages/painel/cte/remetente/abaInfoDemaisDocumentos.xhtml"/>
+			</rich:tab>
+		</rich:tabPanel>
+	</ui:composition>
+</html>
+                

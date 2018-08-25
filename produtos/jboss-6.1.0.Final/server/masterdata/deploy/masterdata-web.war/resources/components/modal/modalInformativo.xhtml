@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core" 
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+    xmlns:composite="http://java.sun.com/jsf/composite">
+   
+    <composite:interface>
+       <composite:attribute name="mensagemInformativo"/>
+       <composite:attribute name="nomePainel"/>
+       <composite:attribute name="render" />
+       <composite:attribute name="oncomplete" />
+       <composite:attribute name="tituloModal"/>
+    </composite:interface>
+    
+    <composite:implementation>
+    	<rich:popupPanel id="#{cc.attrs.nomePainel}" autosized="true" resizeable="false" moveable="false" styleClass="Largura300px FundoBranco" 
+    		onshow="reSize();" onhide="reSize();">
+    	   	<f:facet name="header">
+				<h:outputText value="#{cc.attrs.tituloModal}" />
+			</f:facet>
+			<f:facet name="controls">
+				<h:commandButton id="fechar" image="#{resource['images/png:close.png']}" styleClass="BotaoFechar" immediate="true" render="#{cc.attrs.render}"
+					onclick="#{rich:component(cc.attrs.nomePainel)}.hide();" >
+					<f:ajax execute="@this" />
+				</h:commandButton> 
+			</f:facet>
+			<div align="center">			
+    			<h:outputText id="mensagemConfirmacao" value="#{cc.attrs.mensagemInformativo}" styleClass="TituloDeCampo"/>
+    		</div>
+			<div align="center" class="MarginTop10px">
+   				<a4j:commandButton id="botaoOK" value="#{msg.ok}" oncomplete="#{rich:component(cc.attrs.nomePainel)}.hide();#{cc.attrs.oncomplete};" 
+   					immediate="true" render="#{cc.attrs.render}" styleClass="BotaoTexto Largura50px" execute="@this"/>
+   			</div>
+		</rich:popupPanel>
+    </composite:implementation>    
+</html>

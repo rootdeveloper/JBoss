@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="action" targets="botaoVoltarAction" shortDescription="Action do botão"/>
+		<composite:attribute name="buttonStyle" shortDescription="Estilo adicional para o botão" />
+	</composite:interface>
+
+	<composite:implementation>
+
+		<!-- É colocado um valor exato para o id pois preciso dele no composite:atribbute targets -->
+		<a4j:commandLink id="botaoVoltarAction" status="modalStatus" title="#{msg.titleVoltar}" execute="@this" immediate="true">
+			<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="#{msg.titleVoltar}" styleClass="BotaoImagem" width="26px" height="18px" />
+		</a4j:commandLink>
+
+	</composite:implementation>    
+</html>

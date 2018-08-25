@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+	<h:form prependId="false" id="formEventoManifestacao">
+    	<rich:popupPanel id="eventoManifestacao" autosized="true" resizeable="false" moveable="false" styleClass="Largura300px FundoBranco">
+
+    		<f:facet name="header">
+				<h:outputText value="#{msg.manifestacoes}" />
+			</f:facet>
+
+			<f:facet name="controls">
+				<h:commandButton id="fechar" image="#{resource['images/png:close.png']}" styleClass="BotaoFechar" 
+					onclick="fecharManifestacao()">
+					<f:ajax execute="@this"/>
+				</h:commandButton>
+			</f:facet>
+
+			<h:panelGroup id="opcoesManifestacao">
+				<div align="center" class="MarginTop5px">
+					<h:selectOneMenu value="#{mbNfeEntrada.tipoXml}">
+						<f:selectItem itemDisabled="true" itemValue="noData" itemLabel=""/>
+						<f:selectItems value="#{mbNfeEntrada.listaTipoXml}" var="itemTipoXml" itemLabel="#{itemTipoXml.descricaoEvento}"
+							itemDisabled="#{mbNfeEntrada.isTipoXmlDesabilitado(itemTipoXml)}"/>
+					</h:selectOneMenu>
+				</div>
+			</h:panelGroup>
+
+			<div align="center" class="MarginTop10px">
+				<a4j:commandButton id="botaoSim" value="#{msg.botaoSim}" execute="opcoesManifestacao @this" 
+					oncomplete="#{mbNfeEntrada.renderizaModalJustificativa} ? #{rich:component('modalJustificativaManifestacao')}.show() : #{mbNfeEntrada.tipoXml eq null ? rich:component('modalInformativoManifestacao') : rich:component('modalConfirmPane')}.show()"
+					onclick="fecharManifestacao()" styleClass="BotaoTexto Largura50px" render="modalConfirmPane modalJustificativaManifestacao modalInformativoManifestacao"/>
+				<a4j:commandButton value="#{msg.botaoCancelar}" onclick="fecharManifestacao()" 
+					styleClass="BotaoTexto Largura60px" execute="@this"/>
+			</div>
+
+		</rich:popupPanel>
+		<a4j:jsFunction name="fecharManifestacao"  
+			oncomplete="#{rich:component('eventoManifestacao')}.hide();" status="modalStatus" />
+    </h:form>    
+</ui:composition>

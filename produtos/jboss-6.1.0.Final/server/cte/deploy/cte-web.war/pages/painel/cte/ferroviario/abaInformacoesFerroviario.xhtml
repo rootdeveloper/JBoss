@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:composition>
+		<div class="Altura40px">
+			<div class="Linha900x38 MarginLeft2px">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.tipoTrafego}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.tpTraf}" styleClass="Campo Largura110px" readonly="true"
+						converter="tipoTrafegoFerroviarioCodigoConverter"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.fluxoFerroviario}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.fluxo}" styleClass="Campo Largura120px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.indentificaoTrem}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.idTrem}" styleClass="Campo Largura150px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.valorFrete}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.vFrete}" styleClass="Campo Largura160px" readonly="true" converter="valorMonetarioSefazConverter" />
+				</div>	
+			</div>
+		</div>
+ 		<h:panelGroup rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.trafMut != null}" styleClass="Altura75px" layout="block">
+			<div class="Linha900x75">
+				<fieldset class="Fieldset570x60 MarginTop5px">
+					<legend class="TituloDeCampo">#{msg.trafegoMutuo}</legend>			
+					<div class="Linha550x38 MarginTop5px MarginLeft5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.responsavelFaturamento}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.trafMut.respFat}" styleClass="Campo Largura265px" readonly="true" converter="responsavelFaturamentoConverter" />
+						</div>			
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.ferroviaEmitenteCte}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.trafMut.ferrEmi}" styleClass="Campo Largura265px" readonly="true" converter="ferroviaEmitenteCteConverter" />
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</h:panelGroup>			
+		<h:panelGroup rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub != null}" styleClass="Altura237px" layout="block">
+			<fieldset class="Fieldset780x230BaseQuadrada MarginTop5px">
+				<legend class="TituloDeCampo">#{msg.informacoesFerroviaSubstituida}</legend>
+				<div class="Linha770x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.cnpj}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.cnpj}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter" />
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.codigoInterno}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.cInt}" styleClass="Campo Largura110px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.ie}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.xNome}" styleClass="Campo Largura375px" readonly="true"/>
+					</div>
+				</div>
+				<div class="Linha770x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.logradouro}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.enderFerro.XLgr}" styleClass="Campo Largura747px" readonly="true"/>
+					</div>
+				</div>
+				<div class="Linha770x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.numero}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.enderFerro.nro}" styleClass="Campo Largura370px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.complemento}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.enderFerro.XCpl}" styleClass="Campo Largura370px" readonly="true"/>
+					</div>
+				</div>
+				<div class="Linha770x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.bairro}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.enderFerro.XBairro}" styleClass="Campo Largura370px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.municipio}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.enderFerro.XMun}" styleClass="Campo Largura370px" readonly="true"/>
+					</div>
+				</div>
+				<div class="Linha770x38 MarginTop5px MarginLeft5px">
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.codigoMunicipio}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.enderFerro.CMun}" styleClass="Campo Largura120px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.enderFerro.UF}" styleClass="Campo Largura30px" readonly="true"/>
+					</div>
+					<div class="GrupoTituloCampo">
+						<h:outputText value="#{msg.cep}" styleClass="TituloDeCampo"/>
+						<br />
+						<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroSub.enderFerro.CEP}" styleClass="Campo Largura100px" readonly="true" converter="cepConverter" />
+					</div>
+				</div>
+			</fieldset>
+		</h:panelGroup>
+		
+		<h:panelGroup id="panelFerroEnv" rendered="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroEnv != null and not empty mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroEnv}" styleClass="Altura237px" layout="block">
+			<a4j:repeat value="#{mbCteTerceiros.procCte.CTe.infCte.infCTeNorm.ferrov.ferroEnv}" var="env" rows="1" id="repeatFerroEnv">
+				<fieldset class="Fieldset780x230BaseQuadrada MarginTop5px">
+					<legend class="TituloDeCampo">#{msg.informacoesFerroviaEnvolvida}</legend>
+					<div class="Linha770x38 MarginTop5px MarginLeft5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.cnpj}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.cnpj}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter" />
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.codigoInterno}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.cInt}" styleClass="Campo Largura110px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.ie}" styleClass="Campo Largura120px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.xNome}" styleClass="Campo Largura375px" readonly="true"/>
+						</div>
+					</div>
+					<div class="Linha770x38 MarginTop5px MarginLeft5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.logradouro}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.enderFerro.XLgr}" styleClass="Campo Largura747px" readonly="true"/>
+						</div>
+					</div>
+					<div class="Linha770x38 MarginTop5px MarginLeft5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.numero}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.enderFerro.nro}" styleClass="Campo Largura370px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.complemento}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.enderFerro.XCpl}" styleClass="Campo Largura370px" readonly="true"/>
+						</div>
+					</div>
+					<div class="Linha770x38 MarginTop5px MarginLeft5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.bairro}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.enderFerro.XBairro}" styleClass="Campo Largura370px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.municipio}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.enderFerro.XMun}" styleClass="Campo Largura370px" readonly="true"/>
+						</div>
+					</div>
+					<div class="Linha770x38 MarginTop5px MarginLeft5px">
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.codigoMunicipio}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.enderFerro.CMun}" styleClass="Campo Largura120px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.enderFerro.UF}" styleClass="Campo Largura30px" readonly="true"/>
+						</div>
+						<div class="GrupoTituloCampo">
+							<h:outputText value="#{msg.cep}" styleClass="TituloDeCampo"/>
+							<br />
+							<h:inputText value="#{env.enderFerro.CEP}" styleClass="Campo Largura100px" readonly="true" converter="cepConverter" />
+						</div>
+					</div>
+				</fieldset>
+			</a4j:repeat>
+		</h:panelGroup>
+		
+		<div class="Altura30px"> 
+			<h:panelGroup id="ferroEnvScroll" styleClass="Scroller Largura780px MarginLeft2px" layout="block" >
+				<rich:dataScroller id="ferroEnvScroller" for="repeatFerroEnv" fastControls="hide" render="panelFerroEnv, ferroEnvScroller" maxPages="11">
+					<f:facet name="first">
+						<h:graphicImage value="#{resource['images/png:scroller_first.png']}" styleClass="ImgScroll" />
+					</f:facet>
+					<f:facet name="last">
+						<h:graphicImage value="#{resource['images/png:scroller_last.png']}" styleClass="ImgScroll" />
+					</f:facet>
+					<f:facet name="previous">
+						<h:graphicImage value="#{resource['images/png:scroller_previous.png']}" styleClass="ImgScroll" />
+					</f:facet>
+					<f:facet name="next">
+						<h:graphicImage value="#{resource['images/png:scroller_next.png']}" styleClass="ImgScroll" />
+					</f:facet>
+				</rich:dataScroller>
+			</h:panelGroup>
+		</div>
+		
+	</ui:composition>
+</html>

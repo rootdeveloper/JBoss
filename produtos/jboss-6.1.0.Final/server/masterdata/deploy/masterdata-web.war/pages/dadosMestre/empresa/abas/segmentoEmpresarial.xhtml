@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal">
+	
+	<h:panelGroup id="painelSegmentoEmpresarial" layout="block" styleClass="Linha940x25 MarginTop5px">
+		<div class="PositionRelativeFloatLeft Largura195px MarginLeft10px">
+			<h:outputText value="#{msg.segmentoEmpresarial}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="descSegEmpresarial" value="#{mbEmpresa.filial.segmentoEmpresarial.descricaoSegmento}"
+			styleClass="Campo Largura670px PositionRelativeFloatLeft"/>
+			
+		<a4j:commandButton status="modalStatus" actionListener="#{mbEmpresa.populaListaSegmentoEmpresarial}"
+			oncomplete="#{rich:component('modalListaSegmentoEmpresarial')}.show();" execute="@this"
+			render="modalListaSegmentoEmpresarial jQuerySeg" immediate="true" image="/resources/images/png/detalhes.png"
+			styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk"
+			rendered="#{mbEmpresa.verificaPermissao('Administrador') and !mbEmpresa.statusInicio}" />
+		
+		<a4j:commandButton id="deletaSegmentoEmpresarial" status="modalStatus" title="#{msg.titleRemoverSegmentoEmpresarial}"
+			render="painelSegmentoEmpresarial jQuerySeg" execute="@this"
+			actionListener="#{mbEmpresa.removeSegmentoEmpresarial}" disabled="#{mbEmpresa.statusInicio}" immediate="true"
+			styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft Tabwalk" image="/resources/images/png/removerFiltro.png"
+			rendered="#{mbEmpresa.filial.segmentoEmpresarial.descricaoSegmento != null and mbEmpresa.verificaPermissao('Administrador')}" />
+	
+   </h:panelGroup>
+
+	<h:panelGroup layout="block" styleClass="Linha940x25" id="painelGrupoEmpresa">
+		<div class="PositionRelativeFloatLeft Largura195px MarginLeft10px">
+			<h:outputText value="#{msg.descGrupoEmpresa}" styleClass="TituloDeCampo"/>
+		</div>
+		
+		<h:inputText id="descGrupoEmpresa" value="#{mbEmpresa.filial.grupoEmpresa.descricao}" styleClass="Campo Largura670px PositionRelativeFloatLeft"/>
+		
+		<a4j:commandButton actionListener="#{mbEmpresa.populaGrupoEmpresa}" oncomplete="#{rich:component('modalGrupoEmpresa')}.show();" 
+			render="modalGrupoEmpresa jQueryCodGE jQueryDescGE" immediate="true" execute="@this"
+			styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk" image="/resources/images/png/detalhes.png"
+			rendered="#{mbEmpresa.verificaPermissao('Administrador') and !mbEmpresa.statusInicio}"/>
+		
+		<a4j:commandButton id="deletaGrupoEmpresa" status="modalStatus" title="#{msg.titleRemoverGrupoEmpresa}" immediate="true"
+			render="painelGrupoEmpresa codGrupoEmpresa jQueryCodGE jQueryDescGE" execute="@this"
+			actionListener="#{mbEmpresa.removeGrupoEmpresa}" disabled="#{mbEmpresa.statusInicio}" 
+			styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk" image="/resources/images/png/removerFiltro.png"
+			rendered="#{mbEmpresa.filial.grupoEmpresa != null and mbEmpresa.verificaPermissao('Administrador')}" />
+						
+	</h:panelGroup>
+
+	<div class="Linha900x25">
+		<div class="PositionRelativeFloatLeft Largura195px MarginLeft10px">
+			<h:outputText value="#{msg.codGrupoEmpresa}" styleClass="TituloDeCampo"/>
+		</div>
+		<h:inputText id="codGrupoEmpresa" value="#{mbEmpresa.filial.grupoEmpresa.codigo}" styleClass="Campo Largura50px PositionRelativeFloatLeft"/>
+	</div>
+
+	<rich:jQuery id="jQuerySeg" selector="#descSegEmpresarial" timing="immediate" query="attr('readonly', 'readonly');" />
+	<rich:jQuery id="jQueryCodGE" selector="#descGrupoEmpresa" timing="immediate" query="attr('readonly', 'readonly');" />
+	<rich:jQuery id="jQueryDescGE" selector="#codGrupoEmpresa" timing="immediate" query="attr('readonly', 'readonly');" />
+	
+</ui:composition>
+		

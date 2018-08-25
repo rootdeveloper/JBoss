@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	<ui:composition>
+		<rich:toolbar id="menu">
+	            <rich:dropDownMenu popupWidth="50" showEvent="click" id="menuPainel" >
+	               <f:facet name="label">
+	                    <h:panelGroup>
+	                        <h:outputText value="#{msg.menuPainel}" />
+	                        <h:graphicImage value="#{resource['images/png:setaMenu.png']}"/>
+	                    </h:panelGroup>
+	                </f:facet>
+	                <rich:menuItem action="cteTerceiros" label="#{msg.menuCteDeTerceiros}" immediate="true" execute="@this">
+	                    <a4j:param name="pagina" value="terceiros" />
+	                </rich:menuItem>
+	            </rich:dropDownMenu>
+	            <rich:dropDownMenu popupWidth="50" showEvent="click" id="menuConsulta">
+	               <f:facet name="label">
+	                    <h:panelGroup>
+	                        <h:outputText value="#{msg.menuConsulta}" />
+	                        <h:graphicImage value="#{resource['images/png:setaMenu.png']}" />
+	                    </h:panelGroup>
+	                </f:facet>
+	                <rich:menuItem action="consultarSituacao" label="#{msg.menuCte}" immediate="true" execute="@this">
+	                    <a4j:param name="pagina" value="conssit" />
+	                </rich:menuItem>
+	            </rich:dropDownMenu>
+	            <rich:dropDownMenu popupWidth="50" showEvent="click" id="menuDadosMestre">
+	           		<f:facet name="label">
+	                    <h:panelGroup>
+	                        <h:outputText value="#{msg.menuDadosMestres}" />
+	                        <h:graphicImage value="#{resource['images/png:setaMenu.png']}" />
+	                    </h:panelGroup>
+	                </f:facet>
+	                <rich:menuItem action="listaEmpresa" label="#{msg.menuEmpresa}" immediate="true" execute="@this">
+	                    <a4j:param name="pagina" value="empresa" />
+	                </rich:menuItem>
+	            </rich:dropDownMenu>
+	            <rich:dropDownMenu popupWidth="50" showEvent="click" id="menuParametrizacao">
+	                <f:facet name="label">
+	                    <h:panelGroup>
+	                        <h:outputText value="#{msg.menuParametrizacao}" />
+	                        <h:graphicImage value="#{resource['images/png:setaMenu.png']}" />
+	                    </h:panelGroup>
+	                </f:facet>
+	                <rich:menuItem action="gerais" label="#{msg.menuParametrosGerais}" immediate="true" execute="@this">
+	                    <a4j:param name="pagina" value="gerais" />
+	                </rich:menuItem>
+	                <rich:menuItem action="manual" label="#{msg.menuManual}" immediate="true" execute="@this">
+	                	<a4j:param name="pagina" value="manual" />
+	                </rich:menuItem>
+	                <rich:menuItem action="pacoteLiberacao" label="#{msg.menuPacoteLiberacao}" immediate="true" execute="@this">
+	                   <!--  <a4j:param name="pagina" value="pacoteLiberacao" /> -->
+	                </rich:menuItem>
+	                <rich:menuGroup label="#{msg.menuWebServices}" id="menuWebService">
+	                    <rich:menuItem action="sefazWebService" label="#{msg.menuSefazOrigem}" immediate="true" execute="@this">
+	                        <a4j:param name="pagina" value="sefazorigem" />
+	                    </rich:menuItem>
+	                </rich:menuGroup>
+	            </rich:dropDownMenu>
+	            <rich:dropDownMenu popupWidth="50" showEvent="click" id="menuSistema">
+	            	<f:facet name="label">
+	                    <h:panelGroup>
+	                        <h:outputText value="#{msg.menuSistema}" />
+	                        <h:graphicImage value="#{resource['images/png:setaMenu.png']}" />
+	                    </h:panelGroup>
+	                </f:facet>
+	                <rich:menuItem action="statusServico" label="#{msg.menuStatusDoServico}" immediate="true" execute="@this">
+	                    <a4j:param name="pagina" value="statusServico" />
+	                </rich:menuItem>
+	            </rich:dropDownMenu>
+	        </rich:toolbar>
+	</ui:composition>
+</html>
+                

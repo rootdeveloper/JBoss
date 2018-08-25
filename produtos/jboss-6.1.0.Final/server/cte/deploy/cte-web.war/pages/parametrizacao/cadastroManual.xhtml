@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="metadata"/>
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroManual}"/>
+	</ui:define>
+	<ui:define name="content">
+		<util:modalInformativoVoltar mensagemInformativo="#{mbManual.mensagem}" nomePainel="modalInformativo" tituloModal="#{msg.mensagem}"/>
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup location="left">
+				<a4j:commandLink action="#{mbManual.salvar}" oncomplete="#{mbManual.renderizarModalInformativo} ? #{rich:component('modalInformativo')}.show() : ''" render="modalInformativo, painelMensagemErro" title="#{msg.titleSalvar}" status="modalStatus">
+					<f:param name="acao" value="Salvar"/>
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="apagar" styleClass="BotaoImagem"/>
+				</a4j:commandLink>
+				<h:commandButton action="#{mbManual.voltarParaLista}" image="#{resource['images/png:voltar.png']}" immediate="true" styleClass="BotaoImagem" title="#{msg.titleVoltar}">
+					<f:param name="acao" value="Voltar"/>
+				</h:commandButton>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		<h:panelGroup layout="block" styleClass="MarginTop10px">
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px">
+					<h:outputText value="#{msg.versaoDoManual}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:inputText value="#{mbManual.manualSelecionado.versao}" styleClass="Campo Largura50px" maxlength="5"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:outputText value="*" styleClass="MarginLeft5px"/>
+				</div>
+			</div>
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px">
+					<h:outputText value="#{msg.descricaoDoManual}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft">
+					<h:inputText value="#{mbManual.manualSelecionado.descricao}" styleClass="Campo Largura430px" maxlength="70" />
+				</div>
+			</div>
+			<div class="Linha990x25 MarginLeft10px">
+				<div class="PositionRelativeFloatLeft Largura160px MarginTop2px">
+					<h:outputText value="#{msg.dataDeLiberacao}" styleClass="TituloDeCampo"/>
+				</div>	
+				<div class="PositionRelativeFloatLeft">	
+					<rich:calendar value="#{mbManual.manualSelecionado.dataLiberacao}" boundaryDatesMode="scroll"
+						locale="PT" datePattern="dd/MM/yyyy" showApplyButton="false" showWeeksBar="false"
+						showFooter="false" buttonClass="BotaoImagemSemMarginTop" inputClass="PositionRelativeFloatLeft"/>
+			        <h:outputText value="*" styleClass="MarginLeft5px"/>
+		        </div>
+			</div>
+			<h:panelGroup id="painelMensagemErro" layout="block" styleClass="Largura980px PositionRelativeFloatLeft MarginLeft10px MarginBottom5px">
+				<div>
+					<h:outputText value="* #{msg.camposObrigatorios}"/>
+				</div>
+				<div>
+					<h:outputText value="#{mbManual.msgErro}" styleClass="MensagemDeErro" escape="false"/>
+				</div>
+			</h:panelGroup>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

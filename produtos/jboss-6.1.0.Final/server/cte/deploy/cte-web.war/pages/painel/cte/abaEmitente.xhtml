@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:rich="http://richfaces.org/rich"
+	  xmlns:a4j="http://richfaces.org/a4j">
+	  
+	<ui:composition>
+		<h:panelGroup layout="block">
+			<div class="Linha960x38">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.cnpj}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.cnpj}" styleClass="Campo Largura120px" readonly="true" converter="cnpjConverter">
+					</h:inputText>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.inscricaoEstadual}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.ie}" styleClass="Campo Largura120px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.nomeRazaoSocial}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.xNome}" styleClass="Campo Largura460px" readonly="true"/>
+				</div>
+			</div>
+			<div class="Linha960x38">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.nomeFantasia}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.xFant}" styleClass="Campo Largura460px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.logradouro}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.XLgr}" styleClass="Campo Largura460px" readonly="true"/>
+				</div>
+			</div>
+			<div class="Linha960x38">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.numero}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.nro}" styleClass="Campo Largura460px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.complemento}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.XCpl}" styleClass="Campo Largura460px" readonly="true"/>
+				</div>
+			</div>
+			<div class="Linha960x38">			
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.bairro}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.XBairro}" styleClass="Campo Largura460px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.municipio}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.XMun}" styleClass="Campo Largura460px" readonly="true"/>
+				</div>
+			</div>
+			<div class="Linha960x38">
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.codigoMunicipio}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.CMun}" styleClass="Campo Largura120px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.uf}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.UF}" styleClass="Campo Largura40px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.cep}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.CEP}" styleClass="Campo Largura80px" readonly="true" converter="cepConverter">
+					</h:inputText>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.codigoPais}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.CPais}" styleClass="Campo Largura120px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.pais}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.XPais}" styleClass="Campo Largura412px" readonly="true"/>
+				</div>
+				<div class="GrupoTituloCampo">
+					<h:outputText value="#{msg.telefone}" styleClass="TituloDeCampo"/>
+					<br />
+					<h:inputText value="#{mbCteTerceiros.procCte.CTe.infCte.emit.enderEmit.fone}" styleClass="Campo Largura120px" readonly="true" converter="telefoneConverter">
+					</h:inputText>
+				</div>
+			</div>
+		</h:panelGroup>
+	</ui:composition>
+</html>
+                

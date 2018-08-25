@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="WSExportacaoNFService" targetNamespace="http://www.pwc.com.br/WSExportacaoNFService" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.pwc.com.br/WSExportacaoNFService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://www.pwc.com.br/WSExportacaoNFService" xmlns:tns="http://www.pwc.com.br/WSExportacaoNFService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="NFeServiceException" type="tns:NFeServiceException" />
+<xsd:complexType name="NFeServiceException">
+<xsd:sequence />
+</xsd:complexType>
+<xsd:element name="xml" nillable="true" type="xsd:string" />
+<xsd:element name="xmlRetornoExportacaoNF" nillable="true" type="xsd:string" />
+</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="NFeServiceException">
+    <wsdl:part element="tns:NFeServiceException" name="NFeServiceException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="exportacaoNFResponse">
+    <wsdl:part element="tns:xmlRetornoExportacaoNF" name="xmlRetornoExportacaoNF">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="exportacaoNF">
+    <wsdl:part element="tns:xml" name="xml">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="WSExportacaoNF">
+    <wsdl:operation name="exportacaoNF">
+      <wsdl:input message="tns:exportacaoNF" name="exportacaoNF">
+    </wsdl:input>
+      <wsdl:output message="tns:exportacaoNFResponse" name="exportacaoNFResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:NFeServiceException" name="NFeServiceException">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSExportacaoNFServiceSoapBinding" type="tns:WSExportacaoNF">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="exportacaoNF">
+      <soap:operation soapAction="exportaNF" style="document" />
+      <wsdl:input name="exportacaoNF">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="exportacaoNFResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="NFeServiceException">
+        <soap:fault name="NFeServiceException" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSExportacaoNFService">
+    <wsdl:port binding="tns:WSExportacaoNFServiceSoapBinding" name="WSExportacaoNFPort">
+      <soap:address location="http://DP-JAVA006:8080/nfe-core/WSExportacaoNFService/WSExportacaoNF" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

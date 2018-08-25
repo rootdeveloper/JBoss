@@ -1,0 +1,125 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	template="/WEB-INF/templates/template.xhtml">
+	
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroNCM}"/>
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<ui:include src="/pages/dadosMestre/ncm/modalFiltroAliquotasNCM.xhtml"/>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+		<util:modalInformativoVoltar mensagemInformativo="#{mbNcm.mensagemModal}" nomePainel="modalInformativoVoltar"
+			tituloModal="#{msg.mensagem}" render="#{mbNcm.renderizarModal}"/>
+			
+		<util:modalJustificativaStatus idModal="modalNcmStatus" actionRenderizarModais="#{mbNcm.processaRenderizacaoModais}" 
+			justificativaInformativa="#{mbNcm.justificativa}" renderizarModal="#{mbNcm.renderizarModal}" 
+			justificativaEditavel="#{mbNcm.ncm.justificativa}" idModalInformativo="modalInformativoVoltar"
+			tipoStatus="#{mbNcm.ncm.status.nomeTipo}" salvar="#{mbNcm.salvaComStatus}"
+			renderizaModalStatusInformativo="#{mbNcm.renderizaModalStatusInformativo}"/>  
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+		
+			<a4j:commandLink status="modalStatus" actionListener="#{mbNcm.verificaStatus}" execute="status genero codigo descricao"
+				oncomplete="#{mbNcm.renderizaModalStatus} ? #{rich:component('modalNcmStatus')}.show() : ''; #{mbNcm.renderizarModal} ? #{rich:component('modalInformativoVoltar')}.show() : ''" 
+				title="#{msg.titleSalvar}" render="modalInformativoVoltar,modalNcmStatus, painelMensagemErro"
+				rendered="#{mbNcm.verificaPermissao('Administrador, Gerente, Atendente')}" >
+				<f:param name="acao" value="edicaoJustificativa"/>
+				<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="salvar" styleClass="BotaoImagem" width="26px" height="18px"/>
+			</a4j:commandLink>
+			
+			<a4j:commandLink status="modalStatus" action="voltar" immediate="true" title="#{msg.titleVoltar}">
+				<h:graphicImage value="#{resource['images/png:voltar.png']}" styleClass="BotaoImagem" alt="voltar" width="26px" height="18px"/>
+			</a4j:commandLink>
+		</rich:toolbar>
+		
+		<div class="Linha980x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura75px MarginTop2px MarginLeft10px"> 
+				<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+			</div>	
+			<h:selectOneMenu id="status" value="#{mbNcm.ncm.status}" tabindex="0" styleClass="ComboField PositionRelativeFloatLeft Largura70px"
+				disabled="#{empty mbNcm.ncm.id or !mbNcm.verificaPermissao('Administrador, Gerente')}">
+				<f:selectItems value="#{mbNcm.listaStatusEnum}" var="status" itemLabel="#{status.nomeTipo}"/>
+			</h:selectOneMenu>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			<a4j:commandButton image="/resources/images/gif/information.gif" title="#{msg.titleMotivo}" styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft Tabwalk"
+				oncomplete="#{rich:component('modalNcmStatus')}.show()" render="modalInformativoStatus, modalNcmStatus" rendered="#{not empty mbNcm.justificativa}"
+				actionListener="#{mbNcm.processaRenderizacaoModais}"/>
+		</div>
+		
+		<div class="Linha980x25 MarginTop5px">
+			<div class="PositionRelativeFloatLeft Largura75px MarginLeft10px">
+				<h:outputText value="#{msg.genero}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="genero" value="#{mbNcm.ncm.genero}" maxlength="2" tabindex="1" styleClass="Campo Largura25px PositionRelativeFloatLeft"
+				disabled="#{mbNcm.statusInativo}" onkeypress="Mascara(this,Integer)" onkeydown="Mascara(this,Integer)"
+				onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);" />
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+			
+		<div class="Linha980x25">
+			<div class="PositionRelativeFloatLeft Largura75px MarginLeft10px">
+				<h:outputText value="#{msg.codigo}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText id="codigo" value="#{mbNcm.ncm.codigo}" maxlength="8" tabindex="2" disabled="#{mbNcm.statusInativo}"
+				styleClass="Campo Largura70px PositionRelativeFloatLeft"
+				onkeypress="Mascara(this,Integer)" onkeydown="Mascara(this,Integer)" onkeyup="Mascara(this, Integer)"
+				onmousedown="Mascara(this, Integer);" onmouseup="Mascara(this, Integer);" onmouseout="Mascara(this, Integer);"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+			
+		<div class="Linha980x96">
+			<div class="PositionRelativeFloatLeft Largura75px MarginLeft10px">
+				<h:outputText value="#{msg.descricao}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputTextarea id="descricao" value="#{mbNcm.ncm.descricao}" 
+				styleClass="TextArea572x85 PositionRelativeFloatLeft TabWalk" tabindex="3" onkeydown="limitText(this,350);" onkeyup="limitText(this,350);"
+				onkeypress="limitText(this,350);" onmousedown="limitText(this,350);" onmouseup="limitText(this,350);" onmouseout="limitText(this,350);"
+				onfocus="origValue = this.value;" onblur="if(this.value != origValue) valueChangeIE(this);"/>
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+		</div>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura980px MarginBottom5px">
+			<h:outputText value="#{mbNcm.mensagemError}" styleClass="MensagemDeErro"/>
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages"/>
+		</h:panelGroup>
+		
+		<h:form prependId="false">
+			<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+				<rich:tab id="abaAliquotas" header="#{msg.abaAliquota}" styleClass="PositionRelativeFloatLeft Largura100pc" immediate="true">
+					<h:panelGroup id="painelAliquota">
+						<h:panelGroup rendered="#{!mbNcm.cadastroAliquota}" >
+							<ui:include src="/pages/dadosMestre/ncm/listaAliquotaNcm.xhtml"/>
+						</h:panelGroup>
+						<h:panelGroup rendered="#{mbNcm.cadastroAliquota}">
+							<ui:include src="/pages/dadosMestre/ncm/cadastroAliquotaNcm.xhtml"/>
+						</h:panelGroup>
+					</h:panelGroup>
+				</rich:tab>
+			</rich:tabPanel>
+		</h:form>
+		
+		<div class="PositionRelativeFloatLeft Largura100pc MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft18px"/>
+		</div>
+		
+		<script type="text/javascript">
+			//<![CDATA[
+				if(#{!mbNcm.verificaPermissao('Administrador, Gerente, Atendente')}) {
+					j(document).ready(function(){
+						disableInputText();
+					});
+				}
+			//]]>
+		</script>
+	
+	</ui:define>
+</ui:composition>

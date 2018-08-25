@@ -1,0 +1,286 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:util="http://java.sun.com/jsf/composite/components/modal"
+	xmlns:tributavel="http://java.sun.com/jsf/composite/components/aliquota"
+	xmlns:imposto="http://java.sun.com/jsf/composite/components/imposto"
+	template="/WEB-INF/templates/template.xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+	<ui:define name="view">
+		<h:outputText value="#{msg.cadastroMateriais}"/>
+	</ui:define>
+	
+	<ui:define name="contentModal">
+		<ui:include src="/resources/components/modal/modalFiltroAliquotas.xhtml"/>
+		<ui:include src="/pages/dadosMestre/material/modalCadastroNCM.xhtml"/>
+		<ui:include src="/pages/dadosMestre/material/modalCadastroUnidadeMedida.xhtml"/>
+		<ui:include src="/pages/dadosMestre/material/modalListaUnidadeMedida.xhtml"/>
+		<ui:include src="/pages/dadosMestre/material/modalListaNcm.xhtml"/>
+		<ui:include src="/resources/components/aliquota/modalListaTipoServico.xhtml"/>
+	</ui:define>
+	 
+	<ui:define name="content">
+		
+		<util:modalInformativoVoltar mensagemInformativo="#{mbMaterial.mensagemModal}" nomePainel="modalInformativo" tituloModal="#{msg.mensagem}" />
+		<util:modalInformativo mensagemInformativo="#{mbMaterial.mensagemModal}" nomePainel="modalInformativo2" tituloModal="#{msg.mensagem}" />
+		<util:modalJustificativaStatus idModal="modalMaterialStatus" actionRenderizarModais="#{mbMaterial.isJustificativaInformativo}" 
+			justificativaInformativa="#{mbMaterial.justificativa}" tipoStatus="#{mbMaterial.material.status.nomeTipo}"
+			idModalInformativo="modalInformativo" justificativaEditavel="#{mbMaterial.material.justificativa}" salvar="#{mbMaterial.salvaComStatus}"
+			renderizaModalStatusInformativo="#{mbMaterial.modalJustificativaInformativo}" renderizarModal="#{mbMaterial.renderizarModal}" />
+		
+		<rich:toolbar styleClass="BarraDeBotoesPainel">
+			<rich:toolbarGroup>
+				<a4j:commandLink status="modalStatus" title="#{msg.titleSalvar}" execute="cadastroMaterial linhaOrigemMaterial cadastroPesoECodigo" 
+					render="modalInformativo, painelMensagemErro, msgErro, msgModalError, modalMaterialStatus" actionListener="#{mbMaterial.verificaStatus}"
+					oncomplete="#{mbMaterial.renderizaModalJustificativa} ? #{rich:component('modalMaterialStatus')}.show() : '' ; #{mbMaterial.renderizarModal} ? #{rich:component('modalInformativo')}.show() : '' "
+					rendered="#{mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}" >
+					<h:graphicImage value="#{resource['images/png:salvar.png']}" alt="apagar" styleClass="BotaoImagem" width="26px" height="18px"/>
+				</a4j:commandLink>
+
+				<a4j:commandLink status="modalStatus" title="#{msg.titleVoltar}" action="voltar" immediate="true">
+					<h:graphicImage value="#{resource['images/png:voltar.png']}" alt="voltar" styleClass="BotaoImagem" width="26px" height="18px" />
+				</a4j:commandLink>
+			</rich:toolbarGroup>
+		</rich:toolbar>
+		
+		<h:panelGroup id="cadastroMaterial" styleClass="Largura100pc BordaInferiorAzul PositionRelativeFloatLeft" layout="block">
+		
+			<div class="Linha980x25 MarginTop5px" id="linhaStatusMaterial">
+				<div class="PositionRelativeFloatLeft Largura130px MarginLeft10px MarginTop2px">
+					<h:outputText value="#{msg.status}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:selectOneMenu id="statusMaterial" value="#{mbMaterial.material.status}" styleClass="ComboField PositionRelativeFloatLeft" 
+					disabled="#{mbMaterial.material.id eq null or !mbMaterial.verificaPermissao('Administrador, Gerente')}" >
+					<f:selectItems value="#{mbMaterial.getEnum('StatusEnum')}" var="status" itemLabel="#{status.nomeTipo}"/>
+				</h:selectOneMenu>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+				<a4j:commandButton immediate="true" image="/resources/images/gif/information.gif" title="#{msg.titleMotivo}" 
+					actionListener="#{mbMaterial.isJustificativaInformativo}" render="modalInformativoStatus,modalMaterialStatus"
+					rendered="#{not empty mbMaterial.material.justificativa}" oncomplete="#{rich:component('modalMaterialStatus')}.show()" 
+					styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft Tabwalk" />
+			</div>
+			<div class="Linha980x25" id="linhaCodigoMaterial">
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.codigo}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText value="#{mbMaterial.material.codigo}" readonly="#{mbMaterial.statusInicio}" 
+					styleClass="Campo Largura670px PositionRelativeFloatLeft" maxlength="60" requiredMessage="#{msg.erroCodigoInvalido}"
+					id="codigoMaterial">
+					<a4j:ajax  listener="#{mbMaterial.verificaCodigo}" event="valueChange" render="msgErro,painelMensagemErro"  status="modalStatus"/> 
+				</h:inputText>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>	
+			<div class="Linha980x25" id="linhaDescricaoMaterial">
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.descricao}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText value="#{mbMaterial.material.descricao}" readonly="#{mbMaterial.statusInicio}" 
+					styleClass="Campo Largura820px PositionRelativeFloatLeft" maxlength="120" id="descricaoMaterial"/>
+				<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			</div>	
+				
+		</h:panelGroup>
+		
+		<h:panelGroup styleClass="Linha980x25 MarginTop5px" id="linhaNCMMaterial">
+		
+			<div class="PositionRelativeFloatLeft Largura130px MarginTop2px MarginLeft10px">
+				<h:outputText value="#{msg.ncm}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbMaterial.material.ncm.codigo}" id="ncm" styleClass="Campo Largura70px PositionRelativeFloatLeft" required="true" 
+				requiredMessage="#{msg.selecioneUmNCM}" />
+			<h:inputText value="#{mbMaterial.material.ncm.descricao}" id="ncmDescricao" 
+				styleClass="Campo Largura650px MarginLeft5px PositionRelativeFloatLeft" readonly="true" />
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			<h:panelGroup layout="block" id="controleNCM" rendered="#{!mbMaterial.statusInicio and mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}">
+				<a4j:commandButton status="modalStatus" oncomplete="#{rich:component('modalListaNCM')}.show();" execute="@this"
+					actionListener="#{mbMaterial.popularListaDeNcm}" render="modalListaNCM"
+					immediate="true" title="#{msg.pesquisarNCM}" styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk"
+					image="/resources/images/png/detalhes.png"/>
+				<a4j:commandButton status="modalStatus" oncomplete="#{rich:component('modalCadastroNCM')}.show()" execute="@this"
+					actionListener="#{mbMaterial.naoRenderizarModal}" render="modalCadastroNCM"
+					immediate="true" title="#{msg.novoNCM}" styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk"
+					image="/resources/images/png/novo.png"/>
+				<a4j:commandButton status="modalStatus" id="editarNCM" actionListener="#{mbMaterial.editarNCM}" execute="@this"
+					rendered="#{not empty mbMaterial.material.ncm.codigo}" render="modalCadastroNCM"
+					oncomplete="#{rich:component('modalCadastroNCM')}.show()" immediate="true" title="#{msg.editarNCM}"
+					image="/resources/images/png/editar.png" styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk"/>
+			</h:panelGroup>
+			
+		</h:panelGroup>
+			
+		<h:panelGroup styleClass="Linha980x25" id="linhaUnidadeMedidaMaterial">
+			<div class="PositionRelativeFloatLeft MarginTop2px Largura130px MarginLeft10px">
+				<h:outputText value="#{msg.unidadeMedida}" styleClass="TituloDeCampo"/>
+			</div>
+			<h:inputText value="#{mbMaterial.material.unidadeMedida.sigla}" styleClass="Campo Largura70px PositionRelativeFloatLeft" id="campoUnidadeMedida" 
+				required="true" requiredMessage="#{msg.selecioneUmaUnidadeMedida}" />				
+			<h:inputText value="#{mbMaterial.material.unidadeMedida.descricao}" styleClass="Campo Largura240px MarginLeft5px PositionRelativeFloatLeft" 
+				readonly="true" id="campoUnidadeMedidaDescricao" />
+			<h:outputText value="*" styleClass="MarginLeft5px PositionRelativeFloatLeft"/>
+			
+			<h:panelGroup layout="block" id="ControleUM" rendered="#{!mbMaterial.statusInicio and mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}">
+				<a4j:commandButton status="modalStatus" title="#{msg.pesquisarUnidadeMedida}" actionListener="#{mbMaterial.popularListaDeUnidadeMedida}"
+					oncomplete="#{rich:component('modalListaUM')}.show()" render="modalListaUM" immediate="true"
+					image="/resources/images/png/detalhes.png" styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk" execute="@this"/>
+				<a4j:commandButton status="modalStatus" action="#{mbMaterial.naoRenderizarModal}" oncomplete="#{rich:component('modalCadastroUM')}.show();"
+					render="modalCadastroUM" immediate="true" title="#{msg.novaUnidadeMedida}" execute="@this"
+					image="/resources/images/png/novo.png" styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk"/>
+				<a4j:commandButton id="editarUnidadeMedida" status="modalStatus" actionListener="#{mbMaterial.atualizarUnidadeMedida}"
+					rendered="#{not empty mbMaterial.material.unidadeMedida.sigla}" execute="@this"
+					oncomplete="#{rich:component('modalCadastroUM')}.show()" render="modalCadastroUM" immediate="true" title="#{msg.editarUnidadeMedida}"
+					image="/resources/images/png/editar.png" styleClass="BotaoImagemSemMarginTop PositionRelativeFloatLeft TabWalk"/>
+			</h:panelGroup>
+		</h:panelGroup>				
+		
+		
+		<h:panelGroup layout="block" styleClass="Largura100pc BordaInferiorAzul PositionRelativeFloatLeft MarginBottom5px">	
+			<div class="Linha980x25" id="linhaOrigemMaterial">
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.origem}" styleClass="TituloDeCampo"/>
+				</div>
+				<f:validateBean disabled="true">			
+					<h:selectOneMenu value="#{mbMaterial.material.origem}" disabled="#{mbMaterial.statusInicio}"
+					styleClass="ComboField Largura200px PositionRelativeFloatLeft" id="campoOrigem">
+						<f:selectItems value="#{mbMaterial.getEnum('OrigemMaterialEnum')}" var="origem" itemLabel="#{origem.nomeTipo}"/>
+					</h:selectOneMenu>
+				</f:validateBean>
+				<div class="PositionRelativeFloatLeft MarginTop2px MarginLeft65px Largura140px">
+					<h:outputText value="#{msg.utilizacao}" styleClass="TituloDeCampo"/>
+				</div>
+				<f:validateBean disabled="true">			
+					<h:selectOneMenu value="#{mbMaterial.material.utilizacao}" disabled="#{mbMaterial.statusInicio}"
+					styleClass="ComboField Largura146px PositionRelativeFloatLeft" id="campoUtilizacao">
+						<f:selectItems value="#{mbMaterial.getEnum('UtilizacaoMaterialEnum')}" var="utilizacao" itemLabel="#{utilizacao.nomeTipo}"/>
+					</h:selectOneMenu>
+				</f:validateBean>
+			</div>	
+		</h:panelGroup>
+		
+		<h:panelGroup id="cadastroPesoECodigo">
+		
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.pesoBruto}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura200px">
+					<h:inputText id="valorPesoBruto" value="#{mbMaterial.material.pesoBruto}" readonly="#{mbMaterial.statusInicio}" 
+						styleClass="Campo Largura194px TextAlignRight" maxlength="11"
+						onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+						onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+						<f:convertNumber maxFractionDigits="4" maxIntegerDigits="5" groupingUsed="true"  />
+					</h:inputText>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura140px MarginTop2px MarginLeft65px">
+					<h:outputText value="#{msg.pesoLiquido}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="valorPesoLiquido" value="#{mbMaterial.material.pesoLiquido}" readonly="#{mbMaterial.statusInicio}" 
+					styleClass="Campo Largura140px PositionRelativeFloatLeft TextAlignRight" maxlength="11"
+					onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+					onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+					<f:convertNumber maxFractionDigits="4"  maxIntegerDigits="5" groupingUsed="true" />
+				</h:inputText>
+			</div>
+			
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.codigoEANGrupo}" styleClass="TituloDeCampo"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura200px">
+					<h:inputText id="codigoEanGrupo" value="#{mbMaterial.material.codigoEanGrupo}" readonly="#{mbMaterial.statusInicio}" 
+					styleClass="Campo Largura194px" maxlength="14"/>
+				</div>
+				<div class="PositionRelativeFloatLeft Largura140px MarginTop2px MarginLeft65px">
+					<h:outputText value="#{msg.codigoEANUnitario}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="codigoEanUnitario" value="#{mbMaterial.material.codigoEanUnitario}" readonly="#{mbMaterial.statusInicio}" 
+					styleClass="Campo Largura140px PositionRelativeFloatLeft" maxlength="14"/>
+			</div>
+			
+			<div class="Linha980x25">
+				<div class="PositionRelativeFloatLeft Largura130px MarginTop2px MarginLeft10px">
+					<h:outputText value="#{msg.valorUnitario}" styleClass="TituloDeCampo"/>
+				</div>
+				<h:inputText id="valorUnitario" value="#{mbMaterial.material.valorUnitario}" readonly="#{mbMaterial.statusInicio}" 
+					styleClass="Campo PositionRelativeFloatLeft Largura194px TextAlignRight" maxlength="25"
+					onkeypress="Mascara(this, Decimal);" onkeyup="Mascara(this, Decimal);" onkeydown="Mascara(this, Decimal);"
+					onmousedown="Mascara(this, Decimal);" onmouseup="Mascara(this, Decimal);" onmouseout="Mascara(this, Decimal);">
+					<f:convertNumber  minFractionDigits="10" maxFractionDigits="10" maxIntegerDigits="11" groupingUsed="true" />
+				</h:inputText>
+				
+				<div class="PositionRelativeFloatLeft Largura140px MarginTop2px MarginLeft65px">
+					<h:outputText value="#{msg.produtoEspecifico}" styleClass="TituloDeCampo" />
+				</div>
+				<h:selectOneMenu id="produtoEspecifico" value="#{mbMaterial.material.produtoEspecifico}" disabled="#{mbMaterial.statusInicio}" 
+					styleClass="ComboField Largura146px PositionRelativeFloatLeft">
+					<f:selectItem itemValue="" itemLabel="" />
+					<f:selectItems value="#{mbMaterial.getEnum('ProdutoEspecificoEnum')}" var="tipoProduto" itemLabel="#{tipoProduto.nomeProduto}"/>
+				</h:selectOneMenu>	
+			</div>
+		
+		</h:panelGroup>
+		
+		<h:panelGroup layout="block" id="painelMensagemErro" styleClass="MarginLeft10px PositionRelativeFloatLeft Largura980px FundoBranco">
+			<h:outputText value="#{mbMaterial.mensagensErro}" styleClass="MensagemDeErro" id="msgErro" escape="false" />			
+			<h:messages styleClass="MensagemDeErro BeanValidatorMessages" id="errorMessages" />		
+		</h:panelGroup>
+		
+		<rich:tabPanel switchType="client" styleClass="PositionRelativeFloatLeft Largura100pc MarginTop5px">
+			<rich:tab id="abaAliquotas" header="#{msg.abaAliquota}" immediate="true" execute="@this">
+				<h:panelGroup id="painelAliquota" layout="block">
+					<h:panelGroup rendered="#{!mbAliquota.cadastroAliquota}" layout="block">
+						<tributavel:listaAliquota ruleRender="#{!mbMaterial.statusInicio and
+							mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{mbAliquota.cadastroAliquota}" layout="block">
+						<tributavel:cadastroAliquota ruleRender="#{!mbMaterial.statusInicio and
+							mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+				</h:panelGroup>
+			</rich:tab>
+			<rich:tab id="abaImpostos" header="#{msg.abaImpostos}" immediate="true" execute="@this">
+				<h:panelGroup id="painelImpostos" layout="block">
+					<h:panelGroup rendered="#{!mbImposto.cadatroImposto}" layout="block">
+						<imposto:listaImposto ruleRender="#{!mbMaterial.statusInicio and
+							mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}" 
+							securityRender="#{mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{mbImposto.cadatroImposto}" layout="block">
+						<imposto:cadastroImposto ruleRender="#{!mbMaterial.statusInicio and
+							mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}" 
+							securityRender="#{mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}" />
+					</h:panelGroup>
+				</h:panelGroup>
+			</rich:tab>
+		</rich:tabPanel>
+		
+		<div class="PositionRelativeFloatLeft Largura100pc MarginBottom5px">
+			<h:outputText value="#{msg.msgCampoObrigatorio}" styleClass="MarginLeft18px "/>		
+		</div>
+		
+		<rich:jQuery id="jQueryNCM" selector="#ncm" timing="immediate" query="attr('readonly', 'readonly');" />
+		<rich:jQuery id="jQueryUnidadeMedida" selector="#campoUnidadeMedida" timing="immediate" query="attr('readonly', 'readonly');" />
+		<rich:jQuery id="jQueryValorPesoBruto" selector="#valorPesoBruto" timing="immediate"  query="maskMoney({decimal: ',', thousands: '.', precision: 4})" />
+		<rich:jQuery id="jQueryValorPesoLiquido" selector="#valorPesoLiquido" timing="immediate"  query="maskMoney({decimal: ',', thousands: '.', precision: 4})" /> 
+		<rich:jQuery id="jQueryValorUnitario" selector="#valorUnitario" timing="immediate"  query="maskMoney({decimal: ',', thousands: '.', precision: 10})" />
+		<rich:jQuery id="jQueryCodigoEanUnitario" selector="#codigoEanUnitario" timing="immediate"  
+			query="maskMoney({thousands: '', decimal: '', precision: 0, defaultZero: false})" />
+	    <rich:jQuery id="jQueryCodigoEanGrupo" selector="#codigoEanGrupo" timing="immediate"  
+	    	query="maskMoney({thousands: '', decimal: '', precision: 0, defaultZero: false})" />
+		
+		
+		<script type="text/javascript">
+			//<![CDATA[
+				if(#{!mbMaterial.verificaPermissao('Administrador, Gerente, Atendente')}) {
+					j(document).ready(function(){
+						disableInputText();
+					});
+				}
+			//]]>
+		</script>
+		
+	</ui:define>
+</ui:composition>
